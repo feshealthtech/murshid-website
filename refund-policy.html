@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سياسة الدفع والاسترداد — تطبيق مرشد | Murshid App</title>
+  <meta name="description" content="سياسة الدفع والاسترداد لتطبيق مرشد. تعرف على شروط المشتريات داخل التطبيق وفترات وطرق الاسترداد." />
+  <link rel="icon" type="image/png" href="assets/logo-sq.png" />
+  <link rel="stylesheet" href="shared/murshid-style.css" />
+  <style>
+    /* ── Legal Hero ─────────────────────────────────────── */
+    .legal-hero {
+      padding: 120px 0 64px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(var(--m-primary-rgb), 0.12) 0%, transparent 70%);
+      text-align: center;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .legal-hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .legal-last-updated {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 18px;
+      background: var(--m-surface-2);
+      border: 1px solid var(--m-border);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--m-text-muted);
+    }
+    /* ── Legal Layout ───────────────────────────────────── */
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 48px;
+      padding: 64px 0 96px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .legal-layout { grid-template-columns: 1fr; }
+      .legal-toc { display: none; }
+    }
+    /* ── TOC Sidebar ────────────────────────────────────── */
+    .legal-toc {
+      position: sticky;
+      top: 88px;
+      background: var(--m-surface-2);
+      border: 1px solid var(--m-border);
+      border-radius: var(--m-radius);
+      padding: 24px;
+    }
+    .legal-toc-title {
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--m-text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .legal-toc ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .legal-toc ul li a {
+      display: block;
+      padding: 7px 10px;
+      border-radius: var(--m-radius-sm);
+      font-size: 0.84rem;
+      color: var(--m-text-muted);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      line-height: 1.4;
+    }
+    .legal-toc ul li a:hover {
+      background: var(--m-surface-3);
+      color: var(--m-text);
+    }
+    /* ── Legal Content ──────────────────────────────────── */
+    .legal-content {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .legal-section {
+      scroll-margin-top: 100px;
+    }
+    .legal-section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--m-text);
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--m-primary), var(--m-secondary));
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .legal-section p {
+      color: var(--m-text-muted);
+      line-height: 1.9;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+    .legal-section ul, .legal-section ol {
+      padding-right: 20px;
+      color: var(--m-text-muted);
+      line-height: 1.9;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    .legal-section ul li, .legal-section ol li {
+      margin-bottom: 6px;
+    }
+    /* Highlight box */
+    .legal-highlight {
+      background: rgba(var(--m-primary-rgb), 0.07);
+      border: 1px solid rgba(var(--m-primary-rgb), 0.25);
+      border-radius: var(--m-radius);
+      padding: 20px 24px;
+      margin: 16px 0;
+      color: var(--m-text-muted);
+      font-size: 0.93rem;
+      line-height: 1.8;
+    }
+    .legal-highlight strong {
+      color: var(--m-primary);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.97rem;
+    }
+    .legal-highlight.warning {
+      background: rgba(245, 158, 11, 0.07);
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+    .legal-highlight.warning strong { color: #f59e0b; }
+    .legal-highlight.success {
+      background: rgba(34, 197, 94, 0.07);
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+    .legal-highlight.success strong { color: #22c55e; }
+    /* Sub-section heading */
+    .legal-sub-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--m-text);
+      margin: 20px 0 10px;
+    }
+    /* Table */
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.88rem;
+    }
+    .legal-table th {
+      background: var(--m-surface-3);
+      color: var(--m-text);
+      padding: 10px 14px;
+      text-align: right;
+      border: 1px solid var(--m-border);
+      font-weight: 600;
+    }
+    .legal-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--m-border);
+      color: var(--m-text-muted);
+    }
+    .legal-table tr:nth-child(even) td {
+      background: var(--m-surface-2);
+    }
+    /* Refund timeline */
+    .refund-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin: 16px 0;
+    }
+    .refund-step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      position: relative;
+    }
+    .refund-step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      right: 15px;
+      top: 34px;
+      width: 2px;
+      height: calc(100% + 8px);
+      background: var(--m-border);
+    }
+    .refund-step-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--m-surface-3);
+      border: 2px solid var(--m-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--m-primary);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .refund-step-body {
+      padding-bottom: 24px;
+      flex: 1;
+    }
+    .refund-step-title {
+      font-weight: 700;
+      color: var(--m-text);
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .refund-step-desc {
+      color: var(--m-text-muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ═══════════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="index.html" class="m-nav-brand">
+      <img src="https://feshealthtech.github.io/feshealthtech-website/assets/logo.png" alt="FES HealthTech" class="brand-logo" />
+      <div class="brand-app">
+        <span class="brand-name-ar">مرشد</span>
+        <span class="brand-name-en">MURSHID APP</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="index.html#features">المميزات</a></li>
+      <li><a href="index.html#wallet">نظام النقاط</a></li>
+      <li><a href="index.html#how">كيف يعمل؟</a></li>
+      <li><a href="index.html#pricing">الأسعار</a></li>
+      <li><a href="faq.html">الأسئلة الشائعة</a></li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="index.html#download" class="m-btn m-btn-primary">📥 تحميل مجاناً</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="m-mobile-menu" id="m-mobile-menu">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">تطبيق مرشد</span>
+    <span class="m-mobile-menu-subtitle">إدارة العيادة التغذوية الذكية</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">الرئيسية</span>
+    </a>
+    <a href="index.html#features" class="m-mobile-link">
+      <span class="m-mobile-icon">🚀</span>
+      <span class="m-mobile-text">مميزات التطبيق</span>
+    </a>
+    <a href="index.html#wallet" class="m-mobile-link">
+      <span class="m-mobile-icon">🪙</span>
+      <span class="m-mobile-text">نظام النقاط</span>
+    </a>
+    <a href="index.html#how" class="m-mobile-link">
+      <span class="m-mobile-icon">📋</span>
+      <span class="m-mobile-text">كيف يعمل؟</span>
+    </a>
+    <a href="index.html#pricing" class="m-mobile-link">
+      <span class="m-mobile-icon">💳</span>
+      <span class="m-mobile-text">الأسعار والخطط</span>
+    </a>
+    <a href="faq.html" class="m-mobile-link">
+      <span class="m-mobile-icon">❓</span>
+      <span class="m-mobile-text">الأسئلة الشائعة</span>
+    </a>
+    <a href="data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">طلب حذف البيانات</span>
+    </a>
+    <a href="https://feshealthtech.github.io/feshealthtech-website/" target="_blank" class="m-mobile-link">
+      <span class="m-mobile-icon">🏢</span>
+      <span class="m-mobile-text">عن الشركة المطورة</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-download">
+    <div class="m-mobile-download-title">تحميل التطبيق مجاناً</div>
+    <div class="m-mobile-download-buttons">
+      <a href="app/index.html" class="m-mobile-dl-btn">
+        <span>🤖 Play Store</span>
+      </a>
+      <a href="app/index.html" class="m-mobile-dl-btn">
+        <span>🍎 App Store</span>
+      </a>
+    </div>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="privacy-policy.html">الخصوصية</a>
+    <span>•</span>
+    <a href="terms-of-use.html">الشروط</a>
+    <span>•</span>
+    <a href="refund-policy.html">سياسة الدفع</a>
+  </div>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<section class="legal-hero">
+  <div class="container">
+    <div class="legal-hero-inner">
+      <span class="m-label">قانوني</span>
+      <h1 class="m-title">سياسة الدفع والاسترداد</h1>
+      <p class="m-subtitle">نلتزم بالشفافية الكاملة في جميع معاملاتنا المالية</p>
+      <span class="legal-last-updated">آخر تحديث: ١ يناير ٢٠٢٥</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAIN LAYOUT ════════════════════════════════════════════ -->
+<main class="container">
+  <div class="legal-layout">
+
+    <!-- TOC Sidebar -->
+    <aside class="legal-toc">
+      <div class="legal-toc-title">المحتويات</div>
+      <ul>
+        <li><a href="#section1">١. أنواع المشتريات</a></li>
+        <li><a href="#section2">٢. استرداد النقاط الذهبية</a></li>
+        <li><a href="#section3">٣. استرداد الاشتراكات</a></li>
+        <li><a href="#section4">٤. حالات عدم الأهلية</a></li>
+        <li><a href="#section5">٥. كيف تطلب الاسترداد</a></li>
+        <li><a href="#section6">٦. مدة معالجة الاسترداد</a></li>
+        <li><a href="#section7">٧. العملات والأسعار</a></li>
+        <li><a href="#section8">٨. التواصل للاستفسارات</a></li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <div class="legal-content">
+
+      <!-- Section 1 -->
+      <div class="legal-section" id="section1">
+        <h2 class="legal-section-title"><span class="section-num">1</span> أنواع المشتريات في التطبيق</h2>
+        <p>يقدم تطبيق مرشد ثلاثة أنواع رئيسية من المعاملات المالية، تتفاوت في طبيعتها وشروط استردادها:</p>
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>النوع</th>
+              <th>الوصف</th>
+              <th>الثمن</th>
+              <th>قابل للاسترداد</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>النقاط الزرقاء</td>
+              <td>مجانية دائماً عبر الإعلانات</td>
+              <td>مجاني</td>
+              <td>لا ينطبق</td>
+            </tr>
+            <tr>
+              <td>باقات النقاط الذهبية</td>
+              <td>شراء داخل التطبيق (IAP)</td>
+              <td>$1 – $10</td>
+              <td>مشروط</td>
+            </tr>
+            <tr>
+              <td>اشتراك Pro الشهري</td>
+              <td>إزالة الإعلانات + نقاط ذهبية شهرية</td>
+              <td>$4.99/شهر</td>
+              <td>مشروط</td>
+            </tr>
+            <tr>
+              <td>اشتراك Pro السنوي</td>
+              <td>مزايا Pro السنوية بخصم مميز</td>
+              <td>$39.99/سنة</td>
+              <td>مشروط</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="legal-highlight">
+          <strong>معالجة الدفع</strong>
+          جميع المشتريات تتم عبر Google Play Store أو Apple App Store حصراً، وتخضع لسياسات هذين المتجرين إضافةً إلى سياستنا. FES HealthTech لا تخزن بيانات بطاقاتك الائتمانية مباشرة.
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="legal-section" id="section2">
+        <h2 class="legal-section-title"><span class="section-num">2</span> شروط الاسترداد للنقاط الذهبية المشتراة</h2>
+        <p>النقاط الذهبية المشتراة تستحق الاسترداد الكامل إذا توافرت جميع الشروط التالية معاً:</p>
+        <ul>
+          <li>تقدمت بطلب الاسترداد خلال <strong>48 ساعة</strong> من تاريخ ووقت الشراء</li>
+          <li>لم تستهلك أياً من النقاط في أي عملية AI أو خدمة سحابية</li>
+          <li>لم تكن المشكلة ناتجة عن طرفك (مثل فقدان الاتصال أو إعادة تشغيل التطبيق أثناء العملية)</li>
+          <li>لم يسبق لك الاستفادة من سياسة الاسترداد أكثر من مرتين في السنة الواحدة</li>
+        </ul>
+        <p class="legal-sub-title">طريقة الاسترداد</p>
+        <p>يتم الاسترداد عبر Google Play Store أو Apple App Store مباشرةً وليس عبر FES HealthTech مباشرة، إذ أن المعالج المالي هو المتجر وليس الشركة.</p>
+        <div class="legal-highlight warning">
+          <strong>⚠️ نقاط غير قابلة للاسترداد</strong>
+          النقاط الذهبية المكتسبة عبر مشاهدة الإعلانات أو من خلال برنامج الإحالة (غير المشتراة بمال حقيقي) غير قابلة للاسترداد النقدي بأي حال من الأحوال، إذ لم يُدفع في مقابلها أي مبلغ مالي.
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="legal-section" id="section3">
+        <h2 class="legal-section-title"><span class="section-num">3</span> شروط الاسترداد للاشتراكات</h2>
+        <p class="legal-sub-title">📅 اشتراك Pro الشهري ($4.99/شهر)</p>
+        <ul>
+          <li><strong>استرداد كامل:</strong> يُستحق خلال 48 ساعة من بدء الاشتراك دون استخدام أي من المميزات الحصرية</li>
+          <li><strong>استرداد جزئي:</strong> يُستحق خلال 7 أيام إذا لم تستخدم مميزات إزالة الإعلانات أو النقاط الذهبية الشهرية المضافة</li>
+          <li><strong>بعد 7 أيام:</strong> لا يوجد استرداد للفترة الحالية، لكن يمكنك إلغاء الاشتراك من إعدادات المتجر لمنع التجديد التلقائي</li>
+          <li>الإلغاء لا يؤثر على استمرار الاشتراك حتى نهاية الفترة المدفوعة بالفعل</li>
+        </ul>
+        <p class="legal-sub-title">📆 اشتراك Pro السنوي ($39.99/سنة)</p>
+        <ul>
+          <li><strong>استرداد كامل:</strong> يُستحق خلال 48 ساعة من بدء الاشتراك دون أي استخدام للمزايا</li>
+          <li><strong>استرداد نسبي:</strong> يُستحق خلال 14 يوماً ويُحسب بناءً على الأشهر المتبقية من الاشتراك مطروحاً منها رسوم المعالجة</li>
+          <li><strong>بعد 14 يوماً:</strong> لا يوجد استرداد نقدي، لكن الاشتراك يستمر حتى تاريخ انتهائه الأصلي عند الإلغاء</li>
+        </ul>
+        <div class="legal-highlight success">
+          <strong>✅ إلغاء التجديد التلقائي</strong>
+          يمكنك إلغاء التجديد التلقائي في أي وقت دون رسوم من خلال إعدادات Google Play أو App Store. سيستمر اشتراكك حتى نهاية الفترة التي دفعت عنها بالفعل.
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="legal-section" id="section4">
+        <h2 class="legal-section-title"><span class="section-num">4</span> حالات عدم أهلية الاسترداد</h2>
+        <p>لا يحق المطالبة بالاسترداد في الحالات التالية، وستُرفض الطلبات المتعلقة بها:</p>
+        <ul>
+          <li><strong>النقاط الذهبية المستهلكة</strong> في عمليات AI ناجحة، حتى لو لم يكن المستخدم راضياً عن نتيجة AI — لأن الخدمة قُدِّمت فعلاً</li>
+          <li><strong>انتهاء نافذة الاسترداد:</strong> بعد مرور 48 ساعة (للنقاط والاشتراكات في الـ 48 ساعة الأولى) أو 7/14 يوماً حسب نوع الاشتراك</li>
+          <li><strong>الاشتراكات المستخدمة:</strong> بعد الاستفادة من ميزة إزالة الإعلانات أو استخدام النقاط الذهبية الشهرية المضافة بالاشتراك</li>
+          <li><strong>المشتريات من طرف ثالث</strong> غير مصرح به أو عبر وسطاء غير رسميين</li>
+          <li><strong>حالات الاحتيال أو انتهاك الشروط:</strong> أي مشترٍ ثبت انتهاكه لشروط الاستخدام يفقد أحقيته في الاسترداد</li>
+          <li><strong>التحديات الرسومية المكذوبة:</strong> الطلبات المقدمة عبر chargeback بنكي دون التواصل مع الدعم أولاً ستُعالج بإجراءات قانونية</li>
+        </ul>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="legal-section" id="section5">
+        <h2 class="legal-section-title"><span class="section-num">5</span> كيف تطلب الاسترداد</h2>
+        <p class="legal-sub-title">🏆 الطريقة الأولى: عبر المتجر مباشرة (الأسرع والأكثر موثوقية)</p>
+        <div class="refund-steps">
+          <div class="refund-step">
+            <div class="refund-step-icon">G</div>
+            <div class="refund-step-body">
+              <div class="refund-step-title">Google Play Store</div>
+              <div class="refund-step-desc">افتح تطبيق Play Store → اضغط على صورة حسابك → "الطلبات والمشتريات" → اختر المشترية المطلوبة → اضغط "طلب استرداد" واتبع التعليمات</div>
+            </div>
+          </div>
+          <div class="refund-step">
+            <div class="refund-step-icon">A</div>
+            <div class="refund-step-body">
+              <div class="refund-step-title">Apple App Store</div>
+              <div class="refund-step-desc">اذهب إلى reportaproblem.apple.com → سجّل دخولك بـ Apple ID → ابحث عن المشترية → اختر "طلب استرداد" وحدد السبب</div>
+            </div>
+          </div>
+        </div>
+        <p class="legal-sub-title">📧 الطريقة الثانية: التواصل المباشر (للحالات الخاصة)</p>
+        <p>أرسل بريداً إلكترونياً إلى <a href="mailto:billing@feshealthtech.com"><strong>billing@feshealthtech.com</strong></a> يتضمن المعلومات التالية بشكل واضح:</p>
+        <ul>
+          <li>معرف الطلب (Order ID) كما يظهر في بريد تأكيد الشراء من المتجر</li>
+          <li>البريد الإلكتروني المرتبط بحسابك في تطبيق مرشد</li>
+          <li>سبب طلب الاسترداد بشكل مفصل</li>
+          <li>تاريخ ووقت الشراء</li>
+          <li>لقطة شاشة من فاتورة الشراء (إن أمكن)</li>
+        </ul>
+        <div class="legal-highlight">
+          <strong>نصيحة مهمة</strong>
+          الطريقة الأولى عبر المتجر هي الأسرع دائماً حيث تتم معالجتها أوتوماتيكياً. احتفظ دائماً بإيصال الشراء الإلكتروني لتسهيل إجراءات الاسترداد المحتملة.
+        </div>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="legal-section" id="section6">
+        <h2 class="legal-section-title"><span class="section-num">6</span> مدة معالجة الاسترداد</h2>
+        <p>بعد الموافقة على طلب الاسترداد من قِبَل المتجر أو من قِبَلنا، تتفاوت مدة ظهور المبلغ في حسابك كما يلي:</p>
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>طريقة الدفع</th>
+              <th>المدة المتوقعة</th>
+              <th>ملاحظات</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>بطاقات الائتمان والخصم الدولية</td>
+              <td>3–5 أيام عمل</td>
+              <td>تعتمد على بنك المستخدم</td>
+            </tr>
+            <tr>
+              <td>بعض المصارف المحلية</td>
+              <td>5–10 أيام عمل</td>
+              <td>قد تختلف حسب البنك</td>
+            </tr>
+            <tr>
+              <td>المحافظ الرقمية (PayPal وغيرها)</td>
+              <td>1–3 أيام عمل</td>
+              <td>عادةً الأسرع</td>
+            </tr>
+            <tr>
+              <td>معالجة Google/Apple الداخلية</td>
+              <td>+7 أيام إضافية</td>
+              <td>تُضاف فوق المدة أعلاه</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="legal-highlight warning">
+          <strong>⏳ خارج نطاق سيطرتنا</strong>
+          وقت الاسترداد الفعلي يعتمد بشكل رئيسي على بنكك أو مزود خدمة الدفع. بمجرد أن نُعطي الموافقة وتُرسَل إشعاراتها، لا نتحكم في متى تظهر الأموال في حسابك. إذا مرت أكثر من 15 يوم عمل دون ظهور المبلغ، تواصل مع بنكك أولاً ثم معنا.
+        </div>
+      </div>
+
+      <!-- Section 7 -->
+      <div class="legal-section" id="section7">
+        <h2 class="legal-section-title"><span class="section-num">7</span> العملات والأسعار</h2>
+        <p>جميع الأسعار المعروضة في التطبيق بالدولار الأمريكي (USD) كعملة أساسية. تفاصيل التعامل بالعملات المحلية:</p>
+        <ul>
+          <li>عند الدفع بعملة محلية غير الدولار، يتم تحويل السعر بسعر الصرف المعتمد من Google Play أو App Store وقت إتمام عملية الشراء</li>
+          <li>الاسترداد يتم دائماً بنفس العملة التي دفعت بها وعبر نفس طريقة الدفع الأصلية</li>
+          <li>FES HealthTech غير مسؤولة عن فروق أسعار الصرف بين وقت الشراء ووقت الاسترداد أو عن أي رسوم تحويل بنكي</li>
+          <li>قد تختلف الأسعار المعروضة بعملات محلية بسبب آليات التحديث الدورية لمتاجر التطبيقات</li>
+        </ul>
+        <div class="legal-highlight">
+          <strong>تغيير الأسعار</strong>
+          الأسعار قابلة للتغيير مع إشعار مسبق لا يقل عن 14 يوماً. الاشتراكات النشطة لن تتأثر بتغييرات الأسعار حتى تاريخ تجديدها التالي، وسيُرسَل إشعار قبل التجديد بأسعار جديدة.
+        </div>
+      </div>
+
+      <!-- Section 8 -->
+      <div class="legal-section" id="section8">
+        <h2 class="legal-section-title"><span class="section-num">8</span> التواصل لاستفسارات الفوترة</h2>
+        <p>فريق الدعم المالي في FES HealthTech متاح للرد على جميع استفساراتك المتعلقة بالفواتير والاستردادات:</p>
+        <ul>
+          <li><strong>البريد الإلكتروني:</strong> <a href="mailto:billing@feshealthtech.com">billing@feshealthtech.com</a></li>
+          <li><strong>ساعات العمل:</strong> الأحد إلى الخميس، 9 صباحاً – 5 مساءً (توقيت مكة المكرمة)</li>
+          <li><strong>متوسط وقت الرد:</strong> 24–48 ساعة عمل في الأوقات الاعتيادية</li>
+          <li><strong>اللغات المدعومة:</strong> العربية والإنجليزية</li>
+        </ul>
+        <p class="legal-sub-title">معلومات يجب تضمينها في رسالتك</p>
+        <ul>
+          <li>رقم الطلب (Order ID) من إيصال الشراء الإلكتروني</li>
+          <li>البريد الإلكتروني المرتبط بحسابك في تطبيق مرشد</li>
+          <li>تاريخ ومبلغ المعاملة محل الاستفسار</li>
+          <li>وصف واضح لمشكلتك أو استفسارك</li>
+        </ul>
+        <div class="legal-highlight">
+          <strong>🚨 للشكاوى العاجلة</strong>
+          أضف كلمة [URGENT] في بداية عنوان رسالتك الإلكترونية للحالات التي تتطلب استجابة خلال 24 ساعة، مثل الرسوم المتكررة غير المتوقعة أو الخصومات الخاطئة. سيعطي فريقنا أولوية لهذه الطلبات.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="https://feshealthtech.github.io/feshealthtech-website/assets/logo.png" alt="FES HealthTech" class="footer-logo" />
+        <div class="footer-app-name">مرشد</div>
+        <div class="footer-app-sub">Murshid App</div>
+        <p>تطبيق إدارة العيادة الذكي — مُطوَّر بواسطة FES HealthTech.</p>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">التطبيق</h4>
+        <ul class="m-footer-links">
+          <li><a href="index.html#features">المميزات</a></li>
+          <li><a href="index.html#pricing">الأسعار</a></li>
+          <li><a href="index.html#download">تحميل</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">الدعم</h4>
+        <ul class="m-footer-links">
+          <li><a href="faq.html">الأسئلة الشائعة</a></li>
+          <li><a href="data-deletion.html">حذف البيانات</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">قانوني</h4>
+        <ul class="m-footer-links">
+          <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+          <li><a href="terms-of-use.html">شروط الاستخدام</a></li>
+          <li><a href="refund-policy.html">سياسة الدفع</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© 2025 FES HealthTech. جميع الحقوق محفوظة.</p>
+      <div class="m-footer-bottom-links">
+        <a href="privacy-policy.html">الخصوصية</a>
+        <a href="terms-of-use.html">الشروط</a>
+        <a href="data-deletion.html">حذف البيانات</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="shared/murshid-script.js"></script>
+</body>
+</html>

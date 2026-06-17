@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="عذراً، الصفحة غير موجودة - تطبيق مرشد" />
+  <title>404 - الصفحة غير موجودة | تطبيق مرشد</title>
+  <link rel="stylesheet" href="shared/murshid-style.css" />
+  <link rel="stylesheet" href="shared/index-style.css" />
+  <link rel="icon" type="image/png" href="assets/logo-sq.png" />
+  <style>
+    body, html {
+      background-color: #0A0F1E !important;
+      color: rgba(255, 255, 255, 0.85) !important;
+      font-family: var(--font-arabic);
+      overflow-x: hidden !important;
+      width: 100% !important;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .error-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-height) + 60px) 24px 80px;
+      position: relative;
+      overflow: hidden;
+      background-image: radial-gradient(circle at 50% 30%, rgba(20, 184, 166, 0.08) 0%, transparent 60%);
+    }
+
+    .error-card {
+      background: rgba(255, 255, 255, 0.03) !important;
+      backdrop-filter: blur(24px) !important;
+      -webkit-backdrop-filter: blur(24px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 24px;
+      padding: 60px 40px;
+      box-shadow: 0 20px 50px rgba(10, 15, 30, 0.3) !important;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .error-code {
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 950;
+      line-height: 1;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #10B981 0%, #F59E0B 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      letter-spacing: -0.05em;
+    }
+
+    .error-title {
+      font-size: clamp(1.4rem, 4vw, 1.8rem);
+      font-weight: 850;
+      color: #FFFFFF !important;
+      margin-bottom: 18px;
+    }
+
+    .error-desc {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.65) !important;
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .m-btn {
+      padding: 12px 24px;
+      font-size: 0.92rem;
+      border-radius: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="m-nav" id="m-nav">
+    <div class="container m-nav-inner">
+      <a href="index.html" class="m-nav-brand" aria-label="الصفحة الرئيسية">
+        <img src="https://feshealthtech.github.io/feshealthtech-website/assets/logo.png" alt="FES HealthTech" class="brand-logo" />
+        <div class="brand-app">
+          <span class="brand-name-ar">مرشد</span>
+          <span class="brand-name-en">MURSHID APP</span>
+        </div>
+      </a>
+      <ul class="m-nav-links" role="list">
+        <li><a href="index.html#features">المميزات</a></li>
+        <li><a href="index.html#wallet">نظام النقاط</a></li>
+        <li><a href="index.html#how">كيف يعمل؟</a></li>
+        <li><a href="index.html#pricing">الأسعار</a></li>
+        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+      </ul>
+      <div class="m-nav-actions">
+        <a href="index.html#download" class="m-btn m-btn-primary">📥 تحميل مجاناً</a>
+      </div>
+      <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+    <div class="m-mobile-menu-header">
+      <span class="m-mobile-menu-title">تطبيق مرشد</span>
+      <span class="m-mobile-menu-subtitle">إدارة العيادة التغذوية الذكية</span>
+    </div>
+    <div class="m-mobile-menu-links">
+      <a href="index.html" class="m-mobile-link">
+        <span class="m-mobile-icon">🏠</span>
+        <span class="m-mobile-text">الرئيسية</span>
+      </a>
+      <a href="index.html#features" class="m-mobile-link">
+        <span class="m-mobile-icon">🚀</span>
+        <span class="m-mobile-text">مميزات التطبيق</span>
+      </a>
+      <a href="index.html#wallet" class="m-mobile-link">
+        <span class="m-mobile-icon">🪙</span>
+        <span class="m-mobile-text">نظام النقاط</span>
+      </a>
+      <a href="index.html#how" class="m-mobile-link">
+        <span class="m-mobile-icon">📋</span>
+        <span class="m-mobile-text">كيف يعمل؟</span>
+      </a>
+      <a href="index.html#pricing" class="m-mobile-link">
+        <span class="m-mobile-icon">💳</span>
+        <span class="m-mobile-text">الأسعار والخطط</span>
+      </a>
+      <a href="faq.html" class="m-mobile-link">
+        <span class="m-mobile-icon">❓</span>
+        <span class="m-mobile-text">الأسئلة الشائعة</span>
+      </a>
+      <a href="data-deletion.html" class="m-mobile-link">
+        <span class="m-mobile-icon">🗑️</span>
+        <span class="m-mobile-text">طلب حذف البيانات</span>
+      </a>
+      <a href="https://feshealthtech.github.io/feshealthtech-website/" target="_blank" class="m-mobile-link">
+        <span class="m-mobile-icon">🏢</span>
+        <span class="m-mobile-text">عن الشركة المطورة</span>
+      </a>
+    </div>
+    <div class="m-mobile-menu-download">
+      <div class="m-mobile-download-title">تحميل التطبيق مجاناً</div>
+      <div class="m-mobile-download-buttons">
+        <a href="app/index.html" class="m-mobile-dl-btn">
+          <span>🤖 Play Store</span>
+        </a>
+        <a href="app/index.html" class="m-mobile-dl-btn">
+          <span>🍎 App Store</span>
+        </a>
+      </div>
+    </div>
+    <div class="m-mobile-menu-footer">
+      <a href="privacy-policy.html">الخصوصية</a>
+      <span>•</span>
+      <a href="terms-of-use.html">الشروط</a>
+      <span>•</span>
+      <a href="refund-policy.html">سياسة الدفع</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER -->
+  <main class="error-container">
+    <div class="error-card">
+      <div class="error-code">404</div>
+      <h1 class="error-title">الصفحة غير موجودة 🔍</h1>
+      <p class="error-desc">
+        عذراً، الصفحة التي تبحث عنها قد تم نقلها أو حذفها. يمكنك العودة لصفحة مرشد الرئيسية وتحميل التطبيق أو مراجعة الأسئلة الشائعة.
+      </p>
+      <div class="error-actions">
+        <a href="index.html" class="m-btn m-btn-primary">🏠 العودة للرئيسية</a>
+        <a href="faq.html" class="m-btn m-btn-outline" style="border:1px solid rgba(255,255,255,0.15)">❓ الأسئلة الشائعة</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="m-footer">
+    <div class="container">
+      <div class="m-footer-grid">
+        <div class="m-footer-brand">
+          <img src="https://feshealthtech.github.io/feshealthtech-website/assets/logo.png" alt="FES HealthTech" class="footer-logo" />
+          <div class="footer-app-name">مرشد</div>
+          <div class="footer-app-sub">Murshid App</div>
+          <p>تطبيق إدارة العيادة الذكي لأخصائيي التغذية — مُطوَّر بواسطة <a href="https://feshealthtech.github.io/feshealthtech-website/">FES HealthTech</a>.</p>
+          <div class="m-footer-social">
+            <div class="m-footer-social-btn" title="X">𝕏</div>
+            <div class="m-footer-social-btn" title="Instagram">📸</div>
+            <div class="m-footer-social-btn" title="YouTube">▶️</div>
+          </div>
+        </div>
+        <div>
+          <h4 class="m-footer-col-title">التطبيق</h4>
+          <ul class="m-footer-links">
+            <li><a href="index.html#features">المميزات</a></li>
+            <li><a href="index.html#wallet">نظام النقاط</a></li>
+            <li><a href="index.html#pricing">الأسعار</a></li>
+            <li><a href="index.html#download">تحميل</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="m-footer-col-title">الدعم</h4>
+          <ul class="m-footer-links">
+            <li><a href="faq.html">الأسئلة الشائعة</a></li>
+            <li><a href="data-deletion.html">حذف البيانات</a></li>
+            <li><a href="https://feshealthtech.github.io/feshealthtech-website/">عن الشركة</a></li>
+            <li><a href="mailto:support@feshealthtech.com">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="m-footer-col-title">قانوني</h4>
+          <ul class="m-footer-links">
+            <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+            <li><a href="terms-of-use.html">شروط الاستخدام</a></li>
+            <li><a href="refund-policy.html">سياسة الدفع والاسترداد</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="m-footer-bottom">
+        <p class="m-footer-copy">© 2025 <a href="https://feshealthtech.github.io/feshealthtech-website/">FES HealthTech</a>. جميع الحقوق محفوظة.</p>
+        <div class="m-footer-bottom-links">
+          <a href="privacy-policy.html">الخصوصية</a>
+          <a href="terms-of-use.html">الشروط</a>
+          <a href="data-deletion.html">حذف البيانات</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared/murshid-script.js"></script>
+</body>
+</html>

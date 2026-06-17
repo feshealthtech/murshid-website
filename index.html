@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="مرشد — تطبيق إدارة العيادة الذكي لأخصائيي التغذية. مدعوم بالذكاء الاصطناعي، يعمل بدون إنترنت، مع نظام نقاط مزدوج فريد." />
+  <meta name="keywords" content="مرشد, murshid, تطبيق تغذية, إدارة عيادة, أخصائي تغذية, ذكاء اصطناعي, FES HealthTech" />
+  <meta property="og:title" content="مرشد — تطبيق إدارة العيادة الذكي" />
+  <meta property="og:description" content="زميلك الرقمي في العيادة. إدارة المرضى، الأنظمة الغذائية، التحاليل المخبرية، ومساعد AI — في تطبيق واحد." />
+  <meta property="og:type" content="website" />
+  <title>مرشد — تطبيق إدارة العيادة الذكي لأخصائيي التغذية</title>
+  <link rel="stylesheet" href="shared/murshid-style.css" />
+  <link rel="stylesheet" href="shared/index-style.css" />
+  <link rel="icon" type="image/png" href="assets/logo-sq.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "مرشد | Murshid App",
+    "operatingSystem": "Android, iOS",
+    "applicationCategory": "MedicalBusinessApplication, HealthApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "FES HealthTech",
+      "url": "https://feshealthtech.github.io/feshealthtech-website/"
+    },
+    "description": "تطبيق مرشد هو مساعدك الذكي في العيادة لإدارة شؤون المرضى، وتصدير التقارير الطبية، وبناء الأنظمة الغذائية مدعوماً بالذكاء الاصطناعي."
+  }
+  </script>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     NAVBAR
+     ════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="index.html" class="m-nav-brand" aria-label="الصفحة الرئيسية">
+      <img src="https://feshealthtech.github.io/feshealthtech-website/assets/logo.png" alt="FES HealthTech" class="brand-logo" />
+      <div class="brand-app">
+        <span class="brand-name-ar">مرشد</span>
+        <span class="brand-name-en">MURSHID APP</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="#features">المميزات</a></li>
+      <li><a href="#wallet">نظام النقاط</a></li>
+      <li><a href="#how">كيف يعمل؟</a></li>
+      <li><a href="#pricing">الأسعار</a></li>
+      <li><a href="faq.html">الأسئلة الشائعة</a></li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="#download" class="m-btn m-btn-primary" id="nav-download-btn">📥 تحميل مجاناً</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">تطبيق مرشد</span>
+    <span class="m-mobile-menu-subtitle">إدارة العيادة التغذوية الذكية</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">الرئيسية</span>
+    </a>
+    <a href="index.html#features" class="m-mobile-link">
+      <span class="m-mobile-icon">🚀</span>
+      <span class="m-mobile-text">مميزات التطبيق</span>
+    </a>
+    <a href="index.html#wallet" class="m-mobile-link">
+      <span class="m-mobile-icon">🪙</span>
+      <span class="m-mobile-text">نظام النقاط</span>
+    </a>
+    <a href="index.html#how" class="m-mobile-link">
+      <span class="m-mobile-icon">📋</span>
+      <span class="m-mobile-text">كيف يعمل؟</span>
+    </a>
+    <a href="index.html#pricing" class="m-mobile-link">
+      <span class="m-mobile-icon">💳</span>
+      <span class="m-mobile-text">الأسعار والخطط</span>
+    </a>
+    <a href="faq.html" class="m-mobile-link">
+      <span class="m-mobile-icon">❓</span>
+      <span class="m-mobile-text">الأسئلة الشائعة</span>
+    </a>
+    <a href="data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">طلب حذف البيانات</span>
+    </a>
+    <a href="https://feshealthtech.github.io/feshealthtech-website/" target="_blank" class="m-mobile-link">
+      <span class="m-mobile-icon">🏢</span>
+      <span class="m-mobile-text">عن الشركة المطورة</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-download">
+    <div class="m-mobile-download-title">تحميل التطبيق مجاناً</div>
+    <div class="m-mobile-download-buttons">
+      <a href="app/index.html" class="m-mobile-dl-btn">
+        <span>🤖 Play Store</span>
+      </a>
+      <a href="app/index.html" class="m-mobile-dl-btn">
+        <span>🍎 App Store</span>
+      </a>
+    </div>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="privacy-policy.html">الخصوصية</a>
+    <span>•</span>
+    <a href="terms-of-use.html">الشروط</a>
+    <span>•</span>
+    <a href="refund-policy.html">سياسة الدفع</a>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════════════
+     HERO SECTION
+     ════════════════════════════════════════ -->
+<section class="hero" id="home" aria-label="القسم الرئيسي">
+  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- Text -->
+      <div class="hero-text">
+        <div class="hero-badge-wrap">
+          <span class="m-badge m-badge-ai">
+            <span class="pulse"></span>
+            مدعوم بـ Google Gemini AI
+          </span>
+        </div>
+
+        <h1 class="hero-title">
+          زميلك الرقمي<br />
+          في
+          <span class="ai-accent"
+            data-typewriter='["العيادة", "التشخيص", "التغذية", "النجاح"]'>
+            العيادة
+          </span>
+        </h1>
+
+        <p class="hero-desc">
+          مرشد هو نظام الإدارة السريرية الذكي الذي يحوّل عيادتك من أوراق متشعبة
+          ومحادثات واتساب فوضوية إلى منظومة رقمية متكاملة — تعمل حتى بدون إنترنت.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#download" class="hero-store-btn" id="hero-android-btn">
+            <span class="hero-store-icon">🤖</span>
+            <div class="hero-store-text">
+              <span class="store-sub">تحميل على</span>
+              <span class="store-name">Google Play</span>
+            </div>
+          </a>
+          <a href="#download" class="hero-store-btn" id="hero-ios-btn">
+            <span class="hero-store-icon">🍎</span>
+            <div class="hero-store-text">
+              <span class="store-sub">تحميل على</span>
+              <span class="store-name">App Store</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="hero-social-proof">
+          <div class="hero-avatars">
+            <div class="av">أ</div>
+            <div class="av">م</div>
+            <div class="av">س</div>
+            <div class="av">ف</div>
+            <div class="av">+</div>
+          </div>
+          <p class="hero-social-text">
+            انضم لـ <strong>500+</strong> أخصائي تغذية يستخدمون مرشد يومياً
+          </p>
+        </div>
+      </div>
+
+      <!-- Mockup Visual -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-mockup">
+          <div class="mockup-topbar">
+            <div class="mockup-dots">
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+              <div class="mockup-dot"></div>
+            </div>
+            <span class="mockup-title">Murshid — مرشد</span>
+            <span style="font-size:0.75rem;color:var(--m-primary)">●</span>
+          </div>
+
+          <div class="mockup-body">
+            <!-- Stats -->
+            <div class="mockup-stats">
+              <div class="mockup-stat">
+                <div class="mockup-stat-num" data-count="24" data-suffix="">24</div>
+                <div class="mockup-stat-label">مريض اليوم</div>
+              </div>
+              <div class="mockup-stat">
+                <div class="mockup-stat-num" style="color:var(--m-gold)" data-count="48" data-suffix="">48</div>
+                <div class="mockup-stat-label">نقطة ذهبية</div>
+              </div>
+              <div class="mockup-stat">
+                <div class="mockup-stat-num" style="color:var(--m-blue-pt)" data-count="320" data-suffix="">320</div>
+                <div class="mockup-stat-label">نقطة زرقاء</div>
+              </div>
+            </div>
+
+            <!-- Patient Card -->
+            <div class="mockup-patient">
+              <div class="mockup-avatar">سا</div>
+              <div style="flex:1">
+                <div class="mockup-patient-name">سارة أحمد المحمدي</div>
+                <div class="mockup-patient-sub">🎯 سكري نوع 2 — الأسبوع 6</div>
+                <div class="mockup-progress">
+                  <div style="display:flex;justify-content:space-between;font-size:0.65rem;color:var(--m-text-muted)">
+                    <span>التقدم</span><span>72%</span>
+                  </div>
+                  <div class="mockup-progress-bar">
+                    <div class="mockup-progress-fill"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AI Chat -->
+            <div class="mockup-ai-chat">
+              <div class="mockup-ai-label">مرشد AI</div>
+              <div class="mockup-ai-bubble">
+                بناءً على تحاليل سارة الأخيرة، أنصح بتخفيض الكربوهيدرات 15% في وجبة العشاء مع مراعاة دواء Metformin
+                <span class="typing-cursor"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Badges -->
+        <div class="hero-float hero-float-1">
+          <span class="hero-float-icon">⚡</span>
+          <div class="hero-float-text">
+            <span class="ft-val">Offline First</span>
+            <span class="ft-label">يعمل بدون إنترنت</span>
+          </div>
+        </div>
+        <div class="hero-float hero-float-2">
+          <span class="hero-float-icon">🔒</span>
+          <div class="hero-float-text">
+            <span class="ft-val">AES-256</span>
+            <span class="ft-label">تشفير كامل للبيانات</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     PROBLEM / SOLUTION
+     ════════════════════════════════════════ -->
+<section class="problem-solution section-pad" id="problem" aria-label="المشكلة والحل">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <span class="m-label">لماذا مرشد؟</span>
+      <h2 class="m-title">قبل مرشد <span>وبعد مرشد</span></h2>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card problem reveal-right">
+        <div class="ps-icon">😓</div>
+        <h3 class="ps-title">واقع أخصائي التغذية قبل مرشد</h3>
+        <div class="ps-list">
+          <div class="ps-item"><div class="ps-item-dot">✕</div>ساعات في كتابة التاريخ المرضي يدوياً وبيانات المرضى في الأوراق</div>
+          <div class="ps-item"><div class="ps-item-dot">✕</div>تشتت البيانات بين الواتساب والملاحظات والجداول المبعثرة</div>
+          <div class="ps-item"><div class="ps-item-dot">✕</div>خطر نسيان تفاعل دواء مع النظام الغذائي وهامش خطأ بشري مرتفع</div>
+          <div class="ps-item"><div class="ps-item-dot">✕</div>تقارير PDF يدوية مستهلكة للوقت وتفتقر للاحترافية</div>
+          <div class="ps-item"><div class="ps-item-dot">✕</div>لا يوجد نظام متابعة للمواعيد أو الالتزام بالخطة الغذائية</div>
+        </div>
+      </div>
+      <div class="ps-card solution reveal-left">
+        <div class="ps-icon">🚀</div>
+        <h3 class="ps-title">مع مرشد — عيادتك الذكية</h3>
+        <div class="ps-list">
+          <div class="ps-item"><div class="ps-item-dot">✓</div>ملفات مرضى كاملة منظمة، بحث فوري بالاسم أو الحالة الطبية</div>
+          <div class="ps-item"><div class="ps-item-dot">✓</div>مساعد AI يراجع التعارضات الغذائية-الدوائية ويحذّر فوراً</div>
+          <div class="ps-item"><div class="ps-item-dot">✓</div>تحليل صور التحاليل المخبرية تلقائياً بتقنية OCR المتقدمة</div>
+          <div class="ps-item"><div class="ps-item-dot">✓</div>تقارير PDF احترافية بشعار عيادتك بنقرة واحدة</div>
+          <div class="ps-item"><div class="ps-item-dot">✓</div>لوحة تحكم تعرض تقدم المرضى والمواعيد والإيرادات بصرياً</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FEATURES — Tabs
+     ════════════════════════════════════════ -->
+<section class="section-pad" id="features" aria-label="مميزات التطبيق" style="background:var(--m-surface)">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:40px">
+      <span class="m-label">المميزات</span>
+      <h2 class="m-title">كل شيء تحتاجه <span>في مكان واحد</span></h2>
+      <p class="m-subtitle">12 وحدة متكاملة صُممت بعناية لتغطية كل جانب من جوانب عمل أخصائي التغذية</p>
+    </div>
+
+    <!-- Tab Nav -->
+    <div class="features-tabs-nav reveal">
+      <button class="ftab active" data-tab="clinical" id="tab-btn-clinical">🩺 السريري</button>
+      <button class="ftab" data-tab="ai" id="tab-btn-ai">🤖 الذكاء الاصطناعي</button>
+      <button class="ftab" data-tab="admin" id="tab-btn-admin">📊 الإداري</button>
+      <button class="ftab" data-tab="security" id="tab-btn-security">🔒 الأمان</button>
+    </div>
+
+    <!-- Tab: Clinical -->
+    <div class="features-tab-panel active" id="tab-clinical">
+      <div class="feat-card">
+        <div class="feat-icon">👥</div>
+        <h3 class="feat-title">إدارة المرضى (CRM)</h3>
+        <p class="feat-text">ملفات طبية كاملة لكل مريض: التاريخ المرضي، القياسات البيومترية، الصور، التحاليل، تطور الوزن. بحث فوري حتى مع آلاف السجلات.</p>
+        <span class="feat-tag">⚡ بحث أقل من 10ms</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🍽️</div>
+        <h3 class="feat-title">محرك الأنظمة الغذائية</h3>
+        <p class="feat-text">بناء أنظمة غذائية دقيقة مع حسابات ماكرو فورية (BMI, BMR, TDEE). قاعدة بيانات غذائية عربية ضخمة مع قوالب قابلة للتخصيص.</p>
+        <span class="feat-tag">🍱 1000+ صنف غذائي</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔬</div>
+        <h3 class="feat-title">تحليل التحاليل المخبرية</h3>
+        <p class="feat-text">صوّر ورقة التحاليل وشاهد البيانات تُملأ تلقائياً. مقارنة مع القيم المرجعية، تلوين الشاذ منها، وتخزين السجل التاريخي للمقارنة.</p>
+        <span class="feat-tag">📸 OCR ذكي</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">💊</div>
+        <h3 class="feat-title">قاعدة بيانات الأدوية</h3>
+        <p class="feat-text">قاعدة شاملة للأدوية الشائعة وتفاعلاتها مع المغذيات. تنبّه تلقائي عند وجود تعارض محتمل بين الدواء والنظام الغذائي المقترح.</p>
+        <span class="feat-tag">⚠️ حماية سريرية</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📅</div>
+        <h3 class="feat-title">إدارة المواعيد</h3>
+        <p class="feat-text">جدولة ذكية مع تذكيرات آلية، إدارة قائمة الانتظار، وتتبع معدلات الحضور والانقطاع لكل مريض.</p>
+        <span class="feat-tag">🗓️ تنظيم أمثل</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📄</div>
+        <h3 class="feat-title">تقارير PDF احترافية</h3>
+        <p class="feat-text">تقارير بتصميم فاخر تحمل شعار عيادتك. دعم كامل للعربية والإنجليزية. جاهزة للإرسال الفوري عبر واتساب أو بريد إلكتروني.</p>
+        <span class="feat-tag">🎨 تصميم نخبوي</span>
+      </div>
+    </div>
+
+    <!-- Tab: AI -->
+    <div class="features-tab-panel" id="tab-ai">
+      <div class="feat-card">
+        <div class="feat-icon">🧠</div>
+        <h3 class="feat-title">مرشد AI — المساعد السريري</h3>
+        <p class="feat-text">مساعد يعمل بتقنية Google Gemini يراجع الأنظمة الغذائية، يكتشف التعارضات، ويقدم توصيات مبنية على السياق الكامل للمريض.</p>
+        <span class="feat-tag m-badge-ai">🤖 Gemini AI</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h3 class="feat-title">توليد الأنظمة الغذائية تلقائياً</h3>
+        <p class="feat-text">بضغطة واحدة يُولّد مرشد AI نظاماً غذائياً كاملاً ومخصصاً بناءً على: الوزن، الطول، الحالة الطبية، الأدوية، والتفضيلات الغذائية.</p>
+        <span class="feat-tag m-badge-gold">⭐ مميزة ذهبية</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔍</div>
+        <h3 class="feat-title">التدقيق السريري الذكي</h3>
+        <p class="feat-text">بعد بناء النظام الغذائي يدوياً، يراجعه مرشد AI بشكل شامل للتأكد من خلوه من التعارضات وملاءمته للحالة الصحية بدقة طبية عالية.</p>
+        <span class="feat-tag m-badge-gold">⭐ مميزة ذهبية</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">💬</div>
+        <h3 class="feat-title">محادثة سريرية طبيعية</h3>
+        <p class="feat-text">اسأل مرشد بلغة طبيعية عربية أو إنجليزية: «ما الأطعمة المناسبة لمريض سكري مع قصور كلوي يأخذ Metformin؟» ويجيبك بدقة.</p>
+        <span class="feat-tag">🗣️ دعم عربي كامل</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <h3 class="feat-title">تحليل التحاليل بالذكاء</h3>
+        <p class="feat-text">لا يكتفي بقراءة الأرقام، بل يربط نتائج التحاليل بالسياق الطبي ويقترح التعديلات اللازمة على الخطة الغذائية تلقائياً.</p>
+        <span class="feat-tag m-badge-gold">⭐ مميزة ذهبية</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🛡️</div>
+        <h3 class="feat-title">خصوصية في الذكاء الاصطناعي</h3>
+        <p class="feat-text">عند إرسال البيانات لـ AI، يُحذف اسم المريض وبياناته التعريفية تلقائياً. يُرسل فقط: العمر، الجنس، الوزن، والحالة السريرية.</p>
+        <span class="feat-tag">🔒 Privacy by Design</span>
+      </div>
+    </div>
+
+    <!-- Tab: Admin -->
+    <div class="features-tab-panel" id="tab-admin">
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <h3 class="feat-title">لوحة تحليلات العيادة</h3>
+        <p class="feat-text">رؤية شاملة: عدد المرضى النشطين، معدلات الالتزام، إجمالي الوزن المفقود في عيادتك، والإيرادات — كلها في شاشة واحدة.</p>
+        <span class="feat-tag">📈 رؤى قابلة للتنفيذ</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">💰</div>
+        <h3 class="feat-title">المحفظة المزدوجة</h3>
+        <p class="feat-text">نظام اقتصادي فريد: نقاط زرقاء للعمل اليومي (مجانية عبر إعلانات مكافأة)، ونقاط ذهبية للذكاء الاصطناعي المتقدم.</p>
+        <span class="feat-tag">⚡ نموذج مبتكر</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📝</div>
+        <h3 class="feat-title">ملاحظات سريرية ذكية</h3>
+        <p class="feat-text">قوالب جاهزة لكل نوع زيارة، إكمال تلقائي ذكي، وتلخيص تلقائي عند طباعة التقارير. لا مزيد من الكتابة المتكررة.</p>
+        <span class="feat-tag">⌚ توفير الوقت</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🌐</div>
+        <h3 class="feat-title">دعم ثنائي اللغة</h3>
+        <p class="feat-text">واجهة كاملة بالعربية والإنجليزية مع دعم RTL/LTR تلقائي. تقارير المريض تُصدر بلغته المفضلة. مرشد AI يفهم الاثنتين.</p>
+        <span class="feat-tag">🌍 عالمي</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🎨</div>
+        <h3 class="feat-title">الوضع الليلي الذكي</h3>
+        <p class="feat-text">تغيير تلقائي للواجهة حسب إضاءة الغرفة أو تفضيلك. مُحسَّن لتقليل إجهاد العين خلال جلسات العمل الطويلة في العيادة.</p>
+        <span class="feat-tag">🌙 راحة العين</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔔</div>
+        <h3 class="feat-title">نظام التنبيهات الذكية</h3>
+        <p class="feat-text">تنبيهات مخصصة للمواعيد، انتهاء رصيد النقاط، استحقاق دفعات مرضى، وأي أحداث مهمة تُحدد أولوياتها أنت.</p>
+        <span class="feat-tag">🎯 شخصي 100%</span>
+      </div>
+    </div>
+
+    <!-- Tab: Security -->
+    <div class="features-tab-panel" id="tab-security">
+      <div class="feat-card">
+        <div class="feat-icon">🗄️</div>
+        <h3 class="feat-title">قاعدة بيانات Isar محلية</h3>
+        <p class="feat-text">بيانات مرضاك تُخزن على هاتفك حصراً في قاعدة Isar DB عالية الأداء. لا ترفع سُحُباً، لا تغادر جهازك — أنت مالكها الوحيد.</p>
+        <span class="feat-tag">🔒 محلي 100%</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔐</div>
+        <h3 class="feat-title">تشفير AES-256</h3>
+        <p class="feat-text">كل ملف مريض مشفر بتقنية AES-256 — نفس معيار التشفير المستخدم في البنوك. حتى لو سُرق هاتفك، البيانات لا تُقرأ بدون مفتاحك.</p>
+        <span class="feat-tag">🏦 مستوى البنوك</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">☁️</div>
+        <h3 class="feat-title">نسخ احتياطي آمن على Drive</h3>
+        <p class="feat-text">مزامنة اختيارية مع Google Drive الخاص بك مع تشفير كامل قبل الرفع. حتى جوجل نفسها لا تستطيع قراءة محتوى ملفاتك.</p>
+        <span class="feat-tag">☁️ سيادة البيانات</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🛡️</div>
+        <h3 class="feat-title">منع الاحتيال والتلاعب</h3>
+        <p class="feat-text">كشف التعديل على APK، فحص الروت/الجيلبريك، SSL Pinning لحماية الاتصالات، وعمليات ذرية لحماية رصيد النقاط من التلاعب.</p>
+        <span class="feat-tag">⚔️ دفاع متعدد الطبقات</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">👁️</div>
+        <h3 class="feat-title">منع لقطات الشاشة</h3>
+        <p class="feat-text">في شاشات بيانات المرضى الحساسة، يُفعَّل Secure Flag تلقائياً لمنع لقطات الشاشة أو ظهور المحتوى في معاينة مشغل التطبيقات.</p>
+        <span class="feat-tag">🚫 حماية السرية</span>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔑</div>
+        <h3 class="feat-title">Keystore & Keychain</h3>
+        <p class="feat-text">مفتاح تشفير قاعدة البيانات يُولَّد عند أول تشغيل ويُخزن في Keystore (أندرويد) أو Keychain (iOS) — منطقة عتاد آمنة لا يصلها أي تطبيق آخر.</p>
+        <span class="feat-tag">🔑 عتاد آمن</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     WALLET SYSTEM
+     ════════════════════════════════════════ -->
+<section class="wallet section-pad" id="wallet" aria-label="نظام المحفظة المزدوجة">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <span class="m-label">نظام النقاط</span>
+      <h2 class="m-title">المحفظة <span class="gold-span">المزدوجة</span> — فلسفة عادلة</h2>
+      <p class="m-subtitle">
+        العمل اليومي مجاني دائماً. تدفع فقط للذكاء الاصطناعي السحابي المتقدم — وبطرق متعددة منها المجاني.
+      </p>
+    </div>
+    <div class="wallet-grid">
+      <!-- Blue Points -->
+      <div class="wallet-card blue-card reveal-right">
+        <div class="wallet-icon">🔵</div>
+        <h3 class="wallet-title">النقاط الزرقاء</h3>
+        <p class="wallet-subtitle">طاقة العمل اليومي — مجانية دائماً</p>
+        <div class="wallet-items">
+          <div class="wallet-item"><span class="wi-dot"></span>إضافة وتعديل ملفات المرضى</div>
+          <div class="wallet-item"><span class="wi-dot"></span>حسابات BMI, BMR, الماكروز لحظياً</div>
+          <div class="wallet-item"><span class="wi-dot"></span>بناء الأنظمة الغذائية يدوياً</div>
+          <div class="wallet-item"><span class="wi-dot"></span>تصدير تقارير PDF بشعار عيادتك</div>
+          <div class="wallet-item"><span class="wi-dot"></span>مشاهدة إعلان = 100 نقطة زرقاء</div>
+          <div class="wallet-item"><span class="wi-dot"></span>500 نقطة ترحيبية عند التسجيل</div>
+        </div>
+      </div>
+
+      <!-- Gold Points -->
+      <div class="wallet-card gold-card reveal-left">
+        <div class="wallet-icon">🟡</div>
+        <h3 class="wallet-title">النقاط الذهبية</h3>
+        <p class="wallet-subtitle">طاقة الذكاء الاصطناعي — عادل ومدروس</p>
+        <div class="wallet-items">
+          <div class="wallet-item"><span class="wi-dot"></span>استشارة مرشد AI السريرية</div>
+          <div class="wallet-item"><span class="wi-dot"></span>التدقيق الذكي للأنظمة الغذائية</div>
+          <div class="wallet-item"><span class="wi-dot"></span>توليد نظام غذائي كامل بالذكاء الاصطناعي</div>
+          <div class="wallet-item"><span class="wi-dot"></span>تحليل صور التحاليل المخبرية بـ OCR</div>
+          <div class="wallet-item"><span class="wi-dot"></span>مشاهدة إعلان مكثف = 1-2 نقطة ذهبية</div>
+          <div class="wallet-item"><span class="wi-dot"></span>شراء باقات من 1$ — أو أحلها بالإحالات</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     HOW IT WORKS
+     ════════════════════════════════════════ -->
+<section class="section-pad" id="how" aria-label="كيف يعمل مرشد" style="background:var(--m-surface)">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:56px">
+      <span class="m-label">كيف يعمل؟</span>
+      <h2 class="m-title">ابدأ في <span>دقائق</span></h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step reveal">
+        <div class="how-step-num">📲</div>
+        <h3 class="how-step-title">تحميل وتسجيل</h3>
+        <p class="how-step-text">حمّل التطبيق مجاناً وسجّل الدخول بحساب Google خلال ثوانٍ. ستحصل على 500 نقطة زرقاء ترحيبية فوراً.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">🏥</div>
+        <h3 class="how-step-title">إعداد هويتك</h3>
+        <p class="how-step-text">أدخل بياناتك المهنية وشعار عيادتك. ستُستخدم هذه البيانات تلقائياً في جميع تقاريرك لتعكس صورتك الاحترافية.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">👤</div>
+        <h3 class="how-step-title">أضف مرضاك</h3>
+        <p class="how-step-text">أنشئ ملف مريض كامل: التاريخ المرضي، القياسات، التحاليل، الأدوية. تُحفظ البيانات محلياً على الفور دون انتظار.</p>
+      </div>
+      <div class="how-step reveal">
+        <div class="how-step-num">🤖</div>
+        <h3 class="how-step-title">استخدم مرشد AI</h3>
+        <p class="how-step-text">بنقطة ذهبية واحدة، اطلب من مرشد مراجعة خطتك الغذائية أو توليد نظام جديد — واستلم توصيات طبية دقيقة في ثوانٍ.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     PRICING
+     ════════════════════════════════════════ -->
+<section class="section-pad" id="pricing" aria-label="الأسعار">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <span class="m-label">الأسعار</span>
+      <h2 class="m-title">شفاف وعادل — <span>للجميع</span></h2>
+      <p class="m-subtitle">التطبيق مجاني بالكامل للعمل اليومي. ادفع فقط إذا احتجت للذكاء الاصطناعي المتقدم.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- Free -->
+      <div class="pricing-card reveal-right">
+        <div class="pricing-name">المجاني</div>
+        <div class="pricing-price">$<span class="price-curr"></span>0<span class="price-period">/شهر</span></div>
+        <p class="pricing-desc">مثالي للأخصائيين الذين يريدون تجربة مرشد كاملاً بدون أي تكلفة</p>
+        <div class="pricing-divider"></div>
+        <div class="pricing-features">
+          <div class="pf-item"><span class="pf-check">✓</span> عدد غير محدود من المرضى</div>
+          <div class="pf-item"><span class="pf-check">✓</span> جميع الحاسبات السريرية</div>
+          <div class="pf-item"><span class="pf-check">✓</span> بناء الأنظمة الغذائية</div>
+          <div class="pf-item"><span class="pf-check">✓</span> تصدير تقارير PDF</div>
+          <div class="pf-item"><span class="pf-check">✓</span> قاعدة بيانات الأدوية والأغذية</div>
+          <div class="pf-item"><span class="pf-check">✓</span> نقاط زرقاء مجانية عبر الإعلانات</div>
+          <div class="pf-item"><span class="pf-x">✗</span> إزالة الإعلانات</div>
+          <div class="pf-item"><span class="pf-x">✗</span> رصيد ذهبي شهري</div>
+        </div>
+        <a href="#download" class="m-btn m-btn-outline" style="width:100%;justify-content:center" id="free-plan-btn">ابدأ مجاناً</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="pricing-card featured reveal-left">
+        <span class="pricing-popular">⭐ الأكثر طلباً</span>
+        <div class="pricing-name">Pro</div>
+        <div class="pricing-price">$<span class="price-curr">4</span><span class="price-period">.99/شهر</span></div>
+        <p class="pricing-desc">للأخصائيين الذين يريدون أقصى استفادة من مرشد AI دون انقطاع</p>
+        <div class="pricing-divider"></div>
+        <div class="pricing-features">
+          <div class="pf-item"><span class="pf-check">✓</span> كل مميزات الخطة المجانية</div>
+          <div class="pf-item"><span class="pf-check">✓</span> إزالة جميع الإعلانات</div>
+          <div class="pf-item"><span class="pf-check">✓</span> 50 نقطة ذهبية شهرياً</div>
+          <div class="pf-item"><span class="pf-check">✓</span> نسخ احتياطي تلقائي أسبوعي</div>
+          <div class="pf-item"><span class="pf-check">✓</span> تقارير بتصميم Pro مميز</div>
+          <div class="pf-item"><span class="pf-check">✓</span> دعم أولوية على البريد الإلكتروني</div>
+          <div class="pf-item"><span class="pf-check">✓</span> وصول مبكر للمميزات الجديدة</div>
+          <div class="pf-item"><span class="pf-check">✓</span> سعر خاص لباقات الذهب الإضافية</div>
+        </div>
+        <a href="#download" class="m-btn m-btn-gold" style="width:100%;justify-content:center" id="pro-plan-btn">🟡 ابدأ Pro</a>
+      </div>
+    </div>
+
+    <!-- Gold Packages -->
+    <div style="margin-top:48px;text-align:center">
+      <p class="m-subtitle" style="margin-bottom:24px">أو احصل على نقاط ذهبية بمبالغ صغيرة:</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <div class="m-card" style="padding:20px 28px;text-align:center;min-width:140px">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--m-gold)">10</div>
+          <div style="font-size:0.75rem;color:var(--m-text-muted)">نقطة ذهبية</div>
+          <div style="font-weight:800;color:var(--m-text);margin:8px 0">$1.00</div>
+        </div>
+        <div class="m-card" style="padding:20px 28px;text-align:center;min-width:140px;border-color:var(--m-gold)">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--m-gold)">50</div>
+          <div style="font-size:0.75rem;color:var(--m-text-muted)">نقطة ذهبية</div>
+          <div style="font-weight:800;color:var(--m-text);margin:8px 0">$4.00</div>
+          <div style="font-size:0.7rem;color:var(--m-gold)">وفّر 20%</div>
+        </div>
+        <div class="m-card" style="padding:20px 28px;text-align:center;min-width:140px">
+          <div style="font-size:1.5rem;font-weight:900;color:var(--m-gold)">100</div>
+          <div style="font-size:0.75rem;color:var(--m-text-muted)">نقطة ذهبية</div>
+          <div style="font-weight:800;color:var(--m-text);margin:8px 0">$7.00</div>
+          <div style="font-size:0.7rem;color:var(--m-gold)">وفّر 30%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     TESTIMONIALS
+     ════════════════════════════════════════ -->
+<section class="section-pad" id="testimonials" aria-label="آراء المستخدمين" style="background:var(--m-surface)">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <span class="m-label">آراء المستخدمين</span>
+      <h2 class="m-title">أخصائيون <span>يثقون بمرشد</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">«مرشد غيّر طريقة عملي كلياً. كنت أضيع ساعة كاملة في كتابة التقارير، الآن أنجزها في 5 دقائق وتخرج بجودة لا تصدق»</p>
+        <div class="testimonial-author">
+          <div class="testimonial-av">أم</div>
+          <div>
+            <div class="testimonial-name">أ. أمل محمد</div>
+            <div class="testimonial-role">أخصائية تغذية — صنعاء</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">«ميزة OCR للتحاليل المخبرية أبهرتني. لم أكن أتخيل أن التطبيق سيقرأ تحاليل المريض بنفسه بهذه الدقة. توفير هائل للوقت!»</p>
+        <div class="testimonial-author">
+          <div class="testimonial-av">خا</div>
+          <div>
+            <div class="testimonial-name">د. خالد العمري</div>
+            <div class="testimonial-role">أخصائي تغذية كلى — الرياض</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">«نظام النقاط الزرقاء ذكي جداً. أشاهد 2-3 إعلانات صباحاً وأعمل طول اليوم بحرية كاملة. لم أدفع فلساً واحداً للوظائف الأساسية»</p>
+        <div class="testimonial-author">
+          <div class="testimonial-av">سر</div>
+          <div>
+            <div class="testimonial-name">أ. سارة الرشيدي</div>
+            <div class="testimonial-role">مدربة تغذية رياضية — القاهرة</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     DOWNLOAD CTA
+     ════════════════════════════════════════ -->
+<section class="section-pad" id="download" aria-label="تحميل التطبيق">
+  <div class="container">
+    <div class="download-cta reveal">
+      <h2 class="download-cta-title">ابدأ مجاناً اليوم 🚀</h2>
+      <p class="download-cta-sub">انضم لـ 500+ أخصائي تغذية يستخدمون مرشد. التحميل مجاني ولا يتطلب بطاقة ائتمانية.</p>
+      <div class="download-cta-actions">
+        <a href="#" class="hero-store-btn m-btn-ghost" id="dl-android-btn" style="background:var(--m-surface-2)">
+          <span class="hero-store-icon">🤖</span>
+          <div class="hero-store-text">
+            <span class="store-sub">تحميل على</span>
+            <span class="store-name">Google Play</span>
+          </div>
+        </a>
+        <a href="#" class="hero-store-btn m-btn-ghost" id="dl-ios-btn" style="background:var(--m-surface-2)">
+          <span class="hero-store-icon">🍎</span>
+          <div class="hero-store-text">
+            <span class="store-sub">تحميل على</span>
+            <span class="store-name">App Store</span>
+          </div>
+        </a>
+      </div>
+      <p style="margin-top:20px;font-size:0.8rem;color:var(--m-text-subtle)">
+        متوفر لـ Android 8.0+ و iOS 13+ • يعمل بدون إنترنت • بيانات مرضاك تبقى على هاتفك فقط
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="https://feshealthtech.github.io/feshealthtech-website/assets/logo.png" alt="FES HealthTech" class="footer-logo" />
+        <div class="footer-app-name">مرشد</div>
+        <div class="footer-app-sub">Murshid App</div>
+        <p>تطبيق إدارة العيادة الذكي لأخصائيي التغذية — مُطوَّر بواسطة <a href="https://feshealthtech.github.io/feshealthtech-website/">FES HealthTech</a>.</p>
+        <div class="m-footer-social">
+          <div class="m-footer-social-btn" title="X">𝕏</div>
+          <div class="m-footer-social-btn" title="Instagram">📸</div>
+          <div class="m-footer-social-btn" title="YouTube">▶️</div>
+        </div>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">التطبيق</h4>
+        <ul class="m-footer-links">
+          <li><a href="#features">المميزات</a></li>
+          <li><a href="#wallet">نظام النقاط</a></li>
+          <li><a href="#pricing">الأسعار</a></li>
+          <li><a href="#download">تحميل</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">الدعم</h4>
+        <ul class="m-footer-links">
+          <li><a href="faq.html">الأسئلة الشائعة</a></li>
+          <li><a href="data-deletion.html">حذف البيانات</a></li>
+          <li><a href="https://feshealthtech.github.io/feshealthtech-website/">عن الشركة</a></li>
+          <li><a href="mailto:support@feshealthtech.com">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">قانوني</h4>
+        <ul class="m-footer-links">
+          <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+          <li><a href="terms-of-use.html">شروط الاستخدام</a></li>
+          <li><a href="refund-policy.html">سياسة الدفع والاسترداد</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© 2025 <a href="https://feshealthtech.github.io/feshealthtech-website/">FES HealthTech</a>. جميع الحقوق محفوظة.</p>
+      <div class="m-footer-bottom-links">
+        <a href="privacy-policy.html">الخصوصية</a>
+        <a href="terms-of-use.html">الشروط</a>
+        <a href="data-deletion.html">حذف البيانات</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="shared/murshid-script.js"></script>
+</body>
+</html>

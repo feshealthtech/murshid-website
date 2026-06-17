@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="تطبيق مرشد - تحويل تلقائي للمتجر" />
+  <title>مرشد | جاري التحويل للمتجر...</title>
+  <link rel="icon" type="image/png" href="../assets/logo-sq.png" />
+  <style>
+    body {
+      background-color: #0A0F1E;
+      color: #FFFFFF;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    .loading-container {
+      max-width: 400px;
+      padding: 24px;
+    }
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border-left-color: #10B981;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+    p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-container">
+    <div class="spinner"></div>
+    <h2>جاري تحويلك إلى المتجر...</h2>
+    <p>إذا لم يتم تحويلك تلقائياً خلال ثوانٍ، <a href="../index.html" id="fallback-link" style="color: #10B981; text-decoration: underline;">اضغط هنا للعودة للموقع الرئيسي</a>.</p>
+  </div>
+
+  <script>
+    // ══════════════════════════════════════════════════
+    // روابط متاجر تطبيق مرشد المعتمدة
+    // استبدل الحواشي بالروابط الحقيقية فور صدورها من المتاجر
+    // ══════════════════════════════════════════════════
+    const PLAY_STORE_URL = '#'; // رابط متجر Google Play (أندرويد)
+    const APP_STORE_URL  = '#'; // رابط متجر App Store (آيفون/آيباد)
+    const FALLBACK_URL   = '../index.html'; // الرابط الاحتياطي لسطح المكتب
+
+    function redirect() {
+      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      let targetUrl = FALLBACK_URL;
+
+      if (/android/i.test(userAgent)) {
+        targetUrl = PLAY_STORE_URL !== '#' ? PLAY_STORE_URL : FALLBACK_URL;
+      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        targetUrl = APP_STORE_URL !== '#' ? APP_STORE_URL : FALLBACK_URL;
+      }
+
+      // تحديث الرابط الاحتياطي في الصفحة
+      document.getElementById('fallback-link').href = targetUrl;
+
+      // تنفيذ التحويل
+      setTimeout(() => {
+        window.location.href = targetUrl;
+      }, 1000); // تأخير بسيط للحركة البصرية
+    }
+
+    window.onload = redirect;
+  </script>
+</body>
+</html>

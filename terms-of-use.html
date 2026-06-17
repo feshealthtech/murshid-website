@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>شروط الاستخدام — تطبيق مرشد | Murshid App</title>
+  <meta name="description" content="شروط الاستخدام واتفاقية المستخدم لتطبيق مرشد. يرجى قراءة الشروط والأحكام الخاصة بنا قبل الاستخدام." />
+  <link rel="icon" type="image/png" href="assets/logo-sq.png" />
+  <link rel="stylesheet" href="shared/murshid-style.css" />
+  <style>
+    /* ── Legal Hero ─────────────────────────────────────── */
+    .legal-hero {
+      padding: 120px 0 64px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(var(--m-primary-rgb), 0.12) 0%, transparent 70%);
+      text-align: center;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .legal-hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .legal-last-updated {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 6px 18px;
+      background: var(--m-surface-2);
+      border: 1px solid var(--m-border);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--m-text-muted);
+    }
+    /* ── Legal Layout ───────────────────────────────────── */
+    .legal-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 48px;
+      padding: 64px 0 96px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .legal-layout { grid-template-columns: 1fr; }
+      .legal-toc { display: none; }
+    }
+    /* ── TOC Sidebar ────────────────────────────────────── */
+    .legal-toc {
+      position: sticky;
+      top: 88px;
+      background: var(--m-surface-2);
+      border: 1px solid var(--m-border);
+      border-radius: var(--m-radius);
+      padding: 24px;
+    }
+    .legal-toc-title {
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--m-text-muted);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .legal-toc ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .legal-toc ul li a {
+      display: block;
+      padding: 7px 10px;
+      border-radius: var(--m-radius-sm);
+      font-size: 0.84rem;
+      color: var(--m-text-muted);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      line-height: 1.4;
+    }
+    .legal-toc ul li a:hover {
+      background: var(--m-surface-3);
+      color: var(--m-text);
+    }
+    /* ── Legal Content ──────────────────────────────────── */
+    .legal-content {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .legal-section {
+      scroll-margin-top: 100px;
+    }
+    .legal-section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--m-text);
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--m-primary), var(--m-secondary));
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .legal-section p {
+      color: var(--m-text-muted);
+      line-height: 1.9;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+    .legal-section ul, .legal-section ol {
+      padding-right: 20px;
+      color: var(--m-text-muted);
+      line-height: 1.9;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    .legal-section ul li, .legal-section ol li {
+      margin-bottom: 6px;
+    }
+    /* Highlight box */
+    .legal-highlight {
+      background: rgba(var(--m-primary-rgb), 0.07);
+      border: 1px solid rgba(var(--m-primary-rgb), 0.25);
+      border-radius: var(--m-radius);
+      padding: 20px 24px;
+      margin: 16px 0;
+      color: var(--m-text-muted);
+      font-size: 0.93rem;
+      line-height: 1.8;
+    }
+    .legal-highlight strong {
+      color: var(--m-primary);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.97rem;
+    }
+    /* Sub-section heading */
+    .legal-sub-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--m-text);
+      margin: 20px 0 10px;
+    }
+    /* Table */
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 0.88rem;
+    }
+    .legal-table th {
+      background: var(--m-surface-3);
+      color: var(--m-text);
+      padding: 10px 14px;
+      text-align: right;
+      border: 1px solid var(--m-border);
+      font-weight: 600;
+    }
+    .legal-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--m-border);
+      color: var(--m-text-muted);
+    }
+    .legal-table tr:nth-child(even) td {
+      background: var(--m-surface-2);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ═══════════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="index.html" class="m-nav-brand">
+      <img src="https://feshealthtech.github.io/feshealthtech-website/assets/logo.png" alt="FES HealthTech" class="brand-logo" />
+      <div class="brand-app">
+        <span class="brand-name-ar">مرشد</span>
+        <span class="brand-name-en">MURSHID APP</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="index.html#features">المميزات</a></li>
+      <li><a href="index.html#wallet">نظام النقاط</a></li>
+      <li><a href="index.html#how">كيف يعمل؟</a></li>
+      <li><a href="index.html#pricing">الأسعار</a></li>
+      <li><a href="faq.html">الأسئلة الشائعة</a></li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="index.html#download" class="m-btn m-btn-primary">📥 تحميل مجاناً</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="m-mobile-menu" id="m-mobile-menu">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">تطبيق مرشد</span>
+    <span class="m-mobile-menu-subtitle">إدارة العيادة التغذوية الذكية</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">الرئيسية</span>
+    </a>
+    <a href="index.html#features" class="m-mobile-link">
+      <span class="m-mobile-icon">🚀</span>
+      <span class="m-mobile-text">مميزات التطبيق</span>
+    </a>
+    <a href="index.html#wallet" class="m-mobile-link">
+      <span class="m-mobile-icon">🪙</span>
+      <span class="m-mobile-text">نظام النقاط</span>
+    </a>
+    <a href="index.html#how" class="m-mobile-link">
+      <span class="m-mobile-icon">📋</span>
+      <span class="m-mobile-text">كيف يعمل؟</span>
+    </a>
+    <a href="index.html#pricing" class="m-mobile-link">
+      <span class="m-mobile-icon">💳</span>
+      <span class="m-mobile-text">الأسعار والخطط</span>
+    </a>
+    <a href="faq.html" class="m-mobile-link">
+      <span class="m-mobile-icon">❓</span>
+      <span class="m-mobile-text">الأسئلة الشائعة</span>
+    </a>
+    <a href="data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">طلب حذف البيانات</span>
+    </a>
+    <a href="https://feshealthtech.github.io/feshealthtech-website/" target="_blank" class="m-mobile-link">
+      <span class="m-mobile-icon">🏢</span>
+      <span class="m-mobile-text">عن الشركة المطورة</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-download">
+    <div class="m-mobile-download-title">تحميل التطبيق مجاناً</div>
+    <div class="m-mobile-download-buttons">
+      <a href="app/index.html" class="m-mobile-dl-btn">
+        <span>🤖 Play Store</span>
+      </a>
+      <a href="app/index.html" class="m-mobile-dl-btn">
+        <span>🍎 App Store</span>
+      </a>
+    </div>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="privacy-policy.html">الخصوصية</a>
+    <span>•</span>
+    <a href="terms-of-use.html">الشروط</a>
+    <span>•</span>
+    <a href="refund-policy.html">سياسة الدفع</a>
+  </div>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<section class="legal-hero">
+  <div class="container">
+    <div class="legal-hero-inner">
+      <span class="m-label">قانوني</span>
+      <h1 class="m-title">شروط الاستخدام واتفاقية المستخدم</h1>
+      <p class="m-subtitle">يُرجى قراءة هذه الشروط بعناية قبل استخدام تطبيق مرشد</p>
+      <span class="legal-last-updated">آخر تحديث: ١ يناير ٢٠٢٥</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAIN LAYOUT ════════════════════════════════════════════ -->
+<main class="container">
+  <div class="legal-layout">
+
+    <!-- TOC Sidebar -->
+    <aside class="legal-toc">
+      <div class="legal-toc-title">المحتويات</div>
+      <ul>
+        <li><a href="#section1">١. القبول والموافقة</a></li>
+        <li><a href="#section2">٢. الحساب وبيانات التسجيل</a></li>
+        <li><a href="#section3">٣. ترخيص الاستخدام</a></li>
+        <li><a href="#section4">٤. نظام المحفظة المزدوجة</a></li>
+        <li><a href="#section5">٥. الاستخدام المقبول وغير المقبول</a></li>
+        <li><a href="#section6">٦. إخلاء المسؤولية الطبية</a></li>
+        <li><a href="#section7">٧. الملكية الفكرية</a></li>
+        <li><a href="#section8">٨. الخدمات الخارجية</a></li>
+        <li><a href="#section9">٩. تعليق الحساب وإنهائه</a></li>
+        <li><a href="#section10">١٠. حدود المسؤولية والضمانات</a></li>
+        <li><a href="#section11">١١. أحكام عامة</a></li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <div class="legal-content">
+
+      <!-- Section 1 -->
+      <div class="legal-section" id="section1">
+        <h2 class="legal-section-title"><span class="section-num">1</span> القبول والموافقة</h2>
+        <p>باستخدامك لتطبيق مرشد ("التطبيق")، تؤكد موافقتك الكاملة على هذه الشروط والأحكام الصادرة عن شركة FES HealthTech ("الشركة"). إذا كنت لا توافق على أي من هذه الشروط، يُرجى التوقف فوراً عن استخدام التطبيق.</p>
+        <p>لاستخدام التطبيق يجب أن تكون:</p>
+        <ul>
+          <li>بالغاً من العمر 18 سنة على الأقل</li>
+          <li>أخصائي تغذية أو مهنياً صحياً مؤهلاً</li>
+          <li>مستخدماً التطبيق لأغراض مهنية مشروعة</li>
+        </ul>
+        <div class="legal-highlight">
+          <strong>اتفاقية ملزمة</strong>
+          هذه الشروط تشكل عقداً قانونياً ملزماً بينك وبين FES HealthTech. استمرارك في استخدام التطبيق يُعدّ قبولاً صريحاً لجميع البنود الواردة هنا، بما فيها أي تعديلات مستقبلية يتم الإشعار عنها وفق الإجراءات المحددة في القسم الحادي عشر.
+        </div>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="legal-section" id="section2">
+        <h2 class="legal-section-title"><span class="section-num">2</span> الحساب وبيانات التسجيل</h2>
+        <p>حسابك في مرشد شخصي وغير قابل للتحويل لأي طرف آخر. أنت مسؤول مسؤولية كاملة عن:</p>
+        <ul>
+          <li>سرية بيانات تسجيل الدخول الخاصة بك وعدم مشاركتها مع أي شخص آخر</li>
+          <li>جميع الأنشطة التي تتم عبر حسابك سواء أذنت بها أم لم تأذن</li>
+          <li>إخطارنا فوراً في حال الاشتباه بأي وصول غير مصرح عبر البريد الإلكتروني: <a href="mailto:legal@feshealthtech.com"><strong>legal@feshealthtech.com</strong></a></li>
+          <li>صحة ودقة البيانات التي تدخلها عند التسجيل</li>
+        </ul>
+        <div class="legal-highlight">
+          <strong>تحذير: مشاركة الحساب ممنوعة</strong>
+          مشاركة الحساب مع أشخاص آخرين تُعدّ مخالفة صريحة لهذه الشروط وقد تؤدي إلى تعليق الحساب فوراً ودون سابق إنذار. كل أخصائي يجب أن يمتلك حسابه المستقل الخاص به. إذا كنت تمثل عيادة أو مجموعة من الأخصائيين، تواصل معنا للحصول على خطة مؤسسية مناسبة.
+        </div>
+        <p>تلتزم FES HealthTech بعدم مشاركة بيانات تسجيل الدخول الخاصة بك مع أي طرف ثالث، وبتطبيق أعلى معايير الأمان لحماية حسابك وفق سياسة الخصوصية المعمول بها.</p>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="legal-section" id="section3">
+        <h2 class="legal-section-title"><span class="section-num">3</span> ترخيص الاستخدام</h2>
+        <p>تمنحك FES HealthTech رخصة محدودة، غير حصرية، غير قابلة للنقل لاستخدام تطبيق مرشد للأغراض المهنية الشخصية فقط. هذه الرخصة مشروطة بالتزامك التام بهذه الشروط.</p>
+        <p class="legal-sub-title">يُحظر صراحةً القيام بأي مما يلي:</p>
+        <ul>
+          <li>إعادة بيع التطبيق أو ترخيصه أو إعادة توزيعه لأطراف أخرى بأي شكل كان</li>
+          <li>تعديل أو اختراق أو فك تشفير أو عكس هندسة أي جزء من التطبيق</li>
+          <li>إنشاء تطبيقات مشتقة أو متفرعة من التطبيق أو أي مكوناته</li>
+          <li>استخدام التطبيق لأغراض تجارية جماعية دون اتفاقية مؤسسية خاصة موقعة مع FES HealthTech</li>
+          <li>محاولة الوصول إلى الأجزاء المحظورة من الخوادم أو قواعد البيانات</li>
+          <li>إزالة أو تعديل أي إشعارات حقوق الملكية الفكرية الموجودة في التطبيق</li>
+        </ul>
+        <div class="legal-highlight">
+          <strong>عواقب الانتهاك</strong>
+          انتهاك هذه الشروط يؤدي إلى إنهاء الترخيص فوراً ويعرضك للمسؤولية القانونية بما في ذلك المطالبة بالتعويضات المدنية والجنائية المترتبة على انتهاك حقوق الملكية الفكرية.
+        </div>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="legal-section" id="section4">
+        <h2 class="legal-section-title"><span class="section-num">4</span> نظام المحفظة المزدوجة</h2>
+        <p>يعمل التطبيق بنظام محفظة مزدوجة مكون من نوعين من النقاط، لكل منهما قواعد وشروط استخدام مختلفة:</p>
+        <p class="legal-sub-title">🔵 النقاط الزرقاء</p>
+        <ul>
+          <li>مجانية بالكامل ومكتسبة عبر مشاهدة الإعلانات والمكافآت اليومية داخل التطبيق</li>
+          <li>مخصصة للعمليات المحلية فقط كإضافة مرضى، وإجراء الحسابات، وتصدير ملفات PDF</li>
+          <li>غير قابلة للنقل إلى حسابات أخرى أو للاسترداد النقدي بأي شكل</li>
+          <li>قد تنتهي صلاحيتها تلقائياً بعد مرور 90 يوماً على انقطاع الاستخدام</li>
+          <li>تُعادل في قيمتها وحدات تشغيل محلية وليست عملة ذات قيمة مالية</li>
+        </ul>
+        <p class="legal-sub-title">🟡 النقاط الذهبية</p>
+        <ul>
+          <li>مخصصة لعمليات الذكاء الاصطناعي والخدمات السحابية التي تتطلب موارد خارجية</li>
+          <li>يمكن شراؤها عبر متاجر التطبيقات، أو اكتسابها عبر الإعلانات المكثفة أو برنامج الإحالة</li>
+          <li>تُستهلك بعد تنفيذ العملية بنجاح ولا تُسترد بعد الاستهلاك بأي حال</li>
+          <li>صلاحيتها سنة كاملة من تاريخ الاكتساب، وتنتهي تلقائياً بعد ذلك</li>
+          <li>مُدارة سحابياً في Firebase لضمان النزاهة ومنع التلاعب وضمان التزامن عبر الأجهزة</li>
+          <li>لا تعتبر عملة قانونية أو أداة مالية ولا يمكن تحويلها لأموال نقدية</li>
+        </ul>
+        <div class="legal-highlight">
+          <strong>ملاحظة مهمة</strong>
+          FES HealthTech تحتفظ بحق تعديل قيم النقاط ونسب استهلاكها مع إشعار مسبق. الأرصدة المتراكمة لن تتأثر بالتعديلات المستقبلية وفق مبدأ الحقوق المكتسبة.
+        </div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="legal-section" id="section5">
+        <h2 class="legal-section-title"><span class="section-num">5</span> الاستخدام المقبول وغير المقبول</h2>
+        <p class="legal-sub-title">✅ الاستخدام المسموح به</p>
+        <ul>
+          <li>إدارة مرضى حقيقيين بنية مهنية طبية صادقة وفق المعايير الأخلاقية للمهنة</li>
+          <li>استخدام مرشد AI للحصول على آراء استشارية مساعدة تدعم القرار السريري للأخصائي</li>
+          <li>تصدير التقارير لمشاركتها مع المرضى ضمن علاقة طبية مشروعة ومبنية على الموافقة</li>
+          <li>النسخ الاحتياطي لبيانات العيادة لأغراض الحفاظ على سجلات المرضى</li>
+          <li>تخصيص إعدادات التطبيق لتتناسب مع نمط عمل العيادة</li>
+        </ul>
+        <p class="legal-sub-title">🚫 الاستخدام المحظور</p>
+        <ul>
+          <li>محاولة اختراق أو التلاعب بنظام النقاط أو قواعد البيانات أو الخوادم بأي طريقة</li>
+          <li>استخدام التطبيق لأغراض غير طبية أو تجارية احتيالية أو تضليل المرضى</li>
+          <li>مشاركة بيانات المرضى مع أطراف غير مصرح لها بما يخالف قوانين خصوصية المرضى</li>
+          <li>إنشاء حسابات وهمية أو إدخال بيانات مرضى مزيفة بهدف استهلاك النقاط</li>
+          <li>استخدام أدوات الأتمتة (bots) أو السكريبتات لاستهلاك النقاط أو مشاهدة الإعلانات اصطناعياً</li>
+          <li>محاولة تجاوز نظام الإعلانات أو الوصول لمزايا Pro دون الدفع المستحق</li>
+          <li>رفع محتوى ضار أو فيروسات أو برمجيات خبيثة عبر ميزات التطبيق</li>
+        </ul>
+        <p>مخالفة أي من هذه البنود قد تستوجب الإجراءات المذكورة في القسم التاسع من هذه الشروط.</p>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="legal-section" id="section6">
+        <h2 class="legal-section-title"><span class="section-num">6</span> إخلاء المسؤولية الطبية</h2>
+        <p>يُعدّ مرشد AI أداةً مساعدةً للأخصائيين المؤهلين، وليس بديلاً عن الحكم السريري المهني المبني على الفحص المباشر والمعرفة الكاملة بحالة المريض.</p>
+        <p>تُقرّ صراحةً بما يلي وتوافق عليه كشرط جوهري لاستخدام التطبيق:</p>
+        <ul>
+          <li>جميع القرارات الطبية والسريرية هي مسؤوليتك الحصرية كأخصائي مؤهل ولا تقع على عاتق FES HealthTech</li>
+          <li>توصيات مرشد AI لا تُعدّ تشخيصاً طبياً ولا وصفة علاجية ولا استشارة طبية رسمية</li>
+          <li>التطبيق ليس معتمداً أو مرخصاً كجهاز طبي من أي جهة تنظيمية صحية دولية أو محلية</li>
+          <li>FES HealthTech غير مسؤولة عن أي ضرر صحي أو قانوني ينتج عن الاعتماد على توصيات AI دون مراجعة سريرية مستقلة</li>
+          <li>يجب التحقق دائماً من توصيات AI بالمراجع العلمية المعتمدة قبل تطبيقها على أي مريض</li>
+          <li>لا يُسمح باستخدام التطبيق من قِبَل غير الأخصائيين الصحيين المؤهلين لاتخاذ قرارات سريرية</li>
+        </ul>
+        <div class="legal-highlight">
+          <strong>أهمية الحكم المهني المستقل</strong>
+          الذكاء الاصطناعي في مرشد مدرَّب على بيانات عامة وقد لا يأخذ في الحسبان الظروف الخاصة لكل مريض. مسؤوليتك المهنية والأخلاقية تقتضي مراجعة كل توصية بعقل نقدي مستقل وتكييفها مع واقع المريض الذي أمامك.
+        </div>
+      </div>
+
+      <!-- Section 7 -->
+      <div class="legal-section" id="section7">
+        <h2 class="legal-section-title"><span class="section-num">7</span> الملكية الفكرية</h2>
+        <p>جميع عناصر التطبيق محمية بموجب قوانين حقوق الملكية الفكرية الدولية والمحلية. الحقوق موزعة كما يلي:</p>
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>العنصر</th>
+              <th>المالك</th>
+              <th>نوع الحماية</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>قاعدة بيانات الأغذية والأدوية</td>
+              <td>FES HealthTech (حصري)</td>
+              <td>حق المؤلف + سر تجاري</td>
+            </tr>
+            <tr>
+              <td>الشعارات والتصاميم والواجهة</td>
+              <td>FES HealthTech</td>
+              <td>حق المؤلف + علامة تجارية</td>
+            </tr>
+            <tr>
+              <td>خوارزميات الحساب والذكاء الاصطناعي</td>
+              <td>FES HealthTech</td>
+              <td>أسرار تجارية + براءات اختراع محتملة</td>
+            </tr>
+            <tr>
+              <td>بيانات المرضى (محتوى المستخدم)</td>
+              <td>الأخصائي (المستخدم)</td>
+              <td>ملكية كاملة للمستخدم</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>فيما يخص محتوى المستخدم: بيانات مرضاك وسجلاتهم تظل ملكاً لك وحدك. FES HealthTech لا تطالب بأي حق ملكية فيها، ولا تستخدمها لأغراض تجارية أو تدريب نماذج AI إلا بموافقتك الصريحة والمسبقة.</p>
+      </div>
+
+      <!-- Section 8 -->
+      <div class="legal-section" id="section8">
+        <h2 class="legal-section-title"><span class="section-num">8</span> الخدمات الخارجية</h2>
+        <p>يعتمد التطبيق على خدمات طرف ثالث لتقديم وظائفه الأساسية. فيما يلي قائمة بهذه الخدمات وأغراضها:</p>
+        <ul>
+          <li><strong>Firebase (Google):</strong> المصادقة وتخزين البيانات السحابية ومزامنة النقاط الذهبية</li>
+          <li><strong>Google Gemini AI:</strong> النموذج الأساسي للذكاء الاصطناعي المستخدم في مرشد AI</li>
+          <li><strong>Google AdMob:</strong> شبكة الإعلانات لتوليد النقاط الزرقاء المجانية</li>
+          <li><strong>Google Drive API:</strong> النسخ الاحتياطي الاختياري لبيانات العيادة</li>
+          <li><strong>Google Play / Apple App Store:</strong> معالجة المدفوعات والاشتراكات</li>
+        </ul>
+        <p>FES HealthTech غير مسؤولة عن أي انقطاع في هذه الخدمات أو تغيير في شروطها أو توقفها نهائياً. استمرار توافر بعض مزايا التطبيق مشروط بتوافر هذه الخدمات.</p>
+        <div class="legal-highlight">
+          <strong>شروط مزودي الخدمة</strong>
+          استخدامك للتطبيق يعني موافقتك أيضاً على شروط استخدام مزودي الخدمة الخارجيين. نوصي بمراجعة سياسات Google وApple المعنية لفهم كيفية معالجتهم لبياناتك.
+        </div>
+      </div>
+
+      <!-- Section 9 -->
+      <div class="legal-section" id="section9">
+        <h2 class="legal-section-title"><span class="section-num">9</span> تعليق الحساب وإنهائه</h2>
+        <p>يحق لـ FES HealthTech تعليق أو إنهاء حسابك بشكل فوري أو مدروس في الحالات التالية:</p>
+        <ul>
+          <li>انتهاك أي من بنود هذه الشروط، لا سيما البنود المتعلقة بالاستخدام المحظور</li>
+          <li>الاشتباه الموثق بنشاط احتيالي أو تلاعب في نظام النقاط أو الإعلانات</li>
+          <li>عدم الدفع للاشتراكات المستحقة بعد مرور فترة السماح المحددة</li>
+          <li>تلقي شكاوى موثوقة من مرضى تتعلق بسوء استخدام بياناتهم</li>
+          <li>طلب جهات قانونية أو تنظيمية رسمية تعليق الحساب</li>
+        </ul>
+        <p class="legal-sub-title">عند إنهاء الحساب:</p>
+        <ul>
+          <li>تُلغى الرخصة الممنوحة لك فوراً وتتوقف عن كونك مخوّلاً باستخدام التطبيق</li>
+          <li>تُحذف النقاط الذهبية السحابية المرتبطة بحسابك ولا يحق المطالبة باستردادها</li>
+          <li>بيانات المرضى المحفوظة محلياً على جهازك تبقى كما هي ولا تتأثر بإنهاء الحساب</li>
+          <li>يمكنك تصدير بياناتك قبل التأكيد النهائي للإنهاء خلال فترة السماح</li>
+        </ul>
+        <div class="legal-highlight">
+          <strong>إجراء الاستئناف</strong>
+          للاستئناف ضد قرار تعليق أو إنهاء حسابك، أرسل طلباً مفصلاً إلى <a href="mailto:legal@feshealthtech.com"><strong>legal@feshealthtech.com</strong></a> خلال 30 يوماً من إشعار الإنهاء. نلتزم بالرد على الاستئناف خلال 14 يوماً عمل.
+        </div>
+      </div>
+
+      <!-- Section 10 -->
+      <div class="legal-section" id="section10">
+        <h2 class="legal-section-title"><span class="section-num">10</span> حدود المسؤولية والضمانات</h2>
+        <p>يُقدَّم التطبيق «كما هو» (AS IS) و«كما هو متاح» (AS AVAILABLE) دون أي ضمانات صريحة أو ضمنية بما في ذلك ضمانات الملاءمة لغرض معين أو عدم الانتهاك أو الاستمرارية.</p>
+        <p class="legal-sub-title">الحد الأقصى للمسؤولية:</p>
+        <p>الحد الأقصى لمسؤولية FES HealthTech تجاهك في أي نزاع يساوي المبالغ التي دفعتها للتطبيق خلال الاثني عشر شهراً السابقة للنزاع، ولا يمكن أن تتجاوز هذا الحد بأي حال من الأحوال.</p>
+        <p class="legal-sub-title">الشركة غير مسؤولة عن:</p>
+        <ul>
+          <li>الأضرار غير المباشرة أو العرضية أو التبعية أياً كانت أسبابها</li>
+          <li>فقدان الأرباح أو الإيرادات الناتج عن توقف التطبيق</li>
+          <li>فقدان البيانات الناتج عن إهمال المستخدم أو عدم تفعيله للنسخ الاحتياطي</li>
+          <li>الأضرار الناتجة عن انقطاع خدمات الطرف الثالث المذكورة في القسم الثامن</li>
+          <li>قرارات سريرية خاطئة تبنيها المستخدم بناء على توصيات AI دون مراجعة مستقلة</li>
+        </ul>
+        <p>بعض الولايات القضائية لا تسمح باستثناء أو تحديد المسؤولية عن الأضرار العرضية، لذا قد لا تنطبق بعض هذه القيود على وضعك القانوني المحدد.</p>
+      </div>
+
+      <!-- Section 11 -->
+      <div class="legal-section" id="section11">
+        <h2 class="legal-section-title"><span class="section-num">11</span> أحكام عامة</h2>
+        <p class="legal-sub-title">القانون المطبق والاختصاص القضائي</p>
+        <p>تخضع هذه الشروط لقوانين جمهورية اليمن أو المملكة العربية السعودية حسب موقع المستخدم. في حال النزاع يُرجَّح تطبيق قانون المملكة العربية السعودية للمستخدمين المقيمين خارج اليمن. يوافق الطرفان على السعي أولاً لحل النزاعات وديّاً خلال 30 يوماً قبل اللجوء للقضاء.</p>
+        <p class="legal-sub-title">تعديل الشروط</p>
+        <p>يحق لـ FES HealthTech تعديل هذه الشروط في أي وقت مع إشعار مسبق لا يقل عن 30 يوماً عبر البريد الإلكتروني أو إشعار بارز داخل التطبيق. استمرارك في استخدام التطبيق بعد دخول التعديلات حيز التنفيذ يُعدّ قبولاً ضمنياً لها.</p>
+        <p class="legal-sub-title">الإشعارات الرسمية</p>
+        <p>جميع الإشعارات الرسمية ذات الطابع القانوني ترسل إلى البريد الإلكتروني المرتبط بحسابك. يمكنك مراسلة الشركة على: <a href="mailto:legal@feshealthtech.com"><strong>legal@feshealthtech.com</strong></a>. تُعدّ الإشعارات مستلمة خلال 48 ساعة من إرسالها.</p>
+        <p class="legal-sub-title">قابلية التطبيق والاستمرارية</p>
+        <p>إذا قضت جهة قضائية مختصة بعدم قانونية أو قابلية تطبيق أي بند من هذه الشروط، فإن ذلك البند يُعدّل بالحد الأدنى اللازم ليصبح نافذاً، وتظل جميع البنود الأخرى سارية المفعول الكامل. عدم ممارسة أي طرف لحقوقه المنصوص عليها لا يُعدّ تنازلاً عنها.</p>
+        <p class="legal-sub-title">التواصل</p>
+        <p>لأي استفسار حول هذه الشروط: <a href="mailto:legal@feshealthtech.com"><strong>legal@feshealthtech.com</strong></a></p>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="https://feshealthtech.github.io/feshealthtech-website/assets/logo.png" alt="FES HealthTech" class="footer-logo" />
+        <div class="footer-app-name">مرشد</div>
+        <div class="footer-app-sub">Murshid App</div>
+        <p>تطبيق إدارة العيادة الذكي — مُطوَّر بواسطة FES HealthTech.</p>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">التطبيق</h4>
+        <ul class="m-footer-links">
+          <li><a href="index.html#features">المميزات</a></li>
+          <li><a href="index.html#pricing">الأسعار</a></li>
+          <li><a href="index.html#download">تحميل</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">الدعم</h4>
+        <ul class="m-footer-links">
+          <li><a href="faq.html">الأسئلة الشائعة</a></li>
+          <li><a href="data-deletion.html">حذف البيانات</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">قانوني</h4>
+        <ul class="m-footer-links">
+          <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+          <li><a href="terms-of-use.html">شروط الاستخدام</a></li>
+          <li><a href="refund-policy.html">سياسة الدفع</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© 2025 FES HealthTech. جميع الحقوق محفوظة.</p>
+      <div class="m-footer-bottom-links">
+        <a href="privacy-policy.html">الخصوصية</a>
+        <a href="terms-of-use.html">الشروط</a>
+        <a href="data-deletion.html">حذف البيانات</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="shared/murshid-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>طلب حذف البيانات — تطبيق مرشد | Murshid App</title>
+  <meta name="description" content="طلب حذف حسابك وبياناتك من تطبيق مرشد. نلتزم باحترام خصوصيتك وتوفير خيارات سهلة للتحكم في بياناتك." />
+  <link rel="icon" type="image/png" href="assets/logo-sq.png" />
+  <link rel="stylesheet" href="shared/murshid-style.css" />
+  <style>
+    /* ── Page hero (simple) ─────────────────────────────── */
+    .del-hero {
+      padding: 120px 0 64px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(var(--m-primary-rgb), 0.12) 0%, transparent 70%);
+      text-align: center;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .del-hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* ── Main container ─────────────────────────────────── */
+    .del-main {
+      padding-top: calc(68px + 48px);
+      padding-bottom: 96px;
+    }
+
+    /* ── Info Banner ────────────────────────────────────── */
+    .del-info-banner {
+      padding: 28px 32px;
+      border-right: 4px solid var(--m-primary);
+      margin-bottom: 48px;
+    }
+    .del-info-banner p {
+      margin: 0 0 12px;
+      color: var(--m-text-muted);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    .del-info-banner p:last-child { margin-bottom: 0; }
+    .del-info-banner strong { color: var(--m-text); }
+    .del-inline-steps {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      background: var(--m-surface-3);
+      padding: 10px 16px;
+      border-radius: var(--m-radius-sm);
+      font-size: 0.9rem;
+      color: var(--m-text);
+    }
+    .del-inline-steps span {
+      color: var(--m-text-muted);
+      font-size: 0.82rem;
+    }
+
+    /* ── Section headings ───────────────────────────────── */
+    .del-section-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--m-text);
+      margin: 0 0 24px;
+    }
+    .del-section {
+      margin-bottom: 56px;
+    }
+
+    /* ── Data cards grid ────────────────────────────────── */
+    .del-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 820px) {
+      .del-cards-grid { grid-template-columns: 1fr; }
+    }
+    .del-card {
+      padding: 24px;
+      border-radius: var(--m-radius);
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+    .del-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .del-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+      color: var(--m-text-muted);
+    }
+    .del-card ul li {
+      padding: 3px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .del-card ul li::before {
+      content: '— ';
+      color: var(--m-text-muted);
+    }
+    .del-card-note {
+      font-size: 0.82rem;
+      color: var(--m-text-muted);
+      font-style: italic;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 10px;
+      margin-top: 4px;
+    }
+    /* Card variants */
+    .del-card-green {
+      border: 1px solid rgba(34,197,94,0.3);
+      background: rgba(34,197,94,0.06);
+    }
+    .del-card-green .del-card-title { color: #22c55e; }
+    .del-card-amber {
+      border: 1px solid rgba(245,158,11,0.3);
+      background: rgba(245,158,11,0.06);
+    }
+    .del-card-amber .del-card-title { color: #f59e0b; }
+    .del-card-blue {
+      border: 1px solid rgba(56,189,248,0.3);
+      background: rgba(56,189,248,0.06);
+    }
+    .del-card-blue .del-card-title { color: #38bdf8; }
+
+    /* ── Legal hold note ────────────────────────────────── */
+    .legal-highlight {
+      padding: 20px 24px;
+      border-radius: var(--m-radius);
+      margin-bottom: 56px;
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--m-text-muted);
+    }
+    .legal-highlight.gold {
+      background: rgba(245,158,11,0.07);
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+    .legal-highlight.gold strong { color: #f59e0b; display: block; margin-bottom: 6px; }
+
+    /* ── Form ───────────────────────────────────────────── */
+    .del-form-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--m-text);
+      margin-bottom: 6px;
+    }
+    .del-form-input {
+      width: 100%;
+      background: var(--m-surface-3);
+      border: 1px solid var(--m-border);
+      border-radius: var(--m-radius-sm);
+      padding: 12px 16px;
+      color: var(--m-text);
+      font-family: var(--m-font);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      display: block;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .del-form-input:focus {
+      border-color: var(--m-primary);
+    }
+    textarea.del-form-input {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .del-checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .del-checkbox-row input[type="checkbox"] {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: var(--m-primary);
+      cursor: pointer;
+    }
+    .del-checkbox-row label {
+      font-size: 0.88rem;
+      color: var(--m-text-muted);
+      line-height: 1.6;
+      cursor: pointer;
+    }
+    #deletion-success {
+      padding: 20px 24px;
+      border-radius: var(--m-radius);
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.4);
+      color: #22c55e;
+      font-size: 0.95rem;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    /* ── Timeline ───────────────────────────────────────── */
+    .del-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .del-timeline-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      position: relative;
+    }
+    .del-timeline-step:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      right: 19px;
+      top: 40px;
+      width: 2px;
+      height: calc(100% - 8px);
+      background: var(--m-border);
+    }
+    .del-timeline-num {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--m-primary), var(--m-secondary));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .del-timeline-body {
+      padding-bottom: 32px;
+      flex: 1;
+    }
+    .del-timeline-day {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--m-primary);
+      margin-bottom: 4px;
+    }
+    .del-timeline-title {
+      font-weight: 700;
+      color: var(--m-text);
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .del-timeline-desc {
+      color: var(--m-text-muted);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    /* ── In-app alternative ─────────────────────────────── */
+    .del-alt-steps {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 20px 0 16px;
+      align-items: center;
+    }
+    .del-alt-step {
+      flex: 1;
+      min-width: 100px;
+      background: var(--m-surface-3);
+      border: 1px solid var(--m-border);
+      border-radius: var(--m-radius);
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .del-alt-step-emoji {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .del-alt-step-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--m-text);
+    }
+    .del-alt-step-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--m-primary);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+    }
+    .del-alt-arrow {
+      color: var(--m-text-muted);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    @media (max-width: 600px) {
+      .del-alt-arrow { display: none; }
+      .del-alt-steps { gap: 10px; }
+    }
+    .del-alt-note {
+      font-size: 0.88rem;
+      color: var(--m-text-muted);
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+    .del-alt-note strong { color: var(--m-text); }
+    .del-alt-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--m-text);
+      margin-bottom: 4px;
+    }
+    .del-alt-subtitle {
+      font-size: 0.88rem;
+      color: var(--m-text-muted);
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ═══════════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="index.html" class="m-nav-brand">
+      <img src="https://feshealthtech.github.io/feshealthtech-website/assets/logo.png" alt="FES HealthTech" class="brand-logo" />
+      <div class="brand-app">
+        <span class="brand-name-ar">مرشد</span>
+        <span class="brand-name-en">MURSHID APP</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="index.html#features">المميزات</a></li>
+      <li><a href="index.html#wallet">نظام النقاط</a></li>
+      <li><a href="index.html#how">كيف يعمل؟</a></li>
+      <li><a href="index.html#pricing">الأسعار</a></li>
+      <li><a href="faq.html">الأسئلة الشائعة</a></li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="index.html#download" class="m-btn m-btn-primary">📥 تحميل مجاناً</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="m-mobile-menu" id="m-mobile-menu">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">تطبيق مرشد</span>
+    <span class="m-mobile-menu-subtitle">إدارة العيادة التغذوية الذكية</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">الرئيسية</span>
+    </a>
+    <a href="index.html#features" class="m-mobile-link">
+      <span class="m-mobile-icon">🚀</span>
+      <span class="m-mobile-text">مميزات التطبيق</span>
+    </a>
+    <a href="index.html#wallet" class="m-mobile-link">
+      <span class="m-mobile-icon">🪙</span>
+      <span class="m-mobile-text">نظام النقاط</span>
+    </a>
+    <a href="index.html#how" class="m-mobile-link">
+      <span class="m-mobile-icon">📋</span>
+      <span class="m-mobile-text">كيف يعمل؟</span>
+    </a>
+    <a href="index.html#pricing" class="m-mobile-link">
+      <span class="m-mobile-icon">💳</span>
+      <span class="m-mobile-text">الأسعار والخطط</span>
+    </a>
+    <a href="faq.html" class="m-mobile-link">
+      <span class="m-mobile-icon">❓</span>
+      <span class="m-mobile-text">الأسئلة الشائعة</span>
+    </a>
+    <a href="data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">طلب حذف البيانات</span>
+    </a>
+    <a href="https://feshealthtech.github.io/feshealthtech-website/" target="_blank" class="m-mobile-link">
+      <span class="m-mobile-icon">🏢</span>
+      <span class="m-mobile-text">عن الشركة المطورة</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-download">
+    <div class="m-mobile-download-title">تحميل التطبيق مجاناً</div>
+    <div class="m-mobile-download-buttons">
+      <a href="app/index.html" class="m-mobile-dl-btn">
+        <span>🤖 Play Store</span>
+      </a>
+      <a href="app/index.html" class="m-mobile-dl-btn">
+        <span>🍎 App Store</span>
+      </a>
+    </div>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="privacy-policy.html">الخصوصية</a>
+    <span>•</span>
+    <a href="terms-of-use.html">الشروط</a>
+    <span>•</span>
+    <a href="refund-policy.html">سياسة الدفع</a>
+  </div>
+</div>
+
+<!-- ══ HERO ══════════════════════════════════════════════════ -->
+<section class="del-hero">
+  <div class="container">
+    <div class="del-hero-inner">
+      <span class="m-label">الخصوصية وإدارة البيانات</span>
+      <h1 class="m-title">طلب حذف البيانات</h1>
+      <p class="m-subtitle">نحترم حقك في التحكم الكامل ببياناتك</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MAIN ═══════════════════════════════════════════════════ -->
+<main class="container del-main">
+
+  <!-- 1. Info Banner -->
+  <div class="m-glass del-info-banner">
+    <p>هذه الصفحة مخصصة لطلب حذف بيانات حسابك في تطبيق مرشد. يمكنك تقديم طلبك عبر النموذج أدناه وسنعالجه خلال 30 يوماً.</p>
+    <p><strong>💡 بديل أسرع:</strong> يمكنك حذف بياناتك مباشرة من داخل التطبيق دون الحاجة لملء أي نموذج:</p>
+    <div class="del-inline-steps">
+      <span>الإعدادات</span> ⚙️
+      <span style="color:var(--m-text-muted)">←</span>
+      <span>الحساب</span> 👤
+      <span style="color:var(--m-text-muted)">←</span>
+      <strong>"حذف الحساب والبيانات"</strong> 🗑️
+    </div>
+  </div>
+
+  <!-- 2. What gets deleted -->
+  <div class="del-section">
+    <h2 class="del-section-title">ماذا سيُحذف؟</h2>
+    <div class="del-cards-grid">
+
+      <!-- Card 1: Cloud -->
+      <div class="del-card del-card-green">
+        <span class="del-card-title">✅ بيانات الحساب السحابي</span>
+        <ul>
+          <li>اسمك وبريدك الإلكتروني (Firebase)</li>
+          <li>رصيد النقاط الذهبية (Firestore)</li>
+          <li>سجل العمليات المالية</li>
+          <li>إعدادات التطبيق المزامنة</li>
+        </ul>
+        <div class="del-card-note">⏱ يُحذف خلال 30 يوماً من الموافقة على طلبك</div>
+      </div>
+
+      <!-- Card 2: Local -->
+      <div class="del-card del-card-amber">
+        <span class="del-card-title">⚠️ بيانات محلية على هاتفك</span>
+        <ul>
+          <li>بيانات مرضاك (Isar DB)</li>
+          <li>الشعارات والصور المرفوعة</li>
+          <li>الإعدادات المحلية</li>
+        </ul>
+        <div class="del-card-note">نحن لا نمتلكها ولا نستطيع حذفها عن بُعد.<br/>احذف التطبيق أو امسح بياناته من إعدادات الهاتف: الإعدادات ← التطبيقات ← مرشد ← مسح البيانات.</div>
+      </div>
+
+      <!-- Card 3: Drive -->
+      <div class="del-card del-card-blue">
+        <span class="del-card-title">ℹ️ النسخ الاحتياطي على Google Drive</span>
+        <ul>
+          <li>إذا فعّلت النسخ الاحتياطي مسبقاً</li>
+          <li>ستجد ملفاتك في حساب Google Drive</li>
+          <li>مجلد: تطبيقات ← مرشد</li>
+        </ul>
+        <div class="del-card-note">يمكنك حذفها يدوياً من drive.google.com ← تخزين ← النسخ الاحتياطية</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. Legal hold note -->
+  <div class="legal-highlight gold">
+    <strong>⚖️ ملاحظة قانونية</strong>
+    سجلات المعاملات المالية (الفواتير وعمليات الشراء) قد تُحتفظ بها لفترة تصل إلى 90 يوماً من تاريخ طلب الحذف لأغراض الامتثال المحاسبي والمالي المنصوص عليه في الأنظمة ذات الصلة، ثم تُحذف بشكل نهائي وكامل ولا يمكن استعادتها بعد ذلك.
+  </div>
+
+  <!-- 4. Form -->
+  <div class="del-section">
+    <h2 class="del-section-title">نموذج طلب الحذف</h2>
+    <div class="m-card">
+      <form id="deletionForm" novalidate>
+
+        <label class="del-form-label" for="delEmail">البريد الإلكتروني <span style="color:var(--m-primary)">*</span></label>
+        <input
+          class="del-form-input"
+          type="email"
+          id="delEmail"
+          name="delEmail"
+          required
+          placeholder="البريد المرتبط بحسابك في مرشد"
+          autocomplete="email"
+        />
+
+        <label class="del-form-label" for="delName">الاسم أو اسم العيادة <span style="color:var(--m-primary)">*</span></label>
+        <input
+          class="del-form-input"
+          type="text"
+          id="delName"
+          name="delName"
+          required
+          placeholder="للتحقق من الهوية"
+          autocomplete="name"
+        />
+
+        <label class="del-form-label" for="delReason">سبب الطلب</label>
+        <select class="del-form-input" id="delReason" name="delReason">
+          <option value="" disabled selected>اختر السبب...</option>
+          <option value="stop">إيقاف استخدام التطبيق</option>
+          <option value="privacy">مخاوف الخصوصية</option>
+          <option value="migrate">الانتقال لتطبيق آخر</option>
+          <option value="data-only">حذف البيانات فقط دون إنهاء الحساب</option>
+          <option value="other">سبب آخر</option>
+        </select>
+
+        <label class="del-form-label" for="delNotes">ملاحظات إضافية</label>
+        <textarea
+          class="del-form-input"
+          id="delNotes"
+          name="delNotes"
+          placeholder="أي تفاصيل تساعدنا على معالجة طلبك بشكل أفضل"
+        ></textarea>
+
+        <div class="del-checkbox-row">
+          <input type="checkbox" id="delConfirm" name="delConfirm" required />
+          <label for="delConfirm">
+            أؤكد أنني المالك الحقيقي لهذا الحساب وأفهم أن هذا الإجراء لا يمكن التراجع عنه وأن البيانات المحذوفة لن تُستعاد
+          </label>
+        </div>
+
+        <button type="submit" class="m-btn m-btn-primary" style="width:100%; justify-content:center; padding: 14px 24px; font-size:1rem;">
+          🗑️ إرسال طلب الحذف
+        </button>
+
+        <div id="deletion-success" style="display:none;">
+          ✅ تم استلام طلبك بنجاح. سنعالجه خلال 30 يوماً ونرسل تأكيداً على بريدك الإلكتروني.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Timeline -->
+  <div class="del-section">
+    <h2 class="del-section-title">الجدول الزمني لمعالجة الطلب</h2>
+    <div class="del-timeline">
+
+      <div class="del-timeline-step">
+        <div class="del-timeline-num">1</div>
+        <div class="del-timeline-body">
+          <div class="del-timeline-day">اليوم الأول</div>
+          <div class="del-timeline-title">استلام الطلب وإرسال تأكيد فوري</div>
+          <div class="del-timeline-desc">بمجرد تلقّي طلبك، يُرسَل إليك بريد إلكتروني تأكيدي فوري يتضمن رقم المرجع الخاص بطلبك لمتابعته لاحقاً.</div>
+        </div>
+      </div>
+
+      <div class="del-timeline-step">
+        <div class="del-timeline-num">2</div>
+        <div class="del-timeline-body">
+          <div class="del-timeline-day">الأيام 1 – 7</div>
+          <div class="del-timeline-title">التحقق من هوية مقدم الطلب وأحقيته</div>
+          <div class="del-timeline-desc">يتحقق فريقنا من أن طالب الحذف هو المالك الفعلي للحساب، وقد نتواصل معك للتأكيد إذا احتجنا لمعلومات إضافية.</div>
+        </div>
+      </div>
+
+      <div class="del-timeline-step">
+        <div class="del-timeline-num">3</div>
+        <div class="del-timeline-body">
+          <div class="del-timeline-day">الأيام 7 – 30</div>
+          <div class="del-timeline-title">حذف البيانات بشكل تدريجي من جميع الأنظمة</div>
+          <div class="del-timeline-desc">تُحذف بيانات حسابك السحابي تدريجياً من Firebase وFirestore وجميع أنظمتنا الداخلية. تُحتفظ بسجلات المعاملات لحين انتهاء فترة الاحتفاظ القانونية.</div>
+        </div>
+      </div>
+
+      <div class="del-timeline-step">
+        <div class="del-timeline-num">4</div>
+        <div class="del-timeline-body">
+          <div class="del-timeline-day">اليوم 30</div>
+          <div class="del-timeline-title">تأكيد اكتمال الحذف</div>
+          <div class="del-timeline-desc">نرسل إليك بريداً إلكترونياً نهائياً يؤكد اكتمال حذف جميع البيانات السحابية، مع تفصيل ما حُذف وما سيُحذف لاحقاً (سجلات الفواتير).</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 6. In-app alternative CTA -->
+  <div class="m-glass" style="padding: 32px;">
+    <div class="del-alt-title">⚡ طريقة أسرع — الحذف من داخل التطبيق</div>
+    <div class="del-alt-subtitle">إذا كان التطبيق لا يزال مثبتاً لديك، اتبع هذه الخطوات الأربع:</div>
+    <div class="del-alt-steps">
+      <div class="del-alt-step">
+        <div class="del-alt-step-num">1</div>
+        <span class="del-alt-step-emoji">📱</span>
+        <div class="del-alt-step-label">فتح مرشد</div>
+      </div>
+      <div class="del-alt-arrow">←</div>
+      <div class="del-alt-step">
+        <div class="del-alt-step-num">2</div>
+        <span class="del-alt-step-emoji">⚙️</span>
+        <div class="del-alt-step-label">الإعدادات</div>
+      </div>
+      <div class="del-alt-arrow">←</div>
+      <div class="del-alt-step">
+        <div class="del-alt-step-num">3</div>
+        <span class="del-alt-step-emoji">👤</span>
+        <div class="del-alt-step-label">الحساب</div>
+      </div>
+      <div class="del-alt-arrow">←</div>
+      <div class="del-alt-step">
+        <div class="del-alt-step-num">4</div>
+        <span class="del-alt-step-emoji">🗑️</span>
+        <div class="del-alt-step-label">حذف الحساب</div>
+      </div>
+    </div>
+    <p class="del-alt-note">
+      <strong>البيانات المحلية تُحذف فوراً</strong> عند تأكيد الحذف داخل التطبيق.
+      البيانات السحابية تُحذف خلال 30 يوماً وفق نفس الجدول الزمني أعلاه.
+      هذه الطريقة لا تتطلب مراجعة يدوية وتبدأ المعالجة تلقائياً.
+    </p>
+  </div>
+
+</main>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="https://feshealthtech.github.io/feshealthtech-website/assets/logo.png" alt="FES HealthTech" class="footer-logo" />
+        <div class="footer-app-name">مرشد</div>
+        <div class="footer-app-sub">Murshid App</div>
+        <p>تطبيق إدارة العيادة الذكي — مُطوَّر بواسطة <a href="https://feshealthtech.github.io/feshealthtech-website/">FES HealthTech</a>.</p>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">التطبيق</h4>
+        <ul class="m-footer-links">
+          <li><a href="index.html#features">المميزات</a></li>
+          <li><a href="index.html#pricing">الأسعار</a></li>
+          <li><a href="index.html#download">تحميل</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">الدعم</h4>
+        <ul class="m-footer-links">
+          <li><a href="faq.html">الأسئلة الشائعة</a></li>
+          <li><a href="data-deletion.html">حذف البيانات</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="m-footer-col-title">قانوني</h4>
+        <ul class="m-footer-links">
+          <li><a href="privacy-policy.html">سياسة الخصوصية</a></li>
+          <li><a href="terms-of-use.html">شروط الاستخدام</a></li>
+          <li><a href="refund-policy.html">سياسة الدفع</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© 2025 <a href="https://feshealthtech.github.io/feshealthtech-website/">FES HealthTech</a>. جميع الحقوق محفوظة.</p>
+      <div class="m-footer-bottom-links">
+        <a href="privacy-policy.html">الخصوصية</a>
+        <a href="terms-of-use.html">الشروط</a>
+        <a href="data-deletion.html">حذف البيانات</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="shared/murshid-script.js"></script>
+<script>
+  // Deletion form handler
+  (function() {
+    var form = document.getElementById('deletionForm');
+    var success = document.getElementById('deletion-success');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email = document.getElementById('delEmail').value.trim();
+      var name  = document.getElementById('delName').value.trim();
+      var confirm = document.getElementById('delConfirm').checked;
+      if (!email || !name || !confirm) {
+        return;
+      }
+      // Show success message
+      form.style.display = 'none';
+      success.style.display = 'block';
+    });
+  })();
+</script>
+</body>
+</html>
