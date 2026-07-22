@@ -12,7 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initTypewriter();
   initCookieBanner();
+  initDynamicYear();
 });
+
+/* ── Dynamic Footer Year ── */
+function initDynamicYear() {
+  const currentYear = new Date().getFullYear();
+  document.querySelectorAll('.current-year').forEach(el => {
+    el.textContent = currentYear;
+  });
+  document.querySelectorAll('.m-footer-copy').forEach(el => {
+    el.innerHTML = el.innerHTML.replace(/\b202\d\b/g, currentYear);
+  });
+}
 
 /* ── Navbar ── */
 function initNav() {
