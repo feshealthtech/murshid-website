@@ -140,7 +140,7 @@ ul { list-style:none; }
 }
 
 .m-nav-links {
-  display:flex; align-items:center; gap:28px;
+  display:flex; align-items:center; gap:20px;
 }
 .m-nav-links a {
   font-size:0.88rem; font-weight:600; color:var(--m-text-muted);
