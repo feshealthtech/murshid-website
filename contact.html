@@ -863,59 +863,52 @@
 
         <form id="contactForm" novalidate>
           
-          <!-- Row 1: Name & Organization -->
-          <div class="m-form-row">
-            <div class="m-form-group">
-              <label class="m-form-label" for="clientName">الاسم الكامل *</label>
-              <input type="text" id="clientName" class="m-form-input" placeholder="د. محمد أحمد" required />
-              <div class="field-error-message" id="nameError">يرجى كتابة الاسم الكامل (3 أحرف على الأقل)</div>
-            </div>
-            <div class="m-form-group">
-              <label class="m-form-label" for="clientOrg">المؤسسة / الجهة *</label>
-              <input type="text" id="clientOrg" class="m-form-input" placeholder="جامعة / عيادة / شركة" required />
-              <div class="field-error-message" id="orgError">يرجى كتابة اسم المؤسسة أو الجهة (حرفين على الأقل)</div>
-            </div>
+          <!-- Field 1: Name -->
+          <div class="m-form-group">
+            <label class="m-form-label" for="clientName">الاسم الكامل *</label>
+            <input type="text" id="clientName" class="m-form-input" placeholder="د. محمد أحمد" required />
+            <div class="field-error-message" id="nameError">يرجى كتابة الاسم الكامل (3 أحرف على الأقل)</div>
           </div>
 
-          <!-- Row 2: Email & Phone -->
-          <div class="m-form-row">
-            <div class="m-form-group">
-              <label class="m-form-label" for="clientEmail">البريد الإلكتروني *</label>
-              <input type="email" id="clientEmail" class="m-form-input" placeholder="name@example.com" required style="direction: ltr; text-align: right;" />
-              <div class="field-error-message" id="emailError">يرجى إدخال بريد إلكتروني صحيح</div>
-            </div>
-            <div class="m-form-group">
-              <label class="m-form-label" for="clientPhone">رقم الجوال *</label>
-              <div class="phone-input-wrapper">
+          <!-- Field 2: Email -->
+          <div class="m-form-group">
+            <label class="m-form-label" for="clientEmail">البريد الإلكتروني *</label>
+            <input type="email" id="clientEmail" class="m-form-input" placeholder="name@example.com" required style="direction: ltr; text-align: right;" />
+            <div class="field-error-message" id="emailError">يرجى إدخال بريد إلكتروني صحيح</div>
+          </div>
+
+          <!-- Field 3: Phone Number -->
+          <div class="m-form-group">
+            <label class="m-form-label" for="clientPhone">رقم الجوال *</label>
+            <div class="phone-input-wrapper">
+              
+              <!-- Selected Country Trigger -->
+              <div class="country-selector-container">
+                <div class="selected-country-trigger" id="countryTrigger" role="combobox" aria-expanded="false" aria-haspopup="listbox" title="اختر رمز الدولة">
+                  <span class="trigger-flag" id="triggerFlag">🇸🇦</span>
+                  <span class="trigger-code" id="triggerCode" style="direction: ltr;">+966</span>
+                  <span class="trigger-arrow">▼</span>
+                </div>
                 
-                <!-- Selected Country Trigger -->
-                <div class="country-selector-container">
-                  <div class="selected-country-trigger" id="countryTrigger" role="combobox" aria-expanded="false" aria-haspopup="listbox" title="اختر رمز الدولة">
-                    <span class="trigger-flag" id="triggerFlag">🇸🇦</span>
-                    <span class="trigger-code" id="triggerCode" style="direction: ltr;">+966</span>
-                    <span class="trigger-arrow">▼</span>
+                <!-- Dropdown Panel -->
+                <div class="country-dropdown-panel" id="countryPanel">
+                  <div class="dropdown-search-box">
+                    <input type="text" id="countrySearch" class="dropdown-search-input" placeholder="ابحث باسم الدولة أو الرمز..." />
                   </div>
-                  
-                  <!-- Dropdown Panel -->
-                  <div class="country-dropdown-panel" id="countryPanel">
-                    <div class="dropdown-search-box">
-                      <input type="text" id="countrySearch" class="dropdown-search-input" placeholder="ابحث باسم الدولة أو الرمز..." />
-                    </div>
-                    <div class="country-list-scroll" id="countryList" role="listbox">
-                      <!-- Generated dynamically via JS -->
-                    </div>
+                  <div class="country-list-scroll" id="countryList" role="listbox">
+                    <!-- Generated dynamically via JS -->
                   </div>
                 </div>
-
-                <!-- Phone text input -->
-                <div class="phone-input-field-container">
-                  <input type="tel" id="clientPhone" class="m-form-input" placeholder="501234567" required />
-                  <span class="phone-length-counter" id="lengthCounter">0 / 9</span>
-                </div>
-
               </div>
-              <div class="field-error-message" id="phoneError">يرجى إدخال رقم جوال صحيح للبلد المختار</div>
+
+              <!-- Phone text input -->
+              <div class="phone-input-field-container">
+                <input type="tel" id="clientPhone" class="m-form-input" placeholder="501234567" required />
+                <span class="phone-length-counter" id="lengthCounter">0 / 9</span>
+              </div>
+
             </div>
+            <div class="field-error-message" id="phoneError">يرجى إدخال رقم جوال صحيح للبلد المختار</div>
           </div>
 
           <!-- Field 3: Subject Dropdown -->
@@ -1413,11 +1406,6 @@
         err: document.getElementById('nameError'),
         validate: (val) => val.trim().length >= 3
       },
-      org: {
-        el: document.getElementById('clientOrg'),
-        err: document.getElementById('orgError'),
-        validate: (val) => val.trim().length >= 2
-      },
       email: {
         el: document.getElementById('clientEmail'),
         err: document.getElementById('emailError'),
@@ -1520,7 +1508,7 @@
 
         const templateParams = {
           fullName: fields.name.el.value.trim(),
-          organization: fields.org.el.value.trim() + ' (تطبيق مرشد)',
+          organization: 'تطبيق مرشد - مساعد أخصائي التغذية',
           email: fields.email.el.value.trim(),
           phone: selectedCountry.dialCode + ' ' + phoneInput.value.trim(),
           subject: subjectEl.options[subjectEl.selectedIndex].text,
