@@ -212,22 +212,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-/* ── Data Deletion Form ── */
-const deletionForm = document.getElementById('deletionForm');
-if (deletionForm) {
-  deletionForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    const btn = deletionForm.querySelector('[type=submit]');
-    btn.textContent = '⏳ جاري الإرسال...';
-    btn.disabled = true;
-    await new Promise(r => setTimeout(r, 1500));
-    btn.textContent = '✅ تم استلام طلبك';
-    btn.style.background = 'var(--m-success)';
-    deletionForm.reset();
-    const msg = document.getElementById('deletion-success');
-    if (msg) msg.style.display = 'block';
-  });
-}
 
 
 
