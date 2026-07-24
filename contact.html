@@ -433,6 +433,102 @@
       display: none;
       align-items: center;
       gap: 6px;
+      font-weight: 500;
+    }
+
+    /* Validation Field States */
+    .m-form-input.is-invalid, .m-form-select.is-invalid, .m-form-textarea.is-invalid {
+      border-color: var(--m-danger) !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+    }
+    .m-form-input.is-valid, .m-form-select.is-valid, .m-form-textarea.is-valid {
+      border-color: var(--m-success) !important;
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15) !important;
+    }
+
+    /* In-Card Success State Container */
+    .m-contact-success-card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px 10px;
+      animation: mFadeInScale 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes mFadeInScale {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .m-success-badge-circle {
+      width: 80px;
+      height: 80px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 2px solid var(--m-success);
+      border-radius: 50%;
+      color: var(--m-success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.25);
+      animation: badgePulse 2s infinite ease-in-out;
+    }
+    @keyframes badgePulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
+      50% { transform: scale(1.05); box-shadow: 0 0 35px rgba(34, 197, 94, 0.4); }
+    }
+
+    .m-success-check-svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--m-success);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      stroke-dasharray: 60;
+      stroke-dashoffset: 60;
+      animation: drawCheck 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards 0.2s;
+    }
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
+
+    .m-success-card-title {
+      font-family: 'Noto Kufi Arabic', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 12px;
+    }
+    .m-success-card-desc {
+      color: var(--m-text-muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      max-width: 440px;
+      margin: 0 auto 32px;
+    }
+
+    .m-reset-form-btn {
+      background: rgba(43, 181, 160, 0.1);
+      border: 1px solid var(--m-border-strong);
+      border-radius: var(--m-radius-sm);
+      color: var(--m-primary-light);
+      padding: 12px 28px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .m-reset-form-btn:hover {
+      background: var(--m-primary);
+      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--m-primary-glow);
     }
 
     /* Modal / Success Dialog */
@@ -736,86 +832,106 @@
 
     <!-- Contact Form Column -->
     <section class="m-contact-form-card">
-      <h2 class="m-form-title">أرسل لنا رسالة</h2>
-      <p class="m-form-desc">املأ الاستمارة وسيتواصل معك أحد مطوري المحرك أو الطاقم الإداري الطبي في أسرع وقت.</p>
+      <div id="contactFormContainer">
+        <h2 class="m-form-title">أرسل لنا رسالة</h2>
+        <p class="m-form-desc">املأ الاستمارة وسيتواصل معك أحد مطوري المحرك أو الطاقم الإداري الطبي في أسرع وقت.</p>
 
-      <form id="contactForm" novalidate>
-        
-        <!-- Field 1: Name -->
-        <div class="m-form-group">
-          <label class="m-form-label" for="clientName">الاسم الكامل *</label>
-          <input type="text" id="clientName" class="m-form-input" placeholder="اكتب اسمك الثلاثي" required />
-          <div class="field-error-message" id="nameError">⚠️ يرجى إدخال اسمك الكامل.</div>
-        </div>
-
-        <!-- Field 2: Email -->
-        <div class="m-form-group">
-          <label class="m-form-label" for="clientEmail">البريد الإلكتروني *</label>
-          <input type="email" id="clientEmail" class="m-form-input" placeholder="name@example.com" required style="direction: ltr; text-align: right;" />
-          <div class="field-error-message" id="emailError">⚠️ يرجى إدخال بريد إلكتروني صحيح وموثوق.</div>
-        </div>
-
-        <!-- Field 3: Phone Number with Custom Selector -->
-        <div class="m-form-group">
-          <label class="m-form-label" for="clientPhone">رقم الجوال *</label>
-          <div class="phone-input-wrapper">
-            
-            <!-- Selected Country Trigger -->
-            <div class="country-selector-container">
-              <div class="selected-country-trigger" id="countryTrigger" role="combobox" aria-expanded="false" aria-haspopup="listbox" title="اختر رمز الدولة">
-                <span class="trigger-flag" id="triggerFlag">🇸🇦</span>
-                <span class="trigger-code" id="triggerCode" style="direction: ltr;">+966</span>
-                <span class="trigger-arrow">▼</span>
-              </div>
-              
-              <!-- Dropdown Panel -->
-              <div class="country-dropdown-panel" id="countryPanel">
-                <div class="dropdown-search-box">
-                  <input type="text" id="countrySearch" class="dropdown-search-input" placeholder="ابحث باسم الدولة أو الرمز..." />
-                </div>
-                <div class="country-list-scroll" id="countryList" role="listbox">
-                  <!-- Generated dynamically via JS -->
-                </div>
-              </div>
-            </div>
-
-            <!-- Phone text input -->
-            <div class="phone-input-field-container">
-              <input type="tel" id="clientPhone" class="m-form-input" placeholder="501234567" style="direction: ltr; text-align: left; padding-left: 12px;" required />
-              <span class="phone-length-counter" id="lengthCounter">0 / 9</span>
-            </div>
-
+        <form id="contactForm" novalidate>
+          
+          <!-- Field 1: Name -->
+          <div class="m-form-group">
+            <label class="m-form-label" for="clientName">الاسم الكامل *</label>
+            <input type="text" id="clientName" class="m-form-input" placeholder="اكتب اسمك الثلاثي" required />
+            <div class="field-error-message" id="nameError">⚠️ يرجى كتابة اسمك الكامل (3 أحرف على الأقل).</div>
           </div>
-          <div class="field-error-message" id="phoneError">⚠️ يرجى التحقق من صحة رقم الجوال.</div>
-        </div>
 
-        <!-- Field 4: Subject Dropdown -->
-        <div class="m-form-group">
-          <label class="m-form-label" for="messageSubject">موضوع المراسلة *</label>
-          <select id="messageSubject" class="m-form-select">
-            <option value="support" selected>🛠️ دعم فني أو تقني في التطبيق</option>
-            <option value="billing">🪙 فوترة، نقاط ذهبية، أو استرداد مالي</option>
-            <option value="feedback">💡 اقتراح ميزة أو تحسين بالذكاء الاصطناعي</option>
-            <option value="privacy">🔒 استفسار عن خصوصية وتخزين بيانات المرضى</option>
-            <option value="other">❓ موضوع آخر</option>
-          </select>
-        </div>
+          <!-- Field 2: Email -->
+          <div class="m-form-group">
+            <label class="m-form-label" for="clientEmail">البريد الإلكتروني *</label>
+            <input type="email" id="clientEmail" class="m-form-input" placeholder="name@example.com" required style="direction: ltr; text-align: right;" />
+            <div class="field-error-message" id="emailError">⚠️ يرجى إدخال بريد إلكتروني صحيح وموثوق (مثال: name@example.com).</div>
+          </div>
 
-        <!-- Field 5: Message -->
-        <div class="m-form-group">
-          <label class="m-form-label" for="clientMessage">نص الرسالة *</label>
-          <textarea id="clientMessage" class="m-form-textarea" placeholder="اكتب استفسارك بالتفصيل..." required></textarea>
-          <div class="field-error-message" id="messageError">⚠️ يرجى كتابة نص الرسالة بالتفصيل.</div>
-        </div>
+          <!-- Field 3: Phone Number with Custom Selector -->
+          <div class="m-form-group">
+            <label class="m-form-label" for="clientPhone">رقم الجوال *</label>
+            <div class="phone-input-wrapper">
+              
+              <!-- Selected Country Trigger -->
+              <div class="country-selector-container">
+                <div class="selected-country-trigger" id="countryTrigger" role="combobox" aria-expanded="false" aria-haspopup="listbox" title="اختر رمز الدولة">
+                  <span class="trigger-flag" id="triggerFlag">🇸🇦</span>
+                  <span class="trigger-code" id="triggerCode" style="direction: ltr;">+966</span>
+                  <span class="trigger-arrow">▼</span>
+                </div>
+                
+                <!-- Dropdown Panel -->
+                <div class="country-dropdown-panel" id="countryPanel">
+                  <div class="dropdown-search-box">
+                    <input type="text" id="countrySearch" class="dropdown-search-input" placeholder="ابحث باسم الدولة أو الرمز..." />
+                  </div>
+                  <div class="country-list-scroll" id="countryList" role="listbox">
+                    <!-- Generated dynamically via JS -->
+                  </div>
+                </div>
+              </div>
 
-        <!-- Submit Button -->
-        <div class="m-submit-btn-wrap">
-          <button type="submit" class="m-form-submit-btn">
-            <span>📧 إرسال استفسارك الآن</span>
-          </button>
-        </div>
+              <!-- Phone text input -->
+              <div class="phone-input-field-container">
+                <input type="tel" id="clientPhone" class="m-form-input" placeholder="501234567" style="direction: ltr; text-align: left; padding-left: 12px;" required />
+                <span class="phone-length-counter" id="lengthCounter">0 / 9</span>
+              </div>
 
-      </form>
+            </div>
+            <div class="field-error-message" id="phoneError">⚠️ يرجى التحقق من صحة رقم الجوال وإدخال كافة أرقام الدولة.</div>
+          </div>
+
+          <!-- Field 4: Subject Dropdown -->
+          <div class="m-form-group">
+            <label class="m-form-label" for="messageSubject">موضوع المراسلة *</label>
+            <select id="messageSubject" class="m-form-select" required>
+              <option value="" disabled selected>اختر موضوع المراسلة...</option>
+              <option value="support">🛠️ دعم فني أو تقني في التطبيق</option>
+              <option value="billing">🪙 فوترة، نقاط ذهبية، أو استرداد مالي</option>
+              <option value="feedback">💡 اقتراح ميزة أو تحسين بالذكاء الاصطناعي</option>
+              <option value="privacy">🔒 استفسار عن خصوصية وتخزين بيانات المرضى</option>
+              <option value="other">❓ موضوع آخر</option>
+            </select>
+            <div class="field-error-message" id="subjectError">⚠️ يرجى اختيار موضوع المراسلة.</div>
+          </div>
+
+          <!-- Field 5: Message -->
+          <div class="m-form-group">
+            <label class="m-form-label" for="clientMessage">نص الرسالة *</label>
+            <textarea id="clientMessage" class="m-form-textarea" placeholder="اكتب استفسارك بالتفصيل..." required></textarea>
+            <div class="field-error-message" id="messageError">⚠️ يرجى كتابة نص الرسالة بالتفصيل (10 أحرف على الأقل).</div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="m-submit-btn-wrap">
+            <button type="submit" class="m-form-submit-btn">
+              <span>📧 إرسال استفسارك الآن</span>
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- In-Card Success State -->
+      <div class="m-contact-success-card" id="contactSuccessState">
+        <div class="m-success-badge-circle">
+          <svg class="m-success-check-svg" viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="m-success-card-title">تم إرسال رسالتك بنجاح! 🎉</h3>
+        <p class="m-success-card-desc">
+          نشكرك على تواصلك مع فريق مرشد. تم استلام رسالتك بنجاح وإحالتها للطاقم الطبي والتقني المختص، وسنقوم بالرد عليك عبر البريد الإلكتروني خلال 24 ساعة عمل.
+        </p>
+        <button type="button" class="m-reset-form-btn" id="contactResetBtn">
+          <span>🔄 إرسال رسالة أخرى</span>
+        </button>
+      </div>
     </section>
 
   </div>
@@ -1128,10 +1244,11 @@
     const lengthCounter = document.getElementById('lengthCounter');
 
     const form = document.getElementById('contactForm');
+    const formContainer = document.getElementById('contactFormContainer');
+    const successCardState = document.getElementById('contactSuccessState');
+    const contactResetBtn = document.getElementById('contactResetBtn');
     const subjectEl = document.getElementById('messageSubject');
     const submitBtn = form.querySelector('.m-form-submit-btn');
-    const successModal = document.getElementById('successModal');
-    const closeModalBtn = document.getElementById('closeModalBtn');
 
     // Selected country state
     let selectedCountry = countries.find(c => c.code === 'SA') || countries[0];
@@ -1269,6 +1386,11 @@
           return re.test(val.trim());
         }
       },
+      subject: {
+        el: document.getElementById('messageSubject'),
+        err: document.getElementById('subjectError'),
+        validate: (val) => val !== '' && val !== null
+      },
       message: {
         el: document.getElementById('clientMessage'),
         err: document.getElementById('messageError'),
@@ -1285,7 +1407,15 @@
       const phoneErr = document.getElementById('phoneError');
       if (isValid) {
         phoneErr.style.display = 'none';
-        phoneInput.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+        phoneInput.classList.remove('is-invalid');
+        phoneInput.classList.add('is-valid');
+      } else if (val.length > 0) {
+        phoneErr.style.display = 'flex';
+        phoneInput.classList.remove('is-valid');
+        phoneInput.classList.add('is-invalid');
+      } else {
+        phoneErr.style.display = 'none';
+        phoneInput.classList.remove('is-valid', 'is-invalid');
       }
       return isValid;
     }
@@ -1293,10 +1423,21 @@
     // Individual field live validation
     Object.keys(fields).forEach(key => {
       const field = fields[key];
-      field.el.addEventListener('input', () => {
-        if (field.validate(field.el.value)) {
+      const eventType = field.el.tagName === 'SELECT' ? 'change' : 'input';
+      
+      field.el.addEventListener(eventType, () => {
+        const val = field.el.value;
+        if (val.trim() === '') {
           field.err.style.display = 'none';
-          field.el.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+          field.el.classList.remove('is-valid', 'is-invalid');
+        } else if (field.validate(val)) {
+          field.err.style.display = 'none';
+          field.el.classList.remove('is-invalid');
+          field.el.classList.add('is-valid');
+        } else {
+          field.err.style.display = 'flex';
+          field.el.classList.remove('is-valid');
+          field.el.classList.add('is-invalid');
         }
       });
     });
@@ -1307,17 +1448,19 @@
 
       let isFormValid = true;
 
-      // Validate Text Fields
+      // Validate Text & Select Fields
       Object.keys(fields).forEach(key => {
         const field = fields[key];
         const isValid = field.validate(field.el.value);
         if (!isValid) {
           field.err.style.display = 'flex';
-          field.el.style.borderColor = 'var(--m-danger)';
+          field.el.classList.remove('is-valid');
+          field.el.classList.add('is-invalid');
           isFormValid = false;
         } else {
           field.err.style.display = 'none';
-          field.el.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+          field.el.classList.remove('is-invalid');
+          field.el.classList.add('is-valid');
         }
       });
 
@@ -1325,7 +1468,8 @@
       const isPhoneValid = validatePhone();
       if (!isPhoneValid) {
         document.getElementById('phoneError').style.display = 'flex';
-        phoneInput.style.borderColor = 'var(--m-danger)';
+        phoneInput.classList.remove('is-valid');
+        phoneInput.classList.add('is-invalid');
         isFormValid = false;
       }
 
@@ -1343,13 +1487,14 @@
           message: fields.message.el.value.trim()
         };
 
-        emailjs.send('service_2gtw1uc', 'template_2tggiv7', templateParams)
+        emailjs.send('service_2gtw1uc', 'template_kjhcofd', templateParams)
           .then(() => {
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<span>📧 إرسال استفسارك الآن</span>';
-            // Trigger Success Modal
-            successModal.classList.add('open');
-            document.body.style.overflow = 'hidden'; // lock scroll
+            
+            // Smoothly transition from Form Container to In-Card Success State
+            formContainer.style.display = 'none';
+            successCardState.style.display = 'flex';
           })
           .catch((error) => {
             console.error('EmailJS Send Error:', error);
@@ -1360,13 +1505,24 @@
       }
     });
 
-    // Modal Close action
-    closeModalBtn.addEventListener('click', () => {
-      successModal.classList.remove('open');
-      document.body.style.overflow = ''; // unlock scroll
-      form.reset();
-      selectCountry(selectedCountry);
-    });
+    // Reset Form Action (Send Another Message)
+    if (contactResetBtn) {
+      contactResetBtn.addEventListener('click', () => {
+        form.reset();
+        Object.keys(fields).forEach(key => {
+          fields[key].el.classList.remove('is-valid', 'is-invalid');
+          fields[key].err.style.display = 'none';
+        });
+        phoneInput.classList.remove('is-valid', 'is-invalid');
+        document.getElementById('phoneError').style.display = 'none';
+        
+        selectCountry(selectedCountry);
+        
+        // Transition back to Form Container
+        successCardState.style.display = 'none';
+        formContainer.style.display = 'block';
+      });
+    }
 
   })();
 </script>
