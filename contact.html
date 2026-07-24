@@ -242,11 +242,13 @@
       display: flex;
       gap: 10px;
       position: relative;
+      z-index: 100;
     }
 
     .country-selector-container {
       position: relative;
       flex-shrink: 0;
+      z-index: 105;
     }
 
     .selected-country-trigger {
@@ -267,8 +269,15 @@
       user-select: none;
       transition: all 0.3s ease;
     }
+    .selected-country-trigger * {
+      pointer-events: none;
+    }
     .selected-country-trigger:hover {
       border-color: var(--m-primary);
+    }
+    .selected-country-trigger.active {
+      border-color: var(--m-primary);
+      box-shadow: 0 0 0 3px var(--m-primary-glow);
     }
     .selected-country-trigger .trigger-arrow {
       font-size: 0.65rem;
@@ -281,36 +290,42 @@
 
     /* Country Dropdown Panel */
     .country-dropdown-panel {
+      display: none;
       position: absolute;
       top: 54px;
       right: 0;
       width: 320px;
+      max-width: 90vw;
       background: var(--m-surface-2);
       border: 1px solid var(--m-border-strong);
-      border-radius: var(--m-radius);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-      z-index: 1000;
+      border-radius: var(--m-radius-sm);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      z-index: 2000;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+      flex-direction: column;
+      overflow: hidden;
     }
     .country-dropdown-panel.show {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
     }
 
     .dropdown-search-box {
       padding: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--m-surface);
     }
     .dropdown-search-input {
       width: 100%;
       background: var(--m-bg);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 8px;
-      padding: 8px 12px;
+      padding: 10px 14px;
       color: #FFF;
       font-size: 0.88rem;
       box-sizing: border-box;
@@ -318,6 +333,7 @@
     .dropdown-search-input:focus {
       outline: none;
       border-color: var(--m-primary);
+      box-shadow: 0 0 0 2px var(--m-primary-glow);
     }
 
     .country-list-scroll {
@@ -347,7 +363,7 @@
       font-size: 0.9rem;
     }
     .country-item:hover {
-      background: rgba(43, 181, 160, 0.1);
+      background: rgba(43, 181, 160, 0.15);
     }
     .country-item-left {
       display: flex;
@@ -372,27 +388,33 @@
       flex-grow: 1;
     }
     .phone-input-field-container .m-form-input {
-      padding-left: 65px; /* space for formatting limit length check text */
+      direction: ltr !important;
+      text-align: left !important;
+      padding-left: 14px !important;
+      padding-right: 65px !important; /* reserve space on the right for length counter */
       height: 48px;
       box-sizing: border-box;
     }
 
     .phone-length-counter {
       position: absolute;
-      left: 12px;
+      right: 14px;
+      left: auto;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
       color: var(--m-text-subtle);
       font-family: monospace;
       pointer-events: none;
       user-select: none;
+      direction: ltr;
     }
     .phone-length-counter.valid {
       color: var(--m-success);
     }
     .phone-length-counter.invalid {
-      color: var(--m-danger);
+      color: #EF4444;
     }
 
     /* Submit Button styling */
@@ -887,7 +909,7 @@
 
                 <!-- Phone text input -->
                 <div class="phone-input-field-container">
-                  <input type="tel" id="clientPhone" class="m-form-input" placeholder="501234567" style="direction: ltr; text-align: left; padding-left: 12px;" required />
+                  <input type="tel" id="clientPhone" class="m-form-input" placeholder="501234567" required />
                   <span class="phone-length-counter" id="lengthCounter">0 / 9</span>
                 </div>
 
@@ -1330,7 +1352,10 @@
 
     // Toggle dropdown trigger panel
     function toggleDropdown(e) {
-      e.stopPropagation();
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
       const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
       if (isExpanded) {
         closeDropdown();
@@ -1368,8 +1393,10 @@
 
     // Close panel when clicking outside
     document.addEventListener('click', (e) => {
-      if (!trigger.contains(e.target) && !panel.contains(e.target)) {
-        closeDropdown();
+      if (panel.classList.contains('show')) {
+        if (!trigger.contains(e.target) && !panel.contains(e.target)) {
+          closeDropdown();
+        }
       }
     });
 
