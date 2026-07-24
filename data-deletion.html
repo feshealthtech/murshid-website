@@ -166,15 +166,90 @@
       display: block;
       box-sizing: border-box;
       outline: none;
-      transition: border-color 0.2s;
+      transition: all 0.3s ease;
     }
     .del-form-input:focus {
       border-color: var(--m-primary);
+      box-shadow: 0 0 0 3px var(--m-primary-glow);
     }
     textarea.del-form-input {
       min-height: 100px;
       resize: vertical;
     }
+    
+    /* Validation Field States */
+    .del-form-input.is-invalid {
+      border-color: #EF4444 !important;
+      background-color: rgba(239, 68, 68, 0.08) !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+    }
+    .del-form-input.is-valid {
+      border-color: var(--m-primary) !important;
+      box-shadow: 0 0 0 3px var(--m-primary-glow) !important;
+    }
+    .field-error-message {
+      font-size: 0.8rem;
+      color: #EF4444;
+      margin-top: -10px;
+      margin-bottom: 16px;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+    .del-form-input option {
+      background-color: var(--m-surface-2) !important;
+      color: #FFF !important;
+    }
+    
+    /* Deletion Success Card inside form */
+    .del-success-card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px 10px;
+      animation: delFadeIn 0.4s ease-out;
+    }
+    @keyframes delFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .del-success-badge {
+      width: 80px;
+      height: 80px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 2px solid rgba(34, 197, 94, 0.3);
+      border-radius: 50%;
+      color: #22C55E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .del-success-check-svg {
+      width: 40px;
+      height: 40px;
+      stroke: #22C55E;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .del-success-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 12px;
+    }
+    .del-success-desc {
+      color: var(--m-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 0;
+    }
+
     .del-checkbox-row {
       display: flex;
       align-items: flex-start;
@@ -525,63 +600,88 @@
   <div class="del-section">
     <h2 class="del-section-title">نموذج طلب الحذف</h2>
     <div class="m-card">
-      <form id="deletionForm" novalidate>
+      <div id="deletionFormContainer">
+        <form id="deletionForm" novalidate>
 
-        <label class="del-form-label" for="delEmail">البريد الإلكتروني <span style="color:var(--m-primary)">*</span></label>
-        <input
-          class="del-form-input"
-          type="email"
-          id="delEmail"
-          name="delEmail"
-          required
-          placeholder="البريد المرتبط بحسابك في مرشد"
-          autocomplete="email"
-        />
+          <div class="m-form-group">
+            <label class="del-form-label" for="delEmail">البريد الإلكتروني <span style="color:var(--m-primary)">*</span></label>
+            <input
+              class="del-form-input"
+              type="email"
+              id="delEmail"
+              name="delEmail"
+              required
+              placeholder="البريد المرتبط بحسابك في مرشد"
+              autocomplete="email"
+              style="direction: ltr; text-align: right;"
+            />
+            <div class="field-error-message" id="emailError">يرجى إدخال بريد إلكتروني صحيح</div>
+          </div>
 
-        <label class="del-form-label" for="delName">الاسم أو اسم العيادة <span style="color:var(--m-primary)">*</span></label>
-        <input
-          class="del-form-input"
-          type="text"
-          id="delName"
-          name="delName"
-          required
-          placeholder="للتحقق من الهوية"
-          autocomplete="name"
-        />
+          <div class="m-form-group">
+            <label class="del-form-label" for="delName">الاسم الكامل أو اسم العيادة <span style="color:var(--m-primary)">*</span></label>
+            <input
+              class="del-form-input"
+              type="text"
+              id="delName"
+              name="delName"
+              required
+              placeholder="للتحقق من الهوية"
+              autocomplete="name"
+            />
+            <div class="field-error-message" id="nameError">يرجى كتابة الاسم الكامل (3 أحرف على الأقل)</div>
+          </div>
 
-        <label class="del-form-label" for="delReason">سبب الطلب</label>
-        <select class="del-form-input" id="delReason" name="delReason">
-          <option value="" disabled selected>اختر السبب...</option>
-          <option value="stop">إيقاف استخدام التطبيق</option>
-          <option value="privacy">مخاوف الخصوصية</option>
-          <option value="migrate">الانتقال لتطبيق آخر</option>
-          <option value="data-only">حذف البيانات فقط دون إنهاء الحساب</option>
-          <option value="other">سبب آخر</option>
-        </select>
+          <div class="m-form-group">
+            <label class="del-form-label" for="delReason">سبب الطلب <span style="color:var(--m-primary)">*</span></label>
+            <select class="del-form-input" id="delReason" name="delReason" required>
+              <option value="" disabled selected>اختر السبب...</option>
+              <option value="stop">إيقاف استخدام التطبيق</option>
+              <option value="privacy">مخاوف الخصوصية</option>
+              <option value="migrate">الانتقال لتطبيق آخر</option>
+              <option value="data-only">حذف البيانات فقط دون إنهاء الحساب</option>
+              <option value="other">سبب آخر</option>
+            </select>
+            <div class="field-error-message" id="reasonError">يرجى اختيار سبب طلب حذف البيانات</div>
+          </div>
 
-        <label class="del-form-label" for="delNotes">ملاحظات إضافية</label>
-        <textarea
-          class="del-form-input"
-          id="delNotes"
-          name="delNotes"
-          placeholder="أي تفاصيل تساعدنا على معالجة طلبك بشكل أفضل"
-        ></textarea>
+          <div class="m-form-group">
+            <label class="del-form-label" for="delNotes">ملاحظات إضافية</label>
+            <textarea
+              class="del-form-input"
+              id="delNotes"
+              name="delNotes"
+              placeholder="أي تفاصيل تساعدنا على معالجة طلبك بشكل أفضل"
+            ></textarea>
+          </div>
 
-        <div class="del-checkbox-row">
-          <input type="checkbox" id="delConfirm" name="delConfirm" required />
-          <label for="delConfirm">
-            أؤكد أنني المالك الحقيقي لهذا الحساب وأفهم أن هذا الإجراء لا يمكن التراجع عنه وأن البيانات المحذوفة لن تُستعاد
-          </label>
+          <div class="del-checkbox-row" style="margin-bottom: 12px;">
+            <input type="checkbox" id="delConfirm" name="delConfirm" required />
+            <label for="delConfirm">
+              أؤكد أنني المالك الحقيقي لهذا الحساب وأفهم أن هذا الإجراء لا يمكن التراجع عنه وأن البيانات المحذوفة لن تُستعاد
+            </label>
+          </div>
+          <div class="field-error-message" id="confirmError" style="margin-top: 0; margin-bottom: 24px;">يرجى تحديد هذا الخيار لتأكيد هويتك والمتابعة</div>
+
+          <button type="submit" class="m-btn m-btn-primary" style="width:100%; justify-content:center; padding: 14px 24px; font-size:1rem;">
+            🗑️ إرسال طلب الحذف
+          </button>
+
+        </form>
+      </div>
+
+      <!-- In-Card Deletion Success State -->
+      <div class="del-success-card" id="deletionSuccessState">
+        <div class="del-success-badge">
+          <svg class="del-success-check-svg" viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
         </div>
-
-        <button type="submit" class="m-btn m-btn-primary" style="width:100%; justify-content:center; padding: 14px 24px; font-size:1rem;">
-          🗑️ إرسال طلب الحذف
-        </button>
-
-        <div id="deletion-success" style="display:none;">
-          ✅ تم استلام طلبك بنجاح. سنعالجه خلال 30 يوماً ونرسل تأكيداً على بريدك الإلكتروني.
-        </div>
-      </form>
+        <h3 class="del-success-title">تم تقديم طلب الحذف بنجاح!</h3>
+        <p class="del-success-desc">
+          نشكرك لتأكيد طلبك. لقد تم استلام طلب حذف البيانات الخاص بحسابك بنجاح وجاري إحالته للمراجعة وإتمام الحذف من جميع خوادمنا السحابية في غضون 30 يوماً. سنبقيك على اطلاع بتقدم طلبك عبر البريد الإلكتروني.
+        </p>
+      </div>
     </div>
   </div>
 
@@ -712,26 +812,144 @@
     </div>
   </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="shared/murshid-script.js"></script>
 <script>
-  // Deletion form handler
-  (function() {
-    var form = document.getElementById('deletionForm');
-    var success = document.getElementById('deletion-success');
-    if (!form) return;
+  document.addEventListener('DOMContentLoaded', function() {
+    'use strict';
+
+    // Initialize EmailJS with Public Key
+    emailjs.init({
+      publicKey: "GRhnKzi6GMcVvCjb3",
+    });
+
+    const form = document.getElementById('deletionForm');
+    const formContainer = document.getElementById('deletionFormContainer');
+    const successCardState = document.getElementById('deletionSuccessState');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    const fields = {
+      email: {
+        el: document.getElementById('delEmail'),
+        err: document.getElementById('emailError'),
+        validate: (val) => {
+          const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          return re.test(val.trim());
+        }
+      },
+      name: {
+        el: document.getElementById('delName'),
+        err: document.getElementById('nameError'),
+        validate: (val) => val.trim().length >= 3
+      },
+      reason: {
+        el: document.getElementById('delReason'),
+        err: document.getElementById('reasonError'),
+        validate: (val) => val !== '' && val !== null
+      },
+      confirm: {
+        el: document.getElementById('delConfirm'),
+        err: document.getElementById('confirmError'),
+        validate: () => document.getElementById('delConfirm').checked
+      }
+    };
+
+    // Live validation for input and select fields
+    Object.keys(fields).forEach(key => {
+      const field = fields[key];
+      if (field.el.type === 'checkbox') {
+        field.el.addEventListener('change', () => {
+          if (field.validate()) {
+            field.err.style.display = 'none';
+          }
+        });
+      } else {
+        const eventType = field.el.tagName === 'SELECT' ? 'change' : 'input';
+        field.el.addEventListener(eventType, () => {
+          const val = field.el.value;
+          if (val.trim() === '') {
+            field.err.style.display = 'none';
+            field.el.classList.remove('is-valid', 'is-invalid');
+          } else if (field.validate(val)) {
+            field.err.style.display = 'none';
+            field.el.classList.remove('is-invalid');
+            field.el.classList.add('is-valid');
+          } else {
+            field.err.style.display = 'flex';
+            field.el.classList.remove('is-valid');
+            field.el.classList.add('is-invalid');
+          }
+        });
+      }
+    });
+
+    // Form submit interception
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      var email = document.getElementById('delEmail').value.trim();
-      var name  = document.getElementById('delName').value.trim();
-      var confirm = document.getElementById('delConfirm').checked;
-      if (!email || !name || !confirm) {
-        return;
+
+      let isFormValid = true;
+
+      // Validate Text & Select Fields
+      Object.keys(fields).forEach(key => {
+        const field = fields[key];
+        const val = field.el.type === 'checkbox' ? '' : field.el.value;
+        const isValid = field.el.type === 'checkbox' ? field.validate() : field.validate(val);
+
+        if (!isValid) {
+          field.err.style.display = 'flex';
+          if (field.el.type !== 'checkbox') {
+            field.el.classList.remove('is-valid');
+            field.el.classList.add('is-invalid');
+          }
+          isFormValid = false;
+        } else {
+          field.err.style.display = 'none';
+          if (field.el.type !== 'checkbox') {
+            field.el.classList.remove('is-invalid');
+            field.el.classList.add('is-valid');
+          }
+        }
+      });
+
+      if (isFormValid) {
+        // UI Loading State
+        submitBtn.disabled = true;
+        const origText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<span>⚡ جاري إرسال طلب الحذف...</span>';
+
+        const reasonSelect = fields.reason.el;
+        const notesVal = document.getElementById('delNotes').value.trim();
+        const confirmationStatement = "أقر بأنني المالك الحقيقي للحساب وأفهم عدم إمكانية التراجع أو استعادة البيانات.";
+
+        const templateParams = {
+          templateTitle: '🗑️ طلب حذف بيانات الحساب',
+          fullName: fields.name.el.value.trim(),
+          email: fields.email.el.value.trim(),
+          phone: '(لا يوجد - طلب حذف)',
+          subject: reasonSelect.options[reasonSelect.selectedIndex].text,
+          organization: 'تطبيق مرشد - طلب حذف البيانات',
+          message: `سبب طلب الحذف: ${reasonSelect.options[reasonSelect.selectedIndex].text}\n\nملاحظات إضافية:\n${notesVal || 'لا يوجد'}\n\nالإقرار المالي والقانوني:\n[✓] ${confirmationStatement}`
+        };
+
+        emailjs.send('service_2gtw1uc', 'template_kjhcofd', templateParams)
+          .then(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = origText;
+            
+            // Smoothly hide form and show success state
+            formContainer.style.display = 'none';
+            successCardState.style.display = 'flex';
+          })
+          .catch((error) => {
+            console.error('EmailJS Data Deletion Send Error:', error);
+            alert('عذراً، حدث خطأ أثناء إرسال طلب حذف البيانات. يرجى المحاولة مرة أخرى لاحقاً أو التواصل معنا عبر البريد المباشر support@feshealthtech.com.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = origText;
+          });
       }
-      // Show success message
-      form.style.display = 'none';
-      success.style.display = 'block';
     });
-  })();
+
+  });
 </script>
 </body>
 </html>
