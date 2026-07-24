@@ -888,11 +888,18 @@
   </div>
 </footer>
 
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 <script src="shared/murshid-script.js"></script>
 
 <script>
   (function() {
     'use strict';
+
+    // Initialize EmailJS with Public Key
+    emailjs.init({
+      publicKey: "GRhnKzi6GMcVvCjb3",
+    });
 
     // Global Countries List (Centralized definition matching previous requirements)
     const countries = [
@@ -968,6 +975,8 @@
     const lengthCounter = document.getElementById('lengthCounter');
 
     const form = document.getElementById('contactForm');
+    const subjectEl = document.getElementById('messageSubject');
+    const submitBtn = form.querySelector('.m-form-submit-btn');
     const successModal = document.getElementById('successModal');
     const closeModalBtn = document.getElementById('closeModalBtn');
 
@@ -1139,7 +1148,7 @@
       });
     });
 
-    // Form submission interceptor
+    // Form submission interceptor with EmailJS
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
@@ -1168,9 +1177,33 @@
       }
 
       if (isFormValid) {
-        // Trigger Success Modal
-        successModal.classList.add('open');
-        document.body.style.overflow = 'hidden'; // lock scroll
+        // UI Loading State
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span>⚡ جاري إرسال رسالتك...</span>';
+
+        const templateParams = {
+          fullName: fields.name.el.value.trim(),
+          organization: 'تطبيق مرشد - مساعد أخصائي التغذية',
+          email: fields.email.el.value.trim(),
+          phone: selectedCountry.dialCode + ' ' + phoneInput.value.trim(),
+          subject: subjectEl.options[subjectEl.selectedIndex].text,
+          message: fields.message.el.value.trim()
+        };
+
+        emailjs.send('service_2gtw1uc', 'template_2tggiv7', templateParams)
+          .then(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>📧 إرسال استفسارك الآن</span>';
+            // Trigger Success Modal
+            successModal.classList.add('open');
+            document.body.style.overflow = 'hidden'; // lock scroll
+          })
+          .catch((error) => {
+            console.error('EmailJS Send Error:', error);
+            alert('عذراً، حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً أو التواصل معنا عبر البريد المباشر support@feshealthtech.com.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<span>📧 إرسال استفسارك الآن</span>';
+          });
       }
     });
 
