@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="تطبيق مرشد - تحويل تلقائي للمتجر" />
-  <title>مرشد | جاري التحويل للمتجر...</title>
+  <meta name="description" content="Murshid App - Automatic store redirect" />
+  <title>Murshid | Redirecting to Store...</title>
   <link rel="icon" type="image/webp" href="../assets/logo-sq.webp" />
   <style>
     body {
@@ -48,18 +48,18 @@
 <body>
   <div class="loading-container">
     <div class="spinner"></div>
-    <h2>جاري تحويلك إلى المتجر...</h2>
-    <p>إذا لم يتم تحويلك تلقائياً خلال ثوانٍ، <a href="../index.html" id="fallback-link" style="color: #10B981; text-decoration: underline;">اضغط هنا للعودة للموقع الرئيسي</a>.</p>
+    <h2>Redirecting you to the store...</h2>
+    <p>If you are not redirected automatically in a few seconds, <a href="../index.html" id="fallback-link" style="color: #10B981; text-decoration: underline;">click here to return to the main site</a>.</p>
   </div>
 
   <script>
     // ══════════════════════════════════════════════════
-    // روابط متاجر تطبيق مرشد المعتمدة
-    // استبدل الحواشي بالروابط الحقيقية فور صدورها من المتاجر
+    // Murshid App Store Links
+    // Replace placeholders with real links when available
     // ══════════════════════════════════════════════════
-    const PLAY_STORE_URL = '#'; // رابط متجر Google Play (أندرويد)
-    const APP_STORE_URL  = '#'; // رابط متجر App Store (آيفون/آيباد)
-    const FALLBACK_URL   = '../index.html'; // الرابط الاحتياطي لسطح المكتب
+    const PLAY_STORE_URL = '#'; // Google Play Store Link (Android)
+    const APP_STORE_URL  = '#'; // App Store Link (iPhone/iPad)
+    const FALLBACK_URL   = '../index.html'; // Fallback URL for desktop
 
     function redirect() {
       const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -71,13 +71,13 @@
         targetUrl = APP_STORE_URL !== '#' ? APP_STORE_URL : FALLBACK_URL;
       }
 
-      // تحديث الرابط الاحتياطي في الصفحة
+      // Update fallback link on page
       document.getElementById('fallback-link').href = targetUrl;
 
-      // تنفيذ التحويل
+      // Execute redirect
       setTimeout(() => {
         window.location.href = targetUrl;
-      }, 1000); // تأخير بسيط للحركة البصرية
+      }, 1000); // Slight delay for visual loading effect
     }
 
     window.onload = redirect;
