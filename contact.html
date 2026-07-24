@@ -1040,9 +1040,15 @@
     'use strict';
 
     // Initialize EmailJS with Public Key
-    emailjs.init({
-      publicKey: "GRhnKzi6GMcVvCjb3",
-    });
+    try {
+      if (typeof emailjs !== 'undefined') {
+        emailjs.init({
+          publicKey: "GRhnKzi6GMcVvCjb3",
+        });
+      }
+    } catch (e) {
+      console.warn("EmailJS could not be initialized. It might be blocked by an adblocker.", e);
+    }
 
 
     
@@ -1506,6 +1512,11 @@
       }
 
       if (isFormValid) {
+        if (typeof emailjs === 'undefined') {
+          alert('Message sending is currently disabled. Please disable your adblocker and refresh the page to contact us.');
+          return;
+        }
+
         // UI Loading State
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span>⚡ Sending message...</span>';

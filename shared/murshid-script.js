@@ -221,7 +221,7 @@ document.querySelectorAll('.newsletter-form').forEach(form => {
     e.preventDefault();
     const btn = form.querySelector('button');
     btn.textContent = '✅';
-    setTimeout(() => btn.textContent = 'اشترك', 2000);
+    setTimeout(() => btn.textContent = 'Subscribe', 2000);
     form.reset();
   });
 });
@@ -250,8 +250,8 @@ function initCookieBanner() {
       flex-direction: column;
       gap: 14px;
       animation: mCookieFadeUp 0.5s ease forwards;
-      direction: rtl;
-      text-align: right;
+      direction: ltr;
+      text-align: left;
     }
     @media (max-width: 576px) {
       .m-cookie-banner {
@@ -313,12 +313,12 @@ function initCookieBanner() {
   banner.className = 'm-cookie-banner';
   banner.innerHTML = `
     <p class="m-cookie-text">
-      🔒 يستخدم موقعنا ملفات تعريف الارتباط لتحسين أداء النظام وتحليل حركة التصفح. مواصلة تصفحك للموقع يعني موافقتك على ذلك. لمزيد من المعلومات، اقرأ 
-      <a href="privacy-policy.html">سياسة الخصوصية</a>.
+      🔒 Our website uses cookies to improve system performance and analyze traffic. By continuing to browse, you agree to this. For more information, read our
+      <a href="privacy-policy.html">Privacy Policy</a>.
     </p>
     <div class="m-cookie-btn-group">
-      <button class="m-cookie-btn m-cookie-reject" id="mCookieReject">إغلاق</button>
-      <button class="m-cookie-btn m-cookie-accept" id="mCookieAccept">موافق</button>
+      <button class="m-cookie-btn m-cookie-reject" id="mCookieReject">Close</button>
+      <button class="m-cookie-btn m-cookie-accept" id="mCookieAccept">Accept</button>
     </div>
   `;
   document.body.appendChild(banner);
