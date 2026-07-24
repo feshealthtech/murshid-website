@@ -425,25 +425,39 @@
       transform: translateY(0);
     }
 
+    /* Form Grid Rows (2 columns on desktop, 1 on mobile) */
+    .m-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 640px) {
+      .m-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
     /* Custom Toast / Field Validation feedback */
     .field-error-message {
-      font-size: 0.78rem;
-      color: var(--m-danger);
+      font-size: 0.8rem;
+      color: #EF4444;
       margin-top: 6px;
       display: none;
       align-items: center;
       gap: 6px;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* Validation Field States */
     .m-form-input.is-invalid, .m-form-select.is-invalid, .m-form-textarea.is-invalid {
-      border-color: var(--m-danger) !important;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+      border-color: #EF4444 !important;
+      background-color: rgba(239, 68, 68, 0.08) !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
     }
     .m-form-input.is-valid, .m-form-select.is-valid, .m-form-textarea.is-valid {
-      border-color: var(--m-success) !important;
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15) !important;
+      border-color: var(--m-primary) !important;
+      box-shadow: 0 0 0 3px var(--m-primary-glow) !important;
     }
 
     /* In-Card Success State Container */
@@ -452,70 +466,59 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 30px 10px;
-      animation: mFadeInScale 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 40px 10px;
+      animation: mFadeInScale 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     @keyframes mFadeInScale {
-      from { opacity: 0; transform: scale(0.95); }
+      from { opacity: 0; transform: scale(0.96); }
       to { opacity: 1; transform: scale(1); }
     }
 
     .m-success-badge-circle {
-      width: 80px;
-      height: 80px;
-      background: rgba(34, 197, 94, 0.1);
-      border: 2px solid var(--m-success);
+      width: 84px;
+      height: 84px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 2px solid rgba(34, 197, 94, 0.3);
       border-radius: 50%;
-      color: var(--m-success);
+      color: #22C55E;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 24px;
-      box-shadow: 0 0 30px rgba(34, 197, 94, 0.25);
-      animation: badgePulse 2s infinite ease-in-out;
-    }
-    @keyframes badgePulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
-      50% { transform: scale(1.05); box-shadow: 0 0 35px rgba(34, 197, 94, 0.4); }
+      box-shadow: 0 0 25px rgba(34, 197, 94, 0.2);
     }
 
     .m-success-check-svg {
-      width: 40px;
-      height: 40px;
-      stroke: var(--m-success);
+      width: 42px;
+      height: 42px;
+      stroke: #22C55E;
       stroke-width: 3;
       stroke-linecap: round;
       stroke-linejoin: round;
       fill: none;
-      stroke-dasharray: 60;
-      stroke-dashoffset: 60;
-      animation: drawCheck 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards 0.2s;
-    }
-    @keyframes drawCheck {
-      to { stroke-dashoffset: 0; }
     }
 
     .m-success-card-title {
       font-family: 'Noto Kufi Arabic', sans-serif;
-      font-size: 1.6rem;
+      font-size: 1.75rem;
       font-weight: 800;
       color: #FFF;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .m-success-card-desc {
       color: var(--m-text-muted);
       font-size: 0.98rem;
       line-height: 1.7;
-      max-width: 440px;
-      margin: 0 auto 32px;
+      max-width: 460px;
+      margin: 0 auto 36px;
     }
 
     .m-reset-form-btn {
-      background: rgba(43, 181, 160, 0.1);
-      border: 1px solid var(--m-border-strong);
-      border-radius: var(--m-radius-sm);
-      color: var(--m-primary-light);
-      padding: 12px 28px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      color: #FFF;
+      padding: 12px 32px;
       font-size: 0.95rem;
       font-weight: 700;
       cursor: pointer;
@@ -525,10 +528,10 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .m-reset-form-btn:hover {
-      background: var(--m-primary);
-      color: #000;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--m-primary);
+      color: var(--m-primary-light);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px var(--m-primary-glow);
     }
 
     /* Modal / Success Dialog */
@@ -838,79 +841,86 @@
 
         <form id="contactForm" novalidate>
           
-          <!-- Field 1: Name -->
-          <div class="m-form-group">
-            <label class="m-form-label" for="clientName">الاسم الكامل *</label>
-            <input type="text" id="clientName" class="m-form-input" placeholder="اكتب اسمك الثلاثي" required />
-            <div class="field-error-message" id="nameError">⚠️ يرجى كتابة اسمك الكامل (3 أحرف على الأقل).</div>
-          </div>
-
-          <!-- Field 2: Email -->
-          <div class="m-form-group">
-            <label class="m-form-label" for="clientEmail">البريد الإلكتروني *</label>
-            <input type="email" id="clientEmail" class="m-form-input" placeholder="name@example.com" required style="direction: ltr; text-align: right;" />
-            <div class="field-error-message" id="emailError">⚠️ يرجى إدخال بريد إلكتروني صحيح وموثوق (مثال: name@example.com).</div>
-          </div>
-
-          <!-- Field 3: Phone Number with Custom Selector -->
-          <div class="m-form-group">
-            <label class="m-form-label" for="clientPhone">رقم الجوال *</label>
-            <div class="phone-input-wrapper">
-              
-              <!-- Selected Country Trigger -->
-              <div class="country-selector-container">
-                <div class="selected-country-trigger" id="countryTrigger" role="combobox" aria-expanded="false" aria-haspopup="listbox" title="اختر رمز الدولة">
-                  <span class="trigger-flag" id="triggerFlag">🇸🇦</span>
-                  <span class="trigger-code" id="triggerCode" style="direction: ltr;">+966</span>
-                  <span class="trigger-arrow">▼</span>
-                </div>
-                
-                <!-- Dropdown Panel -->
-                <div class="country-dropdown-panel" id="countryPanel">
-                  <div class="dropdown-search-box">
-                    <input type="text" id="countrySearch" class="dropdown-search-input" placeholder="ابحث باسم الدولة أو الرمز..." />
-                  </div>
-                  <div class="country-list-scroll" id="countryList" role="listbox">
-                    <!-- Generated dynamically via JS -->
-                  </div>
-                </div>
-              </div>
-
-              <!-- Phone text input -->
-              <div class="phone-input-field-container">
-                <input type="tel" id="clientPhone" class="m-form-input" placeholder="501234567" style="direction: ltr; text-align: left; padding-left: 12px;" required />
-                <span class="phone-length-counter" id="lengthCounter">0 / 9</span>
-              </div>
-
+          <!-- Row 1: Name & Organization -->
+          <div class="m-form-row">
+            <div class="m-form-group">
+              <label class="m-form-label" for="clientName">الاسم الكامل *</label>
+              <input type="text" id="clientName" class="m-form-input" placeholder="د. محمد أحمد" required />
+              <div class="field-error-message" id="nameError">يرجى كتابة الاسم الكامل (3 أحرف على الأقل)</div>
             </div>
-            <div class="field-error-message" id="phoneError">⚠️ يرجى التحقق من صحة رقم الجوال وإدخال كافة أرقام الدولة.</div>
+            <div class="m-form-group">
+              <label class="m-form-label" for="clientOrg">المؤسسة / الجهة *</label>
+              <input type="text" id="clientOrg" class="m-form-input" placeholder="جامعة / عيادة / شركة" required />
+              <div class="field-error-message" id="orgError">يرجى كتابة اسم المؤسسة أو الجهة (حرفين على الأقل)</div>
+            </div>
           </div>
 
-          <!-- Field 4: Subject Dropdown -->
+          <!-- Row 2: Email & Phone -->
+          <div class="m-form-row">
+            <div class="m-form-group">
+              <label class="m-form-label" for="clientEmail">البريد الإلكتروني *</label>
+              <input type="email" id="clientEmail" class="m-form-input" placeholder="name@example.com" required style="direction: ltr; text-align: right;" />
+              <div class="field-error-message" id="emailError">يرجى إدخال بريد إلكتروني صحيح</div>
+            </div>
+            <div class="m-form-group">
+              <label class="m-form-label" for="clientPhone">رقم الجوال *</label>
+              <div class="phone-input-wrapper">
+                
+                <!-- Selected Country Trigger -->
+                <div class="country-selector-container">
+                  <div class="selected-country-trigger" id="countryTrigger" role="combobox" aria-expanded="false" aria-haspopup="listbox" title="اختر رمز الدولة">
+                    <span class="trigger-flag" id="triggerFlag">🇸🇦</span>
+                    <span class="trigger-code" id="triggerCode" style="direction: ltr;">+966</span>
+                    <span class="trigger-arrow">▼</span>
+                  </div>
+                  
+                  <!-- Dropdown Panel -->
+                  <div class="country-dropdown-panel" id="countryPanel">
+                    <div class="dropdown-search-box">
+                      <input type="text" id="countrySearch" class="dropdown-search-input" placeholder="ابحث باسم الدولة أو الرمز..." />
+                    </div>
+                    <div class="country-list-scroll" id="countryList" role="listbox">
+                      <!-- Generated dynamically via JS -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Phone text input -->
+                <div class="phone-input-field-container">
+                  <input type="tel" id="clientPhone" class="m-form-input" placeholder="501234567" style="direction: ltr; text-align: left; padding-left: 12px;" required />
+                  <span class="phone-length-counter" id="lengthCounter">0 / 9</span>
+                </div>
+
+              </div>
+              <div class="field-error-message" id="phoneError">يرجى إدخال رقم جوال صحيح للبلد المختار</div>
+            </div>
+          </div>
+
+          <!-- Field 3: Subject Dropdown -->
           <div class="m-form-group">
-            <label class="m-form-label" for="messageSubject">موضوع المراسلة *</label>
+            <label class="m-form-label" for="messageSubject">موضوع التواصل *</label>
             <select id="messageSubject" class="m-form-select" required>
-              <option value="" disabled selected>اختر موضوع المراسلة...</option>
+              <option value="" disabled selected>اختر الموضوع...</option>
               <option value="support">🛠️ دعم فني أو تقني في التطبيق</option>
               <option value="billing">🪙 فوترة، نقاط ذهبية، أو استرداد مالي</option>
               <option value="feedback">💡 اقتراح ميزة أو تحسين بالذكاء الاصطناعي</option>
               <option value="privacy">🔒 استفسار عن خصوصية وتخزين بيانات المرضى</option>
-              <option value="other">❓ موضوع آخر</option>
+              <option value="other">❓ أخرى</option>
             </select>
-            <div class="field-error-message" id="subjectError">⚠️ يرجى اختيار موضوع المراسلة.</div>
+            <div class="field-error-message" id="subjectError">يرجى اختيار موضوع التواصل</div>
           </div>
 
-          <!-- Field 5: Message -->
+          <!-- Field 4: Message -->
           <div class="m-form-group">
-            <label class="m-form-label" for="clientMessage">نص الرسالة *</label>
-            <textarea id="clientMessage" class="m-form-textarea" placeholder="اكتب استفسارك بالتفصيل..." required></textarea>
-            <div class="field-error-message" id="messageError">⚠️ يرجى كتابة نص الرسالة بالتفصيل (10 أحرف على الأقل).</div>
+            <label class="m-form-label" for="clientMessage">رسالتك *</label>
+            <textarea id="clientMessage" class="m-form-textarea" placeholder="اكتب رسالتك هنا بالتفصيل — كلما كانت أوضح، كان ردنا أسرع وأدق." required></textarea>
+            <div class="field-error-message" id="messageError">يرجى كتابة تفاصيل رسالتك (10 أحرف على الأقل)</div>
           </div>
 
           <!-- Submit Button -->
           <div class="m-submit-btn-wrap">
             <button type="submit" class="m-form-submit-btn">
-              <span>📧 إرسال استفسارك الآن</span>
+              <span>📧 إرسال الرسالة</span>
             </button>
           </div>
 
@@ -924,13 +934,11 @@
             <polyline points="20 6 9 17 4 12"></polyline>
           </svg>
         </div>
-        <h3 class="m-success-card-title">تم إرسال رسالتك بنجاح! 🎉</h3>
+        <h3 class="m-success-card-title">تم إرسال رسالتك بنجاح!</h3>
         <p class="m-success-card-desc">
-          نشكرك على تواصلك مع فريق مرشد. تم استلام رسالتك بنجاح وإحالتها للطاقم الطبي والتقني المختص، وسنقوم بالرد عليك عبر البريد الإلكتروني خلال 24 ساعة عمل.
+          نشكرك على تواصلك مع فريق FES HealthTech وتطبيق مرشد. لقد تم تسجيل طلبك وإحالته للمسؤول المختص، وسنقوم بالرد عليك عبر البريد الإلكتروني خلال 24 ساعة عمل.
         </p>
-        <button type="button" class="m-reset-form-btn" id="contactResetBtn">
-          <span>🔄 إرسال رسالة أخرى</span>
-        </button>
+        <button type="button" class="m-reset-form-btn" id="contactResetBtn">إرسال رسالة أخرى</button>
       </div>
     </section>
 
@@ -1378,6 +1386,11 @@
         err: document.getElementById('nameError'),
         validate: (val) => val.trim().length >= 3
       },
+      org: {
+        el: document.getElementById('clientOrg'),
+        err: document.getElementById('orgError'),
+        validate: (val) => val.trim().length >= 2
+      },
       email: {
         el: document.getElementById('clientEmail'),
         err: document.getElementById('emailError'),
@@ -1476,11 +1489,11 @@
       if (isFormValid) {
         // UI Loading State
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>⚡ جاري إرسال رسالتك...</span>';
+        submitBtn.innerHTML = '<span>⚡ جاري إرسال الرسالة...</span>';
 
         const templateParams = {
           fullName: fields.name.el.value.trim(),
-          organization: 'تطبيق مرشد - مساعد أخصائي التغذية',
+          organization: fields.org.el.value.trim() + ' (تطبيق مرشد)',
           email: fields.email.el.value.trim(),
           phone: selectedCountry.dialCode + ' ' + phoneInput.value.trim(),
           subject: subjectEl.options[subjectEl.selectedIndex].text,
@@ -1490,7 +1503,7 @@
         emailjs.send('service_2gtw1uc', 'template_kjhcofd', templateParams)
           .then(() => {
             submitBtn.disabled = false;
-            submitBtn.innerHTML = '<span>📧 إرسال استفسارك الآن</span>';
+            submitBtn.innerHTML = '<span>📧 إرسال الرسالة</span>';
             
             // Smoothly transition from Form Container to In-Card Success State
             formContainer.style.display = 'none';
@@ -1500,7 +1513,7 @@
             console.error('EmailJS Send Error:', error);
             alert('عذراً، حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً أو التواصل معنا عبر البريد المباشر support@feshealthtech.com.');
             submitBtn.disabled = false;
-            submitBtn.innerHTML = '<span>📧 إرسال استفسارك الآن</span>';
+            submitBtn.innerHTML = '<span>📧 إرسال الرسالة</span>';
           });
       }
     });
