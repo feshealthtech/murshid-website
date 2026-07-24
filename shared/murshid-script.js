@@ -229,22 +229,7 @@ if (deletionForm) {
   });
 }
 
-/* ── Contact Form ── */
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    const btn = contactForm.querySelector('[type=submit]');
-    const orig = btn.textContent;
-    btn.textContent = '⏳ جاري الإرسال...';
-    btn.disabled = true;
-    await new Promise(r => setTimeout(r, 1500));
-    btn.textContent = '✅ تم الإرسال بنجاح!';
-    btn.style.background = 'var(--m-success)';
-    contactForm.reset();
-    setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 3000);
-  });
-}
+
 
 /* ── Newsletter Form ── */
 document.querySelectorAll('.newsletter-form').forEach(form => {
