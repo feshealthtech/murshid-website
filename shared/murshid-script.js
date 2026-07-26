@@ -291,16 +291,16 @@ function initCookieBanner() {
       transition: all 0.2s ease;
     }
     .m-cookie-accept {
-      background: #10B981;
+      background: #047857; /* Darker green for WCAG contrast */
       color: #fff;
       border: none;
     }
     .m-cookie-accept:hover {
-      background: #0D9488;
+      background: #064e3b;
     }
     .m-cookie-reject {
       background: transparent;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgba(255, 255, 255, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
     .m-cookie-reject:hover {

@@ -141,9 +141,10 @@
 .mockup-progress-fill {
   height:100%; background:var(--m-primary);
   border-radius:2px; width:72%;
+  transform-origin: left;
   animation:grow-bar 2s ease 1s both;
 }
-@keyframes grow-bar { from{width:0;} }
+@keyframes grow-bar { from{transform:scaleX(0);} to{transform:scaleX(1);} }
 
 /* AI Chat Mockup */
 .mockup-ai-chat {
