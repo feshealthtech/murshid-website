@@ -130,7 +130,7 @@
       <div class="m-label">Legal</div>
       <h1 class="m-title">Privacy Policy</h1>
       <p class="m-subtitle" style="margin:0;">We are committed to protecting your data and your patients' data with the highest security and privacy standards.</p>
-      <span class="legal-last-updated">Last Updated: July 1, 2026</span>
+      <span class="legal-last-updated">Last Updated: July 29, 2026</span>
     </div>
   </div>
 </section>
@@ -167,7 +167,7 @@
       <div class="legal-section" id="section1">
         <h2 class="legal-section-title"><span class="section-num">1</span> Introduction and Service Definition</h2>
         <p>Welcome to <strong>Murshid</strong>, the smart clinic management app designed for dietitians. This app is developed and fully managed by <strong>FES HealthTech</strong>, a company specializing in nutritional care technologies and medical content platforms.</p>
-        <p>This document defines the privacy policy applicable to the Murshid app, detailing the data we collect, how we use it, who we may share it with, and the safeguards we employ to protect it. <strong>This policy was last updated on July 1, 2026.</strong></p>
+        <p>This document defines the privacy policy applicable to the Murshid app, detailing the data we collect, how we use it, who we may share it with, and the safeguards we employ to protect it. <strong>This policy was last updated on July 29, 2026.</strong></p>
         <div class="legal-highlight">
           <p>⚠️ <strong>Important Notice:</strong> Please read this policy carefully before using the app. Your use of the Murshid app implies your full acceptance of the terms, conditions, and practices described in this document. If you do not agree to any of these terms, please stop using the app immediately.</p>
         </div>
@@ -185,7 +185,10 @@
         <p>We are committed to collecting only the minimum data necessary to operate and improve the service. Below is a comprehensive breakdown of each category of data we handle:</p>
 
         <h3>A) Personal Account Data</h3>
-        <p>When you log in for the first time using <strong>Google Sign-In</strong>, we only collect your <strong>Email Address</strong>. We do not request or store your full personal name or profile picture on our servers. The email address is used via <strong>Firebase Authentication</strong> to create and authenticate your account and ensure secure access.</p>
+        <p>When you log in for the first time using <strong>Google Sign-In</strong> or <strong>Apple Sign-In</strong>, we only collect your <strong>Email Address</strong>. We do not request or store your full personal name or profile picture on our servers.</p>
+        <div class="legal-highlight">
+          <p>🔐 <strong>Zero Password Storage:</strong> FES HealthTech does not process, store, or have any access to your actual passwords. The authentication process is handled entirely via secure OAuth tokens provided by third-party services (such as Google and Apple) through Firebase Authentication. This ensures the highest level of security against credential leaks.</p>
+        </div>
 
         <h3>B) Professional Profile and Reports Data</h3>
         <p>After creating an account, you can enter your professional profile details such as clinic or health center name, nutritional specialty, clinic logo, and license number. <strong>This data is stored locally ONLY on your device (in the Isar DB database)</strong> and is used locally to customize the header of PDF reports issued to patients. <strong>It is NEVER uploaded or stored on Cloud Firestore or our external servers</strong>.</p>
@@ -201,11 +204,14 @@
         <h3>E) Wallet and Cloud Subscriptions Data</h3>
         <p>The subscription system, Gold Points balance, and Blue Points are managed via <strong>Cloud Firestore</strong>. Cloud servers exclusively process and store the following operational data: the email address linked to the account, subscription details, points balance history, and dates of consumption transactions.</p>
 
-        <h3>F) Device Data</h3>
-        <p>We collect the <strong>Device ID</strong> to link it to your digital wallet when the account is first created, and to prevent abuse of the rewarded advertising system. The Device ID is not used for any direct marketing purposes.</p>
+        <h3>F) Device and Session Management Data</h3>
+        <p>We collect hardware and connectivity identifiers including your <strong>Device Name/Model</strong>, <strong>Device ID</strong>, and <strong>Approximate Location (Country-level only, via IP)</strong>. We also monitor active sessions, last seen timestamps, and login attempts. This data is essential to link your device securely to your digital wallet, manage multi-device conflicts, enforce account-sharing prohibitions, and prevent abuse of the rewarded advertising system. We NEVER collect precise GPS location data, and your device/session data is never used for direct marketing.</p>
 
         <h3>G) Billing and Financial Transactions Data</h3>
         <p>The app allows issuing electronic invoices and financial receipts (such as simplified invoices compatible with ZATCA in Saudi Arabia, VAT settings, and customized global currencies). All billing data and financial records are stored locally ONLY on the dietitian's device under financial privacy mode, and are NEVER uploaded to any external servers.</p>
+
+        <h3>H) Security and Anti-Fraud Data (Time & Connectivity)</h3>
+        <p>To protect your subscription and ensure data integrity, the app collects and processes your device's System Time and Date, and stores local timestamps of your "Last Online Sync" and "Last Seen Activity". The app also makes periodic anonymous pings to public Network Time Protocol (NTP) servers (e.g., Google Time Servers) to verify the true global time. No personal data is attached to these time-check requests.</p>
       </div>
 
       <div class="m-divider"></div>
@@ -221,6 +227,8 @@
           <li><strong>Google Drive Backup:</strong> If you voluntarily enable the backup feature, your database file is encrypted locally and then uploaded securely to your private space on Google Drive.</li>
           <li><strong>Communication and Notifications:</strong> We may contact you via your email to send important service updates, security notices, or technical support responses.</li>
           <li><strong>Service Improvement and Development:</strong> Analyzing anonymous usage data to understand usage patterns, improve the user interface, and fix bugs.</li>
+          <li><strong>Subscription Verification & Anti-Fraud:</strong> We utilize your device's time data and NTP time-checks strictly to manage the "Offline Grace Period" (allowing you to use the app without internet for up to 45 days) and to detect fraudulent time manipulations (Monotonic Time Traps) that attempt to bypass subscription renewals or security locks.</li>
+          <li><strong>Device Conflict and Session Security:</strong> We use your device name, approximate location, and active session logs to monitor for unauthorized access. If simultaneous logins from different devices are detected, our system will automatically manage the conflict by securing the account or terminating older sessions, protecting your license and data.</li>
         </ul>
         <div class="legal-highlight">
           <p>✅ <strong>Explicit Guarantee:</strong> We do not use your data for marketing purposes for third parties, and we do not sell any data to any entity whatsoever.</p>
@@ -287,6 +295,7 @@
           <li><strong>OCR Image Processing and Privacy Protection:</strong> When the OCR feature is invoked, the selected image is transmitted upon the dietitian's request via an encrypted channel (SSL/TLS) for digital and real-time processing via the API, without any human review and without being saved on the company's servers. Google's privacy terms are enforced, which prevent the exploitation of API data to train models, and the dietitian is always advised to focus the camera on the medical table area and the required numbers.</li>
           <li><strong>Screenshot Prevention and Privacy Mode:</strong> Screenshot protection is automatically enabled on sensitive screens, in addition to the "Financial Privacy Mode" feature that obscures numbers and data with a single touch in front of clinic visitors.</li>
           <li><strong>SSL Pinning:</strong> The app uses SSL Pinning technology to verify the identity of authorized servers, preventing Man-in-the-Middle (MitM) attacks.</li>
+          <li><strong>Offline Security & Anti-Tampering Mechanisms:</strong> When operating in "Offline Mode" during the permitted grace period, the app employs a local Monotonic Time Tracker to protect the integrity of the encrypted database. Any detected attempt to tamper with the device's clock to extend the grace period will trigger an immediate protective lock, securing the patient data until an online authentication is successfully completed.</li>
         </ul>
         <div class="legal-highlight">
           <p>🏥 <strong>Dietitian's Responsibility and Clinical/Tax Disclaimer:</strong> As a licensed dietitian, you are the primary legal and ethical party responsible for your patients' data and the accuracy of the tax and financial declarations issued from your clinic. The Murshid app is strictly an auxiliary technical tool, and FES HealthTech bears no legal, tax, or clinical responsibility toward medical decisions or accounting declarations submitted to government entities in any country worldwide.</p>
