@@ -185,9 +185,9 @@
         <p>We are committed to collecting only the minimum data necessary to operate and improve the service. Below is a comprehensive breakdown of each category of data we handle:</p>
 
         <h3>A) Personal Account Data</h3>
-        <p>When you log in for the first time using <strong>Google Sign-In</strong> or <strong>Apple Sign-In</strong>, we only collect your <strong>Email Address</strong>. We do not request or store your full personal name or profile picture on our servers.</p>
+        <p>When you authenticate and log in for the first time using <strong>Google Sign-In</strong> or <strong>Apple Sign-In</strong>, we collect your <strong>Email Address</strong>. Due to the default secure design of third-party authentication services, your public profile information such as your <strong>Display Name</strong> and <strong>Profile Picture URL</strong> are also securely retrieved and stored by our authentication service provider (Firebase Authentication) as part of your digital credential profile.</p>
         <div class="legal-highlight">
-          <p>🔐 <strong>Zero Password Storage:</strong> FES HealthTech does not process, store, or have any access to your actual passwords. The authentication process is handled entirely via secure OAuth tokens provided by third-party services (such as Google and Apple) through Firebase Authentication. This ensures the highest level of security against credential leaks.</p>
+          <p>🔐 <strong>Data Usage & Zero Password Storage:</strong> While your display name and profile picture URL are kept in your secure authentication profile, FES HealthTech does not use, process, or share your profile picture, nor do we store them on our primary database servers (Cloud Firestore). Furthermore, FES HealthTech does not process, store, or have any access to your actual passwords. The authentication process is handled entirely via secure OAuth tokens provided by third-party services through Firebase Authentication. This ensures the highest level of security against credential leaks.</p>
         </div>
 
         <h3>B) Professional Profile and Reports Data</h3>
