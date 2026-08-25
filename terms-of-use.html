@@ -429,6 +429,7 @@
           <li>Exporting customized reports as PDF files to share with patients within a legitimate, consent-based professional relationship</li>
           <li>Backing up clinic data for the purpose of maintaining patient records</li>
           <li>Customizing app settings and visual identity to match the clinic's workflow</li>
+          <li>Using the Patient Follow-up Web Form feature to collect clinical data securely from patients, subject to acquiring necessary clinical and legal consents</li>
         </ul>
         <p class="legal-sub-title">🚫 Prohibited Use</p>
         <ul>
@@ -440,6 +441,7 @@
           <li>Attempting to bypass the ad system or access Pro features without proper payment</li>
           <li>Manipulating, altering, or spoofing the device's date and time settings (Time Manipulation) to bypass the offline grace period, evade subscription renewals, or deceive the App's security verification systems</li>
           <li>Uploading harmful content, viruses, or malware via app features</li>
+          <li>Attempting to intercept, manipulate, or bypass the end-to-end encryption of the patient web form, or using modified versions of the form page to collect unencrypted patient data</li>
         </ul>
         <p>Violating any of these clauses may prompt the actions mentioned in Section 9 of these terms.</p>
       </div>
@@ -462,6 +464,15 @@
           <strong>The Importance of Independent Professional Judgment</strong>
           The technical engines in Murshid execute mathematical operations and extract text to simplify administrative work. Your professional and ethical responsibility dictates that you review every number and directive with an independent critical mind, adapting it to the actual reality of the patient in front of you.
         </div>
+
+        <p class="legal-sub-title">Patient Web Form Feature, Decryption, & Data Control</p>
+        <ul>
+          <li><strong>Role of the Dietitian as Data Controller:</strong> Under global data protection laws (e.g. GDPR, CCPA, Saudi PDPL), you (the registered dietitian) are the sole "Data Controller" of the patient records. FES HealthTech has zero access to decryption keys or the patient's health data. You are entirely responsible for the secure handling, local decryption, storage, and retention of patient-submitted files.</li>
+          <li><strong>Verification of Imported Data:</strong> The dietitian must independently inspect and verify the accuracy of all data imported from the patient web form (including biometrics like height and weight, medical history, allergies, and lab results) before officially saving it to the patient profile. FES HealthTech bears no clinical liability for any diagnostic or therapeutic decisions made based on erroneous patient-entered inputs.</li>
+          <li><strong>Third-Party Communication Channels:</strong> Sharing of the encrypted <code>.mrshed</code> file occurs manually via third-party services (such as WhatsApp or email). FES HealthTech is not responsible for the security, availability, or potential data exposure during transmission through these third-party platforms.</li>
+          <li><strong>Consent of Minors:</strong> You represent and warrant that you will obtain all necessary parental or guardian consents prior to sending the E2EE follow-up form link to any patient under the legal age of majority in your jurisdiction.</li>
+          <li><strong>Secure API Proxy & Cryptographic Integrity:</strong> The App routes Cloud OCR image processing via FES HealthTech's secure Firebase Cloud Functions. You agree not to intercept, bypass, or manipulate the traffic routing to our Cloud Functions, nor attempt to access or hijack secret API tokens used to authenticate calls to third-party services (such as Google Gemini AI).</li>
+        </ul>
       </div>
 
       <!-- Section 7 -->
@@ -562,6 +573,7 @@
           <li>Loss of patient data or clinical records generated and stored exclusively on your local device during prolonged "Offline Mode" usage, should the device be lost, damaged, stolen, or the App uninstalled before a successful cloud synchronization is executed</li>
           <li>Damages resulting from the interruption of third-party services mentioned in Section 8</li>
           <li>Erroneous clinical or accounting decisions made by the user based on calculations or OCR readings without independent review</li>
+          <li>Any unauthorized access, loss, interception, or exposure of patient data during manual transmission of encrypted files from the patient's browser to your device via third-party communication channels (e.g., WhatsApp, Email).</li>
         </ul>
         <p class="legal-sub-title">Force Majeure</p>
         <p>FES HealthTech is not responsible for any delay or failure to perform its obligations caused by exceptional circumstances beyond reasonable control, including: general outages of global cloud server infrastructure, international cable network failures, natural disasters, emergency sovereign or governmental decisions, and outages of global store services.</p>

@@ -193,10 +193,11 @@
         <h3>B) Professional Profile and Reports Data</h3>
         <p>After creating an account, you can enter your professional profile details such as clinic or health center name, nutritional specialty, clinic logo, and license number. <strong>This data is stored locally ONLY on your device (in the Isar DB database)</strong> and is used locally to customize the header of PDF reports issued to patients. <strong>It is NEVER uploaded or stored on Cloud Firestore or our external servers</strong>.</p>
 
-        <h3>C) Patient Data</h3>
+        <h3>C) Patient Data (Including Encrypted Patient Web Form)</h3>
         <div class="legal-highlight">
-          <p>🔒 <strong>Strict Local Storage Principle:</strong> All patient data — including names, demographic data, physical measurements, dietary logs, and nutrition plans — is stored <strong>ONLY locally</strong> on your device using the <strong>Isar DB</strong> database. This data is not sent to our servers and is not accessible by any external party in its original form.</p>
+          <p>🔒 <strong>Strict Local Storage Principle:</strong> All patient data — including names, demographic data, physical measurements, dietary logs, and nutrition plans — is stored <strong>ONLY locally</strong> on your device using the <strong>Isar DB</strong> database.</p>
         </div>
+        <p><strong>Patient Follow-up Web Form (End-to-End Encrypted):</strong> If you choose to utilize the Patient Follow-up Web Form feature to collect data from your patients, the App generates a secure, unique E2EE form link. The patient accesses this form via their web browser, where all input data (including physical measurements, health history, dietary assessments, and uploaded images) is encrypted <strong>locally in the patient's browser</strong> prior to transmission. This encryption uses the military-grade <strong>AES-256-GCM</strong> algorithm combined with asymmetric <strong>NaCl/X25519</strong> key exchange. The encrypted payload is downloaded as a secure <code>.mrshed</code> file which the patient shares with you directly (e.g., via WhatsApp). At no stage does FES HealthTech collect, store, transmit, or have access to either the decryption keys or the patient's medical data on its servers. The decryption and import process occur exclusively on your local device.</p>
 
         <h3>D) Usage and Analytics Data</h3>
         <p>We use <strong>Firebase Analytics</strong> to collect anonymous data about how you use the app, such as screens visited, frequency of using certain features, and session durations. This data is used exclusively to improve the user experience and develop features.</p>
@@ -222,13 +223,14 @@
         <p>We use the collected data exclusively for the following purposes:</p>
         <ul>
           <li><strong>Core Service Operation:</strong> Verifying your identity, granting you access to your account, and customizing your in-app experience based on your professional profile.</li>
-          <li><strong>Smart Data Extraction (OCR) Tools:</strong> When the dietitian voluntarily chooses to use the Cloud OCR feature to extract tests or medications from images, the selected image is sent via an encrypted connection (HTTPS/TLS) to the <strong>Google Gemini API</strong> for optical character recognition to extract medical names and numbers only. The image is processed in real-time in the API's temporary memory in accordance with Google API privacy terms (which prohibit saving data or using it to train models), and the image data is destroyed immediately after the text is extracted and returned to the app to be saved locally on your device.</li>
+          <li><strong>Smart Data Extraction (OCR) Tools:</strong> When the dietitian voluntarily chooses to use the Cloud OCR feature to extract tests or medications from images, the selected image is sent via an encrypted connection (HTTPS/TLS) through FES HealthTech's secure Firebase Cloud Functions (acting as a secure API Proxy) to the <strong>Google Gemini API</strong> for optical character recognition. The image data is processed purely in real-time RAM memory, is never written to disk or stored on our servers, and is immediately destroyed after the text results are returned. Google API terms prohibit using this data for model training.</li>
           <li><strong>Rewarded Ads Processing (AdMob SSV):</strong> When watching a rewarded ad, the AdMob system sends a secure confirmation via Server-Side Verification (SSV) to add Blue Points to your wallet.</li>
           <li><strong>Google Drive Backup:</strong> If you voluntarily enable the backup feature, your database file is encrypted locally and then uploaded securely to your private space on Google Drive.</li>
           <li><strong>Communication and Notifications:</strong> We may contact you via your email to send important service updates, security notices, or technical support responses.</li>
           <li><strong>Service Improvement and Development:</strong> Analyzing anonymous usage data to understand usage patterns, improve the user interface, and fix bugs.</li>
           <li><strong>Subscription Verification & Anti-Fraud:</strong> We utilize your device's time data and NTP time-checks strictly to manage the "Offline Grace Period" (allowing you to use the app without internet for up to 45 days) and to detect fraudulent time manipulations (Monotonic Time Traps) that attempt to bypass subscription renewals or security locks.</li>
           <li><strong>Device Conflict and Session Security:</strong> We use your device name, approximate location, and active session logs to monitor for unauthorized access. If simultaneous logins from different devices are detected, our system will automatically manage the conflict by securing the account or terminating older sessions, protecting your license and data.</li>
+          <li><strong>Patient Follow-up Web Form Feature:</strong> We provide the cryptographic software libraries (in-browser Web Crypto API and local app decryption) to facilitate the secure encryption and decryption of patient forms. FES HealthTech does not collect, access, or utilize any data processed through this feature.</li>
         </ul>
         <div class="legal-highlight">
           <p>✅ <strong>Explicit Guarantee:</strong> We do not use your data for marketing purposes for third parties, and we do not sell any data to any entity whatsoever.</p>
@@ -292,10 +294,12 @@
         <ul>
           <li><strong>AES-256 Encryption and Hardware Keystore/Keychain:</strong> The local Isar DB database is fully encrypted using the Advanced Encryption Standard (AES-256). Encryption keys are generated and stored locally in the device's secure hardware repository (Keystore on Android and Keychain on iOS), in a completely isolated environment (Zero-Knowledge Architecture). The company holds no cloud encryption keys and cannot decrypt or recover the data in case the device is lost or damaged without a previous backup.</li>
           <li><strong>Local Storage and Global Data Residency:</strong> Since all patient data is stored locally ONLY on the dietitian's device within their country, the app voluntarily and autonomously complies with the geographical residency and health data localization requirements set out in global and regional regulations, such as: the General Data Protection Regulation (GDPR) in the EU, the Personal Data Protection Law (PDPL) in Saudi Arabia, the UAE Personal Data Protection Law, and health privacy laws (such as HIPAA frameworks for independent practitioners).</li>
+          <li><strong>End-to-End Encrypted Patient Web Form:</strong> The Patient Web Form is designed to run entirely client-side using the browser's Web Crypto API. Encryption takes place locally on the patient's device using the dietitian's public key before the file is shared. This ensures that even during transit, the data remains fully encrypted and unreadable by intermediate networks, ISPs, or FES HealthTech.</li>
           <li><strong>OCR Image Processing and Privacy Protection:</strong> When the OCR feature is invoked, the selected image is transmitted upon the dietitian's request via an encrypted channel (SSL/TLS) for digital and real-time processing via the API, without any human review and without being saved on the company's servers. Google's privacy terms are enforced, which prevent the exploitation of API data to train models, and the dietitian is always advised to focus the camera on the medical table area and the required numbers.</li>
           <li><strong>Screenshot Prevention and Privacy Mode:</strong> Screenshot protection is automatically enabled on sensitive screens, in addition to the "Financial Privacy Mode" feature that obscures numbers and data with a single touch in front of clinic visitors.</li>
           <li><strong>SSL Pinning:</strong> The app uses SSL Pinning technology to verify the identity of authorized servers, preventing Man-in-the-Middle (MitM) attacks.</li>
           <li><strong>Offline Security & Anti-Tampering Mechanisms:</strong> When operating in "Offline Mode" during the permitted grace period, the app employs a local Monotonic Time Tracker to protect the integrity of the encrypted database. Any detected attempt to tamper with the device's clock to extend the grace period will trigger an immediate protective lock, securing the patient data until an online authentication is successfully completed.</li>
+          <li><strong>Temporary Local Cache Encryption and Automated Purging:</strong> To support local synchronization, E2EE exports, and PDF generation, the App temporarily stores encrypted ZIP and verification artifacts in a secure local cache on the dietitian's device. To prevent storage accumulation and ensure data security, these temporary files are subject to automated purging, clearing local folders after 2 hours and dynamic restoration archives (`.msb` files) after 12 hours.</li>
         </ul>
         <div class="legal-highlight">
           <p>🏥 <strong>Dietitian's Responsibility and Clinical/Tax Disclaimer:</strong> As a licensed dietitian, you are the primary legal and ethical party responsible for your patients' data and the accuracy of the tax and financial declarations issued from your clinic. The Murshid app is strictly an auxiliary technical tool, and FES HealthTech bears no legal, tax, or clinical responsibility toward medical decisions or accounting declarations submitted to government entities in any country worldwide.</p>
@@ -357,6 +361,19 @@
         <div class="legal-highlight">
           <p>👨‍⚕️ <strong>Important Note Regarding Patient Data (Google Play & Apple Data Safety):</strong> Since your patients' data is stored entirely locally on your device only, you are the primary and sole controller of it (Data Controller). You can add, modify, or delete any patient file directly from within the app without needing to submit a request to the company. FES HealthTech has no copy of this clinical data and cannot access it.</p>
         </div>
+
+        <p class="legal-sub-title">Data Protection Officer (DPO) & Patient Request Limitation</p>
+        <p>FES HealthTech has designated a Data Protection Officer (DPO) to handle inquiries regarding the personal data of dietitians (accounts, subscription billing, and points history). You can contact our DPO team at <a href="mailto:privacy@feshealthtech.com">privacy@feshealthtech.com</a>. Please note that since FES HealthTech has zero access to patient data, we are legally unable to process or fulfill any requests for access, rectification, portability, or deletion submitted directly by patients. All patient data inquiries must be addressed directly to the treating dietitian who acts as the Data Controller.</p>
+
+        <p class="legal-sub-title">App Store Privacy Disclosures Mapping (Google Play & Apple App Store)</p>
+        <p>For transparency during application store reviews, the data collected from the dietitian maps directly to the following official store privacy categories:</p>
+        <ul>
+          <li><strong>Contact Info:</strong> Email address (Used for authentication; Linked to User).</li>
+          <li><strong>Purchases:</strong> Points balance and subscription transaction history (Used for account management; Linked to User).</li>
+          <li><strong>Usage Data:</strong> Screen navigation and session durations via Firebase Analytics (Used for diagnostics and analytics; Not Linked to User).</li>
+          <li><strong>Diagnostics:</strong> Crash logs and performance metrics via Firebase Crashlytics (Used for app optimization; Not Linked to User).</li>
+          <li><strong>Identifiers:</strong> Device ID and model (Used strictly for session security and anti-fraud management; Linked to User).</li>
+        </ul>
       </div>
 
       <div class="m-divider"></div>
@@ -418,7 +435,7 @@
         <div class="legal-highlight warning">
           <p>🚸 <strong>We Do Not Collect Data from Minors:</strong> We do not knowingly collect any personal data from individuals under the age of 18. If we discover that a minor has registered an account on the app, we will immediately delete their account and all associated data without prior notice.</p>
         </div>
-        <p>Regarding data of minor patients (patients treated by the dietitian), that data falls under the full responsibility of the registered dietitian, subject to child health data protection laws applicable in the respective country. The dietitian is obligated to ensure proper legal consent is obtained from parents or guardians before processing minor patients' data.</p>
+        <p>Regarding data of minor patients (patients treated by the dietitian, including any minor patient who fills the Patient Follow-up Web Form), that data falls under the full responsibility of the registered dietitian, subject to child health data protection laws applicable in the respective country. The dietitian is obligated to ensure proper legal consent is obtained from parents or guardians before sending the form link or processing minor patients' data.</p>
       </div>
 
       <div class="m-divider"></div>
