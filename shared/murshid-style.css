@@ -640,7 +640,7 @@ ul { list-style:none; }
   padding:0 22px 20px; font-size:0.9rem;
   color:var(--m-text-muted); line-height:1.9;
 }
-.faq-item.open .faq-answer { max-height:400px; }
+.faq-item.open .faq-answer { max-height:1000px; }
 
 /* ═══════════════════════════════════════════════════════════
    FOOTER — Shared
