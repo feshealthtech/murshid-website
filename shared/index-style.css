@@ -560,3 +560,291 @@
   .showcase-grid { grid-template-columns: 1fr; gap: 14px; }
   .compact-grid { grid-template-columns: 1fr; }
 }
+
+/* ════════════════════════════════════════
+   SPECIALIST CLOSED BETA MODAL
+   ════════════════════════════════════════ */
+.m-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(4, 7, 14, 0.85);
+  backdrop-filter: blur(14px) saturate(190%);
+  -webkit-backdrop-filter: blur(14px) saturate(190%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 20px;
+}
+
+.m-modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.m-modal-card {
+  background: linear-gradient(145deg, var(--m-surface), #0b1120);
+  border: 1px solid var(--m-border-strong);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 480px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  box-shadow: var(--m-shadow-lg), var(--m-glow-primary);
+  transform: translateY(20px) scale(0.96);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.m-modal-overlay.open .m-modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.m-modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--m-surface-2);
+  border: 1px solid var(--m-border);
+  color: var(--m-text-muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--m-transition);
+  z-index: 10;
+}
+
+.m-modal-close-btn:hover {
+  background: var(--m-surface-3);
+  color: var(--m-text);
+  border-color: var(--m-primary);
+  box-shadow: 0 0 10px rgba(43, 181, 160, 0.2);
+}
+
+/* Modal Body Header */
+.m-modal-header {
+  padding: 40px 32px 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.m-modal-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: radial-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(43, 181, 160, 0.08) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.12);
+  position: relative;
+}
+
+.m-modal-icon-wrap svg {
+  width: 32px;
+  height: 32px;
+  fill: var(--m-gold);
+}
+
+.m-modal-badge {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: var(--m-gold);
+  font-family: var(--m-font);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Modal Body Content */
+.m-modal-body {
+  padding: 0 32px 24px;
+  text-align: center;
+  direction: ltr;
+}
+
+.m-modal-body h3 {
+  font-family: var(--m-font);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--m-text);
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.m-modal-body p {
+  font-family: var(--m-font);
+  font-size: 0.95rem;
+  color: var(--m-text-muted);
+  line-height: 1.75;
+  margin-bottom: 0;
+}
+
+/* Modal Footer Actions */
+.m-modal-footer {
+  padding: 0 32px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.m-modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: var(--m-transition);
+  text-decoration: none;
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.m-modal-btn-primary {
+  background: linear-gradient(135deg, var(--m-primary) 0%, var(--nw-teal-dark) 100%);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(43, 181, 160, 0.25);
+}
+
+.m-modal-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(43, 181, 160, 0.35);
+  background: linear-gradient(135deg, var(--m-primary-light) 0%, var(--m-primary) 100%);
+}
+
+/* ── RESPONSIVE BREAKPOINTS ── */
+
+/* Small Devices (Phones) */
+@media (max-width: 576px) {
+  .m-modal-overlay {
+    padding: 16px;
+  }
+  .m-modal-card {
+    border-radius: 20px;
+    max-height: calc(100vh - 32px);
+  }
+  .m-modal-close-btn {
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.25rem;
+  }
+  .m-modal-header {
+    padding: 32px 24px 12px;
+  }
+  .m-modal-icon-wrap {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+  }
+  .m-modal-icon-wrap svg {
+    width: 28px;
+    height: 28px;
+  }
+  .m-modal-badge {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+    margin-bottom: 10px;
+  }
+  .m-modal-body {
+    padding: 0 24px 20px;
+  }
+  .m-modal-body h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+  .m-modal-body p {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+  .m-modal-footer {
+    padding: 0 24px 32px;
+  }
+  .m-modal-btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    border-radius: 12px;
+  }
+}
+
+/* Extra Small Devices (Tiny Phones) */
+@media (max-width: 380px) {
+  .m-modal-overlay {
+    padding: 12px;
+  }
+  .m-modal-card {
+    border-radius: 16px;
+    max-height: calc(100vh - 24px);
+  }
+  .m-modal-close-btn {
+    top: 12px;
+    right: 12px;
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+  }
+  .m-modal-header {
+    padding: 28px 16px 8px;
+  }
+  .m-modal-icon-wrap {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
+  .m-modal-icon-wrap svg {
+    width: 24px;
+    height: 24px;
+  }
+  .m-modal-badge {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    margin-bottom: 8px;
+  }
+  .m-modal-body {
+    padding: 0 16px 16px;
+  }
+  .m-modal-body h3 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+  .m-modal-body p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+  .m-modal-footer {
+    padding: 0 16px 24px;
+  }
+  .m-modal-btn {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+}
+

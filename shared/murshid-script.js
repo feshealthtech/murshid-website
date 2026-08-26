@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initTypewriter();
   initCookieBanner();
+  initBetaModal();
   initDynamicYear();
 });
 
@@ -331,3 +332,60 @@ function initCookieBanner() {
     banner.style.display = 'none';
   });
 }
+
+/* ── Closed Beta Modal ── */
+function initBetaModal() {
+  const modal = document.getElementById('beta-modal');
+  if (!modal) return;
+
+  const closeX = document.getElementById('modal-close-x');
+  const closeBtn = document.getElementById('modal-close-btn');
+
+  // Trigger buttons
+  const triggerSelectors = [
+    '#hero-android-btn',
+    '#hero-ios-btn',
+    '#dl-android-btn',
+    '#dl-ios-btn',
+    '.m-mobile-dl-btn'
+  ];
+
+  const openModal = (e) => {
+    e.preventDefault();
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  // Attach event listeners to all triggers
+  triggerSelectors.forEach(selector => {
+    document.querySelectorAll(selector).forEach(btn => {
+      btn.addEventListener('click', openModal);
+    });
+  });
+
+  // Close event listeners
+  if (closeX) closeX.addEventListener('click', closeModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  // Close on backdrop click
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+}
+
