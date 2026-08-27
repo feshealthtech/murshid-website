@@ -6,7 +6,7 @@
     "status": "active",
     "expiryDate": "2027-12-31",
     "email": "katyasulayman9@gmail.com",
-    "phone": "00971526930539",
+    "phone": "+971526930539 / +963967817916",
     "country": "Syria"
   },
   "MS-ENAS-02": {
@@ -117,6 +117,16 @@
     "expiryDate": "2027-12-31",
     "email": "khadijaramzi1999sz@gmail.com",
     "phone": "+967771845941",
+    "country": "Yemen"
+  },
+  "MS-AMAT-13": {
+    "name": "Amat Al-rhman Arfe Musleh Al-fras",
+    "title": "Clinical Dietitian",
+    "tier": "Authorized Reseller",
+    "status": "active",
+    "expiryDate": "2026-11-27",
+    "email": "rehamaref88@gmail.com",
+    "phone": "+967781628272",
     "country": "Yemen"
   }
 }
