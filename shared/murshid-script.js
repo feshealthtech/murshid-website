@@ -341,13 +341,12 @@ function initBetaModal() {
   const closeX = document.getElementById('modal-close-x');
   const closeBtn = document.getElementById('modal-close-btn');
 
-  // Trigger buttons
+  // Trigger buttons (iOS triggers modal, Android navigates directly to Google Play)
   const triggerSelectors = [
-    '#hero-android-btn',
     '#hero-ios-btn',
-    '#dl-android-btn',
     '#dl-ios-btn',
-    '.m-mobile-dl-btn'
+    '#mobile-ios-btn',
+    '.m-mobile-dl-ios'
   ];
 
   const openModal = (e) => {
