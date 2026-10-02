@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCookieBanner();
   initBetaModal();
   initDynamicYear();
+  initReferralTracking();
 });
 
 /* ── Dynamic Footer Year ── */
@@ -351,6 +352,19 @@ function initBetaModal() {
 
   const openModal = (e) => {
     e.preventDefault();
+    const savedRef = localStorage.getItem('mrshed_ref_code');
+    const badgeEl = document.getElementById('ios-ref-badge');
+    if (savedRef && !badgeEl) {
+      const modalBody = modal.querySelector('.m-modal-body') || modal;
+      const badge = document.createElement('div');
+      badge.id = 'ios-ref-badge';
+      badge.style.cssText = 'background:rgba(13,148,136,0.15);border:1px dashed #0d9488;border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:0.85rem;color:#0d9488;text-align:center;font-weight:600;';
+      const isRtl = document.documentElement.getAttribute('dir') === 'rtl' || document.documentElement.lang === 'ar';
+      badge.innerHTML = isRtl
+        ? `🎁 تم حفظ كود الدعوة <strong>${savedRef}</strong> لحسابك! سيكون متاحاً لك فور إطلاق نسخة iOS.`
+        : `🎁 Invite code <strong>${savedRef}</strong> is saved for your account for the upcoming iOS release!`;
+      modalBody.prepend(badge);
+    }
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -385,6 +399,193 @@ function initBetaModal() {
     if (e.key === 'Escape' && modal.classList.contains('open')) {
       closeModal();
     }
+  });
+}
+
+/* ── Referral Tracking & Dynamic Store Linking ── */
+function initReferralTracking() {
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    let refCode = urlParams.get('ref') || urlParams.get('referrer') || urlParams.get('mrshed_ref');
+
+    if (refCode && /^[A-Za-z0-9_-]{3,20}$/.test(refCode.trim())) {
+      refCode = refCode.trim().toUpperCase();
+      localStorage.setItem('mrshed_ref_code', refCode);
+    } else {
+      refCode = localStorage.getItem('mrshed_ref_code');
+    }
+
+    if (!refCode) return;
+
+    // 1. Update all Google Play Store links with robust referrer query parameter
+    const googlePlaySelector = 'a[href*="play.google.com/store/apps/details?id=com.feshealthtech.murshid"]';
+    const storeLinks = document.querySelectorAll(googlePlaySelector);
+    
+    // Merge existing UTM tags if present on the page URL
+    const source = urlParams.get('utm_source') || 'google-play';
+    const medium = urlParams.get('utm_medium') || 'referral';
+    const campaign = urlParams.get('utm_campaign') || 'peer_ref';
+    
+    const referrerParam = `utm_source%3D${encodeURIComponent(source)}%26utm_medium%3D${encodeURIComponent(medium)}%26utm_campaign%3D${encodeURIComponent(campaign)}%26mrshed_ref%3D${encodeURIComponent(refCode)}`;
+
+    storeLinks.forEach(link => {
+      let currentHref = link.getAttribute('href') || '';
+      if (currentHref.includes('&referrer=')) {
+        currentHref = currentHref.replace(/&referrer=[^&]*/, `&referrer=${referrerParam}`);
+      } else if (currentHref.includes('?referrer=')) {
+        currentHref = currentHref.replace(/\?referrer=[^&]*/, `?referrer=${referrerParam}`);
+      } else {
+        currentHref += (currentHref.includes('?') ? '&' : '?') + `referrer=${referrerParam}`;
+      }
+      link.setAttribute('href', currentHref);
+    });
+
+    // 2. Display sleek Referral Welcome Banner
+    showReferralBanner(refCode);
+  } catch (e) {
+    console.warn('Referral tracking init failed:', e);
+  }
+}
+
+function showReferralBanner(refCode) {
+  if (document.getElementById('m-referral-banner')) return;
+
+  const isRtl = document.documentElement.getAttribute('dir') === 'rtl' || document.documentElement.lang === 'ar';
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .m-ref-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #0d9488 0%, #059669 50%, #0284c7 100%);
+      color: #ffffff;
+      padding: 10px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      animation: mRefSlideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes mRefSlideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .m-ref-banner-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+    .m-ref-code-badge {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1.5px dashed #fef08a;
+      padding: 3px 12px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: #fef08a;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .m-ref-copy-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #ffffff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .m-ref-copy-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.03);
+    }
+    .m-ref-dl-btn {
+      background: #ffffff;
+      color: #0f766e;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .m-ref-dl-btn:hover {
+      background: #fef08a;
+      color: #000;
+      transform: scale(1.03);
+    }
+    .m-ref-close-btn {
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 0 8px;
+      line-height: 1;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .m-ref-close-btn:hover {
+      opacity: 1;
+    }
+  `;
+  document.head.appendChild(style);
+
+  const banner = document.createElement('div');
+  banner.id = 'm-referral-banner';
+  banner.className = 'm-ref-banner';
+
+  const textHtml = isRtl
+    ? `<span>🎉 مرحباً بك! تمت دعوتك برمز الإسناد الحصري:</span> <span class="m-ref-code-badge">${refCode}</span> <button class="m-ref-copy-btn" id="mRefCopyBtn">📋 نسخ الكود</button> <a href="#download" class="m-ref-dl-btn">📥 تحميل التطبيق</a>`
+    : `<span>🎉 Welcome! Special invite code applied:</span> <span class="m-ref-code-badge">${refCode}</span> <button class="m-ref-copy-btn" id="mRefCopyBtn">📋 Copy Code</button> <a href="#download" class="m-ref-dl-btn">📥 Download App</a>`;
+
+  banner.innerHTML = `
+    <div class="m-ref-banner-content">
+      ${textHtml}
+      <button class="m-ref-close-btn" id="mRefCloseBtn" aria-label="Close">&times;</button>
+    </div>
+  `;
+
+  document.body.prepend(banner);
+
+  const nav = document.getElementById('m-nav');
+  if (nav) {
+    nav.style.marginTop = '46px';
+  }
+
+  const copyBtn = document.getElementById('mRefCopyBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(refCode).then(() => {
+        copyBtn.textContent = isRtl ? '✅ تم النسخ!' : '✅ Copied!';
+        setTimeout(() => {
+          copyBtn.textContent = isRtl ? '📋 نسخ الكود' : '📋 Copy Code';
+        }, 2000);
+      });
+    });
+  }
+
+  document.getElementById('mRefCloseBtn').addEventListener('click', () => {
+    banner.style.display = 'none';
+    if (nav) nav.style.marginTop = '0';
   });
 }
 
