@@ -1124,7 +1124,7 @@
             `;
         }
 
-        // RENDER: Unsigned Report
+        // RENDER: Unsigned / Modified Without Seal Report
         function renderUnsignedReport(fileName) {
             const resultArea = document.getElementById('reportResultArea');
             resultArea.innerHTML = `
@@ -1133,13 +1133,13 @@
                         <div class="result-banner-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                         </div>
-                        <h2 class="result-headline">Unsigned Document</h2>
-                        <p class="result-subline">No cryptographic signature metadata detected</p>
+                        <h2 class="result-headline">Unsigned or Modified Document</h2>
+                        <p class="result-subline">No official cryptographic seal detected</p>
                     </div>
 
                     <div class="result-body">
                         <p style="font-size: 13.5px; color: var(--text-main); line-height: 1.6;">
-                            This file may have been exported from an older version of Murshid App that does not support smart signing, or was exported in an unsupported format.
+                            This document does not carry an official Murshid cryptographic seal. This typically occurs if the file was edited or re-saved by an external PDF tool (which stripped its original digital seal), converted from another format, or was not directly exported from the official Murshid platform.
                         </p>
                     </div>
 
