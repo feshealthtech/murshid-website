@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Official Verification Portal — Murshid Platform</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="../assets/logo-sq.webp">
+    <link rel="icon" type="image/png" href="../assets/logo-sq.png">
+    <link rel="apple-touch-icon" href="../assets/logo-sq.png">
     <!-- Fonts: Inter, Tajawal (for international names), Playfair Display -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <!-- TweetNaCl & PDF.js for in-browser cryptographic & PDF parsing -->
@@ -70,13 +74,19 @@
             text-align: center;
             margin-bottom: 6px;
         }
+        .portal-header .logo-link {
+            display: inline-block;
+            text-decoration: none;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .portal-header .logo-link:hover {
+            transform: scale(1.06);
+        }
         .portal-header img {
             height: 64px;
             cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             filter: drop-shadow(0 8px 16px rgba(13, 148, 136, 0.15));
         }
-        .portal-header img:hover { transform: scale(1.05); }
 
         .portal-title-badge {
             margin-top: 14px;
@@ -592,13 +602,23 @@
         .store-btn:hover { background: #1E293B; transform: translateY(-2px); }
         .store-btn svg { width: 16px; height: 16px; fill: currentColor; }
 
+        /* Footer Branding */
         .footer-branding {
             text-align: center;
-            font-size: 11px;
-            font-weight: 700;
+            font-size: 12px;
+            font-weight: 600;
             color: var(--text-muted);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .footer-branding .brand-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 800;
+            transition: color 0.2s ease, text-decoration 0.2s ease;
+        }
+        .footer-branding .brand-link:hover {
+            color: var(--primary-deep);
+            text-decoration: underline;
         }
 
         /* Responsive Fixes */
@@ -616,7 +636,9 @@
         
         <!-- Header -->
         <header class="portal-header">
-            <img src="../assets/logo.webp" alt="Murshid Logo" onclick="resetAllViews()" title="Murshid App">
+            <a href="https://murshid.feshealthtech.com/" class="logo-link" title="Murshid Official Platform">
+                <img src="../assets/logo.webp" alt="Murshid Logo">
+            </a>
             <div class="portal-title-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
                 Official Verification Engine
@@ -677,7 +699,7 @@
                     <svg viewBox="0 0 512 512"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
                     Google Play
                 </a>
-                <a href="../index.html#download" class="store-btn">
+                <a href="https://murshid.feshealthtech.com/#download" class="store-btn">
                     <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
                     App Store
                 </a>
@@ -685,7 +707,7 @@
         </div>
 
         <div class="footer-branding">
-            Murshid Cryptographic Verification Engine &copy; 2026
+            <a href="https://murshid.feshealthtech.com/" class="brand-link" target="_blank" rel="noopener noreferrer">Murshid</a> Cryptographic Verification Engine &copy; 2026
         </div>
 
     </div>
@@ -763,7 +785,7 @@
             resultArea.innerHTML = `
                 <div class="result-card" style="padding: 40px 20px; text-align: center;">
                     <div class="loading-spinner"></div>
-                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">Verifying Clinical Report...</h3>
+                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">Verifying Document...</h3>
                     <p style="font-size: 13px; color: var(--text-muted);">Extracting cryptographic signature & querying cloud registry</p>
                 </div>
             `;
@@ -772,19 +794,18 @@
                 const arrayBuffer = await file.arrayBuffer();
                 const bytes = new Uint8Array(arrayBuffer);
 
-                // 1. Extract MSH_SIG metadata from PDF
-                const metadataString = extractMetadataFromBytes(bytes);
+                // 1. Extract Cryptographic Seal & Original Clean Bytes
+                const extraction = extractSignatureAndCleanBytes(bytes);
 
-                if (!metadataString) {
+                if (!extraction || !extraction.rawB64) {
                     renderUnsignedReport(file.name);
                     return;
                 }
 
-                // 2. Parse Manifest & Signature
+                // 2. Parse Manifest & Digital Signature
                 let payload;
                 try {
-                    const cleanB64 = metadataString.replace(/^MSH_SIG:/, '').trim();
-                    const jsonStr = decodeURIComponent(escape(atob(cleanB64)));
+                    const jsonStr = decodeURIComponent(escape(atob(extraction.rawB64)));
                     payload = JSON.parse(jsonStr);
                 } catch (e) {
                     console.error('Payload decode error:', e);
@@ -800,7 +821,7 @@
                     return;
                 }
 
-                // 3. Query Cloud Registry for Public Key
+                // 3. Query Murshid Cloud Registry for Registered Public Key
                 let cloudKeyData;
                 try {
                     const resp = await fetch(LOOKUP_PUBLIC_KEY_ENDPOINT, {
@@ -822,16 +843,42 @@
 
                 const publicKeyBase64 = cloudKeyData.publicKey;
 
-                // 4. Verify Ed25519 Signature over canonical JSON
+                // 4. Verify Ed25519 Cryptographic Signature over canonical JSON
                 const canonicalJson = JSON.stringify(manifest);
                 const isSignatureValid = verifyEd25519(canonicalJson, signatureBase64, publicKeyBase64);
 
                 if (!isSignatureValid) {
-                    renderTamperedReport(file.name, 'Invalid cryptographic signature or document payload was modified after issuance.');
+                    renderTamperedReport(file.name, 'Invalid cryptographic digital signature: The manifest payload was forged or modified.');
                     return;
                 }
 
-                // 5. Render Authentic Report Result
+                // 5. Verify Content Bit-Integrity (SHA-256 against manifest.docHash)
+                if (manifest.docHash) {
+                    const hashBuffer = await crypto.subtle.digest('SHA-256', extraction.cleanBytes);
+                    const hashArray = Array.from(new Uint8Array(hashBuffer));
+                    const computedDocHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+                    if (computedDocHash !== manifest.docHash) {
+                        console.warn('Document SHA-256 mismatch! Expected:', manifest.docHash, 'Computed:', computedDocHash);
+                        renderTamperedReport(file.name, 'Document content tampering detected: The visual content, pages, or text of this PDF were modified or re-saved after official issuance.');
+                        return;
+                    }
+                }
+
+                // 6. Verify Structural Page Count with PDF.js
+                try {
+                    if (typeof pdfjsLib !== 'undefined') {
+                        const pdfDoc = await pdfjsLib.getDocument({ data: bytes }).promise;
+                        if (manifest.pages && pdfDoc.numPages !== manifest.pages) {
+                            renderTamperedReport(file.name, `Page structure mismatch: Expected ${manifest.pages} pages, but file contains ${pdfDoc.numPages} pages.`);
+                            return;
+                        }
+                    }
+                } catch (pdfErr) {
+                    console.warn('PDF.js structure check notice:', pdfErr);
+                }
+
+                // 7. Render 100% Authentic Verified Document
                 renderAuthenticReport(file.name, manifest, publicKeyBase64);
 
             } catch (err) {
@@ -840,19 +887,64 @@
             }
         }
 
-        // Fast In-Binary Scanner for MSH_SIG
-        function extractMetadataFromBytes(bytes) {
+        // Fast In-Binary Scanner for MSH_SIG and Original Content Extraction
+        function extractSignatureAndCleanBytes(bytes) {
+            // Search for "%MSH_SIG:" marker
+            const marker = [0x25, 0x4D, 0x53, 0x48, 0x5F, 0x53, 0x49, 0x47, 0x3A];
+            let markerIndex = -1;
+
+            for (let i = 0; i <= bytes.length - marker.length; i++) {
+                let match = true;
+                for (let j = 0; j < marker.length; j++) {
+                    if (bytes[i + j] !== marker[j]) {
+                        match = false;
+                        break;
+                    }
+                }
+                if (match) {
+                    markerIndex = i;
+                    break;
+                }
+            }
+
+            if (markerIndex !== -1) {
+                let cleanEnd = markerIndex;
+                if (cleanEnd > 0 && bytes[cleanEnd - 1] === 0x0A) { // \n
+                    cleanEnd--;
+                    if (cleanEnd > 0 && bytes[cleanEnd - 1] === 0x0D) { // \r
+                        cleanEnd--;
+                    }
+                }
+                const cleanBytes = bytes.subarray(0, cleanEnd);
+
+                let str = "";
+                for (let i = markerIndex + marker.length; i < bytes.length; i++) {
+                    const c = bytes[i];
+                    if (c === 0x0A || c === 0x0D || c === 0x20 || c === 0x25) {
+                        if (str.length > 0) break;
+                    } else {
+                        str += String.fromCharCode(c);
+                    }
+                }
+                return {
+                    rawB64: str,
+                    cleanBytes: cleanBytes
+                };
+            }
+
+            // Fallback search for MSH_SIG inside /Subject or metadata string
             let latinText = "";
             const chunkSize = 65536;
             for (let i = 0; i < bytes.length; i += chunkSize) {
                 const sub = bytes.subarray(i, Math.min(i + chunkSize, bytes.length));
                 latinText += String.fromCharCode.apply(null, sub);
             }
-
-            // Search for Subject containing MSH_SIG
             const match = latinText.match(/MSH_SIG:([A-Za-z0-9+/=]+)/);
             if (match && match[1]) {
-                return match[0];
+                return {
+                    rawB64: match[1],
+                    cleanBytes: bytes
+                };
             }
             return null;
         }
@@ -898,7 +990,7 @@
                         <div class="result-banner-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
                         </div>
-                        <h2 class="result-headline">100% Authentic & Verified Report</h2>
+                        <h2 class="result-headline">100% Authentic & Verified Document</h2>
                         <p class="result-subline">Cryptographic signature validated against Murshid Cloud Registry</p>
                     </div>
 
@@ -947,7 +1039,7 @@
                         <!-- Technical Manifest Details -->
                         <div class="declared-box">
                             <div class="meta-row">
-                                <span class="meta-label">Report ID:</span>
+                                <span class="meta-label">Document ID:</span>
                                 <span class="meta-value mono">${manifest.id}</span>
                             </div>
                             <div class="meta-row">
@@ -963,7 +1055,7 @@
                     </div>
 
                     <div class="result-actions">
-                        <button class="reset-btn" onclick="resetReportView()">Verify Another Report</button>
+                        <button class="reset-btn" onclick="resetReportView()">Verify Another Document</button>
                     </div>
                 </div>
             `;
@@ -978,7 +1070,7 @@
                         <div class="result-banner-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                         </div>
-                        <h2 class="result-headline">Warning: Tampered or Invalid Report</h2>
+                        <h2 class="result-headline">Warning: Tampered or Invalid Document</h2>
                         <p class="result-subline">Cryptographic integrity check failed</p>
                     </div>
 
@@ -1004,7 +1096,7 @@
                         <div class="result-banner-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                         </div>
-                        <h2 class="result-headline">Unsigned Clinical Report</h2>
+                        <h2 class="result-headline">Unsigned Document</h2>
                         <p class="result-subline">No cryptographic signature metadata detected</p>
                     </div>
 
