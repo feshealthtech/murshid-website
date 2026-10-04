@@ -240,6 +240,21 @@
             right: 0;
             height: 5px;
             background: linear-gradient(90deg, var(--primary), var(--primary-tint), var(--primary));
+            z-index: 2;
+        }
+        .hero-cover {
+            width: calc(100% + 48px);
+            margin: -32px -24px 20px -24px;
+            height: 140px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 28px 28px 0 0;
+            position: relative;
+            background-color: var(--primary-glow);
+        }
+        .hero-card.has-cover .avatar-container {
+            margin-top: -50px;
+            z-index: 3;
         }
 
         .avatar-container {
@@ -933,7 +948,8 @@
         <!-- Dynamic Loaded Site Content -->
         <main id="siteContent" style="display: none; flex-direction: column; gap: 18px;">
             <!-- Hero Profile -->
-            <section class="hero-card">
+            <section class="hero-card" id="heroCard">
+                <div id="coverBanner" class="hero-cover" style="display: none;"></div>
                 <div class="avatar-container">
                     <img id="doctorAvatar" class="avatar-img" src="../assets/logo-sq.png" alt="صورة الأخصائي">
                     <div class="verified-badge" id="doctorBadge" title="أخصائي موثق">
@@ -1237,7 +1253,9 @@
             // Proposal #8: Dynamic OpenGraph & Twitter Meta Tags (Always ON)
             const metaTitle = `${site.displayName || 'العيادة الرقمية'} | ${site.professionalTitle || 'أخصائي معتمد'}`;
             const metaDesc = `${site.clinicName ? site.clinicName + ' — ' : ''}${site.bio || 'احجز استشارتك التغذوية وتعرف على الباقات والخدمات العلاجية المتاحة.'}`;
-            const metaImg = (site.avatarUrl && site.avatarUrl.startsWith('http')) ? site.avatarUrl : '../assets/og-preview.jpg';
+            const metaImg = (site.avatarUrl && site.avatarUrl.startsWith('http')) 
+                ? site.avatarUrl 
+                : ((site.coverUrl && site.coverUrl.startsWith('http')) ? site.coverUrl : '../assets/og-preview.jpg');
 
             const ogTitleEl = document.getElementById('ogTitle');
             const twTitleEl = document.getElementById('twTitle');
@@ -1254,6 +1272,18 @@
             if (ogImgEl) ogImgEl.setAttribute('content', metaImg);
             if (twImgEl) twImgEl.setAttribute('content', metaImg);
             if (ogUrlEl) ogUrlEl.setAttribute('content', window.location.href);
+
+            // Cover Banner Render
+            const coverEl = document.getElementById('coverBanner');
+            const heroCardEl = document.getElementById('heroCard');
+            if (site.coverUrl && site.coverUrl.trim() !== '') {
+                coverEl.style.backgroundImage = `url("${escapeHtml(site.coverUrl)}")`;
+                coverEl.style.display = 'block';
+                if (heroCardEl) heroCardEl.classList.add('has-cover');
+            } else {
+                coverEl.style.display = 'none';
+                if (heroCardEl) heroCardEl.classList.remove('has-cover');
+            }
 
             // Basic Info
             document.getElementById('doctorName').textContent = site.displayName || 'د. أخصائي التغذية';
