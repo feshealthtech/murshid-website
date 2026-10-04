@@ -15,11 +15,11 @@
         var pIdx = segments.indexOf('p');
         if (pIdx !== -1 && segments.length > pIdx + 1) {
           var slug = segments[pIdx + 1];
-          window.location.replace('/p/index.html?slug=' + encodeURIComponent(slug) + (hash || ''));
+          window.location.replace('/p/?u=' + encodeURIComponent(slug) + (hash || ''));
           return;
         }
-      } else if (path.indexOf('/verify/') === 0 && path !== '/verify/index.html') {
-        window.location.replace('/verify/index.html' + search + hash);
+      } else if (path.indexOf('/verify/') === 0 && path !== '/verify/') {
+        window.location.replace('/verify/' + search + hash);
         return;
       }
     })();
