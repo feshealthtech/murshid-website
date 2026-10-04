@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>العيادة الرقمية الرسمية — منصة مرشد</title>
+    
+    <!-- PWA Web App Manifest & Mobile Configuration -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0D9488">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="عيادة مرشد">
+    <link rel="apple-touch-icon" href="../assets/logo-sq.png">
+
+    <!-- OpenGraph & Social Share Dynamic Preview Cards -->
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="منصة مرشد — العيادات الرقمية">
+    <meta property="og:title" id="ogTitle" content="العيادة الرقمية الرسمية — منصة مرشد">
+    <meta property="og:description" id="ogDesc" content="احجز استشارتك التغذوية واطلع على باقات وخدمات الأخصائي المعتمد">
+    <meta property="og:image" id="ogImage" content="../assets/og-preview.jpg">
+    <meta property="og:url" id="ogUrl" content="">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twTitle" content="العيادة الرقمية الرسمية — منصة مرشد">
+    <meta name="twitter:description" id="twDesc" content="احجز استشارتك التغذوية واطلع على باقات وخدمات الأخصائي المعتمد">
+    <meta name="twitter:image" id="twImage" content="../assets/og-preview.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="../assets/logo-sq.webp">
+    <link rel="icon" type="image/png" href="../assets/logo-sq.png">
+    
+    <!-- Google Fonts: Cairo, Plus Jakarta Sans, Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0D9488;
+            --primary-dark: #0F766E;
+            --primary-deep: #115E59;
+            --primary-light: #F0FDFA;
+            --primary-tint: #CCFBF1;
+            --primary-glow: rgba(13, 148, 136, 0.12);
+            --accent-gold: #D97706;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #15803D;
+            --bg-page: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --card-border: #E2E8F0;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --text-sub: #475569;
+            --font-ar: 'Cairo', system-ui, sans-serif;
+            --font-en: 'Plus Jakarta Sans', system-ui, sans-serif;
+        }
+
+        /* Light Luxury Theme Variations */
+        [data-theme="emerald"] {
+            --primary: #0D9488;
+            --primary-dark: #0F766E;
+            --primary-deep: #115E59;
+            --primary-light: #F0FDFA;
+            --primary-tint: #CCFBF1;
+            --primary-glow: rgba(13, 148, 136, 0.12);
+        }
+        [data-theme="sapphire"] {
+            --primary: #0284C7;
+            --primary-dark: #0369A1;
+            --primary-deep: #075985;
+            --primary-light: #F0F9FF;
+            --primary-tint: #BAE6FD;
+            --primary-glow: rgba(2, 132, 199, 0.12);
+        }
+        [data-theme="obsidian"] {
+            --primary: #D97706;
+            --primary-dark: #B45309;
+            --primary-deep: #92400E;
+            --primary-light: #FFFBEB;
+            --primary-tint: #FDE68A;
+            --primary-glow: rgba(217, 119, 6, 0.12);
+        }
+        [data-theme="rose"] {
+            --primary: #E11D48;
+            --primary-dark: #BE123C;
+            --primary-deep: #9F1239;
+            --primary-light: #FFF1F2;
+            --primary-tint: #FECDD3;
+            --primary-glow: rgba(225, 29, 72, 0.12);
+        }
+        [data-theme="amethyst"] {
+            --primary: #9333EA;
+            --primary-dark: #7E22CE;
+            --primary-deep: #6B21A8;
+            --primary-light: #FAF5FF;
+            --primary-tint: #E9D5FF;
+            --primary-glow: rgba(147, 51, 234, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-ar);
+            background-color: var(--bg-page);
+            background-image: 
+                radial-gradient(circle at 10% 5%, var(--primary-glow) 0%, transparent 45%),
+                radial-gradient(circle at 90% 95%, rgba(217, 119, 6, 0.04) 0%, transparent 45%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        [dir="ltr"] body {
+            font-family: var(--font-en);
+        }
+
+        /* Top Announcement Banner */
+        .announcement-banner {
+            width: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            color: #FFFFFF;
+            padding: 9px 16px;
+            font-size: 12.5px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .announcement-banner.offer {
+            background: linear-gradient(90deg, #D97706, #B45309);
+        }
+        .announcement-banner.alert {
+            background: linear-gradient(90deg, #E11D48, #BE123C);
+        }
+        .announcement-banner.info {
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        .announcement-content {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .announcement-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.22);
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 800;
+            transition: background 0.2s;
+        }
+        .announcement-link:hover {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .site-container {
+            width: 100%;
+            max-width: 580px;
+            padding: 20px 16px 90px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        /* Top Bar */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-radius: 100px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+        .brand-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .brand-badge img {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+        }
+        .lang-btn {
+            background: var(--primary-light);
+            border: 1px solid var(--primary-tint);
+            color: var(--primary-dark);
+            padding: 5px 12px;
+            border-radius: 100px;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .lang-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Hero Profile Card */
+        .hero-card {
+            position: relative;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 32px 24px 26px 24px;
+            text-align: center;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+        }
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-tint), var(--primary));
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 104px;
+            height: 104px;
+            margin: 0 auto 16px auto;
+        }
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3.5px solid #FFFFFF;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 0 0 1.5px var(--primary-tint);
+            background: #F1F5F9;
+        }
+        .verified-badge {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background: #0284C7;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .specialist-name {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            letter-spacing: -0.2px;
+        }
+        .specialist-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+        .clinic-name {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .verified-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #F0F9FF;
+            color: #0284C7;
+            border: 1px solid #BAE6FD;
+            padding: 4px 14px;
+            border-radius: 100px;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin-bottom: 14px;
+        }
+        .verified-pill:hover {
+            background: #E0F2FE;
+            transform: translateY(-1px);
+        }
+
+        .bio-box {
+            background: #F8FAFC;
+            border: 1px solid #F1F5F9;
+            border-radius: 16px;
+            padding: 14px 18px;
+            font-size: 13px;
+            color: var(--text-sub);
+            line-height: 1.6;
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        /* Medical Licenses & Accreditations Card */
+        .credentials-card {
+            background: #FFFFFF;
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 16px 20px;
+            margin-top: 14px;
+            text-align: right;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+        [dir="ltr"] .credentials-card {
+            text-align: left;
+        }
+        .credentials-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        .credentials-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: #F0F9FF;
+            border: 1px solid #BAE6FD;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0284C7;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .credentials-titles h4 {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .credentials-titles p {
+            font-size: 11.5px;
+            color: #0284C7;
+            font-weight: 600;
+        }
+        .degrees-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .degree-tag {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            color: var(--text-sub);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 11.5px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .degree-tag i {
+            color: var(--primary);
+            font-size: 11px;
+        }
+
+        /* Action Buttons */
+        .actions-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .cta-booking-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #25D366 0%, #16A34A 100%);
+            color: white;
+            padding: 14px 22px;
+            border-radius: 16px;
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .cta-booking-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.35);
+        }
+        .cta-booking-btn i {
+            font-size: 19px;
+        }
+
+        /* vCard Button */
+        .vcard-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #FFFFFF;
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+            padding: 12px 20px;
+            border-radius: 16px;
+            font-size: 13.5px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        .vcard-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+            transform: translateY(-1px);
+        }
+        .vcard-btn i {
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 22px;
+            box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.04);
+        }
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15.5px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 16px;
+        }
+        .section-header i {
+            color: var(--primary);
+            font-size: 17px;
+        }
+
+        /* Services Grid */
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .service-item {
+            background: #F8FAFC;
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 18px;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-item.popular {
+            border-color: var(--primary-tint);
+            background: #FFFFFF;
+            box-shadow: 0 4px 16px rgba(13, 148, 136, 0.06);
+        }
+        .service-item.popular::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .service-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            gap: 8px;
+        }
+        .service-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .popular-tag {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border: 1px solid var(--primary-tint);
+            font-size: 10.5px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+        .service-desc {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #EDF2F7;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .service-price {
+            font-size: 17px;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        .service-duration {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .service-book-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ECFDF5;
+            color: #059669;
+            border: 1px solid #A7F3D0;
+            padding: 7px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .service-book-btn:hover {
+            background: var(--whatsapp);
+            color: white;
+            border-color: var(--whatsapp);
+        }
+
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+        .feature-pill {
+            background: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            color: var(--text-sub);
+            padding: 3px 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+        }
+        .feature-pill i {
+            color: var(--primary);
+            font-size: 9px;
+        }
+
+        /* Testimonials / Success Stories */
+        .testimonials-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .testimonial-card {
+            background: #F8FAFC;
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 16px 18px;
+            position: relative;
+        }
+        .testimonial-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .testimonial-stars {
+            color: #F59E0B;
+            font-size: 13px;
+            display: flex;
+            gap: 2px;
+        }
+        .testimonial-date {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .testimonial-result {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #FEF3C7;
+            border: 1px solid #FDE68A;
+            color: #92400E;
+            padding: 3px 9px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .testimonial-comment {
+            font-size: 12.5px;
+            color: var(--text-sub);
+            line-height: 1.55;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        .testimonial-author {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        /* Working Hours */
+        .hours-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 9px 0;
+            border-bottom: 1px solid #F1F5F9;
+            font-size: 13px;
+        }
+        .hours-row:last-child {
+            border-bottom: none;
+        }
+        .hours-day {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+        .hours-time {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .hours-time.off {
+            color: #EF4444;
+            font-weight: 700;
+        }
+
+        /* FAQ Accordion */
+        .faq-item {
+            background: #F8FAFC;
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            margin-bottom: 8px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .faq-item:hover {
+            border-color: var(--primary-tint);
+        }
+        .faq-question {
+            padding: 14px 16px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question i {
+            color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+        .faq-answer {
+            padding: 0 16px 14px 16px;
+            font-size: 12.5px;
+            color: var(--text-sub);
+            line-height: 1.55;
+            display: none;
+        }
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        /* Location Card */
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+        .location-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .location-item i {
+            color: var(--primary);
+            width: 18px;
+            font-size: 15px;
+        }
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--primary-light);
+            border: 1px solid var(--primary-tint);
+            color: var(--primary-dark);
+            padding: 10px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 12.5px;
+            font-weight: 700;
+            margin-top: 8px;
+            transition: all 0.2s;
+        }
+        .map-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Social Icons */
+        .socials-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .social-link {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #F1F5F9;
+            border: 1px solid #E2E8F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            margin-top: 10px;
+            padding: 16px 0;
+            color: #94A3B8;
+            font-size: 11.5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .footer-logo-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #64748B;
+            font-weight: 700;
+        }
+        .footer-logo-link img {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Floating WhatsApp Bar */
+        .floating-wa-bar {
+            position: fixed;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 32px);
+            max-width: 548px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            z-index: 999;
+        }
+        .floating-wa-text {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .floating-wa-sub {
+            font-size: 10.5px;
+            color: var(--text-muted);
+        }
+        .floating-wa-btn {
+            background: var(--whatsapp);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 12.5px;
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+        }
+
+        /* Loading Skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+            border-radius: 8px;
+        }
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Error / Not Found State */
+        .error-card {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .error-card i {
+            font-size: 48px;
+            color: #EF4444;
+            margin-bottom: 16px;
+        }
+        .error-title {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+        .error-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        /* PWA Install Banner (Android / Desktop) */
+        .pwa-install-banner {
+            position: fixed;
+            bottom: 78px;
+            left: 50%;
+            transform: translateX(-50%) translateY(160%);
+            width: calc(100% - 32px);
+            max-width: 548px;
+            background: #FFFFFF;
+            border-radius: 20px;
+            border: 1.5px solid var(--primary-tint);
+            box-shadow: 0 14px 40px rgba(15, 23, 42, 0.14), 0 2px 8px rgba(13, 148, 136, 0.08);
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 10000;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .pwa-install-banner.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+        .pwa-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            border: 1px solid var(--primary-tint);
+        }
+        .pwa-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .pwa-title {
+            font-size: 12.5px;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+        .pwa-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.3;
+            margin-top: 2px;
+        }
+        .pwa-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .pwa-btn-install {
+            background: var(--primary);
+            color: #FFFFFF;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 800;
+            cursor: pointer;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px var(--primary-glow);
+            transition: all 0.2s ease;
+        }
+        .pwa-btn-install:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+        }
+        .pwa-btn-close {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 6px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        .pwa-btn-close:hover {
+            background: #F1F5F9;
+            color: var(--text-main);
+        }
+
+        /* iOS Safari Add to Home Screen Sheet */
+        .ios-pwa-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(4px);
+            z-index: 10001;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .ios-pwa-backdrop.visible {
+            display: block;
+            opacity: 1;
+        }
+        .ios-pwa-sheet {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #FFFFFF;
+            border-top-left-radius: 26px;
+            border-top-right-radius: 26px;
+            padding: 24px 20px 36px 20px;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+            z-index: 10002;
+            transform: translateY(100%);
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 540px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .ios-pwa-sheet.visible {
+            transform: translateY(0);
+        }
+        .ios-sheet-handle {
+            width: 40px;
+            height: 4px;
+            background: #CBD5E1;
+            border-radius: 100px;
+            margin: 0 auto 16px auto;
+        }
+        .ios-sheet-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 12px auto;
+            border: 1px solid var(--primary-tint);
+        }
+        .ios-sheet-title {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+        .ios-sheet-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+        .ios-steps {
+            background: #F8FAFC;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 14px;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        [dir="ltr"] .ios-steps {
+            text-align: left;
+        }
+        .ios-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12.5px;
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+        .ios-step-badge {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        .ios-sheet-close-btn {
+            width: 100%;
+            background: #F1F5F9;
+            color: var(--text-main);
+            border: none;
+            padding: 12px;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+        }
+    </style>
+</head>
+<body data-theme="emerald">
+
+    <!-- Top Announcement Banner -->
+    <div id="announcementBanner" class="announcement-banner" style="display: none;">
+        <div class="announcement-content">
+            <i id="announcementIcon" class="fa-solid fa-bullhorn"></i>
+            <span id="announcementText"></span>
+            <a id="announcementLink" href="#" target="_blank" class="announcement-link" style="display: none;">
+                <span id="announcementLinkLabel">تفاصيل</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="site-container" id="mainContainer">
+        <!-- Top Nav -->
+        <header class="top-nav">
+            <a href="https://murshid.feshealthtech.com" class="brand-badge">
+                <img src="../assets/logo-sq.png" alt="مرشد">
+                <span>منصة مرشد الطبية</span>
+            </a>
+            <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
+        </header>
+
+        <!-- Loading State Placeholder -->
+        <div id="loadingState" style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="hero-card" style="padding: 40px 20px;">
+                <div class="skeleton" style="width: 104px; height: 104px; border-radius: 50%; margin: 0 auto 16px auto;"></div>
+                <div class="skeleton" style="width: 180px; height: 24px; margin: 0 auto 8px auto;"></div>
+                <div class="skeleton" style="width: 140px; height: 16px; margin: 0 auto 16px auto;"></div>
+                <div class="skeleton" style="width: 100%; height: 60px; border-radius: 16px;"></div>
+            </div>
+            <div class="section-card">
+                <div class="skeleton" style="width: 140px; height: 20px; margin-bottom: 16px;"></div>
+                <div class="skeleton" style="width: 100%; height: 80px; margin-bottom: 10px; border-radius: 14px;"></div>
+                <div class="skeleton" style="width: 100%; height: 80px; border-radius: 14px;"></div>
+            </div>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorState" class="hero-card error-card" style="display: none;">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <h2 class="error-title" id="errorTitle">لم يتم العثور على الصفحة</h2>
+            <p class="error-desc" id="errorDesc">المعرف المطلوب غير موجود أو تم إيقاف نشر الموقع مؤقتاً من قبل الأخصائي.</p>
+            <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--primary);">
+                <i class="fa-solid fa-house"></i>
+                <span id="errorHomeBtn">العودة لصفحة مرشد الرئيسية</span>
+            </a>
+        </div>
+
+        <!-- Dynamic Loaded Site Content -->
+        <main id="siteContent" style="display: none; flex-direction: column; gap: 18px;">
+            <!-- Hero Profile -->
+            <section class="hero-card">
+                <div class="avatar-container">
+                    <img id="doctorAvatar" class="avatar-img" src="../assets/logo-sq.png" alt="صورة الأخصائي">
+                    <div class="verified-badge" id="doctorBadge" title="أخصائي موثق">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                </div>
+
+                <h1 class="specialist-name" id="doctorName">د. اسم الأخصائي</h1>
+                <p class="specialist-title" id="doctorTitle">أخصائي تغذية علاجية وسريرية</p>
+                <p class="clinic-name" id="doctorClinic"></p>
+
+                <a href="https://murshid.feshealthtech.com/verify" class="verified-pill" id="verifiedPill">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span id="verifiedLabel">أخصائي معتمد وموثق رقمياً عبر مرشد</span>
+                </a>
+
+                <!-- Bio Box -->
+                <div class="bio-box" id="doctorBio"></div>
+
+                <!-- Medical Credentials Card -->
+                <div class="credentials-card" id="licensesCard" style="display: none;">
+                    <div class="credentials-header">
+                        <div class="credentials-icon"><i class="fa-solid fa-award"></i></div>
+                        <div class="credentials-titles">
+                            <h4 id="licensesTitle">الاعتمادات والتراخيص المهنية المعتمدة</h4>
+                            <p id="licenseDetailsText"></p>
+                        </div>
+                    </div>
+                    <div class="degrees-list" id="degreesList"></div>
+                </div>
+
+                <!-- Action Buttons: WhatsApp & vCard -->
+                <div class="actions-stack">
+                    <a href="#" id="mainBookingBtn" class="cta-booking-btn" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span id="mainBookingLabel">احجز استشارتك عبر واتساب الآن</span>
+                    </a>
+
+                    <button type="button" id="saveContactBtn" class="vcard-btn" onclick="downloadVCard()" style="display: none;">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span id="saveContactLabel">حفظ جهة الاتصال في هاتفك (vCard)</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Services & Packages Section -->
+            <section class="section-card" id="servicesSection">
+                <div class="section-header">
+                    <i class="fa-solid fa-notes-medical"></i>
+                    <span id="servicesSectionTitle">الخدمات والباقات العلاجية</span>
+                </div>
+                <div class="services-list" id="servicesList"></div>
+            </section>
+
+            <!-- Client Testimonials & Success Stories Section -->
+            <section class="section-card" id="testimonialsSection" style="display: none;">
+                <div class="section-header">
+                    <i class="fa-solid fa-star" style="color: #F59E0B;"></i>
+                    <span id="testimonialsSectionTitle">قصص النجاح وآراء المراجعين</span>
+                </div>
+                <div class="testimonials-list" id="testimonialsList"></div>
+            </section>
+
+            <!-- Working Hours Section -->
+            <section class="section-card" id="hoursSection">
+                <div class="section-header">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="hoursSectionTitle">أوقات ومواعيد العمل</span>
+                </div>
+                <div id="hoursList"></div>
+            </section>
+
+            <!-- FAQs Section -->
+            <section class="section-card" id="faqsSection">
+                <div class="section-header">
+                    <i class="fa-regular fa-circle-question"></i>
+                    <span id="faqsSectionTitle">الأسئلة الشائعة</span>
+                </div>
+                <div id="faqsList"></div>
+            </section>
+
+            <!-- Location & Clinic Info -->
+            <section class="section-card" id="locationSection">
+                <div class="section-header">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span id="locationSectionTitle">موقع العيادة والتواصل</span>
+                </div>
+                <div class="location-info">
+                    <div class="location-item" id="cityRow">
+                        <i class="fa-solid fa-city"></i>
+                        <span id="cityText"></span>
+                    </div>
+                    <div class="location-item" id="addressRow">
+                        <i class="fa-solid fa-map-pin"></i>
+                        <span id="addressText"></span>
+                    </div>
+                    <a href="#" id="mapBtn" class="map-btn" target="_blank" style="display: none;">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        <span id="mapBtnLabel">فتح الموقع في خرائط Google</span>
+                    </a>
+                </div>
+                <div class="socials-row" id="socialsRow" style="display: none;"></div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <a href="https://murshid.feshealthtech.com" class="footer-logo-link">
+                <img src="../assets/logo-sq.png" alt="مرشد">
+                <span>منظومة مرشد الرقمية لإدارة العيادات التغذوية</span>
+            </a>
+            <p>© 2026 FES Health Tech. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Floating WhatsApp Bar -->
+    <div class="floating-wa-bar" id="floatingWaBar" style="display: none;">
+        <div>
+            <div class="floating-wa-text" id="floatingWaTitle">حجز موعد واستفسار فوري</div>
+            <div class="floating-wa-sub" id="floatingWaSub">تواصل مباشر مع الأخصائي</div>
+        </div>
+        <a href="#" id="floatingWaBtn" class="floating-wa-btn" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span id="floatingWaBtnLabel">احجز الآن</span>
+        </a>
+    </div>
+
+    <!-- PWA Install Banner -->
+    <div class="pwa-install-banner" id="pwaBanner">
+        <div class="pwa-icon">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+        </div>
+        <div class="pwa-info">
+            <div class="pwa-title" id="pwaTitle">تثبيت تطبيق العيادة</div>
+            <div class="pwa-desc" id="pwaDesc">أضف صفحة العيادة إلى شاشتك الرئيسية للوصول السريع</div>
+        </div>
+        <div class="pwa-actions">
+            <button class="pwa-btn-install" id="pwaInstallBtn" onclick="handlePwaInstallClick()">
+                <i class="fa-solid fa-download"></i>
+                <span id="pwaInstallBtnLabel">تثبيت</span>
+            </button>
+            <button class="pwa-btn-close" onclick="dismissPwaBanner()" title="إغلاق">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- iOS Safari Smart Install Helper Sheet -->
+    <div class="ios-pwa-backdrop" id="iosPwaBackdrop" onclick="closeIosPwaSheet()"></div>
+    <div class="ios-pwa-sheet" id="iosPwaSheet">
+        <div class="ios-sheet-handle"></div>
+        <div class="ios-sheet-icon">
+            <i class="fa-brands fa-apple"></i>
+        </div>
+        <div class="ios-sheet-title" id="iosPwaTitle">تثبيت التطبيق على جهاز Apple (iOS)</div>
+        <div class="ios-sheet-subtitle" id="iosPwaSub">خطوتان بسيطتان لإضافة العيادة كأيقونة تطبيق على شاشتك الرئيسية</div>
+        <div class="ios-steps">
+            <div class="ios-step">
+                <span class="ios-step-badge">1</span>
+                <span id="iosPwaStep1">اضغط على زر المشاركة <i class="fa-solid fa-arrow-up-from-bracket"></i> في شريط Safari السفلي.</span>
+            </div>
+            <div class="ios-step">
+                <span class="ios-step-badge">2</span>
+                <span id="iosPwaStep2">مرر للأسفل واختر "إضافة إلى الشاشة الرئيسية" <i class="fa-regular fa-square-plus"></i>.</span>
+            </div>
+        </div>
+        <button class="ios-sheet-close-btn" id="iosPwaCloseBtn" onclick="closeIosPwaSheet()">حسناً، فهمت</button>
+    </div>
+
+    <script>
+        let currentLang = 'ar';
+        let siteData = null;
+
+        const i18n = {
+            ar: {
+                langToggle: 'English',
+                verifiedLabel: 'أخصائي معتمد وموثق رقمياً عبر مرشد',
+                mainBookingLabel: 'احجز استشارتك عبر واتساب الآن',
+                saveContactLabel: 'حفظ جهة الاتصال في هاتفك (vCard)',
+                licensesTitle: 'الاعتمادات والتراخيص المهنية المعتمدة',
+                licensePrefix: 'ترخيص رقم: ',
+                servicesSectionTitle: 'الخدمات والباقات العلاجية',
+                testimonialsSectionTitle: 'قصص النجاح وآراء المراجعين',
+                hoursSectionTitle: 'أوقات ومواعيد العمل',
+                faqsSectionTitle: 'الأسئلة الشائعة',
+                locationSectionTitle: 'موقع العيادة والتواصل',
+                mapBtnLabel: 'فتح الموقع في خرائط Google',
+                bookThisService: 'حجز هذه الباقة',
+                popularTag: 'الأكثر طلباً',
+                floatingWaTitle: 'حجز موعد واستفسار فوري',
+                floatingWaSub: 'تواصل مباشر مع الأخصائي',
+                floatingWaBtnLabel: 'احجز الآن',
+                off: 'مغلق',
+                detailsLabel: 'تفاصيل',
+                errorNotFoundTitle: 'لم يتم العثور على الصفحة',
+                errorNotFoundDesc: 'المعرف المطلوب غير موجود أو تم إيقاف نشر الموقع مؤقتاً.',
+                errorHomeBtn: 'العودة لصفحة مرشد الرئيسية',
+                pwaTitle: 'تثبيت تطبيق العيادة',
+                pwaDesc: 'أضف صفحة العيادة إلى شاشتك الرئيسية للوصول السريع',
+                pwaInstallBtnLabel: 'تثبيت',
+                iosPwaTitle: 'تثبيت التطبيق على جهاز Apple (iOS)',
+                iosPwaSub: 'خطوتان بسيطتان لإضافة العيادة كأيقونة تطبيق على شاشتك الرئيسية',
+                iosPwaStep1: 'اضغط على زر المشاركة <i class="fa-solid fa-arrow-up-from-bracket"></i> في شريط Safari السفلي.',
+                iosPwaStep2: 'مرر للأسفل واختر "إضافة إلى الشاشة الرئيسية" <i class="fa-regular fa-square-plus"></i>.',
+                iosPwaCloseBtn: 'حسناً، فهمت'
+            },
+            en: {
+                langToggle: 'العربية',
+                verifiedLabel: 'Verified & Digitally Certified Specialist',
+                mainBookingLabel: 'Book Consultation via WhatsApp',
+                saveContactLabel: 'Save to Phone Contacts (vCard)',
+                licensesTitle: 'Verified Licenses & Credentials',
+                licensePrefix: 'License No: ',
+                servicesSectionTitle: 'Clinical Services & Packages',
+                testimonialsSectionTitle: 'Client Success Stories & Reviews',
+                hoursSectionTitle: 'Working Hours & Schedule',
+                faqsSectionTitle: 'Frequently Asked Questions',
+                locationSectionTitle: 'Clinic Location & Contact',
+                mapBtnLabel: 'Open in Google Maps',
+                bookThisService: 'Book This Package',
+                popularTag: 'Popular',
+                floatingWaTitle: 'Instant Booking & Inquiry',
+                floatingWaSub: 'Direct chat with the specialist',
+                floatingWaBtnLabel: 'Book Now',
+                off: 'Closed',
+                detailsLabel: 'Details',
+                errorNotFoundTitle: 'Page Not Found',
+                errorNotFoundDesc: 'The requested specialist page does not exist or is temporarily unavailable.',
+                errorHomeBtn: 'Back to Murshid Homepage',
+                pwaTitle: 'Install Clinic App',
+                pwaDesc: 'Add this clinic to your home screen for quick access',
+                pwaInstallBtnLabel: 'Install',
+                iosPwaTitle: 'Install App on Apple (iOS)',
+                iosPwaSub: 'Two easy steps to add the clinic icon to your home screen',
+                iosPwaStep1: 'Tap the Share icon <i class="fa-solid fa-arrow-up-from-bracket"></i> at the bottom of Safari.',
+                iosPwaStep2: 'Scroll down and tap "Add to Home Screen" <i class="fa-regular fa-square-plus"></i>.',
+                iosPwaCloseBtn: 'Got it'
+            }
+        };
+
+        // Extraction of Slug from URL pathname or query
+        function extractSlug() {
+            const params = new URLSearchParams(window.location.search);
+            const querySlug = params.get('slug') || params.get('u');
+            if (querySlug) return querySlug.trim().toLowerCase();
+
+            const path = window.location.pathname;
+            const segments = path.split('/').filter(Boolean);
+            const pIdx = segments.indexOf('p');
+            if (pIdx !== -1 && segments.length > pIdx + 1) {
+                const rawSlug = segments[pIdx + 1];
+                if (rawSlug && !rawSlug.endsWith('.html')) {
+                    return rawSlug.trim().toLowerCase();
+                }
+            }
+            return '';
+        }
+
+        async function fetchSiteData(slug) {
+            if (!slug) {
+                showError('SLUG_MISSING');
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://us-central1-ai-apps-central.cloudfunctions.net/getSpecialistSite?slug=${encodeURIComponent(slug)}`, {
+                    method: 'GET',
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (!response.ok) {
+                    showError(response.status === 404 ? 'NOT_FOUND' : 'ERROR');
+                    return;
+                }
+
+                const result = await response.json();
+                if (result.found && result.site) {
+                    siteData = result.site;
+                    siteData.slug = result.slug;
+                    renderSite(siteData);
+                } else {
+                    showError('NOT_FOUND');
+                }
+            } catch (e) {
+                console.error('Error fetching specialist site:', e);
+                showError('NETWORK_ERROR');
+            }
+        }
+
+        function downloadVCard() {
+            if (!siteData) return;
+            const name = siteData.displayName || 'أخصائي التغذية';
+            const title = siteData.professionalTitle || 'أخصائي تغذية علاجية وسريرية';
+            const org = siteData.clinicName || 'عيادة مرشد الرقمية';
+            const phone = siteData.phoneNumber || siteData.whatsappNumber || '';
+            const url = window.location.href;
+            const note = siteData.bio || '';
+            
+            let vcard = 'BEGIN:VCARD\r\nVERSION:3.0\r\n';
+            vcard += `FN:${name}\r\n`;
+            if (org) vcard += `ORG:${org}\r\n`;
+            if (title) vcard += `TITLE:${title}\r\n`;
+            if (phone) vcard += `TEL;TYPE=CELL,VOICE:${phone}\r\n`;
+            vcard += `URL:${url}\r\n`;
+            if (note) vcard += `NOTE:${note.replace(/\r?\n/g, ' ')}\r\n`;
+            vcard += 'END:VCARD\r\n';
+
+            const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8;' });
+            const downloadUrl = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = downloadUrl;
+            a.download = `${(siteData.slug || 'contact')}_contact.vcf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => URL.revokeObjectURL(downloadUrl), 2000);
+        }
+
+        function renderSite(site) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'none';
+            const content = document.getElementById('siteContent');
+            content.style.display = 'flex';
+
+            // Theme application
+            const validThemes = ['emerald', 'sapphire', 'obsidian', 'rose', 'amethyst'];
+            const theme = validThemes.includes(site.theme) ? site.theme : 'emerald';
+            document.body.setAttribute('data-theme', theme);
+
+            // Visibility settings
+            const vis = site.visibility || {};
+
+            // 1. Top Announcement Banner
+            const bannerEl = document.getElementById('announcementBanner');
+            const showAnnouncement = vis.showAnnouncement !== false && site.announcementText && site.announcementText.trim() !== '';
+            if (showAnnouncement) {
+                bannerEl.style.display = 'block';
+                const annType = site.announcementType || 'info';
+                bannerEl.className = `announcement-banner ${annType}`;
+                document.getElementById('announcementText').textContent = site.announcementText;
+                
+                const iconEl = document.getElementById('announcementIcon');
+                if (annType === 'offer') iconEl.className = 'fa-solid fa-tag';
+                else if (annType === 'alert') iconEl.className = 'fa-solid fa-triangle-exclamation';
+                else iconEl.className = 'fa-solid fa-bullhorn';
+
+                const linkEl = document.getElementById('announcementLink');
+                if (site.announcementUrl && site.announcementUrl.trim() !== '') {
+                    linkEl.href = site.announcementUrl;
+                    linkEl.style.display = 'inline-flex';
+                } else {
+                    linkEl.style.display = 'none';
+                }
+            } else {
+                bannerEl.style.display = 'none';
+            }
+
+            // Document Title
+            document.title = `${site.displayName || 'الأخصائي'} — ${site.clinicName || 'العيادة الرقمية'}`;
+
+            // Proposal #8: Dynamic OpenGraph & Twitter Meta Tags (Always ON)
+            const metaTitle = `${site.displayName || 'العيادة الرقمية'} | ${site.professionalTitle || 'أخصائي معتمد'}`;
+            const metaDesc = `${site.clinicName ? site.clinicName + ' — ' : ''}${site.bio || 'احجز استشارتك التغذوية وتعرف على الباقات والخدمات العلاجية المتاحة.'}`;
+            const metaImg = (site.avatarUrl && site.avatarUrl.startsWith('http')) ? site.avatarUrl : '../assets/og-preview.jpg';
+
+            const ogTitleEl = document.getElementById('ogTitle');
+            const twTitleEl = document.getElementById('twTitle');
+            const ogDescEl = document.getElementById('ogDesc');
+            const twDescEl = document.getElementById('twDesc');
+            const ogImgEl = document.getElementById('ogImage');
+            const twImgEl = document.getElementById('twImage');
+            const ogUrlEl = document.getElementById('ogUrl');
+
+            if (ogTitleEl) ogTitleEl.setAttribute('content', metaTitle);
+            if (twTitleEl) twTitleEl.setAttribute('content', metaTitle);
+            if (ogDescEl) ogDescEl.setAttribute('content', metaDesc);
+            if (twDescEl) twDescEl.setAttribute('content', metaDesc);
+            if (ogImgEl) ogImgEl.setAttribute('content', metaImg);
+            if (twImgEl) twImgEl.setAttribute('content', metaImg);
+            if (ogUrlEl) ogUrlEl.setAttribute('content', window.location.href);
+
+            // Basic Info
+            document.getElementById('doctorName').textContent = site.displayName || 'د. أخصائي التغذية';
+            document.getElementById('doctorTitle').textContent = site.professionalTitle || 'أخصائي تغذية علاجية وسريرية';
+            
+            const clinicEl = document.getElementById('doctorClinic');
+            if (site.clinicName) {
+                clinicEl.textContent = site.clinicName;
+                clinicEl.style.display = 'block';
+            } else {
+                clinicEl.style.display = 'none';
+            }
+
+            // Avatar
+            const avatarEl = document.getElementById('doctorAvatar');
+            if (site.avatarUrl) {
+                avatarEl.src = site.avatarUrl;
+            }
+
+            // Verified Badge
+            if (site.isVerified === false) {
+                document.getElementById('doctorBadge').style.display = 'none';
+                document.getElementById('verifiedPill').style.display = 'none';
+            }
+
+            // Bio Box (governed by vis.showBio)
+            const bioEl = document.getElementById('doctorBio');
+            const showBio = vis.showBio !== false && site.bio && site.bio.trim() !== '';
+            if (showBio) {
+                bioEl.textContent = site.bio;
+                bioEl.style.display = 'block';
+            } else {
+                bioEl.style.display = 'none';
+            }
+
+            // Medical Licenses & Accreditations (governed by vis.showLicenses)
+            const licensesCard = document.getElementById('licensesCard');
+            const showLicenses = vis.showLicenses !== false && (site.licenseNumber || (site.degrees && site.degrees.length > 0) || site.licenseAuthority);
+            if (showLicenses) {
+                licensesCard.style.display = 'block';
+                const authText = site.licenseAuthority || 'الهيئة السعودية للتخصصات الصحية';
+                const licNumText = site.licenseNumber ? ` — ${i18n[currentLang].licensePrefix}${site.licenseNumber}` : '';
+                document.getElementById('licenseDetailsText').textContent = `${authText}${licNumText}`;
+
+                const degreesList = document.getElementById('degreesList');
+                degreesList.innerHTML = '';
+                if (site.degrees && site.degrees.length > 0) {
+                    site.degrees.forEach(deg => {
+                        if (deg && deg.trim()) {
+                            const span = document.createElement('span');
+                            span.className = 'degree-tag';
+                            span.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${escapeHtml(deg)}`;
+                            degreesList.appendChild(span);
+                        }
+                    });
+                }
+            } else {
+                licensesCard.style.display = 'none';
+            }
+
+            // WhatsApp link helper
+            const rawPhone = (site.whatsappNumber || site.phoneNumber || '').replace(/[^0-9]/g, '');
+            const defaultMsg = site.whatsappMessage || 'مرحباً دكتور، أود الاستفسار وحجز استشارة تغذوية متخصصة معك.';
+            const waUrl = rawPhone ? `https://wa.me/${rawPhone}?text=${encodeURIComponent(defaultMsg)}` : '#';
+            
+            const mainBookingBtn = document.getElementById('mainBookingBtn');
+            mainBookingBtn.href = waUrl;
+
+            // vCard Button (governed by vis.showSaveContact)
+            const saveContactBtn = document.getElementById('saveContactBtn');
+            if (vis.showSaveContact !== false && (site.phoneNumber || site.whatsappNumber)) {
+                saveContactBtn.style.display = 'flex';
+            } else {
+                saveContactBtn.style.display = 'none';
+            }
+
+            // Floating WhatsApp Bar
+            if (rawPhone) {
+                const floatingBar = document.getElementById('floatingWaBar');
+                floatingBar.style.display = 'flex';
+                document.getElementById('floatingWaBtn').href = waUrl;
+            }
+
+            // Render Services (governed by vis.showServices)
+            const servicesSection = document.getElementById('servicesSection');
+            const servicesList = document.getElementById('servicesList');
+            servicesList.innerHTML = '';
+            const showServices = vis.showServices !== false && site.services && site.services.length > 0;
+            if (showServices) {
+                servicesSection.style.display = 'block';
+                site.services.forEach(s => {
+                    const item = document.createElement('div');
+                    item.className = `service-item ${s.isPopular ? 'popular' : ''}`;
+
+                    const serviceBookingMsg = `مرحباً دكتور ${site.displayName || ''}، أود حجز باقة "${s.title}" (${s.price} ${s.currency}).`;
+                    const sWaUrl = rawPhone ? `https://wa.me/${rawPhone}?text=${encodeURIComponent(serviceBookingMsg)}` : '#';
+
+                    let featuresHtml = '';
+                    if (s.features && s.features.length > 0) {
+                        featuresHtml = `<div class="service-features">
+                            ${s.features.map(f => `<span class="feature-pill"><i class="fa-solid fa-check"></i> ${escapeHtml(f)}</span>`).join('')}
+                        </div>`;
+                    }
+
+                    item.innerHTML = `
+                        <div class="service-top">
+                            <h3 class="service-title">${escapeHtml(s.title)}</h3>
+                            ${s.isPopular ? `<span class="popular-tag">${i18n[currentLang].popularTag}</span>` : ''}
+                        </div>
+                        ${s.description ? `<p class="service-desc">${escapeHtml(s.description)}</p>` : ''}
+                        ${featuresHtml}
+                        <div class="service-meta">
+                            <div>
+                                <span class="service-price">${s.price} ${escapeHtml(s.currency || 'SAR')}</span>
+                                ${s.duration ? `<span class="service-duration"> / ${escapeHtml(s.duration)}</span>` : ''}
+                            </div>
+                            <a href="${sWaUrl}" target="_blank" class="service-book-btn">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>${i18n[currentLang].bookThisService}</span>
+                            </a>
+                        </div>
+                    `;
+                    servicesList.appendChild(item);
+                });
+            } else {
+                servicesSection.style.display = 'none';
+            }
+
+            // Render Testimonials & Success Stories (governed by vis.showTestimonials)
+            const testimonialsSection = document.getElementById('testimonialsSection');
+            const testimonialsList = document.getElementById('testimonialsList');
+            testimonialsList.innerHTML = '';
+            const showTestimonials = vis.showTestimonials !== false && site.testimonials && site.testimonials.length > 0;
+            if (showTestimonials) {
+                testimonialsSection.style.display = 'block';
+                site.testimonials.forEach(t => {
+                    const tCard = document.createElement('div');
+                    tCard.className = 'testimonial-card';
+                    
+                    const starsHtml = Array.from({ length: 5 }, (_, i) => 
+                        `<i class="fa-${i < (t.rating || 5) ? 'solid' : 'regular'} fa-star"></i>`
+                    ).join('');
+
+                    tCard.innerHTML = `
+                        <div class="testimonial-header">
+                            <div class="testimonial-stars">${starsHtml}</div>
+                            ${t.date ? `<span class="testimonial-date">${escapeHtml(t.date)}</span>` : ''}
+                        </div>
+                        ${t.result ? `<div class="testimonial-result"><i class="fa-solid fa-trophy"></i> ${escapeHtml(t.result)}</div>` : ''}
+                        <p class="testimonial-comment">"${escapeHtml(t.comment)}"</p>
+                        <div class="testimonial-author">— ${escapeHtml(t.clientName)}</div>
+                    `;
+                    testimonialsList.appendChild(tCard);
+                });
+            } else {
+                testimonialsSection.style.display = 'none';
+            }
+
+            // Render Working Hours (governed by vis.showWorkingHours)
+            const hoursSection = document.getElementById('hoursSection');
+            const hoursList = document.getElementById('hoursList');
+            hoursList.innerHTML = '';
+            const showWorkingHours = vis.showWorkingHours !== false && site.workingHours && site.workingHours.length > 0;
+            if (showWorkingHours) {
+                hoursSection.style.display = 'block';
+                site.workingHours.forEach(h => {
+                    const row = document.createElement('div');
+                    row.className = 'hours-row';
+                    row.innerHTML = `
+                        <span class="hours-day">${escapeHtml(h.day)}</span>
+                        <span class="hours-time ${h.isOff ? 'off' : ''}">${h.isOff ? i18n[currentLang].off : escapeHtml(h.hours)}</span>
+                    `;
+                    hoursList.appendChild(row);
+                });
+            } else {
+                hoursSection.style.display = 'none';
+            }
+
+            // Render FAQs (governed by vis.showFaqs)
+            const faqsSection = document.getElementById('faqsSection');
+            const faqsList = document.getElementById('faqsList');
+            faqsList.innerHTML = '';
+            const showFaqs = vis.showFaqs !== false && site.faqs && site.faqs.length > 0;
+            if (showFaqs) {
+                faqsSection.style.display = 'block';
+                site.faqs.forEach(f => {
+                    const faqItem = document.createElement('div');
+                    faqItem.className = 'faq-item';
+                    faqItem.innerHTML = `
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span>${escapeHtml(f.question)}</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">${escapeHtml(f.answer)}</div>
+                    `;
+                    faqsList.appendChild(faqItem);
+                });
+            } else {
+                faqsSection.style.display = 'none';
+            }
+
+            // Render Location (governed by vis.showLocation)
+            const locationSection = document.getElementById('locationSection');
+            const cityText = [site.city, site.country].filter(Boolean).join('، ');
+            const hasLocation = cityText || site.address || site.mapUrl;
+            const showLocation = vis.showLocation !== false && hasLocation;
+
+            if (showLocation) {
+                locationSection.style.display = 'block';
+                if (cityText) {
+                    document.getElementById('cityText').textContent = cityText;
+                    document.getElementById('cityRow').style.display = 'flex';
+                } else {
+                    document.getElementById('cityRow').style.display = 'none';
+                }
+
+                if (site.address) {
+                    document.getElementById('addressText').textContent = site.address;
+                    document.getElementById('addressRow').style.display = 'flex';
+                } else {
+                    document.getElementById('addressRow').style.display = 'none';
+                }
+
+                const mapBtn = document.getElementById('mapBtn');
+                if (site.mapUrl) {
+                    mapBtn.href = site.mapUrl;
+                    mapBtn.style.display = 'inline-flex';
+                } else {
+                    mapBtn.style.display = 'none';
+                }
+            } else {
+                locationSection.style.display = 'none';
+            }
+
+            // Socials (governed by vis.showSocials)
+            const socialsRow = document.getElementById('socialsRow');
+            socialsRow.innerHTML = '';
+            const socials = site.socials || {};
+            let hasSocials = false;
+
+            const iconMap = {
+                instagram: 'fa-brands fa-instagram',
+                twitter: 'fa-brands fa-x-twitter',
+                x: 'fa-brands fa-x-twitter',
+                linkedin: 'fa-brands fa-linkedin-in',
+                tiktok: 'fa-brands fa-tiktok',
+                facebook: 'fa-brands fa-facebook-f',
+                website: 'fa-solid fa-globe'
+            };
+
+            for (const [key, val] of Object.entries(socials)) {
+                if (val && val.trim()) {
+                    hasSocials = true;
+                    let linkUrl = val.trim();
+                    if (!linkUrl.startsWith('http')) {
+                        if (key === 'instagram') linkUrl = `https://instagram.com/${linkUrl.replace('@', '')}`;
+                        else if (key === 'twitter' || key === 'x') linkUrl = `https://x.com/${linkUrl.replace('@', '')}`;
+                        else linkUrl = `https://${linkUrl}`;
+                    }
+
+                    const a = document.createElement('a');
+                    a.href = linkUrl;
+                    a.target = '_blank';
+                    a.className = 'social-link';
+                    a.innerHTML = `<i class="${iconMap[key.toLowerCase()] || 'fa-solid fa-link'}"></i>`;
+                    socialsRow.appendChild(a);
+                }
+            }
+
+            const showSocials = vis.showSocials !== false && hasSocials;
+            if (showSocials) {
+                socialsRow.style.display = 'flex';
+                if (!showLocation) {
+                    // Show container if location was hidden but socials are active
+                    locationSection.style.display = 'block';
+                }
+            } else {
+                socialsRow.style.display = 'none';
+            }
+
+            // Proposal #9: Trigger PWA install prompt check
+            checkAndShowPwaBanner();
+        }
+
+        function toggleFaq(el) {
+            const parent = el.parentElement;
+            parent.classList.toggle('active');
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            document.documentElement.lang = currentLang;
+            document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+            // Update static strings
+            const dict = i18n[currentLang];
+            document.getElementById('langToggleBtn').textContent = dict.langToggle;
+            document.getElementById('verifiedLabel').textContent = dict.verifiedLabel;
+            document.getElementById('mainBookingLabel').textContent = dict.mainBookingLabel;
+            document.getElementById('saveContactLabel').textContent = dict.saveContactLabel;
+            document.getElementById('licensesTitle').textContent = dict.licensesTitle;
+            document.getElementById('servicesSectionTitle').textContent = dict.servicesSectionTitle;
+            document.getElementById('testimonialsSectionTitle').textContent = dict.testimonialsSectionTitle;
+            document.getElementById('hoursSectionTitle').textContent = dict.hoursSectionTitle;
+            document.getElementById('faqsSectionTitle').textContent = dict.faqsSectionTitle;
+            document.getElementById('locationSectionTitle').textContent = dict.locationSectionTitle;
+            document.getElementById('mapBtnLabel').textContent = dict.mapBtnLabel;
+            document.getElementById('floatingWaTitle').textContent = dict.floatingWaTitle;
+            document.getElementById('floatingWaSub').textContent = dict.floatingWaSub;
+            document.getElementById('floatingWaBtnLabel').textContent = dict.floatingWaBtnLabel;
+            document.getElementById('errorTitle').textContent = dict.errorNotFoundTitle;
+            document.getElementById('errorDesc').textContent = dict.errorNotFoundDesc;
+            document.getElementById('errorHomeBtn').textContent = dict.errorHomeBtn;
+
+            // PWA Strings
+            const pwaTitleEl = document.getElementById('pwaTitle');
+            if (pwaTitleEl) pwaTitleEl.textContent = dict.pwaTitle;
+            const pwaDescEl = document.getElementById('pwaDesc');
+            if (pwaDescEl) pwaDescEl.textContent = dict.pwaDesc;
+            const pwaInstallBtnLabelEl = document.getElementById('pwaInstallBtnLabel');
+            if (pwaInstallBtnLabelEl) pwaInstallBtnLabelEl.textContent = dict.pwaInstallBtnLabel;
+            const iosPwaTitleEl = document.getElementById('iosPwaTitle');
+            if (iosPwaTitleEl) iosPwaTitleEl.textContent = dict.iosPwaTitle;
+            const iosPwaSubEl = document.getElementById('iosPwaSub');
+            if (iosPwaSubEl) iosPwaSubEl.textContent = dict.iosPwaSub;
+            const iosPwaStep1El = document.getElementById('iosPwaStep1');
+            if (iosPwaStep1El) iosPwaStep1El.innerHTML = dict.iosPwaStep1;
+            const iosPwaStep2El = document.getElementById('iosPwaStep2');
+            if (iosPwaStep2El) iosPwaStep2El.innerHTML = dict.iosPwaStep2;
+            const iosPwaCloseBtnEl = document.getElementById('iosPwaCloseBtn');
+            if (iosPwaCloseBtnEl) iosPwaCloseBtnEl.textContent = dict.iosPwaCloseBtn;
+
+            if (siteData) {
+                renderSite(siteData);
+            }
+        }
+
+        function showError(type) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('siteContent').style.display = 'none';
+            document.getElementById('errorState').style.display = 'block';
+            dismissPwaBanner(true);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // Proposal #9: PWA Management & Installation Handlers
+        let deferredPrompt = null;
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(err => {
+                    console.log('PWA SW registration notice: ', err);
+                });
+            });
+        }
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            if (siteData) {
+                checkAndShowPwaBanner();
+            }
+        });
+
+        function isIosDevice() {
+            return /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+        }
+
+        function isPwaInstalled() {
+            return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+        }
+
+        function checkAndShowPwaBanner() {
+            if (!siteData) return;
+            const vis = siteData.visibility || {};
+            // If specialist disabled PWA prompt in settings
+            if (vis.showPwaInstall === false) {
+                dismissPwaBanner(true);
+                return;
+            }
+
+            // If already running standalone or dismissed in session
+            if (isPwaInstalled() || sessionStorage.getItem('pwa_banner_dismissed') === 'true') {
+                return;
+            }
+
+            // Show banner smoothly after 2 seconds
+            setTimeout(() => {
+                if (sessionStorage.getItem('pwa_banner_dismissed') !== 'true' && !isPwaInstalled()) {
+                    const banner = document.getElementById('pwaBanner');
+                    if (banner && (!siteData || siteData.visibility?.showPwaInstall !== false)) {
+                        banner.classList.add('visible');
+                    }
+                }
+            }, 1800);
+        }
+
+        function handlePwaInstallClick() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        dismissPwaBanner();
+                    }
+                    deferredPrompt = null;
+                });
+            } else if (isIosDevice()) {
+                // Show iOS Safari Step-by-Step Instructions
+                document.getElementById('iosPwaBackdrop').classList.add('visible');
+                document.getElementById('iosPwaSheet').classList.add('visible');
+            } else {
+                // Fallback instructions for unsupported prompt browsers
+                alert(currentLang === 'ar' 
+                    ? 'لتثبيت التطبيق، افتح قائمة خيارات المتصفح (⋮) واختر "تثبيت التطبيق" أو "إضافة إلى الشاشة الرئيسية".'
+                    : 'To install, open your browser menu (⋮) and tap "Install App" or "Add to Home Screen".');
+            }
+        }
+
+        function dismissPwaBanner(silent = false) {
+            const banner = document.getElementById('pwaBanner');
+            if (banner) banner.classList.remove('visible');
+            if (!silent) {
+                sessionStorage.setItem('pwa_banner_dismissed', 'true');
+            }
+        }
+
+        function closeIosPwaSheet() {
+            document.getElementById('iosPwaBackdrop').classList.remove('visible');
+            document.getElementById('iosPwaSheet').classList.remove('visible');
+            dismissPwaBanner();
+        }
+
+        // Init on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const slug = extractSlug();
+            fetchSiteData(slug);
+        });
+    </script>
+</body>
+</html>
