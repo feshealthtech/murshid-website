@@ -863,6 +863,10 @@
                         renderTamperedReport(file.name, 'Document content tampering detected: The visual content, pages, or text of this PDF were modified or re-saved after official issuance.');
                         return;
                     }
+                } else if (!extraction.hasTrailerSeal) {
+                    // If an older manifest is missing its original cryptographic trailer seal, it was modified by an external editor
+                    renderTamperedReport(file.name, 'Document modification detected: The cryptographic seal was stripped or modified by an external editor.');
+                    return;
                 }
 
                 // 6. Verify Structural Integrity & Anti-Tampering with PDF.js
@@ -959,7 +963,8 @@
                 }
                 return {
                     rawB64: str,
-                    cleanBytes: cleanBytes
+                    cleanBytes: cleanBytes,
+                    hasTrailerSeal: true
                 };
             }
 
@@ -974,7 +979,8 @@
             if (match && match[1]) {
                 return {
                     rawB64: match[1],
-                    cleanBytes: bytes
+                    cleanBytes: bytes,
+                    hasTrailerSeal: false
                 };
             }
             return null;
