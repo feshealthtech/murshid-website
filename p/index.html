@@ -815,46 +815,75 @@
             height: 18px;
         }
 
-        /* Floating WhatsApp Bar */
+        /* Floating WhatsApp Bar (Fixed Bottom) */
         .floating-wa-bar {
             position: fixed;
-            bottom: 16px;
+            bottom: 14px;
             left: 50%;
             transform: translateX(-50%);
-            width: calc(100% - 32px);
-            max-width: 548px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(16px);
+            width: calc(100% - 24px);
+            max-width: 520px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 10px 16px;
+            padding: 10px 14px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            gap: 12px;
+            box-shadow: 0 14px 34px -4px rgba(15, 23, 42, 0.14), 0 4px 12px rgba(0, 0, 0, 0.04);
             z-index: 999;
         }
+        .floating-wa-info {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
         .floating-wa-text {
-            font-size: 12px;
+            font-size: 12.5px;
             font-weight: 800;
             color: var(--text-main);
+            line-height: 1.25;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .floating-wa-sub {
             font-size: 10.5px;
             color: var(--text-muted);
+            line-height: 1.25;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .floating-wa-btn {
             background: var(--whatsapp);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 12px;
-            font-size: 12.5px;
+            color: #FFFFFF !important;
+            padding: 9px 16px;
+            border-radius: 14px;
+            font-size: 12px;
             font-weight: 800;
             text-decoration: none;
-            display: flex;
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+            white-space: nowrap;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+            transition: all 0.2s ease;
+        }
+        .floating-wa-btn:hover {
+            background: var(--whatsapp-dark);
+            transform: scale(1.02);
+        }
+        .floating-wa-btn i {
+            font-size: 15px;
+            flex-shrink: 0;
         }
 
         /* Loading Skeleton */
@@ -891,76 +920,90 @@
             margin-bottom: 20px;
         }
 
-        /* PWA Install Banner (Android / Desktop) */
+        /* PWA Install Banner (Fixed Top Luxury Toast) */
         .pwa-install-banner {
             position: fixed;
-            bottom: 78px;
+            top: 14px;
             left: 50%;
-            transform: translateX(-50%) translateY(160%);
-            width: calc(100% - 32px);
-            max-width: 548px;
-            background: #FFFFFF;
-            border-radius: 20px;
-            border: 1.5px solid var(--primary-tint);
-            box-shadow: 0 14px 40px rgba(15, 23, 42, 0.14), 0 2px 8px rgba(13, 148, 136, 0.08);
-            padding: 12px 14px;
+            transform: translateX(-50%) translateY(-180%);
+            width: calc(100% - 24px);
+            max-width: 520px;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 18px;
+            border: 1px solid var(--primary-tint);
+            box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.16), 0 4px 12px rgba(13, 148, 136, 0.08);
+            padding: 10px 12px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            z-index: 10000;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            gap: 10px;
+            z-index: 10001;
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .pwa-install-banner.visible {
             transform: translateX(-50%) translateY(0);
         }
         .pwa-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             background: var(--primary-light);
             color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 16px;
             flex-shrink: 0;
             border: 1px solid var(--primary-tint);
         }
         .pwa-info {
             flex: 1;
             min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
         }
         .pwa-title {
-            font-size: 12.5px;
+            font-size: 12px;
             font-weight: 800;
             color: var(--text-main);
-            line-height: 1.2;
+            line-height: 1.25;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .pwa-desc {
-            font-size: 11px;
+            font-size: 10px;
             color: var(--text-muted);
-            line-height: 1.3;
-            margin-top: 2px;
+            line-height: 1.25;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .pwa-actions {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
+            flex-shrink: 0;
         }
         .pwa-btn-install {
             background: var(--primary);
-            color: #FFFFFF;
+            color: #FFFFFF !important;
             border: none;
-            padding: 8px 14px;
+            padding: 7px 12px;
             border-radius: 100px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 800;
             cursor: pointer;
             font-family: inherit;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            box-shadow: 0 4px 12px var(--primary-glow);
+            justify-content: center;
+            gap: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            box-shadow: 0 3px 10px var(--primary-glow);
             transition: all 0.2s ease;
         }
         .pwa-btn-install:hover {
@@ -971,14 +1014,16 @@
             background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 6px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.2s;
+            flex-shrink: 0;
+            transition: background 0.2s, color 0.2s;
         }
         .pwa-btn-close:hover {
             background: #F1F5F9;
@@ -1011,12 +1056,12 @@
             background: #FFFFFF;
             border-top-left-radius: 26px;
             border-top-right-radius: 26px;
-            padding: 24px 20px 36px 20px;
-            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+            padding: 22px 20px 34px 20px;
+            box-shadow: 0 -12px 40px rgba(15, 23, 42, 0.2);
             z-index: 10002;
             transform: translateY(100%);
             transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            max-width: 540px;
+            max-width: 520px;
             margin: 0 auto;
             text-align: center;
         }
@@ -1031,15 +1076,15 @@
             margin: 0 auto 16px auto;
         }
         .ios-sheet-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
             background: var(--primary-light);
             color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 22px;
             margin: 0 auto 12px auto;
             border: 1px solid var(--primary-tint);
         }
@@ -1272,9 +1317,9 @@
         </footer>
     </div>
 
-    <!-- Floating WhatsApp Bar -->
+    <!-- Floating WhatsApp Bar (Fixed Bottom) -->
     <div class="floating-wa-bar" id="floatingWaBar" style="display: none;">
-        <div>
+        <div class="floating-wa-info">
             <div class="floating-wa-text" id="floatingWaTitle">حجز موعد واستفسار فوري</div>
             <div class="floating-wa-sub" id="floatingWaSub">تواصل مباشر مع الأخصائي</div>
         </div>
@@ -1284,18 +1329,18 @@
         </a>
     </div>
 
-    <!-- PWA Install Banner -->
+    <!-- PWA Install Banner (Fixed Top Luxury Toast) -->
     <div class="pwa-install-banner" id="pwaBanner">
         <div class="pwa-icon">
             <i class="fa-solid fa-mobile-screen-button"></i>
         </div>
         <div class="pwa-info">
-            <div class="pwa-title" id="pwaTitle">تثبيت تطبيق العيادة</div>
-            <div class="pwa-desc" id="pwaDesc">أضف صفحة العيادة إلى شاشتك الرئيسية للوصول السريع</div>
+            <div class="pwa-title" id="pwaTitle">تطبيق العيادة الرقمية</div>
+            <div class="pwa-desc" id="pwaDesc">تثبيت التطبيق على الشاشة للوصول السريع</div>
         </div>
         <div class="pwa-actions">
             <button class="pwa-btn-install" id="pwaInstallBtn" onclick="handlePwaInstallClick()">
-                <i class="fa-solid fa-download"></i>
+                <i class="fa-solid fa-arrow-down-to-bracket"></i>
                 <span id="pwaInstallBtnLabel">تثبيت</span>
             </button>
             <button class="pwa-btn-close" onclick="dismissPwaBanner()" title="إغلاق">
