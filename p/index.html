@@ -1397,10 +1397,10 @@
             }
         };
 
-        // Extraction of Slug from URL pathname or query
+        // Extraction of Slug from URL pathname, query, or hash
         function extractSlug() {
             const params = new URLSearchParams(window.location.search);
-            const querySlug = params.get('slug') || params.get('u');
+            const querySlug = params.get('slug') || params.get('u') || params.get('id');
             if (querySlug) return querySlug.trim().toLowerCase();
 
             const path = window.location.pathname;
@@ -1412,6 +1412,12 @@
                     return rawSlug.trim().toLowerCase();
                 }
             }
+
+            const hash = (window.location.hash || '').replace(/^#\/?/, '').trim();
+            if (hash && hash.length >= 3 && !hash.includes('&') && !hash.includes('=')) {
+                return hash.toLowerCase();
+            }
+
             return '';
         }
 

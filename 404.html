@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Sorry, page not found - Murshid App" />
   <title>404 - Page Not Found | Murshid App</title>
+  <script>
+    (function() {
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      if (path.indexOf('/p/') === 0 && path !== '/p/index.html') {
+        var segments = path.split('/').filter(Boolean);
+        var pIdx = segments.indexOf('p');
+        if (pIdx !== -1 && segments.length > pIdx + 1) {
+          var slug = segments[pIdx + 1];
+          window.location.replace('/p/index.html?slug=' + encodeURIComponent(slug) + (hash || ''));
+          return;
+        }
+      } else if (path.indexOf('/verify/') === 0 && path !== '/verify/index.html') {
+        window.location.replace('/verify/index.html' + search + hash);
+        return;
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="shared/murshid-style.css" />
   <link rel="stylesheet" href="shared/index-style.css" />
   <link rel="icon" type="image/webp" href="assets/logo-sq.webp" />
