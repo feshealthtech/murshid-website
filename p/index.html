@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>العيادة الرقمية الرسمية — منصة مرشد</title>
     
-    <!-- PWA Web App Manifest & Mobile Configuration -->
-    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0D9488">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="عيادة مرشد">
-    <link rel="apple-touch-icon" href="../assets/logo-sq.png">
 
     <!-- OpenGraph & Social Share Dynamic Preview Cards -->
     <meta property="og:type" content="profile">
@@ -211,30 +204,7 @@
             height: 24px;
             border-radius: 6px;
         }
-        .top-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .top-pwa-btn {
-            background: var(--primary-light);
-            border: 1px solid var(--primary-tint);
-            color: var(--primary-dark);
-            padding: 5px 12px;
-            border-radius: 100px;
-            font-size: 11.5px;
-            font-weight: 700;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            font-family: inherit;
-            transition: all 0.2s ease;
-        }
-        .top-pwa-btn:hover {
-            background: var(--primary);
-            color: white;
-        }
+
         .lang-btn {
             background: var(--primary-light);
             border: 1px solid var(--primary-tint);
@@ -875,73 +845,6 @@
             flex-shrink: 0;
         }
 
-        /* PWA Section Card (In-Page Luxury Card) */
-        .pwa-section-card {
-            background: linear-gradient(135deg, var(--primary-light) 0%, #FFFFFF 100%);
-            border: 1.5px solid var(--primary-tint);
-            border-radius: 22px;
-            padding: 16px 18px;
-            box-shadow: 0 6px 20px -4px var(--primary-glow);
-        }
-        .pwa-card-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .pwa-card-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            background: #FFFFFF;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 19px;
-            flex-shrink: 0;
-            border: 1px solid var(--primary-tint);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-        }
-        .pwa-card-info {
-            flex: 1;
-            min-width: 0;
-        }
-        .pwa-card-title {
-            font-size: 13px;
-            font-weight: 800;
-            color: var(--text-main);
-            line-height: 1.3;
-        }
-        .pwa-card-desc {
-            font-size: 11px;
-            color: var(--text-muted);
-            line-height: 1.35;
-            margin-top: 2px;
-        }
-        .pwa-card-btn {
-            background: var(--primary);
-            color: #FFFFFF !important;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-size: 11.5px;
-            font-weight: 800;
-            cursor: pointer;
-            font-family: inherit;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            white-space: nowrap;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px var(--primary-glow);
-            transition: all 0.2s ease;
-        }
-        .pwa-card-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
-
         /* Loading Skeleton */
         .skeleton {
             background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
@@ -975,127 +878,6 @@
             color: var(--text-muted);
             margin-bottom: 20px;
         }
-        .pwa-btn-close:hover {
-            background: #F1F5F9;
-            color: var(--text-main);
-        }
-
-        /* iOS Safari Add to Home Screen Sheet */
-        .ios-pwa-backdrop {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(15, 23, 42, 0.45);
-            backdrop-filter: blur(4px);
-            z-index: 10001;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .ios-pwa-backdrop.visible {
-            display: block;
-            opacity: 1;
-        }
-        .ios-pwa-sheet {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #FFFFFF;
-            border-top-left-radius: 26px;
-            border-top-right-radius: 26px;
-            padding: 22px 20px 34px 20px;
-            box-shadow: 0 -12px 40px rgba(15, 23, 42, 0.2);
-            z-index: 10002;
-            transform: translateY(100%);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            max-width: 520px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .ios-pwa-sheet.visible {
-            transform: translateY(0);
-        }
-        .ios-sheet-handle {
-            width: 40px;
-            height: 4px;
-            background: #CBD5E1;
-            border-radius: 100px;
-            margin: 0 auto 16px auto;
-        }
-        .ios-sheet-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            background: var(--primary-light);
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            margin: 0 auto 12px auto;
-            border: 1px solid var(--primary-tint);
-        }
-        .ios-sheet-title {
-            font-size: 16px;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 6px;
-        }
-        .ios-sheet-subtitle {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 18px;
-        }
-        .ios-steps {
-            background: #F8FAFC;
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 14px;
-            text-align: right;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-        [dir="ltr"] .ios-steps {
-            text-align: left;
-        }
-        .ios-step {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 12.5px;
-            color: var(--text-sub);
-            font-weight: 600;
-        }
-        .ios-step-badge {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 800;
-            flex-shrink: 0;
-        }
-        .ios-sheet-close-btn {
-            width: 100%;
-            background: #F1F5F9;
-            color: var(--text-main);
-            border: none;
-            padding: 12px;
-            border-radius: 14px;
-            font-size: 13px;
-            font-weight: 700;
-            cursor: pointer;
-            font-family: inherit;
-        }
     </style>
 </head>
 <body data-theme="emerald">
@@ -1119,13 +901,7 @@
                 <img src="../assets/logo-sq.png" alt="مرشد">
                 <span>منصة مرشد الطبية</span>
             </a>
-            <div class="top-actions">
-                <button class="top-pwa-btn" id="topPwaBtn" onclick="handlePwaInstallClick()" style="display: none;">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                    <span id="topPwaBtnLabel">تثبيت التطبيق</span>
-                </button>
-                <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
-            </div>
+            <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
         </header>
 
         <!-- Loading State Placeholder -->
@@ -1221,22 +997,6 @@
                 <div class="testimonials-list" id="testimonialsList"></div>
             </section>
 
-            <!-- PWA Clinic App Install Section Card (In-Page Luxury Card) -->
-            <section class="section-card pwa-section-card" id="pwaSection" style="display: none;">
-                <div class="pwa-card-content">
-                    <div class="pwa-card-icon">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                    </div>
-                    <div class="pwa-card-info">
-                        <div class="pwa-card-title" id="pwaCardTitle">تطبيق العيادة الرقمية على هاتفك</div>
-                        <div class="pwa-card-desc" id="pwaCardDesc">ثبّت عيادة الأخصائي على شاشتك الرئيسية للوصول السريع بدون متصفح</div>
-                    </div>
-                    <button class="pwa-card-btn" id="pwaCardBtn" onclick="handlePwaInstallClick()">
-                        <i class="fa-solid fa-arrow-down-to-bracket"></i>
-                        <span id="pwaCardBtnLabel">تثبيت التطبيق</span>
-                    </button>
-                </div>
-            </section>
 
             <!-- Working Hours Section -->
             <section class="section-card" id="hoursSection">
@@ -1296,27 +1056,6 @@
         <span id="floatingWaBtnLabel">احجز عبر واتساب</span>
     </a>
 
-    <!-- iOS Safari Smart Install Helper Sheet -->
-    <div class="ios-pwa-backdrop" id="iosPwaBackdrop" onclick="closeIosPwaSheet()"></div>
-    <div class="ios-pwa-sheet" id="iosPwaSheet">
-        <div class="ios-sheet-handle"></div>
-        <div class="ios-sheet-icon">
-            <i class="fa-brands fa-apple"></i>
-        </div>
-        <div class="ios-sheet-title" id="iosPwaTitle">تثبيت التطبيق على جهاز Apple (iOS)</div>
-        <div class="ios-sheet-subtitle" id="iosPwaSub">خطوتان بسيطتان لإضافة العيادة كأيقونة تطبيق على شاشتك الرئيسية</div>
-        <div class="ios-steps">
-            <div class="ios-step">
-                <span class="ios-step-badge">1</span>
-                <span id="iosPwaStep1">اضغط على زر المشاركة <i class="fa-solid fa-arrow-up-from-bracket"></i> في شريط Safari السفلي.</span>
-            </div>
-            <div class="ios-step">
-                <span class="ios-step-badge">2</span>
-                <span id="iosPwaStep2">مرر للأسفل واختر "إضافة إلى الشاشة الرئيسية" <i class="fa-regular fa-square-plus"></i>.</span>
-            </div>
-        </div>
-        <button class="ios-sheet-close-btn" id="iosPwaCloseBtn" onclick="closeIosPwaSheet()">حسناً، فهمت</button>
-    </div>
 
     <script>
         let currentLang = 'ar';
@@ -1343,16 +1082,7 @@
                 detailsLabel: 'تفاصيل',
                 errorNotFoundTitle: 'لم يتم العثور على الصفحة',
                 errorNotFoundDesc: 'المعرف المطلوب غير موجود أو تم إيقاف نشر الموقع مؤقتاً.',
-                errorHomeBtn: 'العودة لصفحة مرشد الرئيسية',
-                pwaCardTitle: 'تطبيق العيادة الرقمية على هاتفك',
-                pwaCardDesc: 'ثبّت عيادة الأخصائي على شاشتك الرئيسية للوصول السريع بدون متصفح',
-                pwaCardBtnLabel: 'تثبيت التطبيق',
-                topPwaBtnLabel: 'تثبيت التطبيق',
-                iosPwaTitle: 'تثبيت التطبيق على جهاز Apple (iOS)',
-                iosPwaSub: 'خطوتان بسيطتان لإضافة العيادة كأيقونة تطبيق على شاشتك الرئيسية',
-                iosPwaStep1: 'اضغط على زر المشاركة <i class="fa-solid fa-arrow-up-from-bracket"></i> في شريط Safari السفلي.',
-                iosPwaStep2: 'مرر للأسفل واختر "إضافة إلى الشاشة الرئيسية" <i class="fa-regular fa-square-plus"></i>.',
-                iosPwaCloseBtn: 'حسناً، فهمت'
+                errorHomeBtn: 'العودة لصفحة مرشد الرئيسية'
             },
             en: {
                 langToggle: 'العربية',
@@ -1374,16 +1104,7 @@
                 detailsLabel: 'Details',
                 errorNotFoundTitle: 'Page Not Found',
                 errorNotFoundDesc: 'The requested specialist page does not exist or is temporarily unavailable.',
-                errorHomeBtn: 'Back to Murshid Homepage',
-                pwaCardTitle: 'Digital Clinic App on Your Phone',
-                pwaCardDesc: 'Add this clinic to your home screen for quick access without a browser',
-                pwaCardBtnLabel: 'Install App',
-                topPwaBtnLabel: 'Install App',
-                iosPwaTitle: 'Install App on Apple (iOS)',
-                iosPwaSub: 'Two easy steps to add the clinic icon to your home screen',
-                iosPwaStep1: 'Tap the Share icon <i class="fa-solid fa-arrow-up-from-bracket"></i> at the bottom of Safari.',
-                iosPwaStep2: 'Scroll down and tap "Add to Home Screen" <i class="fa-regular fa-square-plus"></i>.',
-                iosPwaCloseBtn: 'Got it'
+                errorHomeBtn: 'Back to Murshid Homepage'
             }
         };
 
@@ -1618,12 +1339,6 @@
                 floatingWaBtn.style.display = 'none';
             }
 
-            // PWA Clinic App Section & Top Action (governed by vis.showPwaInstall)
-            const pwaSection = document.getElementById('pwaSection');
-            const topPwaBtn = document.getElementById('topPwaBtn');
-            const showPwa = vis.showPwaInstall !== false;
-            if (pwaSection) pwaSection.style.display = showPwa ? 'block' : 'none';
-            if (topPwaBtn) topPwaBtn.style.display = showPwa ? 'inline-flex' : 'none';
 
             // Render Services (governed by vis.showServices)
             const servicesSection = document.getElementById('servicesSection');
@@ -1822,8 +1537,6 @@
                 socialsRow.style.display = 'none';
             }
 
-            // Proposal #9: Trigger PWA install prompt check
-            checkAndShowPwaBanner();
         }
 
         function toggleFaq(el) {
@@ -1854,28 +1567,6 @@
             document.getElementById('errorDesc').textContent = dict.errorNotFoundDesc;
             document.getElementById('errorHomeBtn').textContent = dict.errorHomeBtn;
 
-            // In-page PWA Section & Top Button Strings
-            const pwaCardTitleEl = document.getElementById('pwaCardTitle');
-            if (pwaCardTitleEl) pwaCardTitleEl.textContent = dict.pwaCardTitle;
-            const pwaCardDescEl = document.getElementById('pwaCardDesc');
-            if (pwaCardDescEl) pwaCardDescEl.textContent = dict.pwaCardDesc;
-            const pwaCardBtnLabelEl = document.getElementById('pwaCardBtnLabel');
-            if (pwaCardBtnLabelEl) pwaCardBtnLabelEl.textContent = dict.pwaCardBtnLabel;
-            const topPwaBtnLabelEl = document.getElementById('topPwaBtnLabel');
-            if (topPwaBtnLabelEl) topPwaBtnLabelEl.textContent = dict.topPwaBtnLabel;
-
-            // iOS Sheet Strings
-            const iosPwaTitleEl = document.getElementById('iosPwaTitle');
-            if (iosPwaTitleEl) iosPwaTitleEl.textContent = dict.iosPwaTitle;
-            const iosPwaSubEl = document.getElementById('iosPwaSub');
-            if (iosPwaSubEl) iosPwaSubEl.textContent = dict.iosPwaSub;
-            const iosPwaStep1El = document.getElementById('iosPwaStep1');
-            if (iosPwaStep1El) iosPwaStep1El.innerHTML = dict.iosPwaStep1;
-            const iosPwaStep2El = document.getElementById('iosPwaStep2');
-            if (iosPwaStep2El) iosPwaStep2El.innerHTML = dict.iosPwaStep2;
-            const iosPwaCloseBtnEl = document.getElementById('iosPwaCloseBtn');
-            if (iosPwaCloseBtnEl) iosPwaCloseBtnEl.textContent = dict.iosPwaCloseBtn;
-
             if (siteData) {
                 renderSite(siteData);
             }
@@ -1894,47 +1585,15 @@
             return div.innerHTML;
         }
 
-        // Proposal #9: PWA Management & Installation Handlers
-        let deferredPrompt = null;
-
+        // Unregister any previous service workers
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').catch(err => {
-                    console.log('PWA SW registration notice: ', err);
-                });
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                }
+            }).catch(function(err) {
+                console.log('SW unregister error:', err);
             });
-        }
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-        });
-
-        function isIosDevice() {
-            return /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
-        }
-
-        function handlePwaInstallClick() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    deferredPrompt = null;
-                });
-            } else if (isIosDevice()) {
-                // Show iOS Safari Step-by-Step Instructions Sheet
-                document.getElementById('iosPwaBackdrop').classList.add('visible');
-                document.getElementById('iosPwaSheet').classList.add('visible');
-            } else {
-                // Fallback instructions for browsers without prompt event
-                alert(currentLang === 'ar' 
-                    ? 'لتثبيت التطبيق، افتح قائمة خيارات المتصفح (⋮) ثم اضغط على "تثبيت التطبيق" أو "إضافة إلى الشاشة الرئيسية".'
-                    : 'To install, open your browser menu (⋮) and tap "Install App" or "Add to Home Screen".');
-            }
-        }
-
-        function closeIosPwaSheet() {
-            document.getElementById('iosPwaBackdrop').classList.remove('visible');
-            document.getElementById('iosPwaSheet').classList.remove('visible');
         }
 
         // Init on page load
