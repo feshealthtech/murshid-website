@@ -865,20 +865,51 @@
                     }
                 }
 
-                // 6. Verify Structural Page Count with PDF.js
+                // 6. Verify Structural Integrity & Anti-Tampering with PDF.js
                 try {
                     if (typeof pdfjsLib !== 'undefined') {
                         const pdfDoc = await pdfjsLib.getDocument({ data: bytes }).promise;
+
+                        // Check Page Count
                         if (manifest.pages && pdfDoc.numPages !== manifest.pages) {
                             renderTamperedReport(file.name, `Page structure mismatch: Expected ${manifest.pages} pages, but file contains ${pdfDoc.numPages} pages.`);
                             return;
+                        }
+
+                        // Check for injected Annotations / Drawings (e.g. drawn in Chrome, Acrobat, etc.)
+                        for (let p = 1; p <= pdfDoc.numPages; p++) {
+                            const page = await pdfDoc.getPage(p);
+                            const annotations = await page.getAnnotations();
+                            if (annotations && annotations.length > 0) {
+                                console.warn(`Tampering alert: Page ${p} contains ${annotations.length} annotations/drawings:`, annotations);
+                                renderTamperedReport(file.name, 'Visual tampering detected: The document contains unauthorized drawings, ink marks, or annotations added after official issuance.');
+                                return;
+                            }
                         }
                     }
                 } catch (pdfErr) {
                     console.warn('PDF.js structure check notice:', pdfErr);
                 }
 
-                // 7. Render 100% Authentic Verified Document
+                // 7. Check for Incremental File Updates (Multiple %%EOF appended by editors)
+                try {
+                    let latinString = "";
+                    const chunkSize = 65536;
+                    for (let i = 0; i < bytes.length; i += chunkSize) {
+                        const sub = bytes.subarray(i, Math.min(i + chunkSize, bytes.length));
+                        latinString += String.fromCharCode.apply(null, sub);
+                    }
+                    const eofMatches = latinString.match(/%%EOF/g);
+                    if (eofMatches && eofMatches.length > 1) {
+                        console.warn('Tampering alert: Multiple %%EOF markers found:', eofMatches.length);
+                        renderTamperedReport(file.name, 'Document modification detected: The file was edited and re-saved by an external PDF editor.');
+                        return;
+                    }
+                } catch (eofErr) {
+                    console.warn('EOF check notice:', eofErr);
+                }
+
+                // 8. Render 100% Authentic Verified Document
                 renderAuthenticReport(file.name, manifest, publicKeyBase64);
 
             } catch (err) {
