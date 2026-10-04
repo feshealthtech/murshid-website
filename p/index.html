@@ -1537,6 +1537,25 @@
                 socialsRow.style.display = 'none';
             }
 
+            // Dynamic Section Ordering (governed by site.sectionOrder)
+            if (site.sectionOrder && Array.isArray(site.sectionOrder) && site.sectionOrder.length > 0) {
+                const sectionDomMap = {
+                    'services': document.getElementById('servicesSection'),
+                    'testimonials': document.getElementById('testimonialsSection'),
+                    'workingHours': document.getElementById('hoursSection'),
+                    'faqs': document.getElementById('faqsSection'),
+                    'location': document.getElementById('locationSection')
+                };
+
+                const mainContainer = document.getElementById('siteContent');
+                site.sectionOrder.forEach(secId => {
+                    const el = sectionDomMap[secId];
+                    if (el && el.parentElement === mainContainer) {
+                        mainContainer.appendChild(el); // Moves element to the end in the specified order
+                    }
+                });
+            }
+
         }
 
         function toggleFaq(el) {
