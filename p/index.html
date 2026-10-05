@@ -55,6 +55,7 @@
         /* Light Luxury Theme Variations */
         [data-theme="emerald"] {
             --primary: #0D9488;
+            --primary-rgb: 13, 148, 136;
             --primary-dark: #0F766E;
             --primary-deep: #115E59;
             --primary-light: #F0FDFA;
@@ -63,6 +64,7 @@
         }
         [data-theme="sapphire"] {
             --primary: #0284C7;
+            --primary-rgb: 2, 132, 199;
             --primary-dark: #0369A1;
             --primary-deep: #075985;
             --primary-light: #F0F9FF;
@@ -71,6 +73,7 @@
         }
         [data-theme="obsidian"] {
             --primary: #D97706;
+            --primary-rgb: 217, 119, 6;
             --primary-dark: #B45309;
             --primary-deep: #92400E;
             --primary-light: #FFFBEB;
@@ -79,6 +82,7 @@
         }
         [data-theme="rose"] {
             --primary: #E11D48;
+            --primary-rgb: 225, 29, 72;
             --primary-dark: #BE123C;
             --primary-deep: #9F1239;
             --primary-light: #FFF1F2;
@@ -87,6 +91,7 @@
         }
         [data-theme="amethyst"] {
             --primary: #9333EA;
+            --primary-rgb: 147, 51, 234;
             --primary-dark: #7E22CE;
             --primary-deep: #6B21A8;
             --primary-light: #FAF5FF;
@@ -313,23 +318,6 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 0 0 1.5px var(--primary-tint);
             background: #F1F5F9;
         }
-        .verified-badge {
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
-            background: #0284C7;
-            color: white;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            border: 2px solid #FFFFFF;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        }
-
         .specialist-name {
             font-size: 22px;
             font-weight: 800;
@@ -346,28 +334,8 @@
         .clinic-name {
             font-size: 13px;
             color: var(--text-muted);
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        .verified-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #F0F9FF;
-            color: #0284C7;
-            border: 1px solid #BAE6FD;
-            padding: 4px 14px;
-            border-radius: 100px;
-            font-size: 11.5px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.2s;
             margin-bottom: 14px;
-        }
-        .verified-pill:hover {
-            background: #E0F2FE;
-            transform: translateY(-1px);
+            font-weight: 500;
         }
 
         .bio-box {
@@ -750,19 +718,62 @@
         .faq-item:hover {
             border-color: var(--primary-tint);
         }
+        .faq-item.is-featured {
+            border-color: rgba(245, 158, 11, 0.45);
+            background: linear-gradient(180deg, #FFFDF8 0%, #F8FAFC 100%);
+        }
         .faq-question {
-            padding: 14px 16px;
-            font-size: 13.5px;
-            font-weight: 700;
-            color: var(--text-main);
+            padding: 13px 16px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 10px;
+        }
+        .faq-header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+        }
+        .faq-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .faq-category-tag {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            background: var(--primary-light);
+            border: 1px solid var(--primary-tint);
+            padding: 2px 7px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        .faq-featured-tag {
+            font-size: 10px;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            padding: 2px 7px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .faq-title-text {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.35;
         }
         .faq-question i {
             color: var(--text-muted);
             transition: transform 0.2s;
+            font-size: 13px;
+            flex-shrink: 0;
         }
         .faq-answer {
             padding: 0 16px 14px 16px;
@@ -941,9 +952,468 @@
             color: var(--text-muted);
             margin-bottom: 20px;
         }
+
+        /* ==========================================================================
+           MULTI-TEMPLATE RADICAL LAYOUT ENGINES (محرك تعدد القوالب والتصاميم الجذري)
+           ========================================================================== */
+
+        /* --------------------------------------------------------------------------
+           1. SOCIAL PROFILE (الملف الاجتماعي التفاعلي - نمط الفيسبوك وشبكات التواصل)
+           -------------------------------------------------------------------------- */
+        [data-template="social_profile"] {
+            background-color: #F0F2F5;
+            background-image: none;
+        }
+        [data-template="social_profile"] .hero-card {
+            border-radius: 14px;
+            border: 1px solid #CED0D4;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            background: #FFFFFF;
+            padding: 0 0 18px 0;
+            overflow: hidden;
+            text-align: right;
+        }
+        [data-template="social_profile"] .hero-cover {
+            height: 145px !important;
+            display: block !important;
+            border-radius: 0;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--primary);
+            background-image: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+        [data-template="social_profile"] .avatar-container {
+            margin: -48px 18px 8px auto !important;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+            background: #FFFFFF;
+            position: relative;
+            z-index: 2;
+        }
+        [data-template="social_profile"] .avatar-img {
+            border: none;
+            box-shadow: none;
+        }
+        [data-template="social_profile"] .specialist-name {
+            text-align: right;
+            padding: 0 18px;
+            font-size: 20px;
+            font-weight: 800;
+            color: #050505;
+            margin: 4px 0 2px;
+        }
+        [data-template="social_profile"] .specialist-title {
+            text-align: right;
+            padding: 0 18px;
+            font-size: 13px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        [data-template="social_profile"] .clinic-name {
+            text-align: right;
+            padding: 0 18px;
+            font-size: 12px;
+            color: #65676B;
+            margin-bottom: 8px;
+        }
+        [data-template="social_profile"] .bio-box {
+            margin: 8px 18px 14px !important;
+            text-align: right;
+            background: #F0F2F5;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 12.5px;
+            color: #1C1E21;
+            line-height: 1.5;
+        }
+        [data-template="social_profile"] .actions-stack {
+            display: flex;
+            flex-direction: row;
+            gap: 8px;
+            padding: 0 18px;
+            margin-top: 4px;
+        }
+        [data-template="social_profile"] .cta-booking-btn {
+            flex: 2;
+            height: 40px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 0 12px;
+            box-shadow: none;
+        }
+        [data-template="social_profile"] .vcard-btn {
+            flex: 1;
+            height: 40px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0 8px;
+            background: #E4E6EB;
+            color: #050505;
+            border: none;
+            white-space: nowrap;
+        }
+        [data-template="social_profile"] .section-card {
+            border-radius: 14px;
+            border: 1px solid #CED0D4;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            background: #FFFFFF;
+            padding: 16px;
+        }
+        [data-template="social_profile"] .section-header {
+            border-bottom: 1px solid #F0F2F5;
+            padding-bottom: 10px;
+            margin-bottom: 14px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        [data-template="social_profile"] .service-item {
+            border-radius: 10px;
+            border: 1px solid #E4E6EB;
+            background: #FFFFFF;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            padding: 14px;
+        }
+        [data-template="social_profile"] .service-book-btn {
+            border-radius: 8px;
+            font-size: 12px;
+            padding: 8px 14px;
+        }
+
+        /* --------------------------------------------------------------------------
+           2. BENTO GRID (شبكة بنتو الذكية - Apple Bento Grid Architecture)
+           -------------------------------------------------------------------------- */
+        [data-template="bento_grid"] {
+            background-color: #F8FAFC;
+            background-image: radial-gradient(rgba(148, 163, 184, 0.28) 1.2px, transparent 1.2px);
+            background-size: 24px 24px;
+        }
+        [data-template="bento_grid"] #siteContent {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        [data-template="bento_grid"] .hero-card {
+            grid-column: 1 / -1;
+            border-radius: 28px;
+            border: 1.5px solid rgba(var(--primary-rgb), 0.16);
+            box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.06);
+            background: #FFFFFF;
+            padding: 24px;
+        }
+        [data-template="bento_grid"] .hero-card::before {
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        }
+        [data-template="bento_grid"] .avatar-container {
+            width: 88px;
+            height: 88px;
+            border-radius: 24px;
+            margin: 0 auto 14px;
+        }
+        [data-template="bento_grid"] .avatar-img {
+            border-radius: 24px;
+            border: 2px solid var(--primary);
+        }
+        [data-template="bento_grid"] .specialist-name {
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+        [data-template="bento_grid"] .specialist-title {
+            display: inline-block;
+            background: rgba(var(--primary-rgb), 0.1);
+            color: var(--primary);
+            padding: 4px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            margin: 4px auto;
+        }
+        [data-template="bento_grid"] .bio-box {
+            border-radius: 20px;
+            border: 1.5px solid rgba(var(--primary-rgb), 0.1);
+            background: #F8FAFC;
+        }
+        [data-template="bento_grid"] .cta-booking-btn {
+            border-radius: 100px;
+            height: 48px;
+            font-weight: 800;
+        }
+        [data-template="bento_grid"] .vcard-btn {
+            border-radius: 100px;
+            border: 1.5px solid rgba(var(--primary-rgb), 0.2);
+        }
+        [data-template="bento_grid"] .section-card {
+            border-radius: 26px;
+            border: 1.5px solid rgba(var(--primary-rgb), 0.14);
+            box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.04);
+            background: #FFFFFF;
+            padding: 20px;
+        }
+        [data-template="bento_grid"] #servicesSection {
+            grid-column: 1 / -1;
+        }
+        [data-template="bento_grid"] #servicesList {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 12px;
+        }
+        [data-template="bento_grid"] .service-item {
+            border-radius: 20px;
+            border: 1.5px solid rgba(var(--primary-rgb), 0.12);
+            background: #F8FAFC;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        [data-template="bento_grid"] .service-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px -6px rgba(var(--primary-rgb), 0.15);
+        }
+        [data-template="bento_grid"] .service-book-btn {
+            border-radius: 100px;
+        }
+        [data-template="bento_grid"] #hoursSection {
+            grid-column: span 1;
+        }
+        [data-template="bento_grid"] #locationSection {
+            grid-column: span 1;
+        }
+        [data-template="bento_grid"] #testimonialsSection {
+            grid-column: 1 / -1;
+        }
+        [data-template="bento_grid"] #faqsSection {
+            grid-column: 1 / -1;
+        }
+        [data-template="bento_grid"] #socialsSection {
+            grid-column: 1 / -1;
+        }
+        @media (max-width: 520px) {
+            [data-template="bento_grid"] #hoursSection,
+            [data-template="bento_grid"] #locationSection {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* --------------------------------------------------------------------------
+           3. EDITORIAL LUXURY (المجلة التنفيذية الفاخرة - Haute Horlogerie / Editorial)
+           -------------------------------------------------------------------------- */
+        [data-template="editorial_luxury"] {
+            background-color: #FAF8F5;
+            background-image: linear-gradient(180deg, #FAF8F5 0%, #F5F1EB 100%);
+        }
+        [data-template="editorial_luxury"] .hero-card {
+            border-radius: 16px;
+            border: 1.5px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(212, 175, 55, 0.12);
+            background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F5 100%);
+            padding: 26px 20px;
+        }
+        [data-template="editorial_luxury"] .hero-card::before {
+            height: 3px;
+            background: linear-gradient(90deg, #B45309, #D4AF37, #F59E0B, #D4AF37, #B45309);
+        }
+        [data-template="editorial_luxury"] .avatar-container {
+            width: 100px;
+            height: 120px;
+            border-radius: 18px;
+            margin: 0 auto 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+        }
+        [data-template="editorial_luxury"] .avatar-img {
+            border-radius: 18px;
+            border: 2px solid #D4AF37;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        [data-template="editorial_luxury"] .specialist-name {
+            font-size: 21px;
+            font-weight: 800;
+            color: #1E293B;
+            letter-spacing: -0.2px;
+        }
+        [data-template="editorial_luxury"] .specialist-title {
+            color: #B45309;
+            font-weight: 700;
+            font-size: 13px;
+        }
+        [data-template="editorial_luxury"] .bio-box {
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-right: 3px solid #D4AF37;
+            background: #FAF8F5;
+            font-style: italic;
+            color: #475569;
+            line-height: 1.6;
+        }
+        [data-template="editorial_luxury"] .cta-booking-btn {
+            border-radius: 12px;
+            background: linear-gradient(135deg, #78350F 0%, #B45309 50%, #D4AF37 100%);
+            box-shadow: 0 10px 24px -6px rgba(180, 83, 9, 0.35);
+        }
+        [data-template="editorial_luxury"] .vcard-btn {
+            border-radius: 12px;
+            border: 1.5px solid rgba(212, 175, 55, 0.35);
+            color: #78350F;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFFBEB 100%);
+        }
+        [data-template="editorial_luxury"] .vcard-btn i {
+            color: #B45309;
+        }
+        [data-template="editorial_luxury"] .section-card {
+            border-radius: 16px;
+            border: 1px solid rgba(212, 175, 55, 0.22);
+            box-shadow: 0 8px 24px -4px rgba(180, 83, 9, 0.04), 0 0 0 1px rgba(212, 175, 55, 0.08);
+            background: #FFFFFF;
+            padding: 22px;
+        }
+        [data-template="editorial_luxury"] .section-header {
+            border-bottom: 1.5px solid rgba(212, 175, 55, 0.25);
+            padding-bottom: 10px;
+            margin-bottom: 16px;
+            color: #78350F;
+        }
+        [data-template="editorial_luxury"] .section-header i {
+            color: #B45309;
+        }
+        /* Editorial Consultation Menu Styling for Services */
+        [data-template="editorial_luxury"] .service-item {
+            background: transparent;
+            border: none;
+            border-bottom: 1px dashed rgba(180, 130, 60, 0.35);
+            border-radius: 0;
+            padding: 16px 2px;
+            box-shadow: none;
+        }
+        [data-template="editorial_luxury"] .service-item:last-child {
+            border-bottom: none;
+        }
+        [data-template="editorial_luxury"] .service-price {
+            color: #B45309;
+            font-weight: 800;
+        }
+        [data-template="editorial_luxury"] .service-book-btn {
+            background: #FFFBEB;
+            border: 1px solid #D4AF37;
+            color: #78350F;
+            border-radius: 8px;
+        }
+        [data-template="editorial_luxury"] .testimonial-card {
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-right: 3px solid #D4AF37;
+            background: #FAF8F5;
+        }
+
+        /* --------------------------------------------------------------------------
+           4. COMPACT STACK (الرابط الذكي السريع - Link-in-Bio High Conversion Hub)
+           -------------------------------------------------------------------------- */
+        [data-template="compact_stack"] {
+            background-color: #F1F5F9;
+            background-image: none;
+        }
+        [data-template="compact_stack"] .hero-card {
+            border-radius: 22px;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.04);
+            background: #FFFFFF;
+            padding: 20px 16px;
+            text-align: center;
+        }
+        [data-template="compact_stack"] .hero-cover {
+            display: none !important;
+        }
+        [data-template="compact_stack"] .avatar-container {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 10px;
+            border-radius: 50%;
+            border: 2.5px solid var(--primary);
+            box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.15);
+        }
+        [data-template="compact_stack"] .avatar-img {
+            border: none;
+        }
+        [data-template="compact_stack"] .specialist-name {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 2px;
+        }
+        [data-template="compact_stack"] .specialist-title {
+            display: inline-block;
+            background: rgba(var(--primary-rgb), 0.08);
+            color: var(--primary);
+            padding: 2px 10px;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        [data-template="compact_stack"] .bio-box {
+            font-size: 11.5px;
+            line-height: 1.4;
+            color: #64748B;
+            background: transparent;
+            border: none;
+            padding: 4px 0;
+            margin: 4px 0 10px;
+        }
+        [data-template="compact_stack"] .actions-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+        }
+        [data-template="compact_stack"] .cta-booking-btn {
+            border-radius: 100px;
+            height: 46px;
+            font-size: 13.5px;
+            font-weight: 800;
+            box-shadow: 0 6px 18px -3px rgba(37, 211, 102, 0.35);
+        }
+        [data-template="compact_stack"] .vcard-btn {
+            border-radius: 100px;
+            height: 42px;
+            font-size: 12.5px;
+            background: #F8FAFC;
+            border: 1.5px solid #CBD5E1;
+            color: #334155;
+        }
+        [data-template="compact_stack"] .section-card {
+            border-radius: 18px;
+            border: 1px solid #E2E8F0;
+            background: #FFFFFF;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.03);
+        }
+        [data-template="compact_stack"] .service-item {
+            border-radius: 14px;
+            border: 1px solid #E2E8F0;
+            background: #F8FAFC;
+            padding: 12px;
+            margin-bottom: 8px;
+        }
+        [data-template="compact_stack"] .service-book-btn {
+            border-radius: 100px;
+            padding: 6px 14px;
+            font-size: 12px;
+            font-weight: 700;
+        }
     </style>
 </head>
-<body data-theme="emerald">
+<body data-theme="emerald" data-template="social_profile">
 
     <!-- Top Announcement Ticker Banner (الشريط بالكامل زر تفاعلي مدمج) -->
     <a id="announcementBanner" class="announcement-banner" style="display: none;" target="_blank" rel="noopener noreferrer">
@@ -966,7 +1436,7 @@
         <header class="top-nav">
             <a href="https://murshid.feshealthtech.com" class="brand-badge">
                 <img src="../assets/logo-sq.png" alt="مرشد">
-                <span>منصة مرشد الطبية</span>
+                <span>منصة مرشد للاستشارات والعيادات الخاصة</span>
             </a>
             <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
         </header>
@@ -1004,19 +1474,11 @@
                 <div id="coverBanner" class="hero-cover" style="display: none;"></div>
                 <div class="avatar-container">
                     <img id="doctorAvatar" class="avatar-img" src="../assets/logo-sq.png" alt="صورة الأخصائي">
-                    <div class="verified-badge" id="doctorBadge" title="أخصائي موثق">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
                 </div>
 
-                <h1 class="specialist-name" id="doctorName">د. اسم الأخصائي</h1>
-                <p class="specialist-title" id="doctorTitle">أخصائي تغذية علاجية وسريرية</p>
+                <h1 class="specialist-name" id="doctorName">اسم الأخصائي</h1>
+                <p class="specialist-title" id="doctorTitle">أخصائي تغذية واستشارات معتمدة</p>
                 <p class="clinic-name" id="doctorClinic"></p>
-
-                <a href="https://murshid.feshealthtech.com/verify" class="verified-pill" id="verifiedPill">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <span id="verifiedLabel">أخصائي معتمد وموثق رقمياً عبر مرشد</span>
-                </a>
 
                 <!-- Bio Box -->
                 <div class="bio-box" id="doctorBio"></div>
@@ -1043,8 +1505,8 @@
             <!-- Services & Packages Section -->
             <section class="section-card" id="servicesSection">
                 <div class="section-header">
-                    <i class="fa-solid fa-notes-medical"></i>
-                    <span id="servicesSectionTitle">الخدمات والباقات العلاجية</span>
+                    <i class="fa-solid fa-cubes"></i>
+                    <span id="servicesSectionTitle">الخدمات وباقات الاستشارة</span>
                 </div>
                 <div class="services-list" id="servicesList"></div>
             </section>
@@ -1081,7 +1543,7 @@
             <section class="section-card" id="locationSection">
                 <div class="section-header">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span id="locationSectionTitle">موقع العيادة والتواصل</span>
+                    <span id="locationSectionTitle">مقر العيادة والخريطة</span>
                 </div>
                 <div class="location-info">
                     <div class="location-item" id="cityRow">
@@ -1097,7 +1559,15 @@
                         <span id="mapBtnLabel">فتح الموقع في خرائط Google</span>
                     </a>
                 </div>
-                <div class="socials-row" id="socialsRow" style="display: none;"></div>
+            </section>
+
+            <!-- Social Media & External Links -->
+            <section class="section-card" id="socialsSection" style="display: none;">
+                <div class="section-header">
+                    <i class="fa-solid fa-share-nodes"></i>
+                    <span id="socialsSectionTitle">منصات التواصل الاجتماعي</span>
+                </div>
+                <div class="socials-row" id="socialsRow"></div>
             </section>
         </main>
 
@@ -1105,7 +1575,7 @@
         <footer class="site-footer">
             <a href="https://murshid.feshealthtech.com" class="footer-logo-link">
                 <img src="../assets/logo-sq.png" alt="مرشد">
-                <span>منظومة مرشد الرقمية لإدارة العيادات التغذوية</span>
+                <span>منصة مرشد لإدارة الاستشارات والعيادات الخاصة</span>
             </a>
             <p>© 2026 FES Health Tech. All rights reserved.</p>
         </footer>
@@ -1125,15 +1595,15 @@
         const i18n = {
             ar: {
                 langToggle: 'English',
-                verifiedLabel: 'أخصائي معتمد وموثق رقمياً عبر مرشد',
                 mainBookingLabel: 'احجز استشارتك عبر واتساب الآن',
                 saveContactLabel: 'حفظ جهة الاتصال في هاتفك (vCard)',
                 directCallLabel: 'اتصال هاتفي مباشر',
-                servicesSectionTitle: 'الخدمات والباقات العلاجية',
+                servicesSectionTitle: 'الخدمات وباقات الاستشارة',
                 testimonialsSectionTitle: 'قصص النجاح وآراء المراجعين',
                 hoursSectionTitle: 'أوقات ومواعيد العمل',
                 faqsSectionTitle: 'الأسئلة الشائعة',
-                locationSectionTitle: 'موقع العيادة والتواصل',
+                locationSectionTitle: 'مقر العيادة والخريطة',
+                socialsSectionTitle: 'منصات التواصل الاجتماعي',
                 mapBtnLabel: 'فتح الموقع في خرائط Google',
                 bookThisService: 'حجز هذه الباقة',
                 popularTag: 'الأكثر طلباً',
@@ -1146,15 +1616,15 @@
             },
             en: {
                 langToggle: 'العربية',
-                verifiedLabel: 'Verified & Digitally Certified Specialist',
                 mainBookingLabel: 'Book Consultation via WhatsApp',
                 saveContactLabel: 'Save to Phone Contacts (vCard)',
                 directCallLabel: 'Direct Phone Call',
-                servicesSectionTitle: 'Clinical Services & Packages',
+                servicesSectionTitle: 'Services & Consultation Packages',
                 testimonialsSectionTitle: 'Client Success Stories & Reviews',
                 hoursSectionTitle: 'Working Hours & Schedule',
                 faqsSectionTitle: 'Frequently Asked Questions',
-                locationSectionTitle: 'Clinic Location & Contact',
+                locationSectionTitle: 'Clinic Location & Map',
+                socialsSectionTitle: 'Social Media & Platforms',
                 mapBtnLabel: 'Open in Google Maps',
                 bookThisService: 'Book This Package',
                 popularTag: 'Popular',
@@ -1225,8 +1695,8 @@
         function downloadVCard() {
             if (!siteData) return;
             const name = siteData.displayName || 'أخصائي التغذية';
-            const title = siteData.professionalTitle || 'أخصائي تغذية علاجية وسريرية';
-            const org = siteData.clinicName || 'عيادة مرشد الرقمية';
+            const title = siteData.professionalTitle || 'أخصائي تغذية واستشارات معتمدة';
+            const org = siteData.clinicName || 'العيادة الخاصة';
             const waPhone = siteData.whatsappNumber || '';
             const directPhone = siteData.phoneNumber || '';
             const url = window.location.href;
@@ -1268,12 +1738,32 @@
             const theme = validThemes.includes(site.theme) ? site.theme : 'emerald';
             document.body.setAttribute('data-theme', theme);
 
+            // Template application (تطبيق القالب المختار مع التوافقية العكسية)
+            const validTemplates = ['social_profile', 'bento_grid', 'editorial_luxury', 'compact_stack'];
+            let template = site.template || 'social_profile';
+            if (template === 'clinical_clean') template = 'compact_stack';
+            else if (template === 'executive_luxury') template = 'editorial_luxury';
+            else if (template === 'smart_bento') template = 'bento_grid';
+            else if (template === 'frosted_glass') template = 'social_profile';
+            if (!validTemplates.includes(template)) template = 'social_profile';
+            document.body.setAttribute('data-template', template);
+
             // Visibility settings
             const vis = site.visibility || {};
 
             // 1. Top Announcement Ticker Banner
             const bannerEl = document.getElementById('announcementBanner');
-            const showAnnouncement = vis.showAnnouncement !== false && site.announcementText && site.announcementText.trim() !== '';
+            let isAnnouncementExpired = false;
+            if (site.announcementExpiresAt) {
+                const expiryDate = new Date(site.announcementExpiresAt);
+                if (!isNaN(expiryDate.getTime()) && Date.now() > expiryDate.getTime()) {
+                    isAnnouncementExpired = true;
+                }
+            }
+            const showAnnouncement = vis.showAnnouncement !== false && 
+                                     site.announcementText && 
+                                     site.announcementText.trim() !== '' && 
+                                     !isAnnouncementExpired;
             if (showAnnouncement) {
                 bannerEl.style.display = 'flex';
                 const annType = site.announcementType || 'info';
@@ -1301,7 +1791,7 @@
                 if (action === 'whatsapp') {
                     const phone = (site.announcementPhone || site.whatsappNumber || '').replace(/[^\d+]/g, '');
                     const cleanPhone = phone.startsWith('+') ? phone.slice(1) : phone;
-                    const defaultMsg = site.announcementWhatsappMsg || 'مرحباً دكتور، أود الاستفسار بخصوص الإعلان في موقعك.';
+                    const defaultMsg = site.announcementWhatsappMsg || 'مرحباً، أود الاستفسار بخصوص الإعلان في موقعك.';
                     if (cleanPhone) {
                         bannerEl.href = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(defaultMsg)}`;
                         bannerEl.style.cursor = 'pointer';
@@ -1335,7 +1825,7 @@
 
             // Proposal #8: Dynamic OpenGraph & Twitter Meta Tags (Always ON)
             const metaTitle = `${site.displayName || 'العيادة الرقمية'} | ${site.professionalTitle || 'أخصائي معتمد'}`;
-            const metaDesc = `${site.clinicName ? site.clinicName + ' — ' : ''}${site.bio || 'احجز استشارتك التغذوية وتعرف على الباقات والخدمات العلاجية المتاحة.'}`;
+            const metaDesc = `${site.clinicName ? site.clinicName + ' — ' : ''}${site.bio || 'احجز استشارتك التغذوية وتعرف على باقات وخدمات الاستشارة المتاحة.'}`;
             const metaImg = (site.avatarUrl && site.avatarUrl.startsWith('http')) 
                 ? site.avatarUrl 
                 : ((site.coverUrl && site.coverUrl.startsWith('http')) ? site.coverUrl : '../assets/og-preview.jpg');
@@ -1369,8 +1859,8 @@
             }
 
             // Basic Info
-            document.getElementById('doctorName').textContent = site.displayName || 'د. أخصائي التغذية';
-            document.getElementById('doctorTitle').textContent = site.professionalTitle || 'أخصائي تغذية علاجية وسريرية';
+            document.getElementById('doctorName').textContent = site.displayName || 'أخصائي التغذية';
+            document.getElementById('doctorTitle').textContent = site.professionalTitle || 'أخصائي تغذية واستشارات معتمدة';
             
             const clinicEl = document.getElementById('doctorClinic');
             if (site.clinicName) {
@@ -1386,12 +1876,6 @@
                 avatarEl.src = site.avatarUrl;
             }
 
-            // Verified Badge
-            if (site.isVerified === false) {
-                document.getElementById('doctorBadge').style.display = 'none';
-                document.getElementById('verifiedPill').style.display = 'none';
-            }
-
             // Bio Box (governed by vis.showBio)
             const bioEl = document.getElementById('doctorBio');
             const showBio = vis.showBio !== false && site.bio && site.bio.trim() !== '';
@@ -1405,7 +1889,7 @@
             // WhatsApp link helper
             const waRawPhone = (site.whatsappNumber || '').replace(/[^0-9]/g, '');
             const rawPhone = waRawPhone || (site.phoneNumber || '').replace(/[^0-9]/g, '');
-            const defaultMsg = site.whatsappMessage || 'مرحباً دكتور، أود الاستفسار وحجز استشارة تغذوية متخصصة معك.';
+            const defaultMsg = site.whatsappMessage || 'مرحباً، أود الاستفسار وحجز استشارة تغذوية متخصصة معك.';
             const waUrl = rawPhone ? `https://wa.me/${rawPhone}?text=${encodeURIComponent(defaultMsg)}` : '#';
             
             const mainBookingBtn = document.getElementById('mainBookingBtn');
@@ -1456,7 +1940,7 @@
                     const item = document.createElement('div');
                     item.className = `service-item ${s.isPopular ? 'popular' : ''}`;
 
-                    const serviceBookingMsg = `مرحباً دكتور ${site.displayName || ''}، أود حجز باقة "${s.title}" (${s.price} ${s.currency}).`;
+                    const serviceBookingMsg = `مرحباً ${site.displayName || ''}، أود حجز باقة "${s.title}" (${s.price} ${s.currency}).`;
                     const sWaUrl = rawPhone ? `https://wa.me/${rawPhone}?text=${encodeURIComponent(serviceBookingMsg)}` : '#';
 
                     let featuresHtml = '';
@@ -1570,10 +2054,22 @@
                 faqsSection.style.display = 'block';
                 site.faqs.forEach(f => {
                     const faqItem = document.createElement('div');
-                    faqItem.className = 'faq-item';
+                    faqItem.className = 'faq-item' + (f.isFeatured ? ' is-featured' : '');
+
+                    let metaBadges = '';
+                    if (f.category && f.category.trim()) {
+                        metaBadges += `<span class="faq-category-tag">${escapeHtml(f.category)}</span>`;
+                    }
+                    if (f.isFeatured) {
+                        metaBadges += `<span class="faq-featured-tag"><i class="fa-solid fa-star"></i> ${currentLang === 'en' ? 'Featured' : 'مميز'}</span>`;
+                    }
+
                     faqItem.innerHTML = `
                         <div class="faq-question" onclick="toggleFaq(this)">
-                            <span>${escapeHtml(f.question)}</span>
+                            <div class="faq-header-content">
+                                ${metaBadges ? `<div class="faq-meta-row">${metaBadges}</div>` : ''}
+                                <span class="faq-title-text">${escapeHtml(f.question)}</span>
+                            </div>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <div class="faq-answer">${escapeHtml(f.answer)}</div>
@@ -1618,6 +2114,7 @@
             }
 
             // Socials (governed by vis.showSocials)
+            const socialsSection = document.getElementById('socialsSection');
             const socialsRow = document.getElementById('socialsRow');
             socialsRow.innerHTML = '';
             const socials = site.socials || {};
@@ -1654,12 +2151,10 @@
 
             const showSocials = vis.showSocials !== false && hasSocials;
             if (showSocials) {
+                socialsSection.style.display = 'block';
                 socialsRow.style.display = 'flex';
-                if (!showLocation) {
-                    // Show container if location was hidden but socials are active
-                    locationSection.style.display = 'block';
-                }
             } else {
+                socialsSection.style.display = 'none';
                 socialsRow.style.display = 'none';
             }
 
@@ -1670,7 +2165,8 @@
                     'testimonials': document.getElementById('testimonialsSection'),
                     'workingHours': document.getElementById('hoursSection'),
                     'faqs': document.getElementById('faqsSection'),
-                    'location': document.getElementById('locationSection')
+                    'location': document.getElementById('locationSection'),
+                    'socials': document.getElementById('socialsSection')
                 };
 
                 const mainContainer = document.getElementById('siteContent');
@@ -1697,7 +2193,6 @@
             // Update static strings
             const dict = i18n[currentLang];
             document.getElementById('langToggleBtn').textContent = dict.langToggle;
-            document.getElementById('verifiedLabel').textContent = dict.verifiedLabel;
             document.getElementById('mainBookingLabel').textContent = dict.mainBookingLabel;
             document.getElementById('saveContactLabel').textContent = dict.saveContactLabel;
             document.getElementById('servicesSectionTitle').textContent = dict.servicesSectionTitle;
@@ -1705,6 +2200,7 @@
             document.getElementById('hoursSectionTitle').textContent = dict.hoursSectionTitle;
             document.getElementById('faqsSectionTitle').textContent = dict.faqsSectionTitle;
             document.getElementById('locationSectionTitle').textContent = dict.locationSectionTitle;
+            document.getElementById('socialsSectionTitle').textContent = dict.socialsSectionTitle;
             document.getElementById('mapBtnLabel').textContent = dict.mapBtnLabel;
             document.getElementById('floatingWaBtnLabel').textContent = dict.floatingWaBtnLabel;
             document.getElementById('errorTitle').textContent = dict.errorNotFoundTitle;
