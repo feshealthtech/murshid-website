@@ -120,53 +120,94 @@
             font-family: var(--font-en);
         }
 
-        /* Top Announcement Banner */
+        /* Top Announcement Ticker Banner */
         .announcement-banner {
             width: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            height: 38px;
+            background: linear-gradient(90deg, #2563EB, #1D4ED8);
             color: #FFFFFF;
-            padding: 9px 16px;
+            padding: 0 16px;
             font-size: 12.5px;
             font-weight: 700;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            transition: opacity 0.2s;
+        }
+        .announcement-banner:hover {
+            color: #FFFFFF;
+            text-decoration: none;
+            opacity: 0.95;
         }
         .announcement-banner.offer {
             background: linear-gradient(90deg, #D97706, #B45309);
         }
         .announcement-banner.alert {
-            background: linear-gradient(90deg, #E11D48, #BE123C);
+            background: linear-gradient(90deg, #DC2626, #991B1B);
         }
         .announcement-banner.info {
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(90deg, #2563EB, #1D4ED8);
         }
-        .announcement-content {
+        .announcement-track {
             max-width: 600px;
             margin: 0 auto;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            overflow: hidden;
         }
-        .announcement-link {
+        .announcement-badge {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            background: rgba(255, 255, 255, 0.22);
-            color: #FFFFFF;
+            gap: 5px;
+            background: rgba(0, 0, 0, 0.22);
             padding: 2px 8px;
             border-radius: 6px;
-            text-decoration: none;
             font-size: 11px;
             font-weight: 800;
-            transition: background 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
-        .announcement-link:hover {
-            background: rgba(255, 255, 255, 0.35);
+        .announcement-marquee {
+            flex: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .marquee-content {
+            display: inline-block;
+            white-space: nowrap;
+            font-size: 12px;
+            font-weight: 700;
+            animation: ticker-scroll 20s linear infinite;
+        }
+        .announcement-banner:hover .marquee-content {
+            animation-play-state: paused;
+        }
+        @keyframes ticker-scroll {
+            0% { transform: translateX(80%); }
+            100% { transform: translateX(-100%); }
+        }
+        .announcement-cue {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            opacity: 0.9;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 7px;
+            border-radius: 6px;
         }
 
         .site-container {
@@ -897,17 +938,21 @@
 </head>
 <body data-theme="emerald">
 
-    <!-- Top Announcement Banner -->
-    <div id="announcementBanner" class="announcement-banner" style="display: none;">
-        <div class="announcement-content">
-            <i id="announcementIcon" class="fa-solid fa-bullhorn"></i>
-            <span id="announcementText"></span>
-            <a id="announcementLink" href="#" target="_blank" class="announcement-link" style="display: none;">
-                <span id="announcementLinkLabel">تفاصيل</span>
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
+    <!-- Top Announcement Ticker Banner (الشريط بالكامل زر تفاعلي مدمج) -->
+    <a id="announcementBanner" class="announcement-banner" style="display: none;" target="_blank" rel="noopener noreferrer">
+        <div class="announcement-track">
+            <div class="announcement-badge">
+                <i id="announcementIcon" class="fa-solid fa-bullhorn"></i>
+                <span id="announcementBadgeLabel">إعلان</span>
+            </div>
+            <div class="announcement-marquee">
+                <span id="announcementText" class="marquee-content"></span>
+            </div>
+            <div id="announcementActionIcon" class="announcement-cue">
+                <i id="announcementCueIcon" class="fa-solid fa-chevron-left"></i>
+            </div>
         </div>
-    </div>
+    </a>
 
     <div class="site-container" id="mainContainer">
         <!-- Top Nav -->
@@ -1222,26 +1267,60 @@
             // Visibility settings
             const vis = site.visibility || {};
 
-            // 1. Top Announcement Banner
+            // 1. Top Announcement Ticker Banner
             const bannerEl = document.getElementById('announcementBanner');
             const showAnnouncement = vis.showAnnouncement !== false && site.announcementText && site.announcementText.trim() !== '';
             if (showAnnouncement) {
-                bannerEl.style.display = 'block';
+                bannerEl.style.display = 'flex';
                 const annType = site.announcementType || 'info';
                 bannerEl.className = `announcement-banner ${annType}`;
                 document.getElementById('announcementText').textContent = site.announcementText;
                 
                 const iconEl = document.getElementById('announcementIcon');
-                if (annType === 'offer') iconEl.className = 'fa-solid fa-tag';
-                else if (annType === 'alert') iconEl.className = 'fa-solid fa-triangle-exclamation';
-                else iconEl.className = 'fa-solid fa-bullhorn';
-
-                const linkEl = document.getElementById('announcementLink');
-                if (site.announcementUrl && site.announcementUrl.trim() !== '') {
-                    linkEl.href = site.announcementUrl;
-                    linkEl.style.display = 'inline-flex';
+                const badgeLabelEl = document.getElementById('announcementBadgeLabel');
+                if (annType === 'offer') {
+                    iconEl.className = 'fa-solid fa-tag';
+                    if (badgeLabelEl) badgeLabelEl.textContent = 'عرض خاص';
+                } else if (annType === 'alert') {
+                    iconEl.className = 'fa-solid fa-triangle-exclamation';
+                    if (badgeLabelEl) badgeLabelEl.textContent = 'تنبيه';
                 } else {
-                    linkEl.style.display = 'none';
+                    iconEl.className = 'fa-solid fa-bullhorn';
+                    if (badgeLabelEl) badgeLabelEl.textContent = 'إعلان';
+                }
+
+                // Handle click action (WhatsApp, URL, or None)
+                const action = site.announcementAction || (site.announcementUrl ? 'url' : 'none');
+                const cueEl = document.getElementById('announcementActionIcon');
+                const cueIcon = document.getElementById('announcementCueIcon');
+
+                if (action === 'whatsapp') {
+                    const phone = (site.announcementPhone || site.whatsappNumber || '').replace(/[^\d+]/g, '');
+                    const cleanPhone = phone.startsWith('+') ? phone.slice(1) : phone;
+                    const defaultMsg = site.announcementWhatsappMsg || 'مرحباً دكتور، أود الاستفسار بخصوص الإعلان في موقعك.';
+                    if (cleanPhone) {
+                        bannerEl.href = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(defaultMsg)}`;
+                        bannerEl.style.cursor = 'pointer';
+                        if (cueEl) cueEl.style.display = 'inline-flex';
+                        if (cueIcon) cueIcon.className = 'fa-brands fa-whatsapp';
+                    } else {
+                        bannerEl.removeAttribute('href');
+                        bannerEl.style.cursor = 'default';
+                        if (cueEl) cueEl.style.display = 'none';
+                    }
+                } else if (action === 'url' && site.announcementUrl && site.announcementUrl.trim() !== '') {
+                    let targetUrl = site.announcementUrl.trim();
+                    if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
+                        targetUrl = 'https://' + targetUrl;
+                    }
+                    bannerEl.href = targetUrl;
+                    bannerEl.style.cursor = 'pointer';
+                    if (cueEl) cueEl.style.display = 'inline-flex';
+                    if (cueIcon) cueIcon.className = 'fa-solid fa-arrow-up-right-from-square';
+                } else {
+                    bannerEl.removeAttribute('href');
+                    bannerEl.style.cursor = 'default';
+                    if (cueEl) cueEl.style.display = 'none';
                 }
             } else {
                 bannerEl.style.display = 'none';
