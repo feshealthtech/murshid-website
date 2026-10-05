@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>العيادة الرقمية الرسمية — منصة مرشد</title>
+    <title>الموقع المهني والعيادة الرقمية — تطبيق مرشد</title>
     
     <meta name="theme-color" content="#0D9488">
 
     <!-- OpenGraph & Social Share Dynamic Preview Cards -->
     <meta property="og:type" content="profile">
-    <meta property="og:site_name" content="منصة مرشد — العيادات الرقمية">
-    <meta property="og:title" id="ogTitle" content="العيادة الرقمية الرسمية — منصة مرشد">
-    <meta property="og:description" id="ogDesc" content="احجز استشارتك التغذوية واطلع على باقات وخدمات الأخصائي المعتمد">
+    <meta property="og:site_name" content="تطبيق مرشد">
+    <meta property="og:title" id="ogTitle" content="الموقع المهني — تطبيق مرشد">
+    <meta property="og:description" id="ogDesc" content="تعرف على الخدمات الاستشارية وباقات المتابعة واحجز استشارتك مباشرة">
     <meta property="og:image" id="ogImage" content="../assets/og-preview.jpg">
     <meta property="og:url" id="ogUrl" content="">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" id="twTitle" content="العيادة الرقمية الرسمية — منصة مرشد">
-    <meta name="twitter:description" id="twDesc" content="احجز استشارتك التغذوية واطلع على باقات وخدمات الأخصائي المعتمد">
-    <meta name="twitter:image" id="twImage" content="../assets/og-preview.jpg">
+    <meta name="twitter:title" id="twTitle" content="الموقع المهني — تطبيق مرشد">
+    <meta name="twitter:description" id="twDesc" content="تعرف على الخدمات الاستشارية وباقات المتابعة واحجز استشارتك مباشرة">
+    <meta property="twitter:image" id="twImage" content="../assets/og-preview.jpg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/webp" href="../assets/logo-sq.webp">
@@ -356,6 +356,7 @@
             flex-direction: column;
             gap: 10px;
             margin-top: 16px;
+            width: 100%;
         }
 
         .cta-booking-btn {
@@ -365,13 +366,15 @@
             gap: 10px;
             background: linear-gradient(135deg, #25D366 0%, #16A34A 100%);
             color: white;
-            padding: 14px 22px;
+            padding: 13px 20px;
             border-radius: 16px;
-            font-size: 15px;
+            font-size: 14.5px;
             font-weight: 800;
             text-decoration: none;
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
             transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            width: 100%;
+            white-space: nowrap;
         }
         .cta-booking-btn:hover {
             transform: translateY(-2px);
@@ -381,8 +384,16 @@
             font-size: 19px;
         }
 
-        /* vCard Button */
+        /* Secondary Actions Row (vCard & Direct Call) */
+        .secondary-actions-row {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+
         .vcard-btn {
+            flex: 1;
+            min-width: 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -390,14 +401,22 @@
             background: #FFFFFF;
             border: 1px solid var(--card-border);
             color: var(--text-main);
-            padding: 12px 20px;
+            padding: 11px 14px;
             border-radius: 16px;
-            font-size: 13.5px;
+            font-size: 12.5px;
             font-weight: 700;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             transition: all 0.2s;
             font-family: inherit;
+            white-space: nowrap;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        .vcard-btn span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
         .vcard-btn:hover {
             border-color: var(--primary);
@@ -407,7 +426,8 @@
         }
         .vcard-btn i {
             color: var(--primary);
-            font-size: 16px;
+            font-size: 15px;
+            flex-shrink: 0;
         }
 
         /* Section Cards */
@@ -1229,17 +1249,22 @@
             padding: 0 0 18px 0;
             overflow: hidden;
             text-align: right;
+            position: relative;
+        }
+        [data-template="social_profile"] .hero-card::before {
+            display: none !important;
         }
         [data-template="social_profile"] .hero-cover {
-            height: 145px !important;
-            display: block !important;
-            border-radius: 0;
+            width: 100% !important;
+            margin: 0 !important;
+            height: 155px !important;
+            border-radius: 14px 14px 0 0 !important;
             background-size: cover;
             background-position: center;
-            background-color: var(--primary);
-            background-image: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background-repeat: no-repeat;
+            background-color: #E4E6EB;
         }
-        [data-template="social_profile"] .avatar-container {
+        [data-template="social_profile"] .hero-card.has-cover .avatar-container {
             margin: -48px 18px 8px auto !important;
             width: 96px;
             height: 96px;
@@ -1250,9 +1275,30 @@
             position: relative;
             z-index: 2;
         }
+        [data-template="social_profile"] .hero-card:not(.has-cover) .avatar-container {
+            margin: 20px 18px 8px auto !important;
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 3px solid #E4E6EB;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            background: #FFFFFF;
+            position: relative;
+            z-index: 2;
+        }
+        [dir="ltr"] [data-template="social_profile"] .hero-card.has-cover .avatar-container {
+            margin: -48px auto 8px 18px !important;
+        }
+        [dir="ltr"] [data-template="social_profile"] .hero-card:not(.has-cover) .avatar-container {
+            margin: 20px auto 8px 18px !important;
+        }
         [data-template="social_profile"] .avatar-img {
             border: none;
             box-shadow: none;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
         }
         [data-template="social_profile"] .specialist-name {
             text-align: right;
@@ -1262,6 +1308,9 @@
             color: #050505;
             margin: 4px 0 2px;
         }
+        [dir="ltr"] [data-template="social_profile"] .specialist-name {
+            text-align: left;
+        }
         [data-template="social_profile"] .specialist-title {
             text-align: right;
             padding: 0 18px;
@@ -1270,6 +1319,9 @@
             font-weight: 700;
             margin-bottom: 2px;
         }
+        [dir="ltr"] [data-template="social_profile"] .specialist-title {
+            text-align: left;
+        }
         [data-template="social_profile"] .clinic-name {
             text-align: right;
             padding: 0 18px;
@@ -1277,36 +1329,55 @@
             color: #65676B;
             margin-bottom: 8px;
         }
+        [dir="ltr"] [data-template="social_profile"] .clinic-name {
+            text-align: left;
+        }
         [data-template="social_profile"] .bio-box {
-            margin: 8px 18px 14px !important;
+            margin: 10px 18px 14px !important;
             text-align: right;
             background: #F0F2F5;
             border: none;
             border-radius: 10px;
-            padding: 10px 14px;
-            font-size: 12.5px;
+            padding: 12px 14px;
+            font-size: 13px;
             color: #1C1E21;
-            line-height: 1.5;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+        [dir="ltr"] [data-template="social_profile"] .bio-box {
+            text-align: left;
         }
         [data-template="social_profile"] .actions-stack {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             gap: 8px;
             padding: 0 18px;
-            margin-top: 4px;
+            margin-top: 6px;
         }
         [data-template="social_profile"] .cta-booking-btn {
-            flex: 2;
-            height: 40px;
+            width: 100%;
+            height: 42px;
             border-radius: 8px;
-            font-size: 13px;
+            font-size: 13.5px;
             font-weight: 700;
-            padding: 0 12px;
+            padding: 0 14px;
             box-shadow: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        [data-template="social_profile"] .secondary-actions-row {
+            display: flex;
+            gap: 8px;
+            width: 100%;
         }
         [data-template="social_profile"] .vcard-btn {
             flex: 1;
-            height: 40px;
+            min-width: 0;
+            height: 38px;
             border-radius: 8px;
             font-size: 12px;
             font-weight: 600;
@@ -1314,6 +1385,22 @@
             background: #E4E6EB;
             color: #050505;
             border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        [data-template="social_profile"] .vcard-btn:hover {
+            background: #D8DADF;
+        }
+        [data-template="social_profile"] .vcard-btn span {
+            overflow: hidden;
+            text-overflow: ellipsis;
             white-space: nowrap;
         }
         [data-template="social_profile"] .section-card {
@@ -1398,14 +1485,21 @@
             border: 1.5px solid rgba(var(--primary-rgb), 0.1);
             background: #F8FAFC;
         }
+        [data-template="bento_grid"] .hero-cover {
+            width: calc(100% + 48px) !important;
+            margin: -24px -24px 16px -24px !important;
+            border-radius: 26px 26px 0 0 !important;
+            height: 140px !important;
+        }
         [data-template="bento_grid"] .cta-booking-btn {
             border-radius: 100px;
             height: 48px;
             font-weight: 800;
         }
-        [data-template="bento_grid"] .vcard-btn {
+        [data-template="bento_grid"] .secondary-actions-row .vcard-btn {
             border-radius: 100px;
             border: 1.5px solid rgba(var(--primary-rgb), 0.2);
+            height: 42px;
         }
         [data-template="bento_grid"] .section-card {
             border-radius: 26px;
@@ -1478,6 +1572,12 @@
             height: 3px;
             background: linear-gradient(90deg, #B45309, #D4AF37, #F59E0B, #D4AF37, #B45309);
         }
+        [data-template="editorial_luxury"] .hero-cover {
+            width: calc(100% + 40px) !important;
+            margin: -26px -20px 16px -20px !important;
+            border-radius: 14px 14px 0 0 !important;
+            height: 140px !important;
+        }
         [data-template="editorial_luxury"] .avatar-container {
             width: 100px;
             height: 120px;
@@ -1517,14 +1617,16 @@
             border-radius: 12px;
             background: linear-gradient(135deg, #78350F 0%, #B45309 50%, #D4AF37 100%);
             box-shadow: 0 10px 24px -6px rgba(180, 83, 9, 0.35);
+            height: 46px;
         }
-        [data-template="editorial_luxury"] .vcard-btn {
+        [data-template="editorial_luxury"] .secondary-actions-row .vcard-btn {
             border-radius: 12px;
             border: 1.5px solid rgba(212, 175, 55, 0.35);
             color: #78350F;
             background: linear-gradient(180deg, #FFFFFF 0%, #FFFBEB 100%);
+            height: 42px;
         }
-        [data-template="editorial_luxury"] .vcard-btn i {
+        [data-template="editorial_luxury"] .secondary-actions-row .vcard-btn i {
             color: #B45309;
         }
         [data-template="editorial_luxury"] .section-card {
@@ -1639,7 +1741,7 @@
             font-weight: 800;
             box-shadow: 0 6px 18px -3px rgba(37, 211, 102, 0.35);
         }
-        [data-template="compact_stack"] .vcard-btn {
+        [data-template="compact_stack"] .secondary-actions-row .vcard-btn {
             border-radius: 100px;
             height: 42px;
             font-size: 12.5px;
@@ -1691,9 +1793,9 @@
     <div class="site-container" id="mainContainer">
         <!-- Top Nav -->
         <header class="top-nav">
-            <a href="https://murshid.feshealthtech.com" class="brand-badge">
+            <a href="https://murshid.feshealthtech.com" class="brand-badge" title="تطبيق مرشد">
                 <img src="../assets/logo-sq.png" alt="مرشد">
-                <span>منصة مرشد للاستشارات والعيادات الخاصة</span>
+                <span id="topNavBrandText">تطبيق مرشد</span>
             </a>
             <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
         </header>
@@ -1752,22 +1854,24 @@
                 <!-- Bio Box -->
                 <div class="bio-box" id="doctorBio"></div>
 
-                <!-- Action Buttons: WhatsApp & vCard -->
+                <!-- Action Buttons: WhatsApp & vCard & Direct Call -->
                 <div class="actions-stack">
                     <a href="#" id="mainBookingBtn" class="cta-booking-btn" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i>
-                        <span id="mainBookingLabel">احجز استشارتك عبر واتساب الآن</span>
+                        <span id="mainBookingLabel">احجز استشارتك عبر واتساب</span>
                     </a>
 
-                    <button type="button" id="saveContactBtn" class="vcard-btn" onclick="downloadVCard()" style="display: none;">
-                        <i class="fa-solid fa-address-card"></i>
-                        <span id="saveContactLabel">حفظ جهة الاتصال في هاتفك (vCard)</span>
-                    </button>
+                    <div class="secondary-actions-row" id="secondaryActionsRow">
+                        <button type="button" id="saveContactBtn" class="vcard-btn" onclick="downloadVCard()" style="display: none;">
+                            <i class="fa-solid fa-address-card"></i>
+                            <span id="saveContactLabel">حفظ جهة الاتصال</span>
+                        </button>
 
-                    <a href="#" id="directCallBtn" class="vcard-btn" style="display: none; text-decoration: none;">
-                        <i class="fa-solid fa-phone"></i>
-                        <span id="directCallLabel">اتصال هاتفي مباشر</span>
-                    </a>
+                        <a href="#" id="directCallBtn" class="vcard-btn" style="display: none; text-decoration: none;">
+                            <i class="fa-solid fa-phone"></i>
+                            <span id="directCallLabel">اتصال هاتفي</span>
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -1859,7 +1963,7 @@
 
             <a href="https://murshid.feshealthtech.com" class="footer-logo-link" style="margin-top: 10px;">
                 <img src="../assets/logo-sq.png" alt="مرشد">
-                <span>منصة مرشد لإدارة الاستشارات والعيادات الخاصة</span>
+                <span id="footerBrandText">مدعوم عبر تطبيق مرشد</span>
             </a>
             <p>© 2026 FES Health Tech. All rights reserved.</p>
         </footer>
@@ -1927,9 +2031,11 @@
         const i18n = {
             ar: {
                 langToggle: 'English',
-                mainBookingLabel: 'احجز استشارتك عبر واتساب الآن',
-                saveContactLabel: 'حفظ جهة الاتصال في هاتفك (vCard)',
-                directCallLabel: 'اتصال هاتفي مباشر',
+                topNavBrand: 'تطبيق مرشد',
+                footerBrand: 'مدعوم عبر تطبيق مرشد',
+                mainBookingLabel: 'احجز استشارتك عبر واتساب',
+                saveContactLabel: 'حفظ جهة الاتصال',
+                directCallLabel: 'اتصال هاتفي',
                 servicesSectionTitle: 'الخدمات وباقات الاستشارة',
                 testimonialsSectionTitle: 'قصص النجاح وآراء المراجعين',
                 hoursSectionTitle: 'أوقات ومواعيد العمل',
@@ -1973,9 +2079,11 @@
             },
             en: {
                 langToggle: 'العربية',
-                mainBookingLabel: 'Book Consultation via WhatsApp',
-                saveContactLabel: 'Save to Phone Contacts (vCard)',
-                directCallLabel: 'Direct Phone Call',
+                topNavBrand: 'Murshid App',
+                footerBrand: 'Powered by Murshid App',
+                mainBookingLabel: 'Book via WhatsApp',
+                saveContactLabel: 'Save Contact',
+                directCallLabel: 'Phone Call',
                 servicesSectionTitle: 'Services & Consultation Packages',
                 testimonialsSectionTitle: 'Client Success Stories & Reviews',
                 hoursSectionTitle: 'Working Hours & Schedule',
@@ -2290,29 +2398,40 @@
             
             const mainBookingBtn = document.getElementById('mainBookingBtn');
             mainBookingBtn.href = waUrl;
+            const mainBookingLabel = document.getElementById('mainBookingLabel');
+            if (mainBookingLabel) mainBookingLabel.textContent = i18n[currentLang].mainBookingLabel;
 
             // vCard Button (governed by vis.showSaveContact)
             const saveContactBtn = document.getElementById('saveContactBtn');
-            if (vis.showSaveContact !== false && (site.phoneNumber || site.whatsappNumber)) {
-                saveContactBtn.style.display = 'flex';
-            } else {
-                saveContactBtn.style.display = 'none';
+            const showSaveContact = vis.showSaveContact !== false && (site.phoneNumber || site.whatsappNumber);
+            if (saveContactBtn) {
+                saveContactBtn.style.display = showSaveContact ? 'flex' : 'none';
+                const saveLabelEl = document.getElementById('saveContactLabel');
+                if (saveLabelEl) saveLabelEl.textContent = i18n[currentLang].saveContactLabel;
             }
 
             // Direct Phone Call Button
             const directCallBtn = document.getElementById('directCallBtn');
+            const showDirectCall = site.phoneNumber && site.phoneNumber.trim() !== '';
             if (directCallBtn) {
-                if (site.phoneNumber && site.phoneNumber.trim() !== '') {
+                if (showDirectCall) {
                     const rawDirect = site.phoneNumber.replace(/[^0-9+]/g, '');
                     directCallBtn.href = `tel:${rawDirect}`;
                     directCallBtn.style.display = 'flex';
+                    directCallBtn.title = site.phoneNumber;
                     const directLabelEl = document.getElementById('directCallLabel');
                     if (directLabelEl) {
-                        directLabelEl.textContent = `${i18n[currentLang].directCallLabel}: ${site.phoneNumber}`;
+                        directLabelEl.textContent = i18n[currentLang].directCallLabel;
                     }
                 } else {
                     directCallBtn.style.display = 'none';
                 }
+            }
+
+            // Secondary actions row visibility
+            const secondaryRow = document.getElementById('secondaryActionsRow');
+            if (secondaryRow) {
+                secondaryRow.style.display = (showSaveContact || showDirectCall) ? 'flex' : 'none';
             }
 
             // Floating WhatsApp Button (Fixed Corner FAB)
@@ -2589,8 +2708,14 @@
             // Update static strings
             const dict = i18n[currentLang];
             document.getElementById('langToggleBtn').textContent = dict.langToggle;
+            const topBrand = document.getElementById('topNavBrandText');
+            if (topBrand) topBrand.textContent = dict.topNavBrand;
+            const footerBrand = document.getElementById('footerBrandText');
+            if (footerBrand) footerBrand.textContent = dict.footerBrand;
             document.getElementById('mainBookingLabel').textContent = dict.mainBookingLabel;
             document.getElementById('saveContactLabel').textContent = dict.saveContactLabel;
+            const directCallLabel = document.getElementById('directCallLabel');
+            if (directCallLabel) directCallLabel.textContent = dict.directCallLabel;
             document.getElementById('servicesSectionTitle').textContent = dict.servicesSectionTitle;
             document.getElementById('testimonialsSectionTitle').textContent = dict.testimonialsSectionTitle;
             document.getElementById('hoursSectionTitle').textContent = dict.hoursSectionTitle;
