@@ -613,6 +613,12 @@
             border-radius: 18px;
             padding: 16px 18px;
             position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .testimonial-card.featured {
+            border-color: #F59E0B;
+            background: linear-gradient(180deg, #FFFDF5 0%, #F8FAFC 100%);
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.12);
         }
         .testimonial-header {
             display: flex;
@@ -620,11 +626,37 @@
             align-items: center;
             margin-bottom: 8px;
         }
+        .testimonial-stars-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
         .testimonial-stars {
             color: #F59E0B;
             font-size: 13px;
             display: flex;
             gap: 2px;
+        }
+        .testimonial-tag {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+            padding: 2px 7px;
+            border-radius: 5px;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .testimonial-featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
         }
         .testimonial-date {
             font-size: 11px;
@@ -648,12 +680,38 @@
             color: var(--text-sub);
             line-height: 1.55;
             font-style: italic;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+        }
+        .testimonial-author-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .testimonial-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.15);
+            color: #059669;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+            flex-shrink: 0;
         }
         .testimonial-author {
             font-size: 12px;
             font-weight: 700;
             color: var(--text-main);
+        }
+        .testimonial-verified {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            color: #10B981;
+            font-size: 10.5px;
+            font-weight: 600;
         }
 
         /* Working Hours */
@@ -1449,20 +1507,33 @@
                 testimonialsSection.style.display = 'block';
                 site.testimonials.forEach(t => {
                     const tCard = document.createElement('div');
-                    tCard.className = 'testimonial-card';
+                    tCard.className = `testimonial-card ${t.isFeatured ? 'featured' : ''}`;
                     
                     const starsHtml = Array.from({ length: 5 }, (_, i) => 
                         `<i class="fa-${i < (t.rating || 5) ? 'solid' : 'regular'} fa-star"></i>`
                     ).join('');
 
+                    const avatarLetter = (t.clientName && t.clientName.trim().length > 0) ? escapeHtml(t.clientName.trim().charAt(0)) : 'ع';
+                    const isVerified = t.isVerified !== false;
+
                     tCard.innerHTML = `
                         <div class="testimonial-header">
-                            <div class="testimonial-stars">${starsHtml}</div>
-                            ${t.date ? `<span class="testimonial-date">${escapeHtml(t.date)}</span>` : ''}
+                            <div class="testimonial-stars-group">
+                                <div class="testimonial-stars">${starsHtml}</div>
+                                ${t.tag ? `<span class="testimonial-tag">${escapeHtml(t.tag)}</span>` : ''}
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                ${t.isFeatured ? `<span class="testimonial-featured-badge"><i class="fa-solid fa-star"></i> ${currentLang === 'ar' ? 'قصة مميزة' : 'Featured'}</span>` : ''}
+                                ${t.date ? `<span class="testimonial-date">${escapeHtml(t.date)}</span>` : ''}
+                            </div>
                         </div>
                         ${t.result ? `<div class="testimonial-result"><i class="fa-solid fa-trophy"></i> ${escapeHtml(t.result)}</div>` : ''}
                         <p class="testimonial-comment">"${escapeHtml(t.comment)}"</p>
-                        <div class="testimonial-author">— ${escapeHtml(t.clientName)}</div>
+                        <div class="testimonial-author-row">
+                            <div class="testimonial-avatar">${avatarLetter}</div>
+                            <div class="testimonial-author">${escapeHtml(t.clientName)}</div>
+                            ${isVerified ? `<span class="testimonial-verified"><i class="fa-solid fa-circle-check"></i> ${currentLang === 'ar' ? 'موثق' : 'Verified'}</span>` : ''}
+                        </div>
                     `;
                     testimonialsList.appendChild(tCard);
                 });
