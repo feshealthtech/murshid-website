@@ -960,6 +960,11 @@
                         <i class="fa-solid fa-address-card"></i>
                         <span id="saveContactLabel">حفظ جهة الاتصال في هاتفك (vCard)</span>
                     </button>
+
+                    <a href="#" id="directCallBtn" class="vcard-btn" style="display: none; text-decoration: none;">
+                        <i class="fa-solid fa-phone"></i>
+                        <span id="directCallLabel">اتصال هاتفي مباشر</span>
+                    </a>
                 </div>
             </section>
 
@@ -1051,6 +1056,7 @@
                 verifiedLabel: 'أخصائي معتمد وموثق رقمياً عبر مرشد',
                 mainBookingLabel: 'احجز استشارتك عبر واتساب الآن',
                 saveContactLabel: 'حفظ جهة الاتصال في هاتفك (vCard)',
+                directCallLabel: 'اتصال هاتفي مباشر',
                 servicesSectionTitle: 'الخدمات والباقات العلاجية',
                 testimonialsSectionTitle: 'قصص النجاح وآراء المراجعين',
                 hoursSectionTitle: 'أوقات ومواعيد العمل',
@@ -1071,6 +1077,7 @@
                 verifiedLabel: 'Verified & Digitally Certified Specialist',
                 mainBookingLabel: 'Book Consultation via WhatsApp',
                 saveContactLabel: 'Save to Phone Contacts (vCard)',
+                directCallLabel: 'Direct Phone Call',
                 servicesSectionTitle: 'Clinical Services & Packages',
                 testimonialsSectionTitle: 'Client Success Stories & Reviews',
                 hoursSectionTitle: 'Working Hours & Schedule',
@@ -1148,15 +1155,21 @@
             const name = siteData.displayName || 'أخصائي التغذية';
             const title = siteData.professionalTitle || 'أخصائي تغذية علاجية وسريرية';
             const org = siteData.clinicName || 'عيادة مرشد الرقمية';
-            const phone = siteData.phoneNumber || siteData.whatsappNumber || '';
+            const waPhone = siteData.whatsappNumber || '';
+            const directPhone = siteData.phoneNumber || '';
             const url = window.location.href;
             const note = siteData.bio || '';
+            const address = siteData.address || '';
+            const city = siteData.city || '';
+            const country = siteData.country || '';
             
             let vcard = 'BEGIN:VCARD\r\nVERSION:3.0\r\n';
             vcard += `FN:${name}\r\n`;
             if (org) vcard += `ORG:${org}\r\n`;
             if (title) vcard += `TITLE:${title}\r\n`;
-            if (phone) vcard += `TEL;TYPE=CELL,VOICE:${phone}\r\n`;
+            if (waPhone) vcard += `TEL;TYPE=CELL,VOICE:${waPhone}\r\n`;
+            if (directPhone && directPhone !== waPhone) vcard += `TEL;TYPE=WORK,VOICE:${directPhone}\r\n`;
+            if (address || city || country) vcard += `ADR;TYPE=WORK:;;${address};${city};;${country};;\r\n`;
             vcard += `URL:${url}\r\n`;
             if (note) vcard += `NOTE:${note.replace(/\r?\n/g, ' ')}\r\n`;
             vcard += 'END:VCARD\r\n';
@@ -1318,7 +1331,8 @@
             }
 
             // WhatsApp link helper
-            const rawPhone = (site.whatsappNumber || site.phoneNumber || '').replace(/[^0-9]/g, '');
+            const waRawPhone = (site.whatsappNumber || '').replace(/[^0-9]/g, '');
+            const rawPhone = waRawPhone || (site.phoneNumber || '').replace(/[^0-9]/g, '');
             const defaultMsg = site.whatsappMessage || 'مرحباً دكتور، أود الاستفسار وحجز استشارة تغذوية متخصصة معك.';
             const waUrl = rawPhone ? `https://wa.me/${rawPhone}?text=${encodeURIComponent(defaultMsg)}` : '#';
             
@@ -1331,6 +1345,22 @@
                 saveContactBtn.style.display = 'flex';
             } else {
                 saveContactBtn.style.display = 'none';
+            }
+
+            // Direct Phone Call Button
+            const directCallBtn = document.getElementById('directCallBtn');
+            if (directCallBtn) {
+                if (site.phoneNumber && site.phoneNumber.trim() !== '') {
+                    const rawDirect = site.phoneNumber.replace(/[^0-9+]/g, '');
+                    directCallBtn.href = `tel:${rawDirect}`;
+                    directCallBtn.style.display = 'flex';
+                    const directLabelEl = document.getElementById('directCallLabel');
+                    if (directLabelEl) {
+                        directLabelEl.textContent = `${i18n[currentLang].directCallLabel}: ${site.phoneNumber}`;
+                    }
+                } else {
+                    directCallBtn.style.display = 'none';
+                }
             }
 
             // Floating WhatsApp Button (Fixed Corner FAB)
