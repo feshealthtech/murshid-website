@@ -382,71 +382,6 @@
             text-align: center;
         }
 
-        /* Medical Licenses & Accreditations Card */
-        .credentials-card {
-            background: #FFFFFF;
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 16px 20px;
-            margin-top: 14px;
-            text-align: right;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-        }
-        [dir="ltr"] .credentials-card {
-            text-align: left;
-        }
-        .credentials-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-        .credentials-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
-            background: #F0F9FF;
-            border: 1px solid #BAE6FD;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #0284C7;
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-        .credentials-titles h4 {
-            font-size: 13.5px;
-            font-weight: 800;
-            color: var(--text-main);
-        }
-        .credentials-titles p {
-            font-size: 11.5px;
-            color: #0284C7;
-            font-weight: 600;
-        }
-        .degrees-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 8px;
-        }
-        .degree-tag {
-            background: #F8FAFC;
-            border: 1px solid #E2E8F0;
-            color: var(--text-sub);
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 11.5px;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .degree-tag i {
-            color: var(--primary);
-            font-size: 11px;
-        }
-
         /* Action Buttons */
         .actions-stack {
             display: flex;
@@ -1014,18 +949,6 @@
                 <!-- Bio Box -->
                 <div class="bio-box" id="doctorBio"></div>
 
-                <!-- Medical Credentials Card -->
-                <div class="credentials-card" id="licensesCard" style="display: none;">
-                    <div class="credentials-header">
-                        <div class="credentials-icon"><i class="fa-solid fa-award"></i></div>
-                        <div class="credentials-titles">
-                            <h4 id="licensesTitle">الاعتمادات والتراخيص المهنية المعتمدة</h4>
-                            <p id="licenseDetailsText"></p>
-                        </div>
-                    </div>
-                    <div class="degrees-list" id="degreesList"></div>
-                </div>
-
                 <!-- Action Buttons: WhatsApp & vCard -->
                 <div class="actions-stack">
                     <a href="#" id="mainBookingBtn" class="cta-booking-btn" target="_blank">
@@ -1128,8 +1051,6 @@
                 verifiedLabel: 'أخصائي معتمد وموثق رقمياً عبر مرشد',
                 mainBookingLabel: 'احجز استشارتك عبر واتساب الآن',
                 saveContactLabel: 'حفظ جهة الاتصال في هاتفك (vCard)',
-                licensesTitle: 'الاعتمادات والتراخيص المهنية المعتمدة',
-                licensePrefix: 'ترخيص رقم: ',
                 servicesSectionTitle: 'الخدمات والباقات العلاجية',
                 testimonialsSectionTitle: 'قصص النجاح وآراء المراجعين',
                 hoursSectionTitle: 'أوقات ومواعيد العمل',
@@ -1150,8 +1071,6 @@
                 verifiedLabel: 'Verified & Digitally Certified Specialist',
                 mainBookingLabel: 'Book Consultation via WhatsApp',
                 saveContactLabel: 'Save to Phone Contacts (vCard)',
-                licensesTitle: 'Verified Licenses & Credentials',
-                licensePrefix: 'License No: ',
                 servicesSectionTitle: 'Clinical Services & Packages',
                 testimonialsSectionTitle: 'Client Success Stories & Reviews',
                 hoursSectionTitle: 'Working Hours & Schedule',
@@ -1396,31 +1315,6 @@
                 bioEl.style.display = 'block';
             } else {
                 bioEl.style.display = 'none';
-            }
-
-            // Medical Licenses & Accreditations (governed by vis.showLicenses)
-            const licensesCard = document.getElementById('licensesCard');
-            const showLicenses = vis.showLicenses !== false && (site.licenseNumber || (site.degrees && site.degrees.length > 0) || site.licenseAuthority);
-            if (showLicenses) {
-                licensesCard.style.display = 'block';
-                const authText = site.licenseAuthority || 'الهيئة السعودية للتخصصات الصحية';
-                const licNumText = site.licenseNumber ? ` — ${i18n[currentLang].licensePrefix}${site.licenseNumber}` : '';
-                document.getElementById('licenseDetailsText').textContent = `${authText}${licNumText}`;
-
-                const degreesList = document.getElementById('degreesList');
-                degreesList.innerHTML = '';
-                if (site.degrees && site.degrees.length > 0) {
-                    site.degrees.forEach(deg => {
-                        if (deg && deg.trim()) {
-                            const span = document.createElement('span');
-                            span.className = 'degree-tag';
-                            span.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${escapeHtml(deg)}`;
-                            degreesList.appendChild(span);
-                        }
-                    });
-                }
-            } else {
-                licensesCard.style.display = 'none';
             }
 
             // WhatsApp link helper
@@ -1683,7 +1577,6 @@
             document.getElementById('verifiedLabel').textContent = dict.verifiedLabel;
             document.getElementById('mainBookingLabel').textContent = dict.mainBookingLabel;
             document.getElementById('saveContactLabel').textContent = dict.saveContactLabel;
-            document.getElementById('licensesTitle').textContent = dict.licensesTitle;
             document.getElementById('servicesSectionTitle').textContent = dict.servicesSectionTitle;
             document.getElementById('testimonialsSectionTitle').textContent = dict.testimonialsSectionTitle;
             document.getElementById('hoursSectionTitle').textContent = dict.hoursSectionTitle;
