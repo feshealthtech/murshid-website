@@ -953,6 +953,263 @@
             margin-bottom: 20px;
         }
 
+        /* Suspended / Review State (Kill Switch) */
+        .suspended-card {
+            text-align: center;
+            padding: 50px 24px;
+            background: #FFFFFF;
+            border: 1.5px solid #FCD34D;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.08);
+        }
+        .suspended-card i.status-icon {
+            font-size: 52px;
+            color: #D97706;
+            margin-bottom: 18px;
+            display: inline-block;
+        }
+        .suspended-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 10px;
+        }
+        .suspended-desc {
+            font-size: 13.5px;
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 22px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .suspended-reason-pill {
+            display: inline-block;
+            background: #FEF3C7;
+            border: 1px solid #FDE68A;
+            color: #92400E;
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Legal Disclaimer Box in Footer */
+        .legal-disclaimer-box {
+            background: rgba(248, 250, 252, 0.95);
+            border: 1px solid #E2E8F0;
+            border-radius: 14px;
+            padding: 14px 18px;
+            margin: 14px 0 10px 0;
+            text-align: center;
+            font-size: 11px;
+            line-height: 1.6;
+            color: #64748B;
+            width: 100%;
+            max-width: 580px;
+        }
+        .legal-disclaimer-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 800;
+            color: #475569;
+            margin-bottom: 6px;
+            font-size: 11.5px;
+        }
+        .legal-disclaimer-header i {
+            color: var(--primary);
+            font-size: 13px;
+        }
+        .report-link-btn {
+            background: none;
+            border: none;
+            color: #94A3B8;
+            font-size: 11.5px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .report-link-btn:hover {
+            color: #EF4444;
+            background: rgba(239, 68, 68, 0.08);
+            text-decoration: none;
+        }
+
+        /* Abuse Reporting Modal */
+        .report-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .report-modal-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
+            border: 1px solid #E2E8F0;
+            width: 100%;
+            max-width: 440px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 22px 20px;
+            text-align: start;
+        }
+        .report-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        .report-modal-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            font-weight: 800;
+            color: #0F172A;
+        }
+        .report-modal-title i {
+            color: #EF4444;
+        }
+        .report-modal-close {
+            background: #F1F5F9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748B;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .report-modal-close:hover {
+            background: #E2E8F0;
+            color: #0F172A;
+        }
+        .report-modal-desc {
+            font-size: 12px;
+            color: #64748B;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .report-form-group {
+            margin-bottom: 14px;
+        }
+        .report-label {
+            display: block;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+        .report-select, .report-input, .report-textarea {
+            width: 100%;
+            border-radius: 10px;
+            border: 1.5px solid #CBD5E1;
+            padding: 10px 12px;
+            font-size: 12.5px;
+            color: #0F172A;
+            background: #F8FAFC;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+        .report-select:focus, .report-input:focus, .report-textarea:focus {
+            border-color: var(--primary);
+            background: #FFFFFF;
+        }
+        .report-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .report-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .report-submit-btn {
+            flex: 1;
+            background: #EF4444;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 10px;
+            padding: 11px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+        .report-submit-btn:hover {
+            background: #DC2626;
+        }
+        .report-submit-btn:disabled {
+            background: #94A3B8;
+            cursor: not-allowed;
+        }
+        .report-cancel-btn {
+            background: #F1F5F9;
+            color: #475569;
+            border: 1px solid #CBD5E1;
+            border-radius: 10px;
+            padding: 11px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        .report-cancel-btn:hover {
+            background: #E2E8F0;
+        }
+        .report-status-msg {
+            padding: 10px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 12px;
+            display: none;
+            text-align: center;
+        }
+        .report-status-msg.success {
+            background: #ECFDF5;
+            color: #065F46;
+            border: 1px solid #A7F3D0;
+            display: block;
+        }
+        .report-status-msg.error {
+            background: #FEF2F2;
+            color: #991B1B;
+            border: 1px solid #FECACA;
+            display: block;
+        }
+
         /* ==========================================================================
            MULTI-TEMPLATE RADICAL LAYOUT ENGINES (محرك تعدد القوالب والتصاميم الجذري)
            ========================================================================== */
@@ -1467,6 +1724,18 @@
             </a>
         </div>
 
+        <!-- Suspended State (Admin Kill Switch / Takedown) -->
+        <div id="suspendedState" class="suspended-card" style="display: none;">
+            <i class="fa-solid fa-triangle-exclamation status-icon"></i>
+            <h2 class="suspended-title" id="suspendedTitle">هذا الموقع معلّق مؤقتاً للمراجعة</h2>
+            <div id="suspendedReasonPill" class="suspended-reason-pill" style="display: none;"></div>
+            <p class="suspended-desc" id="suspendedDesc">تم إيقاف عرض هذه الصفحة مؤقتاً من قبل إدارة المنصة لإجراء مراجعة تنظيمية للمحتوى والبيانات وفق شروط الاستخدام المعتمدة.</p>
+            <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+                <i class="fa-solid fa-house"></i>
+                <span id="suspendedHomeBtn">العودة لصفحة مرشد الرئيسية</span>
+            </a>
+        </div>
+
         <!-- Dynamic Loaded Site Content -->
         <main id="siteContent" style="display: none; flex-direction: column; gap: 18px;">
             <!-- Hero Profile -->
@@ -1573,12 +1842,75 @@
 
         <!-- Footer -->
         <footer class="site-footer">
-            <a href="https://murshid.feshealthtech.com" class="footer-logo-link">
+            <!-- Legal Disclaimer Box -->
+            <div class="legal-disclaimer-box" id="legalDisclaimerBox">
+                <div class="legal-disclaimer-header">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <span id="legalDisclaimerTitle">إخلاء مسؤولية وتنويه قانوني</span>
+                </div>
+                <p id="legalDisclaimerText">هذا الموقع التعريفي يدار بشكل مستقل من قِبل صاحبه، وتعد كافة المعلومات والخدمات المقدمة على مسؤوليته المهنية الخاصة. منصة مرشد هي وسيط تقني لتنظيم الاستشارات وإدارة الممارسات ولا تقدم استشارات طبية أو علاجية مباشرة، ولا تتدخل في المحتوى المنشور أو التعاملات والاتفاقات المالية بين المستشار وعملائه.</p>
+            </div>
+
+            <!-- Report Abuse / Violation Button -->
+            <button type="button" class="report-link-btn" id="reportViolationBtn" onclick="openReportModal()">
+                <i class="fa-regular fa-flag"></i>
+                <span id="reportViolationBtnText">الإبلاغ عن محتوى أو صفحة مخالفة</span>
+            </button>
+
+            <a href="https://murshid.feshealthtech.com" class="footer-logo-link" style="margin-top: 10px;">
                 <img src="../assets/logo-sq.png" alt="مرشد">
                 <span>منصة مرشد لإدارة الاستشارات والعيادات الخاصة</span>
             </a>
             <p>© 2026 FES Health Tech. All rights reserved.</p>
         </footer>
+    </div>
+
+    <!-- Abuse / Violation Reporting Modal -->
+    <div id="reportModal" class="report-modal-overlay" style="display: none;" onclick="closeReportModalOnOverlay(event)">
+        <div class="report-modal-card" onclick="event.stopPropagation()">
+            <div class="report-modal-header">
+                <div class="report-modal-title">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span id="reportModalTitle">الإبلاغ عن محتوى مخالف</span>
+                </div>
+                <button type="button" class="report-modal-close" onclick="closeReportModal()">✕</button>
+            </div>
+            <p class="report-modal-desc" id="reportModalDesc">نلتزم بتوفير بيئة مهنية موثوقة وآمنة. إذا كانت هذه الصفحة تنتهك معايير النشر أو تتضمن ادعاءات غير مرخصة، يرجى تقديم بلاغ ليتم تدقيقه فوراً.</p>
+
+            <form id="reportForm" onsubmit="submitReport(event)">
+                <div class="report-form-group">
+                    <label class="report-label" id="reportReasonLabel" for="reportReason">سبب الإبلاغ *</label>
+                    <select id="reportReason" class="report-select" required>
+                        <option value="" disabled selected id="optDefaultReason">اختر سبب الإبلاغ...</option>
+                        <option value="impersonation" id="optImpersonation">انتحال هوية أو استخدام علامة دون تفويض</option>
+                        <option value="misleading_claims" id="optMisleading">ادعاءات مضللة أو غير مرخصة</option>
+                        <option value="financial_fraud" id="optFraud">احتيال مالي أو خدمات وهمية</option>
+                        <option value="inappropriate_content" id="optInappropriate">محتوى مسيء أو غير لائق</option>
+                        <option value="other" id="optOther">سبب آخر</option>
+                    </select>
+                </div>
+
+                <div class="report-form-group">
+                    <label class="report-label" id="reportDetailsLabel" for="reportDetails">تفاصيل إضافية عن المخالفة</label>
+                    <textarea id="reportDetails" class="report-textarea" placeholder="وضح باختصار طبيعة المخالفة أو الروابط المعنية..."></textarea>
+                </div>
+
+                <div class="report-form-group">
+                    <label class="report-label" id="reportContactLabel" for="reportContact">وسيلة تواصل اختيارية لمتابعة البلاغ</label>
+                    <input type="text" id="reportContact" class="report-input" placeholder="your@email.com أو 05xxxxxxxx">
+                </div>
+
+                <div id="reportStatusMsg" class="report-status-msg"></div>
+
+                <div class="report-actions">
+                    <button type="submit" id="reportSubmitBtn" class="report-submit-btn">
+                        <i class="fa-regular fa-paper-plane"></i>
+                        <span id="reportSubmitLabel">إرسال البلاغ الآن</span>
+                    </button>
+                    <button type="button" class="report-cancel-btn" onclick="closeReportModal()" id="reportCancelLabel">إلغاء</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <!-- Floating WhatsApp Button (Fixed Corner FAB) -->
@@ -1612,7 +1944,32 @@
                 detailsLabel: 'تفاصيل',
                 errorNotFoundTitle: 'لم يتم العثور على الصفحة',
                 errorNotFoundDesc: 'المعرف المطلوب غير موجود أو تم إيقاف نشر الموقع مؤقتاً.',
-                errorHomeBtn: 'العودة لصفحة مرشد الرئيسية'
+                errorHomeBtn: 'العودة لصفحة مرشد الرئيسية',
+                legalDisclaimerTitle: 'إخلاء مسؤولية وتنويه قانوني',
+                legalDisclaimerText: 'هذا الموقع التعريفي يدار بشكل مستقل من قِبل صاحبه، وتعد كافة المعلومات والخدمات المقدمة على مسؤوليته المهنية الخاصة. منصة مرشد هي وسيط تقني لتنظيم الاستشارات وإدارة الممارسات ولا تقدم استشارات طبية أو علاجية مباشرة، ولا تتدخل في المحتوى المنشور أو التعاملات والاتفاقات المالية بين المستشار وعملائه.',
+                reportViolationBtnText: 'الإبلاغ عن محتوى أو صفحة مخالفة',
+                reportModalTitle: 'الإبلاغ عن محتوى مخالف',
+                reportModalDesc: 'نلتزم بتوفير بيئة مهنية موثوقة وآمنة. إذا كانت هذه الصفحة تنتهك معايير النشر أو تتضمن ادعاءات غير مرخصة، يرجى تقديم بلاغ ليتم تدقيقه فوراً.',
+                reportReasonLabel: 'سبب الإبلاغ *',
+                optDefaultReason: 'اختر سبب الإبلاغ...',
+                optImpersonation: 'انتحال هوية أو استخدام علامة دون تفويض',
+                optMisleading: 'ادعاءات مضللة أو غير مرخصة',
+                optFraud: 'احتيال مالي أو خدمات وهمية',
+                optInappropriate: 'محتوى مسيء أو غير لائق',
+                optOther: 'سبب آخر',
+                reportDetailsLabel: 'تفاصيل إضافية عن المخالفة',
+                reportDetailsPlaceholder: 'وضح باختصار طبيعة المخالفة أو الروابط المعنية...',
+                reportContactLabel: 'وسيلة تواصل اختيارية لمتابعة البلاغ',
+                reportContactPlaceholder: 'your@email.com أو 05xxxxxxxx',
+                reportSubmitLabel: 'إرسال البلاغ الآن',
+                reportSubmittingLabel: 'جاري الإرسال...',
+                reportCancelLabel: 'إلغاء',
+                reportSuccessMsg: 'تم استلام بلاغك بنجاح وسيقوم فريق المراجعة والامتثال بالتحقق فوراً.',
+                reportErrorMsg: 'حدث خطأ أثناء إرسال البلاغ. يرجى المحاولة لاحقاً.',
+                suspendedTitle: 'هذا الموقع معلّق مؤقتاً للمراجعة',
+                suspendedDesc: 'تم إيقاف عرض هذه الصفحة مؤقتاً من قبل إدارة المنصة لإجراء مراجعة تنظيمية للمحتوى والبيانات وفق شروط الاستخدام المعتمدة.',
+                suspendedReasonPrefix: 'سبب التعليق: ',
+                suspendedHomeBtn: 'العودة لصفحة مرشد الرئيسية'
             },
             en: {
                 langToggle: 'العربية',
@@ -1633,7 +1990,32 @@
                 detailsLabel: 'Details',
                 errorNotFoundTitle: 'Page Not Found',
                 errorNotFoundDesc: 'The requested specialist page does not exist or is temporarily unavailable.',
-                errorHomeBtn: 'Back to Murshid Homepage'
+                errorHomeBtn: 'Back to Murshid Homepage',
+                legalDisclaimerTitle: 'Legal Disclaimer & Notice',
+                legalDisclaimerText: 'This bio-site is managed independently by its owner, and all information and services provided are their sole professional responsibility. Murshid platform is a technical software facilitator for organizing consultations and practice management. It does not provide direct medical or therapeutic care, nor does it intervene in the published content or financial agreements between the specialist and their clients.',
+                reportViolationBtnText: 'Report Violation or Misconduct',
+                reportModalTitle: 'Report Violation',
+                reportModalDesc: 'We are committed to maintaining a safe and verified environment. If this page violates publishing standards or contains unlicensed claims, please submit a report for immediate review.',
+                reportReasonLabel: 'Violation Reason *',
+                optDefaultReason: 'Select a reason...',
+                optImpersonation: 'Impersonation or unauthorized brand use',
+                optMisleading: 'Misleading or unauthorized health claims',
+                optFraud: 'Financial fraud or fake services',
+                optInappropriate: 'Inappropriate or abusive content',
+                optOther: 'Other reason',
+                reportDetailsLabel: 'Additional Details',
+                reportDetailsPlaceholder: 'Briefly explain the nature of violation...',
+                reportContactLabel: 'Optional Contact Info (Email or Phone)',
+                reportContactPlaceholder: 'your@email.com or +9665xxxxxxxx',
+                reportSubmitLabel: 'Submit Report',
+                reportSubmittingLabel: 'Submitting...',
+                reportCancelLabel: 'Cancel',
+                reportSuccessMsg: 'Your report has been received and will be reviewed promptly by our compliance team.',
+                reportErrorMsg: 'Failed to submit report. Please try again later.',
+                suspendedTitle: 'This Site is Temporarily Suspended for Review',
+                suspendedDesc: 'Access to this page has been temporarily suspended by the platform administration for regulatory review in compliance with our publishing terms.',
+                suspendedReasonPrefix: 'Suspension Reason: ',
+                suspendedHomeBtn: 'Back to Murshid Homepage'
             }
         };
 
@@ -1679,7 +2061,15 @@
                 }
 
                 const result = await response.json();
+                if (result.found && result.isSuspended) {
+                    showSuspendedState(result.suspensionReason);
+                    return;
+                }
                 if (result.found && result.site) {
+                    if (result.site.isSuspended) {
+                        showSuspendedState(result.site.suspensionReason);
+                        return;
+                    }
                     siteData = result.site;
                     siteData.slug = result.slug;
                     renderSite(siteData);
@@ -1728,8 +2118,14 @@
         }
 
         function renderSite(site) {
+            if (site.isSuspended) {
+                showSuspendedState(site.suspensionReason);
+                return;
+            }
             document.getElementById('loadingState').style.display = 'none';
             document.getElementById('errorState').style.display = 'none';
+            const suspendedEl = document.getElementById('suspendedState');
+            if (suspendedEl) suspendedEl.style.display = 'none';
             const content = document.getElementById('siteContent');
             content.style.display = 'flex';
 
@@ -2207,14 +2603,163 @@
             document.getElementById('errorDesc').textContent = dict.errorNotFoundDesc;
             document.getElementById('errorHomeBtn').textContent = dict.errorHomeBtn;
 
+            // Legal & Compliance strings
+            const legalTitle = document.getElementById('legalDisclaimerTitle');
+            if (legalTitle) legalTitle.textContent = dict.legalDisclaimerTitle;
+            const legalText = document.getElementById('legalDisclaimerText');
+            if (legalText) legalText.textContent = dict.legalDisclaimerText;
+            const reportBtn = document.getElementById('reportViolationBtnText');
+            if (reportBtn) reportBtn.textContent = dict.reportViolationBtnText;
+            const reportModalTitle = document.getElementById('reportModalTitle');
+            if (reportModalTitle) reportModalTitle.textContent = dict.reportModalTitle;
+            const reportModalDesc = document.getElementById('reportModalDesc');
+            if (reportModalDesc) reportModalDesc.textContent = dict.reportModalDesc;
+            const reportReasonLabel = document.getElementById('reportReasonLabel');
+            if (reportReasonLabel) reportReasonLabel.textContent = dict.reportReasonLabel;
+            const optDefaultReason = document.getElementById('optDefaultReason');
+            if (optDefaultReason) optDefaultReason.textContent = dict.optDefaultReason;
+            const optImpersonation = document.getElementById('optImpersonation');
+            if (optImpersonation) optImpersonation.textContent = dict.optImpersonation;
+            const optMisleading = document.getElementById('optMisleading');
+            if (optMisleading) optMisleading.textContent = dict.optMisleading;
+            const optFraud = document.getElementById('optFraud');
+            if (optFraud) optFraud.textContent = dict.optFraud;
+            const optInappropriate = document.getElementById('optInappropriate');
+            if (optInappropriate) optInappropriate.textContent = dict.optInappropriate;
+            const optOther = document.getElementById('optOther');
+            if (optOther) optOther.textContent = dict.optOther;
+            const reportDetailsLabel = document.getElementById('reportDetailsLabel');
+            if (reportDetailsLabel) reportDetailsLabel.textContent = dict.reportDetailsLabel;
+            const reportDetails = document.getElementById('reportDetails');
+            if (reportDetails) reportDetails.placeholder = dict.reportDetailsPlaceholder;
+            const reportContactLabel = document.getElementById('reportContactLabel');
+            if (reportContactLabel) reportContactLabel.textContent = dict.reportContactLabel;
+            const reportContact = document.getElementById('reportContact');
+            if (reportContact) reportContact.placeholder = dict.reportContactPlaceholder;
+            const reportSubmitLabel = document.getElementById('reportSubmitLabel');
+            if (reportSubmitLabel) reportSubmitLabel.textContent = dict.reportSubmitLabel;
+            const reportCancelLabel = document.getElementById('reportCancelLabel');
+            if (reportCancelLabel) reportCancelLabel.textContent = dict.reportCancelLabel;
+            const suspendedTitle = document.getElementById('suspendedTitle');
+            if (suspendedTitle) suspendedTitle.textContent = dict.suspendedTitle;
+            const suspendedDesc = document.getElementById('suspendedDesc');
+            if (suspendedDesc) suspendedDesc.textContent = dict.suspendedDesc;
+            const suspendedHomeBtn = document.getElementById('suspendedHomeBtn');
+            if (suspendedHomeBtn) suspendedHomeBtn.textContent = dict.suspendedHomeBtn;
+
             if (siteData) {
                 renderSite(siteData);
+            }
+        }
+
+        function openReportModal() {
+            const modal = document.getElementById('reportModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                const statusMsg = document.getElementById('reportStatusMsg');
+                if (statusMsg) {
+                    statusMsg.className = 'report-status-msg';
+                    statusMsg.style.display = 'none';
+                    statusMsg.textContent = '';
+                }
+                const submitBtn = document.getElementById('reportSubmitBtn');
+                if (submitBtn) submitBtn.disabled = false;
+            }
+        }
+
+        function closeReportModal() {
+            const modal = document.getElementById('reportModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function closeReportModalOnOverlay(event) {
+            if (event.target && event.target.id === 'reportModal') {
+                closeReportModal();
+            }
+        }
+
+        async function submitReport(event) {
+            event.preventDefault();
+            const reasonEl = document.getElementById('reportReason');
+            const detailsEl = document.getElementById('reportDetails');
+            const contactEl = document.getElementById('reportContact');
+            const reason = reasonEl ? reasonEl.value : '';
+            const details = detailsEl ? detailsEl.value : '';
+            const contact = contactEl ? contactEl.value : '';
+            const slug = (siteData && siteData.slug) ? siteData.slug : extractSlug();
+            const statusMsg = document.getElementById('reportStatusMsg');
+            const submitBtn = document.getElementById('reportSubmitBtn');
+            const submitLabel = document.getElementById('reportSubmitLabel');
+
+            if (!slug || !reason) return;
+
+            if (submitBtn) submitBtn.disabled = true;
+            if (submitLabel) submitLabel.textContent = i18n[currentLang].reportSubmittingLabel;
+
+            try {
+                const response = await fetch('https://us-central1-ai-apps-central.cloudfunctions.net/reportSpecialistSite', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ slug, reason, details, contact })
+                });
+
+                if (response.ok) {
+                    if (statusMsg) {
+                        statusMsg.className = 'report-status-msg success';
+                        statusMsg.textContent = i18n[currentLang].reportSuccessMsg;
+                        statusMsg.style.display = 'block';
+                    }
+                    const form = document.getElementById('reportForm');
+                    if (form) form.reset();
+                    setTimeout(() => {
+                        closeReportModal();
+                    }, 2500);
+                } else {
+                    if (statusMsg) {
+                        statusMsg.className = 'report-status-msg error';
+                        statusMsg.textContent = i18n[currentLang].reportErrorMsg;
+                        statusMsg.style.display = 'block';
+                    }
+                    if (submitBtn) submitBtn.disabled = false;
+                }
+            } catch (e) {
+                console.error('Error submitting report:', e);
+                if (statusMsg) {
+                    statusMsg.className = 'report-status-msg error';
+                    statusMsg.textContent = i18n[currentLang].reportErrorMsg;
+                    statusMsg.style.display = 'block';
+                }
+                if (submitBtn) submitBtn.disabled = false;
+            } finally {
+                if (submitLabel) submitLabel.textContent = i18n[currentLang].reportSubmitLabel;
+            }
+        }
+
+        function showSuspendedState(reason) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('errorState').style.display = 'none';
+            const content = document.getElementById('siteContent');
+            if (content) content.style.display = 'none';
+            const suspendedEl = document.getElementById('suspendedState');
+            if (suspendedEl) {
+                suspendedEl.style.display = 'block';
+                const reasonPill = document.getElementById('suspendedReasonPill');
+                if (reasonPill) {
+                    if (reason && reason.trim().length > 0) {
+                        reasonPill.textContent = (i18n[currentLang].suspendedReasonPrefix || '') + reason;
+                        reasonPill.style.display = 'inline-block';
+                    } else {
+                        reasonPill.style.display = 'none';
+                    }
+                }
             }
         }
 
         function showError(type) {
             document.getElementById('loadingState').style.display = 'none';
             document.getElementById('siteContent').style.display = 'none';
+            const suspendedEl = document.getElementById('suspendedState');
+            if (suspendedEl) suspendedEl.style.display = 'none';
             document.getElementById('errorState').style.display = 'block';
         }
 
