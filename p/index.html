@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <style>
         :root {
@@ -1829,22 +1829,38 @@
             border: 1px solid #E2E8F0;
             box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.04);
             background: #FFFFFF;
-            padding: 20px 16px;
+            padding: 24px 16px 20px 16px;
             text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        [data-template="compact_stack"] .hero-card::before {
+            display: none !important;
         }
         [data-template="compact_stack"] .hero-cover {
             display: none !important;
         }
-        [data-template="compact_stack"] .avatar-container {
-            width: 76px;
-            height: 76px;
-            margin: 0 auto 10px;
-            border-radius: 50%;
-            border: 2.5px solid var(--primary);
-            box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.15);
+        [data-template="compact_stack"] .avatar-container,
+        [data-template="compact_stack"] .hero-card .avatar-container,
+        [data-template="compact_stack"] .hero-card.has-cover .avatar-container {
+            width: 76px !important;
+            height: 76px !important;
+            margin: 0 auto 12px auto !important;
+            margin-top: 0 !important;
+            top: 0 !important;
+            position: relative !important;
+            border-radius: 50% !important;
+            border: 2.5px solid var(--primary) !important;
+            box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.15) !important;
+            overflow: hidden !important;
         }
         [data-template="compact_stack"] .avatar-img {
-            border: none;
+            border: none !important;
+            box-shadow: none !important;
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 50% !important;
+            object-fit: cover !important;
         }
         [data-template="compact_stack"] .specialist-name {
             font-size: 18px;
@@ -2160,10 +2176,10 @@
             </button>
 
             <a href="https://murshid.feshealthtech.com" class="footer-logo-link" style="margin-top: 10px;">
-                <img src="../assets/logo-sq.png" alt="مرشد">
+                <img src="../assets/logo-sq.png" alt="مرشد" id="footerLogoImg">
                 <span id="footerBrandText">مدعوم عبر مرشد — مساعد أخصائي التغذية</span>
             </a>
-            <p>© 2026 FES Health Tech. All rights reserved.</p>
+            <p id="footerCopyrightText">© 2026 تطبيق مرشد. جميع الحقوق محفوظة.</p>
         </footer>
     </div>
 
@@ -2231,6 +2247,7 @@
                 langToggle: 'English',
                 topNavBrand: 'مرشد — مساعد أخصائي التغذية',
                 footerBrand: 'مدعوم عبر مرشد — مساعد أخصائي التغذية',
+                footerCopyright: '© {year} تطبيق مرشد. جميع الحقوق محفوظة.',
                 mainBookingLabel: 'احجز استشارتك عبر واتساب',
                 saveContactLabel: 'حفظ جهة الاتصال',
                 directCallLabel: 'اتصال هاتفي',
@@ -2292,6 +2309,7 @@
                 langToggle: 'العربية',
                 topNavBrand: 'Murshid — Dietitian Assistant',
                 footerBrand: 'Powered by Murshid — Dietitian Assistant',
+                footerCopyright: '© {year} Murshid App. All rights reserved.',
                 mainBookingLabel: 'Book via WhatsApp',
                 saveContactLabel: 'Save Contact',
                 directCallLabel: 'Phone Call',
@@ -2600,7 +2618,7 @@
             // Cover Banner Render
             const coverEl = document.getElementById('coverBanner');
             const heroCardEl = document.getElementById('heroCard');
-            if (site.coverUrl && site.coverUrl.trim() !== '') {
+            if (site.coverUrl && site.coverUrl.trim() !== '' && template !== 'compact_stack') {
                 coverEl.style.backgroundImage = `url("${escapeHtml(site.coverUrl)}")`;
                 coverEl.style.display = 'block';
                 if (heroCardEl) heroCardEl.classList.add('has-cover');
@@ -2905,8 +2923,16 @@
                     const a = document.createElement('a');
                     a.href = linkUrl;
                     a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
                     a.className = 'social-link';
-                    a.innerHTML = `<i class="${iconMap[key.toLowerCase()] || 'fa-solid fa-link'}"></i>`;
+                    const iconKey = key.toLowerCase();
+                    if (iconKey === 'twitter' || iconKey === 'x') {
+                        a.setAttribute('aria-label', 'X (Twitter)');
+                        a.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="display:inline-block; vertical-align:middle;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
+                    } else {
+                        a.setAttribute('aria-label', key);
+                        a.innerHTML = `<i class="${iconMap[iconKey] || 'fa-solid fa-link'}"></i>`;
+                    }
                     socialsRow.appendChild(a);
                 }
             }
@@ -2958,6 +2984,13 @@
             if (topBrand) topBrand.textContent = dict.topNavBrand;
             const footerBrand = document.getElementById('footerBrandText');
             if (footerBrand) footerBrand.textContent = dict.footerBrand;
+            const footerLogo = document.getElementById('footerLogoImg');
+            if (footerLogo) footerLogo.alt = (currentLang === 'en') ? 'Murshid' : 'مرشد';
+            const footerCopyright = document.getElementById('footerCopyrightText');
+            if (footerCopyright) {
+                const currentYear = new Date().getFullYear();
+                footerCopyright.textContent = (dict.footerCopyright || '© {year} تطبيق مرشد. جميع الحقوق محفوظة.').replace('{year}', currentYear);
+            }
             document.getElementById('mainBookingLabel').textContent = dict.mainBookingLabel;
             document.getElementById('saveContactLabel').textContent = dict.saveContactLabel;
             const directCallLabel = document.getElementById('directCallLabel');
@@ -3209,8 +3242,16 @@
                         const a = document.createElement('a');
                         a.href = linkUrl;
                         a.target = '_blank';
+                        a.rel = 'noopener noreferrer';
                         a.className = 'social-link';
-                        a.innerHTML = `<i class="${iconMap[key.toLowerCase()] || 'fa-solid fa-link'}"></i>`;
+                        const iconKey = key.toLowerCase();
+                        if (iconKey === 'twitter' || iconKey === 'x') {
+                            a.setAttribute('aria-label', 'X (Twitter)');
+                            a.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="display:inline-block; vertical-align:middle;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
+                        } else {
+                            a.setAttribute('aria-label', key);
+                            a.innerHTML = `<i class="${iconMap[iconKey] || 'fa-solid fa-link'}"></i>`;
+                        }
                         socialsRow.appendChild(a);
                     }
                 }
@@ -3268,6 +3309,7 @@
 
         // Init on page load
         window.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(currentLang);
             const slug = extractSlug();
             fetchSiteData(slug);
         });
