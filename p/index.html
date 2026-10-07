@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>الموقع المهني والعيادة الرقمية — تطبيق مرشد</title>
+    <title>الموقع المهني والعيادة الرقمية — مرشد مساعد أخصائي التغذية</title>
     
     <meta name="theme-color" content="#0D9488">
 
     <!-- OpenGraph & Social Share Dynamic Preview Cards -->
     <meta property="og:type" content="profile">
-    <meta property="og:site_name" content="تطبيق مرشد">
-    <meta property="og:title" id="ogTitle" content="الموقع المهني — تطبيق مرشد">
+    <meta property="og:site_name" content="مرشد — مساعد أخصائي التغذية">
+    <meta property="og:title" id="ogTitle" content="الموقع المهني — مرشد مساعد أخصائي التغذية">
     <meta property="og:description" id="ogDesc" content="تعرف على الخدمات الاستشارية وباقات المتابعة واحجز استشارتك مباشرة">
     <meta property="og:image" id="ogImage" content="../assets/og-preview.jpg">
     <meta property="og:url" id="ogUrl" content="">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" id="twTitle" content="الموقع المهني — تطبيق مرشد">
+    <meta name="twitter:title" id="twTitle" content="الموقع المهني — مرشد مساعد أخصائي التغذية">
     <meta name="twitter:description" id="twDesc" content="تعرف على الخدمات الاستشارية وباقات المتابعة واحجز استشارتك مباشرة">
     <meta property="twitter:image" id="twImage" content="../assets/og-preview.jpg">
 
@@ -227,7 +227,7 @@
         /* Top Bar */
         .top-nav {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 10px 16px;
             background: rgba(255, 255, 255, 0.9);
@@ -1015,6 +1015,115 @@
             margin-bottom: 20px;
         }
 
+        /* Maintenance State (Hosting Expired < 3 Months) */
+        .maintenance-card {
+            text-align: center;
+            padding: 44px 24px;
+            background: #FFFFFF;
+            border: 1.5px solid #38BDF8;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.12);
+        }
+        .maintenance-card i.status-icon {
+            font-size: 52px;
+            color: #0284C7;
+            margin-bottom: 18px;
+            display: inline-block;
+        }
+        .maintenance-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 10px;
+        }
+        .maintenance-desc {
+            font-size: 13.5px;
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 22px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .maintenance-contact-box {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+        .maintenance-contact-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: #475569;
+        }
+
+        /* Stopped State (Specialist Manually Paused) */
+        .stopped-card {
+            text-align: center;
+            padding: 50px 24px;
+            background: #FFFFFF;
+            border: 1.5px solid #CBD5E1;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(100, 116, 139, 0.08);
+        }
+        .stopped-card i.status-icon {
+            font-size: 52px;
+            color: #64748B;
+            margin-bottom: 18px;
+            display: inline-block;
+        }
+        .stopped-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 10px;
+        }
+        .stopped-desc {
+            font-size: 13.5px;
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 22px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Expired State (Hosting Expired 3 - 6 Months) */
+        .expired-card {
+            text-align: center;
+            padding: 50px 24px;
+            background: #FFFFFF;
+            border: 1.5px solid #F59E0B;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.08);
+        }
+        .expired-card i.status-icon {
+            font-size: 52px;
+            color: #D97706;
+            margin-bottom: 18px;
+            display: inline-block;
+        }
+        .expired-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #1E293B;
+            margin-bottom: 10px;
+        }
+        .expired-desc {
+            font-size: 13.5px;
+            color: #64748B;
+            line-height: 1.6;
+            margin-bottom: 22px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         /* Legal Disclaimer Box in Footer */
         .legal-disclaimer-box {
             background: rgba(248, 250, 252, 0.95);
@@ -1063,6 +1172,40 @@
             color: #EF4444;
             background: rgba(239, 68, 68, 0.08);
             text-decoration: none;
+        }
+
+        /* Legal Links Row in Footer (Terms & Privacy) */
+        .legal-links-row {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 6px 0 4px 0;
+            flex-wrap: wrap;
+        }
+        .legal-footer-link {
+            color: #64748B;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s ease;
+        }
+        .legal-footer-link:hover {
+            color: var(--primary);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .legal-footer-link i {
+            font-size: 11px;
+            color: var(--primary);
+        }
+        .legal-links-sep {
+            color: #CBD5E1;
+            font-size: 12px;
+            user-select: none;
         }
 
         /* Abuse Reporting Modal */
@@ -1793,11 +1936,10 @@
     <div class="site-container" id="mainContainer">
         <!-- Top Nav -->
         <header class="top-nav">
-            <a href="https://murshid.feshealthtech.com" class="brand-badge" title="تطبيق مرشد">
+            <a href="https://murshid.feshealthtech.com" class="brand-badge" title="مرشد — مساعد أخصائي التغذية">
                 <img src="../assets/logo-sq.png" alt="مرشد">
-                <span id="topNavBrandText">تطبيق مرشد</span>
+                <span id="topNavBrandText">مرشد — مساعد أخصائي التغذية</span>
             </a>
-            <button class="lang-btn" id="langToggleBtn" onclick="toggleLanguage()">English</button>
         </header>
 
         <!-- Loading State Placeholder -->
@@ -1835,6 +1977,49 @@
             <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
                 <i class="fa-solid fa-house"></i>
                 <span id="suspendedHomeBtn">العودة لصفحة مرشد الرئيسية</span>
+            </a>
+        </div>
+
+        <!-- Maintenance State (Hosting Expired < 3 Months with WhatsApp & Social Channels) -->
+        <div id="maintenanceState" class="maintenance-card" style="display: none;">
+            <i class="fa-solid fa-wrench status-icon"></i>
+            <h2 class="maintenance-title" id="maintenanceTitle">الموقع في وضع الصيانة والتحديث</h2>
+            <p class="maintenance-desc" id="maintenanceDesc">يجري العمل على تحديث بيانات وخدمات هذه الصفحة. بإمكانك التواصل مباشرة مع الأخصائي عبر القنوات المتاحة أدناه:</p>
+            
+            <div id="maintenanceContactBox" class="maintenance-contact-box" style="display: none;">
+                <span class="maintenance-contact-title" id="maintenanceContactTitle">قنوات التواصل المباشرة المتاحة:</span>
+                <a href="#" id="maintenanceWaBtn" class="cta-booking-btn" target="_blank" style="display: none; width: 100%; max-width: 320px; text-decoration: none;">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span id="maintenanceWaBtnLabel">تواصل مباشرة عبر واتساب</span>
+                </a>
+                <div id="maintenanceSocialsRow" class="socials-row" style="display: none; margin-top: 4px;"></div>
+            </div>
+
+            <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; max-width: 280px; margin: 0 auto;">
+                <i class="fa-solid fa-house"></i>
+                <span id="maintenanceHomeBtn">العودة لصفحة مرشد الرئيسية</span>
+            </a>
+        </div>
+
+        <!-- Stopped State (Paused by Specialist) -->
+        <div id="stoppedState" class="stopped-card" style="display: none;">
+            <i class="fa-solid fa-circle-pause status-icon"></i>
+            <h2 class="stopped-title" id="stoppedTitle">الموقع متوقف مؤقتاً</h2>
+            <p class="stopped-desc" id="stoppedDesc">قام الأخصائي بإيقاف عرض هذه الصفحة مؤقتاً.</p>
+            <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; max-width: 280px; margin: 0 auto;">
+                <i class="fa-solid fa-house"></i>
+                <span id="stoppedHomeBtn">العودة لصفحة مرشد الرئيسية</span>
+            </a>
+        </div>
+
+        <!-- Expired State (Hosting Expired 3 - 6 Months) -->
+        <div id="expiredState" class="expired-card" style="display: none;">
+            <i class="fa-solid fa-calendar-xmark status-icon"></i>
+            <h2 class="expired-title" id="expiredTitle">انتهت فترة استضافة هذا الموقع</h2>
+            <p class="expired-desc" id="expiredDesc">انتهت فترة استضافة هذا الموقع الإلكتروني ولم يتم تجديدها حتى الآن.</p>
+            <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; max-width: 280px; margin: 0 auto;">
+                <i class="fa-solid fa-house"></i>
+                <span id="expiredHomeBtn">العودة لصفحة مرشد الرئيسية</span>
             </a>
         </div>
 
@@ -1955,6 +2140,19 @@
                 <p id="legalDisclaimerText">هذا الموقع التعريفي يدار بشكل مستقل من قِبل صاحبه، وتعد كافة المعلومات والخدمات المقدمة على مسؤوليته المهنية الخاصة. منصة مرشد هي وسيط تقني لتنظيم الاستشارات وإدارة الممارسات ولا تقدم استشارات طبية أو علاجية مباشرة، ولا تتدخل في المحتوى المنشور أو التعاملات والاتفاقات المالية بين المستشار وعملائه.</p>
             </div>
 
+            <!-- Legal Documents Links (Terms of Use & Privacy Policy) -->
+            <div class="legal-links-row" id="legalLinksRow">
+                <a href="../terms-of-use.html#section11" target="_blank" rel="noopener noreferrer" class="legal-footer-link" id="footerTermsLink">
+                    <i class="fa-regular fa-file-lines"></i>
+                    <span id="footerTermsLabel">شروط الاستخدام</span>
+                </a>
+                <span class="legal-links-sep">•</span>
+                <a href="../privacy-policy.html#section8" target="_blank" rel="noopener noreferrer" class="legal-footer-link" id="footerPrivacyLink">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span id="footerPrivacyLabel">سياسة الخصوصية</span>
+                </a>
+            </div>
+
             <!-- Report Abuse / Violation Button -->
             <button type="button" class="report-link-btn" id="reportViolationBtn" onclick="openReportModal()">
                 <i class="fa-regular fa-flag"></i>
@@ -1963,7 +2161,7 @@
 
             <a href="https://murshid.feshealthtech.com" class="footer-logo-link" style="margin-top: 10px;">
                 <img src="../assets/logo-sq.png" alt="مرشد">
-                <span id="footerBrandText">مدعوم عبر تطبيق مرشد</span>
+                <span id="footerBrandText">مدعوم عبر مرشد — مساعد أخصائي التغذية</span>
             </a>
             <p>© 2026 FES Health Tech. All rights reserved.</p>
         </footer>
@@ -2031,8 +2229,8 @@
         const i18n = {
             ar: {
                 langToggle: 'English',
-                topNavBrand: 'تطبيق مرشد',
-                footerBrand: 'مدعوم عبر تطبيق مرشد',
+                topNavBrand: 'مرشد — مساعد أخصائي التغذية',
+                footerBrand: 'مدعوم عبر مرشد — مساعد أخصائي التغذية',
                 mainBookingLabel: 'احجز استشارتك عبر واتساب',
                 saveContactLabel: 'حفظ جهة الاتصال',
                 directCallLabel: 'اتصال هاتفي',
@@ -2053,6 +2251,8 @@
                 errorHomeBtn: 'العودة لصفحة مرشد الرئيسية',
                 legalDisclaimerTitle: 'إخلاء مسؤولية وتنويه قانوني',
                 legalDisclaimerText: 'هذا الموقع التعريفي يدار بشكل مستقل من قِبل صاحبه، وتعد كافة المعلومات والخدمات المقدمة على مسؤوليته المهنية الخاصة. منصة مرشد هي وسيط تقني لتنظيم الاستشارات وإدارة الممارسات ولا تقدم استشارات طبية أو علاجية مباشرة، ولا تتدخل في المحتوى المنشور أو التعاملات والاتفاقات المالية بين المستشار وعملائه.',
+                footerTermsLabel: 'شروط الاستخدام',
+                footerPrivacyLabel: 'سياسة الخصوصية',
                 reportViolationBtnText: 'الإبلاغ عن محتوى أو صفحة مخالفة',
                 reportModalTitle: 'الإبلاغ عن محتوى مخالف',
                 reportModalDesc: 'نلتزم بتوفير بيئة مهنية موثوقة وآمنة. إذا كانت هذه الصفحة تنتهك معايير النشر أو تتضمن ادعاءات غير مرخصة، يرجى تقديم بلاغ ليتم تدقيقه فوراً.',
@@ -2075,12 +2275,23 @@
                 suspendedTitle: 'هذا الموقع معلّق مؤقتاً للمراجعة',
                 suspendedDesc: 'تم إيقاف عرض هذه الصفحة مؤقتاً من قبل إدارة المنصة لإجراء مراجعة تنظيمية للمحتوى والبيانات وفق شروط الاستخدام المعتمدة.',
                 suspendedReasonPrefix: 'سبب التعليق: ',
-                suspendedHomeBtn: 'العودة لصفحة مرشد الرئيسية'
+                suspendedHomeBtn: 'العودة لصفحة مرشد الرئيسية',
+                maintenanceTitle: 'الموقع في وضع الصيانة والتحديث',
+                maintenanceDesc: 'يجري العمل على تحديث بيانات وخدمات هذه الصفحة. بإمكانك التواصل مباشرة مع الأخصائي عبر القنوات المتاحة أدناه:',
+                maintenanceContactTitle: 'قنوات التواصل المباشرة المتاحة:',
+                maintenanceWaBtnLabel: 'تواصل مباشرة عبر واتساب',
+                maintenanceHomeBtn: 'العودة لصفحة مرشد الرئيسية',
+                stoppedTitle: 'الموقع متوقف مؤقتاً',
+                stoppedDesc: 'قام الأخصائي بإيقاف عرض هذه الصفحة مؤقتاً.',
+                stoppedHomeBtn: 'العودة لصفحة مرشد الرئيسية',
+                expiredTitle: 'انتهت فترة استضافة هذا الموقع',
+                expiredDesc: 'انتهت فترة استضافة هذا الموقع الإلكتروني ولم يتم تجديدها حتى الآن.',
+                expiredHomeBtn: 'العودة لصفحة مرشد الرئيسية'
             },
             en: {
                 langToggle: 'العربية',
-                topNavBrand: 'Murshid App',
-                footerBrand: 'Powered by Murshid App',
+                topNavBrand: 'Murshid — Dietitian Assistant',
+                footerBrand: 'Powered by Murshid — Dietitian Assistant',
                 mainBookingLabel: 'Book via WhatsApp',
                 saveContactLabel: 'Save Contact',
                 directCallLabel: 'Phone Call',
@@ -2101,6 +2312,8 @@
                 errorHomeBtn: 'Back to Murshid Homepage',
                 legalDisclaimerTitle: 'Legal Disclaimer & Notice',
                 legalDisclaimerText: 'This bio-site is managed independently by its owner, and all information and services provided are their sole professional responsibility. Murshid platform is a technical software facilitator for organizing consultations and practice management. It does not provide direct medical or therapeutic care, nor does it intervene in the published content or financial agreements between the specialist and their clients.',
+                footerTermsLabel: 'Terms of Use',
+                footerPrivacyLabel: 'Privacy Policy',
                 reportViolationBtnText: 'Report Violation or Misconduct',
                 reportModalTitle: 'Report Violation',
                 reportModalDesc: 'We are committed to maintaining a safe and verified environment. If this page violates publishing standards or contains unlicensed claims, please submit a report for immediate review.',
@@ -2123,7 +2336,18 @@
                 suspendedTitle: 'This Site is Temporarily Suspended for Review',
                 suspendedDesc: 'Access to this page has been temporarily suspended by the platform administration for regulatory review in compliance with our publishing terms.',
                 suspendedReasonPrefix: 'Suspension Reason: ',
-                suspendedHomeBtn: 'Back to Murshid Homepage'
+                suspendedHomeBtn: 'Back to Murshid Homepage',
+                maintenanceTitle: 'Site Under Maintenance & Updates',
+                maintenanceDesc: 'This page is currently being updated. You can still reach out to the specialist directly via the channels below:',
+                maintenanceContactTitle: 'Available Direct Contact Channels:',
+                maintenanceWaBtnLabel: 'Contact via WhatsApp',
+                maintenanceHomeBtn: 'Back to Murshid Homepage',
+                stoppedTitle: 'Site Temporarily Paused',
+                stoppedDesc: 'This site has been temporarily paused by the specialist.',
+                stoppedHomeBtn: 'Back to Murshid Homepage',
+                expiredTitle: 'Site Hosting Expired',
+                expiredDesc: 'The hosting subscription for this site has expired and has not been renewed yet.',
+                expiredHomeBtn: 'Back to Murshid Homepage'
             }
         };
 
@@ -2158,28 +2382,51 @@
             }
 
             try {
-                const response = await fetch(`https://us-central1-ai-apps-central.cloudfunctions.net/getSpecialistSite?slug=${encodeURIComponent(slug)}`, {
-                    method: 'GET',
-                    headers: { 'Accept': 'application/json' }
-                });
+                let result = null;
+                if (window.__PRELOADED_SITE_DATA__ && (window.__PRELOADED_SITE_DATA__.slug === slug || window.__PRELOADED_SITE_DATA__.found)) {
+                    result = window.__PRELOADED_SITE_DATA__;
+                } else {
+                    const response = await fetch(`https://us-central1-ai-apps-central.cloudfunctions.net/getSpecialistSite?slug=${encodeURIComponent(slug)}`, {
+                        method: 'GET',
+                        headers: { 'Accept': 'application/json' }
+                    });
 
-                if (!response.ok) {
-                    showError(response.status === 404 ? 'NOT_FOUND' : 'ERROR');
-                    return;
+                    if (!response.ok) {
+                        showError(response.status === 404 ? 'NOT_FOUND' : 'ERROR');
+                        return;
+                    }
+
+                    result = await response.json();
                 }
-
-                const result = await response.json();
-                if (result.found && result.isSuspended) {
+                if (result.siteLanguage) {
+                    applyLanguage(result.siteLanguage);
+                }
+                if (result.isSuspended) {
                     showSuspendedState(result.suspensionReason);
                     return;
                 }
+                if (result.isStopped) {
+                    showStoppedState(result.siteLanguage);
+                    return;
+                }
+                if (result.isMaintenance) {
+                    showMaintenanceState(result);
+                    return;
+                }
+                if (result.isExpired) {
+                    showExpiredState(result.siteLanguage);
+                    return;
+                }
                 if (result.found && result.site) {
+                    siteData = result.site;
+                    siteData.slug = result.slug;
+                    if (siteData.siteLanguage) {
+                        applyLanguage(siteData.siteLanguage);
+                    }
                     if (result.site.isSuspended) {
                         showSuspendedState(result.site.suspensionReason);
                         return;
                     }
-                    siteData = result.site;
-                    siteData.slug = result.slug;
                     renderSite(siteData);
                 } else {
                     showError('NOT_FOUND');
@@ -2210,7 +2457,7 @@
             if (waPhone) vcard += `TEL;TYPE=CELL,VOICE:${waPhone}\r\n`;
             if (directPhone && directPhone !== waPhone) vcard += `TEL;TYPE=WORK,VOICE:${directPhone}\r\n`;
             if (address || city || country) vcard += `ADR;TYPE=WORK:;;${address};${city};;${country};;\r\n`;
-            vcard += `URL:${url}\r\n`;
+            if (url) vcard += `URL:${url}\r\n`;
             if (note) vcard += `NOTE:${note.replace(/\r?\n/g, ' ')}\r\n`;
             vcard += 'END:VCARD\r\n';
 
@@ -2226,14 +2473,14 @@
         }
 
         function renderSite(site) {
+            // Apply doctor's chosen site language (ar or en)
+            applyLanguage(site.siteLanguage || 'ar');
+
             if (site.isSuspended) {
                 showSuspendedState(site.suspensionReason);
                 return;
             }
-            document.getElementById('loadingState').style.display = 'none';
-            document.getElementById('errorState').style.display = 'none';
-            const suspendedEl = document.getElementById('suspendedState');
-            if (suspendedEl) suspendedEl.style.display = 'none';
+            hideAllStates();
             const content = document.getElementById('siteContent');
             content.style.display = 'flex';
 
@@ -2700,14 +2947,13 @@
             parent.classList.toggle('active');
         }
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        function applyLanguage(lang) {
+            currentLang = (lang === 'en') ? 'en' : 'ar';
             document.documentElement.lang = currentLang;
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
 
             // Update static strings
             const dict = i18n[currentLang];
-            document.getElementById('langToggleBtn').textContent = dict.langToggle;
             const topBrand = document.getElementById('topNavBrandText');
             if (topBrand) topBrand.textContent = dict.topNavBrand;
             const footerBrand = document.getElementById('footerBrandText');
@@ -2733,6 +2979,10 @@
             if (legalTitle) legalTitle.textContent = dict.legalDisclaimerTitle;
             const legalText = document.getElementById('legalDisclaimerText');
             if (legalText) legalText.textContent = dict.legalDisclaimerText;
+            const footerTerms = document.getElementById('footerTermsLabel');
+            if (footerTerms) footerTerms.textContent = dict.footerTermsLabel;
+            const footerPrivacy = document.getElementById('footerPrivacyLabel');
+            if (footerPrivacy) footerPrivacy.textContent = dict.footerPrivacyLabel;
             const reportBtn = document.getElementById('reportViolationBtnText');
             if (reportBtn) reportBtn.textContent = dict.reportViolationBtnText;
             const reportModalTitle = document.getElementById('reportModalTitle');
@@ -2772,9 +3022,30 @@
             const suspendedHomeBtn = document.getElementById('suspendedHomeBtn');
             if (suspendedHomeBtn) suspendedHomeBtn.textContent = dict.suspendedHomeBtn;
 
-            if (siteData) {
-                renderSite(siteData);
-            }
+            const maintenanceTitle = document.getElementById('maintenanceTitle');
+            if (maintenanceTitle) maintenanceTitle.textContent = dict.maintenanceTitle;
+            const maintenanceDesc = document.getElementById('maintenanceDesc');
+            if (maintenanceDesc) maintenanceDesc.textContent = dict.maintenanceDesc;
+            const maintenanceContactTitle = document.getElementById('maintenanceContactTitle');
+            if (maintenanceContactTitle) maintenanceContactTitle.textContent = dict.maintenanceContactTitle;
+            const maintenanceWaBtnLabel = document.getElementById('maintenanceWaBtnLabel');
+            if (maintenanceWaBtnLabel) maintenanceWaBtnLabel.textContent = dict.maintenanceWaBtnLabel;
+            const maintenanceHomeBtn = document.getElementById('maintenanceHomeBtn');
+            if (maintenanceHomeBtn) maintenanceHomeBtn.textContent = dict.maintenanceHomeBtn;
+
+            const stoppedTitle = document.getElementById('stoppedTitle');
+            if (stoppedTitle) stoppedTitle.textContent = dict.stoppedTitle;
+            const stoppedDesc = document.getElementById('stoppedDesc');
+            if (stoppedDesc) stoppedDesc.textContent = dict.stoppedDesc;
+            const stoppedHomeBtn = document.getElementById('stoppedHomeBtn');
+            if (stoppedHomeBtn) stoppedHomeBtn.textContent = dict.stoppedHomeBtn;
+
+            const expiredTitle = document.getElementById('expiredTitle');
+            if (expiredTitle) expiredTitle.textContent = dict.expiredTitle;
+            const expiredDesc = document.getElementById('expiredDesc');
+            if (expiredDesc) expiredDesc.textContent = dict.expiredDesc;
+            const expiredHomeBtn = document.getElementById('expiredHomeBtn');
+            if (expiredHomeBtn) expiredHomeBtn.textContent = dict.expiredHomeBtn;
         }
 
         function openReportModal() {
@@ -2860,11 +3131,16 @@
             }
         }
 
+        function hideAllStates() {
+            const ids = ['loadingState', 'errorState', 'suspendedState', 'maintenanceState', 'stoppedState', 'expiredState', 'siteContent'];
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+            });
+        }
+
         function showSuspendedState(reason) {
-            document.getElementById('loadingState').style.display = 'none';
-            document.getElementById('errorState').style.display = 'none';
-            const content = document.getElementById('siteContent');
-            if (content) content.style.display = 'none';
+            hideAllStates();
             const suspendedEl = document.getElementById('suspendedState');
             if (suspendedEl) {
                 suspendedEl.style.display = 'block';
@@ -2880,12 +3156,96 @@
             }
         }
 
+        function showMaintenanceState(data) {
+            hideAllStates();
+            if (data && data.siteLanguage) {
+                applyLanguage(data.siteLanguage);
+            }
+            const el = document.getElementById('maintenanceState');
+            if (!el) return;
+            el.style.display = 'block';
+
+            let hasContact = false;
+            const waBtn = document.getElementById('maintenanceWaBtn');
+            if (data && data.whatsappNumber) {
+                const cleanPhone = data.whatsappNumber.replace(/[^0-9]/g, '');
+                if (cleanPhone) {
+                    const defaultMsg = (currentLang === 'en')
+                        ? 'Hello, I would like to inquire about your consultation services.'
+                        : 'مرحباً، أود الاستفسار بخصوص خدمات الاستشارة.';
+                    waBtn.href = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(defaultMsg)}`;
+                    waBtn.style.display = 'inline-flex';
+                    hasContact = true;
+                } else if (waBtn) {
+                    waBtn.style.display = 'none';
+                }
+            } else if (waBtn) {
+                waBtn.style.display = 'none';
+            }
+
+            const socialsRow = document.getElementById('maintenanceSocialsRow');
+            if (socialsRow) {
+                socialsRow.innerHTML = '';
+                const socials = (data && data.socials) ? data.socials : {};
+                const iconMap = {
+                    instagram: 'fa-brands fa-instagram',
+                    twitter: 'fa-brands fa-x-twitter',
+                    x: 'fa-brands fa-x-twitter',
+                    linkedin: 'fa-brands fa-linkedin-in',
+                    tiktok: 'fa-brands fa-tiktok',
+                    facebook: 'fa-brands fa-facebook-f',
+                    website: 'fa-solid fa-globe'
+                };
+                let hasSocial = false;
+                for (const [key, val] of Object.entries(socials)) {
+                    if (val && typeof val === 'string' && val.trim()) {
+                        hasSocial = true;
+                        let linkUrl = val.trim();
+                        if (!linkUrl.startsWith('http')) {
+                            if (key === 'instagram') linkUrl = `https://instagram.com/${linkUrl.replace('@', '')}`;
+                            else if (key === 'twitter' || key === 'x') linkUrl = `https://x.com/${linkUrl.replace('@', '')}`;
+                            else linkUrl = `https://${linkUrl}`;
+                        }
+                        const a = document.createElement('a');
+                        a.href = linkUrl;
+                        a.target = '_blank';
+                        a.className = 'social-link';
+                        a.innerHTML = `<i class="${iconMap[key.toLowerCase()] || 'fa-solid fa-link'}"></i>`;
+                        socialsRow.appendChild(a);
+                    }
+                }
+                if (hasSocial) {
+                    socialsRow.style.display = 'flex';
+                    hasContact = true;
+                } else {
+                    socialsRow.style.display = 'none';
+                }
+            }
+
+            const contactBox = document.getElementById('maintenanceContactBox');
+            if (contactBox) {
+                contactBox.style.display = hasContact ? 'flex' : 'none';
+            }
+        }
+
+        function showStoppedState(lang) {
+            hideAllStates();
+            if (lang) applyLanguage(lang);
+            const el = document.getElementById('stoppedState');
+            if (el) el.style.display = 'block';
+        }
+
+        function showExpiredState(lang) {
+            hideAllStates();
+            if (lang) applyLanguage(lang);
+            const el = document.getElementById('expiredState');
+            if (el) el.style.display = 'block';
+        }
+
         function showError(type) {
-            document.getElementById('loadingState').style.display = 'none';
-            document.getElementById('siteContent').style.display = 'none';
-            const suspendedEl = document.getElementById('suspendedState');
-            if (suspendedEl) suspendedEl.style.display = 'none';
-            document.getElementById('errorState').style.display = 'block';
+            hideAllStates();
+            const errEl = document.getElementById('errorState');
+            if (errEl) errEl.style.display = 'block';
         }
 
         function escapeHtml(str) {
