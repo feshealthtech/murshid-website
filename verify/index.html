@@ -1174,24 +1174,9 @@
         }
 
         // ==========================================
-        // TAB 2: SPECIALIST CREDENTIALS DATABASE
+        // TAB 2: SPECIALIST CREDENTIALS API ENGINE
         // ==========================================
-        const resellerDatabase = {
-            "MS-KATYA-01": { name: "Katya Haysam Mohamed Sulayman", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "katyasulayman9@gmail.com", phone: "+971526930539 / +963967817916", country: "Syria" },
-            "MS-ENAS-02": { name: "Enas Al-Dumaini", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "ena779456432222@gmail.com", phone: "+967779456432", country: "Yemen" },
-            "MS-HANEEN-03": { name: "Haneen Abdulhakim Ali Al-kubati", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "hanin.alqobati@gmail.com", phone: "+967775707288", country: "Yemen" },
-            "MS-MARAM-04": { name: "Maram Ahmed Ali Al-shadady", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "m.ahmed.maram22@gmail.com", phone: "+967780538052", country: "Yemen" },
-            "MS-SEBA-05": { name: "Seba Adel Alqershi", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "9eba.shaher@gmail.com", phone: "+967735814562 / +967785195486", country: "Yemen" },
-            "MS-NAWAL-06": { name: "Nawal Yahya Mohammed Al-Rimi", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "mhdynwal0@gmail.com", phone: "+967779667438", country: "Yemen" },
-            "MS-ALYA-07": { name: "Alya Khaled Mahyoub Saif Awn", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "alyakhaled238147@gmail.com", phone: "+967774109415", country: "Yemen" },
-            "MS-ALAA-08": { name: "Alaa Mohammed Abdo Mrshed", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "alamhmdasmayl738@gmail.com", phone: "+967785021397", country: "Yemen" },
-            "MS-AYA-09": { name: "Aya Nabeel Hussein Ali Al-saqqaf", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "ayaalsaqqaf5@gmail.com", phone: "+967733169579", country: "Yemen" },
-            "MS-KARIMA-10": { name: "Karima Ahmed Sharaf Mohammed Abutaleb", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "dt.karimaahmed2002@gmail.com", phone: "+967782355110", country: "Yemen" },
-            "MS-LAYAL-11": { name: "Layal Ebrahim Aqlan Khaled", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "layalalmekhlafi@gmail.com", phone: "+967779291989", country: "Yemen" },
-            "MS-KHADIJA-12": { name: "Khadija Ramzi", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "khadijaramzi1999sz@gmail.com", phone: "+967771845941", country: "Yemen" },
-            "MS-AMAT-13": { name: "Amat Al-rhman Arfe Musleh Al-fras", title: "Clinical Dietitian", status: "active", expiryDate: "2026-11-27", email: "rehamaref88@gmail.com", phone: "+967781628272", country: "Yemen" },
-            "MS-MUNA-14": { name: "Muna Nasser Hasan Al-Absi", title: "Clinical Dietitian", status: "active", expiryDate: "2027-12-31", email: "munanasser58@gmail.com", phone: "+967775384462", country: "Yemen" }
-        };
+        const VERIFY_AFFILIATE_ENDPOINT = "https://us-central1-ai-apps-central.cloudfunctions.net/verifyAffiliateCredential";
 
         function renderPartnerLanding() {
             document.getElementById('partnerResultArea').innerHTML = `
@@ -1207,113 +1192,136 @@
 
         const getMonogram = (fullName) => {
             const parts = fullName.trim().split(' ').filter(p => p.length > 0);
-            if(parts.length >= 2) {
-                return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
-            } else if(parts.length === 1) {
+            if (parts.length >= 2) {
+                return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+            } else if (parts.length === 1) {
                 return parts[0].substring(0, 2).toUpperCase();
             }
             return 'ID';
         };
 
-        function cleanPhone(num) {
-            return num.toString().replace(/[\s\-\(\)\+]/g, "").replace(/^00/, "").replace(/^0/, "");
-        }
-
-        function handlePartnerSearch(e) {
+        async function handlePartnerSearch(e) {
             e.preventDefault();
             const input = document.getElementById('partnerInput');
             const raw = input.value.trim();
             if (!raw) return renderPartnerLanding();
 
-            const cleaned = raw.toLowerCase();
-            const cleanedPhone = cleanPhone(cleaned);
-            let matchedId = null;
-            let matchedPartner = null;
-
-            const exactKey = Object.keys(resellerDatabase).find(k => k.toLowerCase() === cleaned);
-            if (exactKey) {
-                matchedId = exactKey;
-                matchedPartner = resellerDatabase[exactKey];
-            }
-
-            if (!matchedPartner) {
-                for (const [id, info] of Object.entries(resellerDatabase)) {
-                    if (info.email && info.email.toLowerCase() === cleaned) {
-                        matchedId = id; matchedPartner = info; break;
-                    }
-                    if (info.name && info.name.toLowerCase().includes(cleaned)) {
-                        matchedId = id; matchedPartner = info; break;
-                    }
-                    if (info.phone) {
-                        const phones = info.phone.split("/");
-                        const match = phones.some(p => {
-                            const dp = cleanPhone(p);
-                            if (cleanedPhone.length >= 7) {
-                                return dp.endsWith(cleanedPhone) || cleanedPhone.endsWith(dp);
-                            }
-                            return dp === cleanedPhone;
-                        });
-                        if (match) {
-                            matchedId = id; matchedPartner = info; break;
-                        }
-                    }
-                }
-            }
-
             const area = document.getElementById('partnerResultArea');
-            if (matchedPartner) {
-                const monogram = getMonogram(matchedPartner.name);
-                area.innerHTML = `
-                    <div class="id-card">
-                        <div class="id-banner">
-                            <div class="status-badge is-active">
-                                <div class="status-icon"></div>
-                                <span>Verified Specialist</span>
+            area.innerHTML = `
+                <div class="result-card" style="padding: 40px 20px; text-align: center;">
+                    <div class="loading-spinner"></div>
+                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">Verifying Credentials...</h3>
+                    <p style="font-size: 13px; color: var(--text-muted);">Querying Murshid Official Credentials Registry</p>
+                </div>
+            `;
+
+            try {
+                const response = await fetch(VERIFY_AFFILIATE_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query: raw })
+                });
+
+                const data = await response.json();
+
+                if (data.found && data.partner) {
+                    const matchedPartner = data.partner;
+                    const matchedId = matchedPartner.id;
+                    const monogram = getMonogram(matchedPartner.name);
+
+                    let statusBadgeHtml = `
+                        <div class="status-badge is-active">
+                            <div class="status-icon"></div>
+                            <span>Verified Specialist</span>
+                        </div>
+                    `;
+
+                    if (matchedPartner.status === 'suspended') {
+                        statusBadgeHtml = `
+                            <div class="status-badge" style="background: rgba(239, 68, 68, 0.25); border-color: rgba(239, 68, 68, 0.5);">
+                                <div class="status-icon" style="background: #EF4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.8);"></div>
+                                <span style="color: #FEE2E2;">Suspended Credential</span>
+                            </div>
+                        `;
+                    } else if (matchedPartner.status === 'expired') {
+                        statusBadgeHtml = `
+                            <div class="status-badge" style="background: rgba(245, 158, 11, 0.25); border-color: rgba(245, 158, 11, 0.5);">
+                                <div class="status-icon" style="background: #F59E0B; box-shadow: 0 0 8px rgba(245, 158, 11, 0.8);"></div>
+                                <span style="color: #FEF3C7;">Expired Credential</span>
+                            </div>
+                        `;
+                    }
+
+                    area.innerHTML = `
+                        <div class="id-card">
+                            <div class="id-banner">
+                                ${statusBadgeHtml}
+                            </div>
+                            <div class="id-avatar-wrapper">
+                                <div class="id-avatar-ring">
+                                    <div class="id-avatar-inner">
+                                        <div class="monogram-avatar">${monogram}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="id-body">
+                                <h2 class="partner-name">${matchedPartner.name}</h2>
+                                <span class="partner-title">${matchedPartner.title}</span>
+                                <div class="data-glass-panel">
+                                    <div class="meta-row">
+                                        <span class="meta-label">Partner ID:</span>
+                                        <span class="meta-value mono">${matchedId}</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Email:</span>
+                                        <span class="meta-value mono">${matchedPartner.email || 'Official Registered Email'}</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Phone:</span>
+                                        <span class="meta-value mono">${matchedPartner.phone || 'Official Contact'}</span>
+                                    </div>
+                                    <div class="meta-row">
+                                        <span class="meta-label">Country:</span>
+                                        <span class="meta-value">${matchedPartner.country || 'Registered Representative'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="id-footer">
+                                <div>
+                                    <div style="font-size: 10px; color: var(--text-muted); font-weight: 800; text-transform: uppercase;">Valid Thru</div>
+                                    <div class="validity-value">${matchedPartner.expiryDate}</div>
+                                </div>
+                                <img src="../assets/logo.webp" alt="Murshid" style="height: 36px;">
                             </div>
                         </div>
-                        <div class="id-avatar-wrapper">
-                            <div class="id-avatar-ring">
-                                <div class="id-avatar-inner">
-                                    <div class="monogram-avatar">${monogram}</div>
-                                </div>
+                    `;
+                } else if (data.code === 'AMBIGUOUS_MATCH') {
+                    area.innerHTML = `
+                        <div class="result-card" style="padding: 28px 20px; text-align: center;">
+                            <div class="result-banner-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--warning); margin: 0 auto 14px;">
+                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                             </div>
+                            <h3 style="font-size: 16px; font-weight: 800; color: #92400E; margin-bottom: 8px;">Multiple Matches Found</h3>
+                            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                                ${data.message || 'Multiple specialists match this name. To ensure identity precision, please search using the exact Partner ID or Mobile Phone number.'}
+                            </p>
+                            <button class="reset-btn" onclick="document.getElementById('partnerInput').focus()">Refine Search</button>
                         </div>
-                        <div class="id-body">
-                            <h2 class="partner-name">${matchedPartner.name}</h2>
-                            <span class="partner-title">${matchedPartner.title}</span>
-                            <div class="data-glass-panel">
-                                <div class="meta-row">
-                                    <span class="meta-label">Partner ID:</span>
-                                    <span class="meta-value mono">${matchedId}</span>
-                                </div>
-                                <div class="meta-row">
-                                    <span class="meta-label">Email:</span>
-                                    <span class="meta-value mono">${matchedPartner.email}</span>
-                                </div>
-                                <div class="meta-row">
-                                    <span class="meta-label">Phone:</span>
-                                    <span class="meta-value mono">${matchedPartner.phone}</span>
-                                </div>
-                                <div class="meta-row">
-                                    <span class="meta-label">Country:</span>
-                                    <span class="meta-value">${matchedPartner.country}</span>
-                                </div>
-                            </div>
+                    `;
+                } else {
+                    area.innerHTML = `
+                        <div class="result-card" style="padding: 30px 20px; text-align: center;">
+                            <h3 style="font-size: 16px; color: var(--error); margin-bottom: 6px;">Credential Not Found</h3>
+                            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">No official records match "${raw}" in Murshid verified specialist registry.</p>
                         </div>
-                        <div class="id-footer">
-                            <div>
-                                <div style="font-size: 10px; color: var(--text-muted); font-weight: 800; text-transform: uppercase;">Valid Thru</div>
-                                <div class="validity-value">${matchedPartner.expiryDate}</div>
-                            </div>
-                            <img src="../assets/logo.webp" alt="Murshid" style="height: 36px;">
-                        </div>
-                    </div>
-                `;
-            } else {
+                    `;
+                }
+            } catch (networkErr) {
+                console.error("Network error verifying credential:", networkErr);
                 area.innerHTML = `
                     <div class="result-card" style="padding: 30px 20px; text-align: center;">
-                        <h3 style="font-size: 16px; color: var(--error); margin-bottom: 6px;">Credential Not Found</h3>
-                        <p style="font-size: 13px; color: var(--text-muted);">No official records match "${raw}" in Murshid verified specialist registry.</p>
+                        <h3 style="font-size: 16px; color: var(--error); margin-bottom: 6px;">Connection Error</h3>
+                        <p style="font-size: 13px; color: var(--text-muted);">Unable to reach Murshid verification registry. Please check your internet connection.</p>
                     </div>
                 `;
             }
