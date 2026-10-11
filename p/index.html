@@ -32,6 +32,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <!-- Firebase App Check with reCAPTCHA Enterprise -->
+    <script>
+        window._appCheckReadyPromise = new Promise(function(resolve) {
+            window._resolveAppCheckReady = resolve;
+        });
+    </script>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
         import { initializeAppCheck, ReCaptchaEnterpriseProvider, getToken } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
@@ -64,6 +69,10 @@
         } catch (initErr) {
             console.warn("AppCheck init skipped or failed:", initErr);
             window.getAppCheckToken = async () => '';
+        } finally {
+            if (typeof window._resolveAppCheckReady === 'function') {
+                window._resolveAppCheckReady();
+            }
         }
     </script>
 
@@ -2439,6 +2448,17 @@
                 let result = null;
                 if (window.__PRELOADED_SITE_DATA__ && (window.__PRELOADED_SITE_DATA__.slug === slug || window.__PRELOADED_SITE_DATA__.found)) {
                     result = window.__PRELOADED_SITE_DATA__;
+                } else {
+                    // Wait for AppCheck module to initialize (up to 3 seconds timeout)
+                    if (window._appCheckReadyPromise && typeof window.getAppCheckToken !== 'function') {
+                        try {
+                            await Promise.race([
+                                window._appCheckReadyPromise,
+                                new Promise(function(r) { setTimeout(r, 3000); })
+                            ]);
+                        } catch (_) {}
+                    }
+
                     let appCheckToken = '';
                     if (typeof window.getAppCheckToken === 'function') {
                         try {
@@ -2451,10 +2471,25 @@
                         headers['X-Firebase-AppCheck'] = appCheckToken;
                     }
 
-                    const response = await fetch(`https://us-central1-ai-apps-central.cloudfunctions.net/getSpecialistSite?slug=${encodeURIComponent(slug)}`, {
+                    let response = await fetch(`https://us-central1-ai-apps-central.cloudfunctions.net/getSpecialistSite?slug=${encodeURIComponent(slug)}`, {
                         method: 'GET',
                         headers: headers
                     });
+
+                    // If App Check was still warming up and returned 401, retry once
+                    if (response.status === 401 && typeof window.getAppCheckToken === 'function') {
+                        try {
+                            await new Promise(function(r) { setTimeout(r, 600); });
+                            const retryToken = await window.getAppCheckToken();
+                            if (retryToken) {
+                                headers['X-Firebase-AppCheck'] = retryToken;
+                                response = await fetch(`https://us-central1-ai-apps-central.cloudfunctions.net/getSpecialistSite?slug=${encodeURIComponent(slug)}`, {
+                                    method: 'GET',
+                                    headers: headers
+                                });
+                            }
+                        } catch (_) {}
+                    }
 
                     if (!response.ok) {
                         showError(response.status === 404 ? 'NOT_FOUND' : 'ERROR');
