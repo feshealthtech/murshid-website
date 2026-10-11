@@ -31,6 +31,42 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+    <!-- Firebase App Check with reCAPTCHA Enterprise -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { initializeAppCheck, ReCaptchaEnterpriseProvider, getToken } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCGNr5u0R_ryuALLum9GpPUUJE6tjpD8Bk",
+            authDomain: "ai-apps-central.firebaseapp.com",
+            projectId: "ai-apps-central",
+            storageBucket: "ai-apps-central.firebasestorage.app",
+            messagingSenderId: "538868422841",
+            appId: "1:538868422841:web:662d4f78fe5f88c9652368"
+        };
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            const appCheck = initializeAppCheck(app, {
+                provider: new ReCaptchaEnterpriseProvider('6LeISOktAAAAAGxytq1MOaOjcTcHRxloD1Mu6Dgb'),
+                isTokenAutoRefreshEnabled: true
+            });
+
+            window.getAppCheckToken = async function() {
+                try {
+                    const tokenResult = await getToken(appCheck, false);
+                    return tokenResult ? tokenResult.token : '';
+                } catch (e) {
+                    console.warn("AppCheck token fetch warning:", e);
+                    return '';
+                }
+            };
+        } catch (initErr) {
+            console.warn("AppCheck init skipped or failed:", initErr);
+            window.getAppCheckToken = async () => '';
+        }
+    </script>
+
     <style>
         :root {
             --primary: #0D9488;
@@ -2403,10 +2439,21 @@
                 let result = null;
                 if (window.__PRELOADED_SITE_DATA__ && (window.__PRELOADED_SITE_DATA__.slug === slug || window.__PRELOADED_SITE_DATA__.found)) {
                     result = window.__PRELOADED_SITE_DATA__;
-                } else {
+                    let appCheckToken = '';
+                    if (typeof window.getAppCheckToken === 'function') {
+                        try {
+                            appCheckToken = await window.getAppCheckToken();
+                        } catch (_) {}
+                    }
+
+                    const headers = { 'Accept': 'application/json' };
+                    if (appCheckToken) {
+                        headers['X-Firebase-AppCheck'] = appCheckToken;
+                    }
+
                     const response = await fetch(`https://us-central1-ai-apps-central.cloudfunctions.net/getSpecialistSite?slug=${encodeURIComponent(slug)}`, {
                         method: 'GET',
-                        headers: { 'Accept': 'application/json' }
+                        headers: headers
                     });
 
                     if (!response.ok) {
@@ -3126,9 +3173,21 @@
             if (submitLabel) submitLabel.textContent = i18n[currentLang].reportSubmittingLabel;
 
             try {
+                let appCheckToken = '';
+                if (typeof window.getAppCheckToken === 'function') {
+                    try {
+                        appCheckToken = await window.getAppCheckToken();
+                    } catch (_) {}
+                }
+
+                const headers = { 'Content-Type': 'application/json' };
+                if (appCheckToken) {
+                    headers['X-Firebase-AppCheck'] = appCheckToken;
+                }
+
                 const response = await fetch('https://us-central1-ai-apps-central.cloudfunctions.net/reportSpecialistSite', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: headers,
                     body: JSON.stringify({ slug, reason, details, contact })
                 });
 

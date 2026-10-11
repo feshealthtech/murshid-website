@@ -18,6 +18,41 @@
             pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
         }
     </script>
+    <!-- Firebase App Check with reCAPTCHA Enterprise -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { initializeAppCheck, ReCaptchaEnterpriseProvider, getToken } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCGNr5u0R_ryuALLum9GpPUUJE6tjpD8Bk",
+            authDomain: "ai-apps-central.firebaseapp.com",
+            projectId: "ai-apps-central",
+            storageBucket: "ai-apps-central.firebasestorage.app",
+            messagingSenderId: "538868422841",
+            appId: "1:538868422841:web:662d4f78fe5f88c9652368"
+        };
+
+        try {
+            const app = initializeApp(firebaseConfig);
+            const appCheck = initializeAppCheck(app, {
+                provider: new ReCaptchaEnterpriseProvider('6LeISOktAAAAAGxytq1MOaOjcTcHRxloD1Mu6Dgb'),
+                isTokenAutoRefreshEnabled: true
+            });
+
+            window.getAppCheckToken = async function() {
+                try {
+                    const tokenResult = await getToken(appCheck, false);
+                    return tokenResult ? tokenResult.token : '';
+                } catch (e) {
+                    console.warn("AppCheck token fetch warning:", e);
+                    return '';
+                }
+            };
+        } catch (initErr) {
+            console.warn("AppCheck init skipped or failed:", initErr);
+            window.getAppCheckToken = async () => '';
+        }
+    </script>
     <style>
         :root {
             --primary: #0D9488;
@@ -824,11 +859,29 @@
                 // 3. Query Murshid Cloud Registry for Registered Public Key
                 let cloudKeyData;
                 try {
+                    let appCheckToken = '';
+                    if (typeof window.getAppCheckToken === 'function') {
+                        try {
+                            appCheckToken = await window.getAppCheckToken();
+                        } catch (_) {}
+                    }
+
+                    const headers = { 'Content-Type': 'application/json' };
+                    if (appCheckToken) {
+                        headers['X-Firebase-AppCheck'] = appCheckToken;
+                    }
+
                     const resp = await fetch(LOOKUP_PUBLIC_KEY_ENDPOINT, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: headers,
                         body: JSON.stringify({ email: manifest.email })
                     });
+
+                    if (resp.status === 401) {
+                        renderErrorState('Unauthorized document verification request. Access is restricted to the official Murshid platform.');
+                        return;
+                    }
+
                     cloudKeyData = await resp.json();
                 } catch (e) {
                     console.error('Cloud lookup failed:', e);
@@ -1216,11 +1269,33 @@
             `;
 
             try {
+                let appCheckToken = '';
+                if (typeof window.getAppCheckToken === 'function') {
+                    try {
+                        appCheckToken = await window.getAppCheckToken();
+                    } catch (_) {}
+                }
+
+                const headers = { 'Content-Type': 'application/json' };
+                if (appCheckToken) {
+                    headers['X-Firebase-AppCheck'] = appCheckToken;
+                }
+
                 const response = await fetch(VERIFY_AFFILIATE_ENDPOINT, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: headers,
                     body: JSON.stringify({ query: raw })
                 });
+
+                if (response.status === 401) {
+                    area.innerHTML = `
+                        <div class="result-card" style="padding: 30px 20px; text-align: center;">
+                            <h3 style="font-size: 16px; color: var(--error); margin-bottom: 6px;">Unauthorized Access</h3>
+                            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Access is restricted to the official verified Murshid platform.</p>
+                        </div>
+                    `;
+                    return;
+                }
 
                 const data = await response.json();
 
