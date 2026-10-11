@@ -999,23 +999,89 @@
         /* Error / Not Found State */
         .error-card {
             text-align: center;
-            padding: 50px 20px;
+            padding: 56px 24px 44px 24px;
+            background: #FFFFFF;
+            border: 1.5px solid #F1F5F9;
+            border-radius: 28px;
+            box-shadow: 0 12px 35px -5px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin: 0 auto;
         }
-        .error-card i {
-            font-size: 48px;
+        .error-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #F87171, #EF4444, #DC2626);
+        }
+        .error-icon-circle {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: #FEF2F2;
+            border: 1.5px solid #FEE2E2;
             color: #EF4444;
-            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(239, 68, 68, 0.12);
         }
         .error-title {
-            font-size: 19px;
+            font-size: 21px;
             font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 8px;
+            color: #0F172A;
+            margin-bottom: 10px;
+            letter-spacing: -0.2px;
+            text-align: center;
+            line-height: 1.35;
         }
         .error-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 20px;
+            font-size: 13.5px;
+            color: #64748B;
+            line-height: 1.65;
+            margin-bottom: 26px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .error-home-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #FFFFFF !important;
+            padding: 13px 28px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 800;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(13, 148, 136, 0.28);
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 320px;
+            width: 100%;
+        }
+        .error-home-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(13, 148, 136, 0.38);
+            color: #FFFFFF !important;
+        }
+        .error-home-btn i {
+            font-size: 16px !important;
+            color: #FFFFFF !important;
+            margin: 0 !important;
         }
 
         /* Suspended / Review State (Kill Switch) */
@@ -2019,11 +2085,13 @@
         </div>
 
         <!-- Error State -->
-        <div id="errorState" class="hero-card error-card" style="display: none;">
-            <i class="fa-solid fa-circle-exclamation"></i>
+        <div id="errorState" class="error-card" style="display: none;">
+            <div class="error-icon-circle">
+                <i class="fa-solid fa-circle-exclamation"></i>
+            </div>
             <h2 class="error-title" id="errorTitle">لم يتم العثور على الصفحة</h2>
-            <p class="error-desc" id="errorDesc">المعرف المطلوب غير موجود أو تم إيقاف نشر الموقع مؤقتاً من قبل الأخصائي.</p>
-            <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--primary);">
+            <p class="error-desc" id="errorDesc">المعرف المطلوب غير موجود أو تم إيقاف نشر الموقع مؤقتاً.</p>
+            <a href="https://murshid.feshealthtech.com" class="error-home-btn">
                 <i class="fa-solid fa-house"></i>
                 <span id="errorHomeBtn">العودة لصفحة مرشد الرئيسية</span>
             </a>
