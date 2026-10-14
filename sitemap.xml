@@ -1,14 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Platform Sitemap (Static & High-Priority Platform Pages) -->
-  <sitemap>
-    <loc>https://murshid.feshealthtech.com/sitemap-main.xml</loc>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- English Platform Home -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/" />
     <lastmod>2026-10-14</lastmod>
-  </sitemap>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
 
-  <!-- Published Specialists & Digital Clinics Sitemap (Dynamic Edge-Cached) -->
-  <sitemap>
-    <loc>https://murshid.feshealthtech.com/sitemap-specialists.xml</loc>
+  <!-- Arabic Platform Home -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/" />
     <lastmod>2026-10-14</lastmod>
-  </sitemap>
-</sitemapindex>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Contact Us (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/contact.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/contact.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/contact.html" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact Us (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/contact.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/contact.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/contact.html" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- FAQ (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/faq.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/faq.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/faq.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/faq.html" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- FAQ (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/faq.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/faq.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/faq.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/faq.html" />
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- App Download Landing -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/app/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Accredited Verification Portal -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/verify/</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/privacy-policy.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Terms of Use -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/terms-of-use.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Refund Policy -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/refund-policy.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Data Deletion -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/data-deletion.html</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>
