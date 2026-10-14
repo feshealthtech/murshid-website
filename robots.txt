@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://getmurshid.com/sitemap.xml
+
+Sitemap: https://murshid.feshealthtech.com/sitemap.xml

@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الأسئلة الشائعة — تطبيق مرشد</title>
+  <meta name="description" content="إجابات شاملة ومفصلة عن أكثر الأسئلة شيوعاً حول تطبيق مرشد لإدارة عيادات التغذية وتصميم الأنظمة الغذائية." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../assets/logo-sq.webp" type="image/webp" />
+  
+  <link rel="canonical" href="https://murshid.feshealthtech.com/ar/faq.html" />
+  <link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/faq.html" />
+  <link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/faq.html" />
+  <link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/faq.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../shared/murshid-style.css" />
+
+  <!-- Schema.org FAQPage Rich Snippet -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "من أين يمكنني تحميل تطبيق مرشد؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "تطبيق مرشد متاح للتحميل مجاناً عبر متجر Google Play لأجهزة أندرويد وقريباً على Apple App Store لهواتف آيفون."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "هل يمكنني استخدام تطبيق مرشد بدون إنترنت؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "نعم! تطبيق مرشد مبني بمعمارية أوفلاين أولاً (Offline-First)، مما يعني أن أكثر من 90% من ميزاته كإدارة ملفات المرضى والحسابات وتصميم الخطط الغذائية وتصدير التقارير تعمل بالكامل بدون إنترنت."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ما هو الفرق بين النقاط الزرقاء والنقاط الذهبية؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "النقاط الزرقاء مجانية دائماً ومخصصة للأعمال اليومية في العيادة، بينما النقاط الذهبية مخصصة للميزات السحابية المتقدمة مثل استخراج نتائج الفحوصات الطبية والأدوية بالذكاء الاصطناعي (OCR)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "أين يتم تخزين بيانات مراجعي العيادة؟",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "يتم تخزين بيانات المراجعين محلياً على جهازك حصراً داخل قاعدة بيانات Isar مشفرة بمعيار التشفير المصرفي AES-256، ولا يتم رفع بيانات المرضى إلى خوادمنا على الإطلاق."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Cairo', 'Noto Kufi Arabic', system-ui, sans-serif;
+    }
+    /* ── FAQ Hero ── */
+    .faq-hero {
+      padding-top: calc(var(--nav-h) + 64px);
+      padding-bottom: 56px;
+      background: linear-gradient(180deg, rgba(43,181,160,0.07) 0%, transparent 100%);
+      border-bottom: 1px solid var(--m-border);
+      text-align: center;
+    }
+    .faq-hero .m-label { justify-content: center; }
+    .faq-hero .m-title { margin-bottom: 12px; }
+    .faq-hero .m-subtitle { margin-bottom: 40px; }
+
+    /* ── Search Bar ── */
+    .faq-search-wrap {
+      max-width: 560px;
+      margin: 0 auto 48px;
+      position: relative;
+    }
+    .faq-search-icon {
+      position: absolute;
+      left: 18px;
+      right: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--m-text-muted);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+    #faqSearch {
+      width: 100%;
+      padding: 14px 20px 14px 50px;
+      background: var(--m-surface);
+      border: 1px solid var(--m-border-strong);
+      border-radius: var(--m-radius-full);
+      color: var(--m-text);
+      font-family: inherit;
+      font-size: 0.93rem;
+      outline: none;
+      transition: var(--m-transition);
+    }
+    #faqSearch::placeholder { color: var(--m-text-subtle); }
+    #faqSearch:focus {
+      border-color: var(--m-primary);
+      box-shadow: 0 0 0 3px var(--m-primary-glow);
+    }
+
+    /* ── FAQ Body ── */
+    .faq-body { padding: 64px 0 96px; }
+
+    /* ── Empty State ── */
+    .faq-empty {
+      display: none;
+      text-align: center;
+      padding: 48px 0;
+      color: var(--m-text-muted);
+      font-size: 1rem;
+    }
+    .faq-empty .faq-empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+    /* ── Group Title ── */
+    .faq-group-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--m-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .faq-group-title .faq-cat-icon {
+      width: 32px; height: 32px;
+      background: var(--m-primary-glow);
+      border: 1px solid var(--m-border-strong);
+      border-radius: var(--m-radius-sm);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.95rem;
+    }
+
+    /* ── Stats Bar ── */
+    .faq-stats {
+      display: flex; gap: 28px; justify-content: center;
+      flex-wrap: wrap; margin-bottom: 0;
+    }
+    .faq-stat {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+    }
+    .faq-stat-num {
+      font-size: 1.6rem; font-weight: 900; color: var(--m-primary);
+    }
+    .faq-stat-label {
+      font-size: 0.78rem; color: var(--m-text-muted);
+    }
+
+    /* ── Answer list styling ── */
+    .faq-answer-inner ul {
+      list-style: none; margin: 10px 0 0; padding: 0;
+    }
+    .faq-answer-inner ul li {
+      padding: 4px 0;
+      color: var(--m-text-muted);
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 0.9rem; line-height: 1.8;
+    }
+    .faq-answer-inner ul li::before {
+      content: '◂';
+      color: var(--m-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .faq-answer-inner strong { color: var(--m-text); }
+    .faq-answer-inner .ans-note {
+      margin-top: 10px; padding: 10px 14px;
+      background: rgba(43,181,160,0.08);
+      border-left: 3px solid var(--m-primary);
+      border-radius: var(--m-radius-sm);
+      font-size: 0.87rem; color: var(--m-text-muted);
+    }
+    .faq-answer-inner .ans-note.warning {
+      background: rgba(245,158,11,0.08);
+      border-left-color: var(--m-gold);
+    }
+
+    @media (max-width: 768px) {
+      .faq-hero { padding-top: calc(var(--nav-h) + 36px); padding-bottom: 40px; }
+      .faq-stats { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="index.html" class="m-nav-brand" aria-label="الرئيسية">
+      <img src="../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">مرشد</span>
+        <span class="brand-name-en">تطبيق</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="index.html#features">المميزات</a></li>
+      <li><a href="index.html#wallet">نظام النقاط</a></li>
+      <li><a href="index.html#how">كيف يعمل؟</a></li>
+      <li><a href="index.html#pricing">الأسعار</a></li>
+      <li><a href="faq.html" class="active">الأسئلة الشائعة</a></li>
+      <li><a href="contact.html">تواصل معنا</a></li>
+      <li class="m-nav-dropdown">
+        <button class="m-nav-dropdown-btn" aria-haspopup="true">
+          <span>قانوني</span>
+          <span style="font-size:0.75rem;">▾</span>
+        </button>
+        <div class="m-nav-dropdown-menu">
+          <a href="../privacy-policy.html" class="m-nav-dropdown-item">🔒 سياسة الخصوصية</a>
+          <a href="../terms-of-use.html" class="m-nav-dropdown-item">📜 شروط الاستخدام</a>
+          <a href="../refund-policy.html" class="m-nav-dropdown-item">💵 سياسة الاسترداد</a>
+          <a href="../data-deletion.html" class="m-nav-dropdown-item">🗑️ حذف البيانات</a>
+        </div>
+      </li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="/faq.html" class="m-btn m-btn-secondary" style="margin-left:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" title="English Version">🌐 English</a>
+      <a href="index.html#download" class="m-btn m-btn-primary">📥 تحميل مجاناً</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu -->
+<div class="m-mobile-menu" id="m-mobile-menu">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">تطبيق مرشد</span>
+    <span class="m-mobile-menu-subtitle">المنصة الذكية لأخصائيي التغذية</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">الرئيسية</span>
+    </a>
+    <a href="/faq.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🌐</span>
+      <span class="m-mobile-text">English (الإنجليزية)</span>
+    </a>
+    <a href="index.html#features" class="m-mobile-link">
+      <span class="m-mobile-icon">🚀</span>
+      <span class="m-mobile-text">مميزات التطبيق</span>
+    </a>
+    <a href="index.html#wallet" class="m-mobile-link">
+      <span class="m-mobile-icon">🪙</span>
+      <span class="m-mobile-text">نظام النقاط</span>
+    </a>
+    <a href="index.html#how" class="m-mobile-link">
+      <span class="m-mobile-icon">📋</span>
+      <span class="m-mobile-text">كيف يعمل؟</span>
+    </a>
+    <a href="index.html#pricing" class="m-mobile-link">
+      <span class="m-mobile-icon">💳</span>
+      <span class="m-mobile-text">الأسعار والباقات</span>
+    </a>
+    <a href="faq.html" class="m-mobile-link active">
+      <span class="m-mobile-icon">❓</span>
+      <span class="m-mobile-text">الأسئلة الشائعة</span>
+    </a>
+    <a href="contact.html" class="m-mobile-link">
+      <span class="m-mobile-icon">✉️</span>
+      <span class="m-mobile-text">تواصل معنا</span>
+    </a>
+    <a href="../privacy-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🔒</span>
+      <span class="m-mobile-text">سياسة الخصوصية</span>
+    </a>
+    <a href="../terms-of-use.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📜</span>
+      <span class="m-mobile-text">شروط الاستخدام</span>
+    </a>
+    <a href="../refund-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">💵</span>
+      <span class="m-mobile-text">سياسة الاسترداد</span>
+    </a>
+    <a href="../data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">حذف البيانات</span>
+    </a>
+    <a href="https://feshealthtech.com/" target="_blank" class="m-mobile-link">
+      <span class="m-mobile-icon">🏢</span>
+      <span class="m-mobile-text">عن المطور (FES HealthTech)</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-download">
+    <div class="m-mobile-download-title">حمّل التطبيق مجاناً</div>
+    <div class="m-mobile-download-buttons">
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-mobile-dl-btn">
+        <span>🤖 Google Play</span>
+      </a>
+      <a href="index.html#download" class="m-mobile-dl-btn">
+        <span>🍎 App Store</span>
+      </a>
+    </div>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="../privacy-policy.html">الخصوصية</a>
+    <span>•</span>
+    <a href="../terms-of-use.html">الشروط</a>
+    <span>•</span>
+    <a href="../refund-policy.html">الاسترداد</a>
+  </div>
+</div>
+
+<!-- ══ HERO ══ -->
+<section class="faq-hero">
+  <div class="container">
+    <div class="m-label">مركز المساعدة</div>
+    <h1 class="m-title">الأسئلة الأكثر شيوعاً</h1>
+    <p class="m-subtitle">كل ما تود معرفته عن تطبيق مرشد وإدارة عيادتك في مكان واحد</p>
+
+    <!-- Search -->
+    <div class="faq-search-wrap">
+      <span class="faq-search-icon">🔍</span>
+      <input
+        type="search"
+        id="faqSearch"
+        placeholder="ابحث عن سؤالك أو استفسارك..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+    </div>
+
+    <!-- Stats -->
+    <div class="faq-stats">
+      <div class="faq-stat">
+        <span class="faq-stat-num">26</span>
+        <span class="faq-stat-label">سؤالاً وجواباً</span>
+      </div>
+      <div class="faq-stat">
+        <span class="faq-stat-num">5</span>
+        <span class="faq-stat-label">أقسام رئيسية</span>
+      </div>
+      <div class="faq-stat">
+        <span class="faq-stat-num">24/7</span>
+        <span class="faq-stat-label">محتوى متاح دائماً</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ BODY ══ -->
+<main class="faq-body">
+  <div class="container">
+
+    <!-- Filter Buttons -->
+    <div class="faq-filter">
+      <button class="faq-filter-btn active" data-cat="all">الكل</button>
+      <button class="faq-filter-btn" data-cat="start">📲 البداية والتثبيت</button>
+      <button class="faq-filter-btn" data-cat="features">✨ المميزات والاستخدام</button>
+      <button class="faq-filter-btn" data-cat="wallet">💰 النقاط والمحفظة</button>
+      <button class="faq-filter-btn" data-cat="privacy">🔒 الأمان والخصوصية</button>
+      <button class="faq-filter-btn" data-cat="support">🛠️ الدعم الفني</button>
+    </div>
+
+    <!-- Empty State -->
+    <div class="faq-empty" id="faqEmpty">
+      <div class="faq-empty-icon">🔍</div>
+      <p>لم نعثر على أي نتائج مطابقة لبحثك. جرب استخدام كلمات أخرى.</p>
+    </div>
+
+    <!-- ══ Category 1: Getting Started ══ -->
+    <div class="faq-group reveal" data-cat="start">
+      <div class="faq-group-title">
+        <span class="faq-cat-icon">📲</span>
+        البداية والتثبيت
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">من أين يمكنني تحميل تطبيق مرشد؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            تطبيق مرشد متاح للتحميل مجاناً عبر المتاجر الرسمية:
+            <ul>
+              <li><strong>متجر Google Play</strong> — ابحث عن "مرشد" أو "Murshid App" من نشر شركة FES HealthTech</li>
+              <li><strong>متجر Apple App Store</strong> — قريباً على نظام iOS</li>
+            </ul>
+            التطبيق مجاني بالكامل للتنزيل، وتعتمد بعض الميزات السحابية المتقدمة على نظام النقاط المزدوج (الزرقاء والذهبية) والتي يمكنك الحصول عليها مجاناً أيضاً من خلال الاستخدام اليومي.
+            <div class="ans-note">💡 تأكد من تحميل التطبيق من المتاجر الرسمية والتأكد من اسم الناشر <strong>FES HealthTech</strong> لتفادي أي تطبيقات مقلدة.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">ما هي متطلبات النظام لتشغيل التطبيق؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            متطلبات تشغيل تطبيق مرشد بسيطة ومناسبة لمعظم الهواتف الحديثة:
+            <ul>
+              <li><strong>أندرويد:</strong> إصدار Android 8.0 (Oreo) أو أحدث</li>
+              <li><strong>نظام iOS:</strong> إصدار iOS 13 أو أحدث (هواتف iPhone 6s وما بعدها)</li>
+              <li><strong>مساحة التخزين:</strong> 200 ميجابايت على الأقل للتثبيت، ويوصى بـ 500 ميجابايت لحفظ ملفات المرضى والتقارير المطبوعة</li>
+              <li><strong>الذاكرة العشوائية (RAM):</strong> 2 جيجابايت على الأقل لضمان تجربة سريعة وسلسة</li>
+            </ul>
+            تم تحسين التطبيق ليعمل بكفاءة على مختلف الفئات من الهواتف المتوسطة إلى الرائدة، مع قدرة فائقة على العمل دون اتصال بالإنترنت.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">هل يمكنني استخدام التطبيق بدون اتصال بالإنترنت؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            نعم بالتأكيد! تطبيق مرشد مبني على معمارية "أوفلاين أولاً" (Offline-First)، أي أن <strong>أكثر من 90% من ميزاته تعمل بدون إنترنت تماماً</strong>:
+            <ul>
+              <li>إدارة ملفات المراجعين وإضافة بياناتهم وفحوصاتهم</li>
+              <li>كافة المعادلات والحاسبات الغذائية (BMI, BMR, TDEE ونسب الدهون)</li>
+              <li>تصميم وحفظ الأنظمة الغذائية والوجبات الغذائية</li>
+              <li>تصدير تقارير الخطط الغذائية بصيغة PDF</li>
+              <li>تصفح واستخدام قاعدة بيانات الأطعمة الشاملة المخزنة محلياً</li>
+            </ul>
+            <strong>الميزات التي تحتاج إنترنت:</strong>
+            <ul>
+              <li>استخراج الفحوصات الطبية والأدوية بالذكاء الاصطناعي (OCR السحابي)</li>
+              <li>النسخ الاحتياطي السحابي التلقائي على Google Drive</li>
+              <li>تحديثات قاعدة بيانات الأطعمة والوصفات المركزية</li>
+            </ul>
+            <div class="ans-note">⚡ يقوم التطبيق بمزامنة البيانات سحابياً تلقائياً بمجرد عودة الاتصال بالإنترنت.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">كيف أقوم بتهيئة التطبيق لأول مرة؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            التهيئة الأولية سريعة للغاية ولا تستغرق أكثر من 5 دقائق:
+            <ul>
+              <li><strong>الخطوة 1:</strong> سجّل دخولك بحساب Google — دون الحاجة لإنشاء حساب جديد بكلمات مرور معقدة</li>
+              <li><strong>الخطوة 2:</strong> أدخل بياناتك المهنية (الاسم، اللقب، التخصص، رقم الترخيص إن وجد)</li>
+              <li><strong>الخطوة 3:</strong> أدخل بيانات عيادتك (اسم العيادة، العنوان، رقم التواصل)</li>
+              <li><strong>الخطوة 4:</strong> ارفع شعار عيادتك ليظهر تلقائياً في ترويسة التقارير الرسمية</li>
+              <li><strong>الخطوة 5:</strong> ستحصل فوراً على <strong>500 نقطة زرقاء مجانية</strong> كهدية ترحيبية في حسابك</li>
+            </ul>
+            بعد ذلك، يمكنك البدء فوراً في إضافة مراجعيك وتصميم خططهم والاستفادة من كافة الميزات.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">هل التطبيق متاح للأطباء من غير أخصائيي التغذية؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            تم تصميم مرشد خصيصاً لأخصائيي التغذية، ولكن العديد من التخصصات الطبية الأخرى تجد فيه أداة قيمة لعياداتها:
+            <ul>
+              <li><strong>أطباء الأمراض المزمنة</strong> — لمتابعة مرضى السكري، ضغط الدم، وأمراض الكلى</li>
+              <li><strong>المدربون الرياضيون وأخصائيو اللياقة</strong> — لحساب الاحتياجات الطاقية وتكوين الجسم</li>
+              <li><strong>أطباء الأطفال</strong> — لتتبع منحنيات النمو والمؤشرات التغذوية للأطفال</li>
+              <li><strong>طلاب كليات التغذية والطب</strong> — كأداة تعليمية وتدريبية سريرية متقدمة</li>
+            </ul>
+            <div class="ans-note warning">⚠️ الذكاء الاصطناعي في مرشد أداة مساعدة سريرية ولا يغني عن الحكم الطبي المتخصص.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Category 2: Features & Usage ══ -->
+    <div class="faq-group reveal" data-cat="features">
+      <div class="faq-group-title">
+        <span class="faq-cat-icon">✨</span>
+        المميزات والاستخدام
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">ما هي ميزات الاستخراج الذكي (OCR) وكيف تفيدني في العيادة؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            تتيح لك أدوات الاستخراج الذكي (OCR) توفير ساعات طويلة من الإدخال اليدوي المرهق:
+            <ul>
+              <li><strong>استخراج الفحوصات المخبرية</strong> — صوّر ورقة التحاليل الطبية وسيقوم التطبيق بقراءة المؤشرات وتعبئتها رقمياً في جدول المراجع.</li>
+              <li><strong>استخراج الأدوية والروشتات</strong> — صوّر علب الأدوية أو الوصفات الطبية لإدخال أسمائها العلمية تلقائياً لملف المراجع.</li>
+            </ul>
+            <div class="ans-note">📸 تعمل هذه الميزات عبر الاتصال السحابي لتحليل الصور بدقة فائقة، وتستهلك نقاطاً ذهبية من المحفظة.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">هل يمكنني إضافة شعار عيادتي على التقارير المطبوعة؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            نعم بالتأكيد! يتيح لك تطبيق مرشد تخصيص التقارير بهويتك المهنية الكاملة:
+            <ul>
+              <li>ارفع شعار عيادتك بصيغة PNG أو JPG من إعدادات <strong>الملف المهني</strong></li>
+              <li>أدخل اسمك، مؤهلاتك العلمية، ومجال تخصصك</li>
+              <li>أدخل بيانات التواصل (رقم الهاتف، العنوان، حسابات التواصل)</li>
+              <li>كافة تقارير PDF المطبوعة ستتضمن تلقائياً هذه البيانات في الترويسة والتذييل بمظهر راقٍ ومتقن</li>
+            </ul>
+            <div class="ans-note">📄 التقارير تظهر بمظهر طبي فخم جاهزة للطباعة أو الإرسال الفوري للمراجع عبر واتساب.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">كم عدد المراجعين الذين يمكنني إضافتهم؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            لا يوجد أي حد أقصى لعدد المراجعين في تطبيق مرشد! الحد الوحيد هو المساحة المتاحة على جهازك:
+            <ul>
+              <li>يشغل ملف المراجع بالمتوسط مساحة <strong>50-200 كيلوبايت</strong> بحسب حجم البيانات</li>
+              <li>مساحة 1 جيجابايت تكفي لتخزين أكثر من <strong>5,000 ملف مراجع كامل</strong></li>
+              <li>يمكنك أرشفة الملفات القديمة لتوفير المساحة</li>
+            </ul>
+            <div class="ans-note">💾 يوصى بتفعيل النسخ الاحتياطي على Google Drive لحفظ بياناتك سحابياً بأمان تام.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">كيف يعمل دليل الصيدلة وتوثيق محاذير المراجع في التطبيق؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            يوفر تطبيق مرشد دليلاً صيدلانياً مرجعياً يعمل بالكامل <strong>أوفلاين (بدون إنترنت)</strong> مع أدوات توثيق سريرية منظمة:
+            <ul>
+              <li><strong>دليل الصيدلة الرقمية المرجعي:</strong> البحث واستعراض المواد الفعالة والأسماء التجارية للأدوية وتصنيفاتها للاسترشاد المهني السريع.</li>
+              <li><strong>توثيق أدوية ومحاذير المراجع:</strong> تدوين أدوية المراجع وجرعاتها وتفضيلاته وحساسياته يدوياً في ملفه لسهولة الرجوع إليها أثناء الجلسة.</li>
+              <li><strong>مسؤولية الممارس السريرية:</strong> التزاماً بالمعايير التنظيمية الصارمة للبرمجيات الإدارية، يعمل مرشد كأداة إدارية وحسابية مساعدة ولا يُجري أي فحص آلي للتداخلات الدوائية أو تنبيهات الحساسية، حيث تقع المراجعة السريرية الشاملة على عاتق الأخصائي المؤهل حصراً.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">كيف يدعم تطبيق مرشد متطلبات الفوترة الإلكترونية (ZATCA) في السعودية؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            التطبيق متوافق تماماً مع متطلبات المرحلة الأولى للفوترة الإلكترونية (فاتورة) الصادرة عن هيئة الزكاة والضريبة والجمارك:
+            <ul>
+              <li><strong>إصدار فواتير ضريبية مبسطة:</strong> إصدار فواتير رسمية لجلسات الاستشارات والاشتراكات شاملة ضريبة القيمة المضافة.</li>
+              <li><strong>رمز الاستجابة السريع المشفر (QR Code):</strong> توليد رمز QR مشفر بمعيار Base64 TLV المعتمد ويشمل اسم المنشأة، الرقم الضريبي، الطابع الزمني، وقيمة الضريبة، وهو قابل للقراءة عبر تطبيق زاتكا الرسمي.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">ما هو "وضع حجب الخصوصية المالية" في لوحة التحكم؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            ميزة بلمسة واحدة صُممت لحماية سرية أرقام عيادتك. عند تفعيلها من الشاشة المالية، يتم إخفاء وتشفير كافة المبالغ والرسوم البيانية المالية من الشاشة، مما يتيح لك استخدام التطبيق واستعراض المواعيد براحة أمام المراجعين دون كشف دخلك أو إيراداتك.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">كيف تعمل قوالب رسائل الواتساب الذكية؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            من خلال مدير قوالب الواتساب، يمكنك صياغة رسائل تذكير مخصصة لحالات المواعيد وتضمين متغيرات ديناميكية مثل `{name}` لاسم المراجع، أو `{date}` لتاريخ الموعد، أو `{time}` للوقت. بضغطة زر واحدة، يُجهز التطبيق الرسالة ويفتح تطبيق واتساب بالرسالة المجهزة للإرسال الفوري دون الحاجة لكتابتها يدوياً.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Category 3: Points & Wallet ══ -->
+    <div class="faq-group reveal" data-cat="wallet">
+      <div class="faq-group-title">
+        <span class="faq-cat-icon">💰</span>
+        النقاط والمحفظة
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">ما هو الفرق بين النقاط الزرقاء والنقاط الذهبية؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            يستخدم مرشد نظام النقاط المزدوج الذي يضمن لك الاستخدام المجاني الدائم للعمل الأساسي:
+            <ul>
+              <li><strong>🔵 النقاط الزرقاء — مجانية بالكامل:</strong> للعمليات المحلية كإدارة المراجعين، المواعيد، بناء الخطط يدوياً، وتصدير التقارير.</li>
+              <li><strong>🟡 النقاط الذهبية — للميزات السحابية المتقدمة:</strong> لمعالجة الصور واستخراج نصوص الفحوصات الطبية والأدوية بالـ OCR السحابي.</li>
+            </ul>
+            <div class="ans-note">💡 بإمكان الغالبية العظمى من الأخصائيين استخدام التطبيق بشكل شبه كامل بالنقاط المجانية فقط.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">كيف أحصل على النقاط الزرقاء مجاناً؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            النقاط الزرقاء مجانية ويمكن كسبها بطرق متعددة وسهلة:
+            <ul>
+              <li><strong>هدية الترحيب:</strong> 500 نقطة تضاف تلقائياً فور أول تسجيل دخول</li>
+              <li><strong>مشاهدة إعلان بمكافأة:</strong> كل إعلان = 50 نقطة زرقاء فورية</li>
+              <li><strong>المكافأة اليومية:</strong> افتح التطبيق يومياً للحصول على نقاط متصاعدة</li>
+              <li><strong>إكمال إعدادات الملف المهني:</strong> 200 نقطة زرقاء إضافية</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">كيف أحصل على النقاط الذهبية؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            يمكن الحصول على النقاط الذهبية مجاناً أو عبر الاشتراك:
+            <ul>
+              <li><strong>مشاهدة إعلان مميز:</strong> نقطة ذهبية واحدة لكل إعلان مميز</li>
+              <li><strong>اشتراك Pro:</strong> 500 نقطة ذهبية شهرياً فور الاشتراك في باقة برو (الشهرية أو السنوية)</li>
+              <li><strong>برنامج الإحالات وأصدقاء مرشد:</strong> شارك التطبيق مع زملائك واكسب نقاطاً وقسائم ذهبية عند انضمامهم</li>
+            </ul>
+            <div class="ans-note">🛒 عمليات الشراء والاشتراكات تتم بأمان كامل عبر Google Play أو Apple App Store.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">هل تنتهي صلاحية النقاط؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            <ul>
+              <li><strong>🔵 النقاط الزرقاء:</strong> تظل صالحة طالما تفتح التطبيق مرة واحدة على الأقل كل 90 يوماً.</li>
+              <li><strong>🟡 النقاط الذهبية المشحونة عبر الاشتراك:</strong> صالحة لمدة عام كامل من تاريخ شحنها.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Category 4: Privacy & Security ══ -->
+    <div class="faq-group reveal" data-cat="privacy">
+      <div class="faq-group-title">
+        <span class="faq-cat-icon">🔒</span>
+        الأمان والخصوصية
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">أين يتم تخزين بيانات مراجعي العيادة؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            أمان وسرية بيانات مراجعيك هي أولويتنا القصوى:
+            <ul>
+              <li><strong>التخزين الأساسي:</strong> محلياً حصراً على هاتفك داخل قاعدة بيانات <strong>Isar</strong> المشفرة بمعيار AES-256 — ولا يمكن الوصول إليها بدون مفتاح التشفير المحمي بالعتاد.</li>
+              <li><strong>لا رفع إلى خوادمنا:</strong> نحن لا نملك ولا نتيح الوصول إلى بيانات مراجعيك الطبية على خوادمنا أبداً.</li>
+              <li><strong>النسخ الاحتياطي (اختياري):</strong> يتم رفعه مشفراً إلى حسابك الشخصي على Google Drive — وأنت وحدك من يملك صلاحية فك تشفيره.</li>
+            </ul>
+            <div class="ans-note">🔐 المعمارية البرمجية للتطبيق قائمة على مبدأ "الخصوصية عبر التصميم" (Privacy by Design).</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">هل تشارك ميزة الاستخراج الذكي (OCR) بيانات المريض الشخصية؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            كلا على الإطلاق. معالجة الصور واستخراج النصوص تتم بأمان وسرية مطلقة:
+            <ul>
+              <li>تتم معالجة الصورة لاستخراج الأرقام والنصوص العلمية فقط، دون ربطها بهوية المراجع (كالاسم أو رقم الهاتف).</li>
+              <li>يتم حذف الصورة من ذاكرة المعالجة فورياً بعد استخراج القيم وإعادتها للتطبيق.</li>
+              <li>تُحفظ كافة البيانات المستخرجة محلياً على جهازك حصراً.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">هل التطبيق آمن للاستخدام في العيادات والمراكز الرسمية؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            نعم، صُمم مرشد ليتوافق مع أعلى معايير الأمان الرقمي في القطاع الصحي:
+            <ul>
+              <li><strong>تشفير AES-256:</strong> نفس معيار التشفير المعتمد في الأنظمة المصرفية والبنكية.</li>
+              <li><strong>تثبيت شهادات الأمان (SSL Pinning):</strong> لمنع أي اعتراض للاتصالات السحابية.</li>
+              <li><strong>منع لقطات الشاشة:</strong> تفعيل تلقائي لحماية الشاشات الحساسة لبيانات المرضى.</li>
+              <li><strong>كشف الروت والجيلبريك:</strong> تنبيه المستخدم في حال كان الجهاز في بيئة غير آمنة.</li>
+              <li><strong>القفل البيومتري:</strong> دعم الفتح عبر بصمة الإصبع أو بصمة الوجه (Face ID).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">كيف يمكنني حذف حسابي وكافة بياناتي نهائياً؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            يمكنك طلب الحذف بطريقتين:
+            <ul>
+              <li><strong>من داخل التطبيق (الأسرع):</strong> الإعدادات ← الحساب ← حذف الحساب والبيانات ← تأكيد الحذف</li>
+              <li><strong>عبر الموقع الإلكتروني:</strong> من خلال صفحة <a href="../data-deletion.html" style="color:var(--m-primary)">طلب حذف البيانات</a> على موقعنا</li>
+            </ul>
+            <div class="ans-note warning">⚠️ عملية حذف الحساب نهائية ولا يمكن التراجع عنها. تأكد من تصدير أي بيانات تحتاجها قبل التأكيد.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ Category 5: Tech Support ══ -->
+    <div class="faq-group reveal" data-cat="support">
+      <div class="faq-group-title">
+        <span class="faq-cat-icon">🛠️</span>
+        الدعم الفني
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">كيف أتواصل مع فريق الدعم الفني؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            فريق دعم مرشد جاهز لمساعدتك عبر عدة قنوات سريعة:
+            <ul>
+              <li><strong>تيليجرام:</strong> محادثة فورية ومباشرة عبر <a href="https://t.me/+447716301961" target="_blank" style="color:var(--m-primary)">قناة الدعم الفني</a></li>
+              <li><strong>واتساب:</strong> محادثة فورية لخدمة المشتركين عبر <a href="https://wa.me/447716301961" target="_blank" style="color:var(--m-primary)">واتساب خدمة العملاء</a></li>
+              <li><strong>البريد الإلكتروني:</strong> <a href="mailto:support@feshealthtech.com">support@feshealthtech.com</a></li>
+              <li><strong>من داخل التطبيق:</strong> الإعدادات ← الدعم الفني ← إرسال رسالة</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">فقدت هاتفي، هل بيانات مراجعي في أمان؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            قاعدة بيانات مرشد مشفرة بالكامل، وإليك ما ينبغي فعله:
+            <ul>
+              <li><strong>التشفير يحميك:</strong> قاعدة البيانات مشفرة بـ AES-256 ولا يمكن فتحها دون مفاتيح عتاد الجهاز المفقود.</li>
+              <li><strong>الإجراء الفوري:</strong> قم بتسجيل الخروج من حساب Google المرتبط بالجهاز المفقود عبر myaccount.google.com ← الأجهزة.</li>
+              <li><strong>إذا كان النسخ الاحتياطي مفعلاً:</strong> على هاتفك الجديد، سجّل الدخول بنفس حساب Google وستتم استعادة بياناتك تلقائياً من Google Drive.</li>
+            </ul>
+            <div class="ans-note warning">⚠️ فعّل النسخ الاحتياطي الآن قبل أن تحتاجه: الإعدادات ← النسخ الاحتياطي ← تفعيل النسخ على Google Drive.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span class="faq-question-text">كيف أقترح ميزة جديدة أو أبلغ عن مشكلة؟</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            نرحب بكافة مقترحاتكم وملاحظاتكم — فأنتم من يساهم في بناء وتطوير مرشد:
+            <ul>
+              <li><strong>اقتراح ميزة:</strong> راسلنا عبر <a href="mailto:feedback@feshealthtech.com">feedback@feshealthtech.com</a> موضحاً الميزة وفائدتها لعيادتك.</li>
+              <li><strong>الإبلاغ عن مشكلة:</strong> راسلنا عبر <a href="mailto:support@feshealthtech.com">support@feshealthtech.com</a> مع إرفاق لقطة شاشة.</li>
+              <li><strong>من داخل التطبيق:</strong> الإعدادات ← إرسال ملاحظات واقتراحات.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="reveal" style="text-align:center; margin-top:64px; padding:48px 32px; background:var(--m-surface); border:1px solid var(--m-border); border-radius:var(--m-radius-xl);">
+      <div class="m-label" style="justify-content:center;">لم تجد إجابة لسؤالك؟</div>
+      <h2 class="m-title" style="font-size:1.6rem;">فريقنا مستعد دائماً لمساعدتك</h2>
+      <p style="color:var(--m-text-muted); margin-bottom:28px; font-size:0.95rem;">لا تتردد في مراسلتنا مباشرة وسنكون سعداء بالرد على استفساراتك فوراً</p>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+        <a href="contact.html" class="m-btn m-btn-primary m-btn-lg">✉️ تواصل معنا الآن</a>
+        <a href="index.html#download" class="m-btn m-btn-outline m-btn-lg">📲 حمّل التطبيق مجاناً</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="../assets/logo.webp" alt="FES HealthTech" class="footer-logo" width="284" height="284" />
+        <div class="footer-app-name">مرشد</div>
+        <div class="footer-app-sub">تطبيق مرشد</div>
+        <p>المنصة الذكية المتكاملة لأخصائيي التغذية لإدارة العيادات وتصميم الحميات — تم التطوير بواسطة <a href="https://feshealthtech.com/">FES HealthTech</a>.</p>
+        <div class="m-footer-social">
+          <div class="m-footer-social-btn" title="X">𝕏</div>
+          <div class="m-footer-social-btn" title="Instagram">📸</div>
+          <div class="m-footer-social-btn" title="YouTube">▶️</div>
+        </div>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">التطبيق</h3>
+        <ul class="m-footer-links">
+          <li><a href="index.html#features">المميزات</a></li>
+          <li><a href="index.html#wallet">نظام النقاط</a></li>
+          <li><a href="index.html#pricing">الأسعار</a></li>
+          <li><a href="index.html#download">التحميل</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">الدعم الفني</h3>
+        <ul class="m-footer-links">
+          <li><a href="faq.html">الأسئلة الشائعة</a></li>
+          <li><a href="../data-deletion.html">حذف البيانات</a></li>
+          <li><a href="https://feshealthtech.com/">عن الشركة</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">قانوني</h3>
+        <ul class="m-footer-links">
+          <li><a href="../privacy-policy.html">سياسة الخصوصية</a></li>
+          <li><a href="../terms-of-use.html">شروط الاستخدام</a></li>
+          <li><a href="../refund-policy.html">سياسة الاسترداد</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. جميع الحقوق محفوظة.</p>
+      <div class="m-footer-bottom-links">
+        <a href="../privacy-policy.html">الخصوصية</a>
+        <a href="../terms-of-use.html">الشروط</a>
+        <a href="../data-deletion.html">حذف البيانات</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/murshid-script.js"></script>
+<script>
+  /* ── FAQ Search ── */
+  (function () {
+    const input = document.getElementById('faqSearch');
+    const empty = document.getElementById('faqEmpty');
+    if (!input) return;
+
+    input.addEventListener('input', function () {
+      const query = this.value.trim().toLowerCase();
+      let totalVisible = 0;
+
+      document.querySelectorAll('.faq-group').forEach(group => {
+        let groupVisible = 0;
+        group.querySelectorAll('.faq-item').forEach(item => {
+          const text = item.querySelector('.faq-question-text').textContent.toLowerCase();
+          const answerText = item.querySelector('.faq-answer-inner').textContent.toLowerCase();
+          const match = !query || text.includes(query) || answerText.includes(query);
+          item.style.display = match ? 'block' : 'none';
+          if (match) { groupVisible++; totalVisible++; }
+        });
+        group.style.display = groupVisible > 0 ? 'block' : 'none';
+      });
+
+      if (query) {
+        document.querySelectorAll('.faq-filter-btn').forEach(btn => btn.classList.remove('active'));
+      }
+
+      empty.style.display = totalVisible === 0 ? 'block' : 'none';
+    });
+  })();
+</script>
+
+</body>
+</html>

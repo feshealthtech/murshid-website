@@ -130,7 +130,7 @@
       <div class="m-label">Legal</div>
       <h1 class="m-title">Privacy Policy</h1>
       <p class="m-subtitle" style="margin:0;">We are committed to protecting your data and your patients' data with the highest security and privacy standards.</p>
-      <span class="legal-last-updated">Last Updated: October 5, 2026</span>
+      <span class="legal-last-updated">Last Updated: October 14, 2026</span>
     </div>
   </div>
 </section>
@@ -152,7 +152,7 @@
         <li><a href="#section5">5 — Data Protection and Geographical Residency</a></li>
         <li><a href="#section6">6 — Backup and Google API Requirements</a></li>
         <li><a href="#section7">7 — Advertising and Usage Tracking</a></li>
-        <li><a href="#section8">8 — Privacy of Public Bio-Site Visitors &amp; Abuse Reporters</a></li>
+        <li><a href="#section8">8 — Privacy of Public Bio-Sites, Verification Portal &amp; Reporters</a></li>
         <li><a href="#section9">9 — User Rights and Global Regulations</a></li>
         <li><a href="#section10">10 — Data Retention and Deletion</a></li>
         <li><a href="#section11">11 — Privacy of Minors</a></li>
@@ -168,13 +168,17 @@
       <div class="legal-section" id="section1">
         <h2 class="legal-section-title"><span class="section-num">1</span> Introduction and Service Definition</h2>
         <p>Welcome to <strong>Murshid</strong>, the smart clinic management app designed for dietitians. This app is developed and fully managed by <strong>FES HealthTech</strong>, a company specializing in nutritional care technologies and medical content platforms.</p>
-        <p>This document defines the privacy policy applicable to the Murshid app, detailing the data we collect, how we use it, who we may share it with, and the safeguards we employ to protect it. <strong>This policy was last updated on October 5, 2026.</strong></p>
+        <p>This document defines the privacy policy applicable to the Murshid app, detailing the data we collect, how we use it, who we may share it with, and the safeguards we employ to protect it. <strong>This policy was last updated on October 14, 2026.</strong></p>
         <div class="legal-highlight">
           <p>⚠️ <strong>Important Notice:</strong> Please read this policy carefully before using the app. Your use of the Murshid app implies your full acceptance of the terms, conditions, and practices described in this document. If you do not agree to any of these terms, please stop using the app immediately.</p>
         </div>
         <p>The use of the Murshid app is restricted to qualified professionals in nutrition and dietetics. This app does not constitute a medical service provided directly to patients; rather, it is a professional tool used exclusively by licensed healthcare providers.</p>
         <div class="legal-highlight">
-          <p>🛡️ <strong>Protection of Intellectual Property and Technical Assets:</strong> All components of the food database, the central dictionaries of food groups (500 hierarchical groups), metabolic calculation engines, and interaction matching algorithms are the exclusive intellectual property of <strong>FES HealthTech</strong>. Data scraping, reverse engineering, or repurposing them outside the scope of the app without official written consent is strictly prohibited.</p>
+          <p>🛡️ <strong>Privacy-by-Design &amp; Zero-Knowledge Standard:</strong> Murshid is architected around the core principle of Privacy-by-Design. All patient medical records, physical assessments, and clinical files are stored strictly locally on the specialist's personal device under hardware-backed encryption, guaranteeing that FES HealthTech never has access to, nor retains custody over, confidential patient health information.</p>
+        </div>
+        <div class="legal-highlight" style="border-left: 4px solid #ef4444;">
+          <p style="color: #ef4444; margin-bottom: 4px;"><strong>🚨 Non-Emergency Platform Notice:</strong></p>
+          <p>Murshid, the Patient Follow-up Web Form, and all associated specialist web profiles are administrative practice management and computational tools, NOT emergency medical services or acute response channels. In any acute, urgent, or life-threatening medical situation, patients and visitors must immediately contact local emergency rescue services (such as 997, 911, or 112) or seek immediate emergency room care.</p>
         </div>
       </div>
 
@@ -196,9 +200,9 @@
 
         <h3>C) Patient Data (Including Encrypted Patient Web Form)</h3>
         <div class="legal-highlight">
-          <p>🔒 <strong>Strict Local Storage Principle:</strong> All patient data — including names, demographic data, physical measurements, dietary logs, and nutrition plans — is stored <strong>ONLY locally</strong> on your device using the <strong>Isar DB</strong> database.</p>
+          <p>🔒 <strong>Strict Local Storage &amp; Zero Cloud Synchronization:</strong> All patient clinical records — including names, demographic data, physical measurements, dietary logs, laboratory markers, and nutrition plans — are stored <strong>ONLY locally</strong> on your device using the <strong>Isar DB</strong> database. FES HealthTech cloud servers maintain ZERO repositories, zero cloud synchronizations, and zero backups of patient data. Custody, retention, and independent backups (via personal Google Drive) reside entirely with the treating specialist.</p>
         </div>
-        <p><strong>Patient Follow-up Web Form (End-to-End Encrypted):</strong> If you choose to utilize the Patient Follow-up Web Form feature to collect data from your patients, the App generates a secure, unique E2EE form link. The patient accesses this form via their web browser, where all input data (including physical measurements, health history, dietary assessments, and uploaded images) is encrypted <strong>locally in the patient's browser</strong> prior to transmission. This encryption uses the military-grade <strong>AES-256-GCM</strong> algorithm combined with asymmetric <strong>NaCl/X25519</strong> key exchange. The encrypted payload is downloaded as a secure <code>.mrshed</code> file which the patient shares with you directly (e.g., via WhatsApp). At no stage does FES HealthTech collect, store, transmit, or have access to either the decryption keys or the patient's medical data on its servers. The decryption and import process occur exclusively on your local device.</p>
+        <p><strong>Patient Follow-up Web Form (End-to-End Encrypted):</strong> If you choose to utilize the Patient Follow-up Web Form feature to collect data from your patients, the App generates a secure, unique E2EE form link. The patient accesses this form via their web browser, where all input data (including physical measurements, health history, dietary assessments, and uploaded images) is encrypted <strong>locally in the patient's browser</strong> prior to transmission. This encryption uses authenticated <strong>AES-256-GCM</strong> cipher combined with asymmetric <strong>NaCl/X25519</strong> key exchange. The encrypted payload is saved as a secure client data package that the patient shares directly with the specialist (e.g., via direct secure messaging or email). At no stage does FES HealthTech collect, store, transmit, or have access to either the decryption keys or the patient's medical data on its servers. The decryption and import process occur exclusively on your local device.</p>
 
         <h3>D) Usage and Analytics Data</h3>
         <p>We use <strong>Firebase Analytics</strong> to collect anonymous data about how you use the app, such as screens visited, frequency of using certain features, and session durations. This data is used exclusively to improve the user experience and develop features.</p>
@@ -214,6 +218,12 @@
 
         <h3>H) Security and Anti-Fraud Data (Time & Connectivity)</h3>
         <p>To protect your subscription and ensure data integrity, the app collects and processes your device's System Time and Date, and stores local timestamps of your "Last Online Sync" and "Last Seen Activity". The app also makes periodic anonymous pings to public Network Time Protocol (NTP) servers (e.g., Google Time Servers) to verify the true global time. No personal data is attached to these time-check requests.</p>
+
+        <h3>I) Biometric Verification Data (Strict Zero-Access Hardware Authentication)</h3>
+        <p>If you choose to enable the Biometric Security Lock (Face ID, Touch ID, or Android Biometric Prompt) to protect patient clinical files or financial clinic data, all biometric scanning and template matching are executed entirely on your physical device by your operating system's dedicated hardware security architecture (such as the Apple Secure Enclave or Android Trusted Execution Environment / Keystore). FES HealthTech never accesses, captures, intercepts, collects, or stores your fingerprint patterns, facial geometry, or biometric credentials. Murshid receives only an encrypted cryptographic token from the local operating system confirming successful authentication.</p>
+
+        <h3>J) Clinical Audio Notes &amp; Voice Memos (Strict Local Storage)</h3>
+        <p>Murshid includes a clinical notebook feature allowing you to record verbal patient observations, dictations, or clinical voice memos. When you record audio, the sound file is stored strictly in your device's local application sandbox. Audio recordings are NEVER uploaded to cloud servers, never processed through external cloud transcription APIs, never monitored, and never accessible to FES HealthTech or third parties.</p>
       </div>
 
       <div class="m-divider"></div>
@@ -229,9 +239,10 @@
           <li><strong>Google Drive Backup:</strong> If you voluntarily enable the backup feature, your database file is encrypted locally and then uploaded securely to your private space on Google Drive.</li>
           <li><strong>Communication and Notifications:</strong> We may contact you via your email to send important service updates, security notices, or technical support responses.</li>
           <li><strong>Service Improvement and Development:</strong> Analyzing anonymous usage data to understand usage patterns, improve the user interface, and fix bugs.</li>
-          <li><strong>Subscription Verification & Anti-Fraud:</strong> We utilize your device's time data and NTP time-checks strictly to manage the "Offline Grace Period" (allowing you to use the app without internet for up to 45 days) and to detect fraudulent time manipulations (Monotonic Time Traps) that attempt to bypass subscription renewals or security locks.</li>
+          <li><strong>Subscription Verification & Anti-Fraud:</strong> We utilize your device's time data and NTP time-checks strictly to manage the "Offline Grace Period" (allowing you to use the app without internet for up to 45 days) and to prevent clock tampering or replay attempts designed to artificially bypass subscription renewals or security locks.</li>
           <li><strong>Device Conflict and Session Security:</strong> We use your device name, approximate location, and active session logs to monitor for unauthorized access. If simultaneous logins from different devices are detected, our system will automatically manage the conflict by securing the account or terminating older sessions, protecting your license and data.</li>
           <li><strong>Patient Follow-up Web Form Feature:</strong> We provide the cryptographic software libraries (in-browser Web Crypto API and local app decryption) to facilitate the secure encryption and decryption of patient forms. FES HealthTech does not collect, access, or utilize any data processed through this feature.</li>
+          <li><strong>Nutritional Database Queries (USDA FoodData Central):</strong> When you perform an online food search within the Food Bank, the App transmits the generic food name or search keyword (e.g., "oats", "almonds") via secure Firebase Cloud Functions to the official USDA FoodData Central API to retrieve analytical nutritional values. Food search queries contain purely food-related query strings and contain zero patient identifiers, clinical tags, or personal health information.</li>
         </ul>
         <div class="legal-highlight">
           <p>✅ <strong>Explicit Guarantee:</strong> We do not use your data for marketing purposes for third parties, and we do not sell any data to any entity whatsoever.</p>
@@ -299,12 +310,51 @@
           <li><strong>OCR Image Processing and Privacy Protection:</strong> When the OCR feature is invoked, the selected image is transmitted upon the dietitian's request via an encrypted channel (SSL/TLS) for digital and real-time processing via the API, without any human review and without being saved on the company's servers. Google's privacy terms are enforced, which prevent the exploitation of API data to train models, and the dietitian is always advised to focus the camera on the medical table area and the required numbers.</li>
           <li><strong>Screenshot Prevention and Privacy Mode:</strong> Screenshot protection is automatically enabled on sensitive screens, in addition to the "Financial Privacy Mode" feature that obscures numbers and data with a single touch in front of clinic visitors.</li>
           <li><strong>SSL Pinning:</strong> The app uses SSL Pinning technology to verify the identity of authorized servers, preventing Man-in-the-Middle (MitM) attacks.</li>
-          <li><strong>Offline Security & Anti-Tampering Mechanisms:</strong> When operating in "Offline Mode" during the permitted grace period, the app employs a local Monotonic Time Tracker to protect the integrity of the encrypted database. Any detected attempt to tamper with the device's clock to extend the grace period will trigger an immediate protective lock, securing the patient data until an online authentication is successfully completed.</li>
-          <li><strong>Temporary Local Cache Encryption and Automated Purging:</strong> To support local synchronization, E2EE exports, and PDF generation, the App temporarily stores encrypted ZIP and verification artifacts in a secure local cache on the dietitian's device. To prevent storage accumulation and ensure data security, these temporary files are subject to automated purging, clearing local folders after 2 hours and dynamic restoration archives (`.msb` files) after 12 hours.</li>
+          <li><strong>Offline Security &amp; Anti-Tampering Integrity:</strong> When operating in offline mode during permitted offline grace periods, the App utilizes local hardware-backed monotonic time counters to safeguard the cryptographic integrity of local databases. Any detected tampering with the device's clock to artificially prolong offline periods engages an immediate security freeze on local decryption until a genuine online authentication is completed.</li>
+          <li><strong>Temporary Local Cache Encryption &amp; Automated Purging:</strong> To support local synchronization, secure document exports, and PDF generation, the App temporarily caches encrypted transfer bundles within sandboxed local application directories on the specialist's device. To minimize attack surface and prevent data residue, these temporary artifacts are automatically shredded and purged following defined lifecycles (temporary staging folders within 2 hours, and encrypted backup staging archives within 12 hours).</li>
         </ul>
         <div class="legal-highlight">
-          <p>🏥 <strong>Dietitian's Responsibility and Clinical/Tax Disclaimer:</strong> As a licensed dietitian, you are the primary legal and ethical party responsible for your patients' data and the accuracy of the tax and financial declarations issued from your clinic. The Murshid app is strictly an auxiliary technical tool, and FES HealthTech bears no legal, tax, or clinical responsibility toward medical decisions or accounting declarations submitted to government entities in any country worldwide.</p>
+          <p>🔒 <strong>Zero-Knowledge Architecture &amp; Data Residency Guarantee:</strong> Because all sensitive patient records, consultation notes, and health metrics are encrypted locally with hardware-bound keys and never touch FES HealthTech cloud servers, FES HealthTech operates in an absolute Zero-Knowledge capacity regarding patient health information. Only the practicing specialist possesses the cryptographic keys to decrypt and view patient records, satisfying the strictest global health data residency mandates.</p>
         </div>
+
+        <p class="legal-sub-title">Device Hardware Permissions Disclosures (Operating System Runtime Controls)</p>
+        <p>To deliver local clinical functionality and workflows, Murshid requests access to specific hardware capabilities on your mobile device. We strictly adhere to the principle of least privilege, activating permissions only when necessary for user-initiated clinical actions:</p>
+        <table class="legal-table">
+          <thead>
+            <tr>
+              <th>Permission</th>
+              <th>Platform Identifier</th>
+              <th>Clinical Purpose &amp; Privacy Safeguards</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Camera</strong></td>
+              <td><code>android.permission.CAMERA</code><br /><code>NSCameraUsageDescription</code></td>
+              <td>Used exclusively for two user-initiated actions: (1) Capturing images of laboratory test tables or prescription sheets for on-demand OCR text extraction; and (2) Real-time scanning of food product barcodes (UPC/EAN) in the Food Bank. Barcode image frames are processed entirely in transient local RAM on your device and are never recorded, cached, or transmitted to company servers.</td>
+            </tr>
+            <tr>
+              <td><strong>Microphone / Audio</strong></td>
+              <td><code>android.permission.RECORD_AUDIO</code><br /><code>NSMicrophoneUsageDescription</code></td>
+              <td>Used strictly when you voluntarily record verbal clinical memos, audio notes, or consultation dictations within the Clinical Notebook feature. Audio files are saved directly into the sandboxed local application directory on your device. Audio recordings are NEVER uploaded to cloud servers, never processed through external cloud transcription APIs, and never accessible to FES HealthTech or third parties.</td>
+            </tr>
+            <tr>
+              <td><strong>Notifications &amp; Alarms</strong></td>
+              <td><code>android.permission.POST_NOTIFICATIONS</code><br /><code>RECEIVE_BOOT_COMPLETED</code>, <code>VIBRATE</code></td>
+              <td>Used solely to deliver scheduled patient appointment reminders, clinical follow-up alerts, and subscription renewal warnings. Scheduled alarms are managed locally on your device and do not transmit calendar contents or patient names to external tracking servers.</td>
+            </tr>
+            <tr>
+              <td><strong>Local Storage &amp; Files</strong></td>
+              <td><code>READ/WRITE_EXTERNAL_STORAGE</code> (Legacy Android)</td>
+              <td>Used exclusively to allow you to save and export client-side PDF documents (such as meal plans, clinical progress reports, and tax receipts) to your device storage or attach images to patient clinical files. Murshid never inspects, accesses, or scans personal photos or unrelated documents stored on your device.</td>
+            </tr>
+            <tr>
+              <td><strong>Biometrics</strong></td>
+              <td><code>USE_BIOMETRIC</code>, <code>USE_FINGERPRINT</code><br /><code>NSFaceIDUsageDescription</code></td>
+              <td>Used strictly to allow you to lock/unlock the Murshid application or restrict access to the Financial Privacy screen using Touch ID, Face ID, or Android Biometrics. Biometric authentication is managed entirely by the operating system's hardware secure enclave; FES HealthTech has zero access to biometric data.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <div class="m-divider"></div>
@@ -344,14 +394,25 @@
         </ul>
         <h3>Firebase Analytics</h3>
         <p>We use Firebase Analytics to analyze app usage. You can turn off analytics from the app settings at any time. All Firebase Analytics data is anonymous, aggregated, and not linked to your personal identity.</p>
+
+        <h3>HTML5 LocalStorage Disclosures (Web Platforms &amp; Portals)</h3>
+        <p>Our public web properties, specialist Bio-Sites, and the Verification Portal (<code>/verify/</code>) do not deploy commercial tracking cookies, third-party advertising cookies, or cross-site tracking scripts. We utilize standard, strictly necessary <strong>HTML5 LocalStorage</strong> purely to retain functional client-side user interface preferences:</p>
+        <ul>
+          <li><strong>Language Preferences (<code>murshid_lang</code>, <code>murshid_verify_lang</code>):</strong> Stored locally in your browser to remember your chosen interface language (Arabic or English) across page visits and reloads.</li>
+          <li><strong>No Tracking &amp; Zero Cross-Site Sharing:</strong> These local storage values contain zero personal identifiers, browsing history, or biometric data, and are never transmitted to third parties, advertising networks, or analytics providers.</li>
+          <li><strong>User Control:</strong> You can clear your browser's LocalStorage at any time via your browser settings without affecting the core accessibility of our web pages.</li>
+        </ul>
+
+        <h3>California Do Not Track (DNT) &amp; Global Privacy Control (GPC) Signals</h3>
+        <p>California law (CalOPPA and CCPA/CPRA) requires operators of websites and online services to disclose how they respond to "Do Not Track" (DNT) signals. Because FES HealthTech web properties, specialist Bio-Sites, and the Verification Portal do not track visitors across third-party websites or engage in cross-context behavioral advertising, our websites do not alter their behavior upon receiving automated browser DNT signals or Global Privacy Control (GPC) signals. We do not sell or share personal information with third parties for cross-context behavioral advertising.</p>
       </div>
 
       <div class="m-divider"></div>
 
       <!-- Section 8 -->
       <div class="legal-section" id="section8">
-        <h2 class="legal-section-title"><span class="section-num">8</span> Privacy of Public Specialist Bio-Site Visitors and Abuse Reporters</h2>
-        <p>To support independent dietitians and specialists in showcasing their practice, the Murshid platform enables specialists to publish public digital clinics and bio-sites (accessible via URLs such as <code>https://murshid.feshealthtech.com/p/:slug</code>). This section outlines how we handle privacy, data flow, and telemetry for visitors of these public sites and individuals submitting reports:</p>
+        <h2 class="legal-section-title"><span class="section-num">8</span> Privacy of Public Specialist Bio-Sites, Verification Portal, and Abuse Reporting</h2>
+        <p>To support independent dietitians and specialists in showcasing their practice, the Murshid platform enables specialists to publish public digital clinics and bio-sites (accessible via URLs such as <code>https://murshid.feshealthtech.com/p/:slug</code>) and issue cryptographically verifiable clinical documents. This section outlines how we handle privacy, data flow, and telemetry for visitors of these public sites, verification portal users, and individuals submitting reports:</p>
 
         <p class="legal-sub-title">A) Public Bio-Site Visitors — Zero Behavioral Profiling &amp; Minimal Telemetry</p>
         <p>When public visitors, prospective clients, or patients browse a Specialist Bio-Site:</p>
@@ -374,6 +435,14 @@
           <li><strong>Strict Reporter Confidentiality:</strong> All reports and reporter identities are treated as strictly confidential. FES HealthTech will never disclose the reporter's personal identity or contact details to the reported specialist.</li>
           <li><strong>Administrative Storage &amp; Access:</strong> Violation reports are stored in secure administrative cloud collections accessible exclusively by authorized FES HealthTech trust and compliance personnel with multi-factor authentication, solely for investigating violations and enforcing moderation decisions.</li>
         </ul>
+
+        <p class="legal-sub-title">E) Official Document &amp; Specialist Credential Verification Portal (<code>/verify/</code>)</p>
+        <p>The Murshid Verification Portal allows patients, clinical partners, and institutions to verify the cryptographic authenticity of meal plans, certificates, and specialist credentials. When querying the Verification Portal:</p>
+        <ul>
+          <li><strong>Zero Clinical Data Transmission:</strong> The verification engine only receives and processes cryptographic hashes, Ed25519 digital signature payloads, and issued document metadata (such as document ID, issuance timestamp, and verification status). The private clinical contents, diagnostic narratives, and patient notes remain strictly local on the specialist's device and are never ingested, reconstructed, or stored by the verification server.</li>
+          <li><strong>Display of Verified Specialist Credentials:</strong> For verified records, the portal presents authorized public verification details of the issuing specialist (e.g., Verified Specialist Name, Professional Title, and Verification Badge) to assure the public against fraudulent impersonation and uncertified practice.</li>
+          <li><strong>Abuse Prevention &amp; Cryptographic Rate Limiting:</strong> Minimal operational telemetry (transient IP headers and Firebase App Check attestation tokens) is evaluated in real time solely to enforce query rate limits and defend against automated cryptographic brute-force scraping.</li>
+        </ul>
       </div>
 
       <div class="m-divider"></div>
@@ -390,13 +459,19 @@
           <li><strong>Right to Withdraw Consent:</strong> You can at any time revoke the app's access to your Google or Google Drive account through your Google account security settings.</li>
         </ul>
         <div class="legal-highlight">
-          <p>👨‍⚕️ <strong>Important Note Regarding Patient Data (Google Play & Apple Data Safety):</strong> Since your patients' data is stored entirely locally on your device only, you are the primary and sole controller of it (Data Controller). You can add, modify, or delete any patient file directly from within the app without needing to submit a request to the company. FES HealthTech has no copy of this clinical data and cannot access it.</p>
+          <p>👨‍⚕️ <strong>Roles of Data Controller and Data Processor (GDPR &amp; Saudi PDPL):</strong> Under applicable data protection frameworks, including the Saudi Personal Data Protection Law (PDPL) and EU General Data Protection Regulation (GDPR):</p>
+          <ul style="margin: 8px 0 0 20px; font-size: 0.95rem;">
+            <li><strong>Specialist as Sole Data Controller:</strong> The registered specialist is the independent Data Controller for all patient medical records, clinical notes, and patient contact details. The specialist determines the legal basis, retention, and processing purposes for all patient data.</li>
+            <li><strong>Specialist Patient Notice Mandate:</strong> The specialist is solely and independently responsible for providing their patients with a legally compliant clinical privacy notice and securing informed consent under applicable health data protection statutes prior to collecting health measurements or utilizing the Patient Follow-up Web Form. FES HealthTech does not collect or process patient consents on behalf of specialists.</li>
+            <li><strong>FES HealthTech is NOT a Data Processor or Custodian of Patient Data:</strong> Because patient data is stored locally under hardware encryption without cloud storage, FES HealthTech never acquires custody, access, or processor status over patient health data.</li>
+            <li><strong>FES HealthTech as Controller of Platform Account Data:</strong> FES HealthTech acts as the Data Controller solely for the specialist's own commercial account credentials, subscription invoices, wallet ledger, and authentication logs.</li>
+          </ul>
         </div>
 
-        <p class="legal-sub-title">Data Protection Officer (DPO) & Patient Request Limitation</p>
+        <p class="legal-sub-title">Data Protection Officer (DPO) &amp; Patient Request Limitation</p>
         <p>FES HealthTech has designated a Data Protection Officer (DPO) to handle inquiries regarding the personal data of dietitians (accounts, subscription billing, and points history). You can contact our DPO team at <a href="mailto:privacy@feshealthtech.com">privacy@feshealthtech.com</a>. Please note that since FES HealthTech has zero access to patient data, we are legally unable to process or fulfill any requests for access, rectification, portability, or deletion submitted directly by patients. All patient data inquiries must be addressed directly to the treating dietitian who acts as the Data Controller.</p>
 
-        <p class="legal-sub-title">App Store Privacy Disclosures Mapping (Google Play & Apple App Store)</p>
+        <p class="legal-sub-title">App Store Privacy Disclosures Mapping (Google Play &amp; Apple App Store)</p>
         <p>For transparency during application store reviews, the data collected from the dietitian maps directly to the following official store privacy categories:</p>
         <ul>
           <li><strong>Contact Info:</strong> Email address (Used for authentication; Linked to User).</li>
@@ -441,6 +516,16 @@
               <td>Specialist Bio-Site Content (Cloud Firestore)</td>
               <td>For the duration of active publication</td>
               <td>Immediately hidden upon unpublishing; permanently deleted within 30 business days upon account deletion</td>
+            </tr>
+            <tr>
+              <td>Document Verification Records (Public Cloud Firestore)</td>
+              <td>For the duration of active document validity or specialist account tenure</td>
+              <td>Revoked immediately upon specialist request; permanently deleted within 30 business days upon account termination</td>
+            </tr>
+            <tr>
+              <td>Web LocalStorage Preferences (Browser Cache)</td>
+              <td>Until browser storage is cleared by user</td>
+              <td>Stored purely client-side; zero retention on company servers</td>
             </tr>
             <tr>
               <td>Abuse and Violation Reports (Cloud Firestore)</td>
@@ -491,6 +576,8 @@
           <li><strong>Implied Consent:</strong> Your continued use of the app after being notified of changes constitutes implied consent to the updated version of the policy.</li>
           <li><strong>Right of Refusal:</strong> If you do not agree to the material changes, you have the right to delete your account and data before the new policy takes effect, following the deletion procedures outlined in Section 10.</li>
         </ul>
+        <p class="legal-sub-title">Governing Language &amp; Prevailing Version</p>
+        <p>This Privacy Policy is prepared, executed, and published in the English language. In the event of any conflict, discrepancy, ambiguity, or divergence between the English text of this Privacy Policy and any translation into Arabic or any other language, the English language version shall exclusively govern, control, and prevail in all legal, administrative, regulatory, and arbitral proceedings worldwide.</p>
         <p>It is recommended to review this policy periodically for the latest version. You can always find the newest version at this link: <a href="privacy-policy.html">privacy-policy.html</a>.</p>
       </div>
 

@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Sorry, page not found - Murshid App" />
-  <title>404 - Page Not Found | Murshid App</title>
+  <meta name="robots" content="noindex, follow" />
+  <title id="htmlTitle">404 - Page Not Found | Murshid App</title>
   <script>
     (function() {
       var path = window.location.pathname;
@@ -24,6 +25,9 @@
       }
     })();
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared/murshid-style.css" />
   <link rel="stylesheet" href="shared/index-style.css" />
   <link rel="icon" type="image/webp" href="assets/logo-sq.webp" />
@@ -39,12 +43,16 @@
       flex-direction: column;
     }
 
+    html[dir="rtl"] body {
+      font-family: 'Cairo', 'Noto Kufi Arabic', system-ui, sans-serif !important;
+    }
+
     .error-container {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: calc(var(--nav-height) + 60px) 24px 80px;
+      padding: calc(var(--nav-height, 80px) + 60px) 24px 80px;
       position: relative;
       overflow: hidden;
       background-image: radial-gradient(circle at 50% 30%, rgba(20, 184, 166, 0.08) 0%, transparent 60%);
@@ -106,6 +114,8 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -114,23 +124,23 @@
   <!-- NAVBAR -->
   <nav class="m-nav" id="m-nav">
     <div class="container m-nav-inner">
-      <a href="index.html" class="m-nav-brand" aria-label="Home">
+      <a href="index.html" class="m-nav-brand" id="brandLink" aria-label="Home">
         <img src="assets/logo.webp" alt="FES HealthTech" class="brand-logo" />
         <div class="brand-app">
-          <span class="brand-name-ar">Murshid</span>
-          <span class="brand-name-en">MURSHID APP</span>
+          <span class="brand-name-ar" id="brandTextAr">Murshid</span>
+          <span class="brand-name-en" id="brandTextEn">MURSHID APP</span>
         </div>
       </a>
       <ul class="m-nav-links" role="list">
-        <li><a href="index.html#features">Features</a></li>
-        <li><a href="index.html#wallet">Points System</a></li>
-        <li><a href="index.html#how">How It Works?</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="index.html#features" id="navFeatures">Features</a></li>
+        <li><a href="index.html#wallet" id="navWallet">Points System</a></li>
+        <li><a href="index.html#how" id="navHow">How It Works?</a></li>
+        <li><a href="index.html#pricing" id="navPricing">Pricing</a></li>
+        <li><a href="faq.html" id="navFaq">FAQ</a></li>
+        <li><a href="contact.html" id="navContact">Contact Us</a></li>
         <li class="m-nav-dropdown">
           <button class="m-nav-dropdown-btn" aria-haspopup="true">
-            <span>Legal</span>
+            <span id="navLegal">Legal</span>
             <span style="font-size:0.75rem;">▾</span>
           </button>
           <div class="m-nav-dropdown-menu">
@@ -142,42 +152,53 @@
         </li>
       </ul>
       <div class="m-nav-actions">
-        <a href="index.html#download" class="m-btn m-btn-primary">📥 Download Free</a>
+        <a href="javascript:void(0)" class="m-btn m-btn-secondary" id="langToggleBtn" style="margin-right:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" onclick="toggle404Lang()">🌐 العربية</a>
+        <a href="index.html#download" class="m-btn m-btn-primary" id="navDownload">📥 Download Free</a>
       </div>
       <button class="m-hamburger" id="m-hamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
+
+  <!-- MOBILE MENU -->
   <div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
     <div class="m-mobile-menu-header">
-      <span class="m-mobile-menu-title">Murshid App</span>
-      <span class="m-mobile-menu-subtitle">The Smart Dietitian Platform</span>
+      <span class="m-mobile-menu-title" id="mobTitle">Murshid App</span>
+      <span class="m-mobile-menu-subtitle" id="mobSubtitle">The Smart Dietitian Platform</span>
     </div>
     <div class="m-mobile-menu-links">
-      <a href="index.html" class="m-mobile-link">
+      <a href="javascript:void(0)" class="m-mobile-link" onclick="toggle404Lang()">
+        <span class="m-mobile-icon">🌐</span>
+        <span class="m-mobile-text" id="mobLangToggle">النسخة العربية (Arabic)</span>
+      </a>
+      <a href="index.html" class="m-mobile-link" id="mobHome">
         <span class="m-mobile-icon">🏠</span>
         <span class="m-mobile-text">Home</span>
       </a>
-      <a href="index.html#features" class="m-mobile-link">
+      <a href="index.html#features" class="m-mobile-link" id="mobFeatures">
         <span class="m-mobile-icon">🚀</span>
         <span class="m-mobile-text">App Features</span>
       </a>
-      <a href="index.html#wallet" class="m-mobile-link">
+      <a href="index.html#wallet" class="m-mobile-link" id="mobWallet">
         <span class="m-mobile-icon">🪙</span>
         <span class="m-mobile-text">Points System</span>
       </a>
-      <a href="index.html#how" class="m-mobile-link">
+      <a href="index.html#how" class="m-mobile-link" id="mobHow">
         <span class="m-mobile-icon">📋</span>
         <span class="m-mobile-text">How It Works?</span>
       </a>
-      <a href="index.html#pricing" class="m-mobile-link">
+      <a href="index.html#pricing" class="m-mobile-link" id="mobPricing">
         <span class="m-mobile-icon">💳</span>
         <span class="m-mobile-text">Pricing & Plans</span>
       </a>
-      <a href="faq.html" class="m-mobile-link">
+      <a href="faq.html" class="m-mobile-link" id="mobFaq">
         <span class="m-mobile-icon">❓</span>
         <span class="m-mobile-text">FAQ</span>
+      </a>
+      <a href="contact.html" class="m-mobile-link" id="mobContact">
+        <span class="m-mobile-icon">✉️</span>
+        <span class="m-mobile-text">Contact Us</span>
       </a>
       <a href="privacy-policy.html" class="m-mobile-link">
         <span class="m-mobile-icon">🔒</span>
@@ -195,28 +216,6 @@
         <span class="m-mobile-icon">🗑️</span>
         <span class="m-mobile-text">Data Deletion</span>
       </a>
-      <a href="https://feshealthtech.com/" target="_blank" class="m-mobile-link">
-        <span class="m-mobile-icon">🏢</span>
-        <span class="m-mobile-text">About Developer</span>
-      </a>
-    </div>
-    <div class="m-mobile-menu-download">
-      <div class="m-mobile-download-title">Download App Free</div>
-      <div class="m-mobile-download-buttons">
-        <a href="app/index.html" class="m-mobile-dl-btn">
-          <span>🤖 Play Store</span>
-        </a>
-        <a href="app/index.html" class="m-mobile-dl-btn">
-          <span>🍎 App Store</span>
-        </a>
-      </div>
-    </div>
-    <div class="m-mobile-menu-footer">
-      <a href="privacy-policy.html">Privacy</a>
-      <span>•</span>
-      <a href="terms-of-use.html">Terms</a>
-      <span>•</span>
-      <a href="refund-policy.html">Refund Policy</a>
     </div>
   </div>
 
@@ -224,13 +223,13 @@
   <main class="error-container">
     <div class="error-card">
       <div class="error-code">404</div>
-      <h1 class="error-title">Page Not Found 🔍</h1>
-      <p class="error-desc">
-        Sorry, the page you are looking for has been moved or deleted. You can return to Murshid's homepage and download the app or check the FAQ.
+      <h1 class="error-title" id="errTitle">Page Not Found 🔍</h1>
+      <p class="error-desc" id="errDesc">
+        Sorry, the page you are looking for has been moved or deleted. You can return to Murshid's homepage or check the FAQ.
       </p>
       <div class="error-actions">
-        <a href="index.html" class="m-btn m-btn-primary">🏠 Back to Home</a>
-        <a href="faq.html" class="m-btn m-btn-outline" style="border:1px solid rgba(255,255,255,0.15)">❓ FAQ</a>
+        <a href="index.html" class="m-btn m-btn-primary" id="btnHome">🏠 Back to Home</a>
+        <a href="faq.html" class="m-btn m-btn-outline" id="btnFaq" style="border:1px solid rgba(255,255,255,0.15)">❓ FAQ</a>
       </div>
     </div>
   </main>
@@ -241,9 +240,9 @@
       <div class="m-footer-grid">
         <div class="m-footer-brand">
           <img src="assets/logo.webp" alt="FES HealthTech" class="footer-logo" />
-          <div class="footer-app-name">Murshid</div>
-          <div class="footer-app-sub">Murshid App</div>
-          <p>The smart clinic management app for dietitians — developed by <a href="https://feshealthtech.com/">FES HealthTech</a>.</p>
+          <div class="footer-app-name" id="footerBrandName">Murshid</div>
+          <div class="footer-app-sub" id="footerBrandSub">Murshid App</div>
+          <p id="footerBio">The smart clinic management app for dietitians — developed by <a href="https://feshealthtech.com/">FES HealthTech</a>.</p>
           <div class="m-footer-social">
             <div class="m-footer-social-btn" title="X">𝕏</div>
             <div class="m-footer-social-btn" title="Instagram">📸</div>
@@ -251,25 +250,25 @@
           </div>
         </div>
         <div>
-          <h4 class="m-footer-col-title">App</h4>
+          <h4 class="m-footer-col-title" id="colApp">App</h4>
           <ul class="m-footer-links">
-            <li><a href="index.html#features">Features</a></li>
-            <li><a href="index.html#wallet">Points System</a></li>
-            <li><a href="index.html#pricing">Pricing</a></li>
-            <li><a href="index.html#download">Download</a></li>
+            <li><a href="index.html#features" id="footFeatures">Features</a></li>
+            <li><a href="index.html#wallet" id="footWallet">Points System</a></li>
+            <li><a href="index.html#pricing" id="footPricing">Pricing</a></li>
+            <li><a href="index.html#download" id="footDownload">Download</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="m-footer-col-title">Support</h4>
+          <h4 class="m-footer-col-title" id="colSupport">Support</h4>
           <ul class="m-footer-links">
-            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="faq.html" id="footFaq">FAQ</a></li>
             <li><a href="data-deletion.html">Data Deletion</a></li>
             <li><a href="https://feshealthtech.com/">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contact.html" id="footContact">Contact Us</a></li>
           </ul>
         </div>
         <div>
-          <h4 class="m-footer-col-title">Legal</h4>
+          <h4 class="m-footer-col-title" id="colLegal">Legal</h4>
           <ul class="m-footer-links">
             <li><a href="privacy-policy.html">Privacy Policy</a></li>
             <li><a href="terms-of-use.html">Terms of Use</a></li>
@@ -278,7 +277,7 @@
         </div>
       </div>
       <div class="m-footer-bottom">
-        <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. All Rights Reserved.</p>
+        <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. <span id="footerRights">All Rights Reserved.</span></p>
         <div class="m-footer-bottom-links">
           <a href="privacy-policy.html">Privacy</a>
           <a href="terms-of-use.html">Terms</a>
@@ -289,5 +288,147 @@
   </footer>
 
   <script src="shared/murshid-script.js"></script>
+  <script>
+    (function() {
+      const i18n = {
+        en: {
+          pageTitle: "404 - Page Not Found | Murshid App",
+          errTitle: "Page Not Found 🔍",
+          errDesc: "Sorry, the page you are looking for has been moved or deleted. You can return to Murshid's homepage or check the FAQ.",
+          btnHome: "🏠 Back to Home",
+          homeHref: "index.html",
+          btnFaq: "❓ FAQ",
+          faqHref: "faq.html",
+          toggleText: "🌐 العربية",
+          mobLangToggle: "النسخة العربية (Arabic)",
+          brandAr: "Murshid",
+          brandEn: "MURSHID APP",
+          mobTitle: "Murshid App",
+          mobSubtitle: "The Smart Dietitian Platform",
+          navFeatures: "Features",
+          navFeaturesHref: "index.html#features",
+          navWallet: "Points System",
+          navWalletHref: "index.html#wallet",
+          navHow: "How It Works?",
+          navHowHref: "index.html#how",
+          navPricing: "Pricing",
+          navPricingHref: "index.html#pricing",
+          navFaq: "FAQ",
+          navContact: "Contact Us",
+          navContactHref: "contact.html",
+          navDownload: "📥 Download Free",
+          navDownloadHref: "index.html#download",
+          footerBrandName: "Murshid",
+          footerBrandSub: "Murshid App",
+          footerBio: 'The smart clinic management app for dietitians — developed by <a href="https://feshealthtech.com/">FES HealthTech</a>.',
+          footerRights: "All Rights Reserved."
+        },
+        ar: {
+          pageTitle: "404 — الصفحة غير موجودة | تطبيق مرشد",
+          errTitle: "الصفحة غير موجودة 🔍",
+          errDesc: "عذراً، الصفحة التي تبحث عنها غير متوفرة أو تم نقلها. يمكنك العودة إلى الصفحة الرئيسية لتطبيق مرشد أو مراجعة الأسئلة الشائعة.",
+          btnHome: "🏠 العودة للرئيسية",
+          homeHref: "/ar/",
+          btnFaq: "❓ الأسئلة الشائعة",
+          faqHref: "/ar/faq.html",
+          toggleText: "🌐 English",
+          mobLangToggle: "English Version (الإنجليزية)",
+          brandAr: "مرشد",
+          brandEn: "تطبيق",
+          mobTitle: "تطبيق مرشد",
+          mobSubtitle: "المنصة الذكية لأخصائيي التغذية",
+          navFeatures: "المميزات",
+          navFeaturesHref: "/ar/#features",
+          navWallet: "نظام النقاط",
+          navWalletHref: "/ar/#wallet",
+          navHow: "كيف يعمل؟",
+          navHowHref: "/ar/#how",
+          navPricing: "الأسعار",
+          navPricingHref: "/ar/#pricing",
+          navFaq: "الأسئلة الشائعة",
+          navContact: "تواصل معنا",
+          navContactHref: "/ar/contact.html",
+          navDownload: "📥 تحميل مجاناً",
+          navDownloadHref: "/ar/#download",
+          footerBrandName: "مرشد",
+          footerBrandSub: "تطبيق مرشد",
+          footerBio: 'المنصة الذكية المتكاملة لأخصائيي التغذية لإدارة العيادات وتصميم الحميات — تم التطوير بواسطة <a href="https://feshealthtech.com/">FES HealthTech</a>.',
+          footerRights: "جميع الحقوق محفوظة."
+        }
+      };
+
+      let currentLang = 'en';
+
+      function detectInitialLanguage() {
+        const saved = localStorage.getItem('murshid_404_lang');
+        if (saved === 'ar' || saved === 'en') return saved;
+        const path = window.location.pathname.toLowerCase();
+        if (path.indexOf('/ar/') === 0 || path === '/ar') return 'ar';
+        const navLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        if (navLang.startsWith('ar')) return 'ar';
+        return 'en';
+      }
+
+      function applyLanguage(lang) {
+        currentLang = lang;
+        const t = i18n[lang];
+        document.documentElement.lang = lang;
+        document.documentElement.dir = (lang === 'ar' ? 'rtl' : 'ltr');
+        document.title = t.pageTitle;
+
+        // Elements text
+        document.getElementById('errTitle').innerText = t.errTitle;
+        document.getElementById('errDesc').innerText = t.errDesc;
+        
+        const btnHome = document.getElementById('btnHome');
+        btnHome.innerText = t.btnHome;
+        btnHome.href = t.homeHref;
+
+        const btnFaq = document.getElementById('btnFaq');
+        btnFaq.innerText = t.btnFaq;
+        btnFaq.href = t.faqHref;
+
+        const toggleBtn = document.getElementById('langToggleBtn');
+        toggleBtn.innerText = t.toggleText;
+
+        const mobLangToggle = document.getElementById('mobLangToggle');
+        if (mobLangToggle) mobLangToggle.innerText = t.mobLangToggle;
+
+        document.getElementById('brandTextAr').innerText = t.brandAr;
+        document.getElementById('brandTextEn').innerText = t.brandEn;
+        document.getElementById('brandLink').href = t.homeHref;
+
+        document.getElementById('navFeatures').innerText = t.navFeatures;
+        document.getElementById('navFeatures').href = t.navFeaturesHref;
+        document.getElementById('navWallet').innerText = t.navWallet;
+        document.getElementById('navWallet').href = t.navWalletHref;
+        document.getElementById('navHow').innerText = t.navHow;
+        document.getElementById('navHow').href = t.navHowHref;
+        document.getElementById('navPricing').innerText = t.navPricing;
+        document.getElementById('navPricing').href = t.navPricingHref;
+        document.getElementById('navFaq').innerText = t.navFaq;
+        document.getElementById('navFaq').href = t.faqHref;
+        document.getElementById('navContact').innerText = t.navContact;
+        document.getElementById('navContact').href = t.navContactHref;
+        document.getElementById('navDownload').innerText = t.navDownload;
+        document.getElementById('navDownload').href = t.navDownloadHref;
+
+        document.getElementById('footerBrandName').innerText = t.footerBrandName;
+        document.getElementById('footerBrandSub').innerText = t.footerBrandSub;
+        document.getElementById('footerBio').innerHTML = t.footerBio;
+        document.getElementById('footerRights').innerText = t.footerRights;
+      }
+
+      window.toggle404Lang = function() {
+        const newLang = (currentLang === 'en' ? 'ar' : 'en');
+        localStorage.setItem('murshid_404_lang', newLang);
+        applyLanguage(newLang);
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        applyLanguage(detectInitialLanguage());
+      });
+    })();
+  </script>
 </body>
 </html>

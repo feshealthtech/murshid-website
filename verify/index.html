@@ -8,8 +8,8 @@
     <link rel="icon" type="image/webp" href="../assets/logo-sq.webp">
     <link rel="icon" type="image/png" href="../assets/logo-sq.png">
     <link rel="apple-touch-icon" href="../assets/logo-sq.png">
-    <!-- Fonts: Inter, Tajawal (for international names), Playfair Display -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Fonts: Inter, Tajawal (for international names), Cairo, Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <!-- TweetNaCl & PDF.js for in-browser cryptographic & PDF parsing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tweetnacl/1.0.3/nacl-fast.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -99,6 +99,71 @@
             gap: 20px;
             position: relative;
             z-index: 10;
+        }
+
+        /* Top Bar */
+        .portal-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: -4px;
+        }
+        .back-home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 7px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid #E2E8F0;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s ease;
+        }
+        .back-home-link:hover {
+            color: var(--primary-deep);
+            background: var(--white);
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.12);
+        }
+        .back-home-link svg {
+            transition: transform 0.2s ease;
+        }
+        .back-home-link:hover svg {
+            transform: translateX(-3px);
+        }
+        html[dir="rtl"] .back-home-link:hover svg {
+            transform: translateX(3px);
+        }
+        html[dir="rtl"] .back-home-link svg {
+            transform: scaleX(-1);
+        }
+        .lang-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #CBD5E1;
+            border-radius: 100px;
+            padding: 7px 16px;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--primary-deep);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+        .lang-toggle-btn:hover {
+            background: var(--white);
+            border-color: var(--primary);
+            color: var(--primary-dark);
+            box-shadow: 0 4px 14px rgba(13, 148, 136, 0.2);
+            transform: translateY(-1px);
         }
 
         /* Header Logo */
@@ -663,20 +728,54 @@
             .result-body { padding: 18px; }
             .meta-row { font-size: 12.5px; }
         }
+
+        /* RTL Adaptations */
+        html[dir="rtl"] body,
+        html[dir="rtl"] input,
+        html[dir="rtl"] button {
+            font-family: 'Cairo', 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        html[dir="rtl"] .data-glass-panel,
+        html[dir="rtl"] .transparency-notice {
+            text-align: right;
+        }
+        html[dir="rtl"] .meta-value.mono,
+        html[dir="rtl"] .validity-value {
+            font-family: 'Inter', monospace;
+            direction: ltr;
+            display: inline-block;
+        }
+        html[dir="rtl"] .status-badge {
+            letter-spacing: 0.5px;
+        }
+        html[dir="rtl"] .partner-title {
+            letter-spacing: 0.8px;
+        }
     </style>
 </head>
 <body>
 
     <div class="portal-wrapper">
         
+        <!-- Top Navigation & Language Switcher Bar -->
+        <div class="portal-top-bar">
+            <a href="https://murshid.feshealthtech.com/" class="back-home-link" id="backHomeLink">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                <span id="backHomeText">Back to Home</span>
+            </a>
+            <button class="lang-toggle-btn" id="langToggleBtn" onclick="toggleVerifyLanguage()" aria-label="Switch Language">
+                🌐 العربية
+            </button>
+        </div>
+
         <!-- Header -->
         <header class="portal-header">
-            <a href="https://murshid.feshealthtech.com/" class="logo-link" title="Murshid Official Platform">
+            <a href="https://murshid.feshealthtech.com/" class="logo-link" id="logoLink" title="Murshid Official Platform">
                 <img src="../assets/logo.webp" alt="Murshid Logo">
             </a>
             <div class="portal-title-badge">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-                Official Verification Engine
+                <span id="portalBadgeText">Official Verification Engine</span>
             </div>
         </header>
 
@@ -684,11 +783,11 @@
         <div class="tab-selector">
             <button class="tab-btn active" id="tabReportBtn" onclick="switchTab('report')">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                Verify PDF Document
+                <span id="tabReportText">Verify PDF Document</span>
             </button>
             <button class="tab-btn" id="tabPartnerBtn" onclick="switchTab('partner')">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                Specialist Credentials
+                <span id="tabPartnerText">Specialist Credentials</span>
             </button>
         </div>
 
@@ -701,9 +800,9 @@
                 <div class="drop-icon-circle">
                     <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
                 </div>
-                <h2 class="drop-title">Drag & Drop Your PDF Document Here</h2>
-                <p class="drop-hint">Or click to browse and select any report, diet plan, or official invoice exported from Murshid App to verify its authenticity and cryptographic signature.</p>
-                <div class="browse-btn">Choose File from Device</div>
+                <h2 class="drop-title" id="dropTitleText">Drag & Drop Your PDF Document Here</h2>
+                <p class="drop-hint" id="dropHintText">Or click to browse and select any report, diet plan, or official invoice exported from Murshid App to verify its authenticity and cryptographic signature.</p>
+                <div class="browse-btn" id="browseBtnText">Choose File from Device</div>
             </div>
 
             <!-- Report Result Area -->
@@ -719,7 +818,7 @@
                     <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
                 </div>
                 <input type="text" id="partnerInput" class="search-input" placeholder="Enter Specialist ID, Email, Phone, or Name..." autocomplete="off">
-                <button type="submit" class="search-button">Verify</button>
+                <button type="submit" class="search-button" id="searchBtnText">Verify</button>
             </form>
 
             <!-- Partner Result Area -->
@@ -728,27 +827,318 @@
 
         <!-- Store CTA -->
         <div class="app-cta">
-            <p class="app-cta-text">Download Murshid App — The Smart Clinical Dietitian Platform</p>
+            <p class="app-cta-text" id="appCtaText">Download Murshid App — The Smart Clinical Dietitian Platform</p>
             <div class="store-links">
                 <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="store-btn">
                     <svg viewBox="0 0 512 512"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-                    Google Play
+                    <span id="googlePlayText">Google Play</span>
                 </a>
-                <a href="https://murshid.feshealthtech.com/#download" class="store-btn">
+                <a href="https://murshid.feshealthtech.com/#download" class="store-btn" id="appStoreBtn">
                     <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-                    App Store
+                    <span id="appStoreText">App Store</span>
                 </a>
             </div>
         </div>
 
-        <div class="footer-branding">
-            <a href="https://murshid.feshealthtech.com/" class="brand-link" target="_blank" rel="noopener noreferrer">Murshid</a> Cryptographic Verification Engine &copy; 2026
+        <div class="footer-branding" id="footerBrandingText">
+            <a href="https://murshid.feshealthtech.com/" class="brand-link" id="footerBrandLink" target="_blank" rel="noopener noreferrer">Murshid</a> Cryptographic Verification Engine &copy; 2026
         </div>
 
     </div>
 
     <script>
         const LOOKUP_PUBLIC_KEY_ENDPOINT = "https://us-central1-ai-apps-central.cloudfunctions.net/lookupPublicKey";
+
+        // ==========================================
+        // BILINGUAL LOCALIZATION (i18n) DICTIONARY
+        // ==========================================
+        const i18n = {
+            en: {
+                portalTitleBadge: "Official Verification Engine",
+                tabReport: "Verify PDF Document",
+                tabPartner: "Specialist Credentials",
+                dropTitle: "Drag & Drop Your PDF Document Here",
+                dropHint: "Or click to browse and select any report, diet plan, or official invoice exported from Murshid App to verify its authenticity and cryptographic signature.",
+                browseBtn: "Choose File from Device",
+                partnerSearchPlaceholder: "Enter Specialist ID, Email, Phone, or Name...",
+                partnerSearchBtn: "Verify",
+                appCtaText: "Download Murshid App — The Smart Clinical Dietitian Platform",
+                googlePlay: "Google Play",
+                appStore: "App Store",
+                verifyingDoc: "Verifying Document...",
+                verifyingDocHint: "Extracting cryptographic signature & querying cloud registry",
+                verifyingPartner: "Verifying Credentials...",
+                verifyingPartnerHint: "Querying Murshid Official Credentials Registry",
+                docAuthenticTitle: "100% Authentic & Verified Document",
+                docAuthenticSub: "Cryptographic signature validated against Murshid Cloud Registry",
+                verifiedIssuerAccount: "Verified Issuer Account (Google / Murshid)",
+                specialistProfileData: "Specialist Profile Data",
+                selfDeclaredTag: "Self-Declared Data",
+                specialistName: "Specialist Name:",
+                clinicFacility: "Clinic / Facility:",
+                contactNumber: "Contact Number:",
+                notSpecified: "Not specified",
+                transparencyNotice: "Transparency Notice: The issuer's official email address and document cryptographic integrity are 100% verified. The specialist's name and contact number above are self-declared profile details and have not been administratively linked to government ID documents yet.",
+                documentId: "Document ID:",
+                issueDate: "Issue Date:",
+                verifiedPages: "Verified Pages:",
+                pagesUnit: "Pages",
+                verifyAnother: "Verify Another Document",
+                tamperedTitle: "Warning: Tampered or Invalid Document",
+                tamperedSub: "Cryptographic integrity check failed",
+                tamperedDefaultReason: "The document content or its cryptographic metadata has been altered after issuance, invalidating the digital signature.",
+                unsignedTitle: "Unsigned or Modified Document",
+                unsignedSub: "No official cryptographic seal detected",
+                unsignedBody: "This document does not carry an official Murshid cryptographic seal. This typically occurs if the file was edited or re-saved by an external PDF tool (which stripped its original digital seal), converted from another format, or was not directly exported from the official Murshid platform.",
+                checkAnotherFile: "Check Another File",
+                tryAgain: "Try Again",
+                verificationFailed: "Verification Failed",
+                unauthorizedAccess: "Unauthorized Access",
+                unauthorizedReportMsg: "Unauthorized document verification request. Access is restricted to the official Murshid platform.",
+                unauthorizedPartnerMsg: "Access is restricted to the official verified Murshid platform.",
+                networkErrorTitle: "Connection Error",
+                networkErrorMsg: "Unable to reach Murshid verification registry. Please check your internet connection.",
+                cloudLookupFailedMsg: "Unable to connect to Murshid Cloud Registry. Please check your internet connection.",
+                emailNotRegisteredMsg: "The specialist email is not registered in Murshid verified public key registry.",
+                forgedSigMsg: "Invalid cryptographic digital signature: The manifest payload was forged or modified.",
+                contentTamperingMsg: "Document content tampering detected: The visual content, pages, or text of this PDF were modified or re-saved after official issuance.",
+                sealStrippedMsg: "Document modification detected: The cryptographic seal was stripped or modified by an external editor.",
+                pageMismatchMsg: (expected, actual) => `Page structure mismatch: Expected ${expected} pages, but file contains ${actual} pages.`,
+                visualTamperingMsg: "Visual tampering detected: The document contains unauthorized drawings, ink marks, or annotations added after official issuance.",
+                externalEditorMsg: "Document modification detected: The file was edited and re-saved by an external PDF editor.",
+                unexpectedErrorMsg: "An unexpected error occurred while processing the PDF file: ",
+                decodeErrorMsg: "Failed to decode embedded cryptographic metadata payload.",
+                validPdfAlert: "Please select a valid PDF file.",
+                partnerLandingTitle: "Verify Specialist Credentials",
+                partnerLandingHint: "Enter a Partner ID, Email, Full Name, or Phone Number to verify official partner registration.",
+                verifiedSpecialistBadge: "Verified Specialist",
+                suspendedBadge: "Suspended Credential",
+                expiredBadge: "Expired Credential",
+                partnerIdLabel: "Partner ID:",
+                emailLabel: "Email:",
+                phoneLabel: "Phone:",
+                countryLabel: "Country:",
+                officialEmailDefault: "Official Registered Email",
+                officialContactDefault: "Official Contact",
+                regRepDefault: "Registered Representative",
+                validThru: "Valid Thru",
+                multipleMatchesTitle: "Multiple Matches Found",
+                multipleMatchesHint: "Multiple specialists match this name. To ensure identity precision, please search using the exact Partner ID or Mobile Phone number.",
+                refineSearchBtn: "Refine Search",
+                credentialNotFoundTitle: "Credential Not Found",
+                credentialNotFoundMsg: (query) => `No official records match "${query}" in Murshid verified specialist registry.`,
+                switchLangBtn: "🌐 العربية"
+            },
+            ar: {
+                portalTitleBadge: "بوابة ومحرك التحقق الرسمي",
+                tabReport: "فحص وثيقة PDF",
+                tabPartner: "بيانات واعتماد الأخصائي",
+                dropTitle: "اسحب وأفلت وثيقة PDF هنا",
+                dropHint: "أو انقر للاستعراض واختيار أي تقرير طبي، خطة حمية غذائية، أو فاتورة رسمية صادرة من تطبيق مرشد للتحقق من أصالتها وتوقيعها التشفيري.",
+                browseBtn: "اختر ملفاً من جهازك",
+                partnerSearchPlaceholder: "أدخل معرّف الأخصائي، البريد، الهاتف، أو الاسم...",
+                partnerSearchBtn: "تحقق الآن",
+                appCtaText: "حمّل تطبيق مرشد — المنصة السريرية الذكية لأخصائيي التغذية",
+                googlePlay: "جوجل بلاي",
+                appStore: "آب ستور",
+                verifyingDoc: "جارٍ فحص الوثيقة تشفيرياً...",
+                verifyingDocHint: "استخراج التوقيع الرقمي ومطابقة السجل السحابي المعتمد",
+                verifyingPartner: "جارٍ التحقق من بيانات الاعتماد...",
+                verifyingPartnerHint: "الاستعلام من السجل المركزي لشخصيات وأخصائيي مرشد المعتمدين",
+                docAuthenticTitle: "وثيقة أصلية ومعتمدة 100%",
+                docAuthenticSub: "تم تأكيد صحة التوقيع الرقمي التشفيري ومطابقته بالسجل السحابي لمرشد",
+                verifiedIssuerAccount: "حساب المُصدر المعتمد (Google / Murshid)",
+                specialistProfileData: "بيانات ملف الأخصائي المصدر",
+                selfDeclaredTag: "بيانات معلنة ذاتياً",
+                specialistName: "اسم الأخصائي:",
+                clinicFacility: "العيادة / المنشأة:",
+                contactNumber: "هاتف التواصل:",
+                notSpecified: "غير محدد",
+                transparencyNotice: "إشعار الشفافية: البريد الإلكتروني للمُصدر وسلامة التشفير للوثيقة موثقة بنسبة 100%. الاسم ورقم الاتصال أعلاه هي بيانات ملف شخصي معلنة ذاتياً ولم يتم ربطها إدارياً بوثائق الهوية الحكومية بعد.",
+                documentId: "معرّف الوثيقة:",
+                issueDate: "تاريخ الإصدار:",
+                verifiedPages: "الصفحات المعتمدة:",
+                pagesUnit: "صفحات",
+                verifyAnother: "فحص وثيقة أخرى",
+                tamperedTitle: "تحذير: وثيقة معدلة أو تالفة تشفيرياً",
+                tamperedSub: "فشل التحقق من السلامة الرقمية للوثيقة",
+                tamperedDefaultReason: "تم تعديل محتوى الوثيقة أو بياناتها التشفيرية بعد إصدارها الرسمي، مما أدى لإبطال التوقيع الرقمي فوراً.",
+                unsignedTitle: "وثيقة غير موقعة أو معدلة خارجياً",
+                unsignedSub: "لم يتم العثور على الختم التشفيري الرسمي",
+                unsignedBody: "هذه الوثيقة لا تحمل الختم التشفيري الرسمي لمنصة مرشد. يحدث هذا غالباً في حال تم تعديل الملف أو إعادة حفظه عبر برنامج PDF خارجي (قام بإزالة الختم الرقمي)، أو تم تحويله من صيغة أخرى، أو لم يتم تصديره مباشرة من تطبيق مرشد الرسمي.",
+                checkAnotherFile: "فحص ملف آخر",
+                tryAgain: "إعادة المحاولة",
+                verificationFailed: "فشل التحقق",
+                unauthorizedAccess: "وصول غير مصرح به",
+                unauthorizedReportMsg: "طلب تحقق غير مصرح به. يقتصر التحقق على المنصة الرسمية لمرشد.",
+                unauthorizedPartnerMsg: "يقتصر الاستعلام على المنصة الرسمية المعتمدة لمرشد.",
+                networkErrorTitle: "خطأ في الاتصال",
+                networkErrorMsg: "تعذر الاتصال بسجل التحقق السحابي لمرشد. يرجى التحقق من اتصال الإنترنت لديك.",
+                cloudLookupFailedMsg: "تعذر الاتصال بسجل المفاتيح العامة السحابي لمرشد. يرجى مراجعة اتصال الإنترنت.",
+                emailNotRegisteredMsg: "البريد الإلكتروني للأخصائي غير مسجل في سجل المفاتيح العامة المعتمدة لمرشد.",
+                forgedSigMsg: "توقيع رقمي غير صالح: تم تزوير أو تعديل حمولة البيانات التشفيرية المرفقة.",
+                contentTamperingMsg: "تم اكتشاف تلاعب بمحتوى الوثيقة: تم تعديل النصوص، الرسومات، أو الصفحات بعد إصدار الوثيقة رسمياً.",
+                sealStrippedMsg: "تم اكتشاف تعديل على الوثيقة: تم تجريد الختم التشفيري أو تعديله بواسطة محرر PDF خارجي.",
+                pageMismatchMsg: (expected, actual) => `عدم تطابق في بنية الصفحات: الوثيقة الأصلية تتكون من ${expected} صفحات، لكن الملف يحتوي على ${actual} صفحات.`,
+                visualTamperingMsg: "تم اكتشاف تلاعب بصري: تحتوي الوثيقة على رسومات، حبر، أو تعليقات توضيحية غير مصرح بها أضيفت بعد التصدير.",
+                externalEditorMsg: "تم اكتشاف تعديل على الوثيقة: تم تحرير الملف وإعادة حفظه بواسطة محرر PDF خارجي.",
+                unexpectedErrorMsg: "حدث خطأ غير متوقع أثناء معالجة ملف PDF: ",
+                decodeErrorMsg: "فشل فك تشفير حمولة البيانات التشفيرية المضمنة في الوثيقة.",
+                validPdfAlert: "يرجى اختيار ملف PDF صالح.",
+                partnerLandingTitle: "التحقق من اعتماد وبيانات الأخصائي",
+                partnerLandingHint: "أدخل معرّف الشريك (ID)، البريد الإلكتروني، الاسم الكامل، أو رقم الهاتف للتحقق من التسجيل الرسمي المعتمد.",
+                verifiedSpecialistBadge: "أخصائي معتمد وموثق",
+                suspendedBadge: "اعتماد موقوف مؤقتاً",
+                expiredBadge: "اعتماد منتهي الصلاحية",
+                partnerIdLabel: "معرّف الأخصائي:",
+                emailLabel: "البريد المعتمد:",
+                phoneLabel: "هاتف التواصل:",
+                countryLabel: "الدولة والمنطقة:",
+                officialEmailDefault: "بريد رسمي مسجل",
+                officialContactDefault: "هاتف تواصل رسمي",
+                regRepDefault: "ممثل معتمد رسمياً",
+                validThru: "صالح حتى تاريخ",
+                multipleMatchesTitle: "تم العثور على عدة نتائج مطابقة",
+                multipleMatchesHint: "يوجد أكثر من أخصائي يحمل هذا الاسم. لضمان الدقة وتحديد الهوية بدقة، يرجى البحث باستخدام معرّف الشريك (ID) أو رقم الهاتف بدقة.",
+                refineSearchBtn: "تخصيص البحث",
+                credentialNotFoundTitle: "بيانات الاعتماد غير موجودة",
+                credentialNotFoundMsg: (query) => `لا توجد أي سجلات رسمية مطابقة لـ "${query}" في سجل أخصائيي مرشد المعتمدين.`,
+                switchLangBtn: "🌐 English"
+            }
+        };
+
+        // Language & State Management
+        function detectLanguage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const langParam = urlParams.get('lang');
+            if (langParam === 'ar' || langParam === 'en') return langParam;
+            const stored = localStorage.getItem('murshid_verify_lang');
+            if (stored === 'ar' || stored === 'en') return stored;
+            if (navigator.language && navigator.language.startsWith('ar')) return 'ar';
+            return 'en';
+        }
+
+        let currentLang = detectLanguage();
+        let lastReportState = null;
+        let lastPartnerState = null;
+
+        function getReasonText(key, extra) {
+            const dict = i18n[currentLang];
+            switch (key) {
+                case 'DECODE_ERROR': return dict.decodeErrorMsg;
+                case 'UNREGISTERED_EMAIL': return dict.emailNotRegisteredMsg;
+                case 'INVALID_SIG': return dict.forgedSigMsg;
+                case 'DOC_HASH_MISMATCH': return dict.contentTamperingMsg;
+                case 'SEAL_STRIPPED': return dict.sealStrippedMsg;
+                case 'PAGE_MISMATCH': return dict.pageMismatchMsg(extra?.expected, extra?.actual);
+                case 'VISUAL_TAMPERING': return dict.visualTamperingMsg;
+                case 'MULTIPLE_EOF': return dict.externalEditorMsg;
+                default: return key || dict.tamperedDefaultReason;
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('murshid_verify_lang', lang);
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar' ? 'rtl' : 'ltr');
+            document.title = (lang === 'ar' ? 'بوابة ومحرك التحقق الرسمي — منصة مرشد' : 'Official Verification Portal — Murshid Platform');
+
+            const dict = i18n[lang];
+            const isAr = (lang === 'ar');
+
+            const homeUrl = isAr ? 'https://murshid.feshealthtech.com/ar/' : 'https://murshid.feshealthtech.com/';
+            const backHomeLink = document.getElementById('backHomeLink');
+            if (backHomeLink) backHomeLink.href = homeUrl;
+            const backHomeText = document.getElementById('backHomeText');
+            if (backHomeText) backHomeText.textContent = isAr ? 'الرئيسية' : 'Back to Home';
+
+            const logoLink = document.getElementById('logoLink');
+            if (logoLink) logoLink.href = homeUrl;
+
+            const portalBadgeText = document.getElementById('portalBadgeText');
+            if (portalBadgeText) portalBadgeText.textContent = dict.portalTitleBadge;
+
+            const tabReportText = document.getElementById('tabReportText');
+            if (tabReportText) tabReportText.textContent = dict.tabReport;
+
+            const tabPartnerText = document.getElementById('tabPartnerText');
+            if (tabPartnerText) tabPartnerText.textContent = dict.tabPartner;
+
+            const dropTitleText = document.getElementById('dropTitleText');
+            if (dropTitleText) dropTitleText.textContent = dict.dropTitle;
+
+            const dropHintText = document.getElementById('dropHintText');
+            if (dropHintText) dropHintText.textContent = dict.dropHint;
+
+            const browseBtnText = document.getElementById('browseBtnText');
+            if (browseBtnText) browseBtnText.textContent = dict.browseBtn;
+
+            const partnerInput = document.getElementById('partnerInput');
+            if (partnerInput) partnerInput.placeholder = dict.partnerSearchPlaceholder;
+
+            const searchBtnText = document.getElementById('searchBtnText');
+            if (searchBtnText) searchBtnText.textContent = dict.partnerSearchBtn;
+
+            const appCtaText = document.getElementById('appCtaText');
+            if (appCtaText) appCtaText.textContent = dict.appCtaText;
+
+            const googlePlayText = document.getElementById('googlePlayText');
+            if (googlePlayText) googlePlayText.textContent = dict.googlePlay;
+
+            const appStoreText = document.getElementById('appStoreText');
+            if (appStoreText) appStoreText.textContent = dict.appStore;
+
+            const appStoreBtn = document.getElementById('appStoreBtn');
+            if (appStoreBtn) appStoreBtn.href = isAr ? 'https://murshid.feshealthtech.com/ar/#download' : 'https://murshid.feshealthtech.com/#download';
+
+            const footerBrandLink = document.getElementById('footerBrandLink');
+            if (footerBrandLink) {
+                footerBrandLink.href = homeUrl;
+                footerBrandLink.textContent = isAr ? 'مرشد' : 'Murshid';
+            }
+
+            const footerBrandingText = document.getElementById('footerBrandingText');
+            if (footerBrandingText && footerBrandingText.childNodes.length > 1) {
+                footerBrandingText.childNodes[1].nodeValue = ' ' + (isAr ? 'محرك التحقق والتشفير الرسمي © 2026' : 'Cryptographic Verification Engine © 2026');
+            }
+
+            const langToggleBtn = document.getElementById('langToggleBtn');
+            if (langToggleBtn) langToggleBtn.textContent = dict.switchLangBtn;
+
+            // Re-render currently displayed state if active
+            if (lastReportState) {
+                if (lastReportState.type === 'authentic') {
+                    renderAuthenticReport(lastReportState.fileName, lastReportState.manifest, lastReportState.pubKey, true);
+                } else if (lastReportState.type === 'tampered') {
+                    renderTamperedReport(lastReportState.fileName, lastReportState.reasonKey, lastReportState.extra, true);
+                } else if (lastReportState.type === 'unsigned') {
+                    renderUnsignedReport(lastReportState.fileName, true);
+                } else if (lastReportState.type === 'error') {
+                    renderErrorState(lastReportState.msg, true);
+                }
+            }
+
+            if (lastPartnerState) {
+                if (lastPartnerState.type === 'landing') {
+                    renderPartnerLanding(true);
+                } else if (lastPartnerState.type === 'success') {
+                    renderPartnerCard(lastPartnerState.matchedPartner, true);
+                } else if (lastPartnerState.type === 'ambiguous') {
+                    renderAmbiguousPartner(lastPartnerState.message, true);
+                } else if (lastPartnerState.type === 'not_found') {
+                    renderNotFoundPartner(lastPartnerState.raw, true);
+                } else if (lastPartnerState.type === 'unauthorized') {
+                    renderUnauthorizedPartner(true);
+                } else if (lastPartnerState.type === 'network_error') {
+                    renderNetworkErrorPartner(true);
+                }
+            }
+        }
+
+        function toggleVerifyLanguage() {
+            setLanguage(currentLang === 'ar' ? 'en' : 'ar');
+        }
 
         // Tab Switching
         function switchTab(tab) {
@@ -767,7 +1157,7 @@
                 tabReportBtn.classList.remove('active');
                 reportSection.style.display = 'none';
                 partnerSection.style.display = 'block';
-                if (!document.getElementById('partnerResultArea').innerHTML) {
+                if (!lastPartnerState && !document.getElementById('partnerResultArea').innerHTML) {
                     renderPartnerLanding();
                 }
             }
@@ -810,8 +1200,9 @@
         // PDF EXTRACTION & VERIFICATION PIPELINE
         // ==========================================
         async function processPdfFile(file) {
+            const dict = i18n[currentLang];
             if (!file || file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
-                alert('Please select a valid PDF file.');
+                alert(dict.validPdfAlert);
                 return;
             }
 
@@ -820,8 +1211,8 @@
             resultArea.innerHTML = `
                 <div class="result-card" style="padding: 40px 20px; text-align: center;">
                     <div class="loading-spinner"></div>
-                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">Verifying Document...</h3>
-                    <p style="font-size: 13px; color: var(--text-muted);">Extracting cryptographic signature & querying cloud registry</p>
+                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">${dict.verifyingDoc}</h3>
+                    <p style="font-size: 13px; color: var(--text-muted);">${dict.verifyingDocHint}</p>
                 </div>
             `;
 
@@ -844,7 +1235,7 @@
                     payload = JSON.parse(jsonStr);
                 } catch (e) {
                     console.error('Payload decode error:', e);
-                    renderTamperedReport(file.name, 'Failed to decode embedded cryptographic metadata payload.');
+                    renderTamperedReport(file.name, 'DECODE_ERROR');
                     return;
                 }
 
@@ -878,19 +1269,19 @@
                     });
 
                     if (resp.status === 401) {
-                        renderErrorState('Unauthorized document verification request. Access is restricted to the official Murshid platform.');
+                        renderErrorState('UNAUTHORIZED');
                         return;
                     }
 
                     cloudKeyData = await resp.json();
                 } catch (e) {
                     console.error('Cloud lookup failed:', e);
-                    renderErrorState('Unable to connect to Murshid Cloud Registry. Please check your internet connection.');
+                    renderErrorState('CLOUD_CONNECT_FAILED');
                     return;
                 }
 
                 if (!cloudKeyData || !cloudKeyData.found || !cloudKeyData.publicKey) {
-                    renderTamperedReport(file.name, 'The specialist email is not registered in Murshid verified public key registry.');
+                    renderTamperedReport(file.name, 'UNREGISTERED_EMAIL');
                     return;
                 }
 
@@ -901,7 +1292,7 @@
                 const isSignatureValid = verifyEd25519(canonicalJson, signatureBase64, publicKeyBase64);
 
                 if (!isSignatureValid) {
-                    renderTamperedReport(file.name, 'Invalid cryptographic digital signature: The manifest payload was forged or modified.');
+                    renderTamperedReport(file.name, 'INVALID_SIG');
                     return;
                 }
 
@@ -913,12 +1304,12 @@
 
                     if (computedDocHash !== manifest.docHash) {
                         console.warn('Document SHA-256 mismatch! Expected:', manifest.docHash, 'Computed:', computedDocHash);
-                        renderTamperedReport(file.name, 'Document content tampering detected: The visual content, pages, or text of this PDF were modified or re-saved after official issuance.');
+                        renderTamperedReport(file.name, 'DOC_HASH_MISMATCH');
                         return;
                     }
                 } else if (!extraction.hasTrailerSeal) {
                     // If an older manifest is missing its original cryptographic trailer seal, it was modified by an external editor
-                    renderTamperedReport(file.name, 'Document modification detected: The cryptographic seal was stripped or modified by an external editor.');
+                    renderTamperedReport(file.name, 'SEAL_STRIPPED');
                     return;
                 }
 
@@ -929,7 +1320,7 @@
 
                         // Check Page Count
                         if (manifest.pages && pdfDoc.numPages !== manifest.pages) {
-                            renderTamperedReport(file.name, `Page structure mismatch: Expected ${manifest.pages} pages, but file contains ${pdfDoc.numPages} pages.`);
+                            renderTamperedReport(file.name, 'PAGE_MISMATCH', { expected: manifest.pages, actual: pdfDoc.numPages });
                             return;
                         }
 
@@ -939,7 +1330,7 @@
                             const annotations = await page.getAnnotations();
                             if (annotations && annotations.length > 0) {
                                 console.warn(`Tampering alert: Page ${p} contains ${annotations.length} annotations/drawings:`, annotations);
-                                renderTamperedReport(file.name, 'Visual tampering detected: The document contains unauthorized drawings, ink marks, or annotations added after official issuance.');
+                                renderTamperedReport(file.name, 'VISUAL_TAMPERING');
                                 return;
                             }
                         }
@@ -959,7 +1350,7 @@
                     const eofMatches = latinString.match(/%%EOF/g);
                     if (eofMatches && eofMatches.length > 1) {
                         console.warn('Tampering alert: Multiple %%EOF markers found:', eofMatches.length);
-                        renderTamperedReport(file.name, 'Document modification detected: The file was edited and re-saved by an external PDF editor.');
+                        renderTamperedReport(file.name, 'MULTIPLE_EOF');
                         return;
                     }
                 } catch (eofErr) {
@@ -971,7 +1362,7 @@
 
             } catch (err) {
                 console.error('Processing error:', err);
-                renderErrorState('An unexpected error occurred while processing the PDF file: ' + err.message);
+                renderErrorState(i18n[currentLang].unexpectedErrorMsg + err.message);
             }
         }
 
@@ -1057,14 +1448,14 @@
             }
         }
 
-        // Format ISO Date in English
+        // Format ISO Date
         function formatDate(isoStr) {
             if (!isoStr) return '-';
             try {
                 const d = new Date(isoStr);
-                return d.toLocaleDateString('en-US', {
+                return d.toLocaleDateString(currentLang === 'ar' ? 'ar-SA' : 'en-US', {
                     year: 'numeric', month: 'long', day: 'numeric',
-                    hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
+                    hour: '2-digit', minute: '2-digit'
                 });
             } catch (_) {
                 return isoStr;
@@ -1072,7 +1463,11 @@
         }
 
         // RENDER: Authentic Verified Report
-        function renderAuthenticReport(fileName, manifest, pubKey) {
+        function renderAuthenticReport(fileName, manifest, pubKey, isLangRerender = false) {
+            if (!isLangRerender) {
+                lastReportState = { type: 'authentic', fileName, manifest, pubKey };
+            }
+            const dict = i18n[currentLang];
             const resultArea = document.getElementById('reportResultArea');
             resultArea.innerHTML = `
                 <div class="result-card">
@@ -1080,8 +1475,8 @@
                         <div class="result-banner-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
                         </div>
-                        <h2 class="result-headline">100% Authentic & Verified Document</h2>
-                        <p class="result-subline">Cryptographic signature validated against Murshid Cloud Registry</p>
+                        <h2 class="result-headline">${dict.docAuthenticTitle}</h2>
+                        <p class="result-subline">${dict.docAuthenticSub}</p>
                     </div>
 
                     <div class="result-body">
@@ -1092,7 +1487,7 @@
                                 <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                             </div>
                             <div style="flex: 1;">
-                                <div class="verified-box-title">Verified Issuer Account (Google / Murshid)</div>
+                                <div class="verified-box-title">${dict.verifiedIssuerAccount}</div>
                                 <div class="verified-box-email">${manifest.email}</div>
                             </div>
                         </div>
@@ -1100,59 +1495,64 @@
                         <!-- Declared Clinician Info Box -->
                         <div class="declared-box">
                             <div class="declared-header">
-                                <span class="declared-title">Specialist Profile Data</span>
-                                <span class="unverified-tag">Self-Declared Data</span>
+                                <span class="declared-title">${dict.specialistProfileData}</span>
+                                <span class="unverified-tag">${dict.selfDeclaredTag}</span>
                             </div>
 
                             <div class="meta-row">
-                                <span class="meta-label">Specialist Name:</span>
-                                <span class="meta-value">${manifest.name || 'Not specified'}</span>
+                                <span class="meta-label">${dict.specialistName}</span>
+                                <span class="meta-value">${manifest.name || dict.notSpecified}</span>
                             </div>
 
                             <div class="meta-row">
-                                <span class="meta-label">Clinic / Facility:</span>
-                                <span class="meta-value">${manifest.clinic || 'Not specified'}</span>
+                                <span class="meta-label">${dict.clinicFacility}</span>
+                                <span class="meta-value">${manifest.clinic || dict.notSpecified}</span>
                             </div>
 
                             <div class="meta-row">
-                                <span class="meta-label">Contact Number:</span>
-                                <span class="meta-value mono">${manifest.phone || 'Not specified'}</span>
+                                <span class="meta-label">${dict.contactNumber}</span>
+                                <span class="meta-value mono">${manifest.phone || dict.notSpecified}</span>
                             </div>
                         </div>
 
                         <!-- Transparency Notice -->
                         <div class="transparency-notice">
                             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                            <span>Transparency Notice: The issuer's official email address and document cryptographic integrity are 100% verified. The specialist's name and contact number above are self-declared profile details and have not been administratively linked to government ID documents yet.</span>
+                            <span>${dict.transparencyNotice}</span>
                         </div>
 
                         <!-- Technical Manifest Details -->
                         <div class="declared-box">
                             <div class="meta-row">
-                                <span class="meta-label">Document ID:</span>
+                                <span class="meta-label">${dict.documentId}</span>
                                 <span class="meta-value mono">${manifest.id}</span>
                             </div>
                             <div class="meta-row">
-                                <span class="meta-label">Issue Date:</span>
+                                <span class="meta-label">${dict.issueDate}</span>
                                 <span class="meta-value">${formatDate(manifest.issuedAt)}</span>
                             </div>
                             <div class="meta-row">
-                                <span class="meta-label">Verified Pages:</span>
-                                <span class="meta-value">${manifest.pages} Pages</span>
+                                <span class="meta-label">${dict.verifiedPages}</span>
+                                <span class="meta-value">${manifest.pages} ${dict.pagesUnit}</span>
                             </div>
                         </div>
 
                     </div>
 
                     <div class="result-actions">
-                        <button class="reset-btn" onclick="resetReportView()">Verify Another Document</button>
+                        <button class="reset-btn" onclick="resetReportView()">${dict.verifyAnother}</button>
                     </div>
                 </div>
             `;
         }
 
         // RENDER: Tampered Report
-        function renderTamperedReport(fileName, reason) {
+        function renderTamperedReport(fileName, reasonKey, extra = null, isLangRerender = false) {
+            if (!isLangRerender) {
+                lastReportState = { type: 'tampered', fileName, reasonKey, extra };
+            }
+            const dict = i18n[currentLang];
+            const reasonText = getReasonText(reasonKey, extra);
             const resultArea = document.getElementById('reportResultArea');
             resultArea.innerHTML = `
                 <div class="result-card">
@@ -1160,25 +1560,29 @@
                         <div class="result-banner-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                         </div>
-                        <h2 class="result-headline">Warning: Tampered or Invalid Document</h2>
-                        <p class="result-subline">Cryptographic integrity check failed</p>
+                        <h2 class="result-headline">${dict.tamperedTitle}</h2>
+                        <p class="result-subline">${dict.tamperedSub}</p>
                     </div>
 
                     <div class="result-body">
                         <p style="font-size: 13.5px; color: var(--text-main); line-height: 1.6;">
-                            ${reason || 'The document content or its cryptographic metadata has been altered after issuance, invalidating the digital signature.'}
+                            ${reasonText}
                         </p>
                     </div>
 
                     <div class="result-actions">
-                        <button class="reset-btn" onclick="resetReportView()">Try Again</button>
+                        <button class="reset-btn" onclick="resetReportView()">${dict.tryAgain}</button>
                     </div>
                 </div>
             `;
         }
 
         // RENDER: Unsigned / Modified Without Seal Report
-        function renderUnsignedReport(fileName) {
+        function renderUnsignedReport(fileName, isLangRerender = false) {
+            if (!isLangRerender) {
+                lastReportState = { type: 'unsigned', fileName };
+            }
+            const dict = i18n[currentLang];
             const resultArea = document.getElementById('reportResultArea');
             resultArea.innerHTML = `
                 <div class="result-card">
@@ -1186,35 +1590,42 @@
                         <div class="result-banner-icon">
                             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                         </div>
-                        <h2 class="result-headline">Unsigned or Modified Document</h2>
-                        <p class="result-subline">No official cryptographic seal detected</p>
+                        <h2 class="result-headline">${dict.unsignedTitle}</h2>
+                        <p class="result-subline">${dict.unsignedSub}</p>
                     </div>
 
                     <div class="result-body">
                         <p style="font-size: 13.5px; color: var(--text-main); line-height: 1.6;">
-                            This document does not carry an official Murshid cryptographic seal. This typically occurs if the file was edited or re-saved by an external PDF tool (which stripped its original digital seal), converted from another format, or was not directly exported from the official Murshid platform.
+                            ${dict.unsignedBody}
                         </p>
                     </div>
 
                     <div class="result-actions">
-                        <button class="reset-btn" onclick="resetReportView()">Check Another File</button>
+                        <button class="reset-btn" onclick="resetReportView()">${dict.checkAnotherFile}</button>
                     </div>
                 </div>
             `;
         }
 
-        function renderErrorState(msg) {
+        function renderErrorState(msg, isLangRerender = false) {
+            if (!isLangRerender) {
+                lastReportState = { type: 'error', msg };
+            }
+            const dict = i18n[currentLang];
+            const displayMsg = (msg === 'UNAUTHORIZED') ? dict.unauthorizedReportMsg :
+                               (msg === 'CLOUD_CONNECT_FAILED') ? dict.cloudLookupFailedMsg : msg;
             const resultArea = document.getElementById('reportResultArea');
             resultArea.innerHTML = `
                 <div class="result-card" style="padding: 30px 20px; text-align: center;">
-                    <h3 style="font-size: 16px; color: var(--error); margin-bottom: 8px;">Verification Failed</h3>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">${msg}</p>
-                    <button class="reset-btn" onclick="resetReportView()">Try Again</button>
+                    <h3 style="font-size: 16px; color: var(--error); margin-bottom: 8px;">${dict.verificationFailed}</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">${displayMsg}</p>
+                    <button class="reset-btn" onclick="resetReportView()">${dict.tryAgain}</button>
                 </div>
             `;
         }
 
         function resetReportView() {
+            lastReportState = null;
             document.getElementById('pdfFileInput').value = '';
             document.getElementById('reportResultArea').style.display = 'none';
             document.getElementById('reportResultArea').innerHTML = '';
@@ -1231,14 +1642,18 @@
         // ==========================================
         const VERIFY_AFFILIATE_ENDPOINT = "https://us-central1-ai-apps-central.cloudfunctions.net/verifyAffiliateCredential";
 
-        function renderPartnerLanding() {
+        function renderPartnerLanding(isLangRerender = false) {
+            if (!isLangRerender) {
+                lastPartnerState = { type: 'landing' };
+            }
+            const dict = i18n[currentLang];
             document.getElementById('partnerResultArea').innerHTML = `
                 <div class="dropzone-card" style="cursor: default;">
                     <div class="drop-icon-circle">
                         <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
                     </div>
-                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">Verify Specialist Credentials</h3>
-                    <p style="font-size: 13px; color: var(--text-muted);">Enter a Partner ID, Email, Full Name, or Phone Number to verify official partner registration.</p>
+                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">${dict.partnerLandingTitle}</h3>
+                    <p style="font-size: 13px; color: var(--text-muted);">${dict.partnerLandingHint}</p>
                 </div>
             `;
         }
@@ -1253,18 +1668,158 @@
             return 'ID';
         };
 
+        function renderPartnerCard(matchedPartner, isLangRerender = false) {
+            if (!isLangRerender) {
+                lastPartnerState = { type: 'success', matchedPartner };
+            }
+            const dict = i18n[currentLang];
+            const matchedId = matchedPartner.id;
+            const monogram = getMonogram(matchedPartner.name);
+
+            let statusBadgeHtml = `
+                <div class="status-badge is-active">
+                    <div class="status-icon"></div>
+                    <span>${dict.verifiedSpecialistBadge}</span>
+                </div>
+            `;
+
+            if (matchedPartner.status === 'suspended') {
+                statusBadgeHtml = `
+                    <div class="status-badge" style="background: rgba(239, 68, 68, 0.25); border-color: rgba(239, 68, 68, 0.5);">
+                        <div class="status-icon" style="background: #EF4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.8);"></div>
+                        <span style="color: #FEE2E2;">${dict.suspendedBadge}</span>
+                    </div>
+                `;
+            } else if (matchedPartner.status === 'expired') {
+                statusBadgeHtml = `
+                    <div class="status-badge" style="background: rgba(245, 158, 11, 0.25); border-color: rgba(245, 158, 11, 0.5);">
+                        <div class="status-icon" style="background: #F59E0B; box-shadow: 0 0 8px rgba(245, 158, 11, 0.8);"></div>
+                        <span style="color: #FEF3C7;">${dict.expiredBadge}</span>
+                    </div>
+                `;
+            }
+
+            const area = document.getElementById('partnerResultArea');
+            area.innerHTML = `
+                <div class="id-card">
+                    <div class="id-banner">
+                        ${statusBadgeHtml}
+                    </div>
+                    <div class="id-avatar-wrapper">
+                        <div class="id-avatar-ring">
+                            <div class="id-avatar-inner">
+                                <div class="monogram-avatar">${monogram}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="id-body">
+                        <h2 class="partner-name">${matchedPartner.name}</h2>
+                        <span class="partner-title">${matchedPartner.title}</span>
+                        <div class="data-glass-panel">
+                            <div class="meta-row">
+                                <span class="meta-label">${dict.partnerIdLabel}</span>
+                                <span class="meta-value mono">${matchedId}</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-label">${dict.emailLabel}</span>
+                                <span class="meta-value mono">${matchedPartner.email || dict.officialEmailDefault}</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-label">${dict.phoneLabel}</span>
+                                <span class="meta-value mono">${matchedPartner.phone || dict.officialContactDefault}</span>
+                            </div>
+                            <div class="meta-row">
+                                <span class="meta-label">${dict.countryLabel}</span>
+                                <span class="meta-value">${matchedPartner.country || dict.regRepDefault}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="id-footer">
+                        <div>
+                            <div style="font-size: 10px; color: var(--text-muted); font-weight: 800; text-transform: uppercase;">${dict.validThru}</div>
+                            <div class="validity-value">${matchedPartner.expiryDate}</div>
+                        </div>
+                        <img src="../assets/logo.webp" alt="Murshid" style="height: 36px;">
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAmbiguousPartner(message, isLangRerender = false) {
+            if (!isLangRerender) {
+                lastPartnerState = { type: 'ambiguous', message };
+            }
+            const dict = i18n[currentLang];
+            const area = document.getElementById('partnerResultArea');
+            area.innerHTML = `
+                <div class="result-card" style="padding: 28px 20px; text-align: center;">
+                    <div class="result-banner-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--warning); margin: 0 auto 14px;">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                    </div>
+                    <h3 style="font-size: 16px; font-weight: 800; color: #92400E; margin-bottom: 8px;">${dict.multipleMatchesTitle}</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
+                        ${message || dict.multipleMatchesHint}
+                    </p>
+                    <button class="reset-btn" onclick="document.getElementById('partnerInput').focus()">${dict.refineSearchBtn}</button>
+                </div>
+            `;
+        }
+
+        function renderNotFoundPartner(raw, isLangRerender = false) {
+            if (!isLangRerender) {
+                lastPartnerState = { type: 'not_found', raw };
+            }
+            const dict = i18n[currentLang];
+            const area = document.getElementById('partnerResultArea');
+            area.innerHTML = `
+                <div class="result-card" style="padding: 30px 20px; text-align: center;">
+                    <h3 style="font-size: 16px; color: var(--error); margin-bottom: 6px;">${dict.credentialNotFoundTitle}</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">${dict.credentialNotFoundMsg(raw)}</p>
+                </div>
+            `;
+        }
+
+        function renderUnauthorizedPartner(isLangRerender = false) {
+            if (!isLangRerender) {
+                lastPartnerState = { type: 'unauthorized' };
+            }
+            const dict = i18n[currentLang];
+            const area = document.getElementById('partnerResultArea');
+            area.innerHTML = `
+                <div class="result-card" style="padding: 30px 20px; text-align: center;">
+                    <h3 style="font-size: 16px; color: var(--error); margin-bottom: 6px;">${dict.unauthorizedAccess}</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">${dict.unauthorizedPartnerMsg}</p>
+                </div>
+            `;
+        }
+
+        function renderNetworkErrorPartner(isLangRerender = false) {
+            if (!isLangRerender) {
+                lastPartnerState = { type: 'network_error' };
+            }
+            const dict = i18n[currentLang];
+            const area = document.getElementById('partnerResultArea');
+            area.innerHTML = `
+                <div class="result-card" style="padding: 30px 20px; text-align: center;">
+                    <h3 style="font-size: 16px; color: var(--error); margin-bottom: 6px;">${dict.networkErrorTitle}</h3>
+                    <p style="font-size: 13px; color: var(--text-muted);">${dict.networkErrorMsg}</p>
+                </div>
+            `;
+        }
+
         async function handlePartnerSearch(e) {
-            e.preventDefault();
+            if (e && e.preventDefault) e.preventDefault();
             const input = document.getElementById('partnerInput');
             const raw = input.value.trim();
             if (!raw) return renderPartnerLanding();
 
+            const dict = i18n[currentLang];
             const area = document.getElementById('partnerResultArea');
             area.innerHTML = `
                 <div class="result-card" style="padding: 40px 20px; text-align: center;">
                     <div class="loading-spinner"></div>
-                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">Verifying Credentials...</h3>
-                    <p style="font-size: 13px; color: var(--text-muted);">Querying Murshid Official Credentials Registry</p>
+                    <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">${dict.verifyingPartner}</h3>
+                    <p style="font-size: 13px; color: var(--text-muted);">${dict.verifyingPartnerHint}</p>
                 </div>
             `;
 
@@ -1288,117 +1843,22 @@
                 });
 
                 if (response.status === 401) {
-                    area.innerHTML = `
-                        <div class="result-card" style="padding: 30px 20px; text-align: center;">
-                            <h3 style="font-size: 16px; color: var(--error); margin-bottom: 6px;">Unauthorized Access</h3>
-                            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">Access is restricted to the official verified Murshid platform.</p>
-                        </div>
-                    `;
+                    renderUnauthorizedPartner();
                     return;
                 }
 
                 const data = await response.json();
 
                 if (data.found && data.partner) {
-                    const matchedPartner = data.partner;
-                    const matchedId = matchedPartner.id;
-                    const monogram = getMonogram(matchedPartner.name);
-
-                    let statusBadgeHtml = `
-                        <div class="status-badge is-active">
-                            <div class="status-icon"></div>
-                            <span>Verified Specialist</span>
-                        </div>
-                    `;
-
-                    if (matchedPartner.status === 'suspended') {
-                        statusBadgeHtml = `
-                            <div class="status-badge" style="background: rgba(239, 68, 68, 0.25); border-color: rgba(239, 68, 68, 0.5);">
-                                <div class="status-icon" style="background: #EF4444; box-shadow: 0 0 8px rgba(239, 68, 68, 0.8);"></div>
-                                <span style="color: #FEE2E2;">Suspended Credential</span>
-                            </div>
-                        `;
-                    } else if (matchedPartner.status === 'expired') {
-                        statusBadgeHtml = `
-                            <div class="status-badge" style="background: rgba(245, 158, 11, 0.25); border-color: rgba(245, 158, 11, 0.5);">
-                                <div class="status-icon" style="background: #F59E0B; box-shadow: 0 0 8px rgba(245, 158, 11, 0.8);"></div>
-                                <span style="color: #FEF3C7;">Expired Credential</span>
-                            </div>
-                        `;
-                    }
-
-                    area.innerHTML = `
-                        <div class="id-card">
-                            <div class="id-banner">
-                                ${statusBadgeHtml}
-                            </div>
-                            <div class="id-avatar-wrapper">
-                                <div class="id-avatar-ring">
-                                    <div class="id-avatar-inner">
-                                        <div class="monogram-avatar">${monogram}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="id-body">
-                                <h2 class="partner-name">${matchedPartner.name}</h2>
-                                <span class="partner-title">${matchedPartner.title}</span>
-                                <div class="data-glass-panel">
-                                    <div class="meta-row">
-                                        <span class="meta-label">Partner ID:</span>
-                                        <span class="meta-value mono">${matchedId}</span>
-                                    </div>
-                                    <div class="meta-row">
-                                        <span class="meta-label">Email:</span>
-                                        <span class="meta-value mono">${matchedPartner.email || 'Official Registered Email'}</span>
-                                    </div>
-                                    <div class="meta-row">
-                                        <span class="meta-label">Phone:</span>
-                                        <span class="meta-value mono">${matchedPartner.phone || 'Official Contact'}</span>
-                                    </div>
-                                    <div class="meta-row">
-                                        <span class="meta-label">Country:</span>
-                                        <span class="meta-value">${matchedPartner.country || 'Registered Representative'}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="id-footer">
-                                <div>
-                                    <div style="font-size: 10px; color: var(--text-muted); font-weight: 800; text-transform: uppercase;">Valid Thru</div>
-                                    <div class="validity-value">${matchedPartner.expiryDate}</div>
-                                </div>
-                                <img src="../assets/logo.webp" alt="Murshid" style="height: 36px;">
-                            </div>
-                        </div>
-                    `;
+                    renderPartnerCard(data.partner);
                 } else if (data.code === 'AMBIGUOUS_MATCH') {
-                    area.innerHTML = `
-                        <div class="result-card" style="padding: 28px 20px; text-align: center;">
-                            <div class="result-banner-icon" style="background: rgba(245, 158, 11, 0.15); color: var(--warning); margin: 0 auto 14px;">
-                                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-                            </div>
-                            <h3 style="font-size: 16px; font-weight: 800; color: #92400E; margin-bottom: 8px;">Multiple Matches Found</h3>
-                            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
-                                ${data.message || 'Multiple specialists match this name. To ensure identity precision, please search using the exact Partner ID or Mobile Phone number.'}
-                            </p>
-                            <button class="reset-btn" onclick="document.getElementById('partnerInput').focus()">Refine Search</button>
-                        </div>
-                    `;
+                    renderAmbiguousPartner(data.message);
                 } else {
-                    area.innerHTML = `
-                        <div class="result-card" style="padding: 30px 20px; text-align: center;">
-                            <h3 style="font-size: 16px; color: var(--error); margin-bottom: 6px;">Credential Not Found</h3>
-                            <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">No official records match "${raw}" in Murshid verified specialist registry.</p>
-                        </div>
-                    `;
+                    renderNotFoundPartner(raw);
                 }
             } catch (networkErr) {
                 console.error("Network error verifying credential:", networkErr);
-                area.innerHTML = `
-                    <div class="result-card" style="padding: 30px 20px; text-align: center;">
-                        <h3 style="font-size: 16px; color: var(--error); margin-bottom: 6px;">Connection Error</h3>
-                        <p style="font-size: 13px; color: var(--text-muted);">Unable to reach Murshid verification registry. Please check your internet connection.</p>
-                    </div>
-                `;
+                renderNetworkErrorPartner();
             }
         }
 
@@ -1407,8 +1867,9 @@
             renderPartnerLanding();
         }
 
-        // On Load Check URL params
+        // On Load Check URL params & initialize language
         document.addEventListener("DOMContentLoaded", () => {
+            setLanguage(currentLang);
             const urlParams = new URLSearchParams(window.location.search);
             const partnerId = urlParams.get('id');
             if (partnerId) {

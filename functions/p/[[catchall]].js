@@ -16,7 +16,7 @@ export async function onRequest(context) {
       status: 404,
       headers: {
         'Content-Type': 'text/html; charset=utf-8',
-        'Cache-Control': 'public, max-age=60, s-maxage=300'
+        'Cache-Control': 'no-cache, no-store, must-revalidate'
       }
     });
   }
@@ -38,9 +38,19 @@ export async function onRequest(context) {
       headers: forwardHeaders
     });
 
+    const headers = new Headers(ssrResponse.headers);
+
+    // If 200 OK and not no-cache/no-index (active published site), ensure 24h Edge CDN caching
+    const rawCacheControl = headers.get('cache-control') || '';
+    const isUncacheable = rawCacheControl.includes('no-cache') || rawCacheControl.includes('no-store');
+
+    if (ssrResponse.status === 200 && !isUncacheable) {
+      headers.set('Cache-Control', 'public, max-age=60, s-maxage=86400, stale-while-revalidate=604800');
+    }
+
     return new Response(ssrResponse.body, {
       status: ssrResponse.status,
-      headers: ssrResponse.headers
+      headers: headers
     });
   } catch (err) {
     // Graceful fallback to static asset in case of edge network issue

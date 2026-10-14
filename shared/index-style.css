@@ -848,3 +848,37 @@
   }
 }
 
+/* ══════════════════════════════════════════════
+   RTL SPECIFIC LAYOUT STYLES (مرشد)
+   ══════════════════════════════════════════════ */
+html[dir="rtl"] .hero-avatars .av {
+  margin-right: 0;
+  margin-left: -8px;
+}
+html[dir="rtl"] .mockup-progress-fill {
+  transform-origin: right;
+}
+html[dir="rtl"] .mockup-ai-bubble {
+  border-radius: var(--m-radius-sm) 0 var(--m-radius-sm) var(--m-radius-sm);
+}
+html[dir="rtl"] .hero-float-1 {
+  right: auto;
+  left: -24px;
+}
+html[dir="rtl"] .hero-float-2 {
+  right: auto;
+  left: -30px;
+}
+html[dir="rtl"] .m-modal-close-btn {
+  right: auto;
+  left: 20px;
+}
+@media (max-width: 600px) {
+  html[dir="rtl"] .hero-float-1 {
+    left: 8px;
+  }
+  html[dir="rtl"] .hero-float-2 {
+    left: 8px;
+  }
+}
+

@@ -750,3 +750,27 @@ ul { list-style:none; }
   .m-nav-brand .brand-name-en { display:none; }
   .m-nav-brand { gap:6px; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   RTL SUPPORT (النسخة العربية الكاملة)
+   ═══════════════════════════════════════════════════════════ */
+html[dir="rtl"] {
+  direction: rtl;
+}
+html[dir="rtl"] body {
+  font-family: var(--m-font-ar), 'Cairo', sans-serif;
+}
+html[dir="rtl"] .reveal-left {
+  transform: translateX(50px);
+}
+html[dir="rtl"] .reveal-right {
+  transform: translateX(-50px);
+}
+html[dir="rtl"] .reveal-left.on, html[dir="rtl"] .reveal-right.on {
+  transform: translate(0);
+}
+html[dir="rtl"] .m-footer-links a:hover {
+  padding-left: 0;
+  padding-right: 4px;
+}
+
