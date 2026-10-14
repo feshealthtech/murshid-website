@@ -27,95 +27,225 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared/murshid-style.css" />
   <link rel="stylesheet" href="shared/index-style.css" />
   <link rel="icon" type="image/webp" href="assets/logo-sq.webp" />
   <style>
-    body, html {
-      background-color: #0A0F1E !important;
-      color: rgba(255, 255, 255, 0.85) !important;
-      font-family: var(--m-font);
-      overflow-x: hidden !important;
-      width: 100% !important;
-      height: 100%;
+    /* Reset & Base Body */
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background-color: var(--m-bg, #070E1A) !important;
+      color: var(--m-text, #F1F5F9) !important;
+      font-family: var(--m-font, 'Inter', sans-serif);
+      overflow-x: hidden;
+      width: 100%;
     }
 
     html[dir="rtl"] body {
-      font-family: 'Cairo', 'Noto Kufi Arabic', system-ui, sans-serif !important;
+      font-family: var(--m-font-ar, 'Noto Kufi Arabic'), 'Cairo', system-ui, sans-serif !important;
     }
 
+    /* Error Main Container */
     .error-container {
-      flex: 1;
+      flex: 1 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: calc(var(--nav-height, 80px) + 60px) 24px 80px;
+      padding: calc(var(--nav-h, 68px) + 48px) 24px 64px;
       position: relative;
-      overflow: hidden;
-      background-image: radial-gradient(circle at 50% 30%, rgba(20, 184, 166, 0.08) 0%, transparent 60%);
+      background: radial-gradient(circle at 50% 25%, rgba(43, 181, 160, 0.12) 0%, rgba(7, 14, 26, 0) 65%);
+      box-sizing: border-box;
+      width: 100%;
     }
 
-    .error-card {
-      background: rgba(255, 255, 255, 0.03) !important;
-      backdrop-filter: blur(24px) !important;
-      -webkit-backdrop-filter: blur(24px) !important;
-      border: 1px solid rgba(255, 255, 255, 0.08) !important;
-      border-radius: 24px;
-      padding: 60px 40px;
-      box-shadow: 0 20px 50px rgba(10, 15, 30, 0.3) !important;
-      max-width: 600px;
+    /* Ambient Glow Behind Card */
+    .error-card-wrapper {
+      position: relative;
+      max-width: 580px;
       width: 100%;
-      text-align: center;
+      margin: 0 auto;
+    }
+
+    .error-card-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 85%;
+      height: 85%;
+      background: radial-gradient(circle, rgba(43, 181, 160, 0.22) 0%, rgba(245, 158, 11, 0.1) 45%, transparent 75%);
+      filter: blur(48px);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Glassmorphism Error Card */
+    .error-card {
       position: relative;
       z-index: 2;
+      background: rgba(15, 23, 42, 0.8) !important;
+      backdrop-filter: blur(24px) !important;
+      -webkit-backdrop-filter: blur(24px) !important;
+      border: 1px solid var(--m-border-strong, rgba(43, 181, 160, 0.25)) !important;
+      border-radius: 28px;
+      padding: 52px 40px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 24px rgba(43, 181, 160, 0.12) !important;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .error-code {
-      font-size: clamp(4rem, 10vw, 7rem);
-      font-weight: 950;
-      line-height: 1;
-      margin-bottom: 16px;
-      background: linear-gradient(135deg, #10B981 0%, #F59E0B 100%) !important;
-      -webkit-background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-      background-clip: text !important;
-      letter-spacing: -0.05em;
-    }
-
-    .error-title {
-      font-size: clamp(1.4rem, 4vw, 1.8rem);
-      font-weight: 850;
-      color: #FFFFFF !important;
+    .error-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(43, 181, 160, 0.12);
+      border: 1px solid rgba(43, 181, 160, 0.28);
+      color: var(--m-primary-light, #4ECFBB);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
       margin-bottom: 18px;
     }
 
+    .error-code {
+      font-size: clamp(4.5rem, 12vw, 7.5rem);
+      font-weight: 950;
+      line-height: 1;
+      margin: 0 0 16px;
+      background: linear-gradient(135deg, #2BB5A0 0%, #4ECFBB 45%, #F59E0B 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      letter-spacing: -0.04em;
+    }
+
+    .error-title {
+      font-size: clamp(1.4rem, 4vw, 1.85rem);
+      font-weight: 850;
+      color: #FFFFFF !important;
+      margin: 0 0 16px;
+      line-height: 1.35;
+    }
+
     .error-desc {
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.65) !important;
+      font-size: 1.02rem;
+      color: var(--m-text-muted, #94A3B8) !important;
       line-height: 1.8;
-      margin-bottom: 36px;
+      margin: 0 auto 36px;
+      max-width: 480px;
     }
 
     .error-actions {
       display: flex;
       gap: 16px;
       justify-content: center;
+      align-items: center;
       flex-wrap: wrap;
     }
 
-    .m-btn {
-      padding: 12px 24px;
-      font-size: 0.92rem;
-      border-radius: 12px;
+    .error-actions .m-btn {
+      padding: 13px 26px;
+      font-size: 0.95rem;
+      border-radius: 14px;
       font-weight: 700;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      cursor: pointer;
       text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .m-btn-primary {
+      background: linear-gradient(135deg, #2BB5A0 0%, #1A9A87 100%);
+      color: #070E1A !important;
+      font-weight: 800 !important;
+      border: none;
+      box-shadow: 0 8px 24px rgba(43, 181, 160, 0.3);
+    }
+    .m-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(43, 181, 160, 0.45);
+      color: #070E1A !important;
+    }
+
+    .m-btn-outline {
+      background: rgba(255, 255, 255, 0.04);
+      color: #FFFFFF !important;
+      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+    }
+    .m-btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(43, 181, 160, 0.5) !important;
+      transform: translateY(-2px);
+      color: #FFFFFF !important;
+    }
+
+    /* Social Icons Styling */
+    .m-footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .m-footer-social-btn {
+      width: 36px;
+      height: 36px;
+      background: var(--m-surface-2, #1E293B);
+      border: 1px solid var(--m-border, rgba(43, 181, 160, 0.12));
+      border-radius: var(--m-radius-sm, 8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--m-text-subtle, #94A3B8);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .m-footer-social-btn:hover {
+      background: var(--m-primary, #2BB5A0);
+      border-color: var(--m-primary, #2BB5A0);
+      color: #070E1A;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .error-container {
+        padding: calc(var(--nav-h, 68px) + 24px) 16px 44px;
+      }
+      .error-card {
+        padding: 34px 18px;
+        border-radius: 20px;
+      }
+      .error-code {
+        font-size: 4.6rem;
+        margin-bottom: 10px;
+      }
+      .error-title {
+        font-size: 1.35rem;
+        margin-bottom: 12px;
+      }
+      .error-desc {
+        font-size: 0.94rem;
+        line-height: 1.65;
+        margin-bottom: 26px;
+      }
+      .error-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+      }
+      .error-actions .m-btn {
+        width: 100%;
+        padding: 13px 18px;
+        box-sizing: border-box;
+      }
     }
   </style>
 </head>
@@ -144,10 +274,10 @@
             <span style="font-size:0.75rem;">▾</span>
           </button>
           <div class="m-nav-dropdown-menu">
-            <a href="privacy-policy.html" class="m-nav-dropdown-item">🔒 Privacy Policy</a>
-            <a href="terms-of-use.html" class="m-nav-dropdown-item">📜 Terms of Use</a>
-            <a href="refund-policy.html" class="m-nav-dropdown-item">💵 Refund Policy</a>
-            <a href="data-deletion.html" class="m-nav-dropdown-item">🗑️ Data Deletion</a>
+            <a href="privacy-policy.html" class="m-nav-dropdown-item" id="navDropPrivacy">🔒 Privacy Policy</a>
+            <a href="terms-of-use.html" class="m-nav-dropdown-item" id="navDropTerms">📜 Terms of Use</a>
+            <a href="refund-policy.html" class="m-nav-dropdown-item" id="navDropRefund">💵 Refund Policy</a>
+            <a href="data-deletion.html" class="m-nav-dropdown-item" id="navDropDataDeletion">🗑️ Data Deletion</a>
           </div>
         </li>
       </ul>
@@ -174,62 +304,72 @@
       </a>
       <a href="index.html" class="m-mobile-link" id="mobHome">
         <span class="m-mobile-icon">🏠</span>
-        <span class="m-mobile-text">Home</span>
+        <span class="m-mobile-text" id="mobHomeText">Home</span>
       </a>
       <a href="index.html#features" class="m-mobile-link" id="mobFeatures">
         <span class="m-mobile-icon">🚀</span>
-        <span class="m-mobile-text">App Features</span>
+        <span class="m-mobile-text" id="mobFeaturesText">App Features</span>
       </a>
       <a href="index.html#wallet" class="m-mobile-link" id="mobWallet">
         <span class="m-mobile-icon">🪙</span>
-        <span class="m-mobile-text">Points System</span>
+        <span class="m-mobile-text" id="mobWalletText">Points System</span>
       </a>
       <a href="index.html#how" class="m-mobile-link" id="mobHow">
         <span class="m-mobile-icon">📋</span>
-        <span class="m-mobile-text">How It Works?</span>
+        <span class="m-mobile-text" id="mobHowText">How It Works?</span>
       </a>
       <a href="index.html#pricing" class="m-mobile-link" id="mobPricing">
         <span class="m-mobile-icon">💳</span>
-        <span class="m-mobile-text">Pricing & Plans</span>
+        <span class="m-mobile-text" id="mobPricingText">Pricing & Plans</span>
       </a>
       <a href="faq.html" class="m-mobile-link" id="mobFaq">
         <span class="m-mobile-icon">❓</span>
-        <span class="m-mobile-text">FAQ</span>
+        <span class="m-mobile-text" id="mobFaqText">FAQ</span>
       </a>
       <a href="contact.html" class="m-mobile-link" id="mobContact">
         <span class="m-mobile-icon">✉️</span>
-        <span class="m-mobile-text">Contact Us</span>
+        <span class="m-mobile-text" id="mobContactText">Contact Us</span>
       </a>
-      <a href="privacy-policy.html" class="m-mobile-link">
+      <a href="privacy-policy.html" class="m-mobile-link" id="mobPrivacy">
         <span class="m-mobile-icon">🔒</span>
-        <span class="m-mobile-text">Privacy Policy</span>
+        <span class="m-mobile-text" id="mobPrivacyText">Privacy Policy</span>
       </a>
-      <a href="terms-of-use.html" class="m-mobile-link">
+      <a href="terms-of-use.html" class="m-mobile-link" id="mobTerms">
         <span class="m-mobile-icon">📜</span>
-        <span class="m-mobile-text">Terms of Use</span>
+        <span class="m-mobile-text" id="mobTermsText">Terms of Use</span>
       </a>
-      <a href="refund-policy.html" class="m-mobile-link">
+      <a href="refund-policy.html" class="m-mobile-link" id="mobRefund">
         <span class="m-mobile-icon">💵</span>
-        <span class="m-mobile-text">Refund Policy</span>
+        <span class="m-mobile-text" id="mobRefundText">Refund Policy</span>
       </a>
-      <a href="data-deletion.html" class="m-mobile-link">
+      <a href="data-deletion.html" class="m-mobile-link" id="mobDataDeletion">
         <span class="m-mobile-icon">🗑️</span>
-        <span class="m-mobile-text">Data Deletion</span>
+        <span class="m-mobile-text" id="mobDataDeletionText">Data Deletion</span>
       </a>
     </div>
   </div>
 
   <!-- MAIN CONTAINER -->
   <main class="error-container">
-    <div class="error-card">
-      <div class="error-code">404</div>
-      <h1 class="error-title" id="errTitle">Page Not Found 🔍</h1>
-      <p class="error-desc" id="errDesc">
-        Sorry, the page you are looking for has been moved or deleted. You can return to Murshid's homepage or check the FAQ.
-      </p>
-      <div class="error-actions">
-        <a href="index.html" class="m-btn m-btn-primary" id="btnHome">🏠 Back to Home</a>
-        <a href="faq.html" class="m-btn m-btn-outline" id="btnFaq" style="border:1px solid rgba(255,255,255,0.15)">❓ FAQ</a>
+    <div class="error-card-wrapper">
+      <div class="error-card-glow"></div>
+      <div class="error-card">
+        <div class="error-badge" id="errBadge">🔍 Error 404</div>
+        <div class="error-code">404</div>
+        <h1 class="error-title" id="errTitle">Page Not Found</h1>
+        <p class="error-desc" id="errDesc">
+          Sorry, the page you are looking for has been moved or deleted. You can return to Murshid's homepage or check the FAQ.
+        </p>
+        <div class="error-actions">
+          <a href="index.html" class="m-btn m-btn-primary" id="btnHome">
+            <span>🏠</span>
+            <span id="btnHomeText">Back to Home</span>
+          </a>
+          <a href="faq.html" class="m-btn m-btn-outline" id="btnFaq">
+            <span>❓</span>
+            <span id="btnFaqText">FAQ</span>
+          </a>
+        </div>
       </div>
     </div>
   </main>
@@ -244,9 +384,15 @@
           <div class="footer-app-sub" id="footerBrandSub">Murshid App</div>
           <p id="footerBio">The smart clinic management app for dietitians — developed by <a href="https://feshealthtech.com/">FES HealthTech</a>.</p>
           <div class="m-footer-social">
-            <div class="m-footer-social-btn" title="X">𝕏</div>
-            <div class="m-footer-social-btn" title="Instagram">📸</div>
-            <div class="m-footer-social-btn" title="YouTube">▶️</div>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="m-footer-social-btn" aria-label="X (Twitter)">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="m-footer-social-btn" aria-label="Instagram">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="m-footer-social-btn" aria-label="YouTube">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
           </div>
         </div>
         <div>
@@ -262,26 +408,26 @@
           <h4 class="m-footer-col-title" id="colSupport">Support</h4>
           <ul class="m-footer-links">
             <li><a href="faq.html" id="footFaq">FAQ</a></li>
-            <li><a href="data-deletion.html">Data Deletion</a></li>
-            <li><a href="https://feshealthtech.com/">About Us</a></li>
+            <li><a href="data-deletion.html" id="footDataDeletion">Data Deletion</a></li>
+            <li><a href="https://feshealthtech.com/" id="footAboutUs">About Us</a></li>
             <li><a href="contact.html" id="footContact">Contact Us</a></li>
           </ul>
         </div>
         <div>
           <h4 class="m-footer-col-title" id="colLegal">Legal</h4>
           <ul class="m-footer-links">
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a href="terms-of-use.html">Terms of Use</a></li>
-            <li><a href="refund-policy.html">Refund Policy</a></li>
+            <li><a href="privacy-policy.html" id="footPrivacy">Privacy Policy</a></li>
+            <li><a href="terms-of-use.html" id="footTerms">Terms of Use</a></li>
+            <li><a href="refund-policy.html" id="footRefund">Refund Policy</a></li>
           </ul>
         </div>
       </div>
       <div class="m-footer-bottom">
-        <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. <span id="footerRights">All Rights Reserved.</span></p>
+        <p class="m-footer-copy" id="footerCopy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. <span id="footerRights">All Rights Reserved.</span></p>
         <div class="m-footer-bottom-links">
-          <a href="privacy-policy.html">Privacy</a>
-          <a href="terms-of-use.html">Terms</a>
-          <a href="data-deletion.html">Data Deletion</a>
+          <a href="privacy-policy.html" id="bottomPrivacy">Privacy</a>
+          <a href="terms-of-use.html" id="bottomTerms">Terms</a>
+          <a href="data-deletion.html" id="bottomDataDeletion">Data Deletion</a>
         </div>
       </div>
     </div>
@@ -293,11 +439,12 @@
       const i18n = {
         en: {
           pageTitle: "404 - Page Not Found | Murshid App",
-          errTitle: "Page Not Found 🔍",
+          errBadge: "🔍 Error 404",
+          errTitle: "Page Not Found",
           errDesc: "Sorry, the page you are looking for has been moved or deleted. You can return to Murshid's homepage or check the FAQ.",
-          btnHome: "🏠 Back to Home",
+          btnHome: "Back to Home",
           homeHref: "index.html",
-          btnFaq: "❓ FAQ",
+          btnFaq: "FAQ",
           faqHref: "faq.html",
           toggleText: "🌐 العربية",
           mobLangToggle: "النسخة العربية (Arabic)",
@@ -316,20 +463,54 @@
           navFaq: "FAQ",
           navContact: "Contact Us",
           navContactHref: "contact.html",
+          navLegal: "Legal",
+          navDropPrivacy: "🔒 Privacy Policy",
+          navDropTerms: "📜 Terms of Use",
+          navDropRefund: "💵 Refund Policy",
+          navDropDataDeletion: "🗑️ Data Deletion",
           navDownload: "📥 Download Free",
           navDownloadHref: "index.html#download",
+          colApp: "App",
+          footFeatures: "Features",
+          footWallet: "Points System",
+          footPricing: "Pricing",
+          footDownload: "Download",
+          colSupport: "Support",
+          footFaq: "FAQ",
+          footDataDeletion: "Data Deletion",
+          footAboutUs: "About Us",
+          footContact: "Contact Us",
+          colLegal: "Legal",
+          footPrivacy: "Privacy Policy",
+          footTerms: "Terms of Use",
+          footRefund: "Refund Policy",
+          bottomPrivacy: "Privacy",
+          bottomTerms: "Terms",
+          bottomDataDeletion: "Data Deletion",
           footerBrandName: "Murshid",
           footerBrandSub: "Murshid App",
           footerBio: 'The smart clinic management app for dietitians — developed by <a href="https://feshealthtech.com/">FES HealthTech</a>.',
-          footerRights: "All Rights Reserved."
+          footerRights: "All Rights Reserved.",
+          mobHome: "Home",
+          mobFeatures: "App Features",
+          mobWallet: "Points System",
+          mobHow: "How It Works?",
+          mobPricing: "Pricing & Plans",
+          mobFaq: "FAQ",
+          mobContact: "Contact Us",
+          mobPrivacy: "Privacy Policy",
+          mobTerms: "Terms of Use",
+          mobRefund: "Refund Policy",
+          mobDataDeletion: "Data Deletion"
         },
         ar: {
           pageTitle: "404 — الصفحة غير موجودة | تطبيق مرشد",
-          errTitle: "الصفحة غير موجودة 🔍",
-          errDesc: "عذراً، الصفحة التي تبحث عنها غير متوفرة أو تم نقلها. يمكنك العودة إلى الصفحة الرئيسية لتطبيق مرشد أو مراجعة الأسئلة الشائعة.",
-          btnHome: "🏠 العودة للرئيسية",
+          errBadge: "🔍 خطأ 404",
+          errTitle: "الصفحة غير موجودة",
+          errDesc: "عذراً، الصفحة التي تبحث عنها غير متوفرة أو ربما تم تغيير مسارها. يمكنك العودة إلى الصفحة الرئيسية لتطبيق مرشد أو مراجعة الأسئلة الشائعة.",
+          btnHome: "العودة للرئيسية",
           homeHref: "/ar/",
-          btnFaq: "❓ الأسئلة الشائعة",
+          btnFaq: "الأسئلة الشائعة",
           faqHref: "/ar/faq.html",
           toggleText: "🌐 English",
           mobLangToggle: "English Version (الإنجليزية)",
@@ -348,12 +529,45 @@
           navFaq: "الأسئلة الشائعة",
           navContact: "تواصل معنا",
           navContactHref: "/ar/contact.html",
+          navLegal: "السياسات",
+          navDropPrivacy: "🔒 سياسة الخصوصية",
+          navDropTerms: "📜 شروط الاستخدام",
+          navDropRefund: "💵 سياسة الاسترداد",
+          navDropDataDeletion: "🗑️ حذف البيانات",
           navDownload: "📥 تحميل مجاناً",
           navDownloadHref: "/ar/#download",
+          colApp: "التطبيق",
+          footFeatures: "المميزات",
+          footWallet: "نظام النقاط",
+          footPricing: "الأسعار",
+          footDownload: "تحميل التطبيق",
+          colSupport: "الدعم الفني",
+          footFaq: "الأسئلة الشائعة",
+          footDataDeletion: "حذف البيانات",
+          footAboutUs: "عن الشركة",
+          footContact: "تواصل معنا",
+          colLegal: "الشروط والسياسات",
+          footPrivacy: "سياسة الخصوصية",
+          footTerms: "شروط الاستخدام",
+          footRefund: "سياسة الاسترداد",
+          bottomPrivacy: "الخصوصية",
+          bottomTerms: "الشروط",
+          bottomDataDeletion: "حذف البيانات",
           footerBrandName: "مرشد",
           footerBrandSub: "تطبيق مرشد",
           footerBio: 'المنصة الذكية المتكاملة لأخصائيي التغذية لإدارة العيادات وتصميم الحميات — تم التطوير بواسطة <a href="https://feshealthtech.com/">FES HealthTech</a>.',
-          footerRights: "جميع الحقوق محفوظة."
+          footerRights: "جميع الحقوق محفوظة.",
+          mobHome: "الرئيسية",
+          mobFeatures: "مميزات التطبيق",
+          mobWallet: "نظام النقاط",
+          mobHow: "كيف يعمل؟",
+          mobPricing: "الباقات والأسعار",
+          mobFaq: "الأسئلة الشائعة",
+          mobContact: "تواصل معنا",
+          mobPrivacy: "سياسة الخصوصية",
+          mobTerms: "شروط الاستخدام",
+          mobRefund: "سياسة الاسترداد",
+          mobDataDeletion: "حذف البيانات"
         }
       };
 
@@ -376,47 +590,197 @@
         document.documentElement.dir = (lang === 'ar' ? 'rtl' : 'ltr');
         document.title = t.pageTitle;
 
-        // Elements text
-        document.getElementById('errTitle').innerText = t.errTitle;
-        document.getElementById('errDesc').innerText = t.errDesc;
+        // Card Elements
+        const errBadgeEl = document.getElementById('errBadge');
+        if (errBadgeEl) errBadgeEl.innerText = t.errBadge;
+
+        const errTitleEl = document.getElementById('errTitle');
+        if (errTitleEl) errTitleEl.innerText = t.errTitle;
+
+        const errDescEl = document.getElementById('errDesc');
+        if (errDescEl) errDescEl.innerText = t.errDesc;
         
         const btnHome = document.getElementById('btnHome');
-        btnHome.innerText = t.btnHome;
-        btnHome.href = t.homeHref;
+        const btnHomeText = document.getElementById('btnHomeText');
+        if (btnHome) btnHome.href = t.homeHref;
+        if (btnHomeText) btnHomeText.innerText = t.btnHome;
 
         const btnFaq = document.getElementById('btnFaq');
-        btnFaq.innerText = t.btnFaq;
-        btnFaq.href = t.faqHref;
+        const btnFaqText = document.getElementById('btnFaqText');
+        if (btnFaq) btnFaq.href = t.faqHref;
+        if (btnFaqText) btnFaqText.innerText = t.btnFaq;
 
+        // Navbar Elements
         const toggleBtn = document.getElementById('langToggleBtn');
-        toggleBtn.innerText = t.toggleText;
+        if (toggleBtn) toggleBtn.innerText = t.toggleText;
 
+        const brandTextAr = document.getElementById('brandTextAr');
+        if (brandTextAr) brandTextAr.innerText = t.brandAr;
+
+        const brandTextEn = document.getElementById('brandTextEn');
+        if (brandTextEn) brandTextEn.innerText = t.brandEn;
+
+        const brandLink = document.getElementById('brandLink');
+        if (brandLink) brandLink.href = t.homeHref;
+
+        const navFeatures = document.getElementById('navFeatures');
+        if (navFeatures) { navFeatures.innerText = t.navFeatures; navFeatures.href = t.navFeaturesHref; }
+
+        const navWallet = document.getElementById('navWallet');
+        if (navWallet) { navWallet.innerText = t.navWallet; navWallet.href = t.navWalletHref; }
+
+        const navHow = document.getElementById('navHow');
+        if (navHow) { navHow.innerText = t.navHow; navHow.href = t.navHowHref; }
+
+        const navPricing = document.getElementById('navPricing');
+        if (navPricing) { navPricing.innerText = t.navPricing; navPricing.href = t.navPricingHref; }
+
+        const navFaq = document.getElementById('navFaq');
+        if (navFaq) { navFaq.innerText = t.navFaq; navFaq.href = t.faqHref; }
+
+        const navContact = document.getElementById('navContact');
+        if (navContact) { navContact.innerText = t.navContact; navContact.href = t.navContactHref; }
+
+        const navLegal = document.getElementById('navLegal');
+        if (navLegal) navLegal.innerText = t.navLegal;
+
+        const navDropPrivacy = document.getElementById('navDropPrivacy');
+        if (navDropPrivacy) navDropPrivacy.innerText = t.navDropPrivacy;
+
+        const navDropTerms = document.getElementById('navDropTerms');
+        if (navDropTerms) navDropTerms.innerText = t.navDropTerms;
+
+        const navDropRefund = document.getElementById('navDropRefund');
+        if (navDropRefund) navDropRefund.innerText = t.navDropRefund;
+
+        const navDropDataDeletion = document.getElementById('navDropDataDeletion');
+        if (navDropDataDeletion) navDropDataDeletion.innerText = t.navDropDataDeletion;
+
+        const navDownload = document.getElementById('navDownload');
+        if (navDownload) { navDownload.innerText = t.navDownload; navDownload.href = t.navDownloadHref; }
+
+        // Mobile Menu Elements
         const mobLangToggle = document.getElementById('mobLangToggle');
         if (mobLangToggle) mobLangToggle.innerText = t.mobLangToggle;
 
-        document.getElementById('brandTextAr').innerText = t.brandAr;
-        document.getElementById('brandTextEn').innerText = t.brandEn;
-        document.getElementById('brandLink').href = t.homeHref;
+        const mobTitle = document.getElementById('mobTitle');
+        if (mobTitle) mobTitle.innerText = t.mobTitle;
 
-        document.getElementById('navFeatures').innerText = t.navFeatures;
-        document.getElementById('navFeatures').href = t.navFeaturesHref;
-        document.getElementById('navWallet').innerText = t.navWallet;
-        document.getElementById('navWallet').href = t.navWalletHref;
-        document.getElementById('navHow').innerText = t.navHow;
-        document.getElementById('navHow').href = t.navHowHref;
-        document.getElementById('navPricing').innerText = t.navPricing;
-        document.getElementById('navPricing').href = t.navPricingHref;
-        document.getElementById('navFaq').innerText = t.navFaq;
-        document.getElementById('navFaq').href = t.faqHref;
-        document.getElementById('navContact').innerText = t.navContact;
-        document.getElementById('navContact').href = t.navContactHref;
-        document.getElementById('navDownload').innerText = t.navDownload;
-        document.getElementById('navDownload').href = t.navDownloadHref;
+        const mobSubtitle = document.getElementById('mobSubtitle');
+        if (mobSubtitle) mobSubtitle.innerText = t.mobSubtitle;
 
-        document.getElementById('footerBrandName').innerText = t.footerBrandName;
-        document.getElementById('footerBrandSub').innerText = t.footerBrandSub;
-        document.getElementById('footerBio').innerHTML = t.footerBio;
-        document.getElementById('footerRights').innerText = t.footerRights;
+        const mobHome = document.getElementById('mobHome');
+        const mobHomeText = document.getElementById('mobHomeText');
+        if (mobHome) mobHome.href = t.homeHref;
+        if (mobHomeText) mobHomeText.innerText = t.mobHome;
+
+        const mobFeatures = document.getElementById('mobFeatures');
+        const mobFeaturesText = document.getElementById('mobFeaturesText');
+        if (mobFeatures) mobFeatures.href = t.navFeaturesHref;
+        if (mobFeaturesText) mobFeaturesText.innerText = t.mobFeatures;
+
+        const mobWallet = document.getElementById('mobWallet');
+        const mobWalletText = document.getElementById('mobWalletText');
+        if (mobWallet) mobWallet.href = t.navWalletHref;
+        if (mobWalletText) mobWalletText.innerText = t.mobWallet;
+
+        const mobHow = document.getElementById('mobHow');
+        const mobHowText = document.getElementById('mobHowText');
+        if (mobHow) mobHow.href = t.navHowHref;
+        if (mobHowText) mobHowText.innerText = t.mobHow;
+
+        const mobPricing = document.getElementById('mobPricing');
+        const mobPricingText = document.getElementById('mobPricingText');
+        if (mobPricing) mobPricing.href = t.navPricingHref;
+        if (mobPricingText) mobPricingText.innerText = t.mobPricing;
+
+        const mobFaq = document.getElementById('mobFaq');
+        const mobFaqText = document.getElementById('mobFaqText');
+        if (mobFaq) mobFaq.href = t.faqHref;
+        if (mobFaqText) mobFaqText.innerText = t.mobFaq;
+
+        const mobContact = document.getElementById('mobContact');
+        const mobContactText = document.getElementById('mobContactText');
+        if (mobContact) mobContact.href = t.navContactHref;
+        if (mobContactText) mobContactText.innerText = t.mobContact;
+
+        const mobPrivacyText = document.getElementById('mobPrivacyText');
+        if (mobPrivacyText) mobPrivacyText.innerText = t.mobPrivacy;
+
+        const mobTermsText = document.getElementById('mobTermsText');
+        if (mobTermsText) mobTermsText.innerText = t.mobTerms;
+
+        const mobRefundText = document.getElementById('mobRefundText');
+        if (mobRefundText) mobRefundText.innerText = t.mobRefund;
+
+        const mobDataDeletionText = document.getElementById('mobDataDeletionText');
+        if (mobDataDeletionText) mobDataDeletionText.innerText = t.mobDataDeletion;
+
+        // Footer Column Titles
+        const colApp = document.getElementById('colApp');
+        if (colApp) colApp.innerText = t.colApp;
+
+        const colSupport = document.getElementById('colSupport');
+        if (colSupport) colSupport.innerText = t.colSupport;
+
+        const colLegal = document.getElementById('colLegal');
+        if (colLegal) colLegal.innerText = t.colLegal;
+
+        // Footer Links
+        const footFeatures = document.getElementById('footFeatures');
+        if (footFeatures) { footFeatures.innerText = t.footFeatures; footFeatures.href = t.navFeaturesHref; }
+
+        const footWallet = document.getElementById('footWallet');
+        if (footWallet) { footWallet.innerText = t.footWallet; footWallet.href = t.navWalletHref; }
+
+        const footPricing = document.getElementById('footPricing');
+        if (footPricing) { footPricing.innerText = t.footPricing; footPricing.href = t.navPricingHref; }
+
+        const footDownload = document.getElementById('footDownload');
+        if (footDownload) { footDownload.innerText = t.footDownload; footDownload.href = t.navDownloadHref; }
+
+        const footFaq = document.getElementById('footFaq');
+        if (footFaq) { footFaq.innerText = t.footFaq; footFaq.href = t.faqHref; }
+
+        const footDataDeletion = document.getElementById('footDataDeletion');
+        if (footDataDeletion) footDataDeletion.innerText = t.footDataDeletion;
+
+        const footAboutUs = document.getElementById('footAboutUs');
+        if (footAboutUs) footAboutUs.innerText = t.footAboutUs;
+
+        const footContact = document.getElementById('footContact');
+        if (footContact) { footContact.innerText = t.footContact; footContact.href = t.navContactHref; }
+
+        const footPrivacy = document.getElementById('footPrivacy');
+        if (footPrivacy) footPrivacy.innerText = t.footPrivacy;
+
+        const footTerms = document.getElementById('footTerms');
+        if (footTerms) footTerms.innerText = t.footTerms;
+
+        const footRefund = document.getElementById('footRefund');
+        if (footRefund) footRefund.innerText = t.footRefund;
+
+        // Bottom Footer
+        const footerBrandName = document.getElementById('footerBrandName');
+        if (footerBrandName) footerBrandName.innerText = t.footerBrandName;
+
+        const footerBrandSub = document.getElementById('footerBrandSub');
+        if (footerBrandSub) footerBrandSub.innerText = t.footerBrandSub;
+
+        const footerBio = document.getElementById('footerBio');
+        if (footerBio) footerBio.innerHTML = t.footerBio;
+
+        const footerRights = document.getElementById('footerRights');
+        if (footerRights) footerRights.innerText = t.footerRights;
+
+        const bottomPrivacy = document.getElementById('bottomPrivacy');
+        if (bottomPrivacy) bottomPrivacy.innerText = t.bottomPrivacy;
+
+        const bottomTerms = document.getElementById('bottomTerms');
+        if (bottomTerms) bottomTerms.innerText = t.bottomTerms;
+
+        const bottomDataDeletion = document.getElementById('bottomDataDeletion');
+        if (bottomDataDeletion) bottomDataDeletion.innerText = t.bottomDataDeletion;
       }
 
       window.toggle404Lang = function() {
