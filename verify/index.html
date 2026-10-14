@@ -802,7 +802,7 @@
             </button>
             <button class="tab-btn" id="tabPartnerBtn" onclick="switchTab('partner')">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                <span id="tabPartnerText">Specialist Credentials</span>
+                <span id="tabPartnerText">Affiliate Credentials</span>
             </button>
         </div>
 
@@ -825,14 +825,14 @@
 
         </section>
 
-        <!-- TAB 2: Specialist Partner Search Section -->
+        <!-- TAB 2: Affiliate Search Section -->
         <section id="partnerSection" style="display: none;">
             <!-- Search Bar -->
             <form class="search-widget" id="searchForm" onsubmit="handlePartnerSearch(event)">
                 <div class="search-icon">
                     <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/></svg>
                 </div>
-                <input type="text" id="partnerInput" class="search-input" placeholder="Enter Specialist ID, Email, Phone, or Name..." autocomplete="off">
+                <input type="text" id="partnerInput" class="search-input" placeholder="Enter Affiliate ID, Email, Phone, or Name..." autocomplete="off">
                 <button type="submit" class="search-button" id="searchBtnText">Verify</button>
             </form>
 
@@ -871,11 +871,11 @@
             en: {
                 portalTitleBadge: "Official Verification Engine",
                 tabReport: "Verify PDF Document",
-                tabPartner: "Specialist Credentials",
+                tabPartner: "Affiliate Credentials",
                 dropTitle: "Drag & Drop Your PDF Document Here",
                 dropHint: "Or click to browse and select any report, diet plan, or official invoice exported from Murshid App to verify its authenticity and cryptographic signature.",
                 browseBtn: "Choose File from Device",
-                partnerSearchPlaceholder: "Enter Specialist ID, Email, Phone, or Name...",
+                partnerSearchPlaceholder: "Enter Affiliate ID, Email, Phone, or Name...",
                 partnerSearchBtn: "Verify",
                 appCtaText: "Download Murshid App — The Smart Clinical Dietitian Platform",
                 googlePlay: "Google Play",
@@ -924,12 +924,12 @@
                 unexpectedErrorMsg: "An unexpected error occurred while processing the PDF file: ",
                 decodeErrorMsg: "Failed to decode embedded cryptographic metadata payload.",
                 validPdfAlert: "Please select a valid PDF file.",
-                partnerLandingTitle: "Verify Specialist Credentials",
-                partnerLandingHint: "Enter a Partner ID, Email, Full Name, or Phone Number to verify official partner registration.",
-                verifiedSpecialistBadge: "Verified Specialist",
+                partnerLandingTitle: "Verify Affiliate Credentials",
+                partnerLandingHint: "Enter an Affiliate ID, Email, Full Name, or Phone Number to verify official partner registration.",
+                verifiedSpecialistBadge: "Verified Affiliate",
                 suspendedBadge: "Suspended Credential",
                 expiredBadge: "Expired Credential",
-                partnerIdLabel: "Partner ID:",
+                partnerIdLabel: "Affiliate ID:",
                 emailLabel: "Email:",
                 phoneLabel: "Phone:",
                 countryLabel: "Country:",
@@ -938,20 +938,20 @@
                 regRepDefault: "Registered Representative",
                 validThru: "Valid Thru",
                 multipleMatchesTitle: "Multiple Matches Found",
-                multipleMatchesHint: "Multiple specialists match this name. To ensure identity precision, please search using the exact Partner ID or Mobile Phone number.",
+                multipleMatchesHint: "Multiple affiliates match this name. To ensure identity precision, please search using the exact Affiliate ID or Mobile Phone number.",
                 refineSearchBtn: "Refine Search",
                 credentialNotFoundTitle: "Credential Not Found",
-                credentialNotFoundMsg: (query) => `No official records match "${query}" in Murshid verified specialist registry.`,
+                credentialNotFoundMsg: (query) => `No official records match "${query}" in Murshid verified affiliate registry.`,
                 switchLangBtn: "🌐 العربية"
             },
             ar: {
                 portalTitleBadge: "بوابة ومحرك التحقق الرسمي",
                 tabReport: "فحص وثيقة PDF",
-                tabPartner: "بيانات واعتماد الأخصائي",
+                tabPartner: "بيانات واعتماد المنتسب",
                 dropTitle: "اسحب وأفلت وثيقة PDF هنا",
                 dropHint: "أو انقر للاستعراض واختيار أي تقرير طبي، خطة حمية غذائية، أو فاتورة رسمية صادرة من تطبيق مرشد للتحقق من أصالتها وتوقيعها التشفيري.",
                 browseBtn: "اختر ملفاً من جهازك",
-                partnerSearchPlaceholder: "أدخل معرّف الأخصائي، البريد، الهاتف، أو الاسم...",
+                partnerSearchPlaceholder: "أدخل معرّف المنتسب، البريد، الهاتف، أو الاسم...",
                 partnerSearchBtn: "تحقق الآن",
                 appCtaText: "حمّل تطبيق مرشد — المنصة السريرية الذكية لأخصائيي التغذية",
                 googlePlay: "جوجل بلاي",
@@ -959,7 +959,7 @@
                 verifyingDoc: "جارٍ فحص الوثيقة تشفيرياً...",
                 verifyingDocHint: "استخراج التوقيع الرقمي ومطابقة السجل السحابي المعتمد",
                 verifyingPartner: "جارٍ التحقق من بيانات الاعتماد...",
-                verifyingPartnerHint: "الاستعلام من السجل المركزي لشخصيات وأخصائيي مرشد المعتمدين",
+                verifyingPartnerHint: "الاستعلام من السجل المركزي لمنتسبي وشركاء مرشد المعتمدين",
                 docAuthenticTitle: "وثيقة أصلية ومعتمدة 100%",
                 docAuthenticSub: "تم تأكيد صحة التوقيع الرقمي التشفيري ومطابقته بالسجل السحابي لمرشد",
                 verifiedIssuerAccount: "حساب المُصدر المعتمد (Google / Murshid)",
@@ -1000,12 +1000,12 @@
                 unexpectedErrorMsg: "حدث خطأ غير متوقع أثناء معالجة ملف PDF: ",
                 decodeErrorMsg: "فشل فك تشفير حمولة البيانات التشفيرية المضمنة في الوثيقة.",
                 validPdfAlert: "يرجى اختيار ملف PDF صالح.",
-                partnerLandingTitle: "التحقق من اعتماد وبيانات الأخصائي",
-                partnerLandingHint: "أدخل معرّف الشريك (ID)، البريد الإلكتروني، الاسم الكامل، أو رقم الهاتف للتحقق من التسجيل الرسمي المعتمد.",
-                verifiedSpecialistBadge: "أخصائي معتمد وموثق",
+                partnerLandingTitle: "التحقق من بيانات واعتماد المنتسب",
+                partnerLandingHint: "أدخل معرّف المنتسب (ID)، البريد الإلكتروني، الاسم الكامل، أو رقم الهاتف للتحقق من التسجيل الرسمي المعتمد.",
+                verifiedSpecialistBadge: "منتسب معتمد",
                 suspendedBadge: "اعتماد موقوف مؤقتاً",
                 expiredBadge: "اعتماد منتهي الصلاحية",
-                partnerIdLabel: "معرّف الأخصائي:",
+                partnerIdLabel: "معرّف المنتسب:",
                 emailLabel: "البريد المعتمد:",
                 phoneLabel: "هاتف التواصل:",
                 countryLabel: "الدولة والمنطقة:",
@@ -1014,10 +1014,10 @@
                 regRepDefault: "ممثل معتمد رسمياً",
                 validThru: "صالح حتى تاريخ",
                 multipleMatchesTitle: "تم العثور على عدة نتائج مطابقة",
-                multipleMatchesHint: "يوجد أكثر من أخصائي يحمل هذا الاسم. لضمان الدقة وتحديد الهوية بدقة، يرجى البحث باستخدام معرّف الشريك (ID) أو رقم الهاتف بدقة.",
+                multipleMatchesHint: "يوجد أكثر من منتسب يحمل هذا الاسم. لضمان الدقة وتحديد الهوية بدقة، يرجى البحث باستخدام معرّف المنتسب (ID) أو رقم الهاتف بدقة.",
                 refineSearchBtn: "تخصيص البحث",
                 credentialNotFoundTitle: "بيانات الاعتماد غير موجودة",
-                credentialNotFoundMsg: (query) => `لا توجد أي سجلات رسمية مطابقة لـ "${query}" في سجل أخصائيي مرشد المعتمدين.`,
+                credentialNotFoundMsg: (query) => `لا توجد أي سجلات رسمية مطابقة لـ "${query}" في سجل منتسبي مرشد المعتمدين.`,
                 switchLangBtn: "🌐 English"
             }
         };
