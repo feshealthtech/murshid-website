@@ -200,6 +200,7 @@
             align-items: center;
             gap: 6px;
             letter-spacing: 0.3px;
+            white-space: nowrap;
         }
 
         /* Mode Switcher Tabs */
@@ -428,6 +429,7 @@
             padding: 3px 8px;
             border-radius: 6px;
             border: 1px solid #FDE68A;
+            white-space: nowrap;
         }
 
         .meta-row {
@@ -571,18 +573,31 @@
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 5px 16px;
+            padding: 6px 18px;
             border-radius: 100px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
             color: var(--white);
             font-size: 11px;
             font-weight: 800;
-            letter-spacing: 1.5px;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
+            white-space: nowrap;
+            width: max-content;
+            max-width: 90%;
+            box-sizing: border-box;
         }
-        .status-icon { width: 8px; height: 8px; border-radius: 50%; }
+        .status-badge span {
+            white-space: nowrap;
+        }
+        .status-icon {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
         .is-active .status-icon { background: #4ADE80; box-shadow: 0 0 8px rgba(74,222,128,0.8); }
         .is-expired .status-icon { background: #F87171; }
         .is-inactive .status-icon { background: #94A3B8; }

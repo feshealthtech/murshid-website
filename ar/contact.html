@@ -31,15 +31,15 @@
 
     /* Page Hero */
     .m-contact-hero {
-      background: radial-gradient(circle at top, rgba(43, 181, 160, 0.08) 0%, rgba(7, 14, 26, 0) 60%);
+      background: radial-gradient(circle at top, rgba(43, 181, 160, 0.12) 0%, transparent 60%);
       padding: 100px 0 50px;
       text-align: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--m-border);
     }
     .m-contact-hero h1 {
       font-size: 2.75rem;
       font-weight: 800;
-      color: #FFF;
+      color: var(--m-text);
       margin-bottom: 16px;
       letter-spacing: -0.5px;
     }
@@ -100,7 +100,7 @@
     .m-info-section-title {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #FFF;
+      color: var(--m-text);
       margin-bottom: 8px;
     }
 
@@ -112,26 +112,27 @@
     }
 
     .m-contact-card {
-      background: var(--m-surface);
+      background: #FFFFFF;
       border: 1px solid var(--m-border);
       border-radius: var(--m-radius);
       padding: 24px;
       display: flex;
       gap: 20px;
       align-items: flex-start;
+      box-shadow: var(--m-shadow-sm);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .m-contact-card:hover {
-      border-color: var(--m-border-strong);
+      border-color: rgba(43, 181, 160, 0.3);
       transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(43, 181, 160, 0.05);
+      box-shadow: var(--m-shadow);
     }
 
     .m-card-icon {
       width: 48px;
       height: 48px;
       background: rgba(43, 181, 160, 0.08);
-      border: 1px solid rgba(43, 181, 160, 0.15);
+      border: 1px solid rgba(43, 181, 160, 0.2);
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -147,12 +148,12 @@
     }
     .m-contact-card.tg-card .m-card-icon {
       background: rgba(34, 158, 217, 0.08);
-      border-color: rgba(34, 158, 217, 0.2);
-      color: #229ED9;
+      border-color: rgba(34, 158, 217, 0.25);
+      color: #0284C7;
     }
     .m-contact-card.wp-card .m-card-icon {
       background: rgba(34, 197, 94, 0.08);
-      border-color: rgba(34, 197, 94, 0.2);
+      border-color: rgba(34, 197, 94, 0.25);
       color: var(--m-success);
     }
 
@@ -164,7 +165,7 @@
     .m-card-details h3 {
       font-size: 1.1rem;
       font-weight: 700;
-      color: #FFF;
+      color: var(--m-text);
     }
     .m-card-details p {
       color: var(--m-text-muted);
@@ -183,17 +184,17 @@
       transition: color 0.2s ease, opacity 0.2s ease;
     }
     .m-card-link:hover {
-      color: var(--m-primary);
+      color: var(--nw-teal-dark);
     }
     .m-contact-card.tg-card .m-card-link {
-      color: #229ED9;
+      color: #0284C7;
     }
     .m-contact-card.tg-card .m-card-link:hover {
       opacity: 0.85;
     }
     .m-contact-card.tg-card:hover {
-      border-color: rgba(34, 158, 217, 0.35);
-      box-shadow: 0 12px 30px rgba(34, 158, 217, 0.08);
+      border-color: rgba(2, 132, 199, 0.35);
+      box-shadow: 0 12px 30px rgba(2, 132, 199, 0.08);
     }
     .m-contact-card.wp-card .m-card-link {
       color: var(--m-success);
@@ -202,13 +203,13 @@
       opacity: 0.85;
     }
     .m-contact-card.wp-card:hover {
-      border-color: rgba(34, 197, 94, 0.35);
-      box-shadow: 0 12px 30px rgba(34, 197, 94, 0.08);
+      border-color: rgba(22, 163, 74, 0.35);
+      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.08);
     }
 
     /* Form Column */
     .m-contact-form-card {
-      background: var(--m-surface);
+      background: #FFFFFF;
       border: 1px solid var(--m-border);
       border-radius: var(--m-radius-lg);
       padding: 40px;
@@ -217,7 +218,7 @@
     .m-form-title {
       font-size: 1.6rem;
       font-weight: 700;
-      color: #FFF;
+      color: var(--m-text);
       margin-bottom: 8px;
     }
     .m-form-desc {
@@ -240,8 +241,8 @@
     }
     .m-form-input, .m-form-select, .m-form-textarea {
       width: 100%;
-      background: var(--m-bg);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--m-surface-2);
+      border: 1px solid var(--m-border);
       border-radius: var(--m-radius-sm);
       padding: 12px 16px;
       color: var(--m-text);
@@ -252,12 +253,13 @@
     }
     .m-form-input:focus, .m-form-select:focus, .m-form-textarea:focus {
       outline: none;
+      background: #FFFFFF;
       border-color: var(--m-primary);
       box-shadow: 0 0 0 3px var(--m-primary-glow);
     }
     .m-form-select option {
-      background-color: var(--m-surface-2) !important;
-      color: #FFF !important;
+      background-color: #FFFFFF !important;
+      color: var(--m-text) !important;
     }
     .m-form-textarea {
       min-height: 120px;
@@ -283,8 +285,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: var(--m-bg);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--m-surface-2);
+      border: 1px solid var(--m-border);
       border-radius: var(--m-radius-sm);
       padding: 12px 14px;
       height: 48px;
@@ -324,10 +326,10 @@
       right: 0;
       width: 320px;
       max-width: 90vw;
-      background: var(--m-surface-2);
-      border: 1px solid var(--m-border-strong);
+      background: #FFFFFF;
+      border: 1px solid var(--m-border);
       border-radius: var(--m-radius-sm);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      box-shadow: var(--m-shadow-lg);
       z-index: 2000;
       opacity: 0;
       visibility: hidden;
@@ -345,16 +347,16 @@
 
     .dropdown-search-box {
       padding: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: var(--m-surface);
+      border-bottom: 1px solid var(--m-border);
+      background: var(--m-surface-2);
     }
     .dropdown-search-input {
       width: 100%;
-      background: var(--m-bg);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #FFFFFF;
+      border: 1px solid var(--m-border);
       border-radius: 8px;
       padding: 10px 14px;
-      color: #FFF;
+      color: var(--m-text);
       font-size: 0.88rem;
       font-family: inherit;
       box-sizing: border-box;
@@ -374,10 +376,10 @@
       width: 6px;
     }
     .country-list-scroll::-webkit-scrollbar-track {
-      background: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.05);
     }
     .country-list-scroll::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,0.15);
+      background: rgba(15, 23, 42, 0.15);
       border-radius: 99px;
     }
 
@@ -552,7 +554,7 @@
     .m-success-card-title {
       font-size: 1.75rem;
       font-weight: 800;
-      color: #FFF;
+      color: var(--m-text);
       margin-bottom: 14px;
     }
     .m-success-card-desc {
@@ -564,10 +566,10 @@
     }
 
     .m-reset-form-btn {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: #FFFFFF;
+      border: 1px solid var(--m-border);
       border-radius: 12px;
-      color: #FFF;
+      color: var(--m-text-2);
       padding: 12px 32px;
       font-size: 0.95rem;
       font-weight: 700;
@@ -576,12 +578,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      box-shadow: var(--m-shadow-sm);
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .m-reset-form-btn:hover {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(43, 181, 160, 0.06);
       border-color: var(--m-primary);
-      color: var(--m-primary-light);
+      color: var(--m-primary);
       transform: translateY(-2px);
     }
 
@@ -592,7 +595,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(7, 14, 26, 0.85);
+      background: rgba(15, 23, 42, 0.5);
       backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
@@ -608,8 +611,8 @@
     }
 
     .m-modal-card {
-      background: var(--m-surface);
-      border: 1px solid var(--m-border-strong);
+      background: #FFFFFF;
+      border: 1px solid var(--m-border);
       border-radius: var(--m-radius-lg);
       padding: 48px;
       width: 480px;
