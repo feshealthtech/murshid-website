@@ -2042,7 +2042,7 @@
         }
     </style>
 </head>
-<body data-theme="emerald" data-template="social_profile">
+<body data-theme="emerald" data-template="compact_stack">
 
     <!-- Top Announcement Ticker Banner (الشريط بالكامل زر تفاعلي مدمج) -->
     <a id="announcementBanner" class="announcement-banner" style="display: none;" target="_blank" rel="noopener noreferrer">
@@ -2063,7 +2063,7 @@
     <div class="site-container" id="mainContainer">
         <!-- Top Nav -->
         <header class="top-nav">
-            <a href="https://murshid.feshealthtech.com" class="brand-badge" title="مرشد — مساعد أخصائي التغذية">
+            <a href="https://murshid.feshealthtech.com/ar/" class="brand-badge" id="topNavBrandLink" title="مرشد — مساعد أخصائي التغذية">
                 <img src="../assets/logo-sq.png" alt="مرشد">
                 <span id="topNavBrandText">مرشد — مساعد أخصائي التغذية</span>
             </a>
@@ -2091,7 +2091,7 @@
             </div>
             <h2 class="error-title" id="errorTitle">لم يتم العثور على الصفحة</h2>
             <p class="error-desc" id="errorDesc">المعرف المطلوب غير موجود أو تم إيقاف نشر الموقع مؤقتاً.</p>
-            <a href="https://murshid.feshealthtech.com" class="error-home-btn">
+            <a href="https://murshid.feshealthtech.com/ar/" class="error-home-btn murshid-home-link" id="errorHomeBtnLink">
                 <i class="fa-solid fa-house"></i>
                 <span id="errorHomeBtn">العودة لصفحة مرشد الرئيسية</span>
             </a>
@@ -2103,7 +2103,7 @@
             <h2 class="suspended-title" id="suspendedTitle">هذا الموقع معلّق مؤقتاً للمراجعة</h2>
             <div id="suspendedReasonPill" class="suspended-reason-pill" style="display: none;"></div>
             <p class="suspended-desc" id="suspendedDesc">تم إيقاف عرض هذه الصفحة مؤقتاً من قبل إدارة المنصة لإجراء مراجعة تنظيمية للمحتوى والبيانات وفق شروط الاستخدام المعتمدة.</p>
-            <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
+            <a href="https://murshid.feshealthtech.com/ar/" class="cta-booking-btn murshid-home-link" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">
                 <i class="fa-solid fa-house"></i>
                 <span id="suspendedHomeBtn">العودة لصفحة مرشد الرئيسية</span>
             </a>
@@ -2124,7 +2124,7 @@
                 <div id="maintenanceSocialsRow" class="socials-row" style="display: none; margin-top: 4px;"></div>
             </div>
 
-            <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; max-width: 280px; margin: 0 auto;">
+            <a href="https://murshid.feshealthtech.com/ar/" class="cta-booking-btn murshid-home-link" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; max-width: 280px; margin: 0 auto;">
                 <i class="fa-solid fa-house"></i>
                 <span id="maintenanceHomeBtn">العودة لصفحة مرشد الرئيسية</span>
             </a>
@@ -2135,7 +2135,7 @@
             <i class="fa-solid fa-circle-pause status-icon"></i>
             <h2 class="stopped-title" id="stoppedTitle">الموقع متوقف مؤقتاً</h2>
             <p class="stopped-desc" id="stoppedDesc">قام الأخصائي بإيقاف عرض هذه الصفحة مؤقتاً.</p>
-            <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; max-width: 280px; margin: 0 auto;">
+            <a href="https://murshid.feshealthtech.com/ar/" class="cta-booking-btn murshid-home-link" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; max-width: 280px; margin: 0 auto;">
                 <i class="fa-solid fa-house"></i>
                 <span id="stoppedHomeBtn">العودة لصفحة مرشد الرئيسية</span>
             </a>
@@ -2146,7 +2146,7 @@
             <i class="fa-solid fa-calendar-xmark status-icon"></i>
             <h2 class="expired-title" id="expiredTitle">انتهت فترة استضافة هذا الموقع</h2>
             <p class="expired-desc" id="expiredDesc">انتهت فترة استضافة هذا الموقع الإلكتروني ولم يتم تجديدها حتى الآن.</p>
-            <a href="https://murshid.feshealthtech.com" class="cta-booking-btn" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; max-width: 280px; margin: 0 auto;">
+            <a href="https://murshid.feshealthtech.com/ar/" class="cta-booking-btn murshid-home-link" style="background: var(--text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; max-width: 280px; margin: 0 auto;">
                 <i class="fa-solid fa-house"></i>
                 <span id="expiredHomeBtn">العودة لصفحة مرشد الرئيسية</span>
             </a>
@@ -2198,8 +2198,8 @@
                 <div class="services-list" id="servicesList"></div>
             </section>
 
-            <!-- Client Testimonials & Success Stories Section -->
-            <section class="section-card" id="testimonialsSection" style="display: none;">
+            <!-- Client Testimonials & Success Stories Section (Temporarily suspended for regulatory compliance) -->
+            <section class="section-card" id="testimonialsSection" style="display: none !important;">
                 <div class="section-header">
                     <i class="fa-solid fa-star" style="color: #F59E0B;"></i>
                     <span id="testimonialsSectionTitle">قصص النجاح وآراء المراجعين</span>
@@ -2288,7 +2288,7 @@
                 <span id="reportViolationBtnText">الإبلاغ عن محتوى أو صفحة مخالفة</span>
             </button>
 
-            <a href="https://murshid.feshealthtech.com" class="footer-logo-link" style="margin-top: 10px;">
+            <a href="https://murshid.feshealthtech.com/ar/" class="footer-logo-link" id="footerBrandLink" style="margin-top: 10px;" title="مرشد — مساعد أخصائي التغذية">
                 <img src="../assets/logo-sq.png" alt="مرشد" id="footerLogoImg">
                 <span id="footerBrandText">مدعوم عبر مرشد — مساعد أخصائي التغذية</span>
             </a>
@@ -2661,12 +2661,12 @@
 
             // Template application (تطبيق القالب المختار مع التوافقية العكسية)
             const validTemplates = ['social_profile', 'bento_grid', 'editorial_luxury', 'compact_stack'];
-            let template = site.template || 'social_profile';
+            let template = site.template || 'compact_stack';
             if (template === 'clinical_clean') template = 'compact_stack';
             else if (template === 'executive_luxury') template = 'editorial_luxury';
             else if (template === 'smart_bento') template = 'bento_grid';
             else if (template === 'frosted_glass') template = 'social_profile';
-            if (!validTemplates.includes(template)) template = 'social_profile';
+            if (!validTemplates.includes(template)) template = 'compact_stack';
             document.body.setAttribute('data-template', template);
 
             // Visibility settings
@@ -2914,47 +2914,12 @@
                 servicesSection.style.display = 'none';
             }
 
-            // Render Testimonials & Success Stories (governed by vis.showTestimonials)
+            // Render Testimonials & Success Stories (Temporarily suspended for regulatory compliance)
             const testimonialsSection = document.getElementById('testimonialsSection');
             const testimonialsList = document.getElementById('testimonialsList');
-            testimonialsList.innerHTML = '';
-            const showTestimonials = vis.showTestimonials !== false && site.testimonials && site.testimonials.length > 0;
-            if (showTestimonials) {
-                testimonialsSection.style.display = 'block';
-                site.testimonials.forEach(t => {
-                    const tCard = document.createElement('div');
-                    tCard.className = `testimonial-card ${t.isFeatured ? 'featured' : ''}`;
-                    
-                    const starsHtml = Array.from({ length: 5 }, (_, i) => 
-                        `<i class="fa-${i < (t.rating || 5) ? 'solid' : 'regular'} fa-star"></i>`
-                    ).join('');
-
-                    const avatarLetter = (t.clientName && t.clientName.trim().length > 0) ? escapeHtml(t.clientName.trim().charAt(0)) : 'ع';
-                    const isVerified = t.isVerified !== false;
-
-                    tCard.innerHTML = `
-                        <div class="testimonial-header">
-                            <div class="testimonial-stars-group">
-                                <div class="testimonial-stars">${starsHtml}</div>
-                                ${t.tag ? `<span class="testimonial-tag">${escapeHtml(t.tag)}</span>` : ''}
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px;">
-                                ${t.isFeatured ? `<span class="testimonial-featured-badge"><i class="fa-solid fa-star"></i> ${currentLang === 'ar' ? 'قصة مميزة' : 'Featured'}</span>` : ''}
-                                ${t.date ? `<span class="testimonial-date">${escapeHtml(t.date)}</span>` : ''}
-                            </div>
-                        </div>
-                        ${t.result ? `<div class="testimonial-result"><i class="fa-solid fa-trophy"></i> ${escapeHtml(t.result)}</div>` : ''}
-                        <p class="testimonial-comment">"${escapeHtml(t.comment)}"</p>
-                        <div class="testimonial-author-row">
-                            <div class="testimonial-avatar">${avatarLetter}</div>
-                            <div class="testimonial-author">${escapeHtml(t.clientName)}</div>
-                            ${isVerified ? `<span class="testimonial-verified"><i class="fa-solid fa-circle-check"></i> ${currentLang === 'ar' ? 'موثق' : 'Verified'}</span>` : ''}
-                        </div>
-                    `;
-                    testimonialsList.appendChild(tCard);
-                });
-            } else {
-                testimonialsSection.style.display = 'none';
+            if (testimonialsList) testimonialsList.innerHTML = '';
+            if (testimonialsSection) {
+                testimonialsSection.style.setProperty('display', 'none', 'important');
             }
 
             // Render Working Hours (governed by vis.showWorkingHours)
@@ -3132,10 +3097,36 @@
 
             // Update static strings
             const dict = i18n[currentLang];
+
+            // Dynamic Murshid Homepage URL based on active language (توجيه روابط مرشد بحسب لغة التصفح النشطة)
+            const murshidUrl = (currentLang === 'en')
+                ? 'https://murshid.feshealthtech.com/'
+                : 'https://murshid.feshealthtech.com/ar/';
+
             const topBrand = document.getElementById('topNavBrandText');
             if (topBrand) topBrand.textContent = dict.topNavBrand;
+            const topBrandLink = document.getElementById('topNavBrandLink');
+            if (topBrandLink) {
+                topBrandLink.href = murshidUrl;
+                topBrandLink.title = dict.topNavBrand;
+                topBrandLink.setAttribute('aria-label', dict.topNavBrand);
+            }
+
             const footerBrand = document.getElementById('footerBrandText');
             if (footerBrand) footerBrand.textContent = dict.footerBrand;
+            const footerBrandLink = document.getElementById('footerBrandLink');
+            if (footerBrandLink) {
+                footerBrandLink.href = murshidUrl;
+                footerBrandLink.title = dict.footerBrand;
+                footerBrandLink.setAttribute('aria-label', dict.footerBrand);
+            }
+
+            // Update all Murshid home return links across error/status screens
+            document.querySelectorAll('.murshid-home-link').forEach(link => {
+                link.href = murshidUrl;
+                link.setAttribute('aria-label', dict.errorHomeBtn || dict.topNavBrand);
+            });
+
             const footerLogo = document.getElementById('footerLogoImg');
             if (footerLogo) footerLogo.alt = (currentLang === 'en') ? 'Murshid' : 'مرشد';
             const footerCopyright = document.getElementById('footerCopyrightText');

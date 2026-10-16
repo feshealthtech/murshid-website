@@ -464,7 +464,21 @@ function initReferralTracking() {
       link.setAttribute('href', currentHref);
     });
 
-    // 2. Display sleek Referral Welcome Banner
+    // 2. Preserve referral parameter across language switch links & internal navigation
+    const internalSwitchLinks = document.querySelectorAll('a[href="/"], a[href="/ar/"], a[href="/ar"], a[href*="/ar/"], a[href*="/contact.html"], a[href*="/faq.html"], .m-mobile-link');
+    internalSwitchLinks.forEach(link => {
+      try {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('javascript:')) return;
+        const targetUrl = new URL(href, window.location.origin);
+        if (targetUrl.origin === window.location.origin && !targetUrl.searchParams.has('ref')) {
+          targetUrl.searchParams.set('ref', refCode);
+          link.setAttribute('href', targetUrl.pathname + targetUrl.search + targetUrl.hash);
+        }
+      } catch (_) {}
+    });
+
+    // 3. Display sleek Referral Welcome Banner
     showReferralBanner(refCode);
   } catch (e) {
     console.warn('Referral tracking init failed:', e);
