@@ -28,9 +28,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="shared/murshid-style.css" />
-  <link rel="stylesheet" href="shared/index-style.css" />
-  <link rel="icon" type="image/webp" href="assets/logo-sq.webp" />
+  <link rel="stylesheet" href="/shared/murshid-style.css" />
+  <link rel="stylesheet" href="/shared/index-style.css" />
+  <link rel="icon" type="image/webp" href="/assets/logo-sq.webp" />
   <style>
     /* Reset & Base Body */
     html, body {
@@ -256,36 +256,36 @@
   <!-- NAVBAR -->
   <nav class="m-nav" id="m-nav">
     <div class="container m-nav-inner">
-      <a href="index.html" class="m-nav-brand" id="brandLink" aria-label="Home">
-        <img src="assets/logo.webp" alt="FES HealthTech" class="brand-logo" />
+      <a href="/" class="m-nav-brand" id="brandLink" aria-label="Home">
+        <img src="/assets/logo.webp" alt="FES HealthTech" class="brand-logo" />
         <div class="brand-app">
           <span class="brand-name-ar" id="brandTextAr">Murshid</span>
           <span class="brand-name-en" id="brandTextEn">MURSHID APP</span>
         </div>
       </a>
       <ul class="m-nav-links" role="list">
-        <li><a href="index.html#features" id="navFeatures">Features</a></li>
-        <li><a href="index.html#wallet" id="navWallet">Points System</a></li>
-        <li><a href="index.html#how" id="navHow">How It Works?</a></li>
-        <li><a href="index.html#pricing" id="navPricing">Pricing</a></li>
-        <li><a href="faq.html" id="navFaq">FAQ</a></li>
-        <li><a href="contact.html" id="navContact">Contact Us</a></li>
+        <li><a href="/#features" id="navFeatures">Features</a></li>
+        <li><a href="/#wallet" id="navWallet">Points System</a></li>
+        <li><a href="/#how" id="navHow">How It Works?</a></li>
+        <li><a href="/#pricing" id="navPricing">Pricing</a></li>
+        <li><a href="/faq.html" id="navFaq">FAQ</a></li>
+        <li><a href="/contact.html" id="navContact">Contact Us</a></li>
         <li class="m-nav-dropdown">
           <button class="m-nav-dropdown-btn" aria-haspopup="true">
             <span id="navLegal">Legal</span>
             <span style="font-size:0.75rem;">▾</span>
           </button>
           <div class="m-nav-dropdown-menu">
-            <a href="privacy-policy.html" class="m-nav-dropdown-item" id="navDropPrivacy">🔒 Privacy Policy</a>
-            <a href="terms-of-use.html" class="m-nav-dropdown-item" id="navDropTerms">📜 Terms of Use</a>
-            <a href="refund-policy.html" class="m-nav-dropdown-item" id="navDropRefund">💵 Refund Policy</a>
-            <a href="data-deletion.html" class="m-nav-dropdown-item" id="navDropDataDeletion">🗑️ Data Deletion</a>
+            <a href="/privacy-policy.html" class="m-nav-dropdown-item" id="navDropPrivacy">🔒 Privacy Policy</a>
+            <a href="/terms-of-use.html" class="m-nav-dropdown-item" id="navDropTerms">📜 Terms of Use</a>
+            <a href="/refund-policy.html" class="m-nav-dropdown-item" id="navDropRefund">💵 Refund Policy</a>
+            <a href="/data-deletion.html" class="m-nav-dropdown-item" id="navDropDataDeletion">🗑️ Data Deletion</a>
           </div>
         </li>
       </ul>
       <div class="m-nav-actions">
         <a href="javascript:void(0)" class="m-btn m-btn-secondary" id="langToggleBtn" style="margin-right:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" onclick="toggle404Lang()">🌐 العربية</a>
-        <a href="index.html#download" class="m-btn m-btn-primary" id="navDownload">📥 Download Free</a>
+        <a href="/#download" class="m-btn m-btn-primary" id="navDownload">📥 Download Free</a>
       </div>
       <button class="m-hamburger" id="m-hamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -304,47 +304,47 @@
         <span class="m-mobile-icon">🌐</span>
         <span class="m-mobile-text" id="mobLangToggle">النسخة العربية (Arabic)</span>
       </a>
-      <a href="index.html" class="m-mobile-link" id="mobHome">
+      <a href="/" class="m-mobile-link" id="mobHome">
         <span class="m-mobile-icon">🏠</span>
         <span class="m-mobile-text" id="mobHomeText">Home</span>
       </a>
-      <a href="index.html#features" class="m-mobile-link" id="mobFeatures">
+      <a href="/#features" class="m-mobile-link" id="mobFeatures">
         <span class="m-mobile-icon">🚀</span>
         <span class="m-mobile-text" id="mobFeaturesText">App Features</span>
       </a>
-      <a href="index.html#wallet" class="m-mobile-link" id="mobWallet">
+      <a href="/#wallet" class="m-mobile-link" id="mobWallet">
         <span class="m-mobile-icon">🪙</span>
         <span class="m-mobile-text" id="mobWalletText">Points System</span>
       </a>
-      <a href="index.html#how" class="m-mobile-link" id="mobHow">
+      <a href="/#how" class="m-mobile-link" id="mobHow">
         <span class="m-mobile-icon">📋</span>
         <span class="m-mobile-text" id="mobHowText">How It Works?</span>
       </a>
-      <a href="index.html#pricing" class="m-mobile-link" id="mobPricing">
+      <a href="/#pricing" class="m-mobile-link" id="mobPricing">
         <span class="m-mobile-icon">💳</span>
         <span class="m-mobile-text" id="mobPricingText">Pricing & Plans</span>
       </a>
-      <a href="faq.html" class="m-mobile-link" id="mobFaq">
+      <a href="/faq.html" class="m-mobile-link" id="mobFaq">
         <span class="m-mobile-icon">❓</span>
         <span class="m-mobile-text" id="mobFaqText">FAQ</span>
       </a>
-      <a href="contact.html" class="m-mobile-link" id="mobContact">
+      <a href="/contact.html" class="m-mobile-link" id="mobContact">
         <span class="m-mobile-icon">✉️</span>
         <span class="m-mobile-text" id="mobContactText">Contact Us</span>
       </a>
-      <a href="privacy-policy.html" class="m-mobile-link" id="mobPrivacy">
+      <a href="/privacy-policy.html" class="m-mobile-link" id="mobPrivacy">
         <span class="m-mobile-icon">🔒</span>
         <span class="m-mobile-text" id="mobPrivacyText">Privacy Policy</span>
       </a>
-      <a href="terms-of-use.html" class="m-mobile-link" id="mobTerms">
+      <a href="/terms-of-use.html" class="m-mobile-link" id="mobTerms">
         <span class="m-mobile-icon">📜</span>
         <span class="m-mobile-text" id="mobTermsText">Terms of Use</span>
       </a>
-      <a href="refund-policy.html" class="m-mobile-link" id="mobRefund">
+      <a href="/refund-policy.html" class="m-mobile-link" id="mobRefund">
         <span class="m-mobile-icon">💵</span>
         <span class="m-mobile-text" id="mobRefundText">Refund Policy</span>
       </a>
-      <a href="data-deletion.html" class="m-mobile-link" id="mobDataDeletion">
+      <a href="/data-deletion.html" class="m-mobile-link" id="mobDataDeletion">
         <span class="m-mobile-icon">🗑️</span>
         <span class="m-mobile-text" id="mobDataDeletionText">Data Deletion</span>
       </a>
@@ -363,11 +363,11 @@
           Sorry, the page you are looking for has been moved or deleted. You can return to Murshid's homepage or check the FAQ.
         </p>
         <div class="error-actions">
-          <a href="index.html" class="m-btn m-btn-primary" id="btnHome">
+          <a href="/" class="m-btn m-btn-primary" id="btnHome">
             <span>🏠</span>
             <span id="btnHomeText">Back to Home</span>
           </a>
-          <a href="faq.html" class="m-btn m-btn-outline" id="btnFaq">
+          <a href="/faq.html" class="m-btn m-btn-outline" id="btnFaq">
             <span>❓</span>
             <span id="btnFaqText">FAQ</span>
           </a>
@@ -381,7 +381,7 @@
     <div class="container">
       <div class="m-footer-grid">
         <div class="m-footer-brand">
-          <img src="assets/logo.webp" alt="FES HealthTech" class="footer-logo" />
+          <img src="/assets/logo.webp" alt="FES HealthTech" class="footer-logo" />
           <div class="footer-app-name" id="footerBrandName">Murshid</div>
           <div class="footer-app-sub" id="footerBrandSub">Murshid App</div>
           <p id="footerBio">The smart clinic management app for dietitians — developed by <a href="https://feshealthtech.com/">FES HealthTech</a>.</p>
@@ -400,42 +400,42 @@
         <div>
           <h4 class="m-footer-col-title" id="colApp">App</h4>
           <ul class="m-footer-links">
-            <li><a href="index.html#features" id="footFeatures">Features</a></li>
-            <li><a href="index.html#wallet" id="footWallet">Points System</a></li>
-            <li><a href="index.html#pricing" id="footPricing">Pricing</a></li>
-            <li><a href="index.html#download" id="footDownload">Download</a></li>
+            <li><a href="/#features" id="footFeatures">Features</a></li>
+            <li><a href="/#wallet" id="footWallet">Points System</a></li>
+            <li><a href="/#pricing" id="footPricing">Pricing</a></li>
+            <li><a href="/#download" id="footDownload">Download</a></li>
           </ul>
         </div>
         <div>
           <h4 class="m-footer-col-title" id="colSupport">Support</h4>
           <ul class="m-footer-links">
-            <li><a href="faq.html" id="footFaq">FAQ</a></li>
-            <li><a href="data-deletion.html" id="footDataDeletion">Data Deletion</a></li>
+            <li><a href="/faq.html" id="footFaq">FAQ</a></li>
+            <li><a href="/data-deletion.html" id="footDataDeletion">Data Deletion</a></li>
             <li><a href="https://feshealthtech.com/" id="footAboutUs">About Us</a></li>
-            <li><a href="contact.html" id="footContact">Contact Us</a></li>
+            <li><a href="/contact.html" id="footContact">Contact Us</a></li>
           </ul>
         </div>
         <div>
           <h4 class="m-footer-col-title" id="colLegal">Legal</h4>
           <ul class="m-footer-links">
-            <li><a href="privacy-policy.html" id="footPrivacy">Privacy Policy</a></li>
-            <li><a href="terms-of-use.html" id="footTerms">Terms of Use</a></li>
-            <li><a href="refund-policy.html" id="footRefund">Refund Policy</a></li>
+            <li><a href="/privacy-policy.html" id="footPrivacy">Privacy Policy</a></li>
+            <li><a href="/terms-of-use.html" id="footTerms">Terms of Use</a></li>
+            <li><a href="/refund-policy.html" id="footRefund">Refund Policy</a></li>
           </ul>
         </div>
       </div>
       <div class="m-footer-bottom">
         <p class="m-footer-copy" id="footerCopy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. <span id="footerRights">All Rights Reserved.</span></p>
         <div class="m-footer-bottom-links">
-          <a href="privacy-policy.html" id="bottomPrivacy">Privacy</a>
-          <a href="terms-of-use.html" id="bottomTerms">Terms</a>
-          <a href="data-deletion.html" id="bottomDataDeletion">Data Deletion</a>
+          <a href="/privacy-policy.html" id="bottomPrivacy">Privacy</a>
+          <a href="/terms-of-use.html" id="bottomTerms">Terms</a>
+          <a href="/data-deletion.html" id="bottomDataDeletion">Data Deletion</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="shared/murshid-script.js"></script>
+  <script src="/shared/murshid-script.js"></script>
   <script>
     (function() {
       const i18n = {
@@ -445,9 +445,9 @@
           errTitle: "Page Not Found",
           errDesc: "Sorry, the page you are looking for has been moved or deleted. You can return to Murshid's homepage or check the FAQ.",
           btnHome: "Back to Home",
-          homeHref: "index.html",
+          homeHref: "/",
           btnFaq: "FAQ",
-          faqHref: "faq.html",
+          faqHref: "/faq.html",
           toggleText: "🌐 العربية",
           mobLangToggle: "النسخة العربية (Arabic)",
           brandAr: "Murshid",
@@ -455,23 +455,23 @@
           mobTitle: "Murshid App",
           mobSubtitle: "The Smart Dietitian Platform",
           navFeatures: "Features",
-          navFeaturesHref: "index.html#features",
+          navFeaturesHref: "/#features",
           navWallet: "Points System",
-          navWalletHref: "index.html#wallet",
+          navWalletHref: "/#wallet",
           navHow: "How It Works?",
-          navHowHref: "index.html#how",
+          navHowHref: "/#how",
           navPricing: "Pricing",
-          navPricingHref: "index.html#pricing",
+          navPricingHref: "/#pricing",
           navFaq: "FAQ",
           navContact: "Contact Us",
-          navContactHref: "contact.html",
+          navContactHref: "/contact.html",
           navLegal: "Legal",
           navDropPrivacy: "🔒 Privacy Policy",
           navDropTerms: "📜 Terms of Use",
           navDropRefund: "💵 Refund Policy",
           navDropDataDeletion: "🗑️ Data Deletion",
           navDownload: "📥 Download Free",
-          navDownloadHref: "index.html#download",
+          navDownloadHref: "/#download",
           colApp: "App",
           footFeatures: "Features",
           footWallet: "Points System",
