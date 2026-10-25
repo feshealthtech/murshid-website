@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مرشد مقابل البرمجيات السحابية التقليدية — سيادة البيانات والأداء أوفلاين</title>
+  <meta name="description" content="مقارنة متعمقة بين تطبيق مرشد وبرمجيات التغذية السحابية التقليدية (Cloud EHRs): العمل بدون إنترنت، سيادة البيانات، بنك الأغذية العربي والدولي، والتكلفة العادلة." />
+  <meta name="keywords" content="مرشد مقابل البرامج السحابية, برنامج عيادة تغذية اوفلاين, بديل برامج التغذية السحابية, خصوصية بيانات المرضى, بنك اغذية عربي, تطبيق مرشد" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../../assets/logo-sq.webp" type="image/webp" />
+
+  <link rel="canonical" href="https://murshid.feshealthtech.com/ar/comparisons/murshid-vs-cloud-software.html" />
+  <link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/comparisons/murshid-vs-cloud-software.html" />
+  <link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/comparisons/murshid-vs-cloud-software.html" />
+  <link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/comparisons/murshid-vs-cloud-software.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="مرشد مقابل البرمجيات السحابية — معمارية الأوفلاين وسيادة البيانات الطبية" />
+  <meta property="og:description" content="لماذا يفضل أخصائيو التغذية تطبيق مرشد على البرمجيات السحابية باهظة الاشتراكات؟ مقارنة في الخصوصية، سرعة الاستجابة، وبنك الأغذية متعدد الثقافات." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://murshid.feshealthtech.com/ar/comparisons/murshid-vs-cloud-software.html" />
+  <meta property="og:image" content="https://murshid.feshealthtech.com/assets/og-preview.jpg?v=3" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../shared/murshid-style.css" />
+  <link rel="stylesheet" href="../../shared/index-style.css" />
+
+  <!-- Schema.org Rich Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://murshid.feshealthtech.com/ar/comparisons/murshid-vs-cloud-software.html",
+        "url": "https://murshid.feshealthtech.com/ar/comparisons/murshid-vs-cloud-software.html",
+        "name": "مرشد مقابل البرمجيات السحابية التقليدية — سيادة البيانات والأداء أوفلاين",
+        "description": "دراسة مقارنة تفصيلية بين منصة مرشد المحلية (Offline-First) والبرمجيات السحابية التقليدية لإدارة عيادات التغذية السريرية.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "الرئيسية",
+              "item": "https://murshid.feshealthtech.com/ar/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "المقارنات التنافسية",
+              "item": "https://murshid.feshealthtech.com/ar/comparisons/murshid-vs-cloud-software.html"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "مرشد مقابل البرمجيات السحابية",
+              "item": "https://murshid.feshealthtech.com/ar/comparisons/murshid-vs-cloud-software.html"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://murshid.feshealthtech.com/ar/comparisons/murshid-vs-cloud-software.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "ما الفرق الجوهري بين مرشد والبرمجيات السحابية التقليدية لإدارة العيادات؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "الفرق الجوهري يكمن في معمارية سيادة البيانات وسرعة الأداء: البرمجيات السحابية تتطلب اتصالاً مستمراً بالإنترنت، وتخزن بيانات مرضاك على خوادم طرف ثالث مركزية معرضة للتعطل والاختراق، مع اشتراكات شهرية متصاعدة. بينما يعمل مرشد محلياً بالكامل (Offline-First) بسرعة استجابة بالمللي ثانية، ويحفظ البيانات مشفرة على جهازك فقط وفق معايير HIPAA و GDPR، مع نموذج تسعير عادل."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ماذا يحدث عند انقطاع الإنترنت أثناء جلسة الاستشارة؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "في البرمجيات السحابية يتوقف النظام عن العمل تماماً وتتعطل الجلسة. في مرشد يستمر عملك بسلاسة 100%: تستطيع البحث في بنك 13,000 طعام، وتعديل الخطط، وحساب الماكروز، وتوثيق الفحوصات والقياسات، وطباعة التقارير دون الحاجة لأي اتصال بالإنترنت."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "كيف يتفوق بنك أغذية مرشد على البرمجيات الغربية؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "تعتمد البرمجيات الغربية حصراً على قواعد بيانات أمريكية أو بريطانية وتفتقر تماماً للمأكولات والأطباق العربية والشرق أوسطية. يدمج مرشد 13,000 صنف غذائي يجمع بين جداول USDA و CoFID الدولية والأطلس الغذائي العربي والخليجي والشامي والمصري والمغاربي بمقاييس منزلية دقيقة."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "هل بيانات المرضى في مرشد أكثر أماناً من البرمجيات السحابية؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نعم، لأن معمارية Zero-Cloud Exposure تضمن أن بيانات المراجعين وسجلاتهم الصحية مشفرة محلياً بتشفير AES-256 على جهاز الأخصائي فقط، ولا يتم تخزينها على أي خادم خارجي، مما يلغي تماماً مخاطر التسريب الجماعي أو الرقابة الخارجية."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "هل يفرض مرشد اشتراكات شهرية إلزامية باهظة؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "لا، فلسفة مرشد قائمة على أن العمل الأساسي للأخصائي (إدارة الملفات، تصميم الحميات، بنك الأغذية، الحسابات، والفواتير) مجاني ومتاح دائماً بدون اشتراك إجباري، مع نظام نقاط عادل ومرن يُدفع فقط عند طلب عمليات الذكاء الاصطناعي المتقدمة."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "هل يعتبر تطبيق مرشد بديلاً عن القرار السريري للأخصائي؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "لا إطلاقاً. مرشد منصة إدارية ومساعد حسابي وتوثيقي لأخصائيي التغذية؛ وليس جهازاً طبياً ولا يقدم استشارات أو تشخيصات آلية. يبقى القرار السريري والتقييم العلاجي دائماً من مسؤولية الأخصائي المؤهل."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', 'Noto Kufi Arabic', system-ui, sans-serif; }
+    .comp-hero {
+      padding: 130px 0 70px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(43, 181, 160, 0.18) 0%, transparent 70%), var(--m-bg);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .comp-hero-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .comp-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(43, 181, 160, 0.12);
+      border: 1px solid rgba(43, 181, 160, 0.3);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--m-primary);
+      margin-bottom: 20px;
+    }
+    .comp-title {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.25;
+      color: var(--m-text);
+      margin-bottom: 18px;
+    }
+    .comp-desc {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--m-text-muted);
+      margin-bottom: 32px;
+    }
+    .comp-stat-banner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .comp-stat-box {
+      background: #FFFFFF;
+      border: 1px solid var(--m-border);
+      border-radius: var(--m-radius-xl);
+      padding: 20px 16px;
+      box-shadow: var(--m-shadow-sm);
+    }
+    .comp-stat-val {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--m-primary);
+      margin-bottom: 4px;
+    }
+    .comp-stat-lbl {
+      font-size: 0.8rem;
+      color: var(--m-text-muted);
+      font-weight: 600;
+    }
+
+    /* Comparison Pillars */
+    .pillar-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 40px;
+      align-items: stretch;
+    }
+    .pillar-card {
+      background: #FFFFFF;
+      border: 1px solid var(--m-border);
+      border-radius: var(--m-radius-xl);
+      padding: 32px;
+      position: relative;
+      box-shadow: var(--m-shadow-sm);
+    }
+    .pillar-card.murshid-side {
+      border-color: rgba(43, 181, 160, 0.4);
+      background: linear-gradient(180deg, #FFFFFF 0%, rgba(43, 181, 160, 0.03) 100%);
+    }
+    .pillar-card.cloud-side {
+      border-color: rgba(148, 163, 184, 0.35);
+      background: linear-gradient(180deg, #FFFFFF 0%, rgba(148, 163, 184, 0.04) 100%);
+    }
+    .card-entity-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 12px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .card-entity-tag.tag-murshid {
+      background: rgba(43, 181, 160, 0.15);
+      color: var(--m-primary);
+    }
+    .card-entity-tag.tag-cloud {
+      background: rgba(100, 116, 139, 0.15);
+      color: #475569;
+    }
+    .pillar-h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--m-text);
+      margin-bottom: 12px;
+    }
+    .pillar-p {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--m-text-muted);
+      margin-bottom: 16px;
+    }
+    .pillar-points {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .pillar-points li {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .point-dot-good { color: #10b981; font-weight: 900; }
+    .point-dot-bad { color: #ef4444; font-weight: 900; }
+
+    /* Matrix Table */
+    .comp-table-wrap {
+      overflow-x: auto;
+      margin: 40px 0;
+      border-radius: var(--m-radius-xl);
+      border: 1px solid var(--m-border);
+      box-shadow: var(--m-shadow-sm);
+      background: #FFFFFF;
+    }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 0.92rem;
+    }
+    .comp-table th, .comp-table td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .comp-table th {
+      background: var(--m-surface);
+      font-weight: 800;
+      color: var(--m-text);
+      font-size: 0.95rem;
+    }
+    .comp-table th.col-murshid {
+      background: rgba(43, 181, 160, 0.12);
+      color: var(--m-primary);
+      text-align: center;
+      width: 32%;
+    }
+    .comp-table th.col-cloud {
+      background: rgba(148, 163, 184, 0.1);
+      color: #334155;
+      text-align: center;
+      width: 32%;
+    }
+    .comp-table td.col-murshid {
+      background: rgba(43, 181, 160, 0.02);
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+    .comp-table td.col-cloud {
+      text-align: center;
+      color: #64748b;
+    }
+    .comp-table tr:last-child td { border-bottom: none; }
+
+    @media (max-width: 820px) {
+      .pillar-row { grid-template-columns: 1fr; }
+      .comp-stat-banner { grid-template-columns: 1fr; }
+      .comp-table th, .comp-table td { padding: 12px 14px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     HEADER & NAVBAR
+     ════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav" aria-label="شريط التنقل الرئيسي">
+  <div class="container m-nav-inner">
+    <a href="../index.html" class="m-nav-brand" aria-label="الصفحة الرئيسية">
+      <img src="../../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">مرشد</span>
+        <span class="brand-name-en">تطبيق</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="../index.html#features">المميزات</a></li>
+      <li><a href="../index.html#pillars">أركان المنظومة</a></li>
+      <li><a href="../protocols.html">أطلس البروتوكولات</a></li>
+      <li><a href="murshid-vs-cloud-software.html" style="color:var(--m-primary);font-weight:800;">المقارنات</a></li>
+      <li><a href="../articles/index.html">مركز المعرفة</a></li>
+      <li><a href="../faq.html">الأسئلة الشائعة</a></li>
+      <li class="m-nav-dropdown">
+        <button class="m-nav-dropdown-btn" aria-haspopup="true">
+          <span>قانوني</span>
+          <span style="font-size:0.75rem;">▾</span>
+        </button>
+        <div class="m-nav-dropdown-menu">
+          <a href="../../privacy-policy.html" class="m-nav-dropdown-item">🔒 سياسة الخصوصية</a>
+          <a href="../../terms-of-use.html" class="m-nav-dropdown-item">📜 شروط الاستخدام</a>
+          <a href="../../refund-policy.html" class="m-nav-dropdown-item">💵 سياسة الاسترداد</a>
+          <a href="../../data-deletion.html" class="m-nav-dropdown-item">🗑️ حذف البيانات</a>
+        </div>
+      </li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../../comparisons/murshid-vs-cloud-software.html" class="m-btn m-btn-secondary" style="margin-left:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" title="English Version">🌐 English</a>
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" id="nav-download-btn">📥 تحميل مجاناً</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">تطبيق مرشد</span>
+    <span class="m-mobile-menu-subtitle">المنصة الذكية لأخصائيي التغذية</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="../index.html" class="m-mobile-link"><span class="m-mobile-icon">🏠</span><span class="m-mobile-text">الرئيسية</span></a>
+    <a href="../../comparisons/murshid-vs-cloud-software.html" class="m-mobile-link"><span class="m-mobile-icon">🌐</span><span class="m-mobile-text">English (الإنجليزية)</span></a>
+    <a href="../protocols.html" class="m-mobile-link"><span class="m-mobile-icon">📚</span><span class="m-mobile-text">أطلس البروتوكولات (70+)</span></a>
+    <a href="../index.html#features" class="m-mobile-link"><span class="m-mobile-icon">🚀</span><span class="m-mobile-text">المميزات</span></a>
+    <a href="../index.html#pricing" class="m-mobile-link"><span class="m-mobile-icon">💳</span><span class="m-mobile-text">الأسعار</span></a>
+    <a href="../faq.html" class="m-mobile-link"><span class="m-mobile-icon">❓</span><span class="m-mobile-text">الأسئلة الشائعة</span></a>
+    <a href="../../privacy-policy.html" class="m-mobile-link"><span class="m-mobile-icon">🔒</span><span class="m-mobile-text">الخصوصية والقانوني</span></a>
+  </div>
+  <div class="m-mobile-menu-actions">
+    <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-mobile-dl-btn" id="mobile-android-btn"><span>🤖 Google Play</span></a>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- ════════════════════════════════════════
+     HERO SECTION
+     ════════════════════════════════════════ -->
+<section class="comp-hero" aria-label="مقارنة مرشد والبرمجيات السحابية">
+  <div class="container">
+    <div class="comp-hero-inner">
+      <div class="comp-badge">☁️ مقابل ⚡ مقارنة معمارية وسريرية</div>
+      <h1 class="comp-title">مرشد مقابل البرمجيات السحابية التقليدية:<br /><span style="color:var(--m-primary)">سيادة البيانات، العمل أوفلاين، والتنوع الغذائي</span></h1>
+      <p class="comp-desc">
+        تفرض البرمجيات السحابية اشتراكات شهرية باهظة وتتطلب اتصالاً دائماً بالإنترنت مع تخزين بيانات مرضاك على خوادم مجهولة. اكتشف كيف يمنحك مرشد بيئة عمل محلية فائقة السرعة، وسيادة مطلقة لبياناتك، وبنك أغذية متعدد الثقافات.
+      </p>
+
+      <div class="comp-stat-banner">
+        <div class="comp-stat-box">
+          <div class="comp-stat-val">0 ثانية توقف</div>
+          <div class="comp-stat-lbl">استجابة فورية 100% بدون اتصال إنترنت</div>
+        </div>
+        <div class="comp-stat-box">
+          <div class="comp-stat-val">Zero Cloud Leak</div>
+          <div class="comp-stat-lbl">بيانات مرضاك لا تُرفع لخوادم طرف ثالث</div>
+        </div>
+        <div class="comp-stat-box">
+          <div class="comp-stat-val">13,000 صنف</div>
+          <div class="comp-stat-lbl">دمج الأطعمة العربية والعالمية بدقة متناهية</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CORE COMPARISON PILLARS
+     ════════════════════════════════════════ -->
+<section class="section-pad" aria-label="محاور المقارنة">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom: 48px;">
+      <span class="m-label">🛡️ مقارنة المعمارية والخصوصية</span>
+      <h2 class="m-title">لماذا يختار الأخصائيون <span>العمل الأوفلاين؟</span></h2>
+      <p class="m-subtitle">المقارنة التقنية والسريرية بين النظام المحلي المستقل والسحابة التقليدية</p>
+    </div>
+
+    <!-- Row 1: Reliability & Offline -->
+    <div class="pillar-row reveal">
+      <div class="pillar-card murshid-side">
+        <span class="card-entity-tag tag-murshid">منظومة مرشد</span>
+        <h3 class="pillar-h3">جاهزية مطلقة بدون إنترنت (Offline-First)</h3>
+        <p class="pillar-p">يعمل مرشد باستقلالية تامة محلياً عبر قاعدة بيانات Isar فائقة السرعة. لا يتوقف عملك إذا انقطع إنترنت العيادة أو سافرت بالطائرة أو كنت في زيارة منزلية دون تغطية شبكة.</p>
+        <ul class="pillar-points">
+          <li><span class="point-dot-good">✓</span> استجابة فورية بالمللي ثانية دون شاشات انتظار سحابية.</li>
+          <li><span class="point-dot-good">✓</span> بحث كامل في 13K طعام و 10K دواء و 70 بروتوكولاً أوفلاين.</li>
+          <li><span class="point-dot-good">✓</span> طباعة وتصدير تقارير PDF الملونة بدون إنترنت.</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card cloud-side">
+        <span class="card-entity-tag tag-cloud">البرمجيات السحابية (Cloud EHRs)</span>
+        <h3 class="pillar-h3">شلل كامل عند انقطاع الشبكة أو بطء السيرفر</h3>
+        <p class="pillar-p">تعتمد بالكامل على الاتصال بالخادم المركزي؛ بمجرد حدوث عطل في راوتر العيادة أو بطء في شبكة الاتصالات، يتعطل الأخصائي تماماً ويتوقف فتح ملفات المرضى أو حفظ التعديلات.</p>
+        <ul class="pillar-points">
+          <li><span class="point-dot-bad">✕</span> توقف تام للعيادة عند انقطاع الإنترنت أو الصيانة السحابية.</li>
+          <li><span class="point-dot-bad">✕</span> بطء ملحوظ في تحميل الصفحات والبحث بين الحقول.</li>
+          <li><span class="point-dot-bad">✕</span> خطر فقدان البيانات المدخلة إذا انقطع الاتصال فجأة قبل الحفظ.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Row 2: Data Sovereignty -->
+    <div class="pillar-row reveal">
+      <div class="pillar-card murshid-side">
+        <span class="card-entity-tag tag-murshid">منظومة مرشد</span>
+        <h3 class="pillar-h3">سيادة تامة للبيانات (Zero Cloud Exposure)</h3>
+        <p class="pillar-p">سجلات مرضاك الطبية والتاريخ الغذائي تُحفظ مشفرة بتشفير AES-256 على جهازك الشخصي حصراً. لا نبيع بياناتك، ولا تستطيع خوادمنا قراءتها، مما يحقق أعلى درجات الامتثال لـ HIPAA و GDPR.</p>
+        <ul class="pillar-points">
+          <li><span class="point-dot-good">✓</span> ملكية حصرية ومطلقة لبياناتك بدون أي قفل أو احتكار.</li>
+          <li><span class="point-dot-good">✓</span> حماية تامة ضد هجمات تسريب السيرفرات السحابية الجماعية.</li>
+          <li><span class="point-dot-good">✓</span> استمارات دخول ويب مشفرة بطرفية TweetNaCl لا يفكها إلا جهازك.</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card cloud-side">
+        <span class="card-entity-tag tag-cloud">البرمجيات السحابية (Cloud EHRs)</span>
+        <h3 class="pillar-h3">تخزين مركزي ومخاطر تسريب وسيطرة المزوّد</h3>
+        <p class="pillar-p">تُرفع بيانات مرضاك إلى خوادم شركات خارجية؛ وإذا قررت إيقاف الاشتراك السنوي باهظ الثمن، قد تُمنع من الوصول لبيانات مرضاك أو تجد صعوبة بالغة في استخراج سجلاتك التاريخية.</p>
+        <ul class="pillar-points">
+          <li><span class="point-dot-bad">✕</span> بيانات المرضى الحساسة مودعة على سيرفرات طرف ثالث.</li>
+          <li><span class="point-dot-bad">✕</span> احتكار المزوّد (Vendor Lock-in) وتهديد حجب الوصول.</li>
+          <li><span class="point-dot-bad">✕</span> عرضة لغرامات انتهاك الخصوصية إذا تعرضت المنصة السحابية لاختراق.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Row 3: Food Database & Arab Cuisines -->
+    <div class="pillar-row reveal">
+      <div class="pillar-card murshid-side">
+        <span class="card-entity-tag tag-murshid">منظومة مرشد</span>
+        <h3 class="pillar-h3">بنك الأغذية عابر القارات والعمق العربي والإقليمي</h3>
+        <p class="pillar-p">يدمج مرشد 13,000 صنف غذائي؛ يجمع بين مكتبة وزارة الزراعة الأمريكية (USDA) والبيانات الأوروبية وبين المأكولات العربية والخليجية والشامية والمصرية والمغاربية بمقاييس منزلية دقيقة.</p>
+        <ul class="pillar-points">
+          <li><span class="point-dot-good">✓</span> تحليل دقيق للأطباق الشعبية (كبسة، منسف، كشري، مطبق...).</li>
+          <li><span class="point-dot-good">✓</span> حصص تبادلية متوافقة مع إرشادات جمعية السكري الأمريكية (ADA).</li>
+          <li><span class="point-dot-good">✓</span> إمكانية إضافة وصفات وأكلات خاصة بعيادتك بدون قيود.</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card cloud-side">
+        <span class="card-entity-tag tag-cloud">البرمجيات السحابية (Cloud EHRs)</span>
+        <h3 class="pillar-h3">قواعد بيانات غربية أحادية تتجاهل الثقافة المحلية</h3>
+        <p class="pillar-p">معظم البرمجيات السحابية العالمية (مثل Nutritics أو Practice Better) مصممة للأسواق الغربية، وتحتوي فقط على منتجات السوبرماركت الأمريكية أو البريطانية، وتفشل تماماً في فهم الأطباق الشرق أوسطية.</p>
+        <ul class="pillar-points">
+          <li><span class="point-dot-bad">✕</span> غياب المأكولات الشعبية الشائعة في الدول العربية والخليجية.</li>
+          <li><span class="point-dot-bad">✕</span> اضطرار الأخصائي لتقدير وحساب السعرات يدوياً للأكلات المحلية.</li>
+          <li><span class="point-dot-bad">✕</span> فجوة حقيقية عند تقديم خطة غذائية لمراجع يتناول طعام البيت التقليدي.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Row 4: Pricing & Economics -->
+    <div class="pillar-row reveal">
+      <div class="pillar-card murshid-side">
+        <span class="card-entity-tag tag-murshid">منظومة مرشد</span>
+        <h3 class="pillar-h3">نموذج اقتصادي عادل وخالٍ من الاشتراكات الباهظة</h3>
+        <p class="pillar-p">فلسفة مرشد تمنحك كافة وظائف العيادة اليومية مجاناً مدى الحياة (الملفات، الخطط، بنك الأغذية، الحسابات، والفواتير). وتدفع فقط بنظام نقاط رمزي عادل عند الاستعانة بخدمات الذكاء الاصطناعي السحابي.</p>
+        <ul class="pillar-points">
+          <li><span class="point-dot-good">✓</span> لا رسوم شهرية إجبارية تُرهق ميزانية العيادة المبتدئة.</li>
+          <li><span class="point-dot-good">✓</span> نقاط زرقاء مجانية يومياً تتجدد تلقائياً لعملك المعتاد.</li>
+          <li><span class="point-dot-good">✓</span> لا تزيد التكلفة بزيادة عدد المرضى أو الملفات المسجلة.</li>
+        </ul>
+      </div>
+
+      <div class="pillar-card cloud-side">
+        <span class="card-entity-tag tag-cloud">البرمجيات السحابية (Cloud EHRs)</span>
+        <h3 class="pillar-h3">اشتراكات متصاعدة باهظة تستنزف أرباح العيادة</h3>
+        <p class="pillar-p">تفرض المنصات السحابية اشتراكاً شهرياً يتراوح بين 50 إلى 200 دولار شهرياً، وتزيد الرسوم كلما زاد عدد المرضى أو زادت مساحة التخزين، لتتحول العيادة لرهينة اشتراكات سنوية لا تنتهي.</p>
+        <ul class="pillar-points">
+          <li><span class="point-dot-bad">✕</span> مئات الدولارات تُدفع سنوياً سواء عملت العيادة أو توقفت.</li>
+          <li><span class="point-dot-bad">✕</span> فرض رسوم إضافية على كل مستخدم أو مساعد في العيادة.</li>
+          <li><span class="point-dot-bad">✕</span> تهديد بإيقاف الحساب ومسح البيانات عند التأخر في السداد.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     DETAILED COMPARISON MATRIX
+     ════════════════════════════════════════ -->
+<section class="section-pad" aria-label="مصفوفة المقارنة" style="background: var(--m-surface); border-top: 1px solid var(--m-border); border-bottom: 1px solid var(--m-border);">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom: 36px;">
+      <span class="m-label">📊 مصفوفة المقارنة المباشرة</span>
+      <h2 class="m-title">مرشد مقابل <span>البرمجيات السحابية</span></h2>
+      <p class="m-subtitle">مقارنة معمارية دقيقة لنقاط القوة والجاهزية المهنية</p>
+    </div>
+
+    <div class="comp-table-wrap reveal">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>المعيار البرمجي والسريري</th>
+            <th class="col-murshid">تطبيق مرشد (Murshid)</th>
+            <th class="col-cloud">البرمجيات السحابية (Cloud SaaS)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>الاعتماد على اتصال الإنترنت</strong></td>
+            <td class="col-murshid">⚡ أوفلاين 100% — يعمل في أي مكان بدون شبكة</td>
+            <td class="col-cloud">إلزامي 100% — يتوقف النظام بالكامل بدون إنترنت</td>
+          </tr>
+          <tr>
+            <td><strong>موقع حفظ بيانات المرضى</strong></td>
+            <td class="col-murshid">🔒 على جهازك الشخصي فقط بتشفير AES-256</td>
+            <td class="col-cloud">خوادم سحابية مجهولة مشتركة مع آلاف الشركات</td>
+          </tr>
+          <tr>
+            <td><strong>سرعة فتح واستجابة الملفات</strong></td>
+            <td class="col-murshid">فورية بالمللي ثانية (Local Isar NoSQL)</td>
+            <td class="col-cloud">تعتمد على سرعة الراوتر وحركة السيرفر</td>
+          </tr>
+          <tr>
+            <td><strong>تنوع بنك الأغذية الثقافي</strong></td>
+            <td class="col-murshid">🥗 13K صنف (USDA + CoFID + أكلات عربية وخليجية)</td>
+            <td class="col-cloud">أطعمة غربية فقط تتجاهل الأطباق الإقليمية</td>
+          </tr>
+          <tr>
+            <td><strong>المكتبة الصيدلانية الرقمية</strong></td>
+            <td class="col-murshid">💊 10,000 دواء و 1,500 مادة فعالة أوفلاين</td>
+            <td class="col-cloud">✕ غير متوفرة أو حقول نصية بدائية</td>
+          </tr>
+          <tr>
+            <td><strong>أطلس البروتوكولات السريرية</strong></td>
+            <td class="col-murshid">📚 70+ بروتوكولاً مسبق الإعداد (ADA, ESPEN, WHO)</td>
+            <td class="col-cloud">نماذج عامة محدودة أو غير متوفرة</td>
+          </tr>
+          <tr>
+            <td><strong>تطبيق المراجع المرافق</strong></td>
+            <td class="col-murshid">📱 تطبيق هاتف أصيل مع تبديل أطعمة ومتابعة حية</td>
+            <td class="col-cloud">بوابة ويب مقتضبة أو ملفات PDF بالبريد</td>
+          </tr>
+          <tr>
+            <td><strong>التحويل بين المتري والإمبراطوري</strong></td>
+            <td class="col-murshid">✓ تبديل فوري بين (kg/lbs و cm/in و kcal/kJ)</td>
+            <td class="col-cloud">مقيد بنظام الدولة المصنعة للبرنامج</td>
+          </tr>
+          <tr>
+            <td><strong>نموذج التسعير والتكلفة</strong></td>
+            <td class="col-murshid">عمل أساسي مجاني مدى الحياة + نقاط عادلة</td>
+            <td class="col-cloud">اشتراكات شهرية متصاعدة ($60 - $180 / شهرياً)</td>
+          </tr>
+          <tr>
+            <td><strong>منشئ موقع العيادة (CMS)</strong></td>
+            <td class="col-murshid">✓ إطلاق موقع حجز وبوسترات تسويق بنقرة واحدة</td>
+            <td class="col-cloud">✕ يتطلب اشتراكاً في منصات ويب إضافية منفصلة</td>
+          </tr>
+          <tr>
+            <td><strong>سياسة الامتثال للخصوصية</strong></td>
+            <td class="col-murshid">متوافق مع HIPAA و GDPR بنموذج عدم جمع البيانات</td>
+            <td class="col-cloud">عقود معقدة لتخزين البيانات ومعالجة الطرف الثالث</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FAQ SECTION
+     ════════════════════════════════════════ -->
+<section class="section-pad" id="faq" aria-label="الأسئلة الشائعة">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom: 48px;">
+      <span class="m-label">❓ إجابات شفافة</span>
+      <h2 class="m-title">أسئلة شائعة حول <span>الأنظمة السحابية والأوفلاين</span></h2>
+    </div>
+
+    <div class="faq-block">
+      <div class="faq-card reveal">
+        <h3><span>💾</span> كيف أقوم بنسخ بياناتي احتياطياً إذا كان مرشد يعمل أوفلاين؟</h3>
+        <p>يوفر مرشد أداة مدمجة للنسخ الاحتياطي المشفر (`DataBackupHelper`) بضغطة زر؛ يمكنك تصدير ملف النسخة الاحتياطية المشفر وحفظه بأمان على فلاش ميموري، أو قرص خارجي، أو تخزينه في بريدك الشخصي، واستعادته على أي جهاز آخر في ثوانٍ معدودة.</p>
+      </div>
+
+      <div class="faq-card reveal">
+        <h3><span>⚡</span> لماذا يعتبر محرك Isar المحلي أسرع من الخوادم السحابية؟</h3>
+        <p>محرك Isar NoSQL مبني خصيصاً للتطبيقات المتقدمة بلغة Rust و C++، ويقرأ البيانات مباشرة من ذاكرة جهازك بالمللي ثانية دون الحاجة لطلب اتصال شبكي (HTTP Request) عبر القارات والانتظار حتى يجيب السيرفر.</p>
+      </div>
+
+      <div class="faq-card reveal">
+        <h3><span>🌍</span> هل يدعم مرشد التعامل مع مراجعين من خارج بلدي؟</h3>
+        <p>نعم، تم تزويد مرشد بمرونة دولية كاملة: يدعم اللغتين العربية والإنجليزية، والتحويل بين الكيلوجرام والباوند، والفوترة بكافة عملات العالم، وتطبيق المراجع الذي يتزامن مع خططك أينما كان المراجع في العالم.</p>
+      </div>
+
+      <div class="faq-card reveal">
+        <h3><span>⚖️</span> ما هي حدود المسؤولية التنظيمية لمرشد؟</h3>
+        <p>مرشد ليس جهازاً طبياً ولا يتخذ قرارات سريرية تلقائية؛ إنه أداة حسابية وإدارية تساعد الأخصائي في مهامه اليومية. المسؤولية الكاملة عن تقييم المرضى ووضع الأنظمة الغذائية تظل دائماً على عاتق الأخصائي المرخص.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CTA BANNER
+     ════════════════════════════════════════ -->
+<section class="section-pad" aria-label="امتلك عيادتك الرقمية" style="background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(43, 181, 160, 0.15) 0%, transparent 80%), var(--m-bg);">
+  <div class="container text-center reveal">
+    <span class="m-label">🚀 اختر السرعة والسيادة الكاملة</span>
+    <h2 class="m-title" style="margin-bottom: 16px;">امتلك بياناتك وعيادتك — <span>دون قيود السحابة والاشتراكات</span></h2>
+    <p class="m-subtitle" style="max-width: 680px; margin: 0 auto 36px;">
+      ابدأ اليوم مع مرشد واستمتع بأداء فائق السرعة بدون إنترنت، وخصوصية لا تُخترق لمرضاك.
+    </p>
+    <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; font-size: 1rem; text-decoration: none;">
+        <span>📥 تحميل تطبيق مرشد مجاناً</span>
+      </a>
+      <a href="murshid-vs-excel.html" class="m-btn m-btn-secondary" style="padding: 14px 28px; font-size: 1rem; border: 1px solid var(--m-border); text-decoration: none;">
+        <span>📊 قراءة مقارنة إكسل ←</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer class="m-footer" role="contentinfo">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <a href="../index.html" class="m-nav-brand" style="margin-bottom:16px;display:inline-flex;">
+          <img src="../../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+          <div class="brand-app">
+            <span class="brand-name-ar">مرشد</span>
+            <span class="brand-name-en">تطبيق</span>
+          </div>
+        </a>
+        <p class="m-footer-desc">
+          المنصة الذكية المتكاملة لإدارة عيادات وممارسات التغذية. مصممة لتوفير وقت الأخصائي وتمكين المراجعين بأعلى معايير الخصوصية والعمل بدون إنترنت.
+        </p>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">أركان المنظومة</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="../features/offline-food-bank.html">بنك الأغذية الأوفلاين (13K)</a></li>
+          <li><a href="../features/smart-diet-engine.html">محرك النقاط وتصميم الحميات</a></li>
+          <li><a href="../features/pharmacology-reference.html">المكتبة الصيدلانية الرقمية</a></li>
+          <li><a href="../features/patient-crm.html">إدارة ملفات المراجعين 360</a></li>
+          <li><a href="../features/offline-first-privacy.html">الخصوصية والأمان بدون إنترنت</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">الأدوات والمقارنات</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="../protocols.html">أطلس البروتوكولات السريرية (70+)</a></li>
+          <li><a href="murshid-vs-excel.html">مرشد مقابل إكسل</a></li>
+          <li><a href="murshid-vs-cloud-software.html">مرشد مقابل البرامج السحابية</a></li>
+          <li><a href="../features/specialist-site-builder.html">منشئ موقع العيادة</a></li>
+          <li><a href="../features/clinic-management-erp.html">الفوترة وإدارة العيادة ERP</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">قانوني والدعم</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="../../privacy-policy.html">سياسة الخصوصية</a></li>
+          <li><a href="../../terms-of-use.html">شروط الاستخدام</a></li>
+          <li><a href="../../refund-policy.html">سياسة الاسترداد</a></li>
+          <li><a href="../../data-deletion.html">حذف البيانات</a></li>
+          <li><a href="../contact.html">تواصل مع الدعم الفني</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Regulatory Disclaimer Standard Box -->
+    <div style="margin-top: 36px; padding: 20px; background: rgba(15, 23, 42, 0.04); border: 1px solid var(--m-border); border-radius: 12px; font-size: 0.8rem; line-height: 1.7; color: var(--m-text-muted); text-align: center;">
+      <strong>⚠️ إخلاء مسؤولية تنظيمي وسريري معتمد:</strong><br />
+      منظومة وتطبيق «مرشد» هي أداة برمجية إدارية، حسابية، ومساعدة في التوثيق السريري مخصصة حصراً لأخصائيي التغذية والكوادر الطبية المؤهلة. لا تُعد المنظومة بأي شكل من الأشكال جهازاً طبياً (Software as a Medical Device - SaMD) ولا تقدم تشخيصاً طبياً، أو علاجاً، أو وصفات دوائية، أو استشارات ذاتية للمرضى. تقع المسؤولية السريرية والتشخيصية الكاملة لتقييم الحالات والخطط الغذائية على عاتق الأخصائي المرخص المشرف على الحالة.
+    </div>
+
+    <div class="m-footer-bottom">
+      <p>© 2026 تطبيق مرشد — أحد ابتكارات شركة FES HealthTech. جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../../shared/murshid-script.js"></script>
+</body>
+</html>

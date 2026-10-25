@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinical Pharmacology Reference Atlas (10,000 Medications) — Murshid App</title>
+  <meta name="description" content="The definitive clinical documentation reference for dietitians: 10,000 brand medications and 1,500 active pharmaceutical ingredients (APIs) embedded offline in Murshid for rapid patient chart documentation with zero internet required." />
+  <meta name="keywords" content="dietitian pharmacology reference, medication brand to generic atlas, clinical nutrition drug history, diabetes hypertension medications diet, offline drug encyclopedia, Murshid app" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../assets/logo-sq.webp" type="image/webp" />
+
+  <link rel="canonical" href="https://murshid.feshealthtech.com/features/pharmacology-reference.html" />
+  <link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/pharmacology-reference.html" />
+  <link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/pharmacology-reference.html" />
+  <link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/pharmacology-reference.html" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Clinical Pharmacology Reference Atlas (10,000 Medications) — Murshid App" />
+  <meta property="og:description" content="Instant brand-to-generic drug lookups for clinical dietitians. 10,000 commercial medications and 1,500 active substances operating 100% offline." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://murshid.feshealthtech.com/features/pharmacology-reference.html" />
+  <meta property="og:image" content="https://murshid.feshealthtech.com/assets/og-preview.jpg?v=3" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../shared/murshid-style.css" />
+  <link rel="stylesheet" href="../shared/index-style.css" />
+
+  <!-- Schema.org Rich Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://murshid.feshealthtech.com/features/pharmacology-reference.html",
+        "url": "https://murshid.feshealthtech.com/features/pharmacology-reference.html",
+        "name": "Clinical Pharmacology Reference Atlas (10,000 Medications) — Murshid App",
+        "description": "Comprehensive clinical documentation reference for Murshid's 10,000 medication atlas for clinical dietitians.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://murshid.feshealthtech.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Pillars",
+              "item": "https://murshid.feshealthtech.com/#pillars"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Pharmacology Atlas",
+              "item": "https://murshid.feshealthtech.com/features/pharmacology-reference.html"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://murshid.feshealthtech.com/features/pharmacology-reference.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How many medications and active substances are indexed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Murshid includes approximately 10,000 commercial brand medications commonly prescribed across Arab regional and international markets, systematically mapped to over 1,500 scientific Active Pharmaceutical Ingredients (APIs)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the primary role of the pharmacology module in Murshid?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It serves as an offline digital clinical documentation atlas. It enables dietitians to rapidly identify active ingredients, verify therapeutic classifications, and record the patient's complete pharmaceutical regimen directly into their nutritional chart."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the system perform automated drug-nutrient interaction checking?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Murshid does NOT function as an automated medical diagnostic tool or autonomous drug interaction decision engine. It provides documentation and reference lookup capabilities; all clinical judgments and dietary adjustments remain solely with the qualified dietitian."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can the pharmacology atlas be queried completely offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, the complete dictionary is stored locally inside the application using the high-performance Isar NoSQL database, delivering sub-millisecond query results with zero internet requirement."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can dietitians search by either brand name or generic chemical name?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, the search engine supports instant lookup across both commercial brand trade names and international generic names (INN) with built-in phonetic and typographical tolerance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the app support scanning physical prescriptions via camera?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Murshid features optical character recognition (OCR) that allows practitioners to photograph medication boxes or printed prescriptions to extract medication names and link them immediately to the patient's record."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', system-ui, -apple-system, sans-serif; }
+    .pillar-hero {
+      padding: 130px 0 70px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(14, 165, 233, 0.16) 0%, transparent 70%), var(--m-bg);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .badge-pill-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: rgba(14, 165, 233, 0.12);
+      border: 1px solid rgba(14, 165, 233, 0.3);
+      color: #0284c7;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .deep-section { padding: 70px 0; }
+    .deep-section.alt-bg {
+      background: var(--m-surface);
+      border-top: 1px solid var(--m-border);
+      border-bottom: 1px solid var(--m-border);
+    }
+    .section-head { text-align: center; max-width: 820px; margin: 0 auto 50px; }
+    .section-head .subhead {
+      color: #0284c7;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--m-text);
+      margin-bottom: 14px;
+    }
+    .section-head p { color: var(--m-text-muted); font-size: 1.05rem; line-height: 1.8; }
+    .workflow-card {
+      background: var(--m-surface);
+      border: 1px solid var(--m-border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      margin-bottom: 24px;
+      box-shadow: var(--m-shadow-sm);
+    }
+    .workflow-step-num {
+      position: absolute;
+      top: -16px;
+      left: 24px;
+      background: #0284c7;
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.9rem;
+      padding: 4px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+    }
+    .deep-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--m-border);
+      background: var(--m-surface);
+    }
+    .deep-table th, .deep-table td {
+      padding: 18px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--m-border);
+      font-size: 0.95rem;
+    }
+    .deep-table th {
+      background: rgba(14, 165, 233, 0.08);
+      font-weight: 800;
+      color: var(--m-text);
+    }
+    .deep-table tr:last-child td { border-bottom: none; }
+    .check-yes { color: #10b981; font-weight: 800; }
+    .cross-no { color: #ef4444; font-weight: 800; }
+    .faq-block { max-width: 860px; margin: 0 auto; }
+    .faq-card {
+      background: var(--m-surface);
+      border: 1px solid var(--m-border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s ease;
+    }
+    .faq-card:hover { border-color: rgba(14, 165, 233, 0.4); }
+    .faq-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--m-text);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .faq-card p { color: var(--m-text-muted); font-size: 0.98rem; line-height: 1.7; margin: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     UNIFIED OFFICIAL NAVBAR
+     ════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="../index.html" class="m-nav-brand" aria-label="Home">
+      <img src="../assets/logo.webp" alt="Murshid Logo" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">Murshid</span>
+        <span class="brand-name-en">App</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="../index.html#features">Features</a></li>
+      <li><a href="../index.html#pillars">Pillars</a></li>
+      <li><a href="../index.html#wallet">Points System</a></li>
+      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../faq.html">FAQ</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li class="m-nav-dropdown">
+        <button class="m-nav-dropdown-btn" aria-haspopup="true">
+          <span>Legal</span>
+          <span style="font-size:0.75rem;">▾</span>
+        </button>
+        <div class="m-nav-dropdown-menu">
+          <a href="../privacy-policy.html" class="m-nav-dropdown-item">🔒 Privacy Policy</a>
+          <a href="../terms-of-use.html" class="m-nav-dropdown-item">📜 Terms of Use</a>
+          <a href="../refund-policy.html" class="m-nav-dropdown-item">💵 Refund Policy</a>
+          <a href="../data-deletion.html" class="m-nav-dropdown-item">🗑️ Data Deletion</a>
+        </div>
+      </li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../ar/features/pharmacology-reference.html" class="m-btn m-btn-secondary" style="margin-right:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" title="النسخة العربية">🌐 العربية</a>
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" id="nav-download-btn" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">📥 Download Free</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     MOBILE MENU DRAWER
+     ════════════════════════════════════════ -->
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">Murshid App</span>
+    <span class="m-mobile-menu-subtitle">Smart Practice Platform for Dietitians</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="../index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">Home</span>
+    </a>
+    <a href="../ar/features/pharmacology-reference.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🌐</span>
+      <span class="m-mobile-text">العربية (Arabic)</span>
+    </a>
+    <a href="../index.html#features" class="m-mobile-link">
+      <span class="m-mobile-icon">🚀</span>
+      <span class="m-mobile-text">Features</span>
+    </a>
+    <a href="../index.html#pillars" class="m-mobile-link">
+      <span class="m-mobile-icon">🏛️</span>
+      <span class="m-mobile-text">Pillars</span>
+    </a>
+    <a href="../index.html#wallet" class="m-mobile-link">
+      <span class="m-mobile-icon">🪙</span>
+      <span class="m-mobile-text">Points System</span>
+    </a>
+    <a href="../index.html#pricing" class="m-mobile-link">
+      <span class="m-mobile-icon">💳</span>
+      <span class="m-mobile-text">Pricing</span>
+    </a>
+    <a href="../faq.html" class="m-mobile-link">
+      <span class="m-mobile-icon">❓</span>
+      <span class="m-mobile-text">FAQ</span>
+    </a>
+    <a href="../contact.html" class="m-mobile-link">
+      <span class="m-mobile-icon">✉️</span>
+      <span class="m-mobile-text">Contact</span>
+    </a>
+    <a href="../privacy-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🔒</span>
+      <span class="m-mobile-text">Privacy Policy</span>
+    </a>
+    <a href="../terms-of-use.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📜</span>
+      <span class="m-mobile-text">Terms of Use</span>
+    </a>
+    <a href="../refund-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">💵</span>
+      <span class="m-mobile-text">Refund Policy</span>
+    </a>
+    <a href="../data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">Data Deletion</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-download">
+    <div class="m-mobile-download-title">Download App Free</div>
+    <div class="m-mobile-download-buttons">
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-mobile-dl-btn">
+        <span>🤖 Google Play</span>
+      </a>
+      <a href="../index.html#download" class="m-mobile-dl-btn">
+        <span>🍎 App Store</span>
+      </a>
+    </div>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="../privacy-policy.html">Privacy</a>
+    <span>•</span>
+    <a href="../terms-of-use.html">Terms</a>
+    <span>•</span>
+    <a href="../refund-policy.html">Refund</a>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- ════════════════════════════════════════
+     HERO SECTION
+     ════════════════════════════════════════ -->
+<section class="pillar-hero">
+  <div class="container" style="text-align: center;">
+    <div class="badge-pill-main">💊 Pharmacology Reference Atlas — 10,000 Medications & 1,500 APIs</div>
+    <h1 style="font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 900; line-height: 1.25; margin-bottom: 22px;">
+      The Comprehensive Clinical Pharmacology Reference for Dietitians<br />
+      <span style="color: #0284c7;">Instant Brand-to-Generic Mapping Operating 100% Offline</span>
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--m-text-muted); max-width: 820px; margin: 0 auto 36px; line-height: 1.8;">
+      Eliminate confusion when patients present with commercial drug brand names. Murshid embeds an extensive offline documentation encyclopedia of 10,000 brand medications and 1,500 active pharmaceutical ingredients, enabling clinical dietitians to document medical history instantly during nutrition consultations.
+    </p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" style="padding: 14px 32px; font-size: 1rem; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
+        <span>Download Murshid Free</span>
+      </a>
+      <a href="../index.html#pillars" class="m-btn m-btn-outline" style="padding: 14px 26px; font-size: 1rem;">
+        <span>Explore Platform Pillars</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CLINICAL REALITY & NEED
+     ════════════════════════════════════════ -->
+<section class="deep-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">The Clinical Dilemma</span>
+      <h2>Documenting Pharmaceutical Histories in Nutritional Consults</h2>
+      <p>Dietitians face daily workflow hurdles when trying to decipher commercial drug prescriptions during initial assessments:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px;">
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">🏷️</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Proliferation of Local Trade Names</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Patients routinely report brand names (e.g. Januvia, Glucophage, Forxiga, Concor, Euthyrox). Identifying the exact active substance immediately is crucial to understanding metabolic health and structuring appropriate meal timing.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">🔎</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Wasted Consultation Time on Search Engines</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Resorting to public web searches during an appointment looks unprofessional, wastes precious consultation minutes, and surfaces consumer-targeted advertising rather than concise clinical facts.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">📁</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Fragmented Paper Records</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Jotting down medications on paper scratchpads causes loss of longitudinal continuity. Murshid creates a structured, digital medication ledger linked directly to the patient's ongoing clinical profile (Patient 360).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     ARCHITECTURE & DATABASE BREAKDOWN
+     ════════════════════════════════════════ -->
+<section class="deep-section alt-bg">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Documentation Architecture</span>
+      <h2>Structure of Murshid's Pharmacology Module</h2>
+      <p>A locally embedded relational dictionary delivering instantaneous classification and indexing in microseconds.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; margin-bottom: 40px;">
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #0284c7; display: flex; align-items: center; gap: 10px;">
+          <span>📦</span> 10,000 Brand Medications
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Extensive regional indexing covering popular pharmaceutical brands in Gulf, Egyptian, Middle Eastern, and international pharmacies across varied strengths and dosage forms.
+        </p>
+      </div>
+
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #0284c7; display: flex; align-items: center; gap: 10px;">
+          <span>🧬</span> 1,500 Active Substances (APIs)
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Every brand name links directly to its International Nonproprietary Name (INN) and therapeutic class (Endocrine, Cardiovascular, Lipid-lowering, Gastrointestinal, etc.).
+        </p>
+      </div>
+
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #0284c7; display: flex; align-items: center; gap: 10px;">
+          <span>📷</span> Intelligent Prescription OCR
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Capture photos of medication packages or paper prescriptions to automatically extract text, match catalog items, and populate patient charts in seconds.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CLINICAL WORKFLOW SCENARIO
+     ════════════════════════════════════════ -->
+<section class="deep-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Practical Clinical Scenario</span>
+      <h2>Medication Documentation During Consultation</h2>
+      <p>How a clinician documents a complex polypharmacy patient with diabetes and hypertension:</p>
+    </div>
+
+    <div style="max-width: 860px; margin: 0 auto;">
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 1</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Instant Offline Search</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The patient mentions taking "Glucophage 1000mg" and "Concor 5mg". The dietitian types the first letters into Murshid's offline search; the medication card pops up instantly showing Metformin and Bisoprolol.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 2</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">One-Tap Charting into Patient 360</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          With a single tap, the entries are recorded into the patient's active medication list, including prescribed dosage schedules.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 3</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Dietary Scheduling & Meal Timing</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Leveraging their professional clinical knowledge, the dietitian schedules carbohydrates and meal intervals to accommodate the patient's medication regimen safely.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 4</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Documentation in Clinical PDF Reports</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The documented medication history automatically populates the medical background section of the clinic's exportable PDF report.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     COMPARISON TABLE
+     ════════════════════════════════════════ -->
+<section class="deep-section alt-bg">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Technical Comparison</span>
+      <h2>Murshid Pharmacology Atlas vs Conventional Methods</h2>
+      <p>Compare documentation speed, offline reliability, and clinical focus:</p>
+    </div>
+
+    <div class="table-responsive">
+      <table class="deep-table">
+        <thead>
+          <tr>
+            <th>Feature / Specification</th>
+            <th>Murshid Pharmacology Atlas</th>
+            <th>Public Search Engines (Google)</th>
+            <th>Paper Notes & Manual Memory</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Offline Usability (100% Offline)</strong></td>
+            <td><span class="check-yes">✓ Completely operational without net</span></td>
+            <td><span class="cross-no">✗ Requires constant internet connectivity</span></td>
+            <td>Offline but completely unindexed</td>
+          </tr>
+          <tr>
+            <td><strong>Database Volume</strong></td>
+            <td><span class="check-yes">✓ 10,000 brands & 1,500 active APIs</span></td>
+            <td>Open web cluttered with ad noise</td>
+            <td>Limited to clinician's personal memory</td>
+          </tr>
+          <tr>
+            <td><strong>Integration with Patient Chart</strong></td>
+            <td><span class="check-yes">✓ One-tap addition to Patient 360 profile</span></td>
+            <td><span class="cross-no">✗ Disconnected from patient records</span></td>
+            <td>Prone to loss, wear, and misplacement</td>
+          </tr>
+          <tr>
+            <td><strong>Prescription Optical Recognition (OCR)</strong></td>
+            <td><span class="check-yes">✓ Extract names directly from camera</span></td>
+            <td><span class="cross-no">✗ Unavailable for in-clinic charts</span></td>
+            <td>Slow, laborious handwritten notes</td>
+          </tr>
+          <tr>
+            <td><strong>Query Retrieval Speed</strong></td>
+            <td><span class="check-yes">✓ Sub-5 milliseconds locally</span></td>
+            <td>Multiple seconds across web pages</td>
+            <td>Manual thumbing through books</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     EXPANDED FAQ SECTION
+     ════════════════════════════════════════ -->
+<section class="deep-section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Frequently Asked Questions</span>
+      <h2>Everything You Need to Know</h2>
+      <p>Clarifications regarding database scope, clinical liability, and privacy:</p>
+    </div>
+
+    <div class="faq-block">
+      <div class="faq-card">
+        <h3><span>❓</span> How many medications and active substances are indexed?</h3>
+        <p>Murshid includes approximately 10,000 commercial brand medications commonly prescribed across Arab regional and international markets, systematically mapped to over 1,500 scientific Active Pharmaceutical Ingredients (APIs).</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> What is the primary role of the pharmacology module in Murshid?</h3>
+        <p>It serves as an offline digital clinical documentation atlas. It enables dietitians to rapidly identify active ingredients, verify therapeutic classifications, and record the patient's complete pharmaceutical regimen directly into their nutritional chart.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Does the system perform automated drug-nutrient interaction checking?</h3>
+        <p>No. Murshid does NOT function as an automated medical diagnostic tool or autonomous drug interaction decision engine. It provides documentation and reference lookup capabilities; all clinical judgments and dietary adjustments remain solely with the qualified dietitian.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Can the pharmacology atlas be queried completely offline?</h3>
+        <p>Yes, the complete dictionary is stored locally inside the application using the high-performance Isar NoSQL database, delivering sub-millisecond query results with zero internet requirement.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Can dietitians search by either brand name or generic chemical name?</h3>
+        <p>Yes, the search engine supports instant lookup across both commercial brand trade names and international generic names (INN) with built-in phonetic and typographical tolerance.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Does the app support scanning physical prescriptions via camera?</h3>
+        <p>Yes, Murshid features optical character recognition (OCR) that allows practitioners to photograph medication boxes or printed prescriptions to extract medication names and link them immediately to the patient's record.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     RELATED CLINICAL RESOURCES & COMPARISONS
+     ════════════════════════════════════════ -->
+<section class="deep-section" style="background: rgba(43, 181, 160, 0.03); border-top: 1px solid var(--m-border);">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Clinical & Technical Synergy</span>
+      <h2>Related Clinical Guides & Comparisons</h2>
+      <p>Discover how pharmaceutical documentation integrates into broader clinical care:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px;">
+      <a href="../articles/clinical-dietetic-protocols-assessment-framework.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">📖</span>
+        <strong style="color: var(--m-primary); font-size: 1rem; display: block; margin-bottom: 6px;">Article: Protocols & Assessment</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">Evaluating drug-nutrient interactions and aligning meal timing with medical therapy. →</span>
+      </a>
+
+      <a href="offline-food-bank.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🥗</span>
+        <strong style="color: #6366f1; font-size: 1rem; display: block; margin-bottom: 6px;">Offline Food Bank (13K)</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">Fine-tuning micronutrient intake (potassium, sodium) alongside antihypertensive and renal regimens. →</span>
+      </a>
+
+      <a href="../comparisons/murshid-vs-cloud-software.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">☁️</span>
+        <strong style="color: var(--m-gold); font-size: 1rem; display: block; margin-bottom: 6px;">Murshid vs. Cloud EHRs</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">Safeguarding sensitive medical histories locally on-device without cloud security vulnerabilities. →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CTA BANNER
+     ════════════════════════════════════════ -->
+<section style="padding: 70px 0; background: linear-gradient(135deg, rgba(2, 132, 199, 0.12), rgba(43, 181, 160, 0.1)); border-top: 1px solid var(--m-border); border-bottom: 1px solid var(--m-border); text-align: center;">
+  <div class="container" style="max-width: 700px;">
+    <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 14px;">Document Patient Medical History with Precision</h2>
+    <p style="color: var(--m-text-muted); margin-bottom: 28px; font-size: 1.05rem;">Experience the power of an offline clinical pharmacology atlas designed exclusively for dietitians.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" style="padding: 16px 36px; font-size: 1.05rem; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
+      <span>Download Murshid Free on Google Play</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER WITH REGULATORY DISCLAIMER
+     ════════════════════════════════════════ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="../assets/logo.webp" alt="FES HealthTech" class="footer-logo" width="284" height="284" />
+        <div class="footer-app-name">Murshid</div>
+        <div class="footer-app-sub">Clinical Dietitian App</div>
+        <p>The intelligent practice management & computational platform for clinical dietitians — Developed by <a href="https://feshealthtech.com/">FES HealthTech</a>.</p>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Platform Pillars</h3>
+        <ul class="m-footer-links">
+          <li><a href="offline-food-bank.html">Offline Food Bank</a></li>
+          <li><a href="pharmacology-reference.html">Pharmacology Atlas</a></li>
+          <li><a href="smart-diet-engine.html">Smart Diet Engine</a></li>
+          <li><a href="patient-crm.html">Patient 360 CRM</a></li>
+          <li><a href="patient-companion.html">Patient Companion</a></li>
+          <li><a href="specialist-site-builder.html">Clinic Site CMS</a></li>
+          <li><a href="clinic-management-erp.html">Practice ERP & Finance</a></li>
+          <li><a href="offline-first-privacy.html">Offline & Sovereignty</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Support</h3>
+        <ul class="m-footer-links">
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../data-deletion.html">Data Deletion</a></li>
+          <li><a href="https://feshealthtech.com/">About Us</a></li>
+          <li><a href="../contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Legal</h3>
+        <ul class="m-footer-links">
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../terms-of-use.html">Terms of Use</a></li>
+          <li><a href="../refund-policy.html">Refund Policy</a></li>
+          <li><a href="../data-deletion.html">Data Deletion</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Regulatory Disclaimer -->
+    <div class="m-footer-disclaimer" style="margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.78rem; line-height: 1.6; color: var(--m-text-muted, #94a3b8); text-align: center;">
+      <p>⚠️ <strong>Regulatory & Professional Disclaimer:</strong> Murshid is an administrative, computational, and clinical documentation practice management platform designed exclusively for certified clinical dietitians and nutrition clinics. Murshid is NOT a medical device (SaMD) and does not provide automated clinical diagnosis or autonomous medical treatment decisions. All clinical judgments, evaluations, and dietary prescriptions remain solely under the professional discretion of the licensed dietitian.</p>
+    </div>
+
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. All rights reserved.</p>
+      <div class="m-footer-bottom-links">
+        <a href="../privacy-policy.html">Privacy</a>
+        <a href="../terms-of-use.html">Terms</a>
+        <a href="../data-deletion.html">Data Deletion</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/murshid-script.js"></script>
+</body>
+</html>

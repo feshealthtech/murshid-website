@@ -7,7 +7,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/" />
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -18,7 +18,7 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/" />
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -29,7 +29,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/contact.html" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/contact.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/contact.html" />
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -40,7 +40,7 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/contact.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/contact.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/contact.html" />
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -51,7 +51,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/faq.html" />
     <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/faq.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/faq.html" />
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -62,7 +62,7 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/faq.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/faq.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/faq.html" />
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -70,7 +70,7 @@
   <!-- App Download Landing -->
   <url>
     <loc>https://murshid.feshealthtech.com/app/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -78,7 +78,7 @@
   <!-- Accredited Verification Portal -->
   <url>
     <loc>https://murshid.feshealthtech.com/verify/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -86,7 +86,7 @@
   <!-- Privacy Policy -->
   <url>
     <loc>https://murshid.feshealthtech.com/privacy-policy.html</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -94,7 +94,7 @@
   <!-- Terms of Use -->
   <url>
     <loc>https://murshid.feshealthtech.com/terms-of-use.html</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -102,7 +102,7 @@
   <!-- Refund Policy -->
   <url>
     <loc>https://murshid.feshealthtech.com/refund-policy.html</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
@@ -110,8 +110,204 @@
   <!-- Data Deletion -->
   <url>
     <loc>https://murshid.feshealthtech.com/data-deletion.html</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+  </url>
+  <!-- Feature: Offline Food Bank (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/features/offline-food-bank.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/offline-food-bank.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/offline-food-bank.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/offline-food-bank.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Offline Food Bank (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/features/offline-food-bank.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/offline-food-bank.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/offline-food-bank.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/offline-food-bank.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Pharmacology Reference (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/features/pharmacology-reference.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/pharmacology-reference.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/pharmacology-reference.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/pharmacology-reference.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Pharmacology Reference (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/features/pharmacology-reference.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/pharmacology-reference.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/pharmacology-reference.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/pharmacology-reference.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Feature: Smart Diet Engine (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/features/smart-diet-engine.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/smart-diet-engine.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/smart-diet-engine.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/smart-diet-engine.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Smart Diet Engine (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/features/smart-diet-engine.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/smart-diet-engine.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/smart-diet-engine.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/smart-diet-engine.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Patient 360 CRM (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/features/patient-crm.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/patient-crm.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/patient-crm.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/patient-crm.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Patient 360 CRM (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/features/patient-crm.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/patient-crm.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/patient-crm.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/patient-crm.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Patient Companion App (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/features/patient-companion.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/patient-companion.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/patient-companion.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/patient-companion.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Patient Companion App (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/features/patient-companion.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/patient-companion.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/patient-companion.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/patient-companion.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Specialist Site Builder & CMS (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/features/specialist-site-builder.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/specialist-site-builder.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/specialist-site-builder.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/specialist-site-builder.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Specialist Site Builder & CMS (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/features/specialist-site-builder.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/specialist-site-builder.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/specialist-site-builder.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/specialist-site-builder.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Clinic Management & ERP (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/features/clinic-management-erp.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/clinic-management-erp.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/clinic-management-erp.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/clinic-management-erp.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Clinic Management & ERP (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/features/clinic-management-erp.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/clinic-management-erp.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/clinic-management-erp.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/clinic-management-erp.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Offline-First Architecture & Data Sovereignty (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/features/offline-first-privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/offline-first-privacy.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/offline-first-privacy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/offline-first-privacy.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Feature: Offline-First Architecture & Data Sovereignty (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/features/offline-first-privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/offline-first-privacy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/offline-first-privacy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/offline-first-privacy.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Clinical Nutrition Protocols Atlas (English) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/protocols.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/protocols.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Clinical Nutrition Protocols Atlas (Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/protocols.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/protocols.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/protocols.html" />
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
 </urlset>

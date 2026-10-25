@@ -1,4 +1,23 @@
 User-agent: *
 Allow: /
 
+# Generative AI & LLM Search Agents
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemaps & LLM Context
 Sitemap: https://murshid.feshealthtech.com/sitemap.xml
+# LLMs Text Reference: https://murshid.feshealthtech.com/llms.txt
+# LLMs Full Knowledge Base: https://murshid.feshealthtech.com/llms-full.txt

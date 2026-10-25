@@ -29,21 +29,97 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    "name": "Murshid App",
-    "operatingSystem": "Android, iOS",
-    "applicationCategory": "BusinessApplication, HealthApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0.00",
-      "priceCurrency": "USD"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "FES HealthTech",
-      "url": "https://feshealthtech.com/"
-    },
-    "description": "Murshid app is your smart clinic assistant for managing patient files, building diet plans, and exporting professional AI-powered reports."
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://murshid.feshealthtech.com/#software-en",
+        "name": "Murshid App — Smart Diet & Clinic Management Platform",
+        "alternateName": ["Murshid", "Murshid Nutrition Platform", "Murshid Diet App"],
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Android, iOS",
+        "url": "https://murshid.feshealthtech.com/",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://feshealthtech.com/#organization",
+          "name": "FES HealthTech",
+          "url": "https://feshealthtech.com/",
+          "logo": "https://murshid.feshealthtech.com/assets/logo.webp",
+          "sameAs": [
+            "https://play.google.com/store/apps/details?id=com.feshealthtech.murshid"
+          ]
+        },
+        "description": "Comprehensive offline-first clinical nutrition practice management and diet planning software for dietitians and nutrition clinics. Features smart Dual-Points meal planning, an offline database of 13,000 foods (Middle Eastern, Arab, and International), a 10,000-drug reference catalog, 70+ clinical protocol templates, WHO pediatric growth Z-scores, patient companion app, and automated clinic website generator.",
+        "featureList": [
+          "Smart Dual-Points Diet Planning Engine (combining precise macros with ADA exchange lists)",
+          "Massive Offline Food Database of ~13,000 items covering Arab, Middle Eastern, and International foods",
+          "Digital Pharmacology Reference Library (~10,000 medications & 1,500 active ingredients) for documentation",
+          "70+ Master Clinical Protocol Reference Templates (Diabetes, Renal, DASH, PCOS, Pediatrics, Pregnancy)",
+          "Gold-Standard Energy Expenditure Equations (Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Cunningham, Schofield, DRI)",
+          "Official WHO Pediatric Growth Standards & Z-Score Engine (BMI, Weight, Height, Head circumference)",
+          "Patient 360 CRM with InBody and DEXA body composition longitudinal tracking",
+          "Pre-Consultation Web Intake Forms with Client-Side End-to-End Encryption (TweetNaCl)",
+          "Dedicated Patient Companion Mobile App (Murshid Client) with adherence tracking and food swapping",
+          "Specialist Website Builder CMS generating personal clinic websites and printable posters",
+          "Clinic Financial ERP managing sequential invoices, receipts, expenses, and net profit",
+          "Branded Clinical PDF Reports with custom clinic color palettes, logos, and verified digital signatures",
+          "100% Offline-First Architecture powered by Isar local database for total HIPAA/GDPR data sovereignty"
+        ],
+        "sameAs": [
+          "https://play.google.com/store/apps/details?id=com.feshealthtech.murshid"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://murshid.feshealthtech.com/#faq-en",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Murshid App?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Murshid is an offline-first practice management and diet planning platform designed for clinical dietitians and nutrition clinics to manage patient records, calculate metabolic equations, design dual-points meal plans, and access a 13,000-food database and 10,000-medication offline reference library."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Murshid provide automated medical diagnoses or clinical decisions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Murshid is an administrative, computational, and documentation assistant. It is not a medical device (SaMD) and does not provide automated diagnoses. All clinical evaluations and dietary decisions remain the exclusive responsibility of the licensed dietitian."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Murshid require an active internet connection?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, Murshid is built on an offline-first architecture powered by an ultra-fast local Isar database. Over 90% of features—including the 13,000-food bank, 10,000 reference medications, diet planning, and PDF generation—work completely offline."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the Dual-Points System in Murshid?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Dual-Points system is a hybrid meal-planning method that bridges exact macronutrient/caloric counts for the dietitian with intuitive ADA exchange points for the patient, simplifying adherence while ensuring nutritional precision."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can dietitians create their own clinic website with Murshid?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Murshid includes a built-in CMS that enables dietitians to launch their branded online clinic website, showcase services, display working hours, and generate printable clinic posters with zero coding."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -63,8 +139,10 @@
     </a>
     <ul class="m-nav-links" role="list">
       <li><a href="#features">Features</a></li>
+      <li><a href="protocols.html">Protocols Atlas</a></li>
+      <li><a href="comparisons/murshid-vs-excel.html">Comparisons</a></li>
+      <li><a href="articles/index.html">Knowledge Hub</a></li>
       <li><a href="#wallet">Points System</a></li>
-      <li><a href="#how">How it Works</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html">Contact Us</a></li>
@@ -107,6 +185,18 @@
     <a href="index.html#features" class="m-mobile-link">
       <span class="m-mobile-icon">🚀</span>
       <span class="m-mobile-text">App Features</span>
+    </a>
+    <a href="protocols.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📚</span>
+      <span class="m-mobile-text">Protocols Atlas (70+)</span>
+    </a>
+    <a href="comparisons/murshid-vs-excel.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📊</span>
+      <span class="m-mobile-text">Murshid vs. Excel & Cloud EHRs</span>
+    </a>
+    <a href="articles/index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📖</span>
+      <span class="m-mobile-text">Knowledge Hub & Guides</span>
     </a>
     <a href="index.html#wallet" class="m-mobile-link">
       <span class="m-mobile-icon">🪙</span>
@@ -629,6 +719,183 @@
 
 
 <!-- ════════════════════════════════════════
+     CORE PILLARS DIRECTORY (SEO / GEO Hub)
+     ════════════════════════════════════════ -->
+<section class="section-pad" id="pillars" aria-label="Core Architectural Pillars" style="background: var(--m-bg); border-top: 1px solid var(--m-border); border-bottom: 1px solid var(--m-border);">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom: 48px;">
+      <span class="m-label">🏛️ Architectural Pillars</span>
+      <h2 class="m-title">Dedicated Feature Guides & <span>Engines</span></h2>
+      <p class="m-subtitle">Explore the technical and clinical architecture powering Murshid's all-in-one ecosystem</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <a href="features/offline-food-bank.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">🥗</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">Offline Food Composition Bank</h3>
+        <p class="feat-text">Over 13,000 Arab regional and international food items stored locally with micro/macronutrient data.</p>
+        <span class="feat-tag">Read Deep Guide →</span>
+      </a>
+
+      <a href="features/pharmacology-reference.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">💊</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">Pharmacology Reference Atlas</h3>
+        <p class="feat-text">Over 10,000 brand medications & 1,500 active ingredients as an offline clinical documentation atlas.</p>
+        <span class="feat-tag">Read Deep Guide →</span>
+      </a>
+
+      <a href="features/smart-diet-engine.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">🍽️</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">Smart Dual-Points Diet Engine</h3>
+        <p class="feat-text">Custom meal planning, automated macro distribution formulas, and an innovative dual wallet model.</p>
+        <span class="feat-tag">Read Deep Guide →</span>
+      </a>
+
+      <a href="features/patient-crm.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">👤</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">Patient 360 CRM & Biometrics</h3>
+        <p class="feat-text">Longitudinal health tracking, cloud OCR lab extraction, and WHO standard growth percentiles.</p>
+        <span class="feat-tag">Read Deep Guide →</span>
+      </a>
+
+      <a href="features/patient-companion.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">📱</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">Patient Companion App</h3>
+        <p class="feat-text">Private encrypted synchronization between specialist and client for water, meals, and adherence.</p>
+        <span class="feat-tag">Read Deep Guide →</span>
+      </a>
+
+      <a href="features/specialist-site-builder.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">🌐</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">Clinic Website CMS & Posters</h3>
+        <p class="feat-text">One-click clinic web landing page generator, custom booking links, and professional poster design.</p>
+        <span class="feat-tag">Read Deep Guide →</span>
+      </a>
+
+      <a href="features/clinic-management-erp.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">🧾</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">Practice Financial Management ERP</h3>
+        <p class="feat-text">Official serial invoicing, receipt vouchers, debt tracking, and revenue/expense profit analytics.</p>
+        <span class="feat-tag">Read Deep Guide →</span>
+      </a>
+
+      <a href="features/offline-first-privacy.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">🛡️</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">Offline-First & Data Sovereignty</h3>
+        <p class="feat-text">100% operational without internet, sub-millisecond query speed, and complete HIPAA/GDPR data sovereignty.</p>
+        <span class="feat-tag">Read Deep Guide →</span>
+      </a>
+
+      <a href="protocols.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(99, 102, 241, 0.3);">
+        <div class="feat-icon">📚</div>
+        <h3 class="feat-title" style="color: #6366f1;">Clinical Nutrition Protocols Atlas (70+)</h3>
+        <p class="feat-text">Over 67 evidence-based clinical diet templates based on ADA, ESPEN, and KDOQI standards with full customization.</p>
+        <span class="feat-tag" style="color: #6366f1;">Explore Protocols Directory →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     GLOBAL READINESS & MULTILINGUAL SCOPE
+     ════════════════════════════════════════ -->
+<section class="section-pad global-scope-section" id="global-reach" aria-label="Global Nutrition Practice Platform" style="background: var(--m-surface); border-top: 1px solid var(--m-border); border-bottom: 1px solid var(--m-border);">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom: 48px;">
+      <span class="m-label">🌍 International Standards • Limitless Practice</span>
+      <h2 class="m-title">A Global Nutrition Platform <span>for Every Dietitian Worldwide</span></h2>
+      <p class="m-subtitle" style="max-width: 780px; margin: 0 auto;">
+        Murshid is engineered to transcend borders and language barriers; a complete clinical ecosystem serving licensed dietitians and nutrition clinics anywhere on earth with gold-standard international rigor.
+      </p>
+    </div>
+
+    <!-- Global Key Highlights Grid -->
+    <div class="global-scope-grid">
+      <!-- 1. Multilingual Roadmap -->
+      <div class="global-card reveal">
+        <div class="global-card-icon">🌐</div>
+        <div class="global-card-badge">Multilingual Engine</div>
+        <h3 class="global-card-title">Natively Bilingual & Expanding Worldwide</h3>
+        <p class="global-card-text">
+          Fully functional out-of-the-box in <strong>English and Arabic</strong> with clinical terminology precision. Architected with an extensible localization pipeline to progressively deliver major global languages (French, Spanish, German, Turkish).
+        </p>
+        <div class="global-tags-list">
+          <span class="g-tag active">English (Active)</span>
+          <span class="g-tag active">العربية (Active)</span>
+          <span class="g-tag roadmap">Français ⏳</span>
+          <span class="g-tag roadmap">Español ⏳</span>
+          <span class="g-tag roadmap">Deutsch ⏳</span>
+        </div>
+      </div>
+
+      <!-- 2. Cross-Cultural Nutrition -->
+      <div class="global-card reveal">
+        <div class="global-card-icon">🥗</div>
+        <div class="global-card-badge">Cross-Cultural Diversity</div>
+        <h3 class="global-card-title">International & Regional Food Databases</h3>
+        <p class="global-card-text">
+          While Western software struggles with ethnic and regional cuisines, Murshid integrates a massive <strong>13,000-item offline food database</strong> unifying the USDA FoodData Central and European CoFID with Middle Eastern, Gulf, and North African food composition tables.
+        </p>
+        <div class="global-tags-list">
+          <span class="g-tag">USDA FoodData Central</span>
+          <span class="g-tag">European CoFID Tables</span>
+          <span class="g-tag">Middle East & GCC Cuisines</span>
+          <span class="g-tag">North African & Levantine</span>
+        </div>
+      </div>
+
+      <!-- 3. Universal Units & Billing -->
+      <div class="global-card reveal">
+        <div class="global-card-icon">⚖️</div>
+        <div class="global-card-badge">Global Flexibility</div>
+        <h3 class="global-card-title">Universal Measurement & Currency Engine</h3>
+        <p class="global-card-text">
+          Seamless, real-time conversion between <strong>Metric</strong> (kg, cm, kJ) and <strong>Imperial</strong> (lbs, in, kcal) units to match your local clinical practice. Multi-currency accounting with custom tax structures (VAT, GST, ZATCA, Sales Tax).
+        </p>
+        <div class="global-tags-list">
+          <span class="g-tag">Metric (kg / cm)</span>
+          <span class="g-tag">Imperial (lbs / in)</span>
+          <span class="g-tag">All World Currencies</span>
+          <span class="g-tag">Multi-Tax Compliant</span>
+        </div>
+      </div>
+
+      <!-- 4. Global Guidelines & Data Sovereignty -->
+      <div class="global-card reveal">
+        <div class="global-card-icon">🛡️</div>
+        <div class="global-card-badge">Evidence-Based & Secure</div>
+        <h3 class="global-card-title">International Guidelines & Data Sovereignty</h3>
+        <p class="global-card-text">
+          Calculations and clinical protocol starter templates align with leading international societies (AND, ESPEN, ASPEN, WHO, ADA). Offline-first local encryption ensures complete patient data sovereignty compliant with GDPR and HIPAA principles.
+        </p>
+        <div class="global-tags-list">
+          <span class="g-tag">ESPEN & ASPEN Aligned</span>
+          <span class="g-tag">ADA & WHO Guidelines</span>
+          <span class="g-tag">Zero Cloud Data Exposure</span>
+          <span class="g-tag">100% Offline-First</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Trust Bar -->
+    <div class="global-trust-banner reveal">
+      <div class="gt-content">
+        <h4>💼 Professional Practice Management Wherever Your Clinic Operates</h4>
+        <p>Whether you practice in London, New York, Riyadh, Cairo, or Toronto — Murshid equips you with a unified, offline-first, professional practice environment.</p>
+      </div>
+      <div class="gt-action">
+        <a href="#download" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; text-decoration: none;">
+          <span>Get Started Free</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
      WALLET SYSTEM
      ════════════════════════════════════════ -->
 <section class="wallet section-pad" id="wallet" aria-label="Dual Wallet System">
@@ -896,20 +1163,26 @@
         </div>
       </div>
       <div>
-        <h3 class="m-footer-col-title">App</h3>
+        <h3 class="m-footer-col-title">Platform Pillars</h3>
         <ul class="m-footer-links">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#wallet">Points System</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#download">Download</a></li>
+          <li><a href="features/offline-food-bank.html">Offline Food Bank (13k)</a></li>
+          <li><a href="features/pharmacology-reference.html">Pharmacology Atlas</a></li>
+          <li><a href="features/smart-diet-engine.html">Smart Diet Engine</a></li>
+          <li><a href="features/patient-crm.html">Patient 360 CRM</a></li>
+          <li><a href="features/patient-companion.html">Patient Companion</a></li>
+          <li><a href="features/clinic-management-erp.html">Practice ERP & Finance</a></li>
+          <li><a href="features/offline-first-privacy.html">Offline & Sovereignty</a></li>
+          <li><a href="protocols.html">Clinical Protocols Atlas (70+)</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="m-footer-col-title">Support</h3>
+        <h3 class="m-footer-col-title">Knowledge & Comparisons</h3>
         <ul class="m-footer-links">
+          <li><a href="articles/index.html">Knowledge Hub & Guides</a></li>
+          <li><a href="protocols.html">Clinical Protocols Atlas (70+)</a></li>
+          <li><a href="comparisons/murshid-vs-excel.html">Murshid vs. Excel</a></li>
+          <li><a href="comparisons/murshid-vs-cloud-software.html">Murshid vs. Cloud EHRs</a></li>
           <li><a href="faq.html">FAQ</a></li>
-          <li><a href="data-deletion.html">Data Deletion</a></li>
-          <li><a href="https://feshealthtech.com/">About Us</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
@@ -921,6 +1194,9 @@
           <li><a href="refund-policy.html">Refund Policy</a></li>
         </ul>
       </div>
+    </div>
+    <div class="m-footer-disclaimer" style="margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.78rem; line-height: 1.6; color: var(--m-text-muted, #94a3b8); text-align: center;">
+      <p>⚠️ <strong>Professional & Regulatory Disclaimer:</strong> Murshid is an administrative, computational, and clinical documentation practice management platform designed exclusively for certified clinical dietitians and nutrition clinics to streamline meal planning, file management, and practice workflows. Murshid is not a medical device (SaMD) and does not provide automated clinical diagnoses or treatment decisions. All clinical, diagnostic, and dietary decisions remain the sole responsibility of the qualified, licensed dietitian.</p>
     </div>
     <div class="m-footer-bottom">
       <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. All Rights Reserved.</p>

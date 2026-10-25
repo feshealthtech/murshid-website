@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Diet Planning Engine & Dual-Points System — Murshid App</title>
+  <meta name="description" content="The definitive clinical guide for Murshid's diet formulation engine: 6 major predictive energy formulas, live macronutrient and micronutrient balancing, and the revolutionary ADA Exchange Dual-Points system operating 100% offline." />
+  <meta name="keywords" content="dietitian meal planning software, clinical nutrition macro calculator, ADA food exchanges software, Mifflin St Jeor calculator, Katch McArdle formula, dual points diet app, Murshid app" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../assets/logo-sq.webp" type="image/webp" />
+
+  <link rel="canonical" href="https://murshid.feshealthtech.com/features/smart-diet-engine.html" />
+  <link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/smart-diet-engine.html" />
+  <link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/smart-diet-engine.html" />
+  <link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/smart-diet-engine.html" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Smart Diet Planning Engine & Dual-Points System — Murshid App" />
+  <meta property="og:description" content="Formulate precision clinical diet plans in minutes: 6 major energy equations, dynamic macro balancing, and ADA exchanges operating offline." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://murshid.feshealthtech.com/features/smart-diet-engine.html" />
+  <meta property="og:image" content="https://murshid.feshealthtech.com/assets/og-preview.jpg?v=3" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../shared/murshid-style.css" />
+  <link rel="stylesheet" href="../shared/index-style.css" />
+
+  <!-- Schema.org Rich Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://murshid.feshealthtech.com/features/smart-diet-engine.html",
+        "url": "https://murshid.feshealthtech.com/features/smart-diet-engine.html",
+        "name": "Smart Diet Planning Engine & Dual-Points System — Murshid App",
+        "description": "Comprehensive clinical reference guide for Murshid's predictive energy equations and ADA dual-points meal planning engine.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://murshid.feshealthtech.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Pillars",
+              "item": "https://murshid.feshealthtech.com/#pillars"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Diet Planning Engine",
+              "item": "https://murshid.feshealthtech.com/features/smart-diet-engine.html"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://murshid.feshealthtech.com/features/smart-diet-engine.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Which predictive energy expenditure formulas are built into Murshid?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Murshid embeds the six internationally recognized clinical formulas: Mifflin-St Jeor (clinical gold standard), Harris-Benedict (Original & Revised), Katch-McArdle (lean body mass based), Cunningham (for elite athletes), Schofield (pediatric/adolescent), and DRI."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the core philosophy of Murshid's Dual-Points System?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It bridges rigorous scientific precision for the clinician with practical adherence for the patient. While the dietitian balances exact calories, macros, and micronutrients, the patient interacts with intuitive ADA Exchange portion points allowing flexible meal swaps without sabotaging targets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the meal planning calculation engine work offline?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. All predictive formulas, macro distributions, and the 13,000-item food database operate natively within the local Isar database, ensuring lightning-fast execution without requiring an internet connection."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does Murshid assist with critical micronutrient tracking?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As meals are compiled, dynamic live progress meters calculate cumulative sodium, potassium, phosphorus, and dietary fiber, allowing precise management of renal and cardiovascular dietary prescriptions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can diet plans be exported into branded clinical PDFs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, with one click, dietitians can generate high-resolution PDF meal plans personalized with clinic logos, custom dietary notes, and organized meal timelines."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the engine generate autonomous medical diagnoses or forced diets?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The system is strictly a computational, administrative, and design tool. Murshid is not a medical device (SaMD); all clinical and dietary prescriptions remain solely under the professional discretion of the licensed dietitian."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', system-ui, -apple-system, sans-serif; }
+    .pillar-hero {
+      padding: 130px 0 70px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(245, 158, 11, 0.16) 0%, transparent 70%), var(--m-bg);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .badge-pill-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #d97706;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .deep-section { padding: 70px 0; }
+    .deep-section.alt-bg {
+      background: var(--m-surface);
+      border-top: 1px solid var(--m-border);
+      border-bottom: 1px solid var(--m-border);
+    }
+    .section-head { text-align: center; max-width: 820px; margin: 0 auto 50px; }
+    .section-head .subhead {
+      color: #d97706;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--m-text);
+      margin-bottom: 14px;
+    }
+    .section-head p { color: var(--m-text-muted); font-size: 1.05rem; line-height: 1.8; }
+    .workflow-card {
+      background: var(--m-surface);
+      border: 1px solid var(--m-border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      margin-bottom: 24px;
+      box-shadow: var(--m-shadow-sm);
+    }
+    .workflow-step-num {
+      position: absolute;
+      top: -16px;
+      left: 24px;
+      background: #d97706;
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.9rem;
+      padding: 4px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.35);
+    }
+    .deep-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--m-border);
+      background: var(--m-surface);
+    }
+    .deep-table th, .deep-table td {
+      padding: 18px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--m-border);
+      font-size: 0.95rem;
+    }
+    .deep-table th {
+      background: rgba(245, 158, 11, 0.08);
+      font-weight: 800;
+      color: var(--m-text);
+    }
+    .deep-table tr:last-child td { border-bottom: none; }
+    .check-yes { color: #10b981; font-weight: 800; }
+    .cross-no { color: #ef4444; font-weight: 800; }
+    .faq-block { max-width: 860px; margin: 0 auto; }
+    .faq-card {
+      background: var(--m-surface);
+      border: 1px solid var(--m-border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s ease;
+    }
+    .faq-card:hover { border-color: rgba(245, 158, 11, 0.4); }
+    .faq-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--m-text);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .faq-card p { color: var(--m-text-muted); font-size: 0.98rem; line-height: 1.7; margin: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     UNIFIED OFFICIAL NAVBAR
+     ════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="../index.html" class="m-nav-brand" aria-label="Home">
+      <img src="../assets/logo.webp" alt="Murshid Logo" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">Murshid</span>
+        <span class="brand-name-en">App</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="../index.html#features">Features</a></li>
+      <li><a href="../index.html#pillars">Pillars</a></li>
+      <li><a href="../index.html#wallet">Points System</a></li>
+      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../faq.html">FAQ</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li class="m-nav-dropdown">
+        <button class="m-nav-dropdown-btn" aria-haspopup="true">
+          <span>Legal</span>
+          <span style="font-size:0.75rem;">▾</span>
+        </button>
+        <div class="m-nav-dropdown-menu">
+          <a href="../privacy-policy.html" class="m-nav-dropdown-item">🔒 Privacy Policy</a>
+          <a href="../terms-of-use.html" class="m-nav-dropdown-item">📜 Terms of Use</a>
+          <a href="../refund-policy.html" class="m-nav-dropdown-item">💵 Refund Policy</a>
+          <a href="../data-deletion.html" class="m-nav-dropdown-item">🗑️ Data Deletion</a>
+        </div>
+      </li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../ar/features/smart-diet-engine.html" class="m-btn m-btn-secondary" style="margin-right:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" title="النسخة العربية">🌐 العربية</a>
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" id="nav-download-btn" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%);">📥 Download Free</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     MOBILE MENU DRAWER
+     ════════════════════════════════════════ -->
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">Murshid App</span>
+    <span class="m-mobile-menu-subtitle">Smart Practice Platform for Dietitians</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="../index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">Home</span>
+    </a>
+    <a href="../ar/features/smart-diet-engine.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🌐</span>
+      <span class="m-mobile-text">العربية (Arabic)</span>
+    </a>
+    <a href="../index.html#features" class="m-mobile-link">
+      <span class="m-mobile-icon">🚀</span>
+      <span class="m-mobile-text">Features</span>
+    </a>
+    <a href="../index.html#pillars" class="m-mobile-link">
+      <span class="m-mobile-icon">🏛️</span>
+      <span class="m-mobile-text">Pillars</span>
+    </a>
+    <a href="../index.html#wallet" class="m-mobile-link">
+      <span class="m-mobile-icon">🪙</span>
+      <span class="m-mobile-text">Points System</span>
+    </a>
+    <a href="../index.html#pricing" class="m-mobile-link">
+      <span class="m-mobile-icon">💳</span>
+      <span class="m-mobile-text">Pricing</span>
+    </a>
+    <a href="../faq.html" class="m-mobile-link">
+      <span class="m-mobile-icon">❓</span>
+      <span class="m-mobile-text">FAQ</span>
+    </a>
+    <a href="../contact.html" class="m-mobile-link">
+      <span class="m-mobile-icon">✉️</span>
+      <span class="m-mobile-text">Contact</span>
+    </a>
+    <a href="../privacy-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🔒</span>
+      <span class="m-mobile-text">Privacy Policy</span>
+    </a>
+    <a href="../terms-of-use.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📜</span>
+      <span class="m-mobile-text">Terms of Use</span>
+    </a>
+    <a href="../refund-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">💵</span>
+      <span class="m-mobile-text">Refund Policy</span>
+    </a>
+    <a href="../data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">Data Deletion</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-download">
+    <div class="m-mobile-download-title">Download App Free</div>
+    <div class="m-mobile-download-buttons">
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-mobile-dl-btn">
+        <span>🤖 Google Play</span>
+      </a>
+      <a href="../index.html#download" class="m-mobile-dl-btn">
+        <span>🍎 App Store</span>
+      </a>
+    </div>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="../privacy-policy.html">Privacy</a>
+    <span>•</span>
+    <a href="../terms-of-use.html">Terms</a>
+    <span>•</span>
+    <a href="../refund-policy.html">Refund</a>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- ════════════════════════════════════════
+     HERO SECTION
+     ════════════════════════════════════════ -->
+<section class="pillar-hero">
+  <div class="container" style="text-align: center;">
+    <div class="badge-pill-main">🍽️ Smart Diet Planning Engine — 6 Energy Equations & Dual Points</div>
+    <h1 style="font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 900; line-height: 1.25; margin-bottom: 22px;">
+      Formulate Precision Clinical Diet Plans in Minutes<br />
+      <span style="color: #d97706;">Macronutrient Rigor for Clinicians, Seamless Flexibility for Patients</span>
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--m-text-muted); max-width: 820px; margin: 0 auto 36px; line-height: 1.8;">
+      Say goodbye to tedious manual spreadsheets and inflexible gram-based meal plans that patients abandon after two weeks. Murshid integrates the six major clinical energy formulas, flexible macro and micronutrient distribution, and the ADA Exchange Dual-Points system that empowers clients to swap meals while preserving clinical compliance.
+    </p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" style="padding: 14px 32px; font-size: 1rem; background: linear-gradient(135deg, #d97706 0%, #b45309 100%);">
+        <span>Download Murshid Free</span>
+      </a>
+      <a href="../index.html#pillars" class="m-btn m-btn-outline" style="padding: 14px 26px; font-size: 1rem;">
+        <span>Explore Platform Pillars</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CLINICAL PAIN POINTS
+     ════════════════════════════════════════ -->
+<section class="deep-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">The Practical Dilemma</span>
+      <h2>Why Traditional Diet Formulations Fail</h2>
+      <p>Practitioners spend hours balancing numbers while patients experience fatigue and non-adherence:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px;">
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">⏱️</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Consultation Time Burnout</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Manually calculating BMR, TDEE, macro ratios, and food grams in spreadsheets consumes 30 to 45 minutes per patient, restricting clinic capacity and causing administrative exhaustion.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">🔒</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Rigid Regimens & Patient Frustration</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Prescribing rigid food gram targets (e.g. exactly 150g grilled chicken + 100g white rice) leaves patients helpless during social gatherings, dining out, or travel, triggering complete program drop-out.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">📊</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Opaque Micronutrient Balancing</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Monitoring cumulative sodium, potassium, and dietary fiber on paper is complex and risky, making diet formulation for hypertension and renal patients stressful and time-consuming.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     MATHEMATICAL & ARCHITECTURAL FOUNDATION
+     ════════════════════════════════════════ -->
+<section class="deep-section alt-bg">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Computational Precision</span>
+      <h2>Six Clinical Equations & The Dual-Points Engine</h2>
+      <p>A multi-layered computation framework engineered to give clinical dietitians total autonomy and precision:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; margin-bottom: 40px;">
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #d97706; display: flex; align-items: center; gap: 10px;">
+          <span>📐</span> 6 Gold-Standard Energy Equations
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Select the optimal predictive model: Mifflin-St Jeor (clinical gold standard), Katch-McArdle or Cunningham (for athletic body composition utilizing Lean Body Mass), Harris-Benedict (Original & Revised), Schofield (pediatrics), or DRI.
+        </p>
+      </div>
+
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #d97706; display: flex; align-items: center; gap: 10px;">
+          <span>⚖️</span> Dynamic Live Macro Balancing
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Configure protein, carbohydrate, and lipid distributions via percentage splits or direct g/kg targets. Visual interactive meters update instantly as meals and ingredients are tweaked.
+        </p>
+      </div>
+
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #d97706; display: flex; align-items: center; gap: 10px;">
+          <span>🪙</span> The ADA Dual-Points Innovation
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Automated conversion of foods into standard ADA exchange groups (starches, proteins, dairy, fruit, vegetables, fats), giving patients intuitive food choices without breaking nutritional limits.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CLINICAL WORKFLOW SCENARIO
+     ════════════════════════════════════════ -->
+<section class="deep-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Practical Clinical Scenario</span>
+      <h2>Designing a Complete Custom Diet in 4 Minutes</h2>
+      <p>How a clinician designs a tailored fat-loss and lean-mass preservation plan for an athletic patient:</p>
+    </div>
+
+    <div style="max-width: 860px; margin: 0 auto;">
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 1</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Select BMR Formula & Physical Activity Multiplier</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The dietitian selects Katch-McArdle using the patient's recorded DEXA body fat percentage. Murshid computes BMR instantly, applies an activity factor of 1.55 (TDEE: 2,400 kcal), and incorporates a targeted 400 kcal deficit.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 2</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Configure Macro Strategy</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The clinician sets protein to 2.0g/kg body weight, carbohydrates to 40%, and the remainder to healthy fats. Meal targets across breakfast, lunch, workout snacks, and dinner are generated automatically.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 3</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Select Foods from the Offline Bank</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The practitioner searches items from the 13,000-food database. Dynamic balance meters turn green as macro and calorie goals are met with exact precision.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 4</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">PDF Export & Companion App Sync</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The plan is exported into a high-resolution branded PDF and synchronized directly with the patient's Murshid Client companion app for seamless exchange-point meal swaps.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     COMPARISON TABLE
+     ════════════════════════════════════════ -->
+<section class="deep-section alt-bg">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Technical Comparison</span>
+      <h2>Murshid Diet Engine vs Conventional Tools</h2>
+      <p>Evaluate speed, formula breadth, and patient experience differences:</p>
+    </div>
+
+    <div class="table-responsive">
+      <table class="deep-table">
+        <thead>
+          <tr>
+            <th>Feature / Specification</th>
+            <th>Murshid Diet Planning Engine</th>
+            <th>Manual Excel Spreadsheets</th>
+            <th>Standard Cloud Web Portals</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Predictive Energy Formulas</strong></td>
+            <td><span class="check-yes">✓ 6 gold-standard equations built-in</span></td>
+            <td>Single manually coded formula</td>
+            <td>2 to 3 basic formulas only</td>
+          </tr>
+          <tr>
+            <td><strong>Offline Usability (100% Offline)</strong></td>
+            <td><span class="check-yes">✓ 100% local calculation & zero lag</span></td>
+            <td>Offline but lacks relational database</td>
+            <td><span class="cross-no">✗ Stops completely during network outages</span></td>
+          </tr>
+          <tr>
+            <td><strong>Integrated ADA Exchanges</strong></td>
+            <td><span class="check-yes">✓ Instant automatic point translation</span></td>
+            <td><span class="cross-no">✗ Unavailable (grams only)</span></td>
+            <td>Requires expensive external plugins</td>
+          </tr>
+          <tr>
+            <td><strong>Integrated Workouts & Supplements</strong></td>
+            <td><span class="check-yes">✓ Integrated exercise and supplement schedules</span></td>
+            <td><span class="cross-no">✗ Isolated in separate documents</span></td>
+            <td>Fragmented or lacking athletic detail</td>
+          </tr>
+          <tr>
+            <td><strong>Average Formulation Time</strong></td>
+            <td><span class="check-yes">✓ 3 to 5 minutes per consultation</span></td>
+            <td>30 to 45 minutes of manual typing</td>
+            <td>15 to 25 minutes with cloud latency</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     EXPANDED FAQ SECTION
+     ════════════════════════════════════════ -->
+<section class="deep-section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Frequently Asked Questions</span>
+      <h2>Everything You Need to Know</h2>
+      <p>Clear answers on mathematical models, point systems, and practice autonomy:</p>
+    </div>
+
+    <div class="faq-block">
+      <div class="faq-card">
+        <h3><span>❓</span> Which predictive energy expenditure formulas are built into Murshid?</h3>
+        <p>Murshid embeds the six internationally recognized clinical formulas: Mifflin-St Jeor (clinical gold standard), Harris-Benedict (Original & Revised), Katch-McArdle (lean body mass based), Cunningham (for elite athletes), Schofield (pediatric/adolescent), and DRI.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> What is the core philosophy of Murshid's Dual-Points System?</h3>
+        <p>It bridges rigorous scientific precision for the clinician with practical adherence for the patient. While the dietitian balances exact calories, macros, and micronutrients, the patient interacts with intuitive ADA Exchange portion points allowing flexible meal swaps without sabotaging targets.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Does the meal planning calculation engine work offline?</h3>
+        <p>Yes. All predictive formulas, macro distributions, and the 13,000-item food database operate natively within the local Isar database, ensuring lightning-fast execution without requiring an internet connection.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> How does Murshid assist with critical micronutrient tracking?</h3>
+        <p>As meals are compiled, dynamic live progress meters calculate cumulative sodium, potassium, phosphorus, and dietary fiber, allowing precise management of renal and cardiovascular dietary prescriptions.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Can diet plans be exported into branded clinical PDFs?</h3>
+        <p>Yes, with one click, dietitians can generate high-resolution PDF meal plans personalized with clinic logos, custom dietary notes, and organized meal timelines.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Does the engine generate autonomous medical diagnoses or forced diets?</h3>
+        <p>No. The system is strictly a computational, administrative, and design tool. Murshid is not a medical device (SaMD); all clinical and dietary prescriptions remain solely under the professional discretion of the licensed dietitian.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     RELATED CLINICAL RESOURCES & COMPARISONS
+     ════════════════════════════════════════ -->
+<section class="deep-section" style="background: rgba(43, 181, 160, 0.03); border-top: 1px solid var(--m-border);">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Clinical & Technical Synergy</span>
+      <h2>Related Clinical Guides & Comparisons</h2>
+      <p>Discover how the diet formulation engine integrates into comprehensive practice:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px;">
+      <a href="../articles/clinical-dietetic-protocols-assessment-framework.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">📖</span>
+        <strong style="color: var(--m-primary); font-size: 1rem; display: block; margin-bottom: 6px;">Article: Protocols & Assessment</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">Methodological foundations for applying clinical templates and predictive energy calculations. →</span>
+      </a>
+
+      <a href="patient-companion.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">📱</span>
+        <strong style="color: #6366f1; font-size: 1rem; display: block; margin-bottom: 6px;">Patient Companion App</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">Real-time sync delivering tailored flexible exchange points to your client's smartphone. →</span>
+      </a>
+
+      <a href="../comparisons/murshid-vs-excel.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">📊</span>
+        <strong style="color: var(--m-gold); font-size: 1rem; display: block; margin-bottom: 6px;">Comparison: Murshid vs. Excel</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">Comparing automated equation solving against fragile manual spreadsheet templates. →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CTA BANNER
+     ════════════════════════════════════════ -->
+<section style="padding: 70px 0; background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(43, 181, 160, 0.1)); border-top: 1px solid var(--m-border); border-bottom: 1px solid var(--m-border); text-align: center;">
+  <div class="container" style="max-width: 700px;">
+    <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 14px;">Formulate Clinical Diets in Minutes with Total Scientific Rigor</h2>
+    <p style="color: var(--m-text-muted); margin-bottom: 28px; font-size: 1.05rem;">Join hundreds of clinical dietitians who streamline meal planning daily with Murshid.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" style="padding: 16px 36px; font-size: 1.05rem; background: linear-gradient(135deg, #d97706 0%, #b45309 100%);">
+      <span>Download Murshid Free on Google Play</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER WITH REGULATORY DISCLAIMER
+     ════════════════════════════════════════ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="../assets/logo.webp" alt="FES HealthTech" class="footer-logo" width="284" height="284" />
+        <div class="footer-app-name">Murshid</div>
+        <div class="footer-app-sub">Clinical Dietitian App</div>
+        <p>The intelligent practice management & computational platform for clinical dietitians — Developed by <a href="https://feshealthtech.com/">FES HealthTech</a>.</p>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Platform Pillars</h3>
+        <ul class="m-footer-links">
+          <li><a href="offline-food-bank.html">Offline Food Bank</a></li>
+          <li><a href="pharmacology-reference.html">Pharmacology Atlas</a></li>
+          <li><a href="smart-diet-engine.html">Smart Diet Engine</a></li>
+          <li><a href="patient-crm.html">Patient 360 CRM</a></li>
+          <li><a href="patient-companion.html">Patient Companion</a></li>
+          <li><a href="specialist-site-builder.html">Clinic Site CMS</a></li>
+          <li><a href="clinic-management-erp.html">Practice ERP & Finance</a></li>
+          <li><a href="offline-first-privacy.html">Offline & Sovereignty</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Support</h3>
+        <ul class="m-footer-links">
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../data-deletion.html">Data Deletion</a></li>
+          <li><a href="https://feshealthtech.com/">About Us</a></li>
+          <li><a href="../contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Legal</h3>
+        <ul class="m-footer-links">
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../terms-of-use.html">Terms of Use</a></li>
+          <li><a href="../refund-policy.html">Refund Policy</a></li>
+          <li><a href="../data-deletion.html">Data Deletion</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Regulatory Disclaimer -->
+    <div class="m-footer-disclaimer" style="margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.78rem; line-height: 1.6; color: var(--m-text-muted, #94a3b8); text-align: center;">
+      <p>⚠️ <strong>Regulatory & Professional Disclaimer:</strong> Murshid is an administrative, computational, and clinical documentation practice management platform designed exclusively for certified clinical dietitians and nutrition clinics. Murshid is NOT a medical device (SaMD) and does not provide automated clinical diagnosis or autonomous medical treatment decisions. All clinical judgments, evaluations, and dietary prescriptions remain solely under the professional discretion of the licensed dietitian.</p>
+    </div>
+
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. All rights reserved.</p>
+      <div class="m-footer-bottom-links">
+        <a href="../privacy-policy.html">Privacy</a>
+        <a href="../terms-of-use.html">Terms</a>
+        <a href="../data-deletion.html">Data Deletion</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/murshid-script.js"></script>
+</body>
+</html>

@@ -33,21 +33,97 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    "name": "تطبيق مرشد — Murshid App",
-    "operatingSystem": "Android, iOS",
-    "applicationCategory": "BusinessApplication, HealthApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0.00",
-      "priceCurrency": "USD"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "FES HealthTech",
-      "url": "https://feshealthtech.com/"
-    },
-    "description": "تطبيق مرشد هو رفيقك السريري الذكي لإدارة ملفات المراجعين، وتصميم الأنظمة الغذائية، واستخراج نتائج التحاليل الطبية بالذكاء الاصطناعي مع تقارير PDF احترافية."
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://murshid.feshealthtech.com/#software",
+        "name": "تطبيق مرشد — Murshid App",
+        "alternateName": ["Murshid", "مرشد", "تطبيق مرشد لإدارة عيادات التغذية"],
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Android, iOS",
+        "url": "https://murshid.feshealthtech.com/ar/",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://feshealthtech.com/#organization",
+          "name": "FES HealthTech",
+          "url": "https://feshealthtech.com/",
+          "logo": "https://murshid.feshealthtech.com/assets/logo.webp",
+          "sameAs": [
+            "https://play.google.com/store/apps/details?id=com.feshealthtech.murshid"
+          ]
+        },
+        "description": "منظومة إدارية وحسابية متكاملة لأخصائيي التغذية والعيادات التغذوية. تدعم تصميم الحميات بنظام النقاط المزدوج، بنك أغذية محلي وعالمي أوفلاين يضم 13,000 طعام، أطلس صيدلاني مرجعي يضم 10,000 دواء، أكثر من 70 قالب بروتوكول استرشادي، حسابات النمو للأطفال WHO Z-Scores، تطبيق مرافق للمراجعين، وموقع إلكتروني خاص بالعيادة.",
+        "featureList": [
+          "نظام النقاط المزدوج الذكي لتصميم الحميات (ADA Exchanges)",
+          "قاعدة بيانات أطعمة محلية وعالمية أوفلاين تضم قرابة 13,000 صنف غذائي تدعم الأكلات الخليجية والمصرية والشامية",
+          "مكتبة صيدلانية مرجعية تضم أكثر من 1,500 مادة فعالة وقرابة 10,000 دواء تجاري لتوثيق ملف المريض",
+          "أكثر من 70 قالب بروتوكول غذائي استرشادي معتمد (السكري، الكلى، الضغط، تكيس المبايض، الأطفال، الحمل)",
+          "المعادلات الست الكبرى لحساب الطاقة (Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Cunningham, Schofield, DRI)",
+          "محرك منحنيات نمو الأطفال والمراهقين الرسمي لمنظمة الصحة العالمية (WHO Growth Z-Scores)",
+          "إدارة ملفات المراجعين الشاملة (Patient 360 CRM) وتتبع قياسات InBody و DEXA",
+          "استمارات استبيان ما قبل الكشف المشفرة طرفاً-إلى-طرف (TweetNaCl)",
+          "تطبيق مرافق مستقل للمراجعين (Murshid Client) لمتابعة الالتزام وتبديل الأطعمة الذاتي",
+          "المنشئ التلقائي للموقع الإلكتروني للعيادة وبوسترات الدعاية المطبوعة",
+          "نظام الفوترة والمصروفات وحساب أرباح العيادة (Clinic ERP)",
+          "تقارير طبية وتغذوية فاخرة بصيغة PDF قابلة للتخصيص بشعار وتوقيع العيادة",
+          "معمارية أوفلاين أولاً (Offline-First) فائقة السرعة مع خصوصية تامة مطابقة لمعايير HIPAA و GDPR"
+        ],
+        "sameAs": [
+          "https://play.google.com/store/apps/details?id=com.feshealthtech.murshid"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://murshid.feshealthtech.com/ar/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "ما هو تطبيق مرشد؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "مرشد هو منصة إدارية وحسابية متكاملة مصممة خصيصاً لمساعدة أخصائيي التغذية والعيادات التغذوية في تنظيم ملفات المرضى، حساب معادلات الطاقة، تصميم الحميات بنظام النقاط المزدوج، وتوفير بنك أغذية محلي يضم 13,000 طعام ومكتبة صيدلانية توثيقية تضم 10,000 دواء أوفلاين بدون إنترنت."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "هل يقوم تطبيق مرشد باتخاذ قرارات طبية أو تشخيصات آلية؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "لا، مرشد هو نظام إداري وحسابي وتوثيقي مساعد للأخصائي وليس جهازاً طبياً ولا يقدم أي تشخيص أو قرارات علاجية آلية؛ فالتقييم السريري والقرار النهائي يظل دائماً 100% بيد أخصائي التغذية المؤهل والمرخص."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "هل يعمل تطبيق مرشد بدون إنترنت؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نعم، تطبيق مرشد مبني بمعمارية أوفلاين أولاً (Offline-First) بقاعدة بيانات Isar محلية فائقة السرعة؛ حيث يعمل بنك الأغذية بـ 13,000 صنف، والمكتبة الصيدلانية، وتصميم الحميات، وطباعة التقارير بالكامل دون الحاجة لأي اتصال بالإنترنت."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ما هو نظام النقاط المزدوج في مرشد؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نظام النقاط المزدوج هو نظام يدمج بذكاء بين دقة السعرات والماكروز للأخصائي وسهولة نظام النقاط والحصص التبادلية (ADA Exchanges) للمراجع، مما يسهل على المريض الالتزام بخطته دون تعقيد."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "هل يتيح مرشد إنشاء موقع إلكتروني خاص بعيادة أخصائي التغذية؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نعم، يحتوي التطبيق على منشئ مواقع متكامل يمكن الأخصائي من إطلاق موقع تعريفي لعيادته يعرض خدماته وأسعاره ومواعيد العمل وحجز الاستشارات دون الحاجة لأي خبرة برمجية."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -67,8 +143,10 @@
     </a>
     <ul class="m-nav-links" role="list">
       <li><a href="#features">المميزات</a></li>
+      <li><a href="protocols.html">أطلس البروتوكولات</a></li>
+      <li><a href="comparisons/murshid-vs-excel.html">المقارنات</a></li>
+      <li><a href="articles/index.html">مركز المعرفة</a></li>
       <li><a href="#wallet">نظام النقاط</a></li>
-      <li><a href="#how">كيف يعمل؟</a></li>
       <li><a href="#pricing">الأسعار</a></li>
       <li><a href="faq.html">الأسئلة الشائعة</a></li>
       <li><a href="contact.html">تواصل معنا</a></li>
@@ -111,6 +189,18 @@
     <a href="index.html#features" class="m-mobile-link">
       <span class="m-mobile-icon">🚀</span>
       <span class="m-mobile-text">مميزات التطبيق</span>
+    </a>
+    <a href="protocols.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📚</span>
+      <span class="m-mobile-text">أطلس البروتوكولات (70+)</span>
+    </a>
+    <a href="comparisons/murshid-vs-excel.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📊</span>
+      <span class="m-mobile-text">مرشد مقابل إكسل والسحابة</span>
+    </a>
+    <a href="articles/index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📖</span>
+      <span class="m-mobile-text">مركز المعرفة والمقالات</span>
     </a>
     <a href="index.html#wallet" class="m-mobile-link">
       <span class="m-mobile-icon">🪙</span>
@@ -633,6 +723,183 @@
 
 
 <!-- ════════════════════════════════════════
+     CORE PILLARS DIRECTORY (SEO / GEO Hub)
+     ════════════════════════════════════════ -->
+<section class="section-pad" id="pillars" aria-label="أركان منظومة مرشد التفصيلية" style="background: var(--m-bg); border-top: 1px solid var(--m-border); border-bottom: 1px solid var(--m-border);">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom: 48px;">
+      <span class="m-label">🏛️ أركان المنظومة التخصصية</span>
+      <h2 class="m-title">دليل الخصائص والمحركات <span>المستقلة</span></h2>
+      <p class="m-subtitle">تعرف على التفاصيل المعمارية الدقيقة لكافة محركات مرشد المصممة لعيادات التغذية</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <a href="features/offline-food-bank.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">🥗</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">بنك الأغذية المحلي والعالمي</h3>
+        <p class="feat-text">أكثر من 13,000 صنف غذائي عربي ودولي محلياً بدون إنترنت مع حساب دقيق للماكروز والميكروز.</p>
+        <span class="feat-tag">اقرأ المزيد ←</span>
+      </a>
+
+      <a href="features/pharmacology-reference.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">💊</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">الأطلس والمكتبة الصيدلانية</h3>
+        <p class="feat-text">أكثر من 10,000 دواء تجاري و 1,500 مادة فعالة كمرجع توثيقي رقمي سريع لأخصائي التغذية.</p>
+        <span class="feat-tag">اقرأ المزيد ←</span>
+      </a>
+
+      <a href="features/smart-diet-engine.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">🍽️</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">محرك تصميم الحميات الذكي</h3>
+        <p class="feat-text">بناء برامج غذائية مخصصة، حساب معادلات الطاقة والأيض، ونظام النقاط المزدوج المبتكر.</p>
+        <span class="feat-tag">اقرأ المزيد ←</span>
+      </a>
+
+      <a href="features/patient-crm.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">👤</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">إدارة المراجعين والملف الشامل (CRM)</h3>
+        <p class="feat-text">ملف 360 درجة لكل مراجع يشمل القياسات الحيوية، قراءة التحاليل بـ OCR، ومخططات منظمة الصحة العالمية.</p>
+        <span class="feat-tag">اقرأ المزيد ←</span>
+      </a>
+
+      <a href="features/patient-companion.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">📱</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">تطبيق المراجع المرافق والمزامنة</h3>
+        <p class="feat-text">ربط رقمي مشفر بين تطبيق الأخصائي وهاتف المراجع لمتابعة شرب الماء والوجبات والوزن لحظياً.</p>
+        <span class="feat-tag">اقرأ المزيد ←</span>
+      </a>
+
+      <a href="features/specialist-site-builder.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">🌐</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">منشئ موقع وبوسترات العيادة</h3>
+        <p class="feat-text">توليد موقع تعريفي للعيادة برابط مخصص بضغطة زر وتصميم بوسترات وبطاقات تسويقية احترافية.</p>
+        <span class="feat-tag">اقرأ المزيد ←</span>
+      </a>
+
+      <a href="features/clinic-management-erp.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">🧾</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">الفوترة والإدارة المالية (ERP)</h3>
+        <p class="feat-text">فواتير وسندات قبض متسلسلة رسمية، حساب إيرادات ومصروفات وصافي أرباح العيادة بدقة تامة.</p>
+        <span class="feat-tag">اقرأ المزيد ←</span>
+      </a>
+
+      <a href="features/offline-first-privacy.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(43, 181, 160, 0.2);">
+        <div class="feat-icon">🛡️</div>
+        <h3 class="feat-title" style="color: var(--m-primary);">معمارية الأوفلاين والخصوصية المطلقة</h3>
+        <p class="feat-text">عمل كامل بدون إنترنت، استجابة بالمللي ثانية، وسيادة تامة للبيانات متوافقة مع معايير HIPAA و GDPR.</p>
+        <span class="feat-tag">اقرأ المزيد ←</span>
+      </a>
+
+      <a href="protocols.html" class="feat-card reveal" style="text-decoration: none; color: inherit; display: block; border-color: rgba(99, 102, 241, 0.3);">
+        <div class="feat-icon">📚</div>
+        <h3 class="feat-title" style="color: #6366f1;">أطلس القوالب والبروتوكولات (70+)</h3>
+        <p class="feat-text">أكثر من 67 قالباً وبروتوكولاً تغذوياً سريرياً مبنياً على معايير ADA و ESPEN و KDOQI جاهزاً للتخصيص الكامل.</p>
+        <span class="feat-tag" style="color: #6366f1;">تصفح الدليل الشامل ←</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     GLOBAL READINESS & MULTILINGUAL SCOPE
+     ════════════════════════════════════════ -->
+<section class="section-pad global-scope-section" id="global-reach" aria-label="المنصة العالمية لأخصائيي التغذية" style="background: var(--m-surface); border-top: 1px solid var(--m-border); border-bottom: 1px solid var(--m-border);">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom: 48px;">
+      <span class="m-label">🌍 معايير دولية • ممارسة بلا حدود</span>
+      <h2 class="m-title">منصة تغذية عالمية <span>لكل ممارس في العالم</span></h2>
+      <p class="m-subtitle" style="max-width: 780px; margin: 0 auto;">
+        صُمم «مرشد» ليتجاوز الحواجز الجغرافية واللغوية؛ نظام بيئي متكامل يخدم أخصائيي التغذية والعيادات السريرية في أي بقعة حول العالم بأعلى المعايير المعتمدة دولياً.
+      </p>
+    </div>
+
+    <!-- Global Key Highlights Grid -->
+    <div class="global-scope-grid">
+      <!-- 1. Multilingual Roadmap -->
+      <div class="global-card reveal">
+        <div class="global-card-icon">🌐</div>
+        <div class="global-card-badge">لغات متعددة</div>
+        <h3 class="global-card-title">ثنائية كاملة وتوسع لغوي مستمر</h3>
+        <p class="global-card-text">
+          متوفر حالياً بكامل وظائفه باللغتين <strong>العربية والإنجليزية</strong> بدقة متناهية للمصطلحات التغذوية. بنيتنا البرمجية مجهزة بمعمارية التوطين المستمر لإضافة اللغات الرئيسية عالمياً (الفرنسية، الإسبانية، الألمانية، التركية) تدريجياً.
+        </p>
+        <div class="global-tags-list">
+          <span class="g-tag active">العربية (Active)</span>
+          <span class="g-tag active">English (Active)</span>
+          <span class="g-tag roadmap">Français ⏳</span>
+          <span class="g-tag roadmap">Español ⏳</span>
+          <span class="g-tag roadmap">Deutsch ⏳</span>
+        </div>
+      </div>
+
+      <!-- 2. Cross-Cultural Nutrition -->
+      <div class="global-card reveal">
+        <div class="global-card-icon">🥗</div>
+        <div class="global-card-badge">تنوع غذائي عابر للقارات</div>
+        <h3 class="global-card-title">بنوك الأغذية الدولية والإقليمية</h3>
+        <p class="global-card-text">
+          بينما تعجز البرمجيات الغربية عن استيعاب الأطباق المحلية، يجمع مرشد أضخم قاعدة بيانات محلية وعالمية تضم <strong>13,000 صنف</strong> تدمج جداول وزارة الزراعة الأمريكية (USDA) وجداول CoFID الأوروبية مع الأطلس الغذائي العربي والإقليمي الكامل.
+        </p>
+        <div class="global-tags-list">
+          <span class="g-tag">USDA FoodData</span>
+          <span class="g-tag">CoFID UK/Europe</span>
+          <span class="g-tag">أغذية الخليج والشرق الأوسط</span>
+          <span class="g-tag">شمال إفريقيا ومصر</span>
+        </div>
+      </div>
+
+      <!-- 3. Universal Units & Billing -->
+      <div class="global-card reveal">
+        <div class="global-card-icon">⚖️</div>
+        <div class="global-card-badge">مرونة دولية</div>
+        <h3 class="global-card-title">أنظمة القياس والعملات العالمية</h3>
+        <p class="global-card-text">
+          تبديل فوري ودقيق بين <strong>النظام المتري</strong> (kg, cm, kJ) و<strong>النظام الإمبراطوري</strong> (lbs, in, kcal) ليناسب بيئة عملك. إدارة مالية مرنة تقبل كافة عملات العالم وتتوافق مع النظم الضريبية المتنوعة (VAT, GST, ZATCA, Sales Tax).
+        </p>
+        <div class="global-tags-list">
+          <span class="g-tag">Metric (kg / cm)</span>
+          <span class="g-tag">Imperial (lbs / in)</span>
+          <span class="g-tag">كافة العملات الدولية</span>
+          <span class="g-tag">متوافق ضريبياً</span>
+        </div>
+      </div>
+
+      <!-- 4. Global Guidelines & Data Sovereignty -->
+      <div class="global-card reveal">
+        <div class="global-card-icon">🛡️</div>
+        <div class="global-card-badge">معايير سريرية وأمان</div>
+        <h3 class="global-card-title">إرشادات معتمدة وسيادة تامة للبيانات</h3>
+        <p class="global-card-text">
+          تتوافق قوالب وحسابات مرشد مع إرشادات المنظمات التغذوية الدولية الكبرى (AND, ESPEN, ASPEN, WHO, ADA). وتضمن معمارية الأوفلاين المشفرة سيادة مطلقة لبيانات المراجعين وتوافقاً مع مبادئ الخصوصية الصارمة (GDPR & HIPAA).
+        </p>
+        <div class="global-tags-list">
+          <span class="g-tag">ESPEN & ASPEN</span>
+          <span class="g-tag">ADA & WHO Guidelines</span>
+          <span class="g-tag">Zero Cloud Data Exposure</span>
+          <span class="g-tag">100% Offline-First</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Trust Bar -->
+    <div class="global-trust-banner reveal">
+      <div class="gt-content">
+        <h4>💼 منصة إدارة متكاملة لممارستك التغذوية أينما كانت عيادتك</h4>
+        <p>سواء كنت تدير عيادتك الخاصة في الرياض أو لندن أو القاهرة أو تورونتو — يمنحك مرشد بيئة عمل موحدة، آمنة، واحترافية.</p>
+      </div>
+      <div class="gt-action">
+        <a href="#download" class="btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; text-decoration: none;">
+          <span>ابدأ الآن مجاناً</span>
+          <span>←</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
      WALLET SYSTEM
      ════════════════════════════════════════ -->
 <section class="wallet section-pad" id="wallet" aria-label="نظام النقاط المزدوج">
@@ -900,20 +1167,26 @@
         </div>
       </div>
       <div>
-        <h3 class="m-footer-col-title">التطبيق</h3>
+        <h3 class="m-footer-col-title">أركان المنظومة</h3>
         <ul class="m-footer-links">
-          <li><a href="#features">المميزات</a></li>
-          <li><a href="#wallet">نظام النقاط</a></li>
-          <li><a href="#pricing">الأسعار</a></li>
-          <li><a href="#download">التحميل</a></li>
+          <li><a href="features/offline-food-bank.html">بنك الأغذية (13k)</a></li>
+          <li><a href="features/pharmacology-reference.html">المكتبة الصيدلانية</a></li>
+          <li><a href="features/smart-diet-engine.html">محرك تصميم الحميات</a></li>
+          <li><a href="features/patient-crm.html">ملف المراجع 360</a></li>
+          <li><a href="features/patient-companion.html">تطبيق المراجع المرافق</a></li>
+          <li><a href="features/clinic-management-erp.html">الفوترة والإدارة المالية</a></li>
+          <li><a href="features/offline-first-privacy.html">الخصوصية والأوفلاين</a></li>
+          <li><a href="protocols.html">أطلس البروتوكولات (70+)</a></li>
         </ul>
       </div>
       <div>
-        <h3 class="m-footer-col-title">الدعم الفني</h3>
+        <h3 class="m-footer-col-title">المعرفة والمقارنات</h3>
         <ul class="m-footer-links">
+          <li><a href="articles/index.html">مركز المعرفة والمقالات</a></li>
+          <li><a href="protocols.html">أطلس البروتوكولات (70+)</a></li>
+          <li><a href="comparisons/murshid-vs-excel.html">مرشد مقابل إكسل</a></li>
+          <li><a href="comparisons/murshid-vs-cloud-software.html">مرشد مقابل البرامج السحابية</a></li>
           <li><a href="faq.html">الأسئلة الشائعة</a></li>
-          <li><a href="../data-deletion.html">حذف البيانات</a></li>
-          <li><a href="https://feshealthtech.com/">عن الشركة</a></li>
           <li><a href="contact.html">تواصل معنا</a></li>
         </ul>
       </div>
@@ -925,6 +1198,9 @@
           <li><a href="../refund-policy.html">سياسة الاسترداد</a></li>
         </ul>
       </div>
+    </div>
+    <div class="m-footer-disclaimer" style="margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.78rem; line-height: 1.6; color: var(--m-text-muted, #94a3b8); text-align: center;">
+      <p>⚠️ <strong>إخلاء مسؤولية تنظيمي ومهني:</strong> تطبيق مرشد هو منظومة إدارية وحسابية وتوثيقية مساعدة موجهة حصراً لأخصائيي التغذية المعتمدين والمراكز التغذوية المتخصصة لتسهيل إدارة العيادة وحساب المعادلات وتصميم الأنظمة الغذائية. المنظومة ليست جهازاً طبياً ولا تقدم استشارات أو تشخيصات طبية أو قرارات علاجية آلية، وتظل كافة التقييمات والقرارات السريرية والتغذوية مسؤولية كاملة وخالصة لأخصائي التغذية المؤهل والمرخص.</p>
     </div>
     <div class="m-footer-bottom">
       <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. جميع الحقوق محفوظة.</p>

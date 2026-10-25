@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>التغذية متعددة الثقافات وقواعد البيانات التغذوية — تطبيق مرشد</title>
+  <meta name="description" content="دراسة سريرية معمقة حول التغذية متعددة الثقافات: دمج جداول USDA و CoFID مع الأطلس الغذائي العربي والإقليمي لحساب السعرات والماكروز بدقة لكافة الشعوب." />
+  <meta name="keywords" content="تغذية متعددة الثقافات, بنك الاغذية العربي, حساب السعرات للاكلات الشعبية, جداول التغذية usda, بدائل الاغذية ada, تطبيق مرشد" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../../assets/logo-sq.webp" type="image/webp" />
+
+  <link rel="canonical" href="https://murshid.feshealthtech.com/ar/articles/cross-cultural-nutrition-food-composition-databases.html" />
+  <link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/articles/cross-cultural-nutrition-food-composition-databases.html" />
+  <link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/articles/cross-cultural-nutrition-food-composition-databases.html" />
+  <link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/articles/cross-cultural-nutrition-food-composition-databases.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="التغذية متعددة الثقافات وقواعد البيانات التغذوية الدولية والمحلية" />
+  <meta property="og:description" content="كيف يدمج مرشد 13,000 صنف غذائي عابر للقارات لتجاوز فجوة البرمجيات الغربية وتلبية احتياجات كافة المرضى." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://murshid.feshealthtech.com/ar/articles/cross-cultural-nutrition-food-composition-databases.html" />
+  <meta property="og:image" content="https://murshid.feshealthtech.com/assets/og-preview.jpg?v=3" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../shared/murshid-style.css" />
+  <link rel="stylesheet" href="../../shared/index-style.css" />
+
+  <!-- Schema.org Rich Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://murshid.feshealthtech.com/ar/articles/cross-cultural-nutrition-food-composition-databases.html",
+        "headline": "التغذية متعددة الثقافات: التحديات السريرية وتكامل قواعد البيانات التغذوية الإقليمية والدولية",
+        "description": "دراسة سريرية معمقة حول كيفية تجاوز عيوب قواعد البيانات الغربية الأحادية، ودمج بيانات USDA و CoFID مع الأطلس الغذائي العربي والإقليمي.",
+        "inLanguage": "ar",
+        "mainEntityOfPage": "https://murshid.feshealthtech.com/ar/articles/cross-cultural-nutrition-food-composition-databases.html",
+        "author": {
+          "@type": "Organization",
+          "name": "فريق التحرير الطبي والسريري في مرشد — FES HealthTech",
+          "url": "https://feshealthtech.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "FES HealthTech",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://murshid.feshealthtech.com/assets/logo.webp"
+          }
+        },
+        "datePublished": "2026-10-24",
+        "dateModified": "2026-10-25"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "الرئيسية",
+            "item": "https://murshid.feshealthtech.com/ar/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "مركز المعرفة",
+            "item": "https://murshid.feshealthtech.com/ar/articles/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "التغذية متعددة الثقافات",
+            "item": "https://murshid.feshealthtech.com/ar/articles/cross-cultural-nutrition-food-composition-databases.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', 'Noto Kufi Arabic', system-ui, sans-serif; }
+    .art-header {
+      padding: 130px 0 50px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(43, 181, 160, 0.18) 0%, transparent 70%), var(--m-bg);
+      border-bottom: 1px solid var(--m-border);
+    }
+    .art-header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .art-pill {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 999px;
+      background: rgba(43, 181, 160, 0.12);
+      color: var(--m-primary);
+      margin-bottom: 16px;
+    }
+    .art-h1 {
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      font-weight: 900;
+      line-height: 1.35;
+      color: var(--m-text);
+      margin-bottom: 20px;
+    }
+    .art-meta {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--m-text-muted);
+      border-top: 1px solid var(--m-border);
+      padding-top: 16px;
+    }
+    .art-content-wrap {
+      max-width: 860px;
+      margin: 50px auto 70px;
+      font-size: 1.05rem;
+      line-height: 2;
+      color: #334155;
+    }
+    .art-content-wrap h2 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--m-text);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(43, 181, 160, 0.2);
+    }
+    .art-content-wrap h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--m-text);
+      margin: 32px 0 14px;
+    }
+    .art-content-wrap p { margin-bottom: 22px; }
+    .art-content-wrap ul, .art-content-wrap ol { margin-bottom: 24px; padding-right: 24px; }
+    .art-content-wrap li { margin-bottom: 10px; }
+    .clinical-callout {
+      background: linear-gradient(135deg, rgba(43, 181, 160, 0.08) 0%, rgba(99, 102, 241, 0.06) 100%);
+      border-right: 4px solid var(--m-primary);
+      border-radius: 0 16px 16px 0;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .clinical-callout h4 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--m-primary);
+      margin-bottom: 8px;
+    }
+    .clinical-callout p { margin: 0; font-size: 0.95rem; color: var(--m-text); }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     HEADER & NAVBAR
+     ════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav" aria-label="شريط التنقل الرئيسي">
+  <div class="container m-nav-inner">
+    <a href="../index.html" class="m-nav-brand" aria-label="الصفحة الرئيسية">
+      <img src="../../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">مرشد</span>
+        <span class="brand-name-en">تطبيق</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="../index.html#features">المميزات</a></li>
+      <li><a href="../index.html#pillars">أركان المنظومة</a></li>
+      <li><a href="../protocols.html">أطلس البروتوكولات</a></li>
+      <li><a href="../comparisons/murshid-vs-excel.html">المقارنات</a></li>
+      <li><a href="index.html" style="color:var(--m-primary);font-weight:800;">مركز المعرفة</a></li>
+      <li><a href="../faq.html">الأسئلة الشائعة</a></li>
+      <li class="m-nav-dropdown">
+        <button class="m-nav-dropdown-btn" aria-haspopup="true">
+          <span>قانوني</span>
+          <span style="font-size:0.75rem;">▾</span>
+        </button>
+        <div class="m-nav-dropdown-menu">
+          <a href="../../privacy-policy.html" class="m-nav-dropdown-item">🔒 سياسة الخصوصية</a>
+          <a href="../../terms-of-use.html" class="m-nav-dropdown-item">📜 شروط الاستخدام</a>
+          <a href="../../refund-policy.html" class="m-nav-dropdown-item">💵 سياسة الاسترداد</a>
+          <a href="../../data-deletion.html" class="m-nav-dropdown-item">🗑️ حذف البيانات</a>
+        </div>
+      </li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../../articles/cross-cultural-nutrition-food-composition-databases.html" class="m-btn m-btn-secondary" style="margin-left:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" title="English Version">🌐 English</a>
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" id="nav-download-btn">📥 تحميل مجاناً</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">تطبيق مرشد</span>
+    <span class="m-mobile-menu-subtitle">المنصة الذكية لأخصائيي التغذية</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="../index.html" class="m-mobile-link"><span class="m-mobile-icon">🏠</span><span class="m-mobile-text">الرئيسية</span></a>
+    <a href="../../articles/cross-cultural-nutrition-food-composition-databases.html" class="m-mobile-link"><span class="m-mobile-icon">🌐</span><span class="m-mobile-text">English (الإنجليزية)</span></a>
+    <a href="../protocols.html" class="m-mobile-link"><span class="m-mobile-icon">📚</span><span class="m-mobile-text">أطلس البروتوكولات (70+)</span></a>
+    <a href="../comparisons/murshid-vs-excel.html" class="m-mobile-link"><span class="m-mobile-icon">📊</span><span class="m-mobile-text">مرشد مقابل إكسل</span></a>
+    <a href="index.html" class="m-mobile-link"><span class="m-mobile-icon">📖</span><span class="m-mobile-text">مركز المعرفة والمقالات</span></a>
+    <a href="../faq.html" class="m-mobile-link"><span class="m-mobile-icon">❓</span><span class="m-mobile-text">الأسئلة الشائعة</span></a>
+    <a href="../../privacy-policy.html" class="m-mobile-link"><span class="m-mobile-icon">🔒</span><span class="m-mobile-text">الخصوصية والقانوني</span></a>
+  </div>
+  <div class="m-mobile-menu-actions">
+    <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-mobile-dl-btn" id="mobile-android-btn"><span>🤖 Google Play</span></a>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- ════════════════════════════════════════
+     ARTICLE HEADER
+     ════════════════════════════════════════ -->
+<header class="art-header">
+  <div class="container">
+    <div class="art-header-inner">
+      <span class="art-pill">🥗 العلوم التغذوية وقواعد البيانات</span>
+      <h1 class="art-h1">التغذية متعددة الثقافات:<br />التحديات السريرية وتكامل قواعد البيانات التغذوية الإقليمية والدولية</h1>
+      <div class="art-meta">
+        <span>✍️ إعداد: قسم الأبحاث وقواعد البيانات التغذوية — FES HealthTech</span>
+        <span>⏱️ وقت القراءة: 14 دقيقة</span>
+        <span>📅 تاريخ النشر: أكتوبر 2026</span>
+        <span>🌍 المحور: دمج USDA و CoFID مع الأطلس التغذوي العربي</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════
+     ARTICLE CONTENT BODY
+     ════════════════════════════════════════ -->
+<article class="container">
+  <div class="art-content-wrap">
+
+    <p>
+      مع تنامي حركة الهجرة والانتشار العالمي للمجتمعات وتنوع التركيبة السكانية في عيادات التغذية حول العالم، لم يعد أخصائي التغذية يتعامل مع نمط غذائي أحادي الثقافة. ففي مدن مثل لندن، نيويورك، الرياض، دبي، أو تورونتو، يجلس في نفس العيادة مراجع يتناول طعام البحر الأبيض المتوسط، وآخر يعتمد على الأطباق الخليجية، وثالث يفضل المأكولات الشامية أو المصرية أو المغاربية.
+    </p>
+
+    <p>
+      وعلى الرغم من هذه التعددية الثقافية الصارخة، فإن الغالبية العظمى من برمجيات التغذية السريرية العالمية تعاني من <strong>أحادية ثقافية مفرطة (Monocultural Database Bias)</strong>؛ حيث تقتصر بنوك بياناتها على المنتجات التجارية المتوفرة في السوبرماركت الأمريكي أو البريطاني، وتتجاهل الأطباق المركبة التقليدية، مما يضع أخصائي التغذية أمام مأزق سريري حقيقي يهدد دقة الحسابات التغذوية والتزام المرضى.
+    </p>
+
+    <div class="clinical-callout">
+      <h4>📌 التحدي السريري الجوهري</h4>
+      <p>
+        حين يعجز برنامج التغذية عن تحليل طبق "الكبسة" أو "المسخن" أو "الكشري"، يضطر الأخصائي إما لتقدير المكونات تقريبياً بهامش خطأ قد يتجاوز 30% في السعرات والدهون، أو فرض أطعمة غربية غريبة تؤدي في النهاية لعزوف المراجع وفشل الخطة العلاجية.
+      </p>
+    </div>
+
+    <h2>1. معضلة الأطباق المركبة ومقاييس الطهي (Composite Dishes & Cooking Yields)</h2>
+    <p>
+      تختلف الأطعمة الشرق أوسطية والعربية جوهرياً عن النمط الغربي التقليدي القائم على مكونات منفصلة (مثل: قطعة ستيك مشوية بجانب بطاطا مسلوقة وبروكلي). فالأطباق الإقليمية هي أطباق مركبة (Composite Mixed Dishes) تطهى فيها الحبوب مع اللحوم والزيوت والتوابل والمرق في قدر واحد (One-Pot Meals).
+    </p>
+    <p>
+      ينتج عن ذلك ثلاثة تحديات حسابية رئيسية:
+    </p>
+    <ul>
+      <li><strong>عامل كسب وفقد السوائل (Moisture & Yield Factor):</strong> امتصاص الأرز والبرغل والحبوب للمرق والدهون أثناء الطهي يغير كثافتها الغذائية لكل 100 جرام بشكل جذري مقارنة بوزنها الخام.</li>
+      <li><strong>توزع الدهون والبروتين:</strong> اندماج دهون اللحم أو الدجاج في الصلصة والأرز يجعل عزل كل مكون على حدة أمراً مستحيلاً على المريض في منزله.</li>
+      <li><strong>الأواني والمقاييس المنزلية:</strong> لا يقيس المراجع وجبته العائلية بميزان الجرامات المعملي؛ بل يغرف بـ "المغرفة"، أو "الكوب"، أو "صحن التقديم"، أو "ملعقة الطعام الكبيرة".</li>
+    </ul>
+
+    <h2>2. ردم الفجوة: دمج المراجع الدولية (USDA & CoFID) مع الأطلس العربي</h2>
+    <p>
+      لحل هذه المعضلة الحسابية، بنى فريق مرشد بنك أغذية محلياً هجيناً وعملاقاً يضم ما يقارب <strong>13,000 صنف غذائي معتمد</strong>، يعمل باستقلالية تامة بدون إنترنت عبر دمج ثلاثة مصادر علمية كبرى:
+    </p>
+    <ul>
+      <li><strong>قاعدة بيانات وزارة الزراعة الأمريكية (USDA FoodData Central):</strong> المرجع القياسي العالمي للمواد الخام الأساسية، الخضروات، الفواكه، المكسرات، والمنتجات العالمية.</li>
+      <li><strong>الجداول البريطانية والأوروبية لتركيب الأغذية (CoFID / McCance and Widdowson):</strong> لتغطية المنتجات الأوروبية والمكونات ذات الدقة العالية في الألياف والمعادن.</li>
+      <li><strong>الأطلس الغذائي الإقليمي المعتمد:</strong> أضخم توثيق سريري للأطباق الشعبية في دول الخليج العربي (السعودية، الإمارات، الكويت، قطر، البحرين، سلطنة عمان)، ومصر، والأردن، وفلسطين، ولبنان، وسوريا، ودول شمال إفريقيا.</li>
+    </ul>
+
+    <h2>3. الشوارد الحيوية الدقيقة لحالات الكلى والقلب (Micronutrients Depth)</h2>
+    <p>
+      في التغذية العلاجية، لا يقتصر الأمر على حساب السعرات والماكروز. مريض القصور الكلوي المزمن (CKD) أو الفشل القلبي (Heart Failure) يحتاج لضبط صارم لثلاثة عناصر دقيقة: <strong>الصوديوم، البوتاسيوم، والفوسفور</strong>.
+    </p>
+    <p>
+      يوفر بنك أغذية مرشد تفكيكاً دقيقاً لهذه الشوارد في الأطباق الشعبية؛ فبدلاً من المنع العشوائي، يستطيع الأخصائي معرفة محتوى الفوسفور والبوتاسيوم في الحبوب الكاملة والبقوليات والشوربات التقليدية وتعديل الخطة بدقة تضمن حماية وظائف الكلى وتجنب مضاعفات فرط بوتاسيوم الدم (Hyperkalemia).
+    </p>
+
+    <h2>4. مواءمة الأطعمة المحلية مع نظام الحصص التبادلية (ADA Exchanges)</h2>
+    <p>
+      تكمن القوة الحقيقية لمرشد في ربط كل صنف شعبي بقائمته التبادلية المعتمدة لدى جمعية السكري الأمريكية (American Diabetes Association):
+    </p>
+    <ul>
+      <li>تحويل حصة "المعجنات والمطبق والمخبوزات التقليدية" بدقة إلى (حصص نشويات + حصص دهون).</li>
+      <li>تصنيف أطباق اللحوم والدواجن والأسماك الإقليمية بحسب محتواها الدهني (بروتينات قليلة، متوسطة، أو عالية الدهن).</li>
+      <li>تصنيف الحلويات الشرقية والتمور وفق حصص النشويات والسكريات البسيطة، مما يمنح مريض السكري مرونة فائقة في مناسباته الاجتماعية دون تعريض سكر دمه للتأرجح الحاد.</li>
+    </ul>
+
+    <h2>5. التمكين السريري عبر التبديل الذاتي في تطبيق المراجع</h2>
+    <p>
+      عندما يرغب مراجع في عيادتك باستبدال طبق "المجدّرة" بطبق "فريكة بالدجاج"، فإن تطبيق مرشد المرافق للهاتف لا يقدم اقتراحات عشوائية؛ بل يتعرف فورياً على الحصص التبادلية التي صممها الأخصائي في عيادته، ويسمح بالتبديل حصراً ضمن نفس القيمة الغذائية المعتمدة.
+    </p>
+
+    <div class="clinical-callout">
+      <h4>⚖️ خلاصة الممارسة السريرية متعددة الثقافات</h4>
+      <p>
+        إن احترام الخلفية الغذائية والثقافية للمراجع ليس مجرد مظهر اجتماعي؛ بل هو حجر الزاوية العلمي لضمان استدامة التغيير الصحي وتفادي الانتكاسات. إن توفير بنك أغذية يجمع بين الصرامة العلمية الدولية والواقع الثقافي اليومي هو ما يمنح الأخصائي الثقة الكاملة في ممارسته المهنية.
+      </p>
+    </div>
+
+    <!-- Related Clinical Guides & Comparative Resources -->
+    <div style="margin-top: 48px; padding: 28px; background: rgba(43, 181, 160, 0.06); border: 1px solid var(--m-border); border-radius: 16px;">
+      <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--m-text); margin-bottom: 14px;">📚 مراجع ومحركات سريرية ذات صلة</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 16px;">
+        <a href="../features/offline-food-bank.html" style="background:#fff; padding:16px; border-radius:12px; border:1px solid var(--m-border); text-decoration:none; color:inherit; display:block;">
+          <strong style="color:var(--m-primary); font-size:0.92rem; display:block; margin-bottom:4px;">🥗 بنك الأغذية الأوفلاين (13K)</strong>
+          <span style="font-size:0.83rem; color:var(--m-text-muted);">استعراض مصفوفة الأطعمة الشعبية والأمريكية المدمجة أوفلاين. ←</span>
+        </a>
+        <a href="clinical-dietetic-protocols-assessment-framework.html" style="background:#fff; padding:16px; border-radius:12px; border:1px solid var(--m-border); text-decoration:none; color:inherit; display:block;">
+          <strong style="color:#6366f1; font-size:0.92rem; display:block; margin-bottom:4px;">🩺 الإطار المرجعي للبروتوكولات الـ 70</strong>
+          <span style="font-size:0.83rem; color:var(--m-text-muted);">دمج المكونات الغذائية في حميات السكري، الكلى، وفودماب. ←</span>
+        </a>
+        <a href="../comparisons/murshid-vs-excel.html" style="background:#fff; padding:16px; border-radius:12px; border:1px solid var(--m-border); text-decoration:none; color:inherit; display:block;">
+          <strong style="color:var(--m-gold); font-size:0.92rem; display:block; margin-bottom:4px;">📊 مقارنة مرشد مقابل إكسل</strong>
+          <span style="font-size:0.83rem; color:var(--m-text-muted);">لماذا تفشل شيتات إكسل في ضبط قيم المائدة الإقليمية المعقدة. ←</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer class="m-footer" role="contentinfo">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <a href="../index.html" class="m-nav-brand" style="margin-bottom:16px;display:inline-flex;">
+          <img src="../../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+          <div class="brand-app">
+            <span class="brand-name-ar">مرشد</span>
+            <span class="brand-name-en">تطبيق</span>
+          </div>
+        </a>
+        <p class="m-footer-desc">
+          المنصة الذكية المتكاملة لإدارة عيادات وممارسات التغذية. مصممة لتوفير وقت الأخصائي وتمكين المراجعين بأعلى معايير الخصوصية والعمل بدون إنترنت.
+        </p>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">أركان المنظومة</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="../features/offline-food-bank.html">بنك الأغذية الأوفلاين (13K)</a></li>
+          <li><a href="../features/smart-diet-engine.html">محرك النقاط وتصميم الحميات</a></li>
+          <li><a href="../features/pharmacology-reference.html">المكتبة الصيدلانية الرقمية</a></li>
+          <li><a href="../features/patient-crm.html">إدارة ملفات المراجعين 360</a></li>
+          <li><a href="../features/offline-first-privacy.html">الخصوصية والأمان بدون إنترنت</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">المعرفة والمقارنات</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="index.html">مركز المعرفة والمقالات</a></li>
+          <li><a href="../protocols.html">أطلس البروتوكولات السريرية (70+)</a></li>
+          <li><a href="../comparisons/murshid-vs-excel.html">مرشد مقابل إكسل</a></li>
+          <li><a href="../comparisons/murshid-vs-cloud-software.html">مرشد مقابل البرامج السحابية</a></li>
+          <li><a href="../features/specialist-site-builder.html">منشئ موقع العيادة</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">قانوني والدعم</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="../../privacy-policy.html">سياسة الخصوصية</a></li>
+          <li><a href="../../terms-of-use.html">شروط الاستخدام</a></li>
+          <li><a href="../../refund-policy.html">سياسة الاسترداد</a></li>
+          <li><a href="../../data-deletion.html">حذف البيانات</a></li>
+          <li><a href="../contact.html">تواصل مع الدعم الفني</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Regulatory Disclaimer Standard Box -->
+    <div style="margin-top: 36px; padding: 20px; background: rgba(15, 23, 42, 0.04); border: 1px solid var(--m-border); border-radius: 12px; font-size: 0.8rem; line-height: 1.7; color: var(--m-text-muted); text-align: center;">
+      <strong>⚠️ إخلاء مسؤولية تنظيمي وسريري معتمد:</strong><br />
+      منظومة وتطبيق «مرشد» هي أداة برمجية إدارية، حسابية، ومساعدة في التوثيق السريري مخصصة حصراً لأخصائيي التغذية والكوادر الطبية المؤهلة. لا تُعد المنظومة بأي شكل من الأشكال جهازاً طبياً (Software as a Medical Device - SaMD) ولا تقدم تشخيصاً طبياً، أو علاجاً، أو وصفات دوائية، أو استشارات ذاتية للمرضى. تقع المسؤولية السريرية والتشخيصية الكاملة لتقييم الحالات والخطط الغذائية على عاتق الأخصائي المرخص المشرف على الحالة.
+    </div>
+
+    <div class="m-footer-bottom">
+      <p>© 2026 تطبيق مرشد — أحد ابتكارات شركة FES HealthTech. جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../../shared/murshid-script.js"></script>
+</body>
+</html>

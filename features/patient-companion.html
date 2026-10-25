@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patient Companion App & Encrypted Live Sync (Murshid Client) — Murshid App</title>
+  <meta name="description" content="The definitive clinical guide for the Murshid Client companion app: encrypted QR pairing, daily hydration tracking, automated meal check-ins, and self-guided ADA exchange swaps without messaging app chaos." />
+  <meta name="keywords" content="dietitian patient companion app, client adherence tracking software, water intake tracker clinic, self-guided food exchanges, encrypted clinic pairing, Murshid app client" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../assets/logo-sq.webp" type="image/webp" />
+
+  <link rel="canonical" href="https://murshid.feshealthtech.com/features/patient-companion.html" />
+  <link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/patient-companion.html" />
+  <link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/patient-companion.html" />
+  <link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/patient-companion.html" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Patient Companion App & Encrypted Live Sync (Murshid Client) — Murshid App" />
+  <meta property="og:description" content="Professional clinical communication without messaging chaos: daily meal logs, hydration tracking, and self-guided ADA food swaps via encrypted QR pairing." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://murshid.feshealthtech.com/features/patient-companion.html" />
+  <meta property="og:image" content="https://murshid.feshealthtech.com/assets/og-preview.jpg?v=3" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../shared/murshid-style.css" />
+  <link rel="stylesheet" href="../shared/index-style.css" />
+
+  <!-- Schema.org Rich Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://murshid.feshealthtech.com/features/patient-companion.html",
+        "url": "https://murshid.feshealthtech.com/features/patient-companion.html",
+        "name": "Patient Companion App & Encrypted Live Sync (Murshid Client) — Murshid App",
+        "description": "Comprehensive reference guide for Murshid Client companion application and encrypted synchronization with nutrition clinics.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://murshid.feshealthtech.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Pillars",
+              "item": "https://murshid.feshealthtech.com/#pillars"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Patient Companion App",
+              "item": "https://murshid.feshealthtech.com/features/patient-companion.html"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://murshid.feshealthtech.com/features/patient-companion.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How is the patient's smartphone paired with the clinic's software?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Pairing completes in seconds by scanning a dynamic encrypted QR code displayed on the dietitian's screen, or by entering a 6-digit secure token, establishing a private channel without complex login credentials."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What can patients view and manage inside the Murshid Client app?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Patients view their structured daily meal schedule, log consumed water volume, record meal adherence, and track home body weight. They can also swap any food item for a clinically equivalent substitute from the same ADA exchange group."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the companion app eliminate constant messaging app inquiries?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. By providing self-guided exchange swaps within approved portions, patients no longer need to text their dietitian for routine substitution queries, protecting the clinician's off-hours personal time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What happens if the patient has no internet access?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The companion app is completely offline-resilient. Diet plans, water logs, and meal check-ins function locally on the phone, queuing updates and syncing adherence metrics automatically once a connection is reestablished."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is confidential medical data protected between both devices?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Data transmission utilizes end-to-end encrypted transport channels. No patient records are shared with third parties or used to train external public artificial intelligence models."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Murshid Client provide autonomous medical advice or automated prescriptions?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The companion app acts strictly as an adherence and communication channel delivering the dietitian's verified plan. Murshid is not a medical device (SaMD); all clinical and dietary prescriptions remain solely under the professional discretion of the licensed dietitian."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', system-ui, -apple-system, sans-serif; }
+    .pillar-hero {
+      padding: 130px 0 70px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(16, 185, 129, 0.16) 0%, transparent 70%), var(--m-bg);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .badge-pill-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #059669;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .deep-section { padding: 70px 0; }
+    .deep-section.alt-bg {
+      background: var(--m-surface);
+      border-top: 1px solid var(--m-border);
+      border-bottom: 1px solid var(--m-border);
+    }
+    .section-head { text-align: center; max-width: 820px; margin: 0 auto 50px; }
+    .section-head .subhead {
+      color: #059669;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--m-text);
+      margin-bottom: 14px;
+    }
+    .section-head p { color: var(--m-text-muted); font-size: 1.05rem; line-height: 1.8; }
+    .workflow-card {
+      background: var(--m-surface);
+      border: 1px solid var(--m-border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      margin-bottom: 24px;
+      box-shadow: var(--m-shadow-sm);
+    }
+    .workflow-step-num {
+      position: absolute;
+      top: -16px;
+      left: 24px;
+      background: #059669;
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.9rem;
+      padding: 4px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+    }
+    .deep-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--m-border);
+      background: var(--m-surface);
+    }
+    .deep-table th, .deep-table td {
+      padding: 18px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--m-border);
+      font-size: 0.95rem;
+    }
+    .deep-table th {
+      background: rgba(16, 185, 129, 0.08);
+      font-weight: 800;
+      color: var(--m-text);
+    }
+    .deep-table tr:last-child td { border-bottom: none; }
+    .check-yes { color: #10b981; font-weight: 800; }
+    .cross-no { color: #ef4444; font-weight: 800; }
+    .faq-block { max-width: 860px; margin: 0 auto; }
+    .faq-card {
+      background: var(--m-surface);
+      border: 1px solid var(--m-border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s ease;
+    }
+    .faq-card:hover { border-color: rgba(16, 185, 129, 0.4); }
+    .faq-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--m-text);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .faq-card p { color: var(--m-text-muted); font-size: 0.98rem; line-height: 1.7; margin: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     UNIFIED OFFICIAL NAVBAR
+     ════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="../index.html" class="m-nav-brand" aria-label="Home">
+      <img src="../assets/logo.webp" alt="Murshid Logo" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">Murshid</span>
+        <span class="brand-name-en">App</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="../index.html#features">Features</a></li>
+      <li><a href="../index.html#pillars">Pillars</a></li>
+      <li><a href="../index.html#wallet">Points System</a></li>
+      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../faq.html">FAQ</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li class="m-nav-dropdown">
+        <button class="m-nav-dropdown-btn" aria-haspopup="true">
+          <span>Legal</span>
+          <span style="font-size:0.75rem;">▾</span>
+        </button>
+        <div class="m-nav-dropdown-menu">
+          <a href="../privacy-policy.html" class="m-nav-dropdown-item">🔒 Privacy Policy</a>
+          <a href="../terms-of-use.html" class="m-nav-dropdown-item">📜 Terms of Use</a>
+          <a href="../refund-policy.html" class="m-nav-dropdown-item">💵 Refund Policy</a>
+          <a href="../data-deletion.html" class="m-nav-dropdown-item">🗑️ Data Deletion</a>
+        </div>
+      </li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../ar/features/patient-companion.html" class="m-btn m-btn-secondary" style="margin-right:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" title="النسخة العربية">🌐 العربية</a>
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" id="nav-download-btn" style="background: linear-gradient(135deg, #059669 0%, #047857 100%);">📥 Download Free</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     MOBILE MENU DRAWER
+     ════════════════════════════════════════ -->
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">Murshid App</span>
+    <span class="m-mobile-menu-subtitle">Smart Practice Platform for Dietitians</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="../index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">Home</span>
+    </a>
+    <a href="../ar/features/patient-companion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🌐</span>
+      <span class="m-mobile-text">العربية (Arabic)</span>
+    </a>
+    <a href="../index.html#features" class="m-mobile-link">
+      <span class="m-mobile-icon">🚀</span>
+      <span class="m-mobile-text">Features</span>
+    </a>
+    <a href="../index.html#pillars" class="m-mobile-link">
+      <span class="m-mobile-icon">🏛️</span>
+      <span class="m-mobile-text">Pillars</span>
+    </a>
+    <a href="../index.html#wallet" class="m-mobile-link">
+      <span class="m-mobile-icon">🪙</span>
+      <span class="m-mobile-text">Points System</span>
+    </a>
+    <a href="../index.html#pricing" class="m-mobile-link">
+      <span class="m-mobile-icon">💳</span>
+      <span class="m-mobile-text">Pricing</span>
+    </a>
+    <a href="../faq.html" class="m-mobile-link">
+      <span class="m-mobile-icon">❓</span>
+      <span class="m-mobile-text">FAQ</span>
+    </a>
+    <a href="../contact.html" class="m-mobile-link">
+      <span class="m-mobile-icon">✉️</span>
+      <span class="m-mobile-text">Contact</span>
+    </a>
+    <a href="../privacy-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🔒</span>
+      <span class="m-mobile-text">Privacy Policy</span>
+    </a>
+    <a href="../terms-of-use.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📜</span>
+      <span class="m-mobile-text">Terms of Use</span>
+    </a>
+    <a href="../refund-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">💵</span>
+      <span class="m-mobile-text">Refund Policy</span>
+    </a>
+    <a href="../data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">Data Deletion</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-download">
+    <div class="m-mobile-download-title">Download App Free</div>
+    <div class="m-mobile-download-buttons">
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-mobile-dl-btn">
+        <span>🤖 Google Play</span>
+      </a>
+      <a href="../index.html#download" class="m-mobile-dl-btn">
+        <span>🍎 App Store</span>
+      </a>
+    </div>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="../privacy-policy.html">Privacy</a>
+    <span>•</span>
+    <a href="../terms-of-use.html">Terms</a>
+    <span>•</span>
+    <a href="../refund-policy.html">Refund</a>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- ════════════════════════════════════════
+     HERO SECTION
+     ════════════════════════════════════════ -->
+<section class="pillar-hero">
+  <div class="container" style="text-align: center;">
+    <div class="badge-pill-main">📱 Patient Companion App — Murshid Client</div>
+    <h1 style="font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 900; line-height: 1.25; margin-bottom: 22px;">
+      Interactive Patient Follow-Up Without Messaging Chaos<br />
+      <span style="color: #059669;">Encrypted Live Sync, Hydration Tracking, and Self-Guided Food Exchanges</span>
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--m-text-muted); max-width: 820px; margin: 0 auto 36px; line-height: 1.8;">
+      Bridge the communication black hole between clinical appointments. The Murshid Client companion app empowers patients to track daily meal adherence, log water intake, and perform self-guided ADA exchange swaps without spamming the dietitian's personal phone, while adherence metrics sync straight to the clinic chart.
+    </p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" style="padding: 14px 32px; font-size: 1rem; background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+        <span>Download Murshid Free</span>
+      </a>
+      <a href="../index.html#pillars" class="m-btn m-btn-outline" style="padding: 14px 26px; font-size: 1rem;">
+        <span>Explore Platform Pillars</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CLINICAL PAIN POINTS
+     ════════════════════════════════════════ -->
+<section class="deep-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">The Follow-Up Challenge</span>
+      <h2>The Inter-Consultation Black Hole & Messaging Burnout</h2>
+      <p>Practitioners face significant hurdles maintaining patient adherence between clinic appointments:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px;">
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">📴</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Zero Visibility Between Appointments</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Clinicians have no data on whether a patient adhered to meals or met hydration targets until weeks later. If the patient struggles early on, relapse happens long before the follow-up appointment.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">💬</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Unregulated Messaging App Overload</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Dietitians receive hundreds of texts asking basic questions: "Can I swap chicken for tuna tonight?" This invades personal evenings and disrupts professional boundaries.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">📉</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Low Daily Patient Motivation</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Static paper sheets offer zero interactive feedback. A dynamic companion app creates positive reinforcement through daily progress check-ins and visual hydration streaks.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     ARCHITECTURE & CAPABILITIES
+     ════════════════════════════════════════ -->
+<section class="deep-section alt-bg">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Interactive Architecture</span>
+      <h2>Synchronizing Clinician Guidance with Patient Routine</h2>
+      <p>A structured, private communication channel engineered for patient adherence without practitioner burnout:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; margin-bottom: 40px;">
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #059669; display: flex; align-items: center; gap: 10px;">
+          <span>📲</span> Instant Encrypted QR Pairing
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The patient scans an encrypted QR code directly from the dietitian's tablet or computer. The active diet plan and water target transfer in under a second without account creation hurdles.
+        </p>
+      </div>
+
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #059669; display: flex; align-items: center; gap: 10px;">
+          <span>🔄</span> Self-Guided ADA Food Swaps
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          When an ingredient is unavailable at home or in a restaurant, the patient taps the meal to explore all approved ADA substitutes within the same exchange group, swapping safely without altering caloric limits.
+        </p>
+      </div>
+
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #059669; display: flex; align-items: center; gap: 10px;">
+          <span>💧</span> Smart Hydration & Meal Check-Ins
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Engaging visual trackers record daily cups of water consumed and completed meals. Adherence percentages compile automatically and sync to the clinician's Patient 360 view.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CLINICAL WORKFLOW SCENARIO
+     ════════════════════════════════════════ -->
+<section class="deep-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Practical Clinical Scenario</span>
+      <h2>In-Clinic Pairing & Remote Adherence Monitoring</h2>
+      <p>How the interactive pairing workflow unfolds during a consultation:</p>
+    </div>
+
+    <div style="max-width: 860px; margin: 0 auto;">
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 1</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Generate Encrypted QR Token in Clinic</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Upon finalizing the diet plan, the dietitian taps "Pair Client". A dynamic encrypted QR code appears. The patient opens Murshid Client on their smartphone and scans it in one second.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 2</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Instant Plan & Hydration Target Transmission</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The daily meal schedule, portion sizes, timing, and personalized hydration goals load instantly onto the patient's device, operational completely offline throughout their day.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 3</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Daily Check-Ins & Autonomous Meal Swaps</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The patient logs water intake and confirms eaten meals. When dining out, they swap grilled salmon for grilled chicken; the app verifies exchange equivalency automatically.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 4</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Adherence Analytics Available at Next Consultation</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          At the follow-up appointment, the dietitian's dashboard reveals an objective compliance report (e.g. 88% meal adherence, 2.5L average water daily), providing clear clinical context for progress.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     COMPARISON TABLE
+     ════════════════════════════════════════ -->
+<section class="deep-section alt-bg">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Technical Comparison</span>
+      <h2>Murshid Client vs Unstructured Messaging Follow-Up</h2>
+      <p>Compare clinical privacy, patient autonomy, and compliance analytics:</p>
+    </div>
+
+    <div class="table-responsive">
+      <table class="deep-table">
+        <thead>
+          <tr>
+            <th>Clinical & Operational Criteria</th>
+            <th>Murshid Client Companion App</th>
+            <th>Messaging Apps (WhatsApp / SMS)</th>
+            <th>Static Paper Handouts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Clinician Personal Time Privacy</strong></td>
+            <td><span class="check-yes">✓ Total separation (structured clinic portal)</span></td>
+            <td><span class="cross-no">✗ Constant after-hours intrusions 24/7</span></td>
+            <td>High privacy but zero engagement</td>
+          </tr>
+          <tr>
+            <td><strong>Self-Guided Food Substitutions</strong></td>
+            <td><span class="check-yes">✓ Dynamic ADA Exchange portion matching</span></td>
+            <td><span class="cross-no">✗ Repetitive daily questions to dietitian</span></td>
+            <td>Requires complex paper exchange tables</td>
+          </tr>
+          <tr>
+            <td><strong>Interactive Hydration Tracking</strong></td>
+            <td><span class="check-yes">✓ Visual daily cup logging & streaks</span></td>
+            <td>Subjective verbal estimates at visit</td>
+            <td>Non-existent or easily forgotten</td>
+          </tr>
+          <tr>
+            <td><strong>Objective Compliance Score</strong></td>
+            <td><span class="check-yes">✓ Quantitative adherence metrics on chart</span></td>
+            <td><span class="cross-no">✗ Unverified anecdotal claims</span></td>
+            <td>Completely absent</td>
+          </tr>
+          <tr>
+            <td><strong>Offline-Resilient Usability</strong></td>
+            <td><span class="check-yes">✓ Works locally with background sync</span></td>
+            <td><span class="cross-no">✗ Requires constant internet access</span></td>
+            <td>Offline but lacks digital tracking</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     EXPANDED FAQ SECTION
+     ════════════════════════════════════════ -->
+<section class="deep-section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Frequently Asked Questions</span>
+      <h2>Everything You Need to Know</h2>
+      <p>Answers to common practitioner questions about pairing, privacy, and patient adoption:</p>
+    </div>
+
+    <div class="faq-block">
+      <div class="faq-card">
+        <h3><span>❓</span> How is the patient's smartphone paired with the clinic's software?</h3>
+        <p>Pairing completes in seconds by scanning a dynamic encrypted QR code displayed on the dietitian's screen, or by entering a 6-digit secure token, establishing a private channel without complex login credentials.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> What can patients view and manage inside the Murshid Client app?</h3>
+        <p>Patients view their structured daily meal schedule, log consumed water volume, record meal adherence, and track home body weight. They can also swap any food item for a clinically equivalent substitute from the same ADA exchange group.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Does the companion app eliminate constant messaging app inquiries?</h3>
+        <p>Yes. By providing self-guided exchange swaps within approved portions, patients no longer need to text their dietitian for routine substitution queries, protecting the clinician's off-hours personal time.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> What happens if the patient has no internet access?</h3>
+        <p>The companion app is completely offline-resilient. Diet plans, water logs, and meal check-ins function locally on the phone, queuing updates and syncing adherence metrics automatically once a connection is reestablished.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> How is confidential medical data protected between both devices?</h3>
+        <p>Data transmission utilizes end-to-end encrypted transport channels. No patient records are shared with third parties or used to train external public artificial intelligence models.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Does Murshid Client provide autonomous medical advice or automated prescriptions?</h3>
+        <p>No. The companion app acts strictly as an adherence and communication channel delivering the dietitian's verified plan. Murshid is not a medical device (SaMD); all clinical and dietary prescriptions remain solely under the professional discretion of the licensed dietitian.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     RELATED CLINICAL RESOURCES & COMPARISONS
+     ════════════════════════════════════════ -->
+<section class="deep-section" style="background: rgba(43, 181, 160, 0.03); border-top: 1px solid var(--m-border);">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Clinical & Technical Synergy</span>
+      <h2>Related Clinical Guides & Comparisons</h2>
+      <p>Discover how the patient companion app elevates dietary adherence and data flow:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px;">
+      <a href="patient-crm.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">📁</span>
+        <strong style="color: var(--m-primary); font-size: 1rem; display: block; margin-bottom: 6px;">Patient 360 CRM</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">The clinical command center in your practice receiving weight check-ins and logs. →</span>
+      </a>
+
+      <a href="smart-diet-engine.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">⚡</span>
+        <strong style="color: #6366f1; font-size: 1rem; display: block; margin-bottom: 6px;">Dual-Points Meal Planning</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">Convert complex meal plans into flexible exchange units browsable on mobile. →</span>
+      </a>
+
+      <a href="../articles/offline-first-data-privacy-clinical-practice.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">🔒</span>
+        <strong style="color: var(--m-gold); font-size: 1rem; display: block; margin-bottom: 6px;">Data Privacy & Sovereignty</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">How encrypted QR pairing keeps patient data isolated from third-party advertising brokers. →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CTA BANNER
+     ════════════════════════════════════════ -->
+<section style="padding: 70px 0; background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(43, 181, 160, 0.1)); border-top: 1px solid var(--m-border); border-bottom: 1px solid var(--m-border); text-align: center;">
+  <div class="container" style="max-width: 700px;">
+    <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 14px;">Transform Patient Adherence Without Messaging Chaos</h2>
+    <p style="color: var(--m-text-muted); margin-bottom: 28px; font-size: 1.05rem;">Empower your patients with an interactive companion app that protects your personal time.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" style="padding: 16px 36px; font-size: 1.05rem; background: linear-gradient(135deg, #059669 0%, #047857 100%);">
+      <span>Download Murshid Free on Google Play</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER WITH REGULATORY DISCLAIMER
+     ════════════════════════════════════════ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="../assets/logo.webp" alt="FES HealthTech" class="footer-logo" width="284" height="284" />
+        <div class="footer-app-name">Murshid</div>
+        <div class="footer-app-sub">Clinical Dietitian App</div>
+        <p>The intelligent practice management & computational platform for clinical dietitians — Developed by <a href="https://feshealthtech.com/">FES HealthTech</a>.</p>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Platform Pillars</h3>
+        <ul class="m-footer-links">
+          <li><a href="offline-food-bank.html">Offline Food Bank</a></li>
+          <li><a href="pharmacology-reference.html">Pharmacology Atlas</a></li>
+          <li><a href="smart-diet-engine.html">Smart Diet Engine</a></li>
+          <li><a href="patient-crm.html">Patient 360 CRM</a></li>
+          <li><a href="patient-companion.html">Patient Companion</a></li>
+          <li><a href="specialist-site-builder.html">Clinic Site CMS</a></li>
+          <li><a href="clinic-management-erp.html">Practice ERP & Finance</a></li>
+          <li><a href="offline-first-privacy.html">Offline & Sovereignty</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Support</h3>
+        <ul class="m-footer-links">
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../data-deletion.html">Data Deletion</a></li>
+          <li><a href="https://feshealthtech.com/">About Us</a></li>
+          <li><a href="../contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Legal</h3>
+        <ul class="m-footer-links">
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../terms-of-use.html">Terms of Use</a></li>
+          <li><a href="../refund-policy.html">Refund Policy</a></li>
+          <li><a href="../data-deletion.html">Data Deletion</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Regulatory Disclaimer -->
+    <div class="m-footer-disclaimer" style="margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.78rem; line-height: 1.6; color: var(--m-text-muted, #94a3b8); text-align: center;">
+      <p>⚠️ <strong>Regulatory & Professional Disclaimer:</strong> Murshid is an administrative, computational, and clinical documentation practice management platform designed exclusively for certified clinical dietitians and nutrition clinics. Murshid is NOT a medical device (SaMD) and does not provide automated clinical diagnosis or autonomous medical treatment decisions. All clinical judgments, evaluations, and dietary prescriptions remain solely under the professional discretion of the licensed dietitian.</p>
+    </div>
+
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. All rights reserved.</p>
+      <div class="m-footer-bottom-links">
+        <a href="../privacy-policy.html">Privacy</a>
+        <a href="../terms-of-use.html">Terms</a>
+        <a href="../data-deletion.html">Data Deletion</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/murshid-script.js"></script>
+</body>
+</html>

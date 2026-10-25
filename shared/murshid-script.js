@@ -30,7 +30,7 @@ function initDynamicYear() {
 
 /* ── Navbar ── */
 function initNav() {
-  const nav = document.querySelector('.m-nav');
+  const nav = document.querySelector('.m-nav, .m-navbar');
   if (!nav) return;
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -39,25 +39,29 @@ function initNav() {
 
 /* ── Mobile Menu ── */
 function initMobileMenu() {
-  const btn = document.getElementById('m-hamburger');
-  const menu = document.getElementById('m-mobile-menu');
+  const btn = document.getElementById('m-hamburger') || document.querySelector('.m-hamburger');
+  const menu = document.getElementById('m-mobile-menu') || document.querySelector('.m-mobile-menu');
   if (!btn || !menu) return;
 
   btn.addEventListener('click', () => {
-    btn.classList.toggle('open');
-    menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', btn.classList.contains('open'));
+    const isOpen = btn.classList.toggle('open');
+    btn.classList.toggle('active', isOpen);
+    menu.classList.toggle('open', isOpen);
+    menu.classList.toggle('active', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
   });
 
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    btn.classList.remove('open');
-    menu.classList.remove('open');
+    btn.classList.remove('open', 'active');
+    menu.classList.remove('open', 'active');
+    btn.setAttribute('aria-expanded', 'false');
   }));
 
   document.addEventListener('click', e => {
     if (!btn.contains(e.target) && !menu.contains(e.target)) {
-      btn.classList.remove('open');
-      menu.classList.remove('open');
+      btn.classList.remove('open', 'active');
+      menu.classList.remove('open', 'active');
+      btn.setAttribute('aria-expanded', 'false');
     }
   });
 }
@@ -66,6 +70,9 @@ function initMobileMenu() {
 function initScrollReveal() {
   const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
   if (!els.length) return;
+
+  // Enable animation mode now that JS is running
+  document.documentElement.classList.add('js-reveal');
 
   // Staggered delays for grids
   document.querySelectorAll('.features-tab-panel > *, .wallet-grid > *, .how-steps > *, .testimonials-grid > *, .ps-grid > *')
@@ -478,14 +485,18 @@ function initReferralTracking() {
       } catch (_) {}
     });
 
-    // 3. Display sleek Referral Welcome Banner
-    showReferralBanner(refCode);
+    // 3. Top banner hidden per design requirement (referral tracking & dynamic store links remain active in background)
+    // showReferralBanner(refCode);
   } catch (e) {
     console.warn('Referral tracking init failed:', e);
   }
 }
 
 function showReferralBanner(refCode) {
+  // Banner display is disabled to prevent overlapping the top navigation bar.
+  // Referral code extraction, localStorage persistence, and Google Play dynamic links remain 100% active.
+  return;
+
   if (document.getElementById('m-referral-banner')) return;
 
   const isRtl = document.documentElement.getAttribute('dir') === 'rtl' || document.documentElement.lang === 'ar';

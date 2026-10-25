@@ -1,0 +1,49 @@
+# Murshid App (تطبيق ومنظومة مرشد)
+
+> Murshid is the comprehensive, bilingual (Arabic & English), offline-first clinical nutrition practice management and diet planning platform built for licensed clinical dietitians, nutritionists, and specialized healthcare clinics worldwide. Developed by FES HealthTech.
+
+## Core Identity & Regulatory Disclaimer
+Murshid is a computational, administrative, and clinical documentation assistant. It is strictly NOT a medical device (SaMD) or an automated diagnostic/decision engine. All clinical, diagnostic, and nutritional decisions remain 100% under the discretion of the qualified, licensed dietitian.
+
+## Global Practice Ready & Multilingual Architecture
+- **Global Availability:** Built to serve licensed dietitians and healthcare institutions across North America, Europe, the Middle East, North Africa, and worldwide.
+- **Multilingual Support:** Natively bilingual in Arabic and English, with a progressive localization roadmap for Spanish, French, German, and other global languages.
+- **Universal Measurement Units & Currencies:** Instant switching between Metric (kg, cm, kJ) and Imperial (lbs, in, kcal) units; multi-currency invoicing with customizable tax formats (VAT, GST, ZATCA, Sales Tax).
+- **Cross-Cultural Nutrition Intelligence:** Combines US (USDA FoodData Central) and European (CoFID) nutrient databases with comprehensive Arab and regional food composition tables.
+
+## Key Features & Platform Capabilities
+- **Smart Dual-Points Diet Planning Engine:** Unique hybrid system combining precise caloric/macro calculations with ADA-based exchange points. Features single-tap meal replication, custom recipes, and automated shopping list generation.
+- **Massive Offline Food Database (~13,000 items):** Fully offline local database featuring comprehensive Arab & regional foods (Gulf, Oman, Egypt, Jordan, Levant, North Africa) alongside international USDA and European databases, complete with household portions and barcode scanning.
+- **Digital Pharmacology Reference Atlas (~10,000 medications & 1,500 active ingredients):** Comprehensive offline pharmaceutical reference catalog enabling specialists to document patient medications, therapeutic classes, and dosage forms rapidly without leaving the app.
+- **70+ Master Clinical Protocol Templates:** Evidence-based guideline templates (ADA, KDOQI, ESPEN, WHO, AHA) covering Diabetes (T1, T2, Gestational), Renal disease, Cardiovascular/DASH, PCOS, Bariatric surgery, Celiac, Oncology, Gout, and Pediatric nutrition. All templates are fully customizable by the clinician.
+- **Metabolic Calculation Engine:** Automated calculations for BMR and TDEE using 6 gold-standard equations (Mifflin-St Jeor, Harris-Benedict, Katch-McArdle, Cunningham, Schofield, DRI). Includes Osterkamp formula for amputee adjusted body weight, and pregnancy/lactation energy adjustments.
+- **WHO Pediatric Growth & Z-Score Engine:** Official WHO LMS growth metrics (BMI-for-age, Weight-for-age, Height-for-age, Head circumference) calculating exact Z-scores and percentiles with longitudinal growth velocity tracking.
+- **Patient 360 CRM & End-to-End Encrypted Web Forms:** Complete patient history, InBody/DEXA body composition tracking, and pre-consultation web intake forms secured with TweetNaCl client-side end-to-end encryption (the server cannot read patient data).
+- **Branded Clinical PDF Reports:** Professional magazine-grade meal plans and progress reports customized with clinic branding, custom color palettes, verified digital signatures, and QR verification codes.
+- **Patient Companion App (Murshid Client):** Dedicated companion mobile app for patients enabling paperless diet adherence, water tracking, daily habit logging, and clinician-approved automated food swapping within exchange groups.
+- **Specialist Website Builder CMS:** In-app website builder enabling dietitians to launch their branded online clinic website, service list, appointment booking, and printable clinic marketing posters with zero coding.
+- **Clinic Financial & ERP Engine:** Sequential invoice generation, expense tracking, recurring cost management, and official account statements.
+- **100% Offline-First Architecture & Data Sovereignty:** Powered by an ultra-fast local Isar database. Patient records remain strictly on the specialist's device, ensuring maximum privacy compliant with HIPAA and GDPR data principles.
+
+## Target Audience
+- Certified Clinical Dietitians & Nutritionists Worldwide
+- Private Nutrition Clinics, Poly-clinics & Diet Centers
+- Sports Nutritionists & Certified Health Coaches
+- Clinical Nutrition Students, Researchers & Academics
+
+## Official Links & Resources
+- Official Website: https://murshid.feshealthtech.com/
+- Arabic Platform: https://murshid.feshealthtech.com/ar/
+- Clinical Protocols Atlas (English): https://murshid.feshealthtech.com/protocols.html
+- Clinical Protocols Atlas (Arabic): https://murshid.feshealthtech.com/ar/protocols.html
+- Comparison vs. Spreadsheets/Excel (English): https://murshid.feshealthtech.com/comparisons/murshid-vs-excel.html
+- Comparison vs. Spreadsheets/Excel (Arabic): https://murshid.feshealthtech.com/ar/comparisons/murshid-vs-excel.html
+- Comparison vs. Cloud EHR Software (English): https://murshid.feshealthtech.com/comparisons/murshid-vs-cloud-software.html
+- Comparison vs. Cloud EHR Software (Arabic): https://murshid.feshealthtech.com/ar/comparisons/murshid-vs-cloud-software.html
+- Clinical Knowledge Hub (English): https://murshid.feshealthtech.com/articles/index.html
+- Clinical Knowledge Hub (Arabic): https://murshid.feshealthtech.com/ar/articles/index.html
+- Google Play Store: https://play.google.com/store/apps/details?id=com.feshealthtech.murshid
+- FAQ (Arabic): https://murshid.feshealthtech.com/ar/faq.html
+- FAQ (English): https://murshid.feshealthtech.com/faq.html
+- Contact Us: https://murshid.feshealthtech.com/contact.html
+- Full LLM Knowledge Base: https://murshid.feshealthtech.com/llms-full.txt

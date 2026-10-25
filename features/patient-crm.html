@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patient 360 CRM & Biometrics Engine — Murshid App</title>
+  <meta name="description" content="The definitive clinical guide for Murshid's Patient 360 CRM: InBody and DEXA body composition longitudinal tracking, AI optical lab test extraction (OCR), and official WHO pediatric growth curves operating 100% offline." />
+  <meta name="keywords" content="clinical nutrition patient CRM, InBody tracking dietitian software, lab test extraction OCR, WHO growth curves software, dietitian medical records, patient data privacy, Murshid app" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../assets/logo-sq.webp" type="image/webp" />
+
+  <link rel="canonical" href="https://murshid.feshealthtech.com/features/patient-crm.html" />
+  <link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/features/patient-crm.html" />
+  <link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/features/patient-crm.html" />
+  <link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/features/patient-crm.html" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Patient 360 CRM & Biometrics Engine — Murshid App" />
+  <meta property="og:description" content="Unified 360° patient records: body composition tracking, instant lab report scanning with OCR, and WHO pediatric growth percentiles offline." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://murshid.feshealthtech.com/features/patient-crm.html" />
+  <meta property="og:image" content="https://murshid.feshealthtech.com/assets/og-preview.jpg?v=3" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../shared/murshid-style.css" />
+  <link rel="stylesheet" href="../shared/index-style.css" />
+
+  <!-- Schema.org Rich Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://murshid.feshealthtech.com/features/patient-crm.html",
+        "url": "https://murshid.feshealthtech.com/features/patient-crm.html",
+        "name": "Patient 360 CRM & Biometrics Engine — Murshid App",
+        "description": "Comprehensive clinical reference guide for Murshid's Patient 360 CRM, InBody biometrics tracking, and WHO pediatric curves.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://murshid.feshealthtech.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Pillars",
+              "item": "https://murshid.feshealthtech.com/#pillars"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Patient 360 CRM",
+              "item": "https://murshid.feshealthtech.com/features/patient-crm.html"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://murshid.feshealthtech.com/features/patient-crm.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What clinical and biometric records are tracked within Patient 360?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Patient 360 aggregates demographic data, full medical and pharmaceutical histories, dietary allergies and preferences, longitudinal body composition data (InBody/DEXA metrics), digitized laboratory blood tests, and progressive visit graphs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the AI optical lab test extractor (OCR) work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Clinicians photograph printed laboratory reports from any diagnostic facility. The OCR engine parses clinical biomarkers (fasting blood glucose, HbA1c, lipid fractions, kidney/liver panels, vitamins), structuring the values with standard reference ranges and color alerts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Murshid support official World Health Organization (WHO) pediatric growth standards?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Murshid incorporates the official WHO Growth Standards Z-Scores engine for children and adolescents (birth to 19 years), computing height-for-age, weight-for-age, and BMI-for-age to detect stunting or pediatric obesity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where is patient data stored, and is it secure?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "All patient files, measurements, and clinical records are stored exclusively on the practitioner's local device within an embedded, encrypted Isar database. No patient data is sent to external cloud servers, ensuring strict HIPAA/GDPR compliance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can patients complete pre-consultation questionnaires prior to the visit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Murshid supports end-to-end encrypted (TweetNaCl) digital intake questionnaires, allowing patients to complete medical history and dietary habits on their own phones before entering the consultation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the CRM system generate autonomous medical diagnoses?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The system functions as an administrative, documentation, and visual tracking tool. Murshid is not a medical device (SaMD); all clinical and diagnostic evaluations remain solely under the professional discretion of the licensed dietitian."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', system-ui, -apple-system, sans-serif; }
+    .pillar-hero {
+      padding: 130px 0 70px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(139, 92, 246, 0.16) 0%, transparent 70%), var(--m-bg);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .badge-pill-main {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: #7c3aed;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .deep-section { padding: 70px 0; }
+    .deep-section.alt-bg {
+      background: var(--m-surface);
+      border-top: 1px solid var(--m-border);
+      border-bottom: 1px solid var(--m-border);
+    }
+    .section-head { text-align: center; max-width: 820px; margin: 0 auto 50px; }
+    .section-head .subhead {
+      color: #7c3aed;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--m-text);
+      margin-bottom: 14px;
+    }
+    .section-head p { color: var(--m-text-muted); font-size: 1.05rem; line-height: 1.8; }
+    .workflow-card {
+      background: var(--m-surface);
+      border: 1px solid var(--m-border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      margin-bottom: 24px;
+      box-shadow: var(--m-shadow-sm);
+    }
+    .workflow-step-num {
+      position: absolute;
+      top: -16px;
+      left: 24px;
+      background: #7c3aed;
+      color: #fff;
+      font-weight: 900;
+      font-size: 0.9rem;
+      padding: 4px 14px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
+    }
+    .deep-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--m-border);
+      background: var(--m-surface);
+    }
+    .deep-table th, .deep-table td {
+      padding: 18px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--m-border);
+      font-size: 0.95rem;
+    }
+    .deep-table th {
+      background: rgba(139, 92, 246, 0.08);
+      font-weight: 800;
+      color: var(--m-text);
+    }
+    .deep-table tr:last-child td { border-bottom: none; }
+    .check-yes { color: #10b981; font-weight: 800; }
+    .cross-no { color: #ef4444; font-weight: 800; }
+    .faq-block { max-width: 860px; margin: 0 auto; }
+    .faq-card {
+      background: var(--m-surface);
+      border: 1px solid var(--m-border);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s ease;
+    }
+    .faq-card:hover { border-color: rgba(139, 92, 246, 0.4); }
+    .faq-card h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--m-text);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .faq-card p { color: var(--m-text-muted); font-size: 0.98rem; line-height: 1.7; margin: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     UNIFIED OFFICIAL NAVBAR
+     ════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="../index.html" class="m-nav-brand" aria-label="Home">
+      <img src="../assets/logo.webp" alt="Murshid Logo" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">Murshid</span>
+        <span class="brand-name-en">App</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="../index.html#features">Features</a></li>
+      <li><a href="../index.html#pillars">Pillars</a></li>
+      <li><a href="../index.html#wallet">Points System</a></li>
+      <li><a href="../index.html#pricing">Pricing</a></li>
+      <li><a href="../faq.html">FAQ</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+      <li class="m-nav-dropdown">
+        <button class="m-nav-dropdown-btn" aria-haspopup="true">
+          <span>Legal</span>
+          <span style="font-size:0.75rem;">▾</span>
+        </button>
+        <div class="m-nav-dropdown-menu">
+          <a href="../privacy-policy.html" class="m-nav-dropdown-item">🔒 Privacy Policy</a>
+          <a href="../terms-of-use.html" class="m-nav-dropdown-item">📜 Terms of Use</a>
+          <a href="../refund-policy.html" class="m-nav-dropdown-item">💵 Refund Policy</a>
+          <a href="../data-deletion.html" class="m-nav-dropdown-item">🗑️ Data Deletion</a>
+        </div>
+      </li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../ar/features/patient-crm.html" class="m-btn m-btn-secondary" style="margin-right:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" title="النسخة العربية">🌐 العربية</a>
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" id="nav-download-btn" style="background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">📥 Download Free</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     MOBILE MENU DRAWER
+     ════════════════════════════════════════ -->
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">Murshid App</span>
+    <span class="m-mobile-menu-subtitle">Smart Practice Platform for Dietitians</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="../index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">Home</span>
+    </a>
+    <a href="../ar/features/patient-crm.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🌐</span>
+      <span class="m-mobile-text">العربية (Arabic)</span>
+    </a>
+    <a href="../index.html#features" class="m-mobile-link">
+      <span class="m-mobile-icon">🚀</span>
+      <span class="m-mobile-text">Features</span>
+    </a>
+    <a href="../index.html#pillars" class="m-mobile-link">
+      <span class="m-mobile-icon">🏛️</span>
+      <span class="m-mobile-text">Pillars</span>
+    </a>
+    <a href="../index.html#wallet" class="m-mobile-link">
+      <span class="m-mobile-icon">🪙</span>
+      <span class="m-mobile-text">Points System</span>
+    </a>
+    <a href="../index.html#pricing" class="m-mobile-link">
+      <span class="m-mobile-icon">💳</span>
+      <span class="m-mobile-text">Pricing</span>
+    </a>
+    <a href="../faq.html" class="m-mobile-link">
+      <span class="m-mobile-icon">❓</span>
+      <span class="m-mobile-text">FAQ</span>
+    </a>
+    <a href="../contact.html" class="m-mobile-link">
+      <span class="m-mobile-icon">✉️</span>
+      <span class="m-mobile-text">Contact</span>
+    </a>
+    <a href="../privacy-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🔒</span>
+      <span class="m-mobile-text">Privacy Policy</span>
+    </a>
+    <a href="../terms-of-use.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📜</span>
+      <span class="m-mobile-text">Terms of Use</span>
+    </a>
+    <a href="../refund-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">💵</span>
+      <span class="m-mobile-text">Refund Policy</span>
+    </a>
+    <a href="../data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">Data Deletion</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-download">
+    <div class="m-mobile-download-title">Download App Free</div>
+    <div class="m-mobile-download-buttons">
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-mobile-dl-btn">
+        <span>🤖 Google Play</span>
+      </a>
+      <a href="../index.html#download" class="m-mobile-dl-btn">
+        <span>🍎 App Store</span>
+      </a>
+    </div>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="../privacy-policy.html">Privacy</a>
+    <span>•</span>
+    <a href="../terms-of-use.html">Terms</a>
+    <span>•</span>
+    <a href="../refund-policy.html">Refund</a>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- ════════════════════════════════════════
+     HERO SECTION
+     ════════════════════════════════════════ -->
+<section class="pillar-hero">
+  <div class="container" style="text-align: center;">
+    <div class="badge-pill-main">👥 Patient 360 CRM & Biometrics Engine</div>
+    <h1 style="font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 900; line-height: 1.25; margin-bottom: 22px;">
+      Unified 360° Practice Management & Clinical Charting<br />
+      <span style="color: #7c3aed;">InBody Biometrics, Optical Lab Scanning (OCR), and WHO Curves Offline</span>
+    </h1>
+    <p style="font-size: 1.15rem; color: var(--m-text-muted); max-width: 820px; margin: 0 auto 36px; line-height: 1.8;">
+      Eliminate scattered paper charts, fragmented Excel files, and chaotic messaging histories. Murshid equips clinical dietitians with a comprehensive 360-degree patient dossier: longitudinal body composition tracking (InBody / DEXA), camera-powered optical lab report scanning, and official WHO pediatric growth curves operating entirely offline.
+    </p>
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" style="padding: 14px 32px; font-size: 1rem; background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
+        <span>Download Murshid Free</span>
+      </a>
+      <a href="../index.html#pillars" class="m-btn m-btn-outline" style="padding: 14px 26px; font-size: 1rem;">
+        <span>Explore Platform Pillars</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CLINICAL PAIN POINTS
+     ════════════════════════════════════════ -->
+<section class="deep-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">The Documentation Challenge</span>
+      <h2>Why Fragmented Clinical Patient Records Sabotage Outcomes</h2>
+      <p>Practitioners face fragmented workflows that undermine continuity of care and client motivation:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px;">
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">📑</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Scattered Clinical and Lab Records</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          InBody printouts in folders, blood test photos in chat threads, and dietary histories in physical notebooks prevent clinicians from seeing the full trajectory of a patient's health markers across time.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">📉</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Difficulty Demonstrating Visual Body Progress</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Patients often obsess over total scale weight and get demotivated during plateaus. Lacking interactive visual charts that prove simultaneous fat loss and muscle gain leads to preventable drop-outs.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div style="font-size: 2.2rem; margin-bottom: 14px;">👶</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--m-text);">Complex Pediatric Z-Score Plotting</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.96rem;">
+          Manually plotting height-for-age and BMI-for-age on paper WHO growth charts is tedious and slow during busy clinic schedules, creating risk of missing subtle growth faltering or childhood obesity.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     ARCHITECTURE & CAPABILITIES
+     ════════════════════════════════════════ -->
+<section class="deep-section alt-bg">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Engineered for Longitudinal Care</span>
+      <h2>Pillars of Murshid's Patient 360 Architecture</h2>
+      <p>A specialized clinical CRM built from the ground up for medical nutrition therapy:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 24px; margin-bottom: 40px;">
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #7c3aed; display: flex; align-items: center; gap: 10px;">
+          <span>📈</span> InBody & DEXA Biometrics Engine
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Detailed recording of body composition parameters: total mass, Skeletal Muscle Mass (SMM), Body Fat Mass (BFM), Body Fat Percentage (PBF), Visceral Fat Level (VFL), and body circumferences with visual trend tracking.
+        </p>
+      </div>
+
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #7c3aed; display: flex; align-items: center; gap: 10px;">
+          <span>🔬</span> Optical Laboratory OCR Extractor
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Photograph printed blood work sheets from any clinical lab; our cloud-powered OCR structures biomarkers (HbA1c, fasting glucose, lipid panels, renal/hepatic panels, Vitamin D, Ferritin) with standard reference ranges and abnormal alerts.
+        </p>
+      </div>
+
+      <div style="background: var(--m-bg); border: 1px solid var(--m-border); border-radius: 16px; padding: 28px;">
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: #7c3aed; display: flex; align-items: center; gap: 10px;">
+          <span>👶</span> Official WHO Growth Standards Engine
+        </h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Official World Health Organization Z-score calculation engine for pediatric patients (birth to 19 years): height-for-age, weight-for-age, and BMI-for-age curves automatically rendered with standard deviations.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CLINICAL WORKFLOW SCENARIO
+     ════════════════════════════════════════ -->
+<section class="deep-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Practical Clinical Scenario</span>
+      <h2>A Complete Clinical Follow-Up Workflow</h2>
+      <p>How a dietitian orchestrates a longitudinal consultation using Patient 360:</p>
+    </div>
+
+    <div style="max-width: 860px; margin: 0 auto;">
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 1</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Pre-Consultation Encrypted Intake</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          While in the waiting area, the patient fills out an encrypted intake form on their smartphone. Their medical history, allergy alerts, and food dislikes sync directly into the dietitian's device.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 2</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Camera-Powered Lab Test Digitization</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The patient brings printed blood work results. The clinician captures a photo; values are extracted in seconds, showing side-by-side comparisons with past tests to measure lipid and glucose improvements.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 3</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Body Composition Progression Visualization</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          The practitioner enters current InBody numbers; an interactive graph proves that the patient dropped 2.2 kg of pure fat mass while gaining 0.6 kg of skeletal muscle, reinforcing compliance.
+        </p>
+      </div>
+
+      <div class="workflow-card">
+        <div class="workflow-step-num">Step 4</div>
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 10px; color: var(--m-text);">Export Comprehensive Branded PDF Summary</h3>
+        <p style="color: var(--m-text-muted); line-height: 1.7; font-size: 0.95rem;">
+          Murshid compiles a high-resolution branded clinical dossier combining biometric trends, lab summaries, and updated dietary guidelines for sharing with the patient or referring physicians.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     COMPARISON TABLE
+     ════════════════════════════════════════ -->
+<section class="deep-section alt-bg">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Technical Comparison</span>
+      <h2>Murshid Patient 360 vs Traditional Record Systems</h2>
+      <p>Evaluate clinical capabilities, security, and workflow efficiency:</p>
+    </div>
+
+    <div class="table-responsive">
+      <table class="deep-table">
+        <thead>
+          <tr>
+            <th>Clinical & Technical Criteria</th>
+            <th>Murshid Patient 360 CRM</th>
+            <th>Paper Files & Manual Binders</th>
+            <th>Generic Cloud Web Portals</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Offline Usability (100% Offline)</strong></td>
+            <td><span class="check-yes">✓ Completely operational without net</span></td>
+            <td>Offline but lacks interactive analytics</td>
+            <td><span class="cross-no">✗ Total lockout during internet outages</span></td>
+          </tr>
+          <tr>
+            <td><strong>Optical Lab Report OCR Extractor</strong></td>
+            <td><span class="check-yes">✓ Instant digitization via camera</span></td>
+            <td><span class="cross-no">✗ Manual retyping wastes consult time</span></td>
+            <td>Unavailable or requires third-party addons</td>
+          </tr>
+          <tr>
+            <td><strong>Official WHO Growth Curves</strong></td>
+            <td><span class="check-yes">✓ Automated Z-Scores and percentile curves</span></td>
+            <td><span class="cross-no">✗ Tedious manual plotting on paper charts</span></td>
+            <td>Rare, usually limited to basic adult BMI</td>
+          </tr>
+          <tr>
+            <td><strong>Patient Data Sovereignty & Privacy</strong></td>
+            <td><span class="check-yes">✓ Encrypted locally on clinician device</span></td>
+            <td>Vulnerable to physical loss and damage</td>
+            <td>Stored on shared multi-tenant public clouds</td>
+          </tr>
+          <tr>
+            <td><strong>Patient Search & Retrieval Speed</strong></td>
+            <td><span class="check-yes">✓ Sub-5 milliseconds by name or phone</span></td>
+            <td>Minutes of manual paper filing retrieval</td>
+            <td>Subject to cloud latency and page reloads</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     EXPANDED FAQ SECTION
+     ════════════════════════════════════════ -->
+<section class="deep-section" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Frequently Asked Questions</span>
+      <h2>Everything You Need to Know</h2>
+      <p>Answers to common questions regarding data security, OCR extraction, and pediatric charts:</p>
+    </div>
+
+    <div class="faq-block">
+      <div class="faq-card">
+        <h3><span>❓</span> What clinical and biometric records are tracked within Patient 360?</h3>
+        <p>Patient 360 aggregates demographic data, full medical and pharmaceutical histories, dietary allergies and preferences, longitudinal body composition data (InBody/DEXA metrics), digitized laboratory blood tests, and progressive visit graphs.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> How does the AI optical lab test extractor (OCR) work?</h3>
+        <p>Clinicians photograph printed laboratory reports from any diagnostic facility. The OCR engine parses clinical biomarkers (fasting blood glucose, HbA1c, lipid fractions, kidney/liver panels, vitamins), structuring the values with standard reference ranges and color alerts.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Does Murshid support official World Health Organization (WHO) pediatric growth standards?</h3>
+        <p>Yes, Murshid incorporates the official WHO Growth Standards Z-Scores engine for children and adolescents (birth to 19 years), computing height-for-age, weight-for-age, and BMI-for-age to detect stunting or pediatric obesity.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Where is patient data stored, and is it secure?</h3>
+        <p>All patient files, measurements, and clinical records are stored exclusively on the practitioner's local device within an embedded, encrypted Isar database. No patient data is sent to external cloud servers, ensuring strict HIPAA/GDPR compliance.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Can patients complete pre-consultation questionnaires prior to the visit?</h3>
+        <p>Yes, Murshid supports end-to-end encrypted (TweetNaCl) digital intake questionnaires, allowing patients to complete medical history and dietary habits on their own phones before entering the consultation.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3><span>❓</span> Does the CRM system generate autonomous medical diagnoses?</h3>
+        <p>No. The system functions as an administrative, documentation, and visual tracking tool. Murshid is not a medical device (SaMD); all clinical and diagnostic evaluations remain solely under the professional discretion of the licensed dietitian.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     RELATED CLINICAL RESOURCES & COMPARISONS
+     ════════════════════════════════════════ -->
+<section class="deep-section" style="background: rgba(43, 181, 160, 0.03); border-top: 1px solid var(--m-border);">
+  <div class="container">
+    <div class="section-head">
+      <span class="subhead">Clinical & Technical Synergy</span>
+      <h2>Related Clinical Guides & Comparisons</h2>
+      <p>Discover how Patient 360 CRM integrates with clinic management and patient adherence:</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 20px;">
+      <a href="../articles/modern-nutrition-clinic-management-guide.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">📖</span>
+        <strong style="color: var(--m-primary); font-size: 1rem; display: block; margin-bottom: 6px;">Modern Practice Management Guide</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">Standardizing encrypted online intake workflows and clinical consultation stages. →</span>
+      </a>
+
+      <a href="patient-companion.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">📱</span>
+        <strong style="color: #6366f1; font-size: 1rem; display: block; margin-bottom: 6px;">Patient Companion App</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">Empower patients to log their weekly weights and review their meal plans on mobile. →</span>
+      </a>
+
+      <a href="../comparisons/murshid-vs-cloud-software.html" style="background: var(--m-surface); padding: 22px; border-radius: 14px; border: 1px solid var(--m-border); text-decoration: none; color: inherit; display: block; transition: transform 0.2s ease, border-color 0.2s ease;">
+        <span style="font-size: 1.5rem; display: block; margin-bottom: 8px;">☁️</span>
+        <strong style="color: var(--m-gold); font-size: 1rem; display: block; margin-bottom: 6px;">Murshid vs. Cloud EHRs</strong>
+        <span style="font-size: 0.85rem; color: var(--m-text-muted); line-height: 1.6; display: block;">Comparing secure local client records against cloud data breach vulnerabilities. →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     CTA BANNER
+     ════════════════════════════════════════ -->
+<section style="padding: 70px 0; background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(43, 181, 160, 0.1)); border-top: 1px solid var(--m-border); border-bottom: 1px solid var(--m-border); text-align: center;">
+  <div class="container" style="max-width: 700px;">
+    <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 14px;">Organize Your Clinic with Longitudinal Clinical Rigor</h2>
+    <p style="color: var(--m-text-muted); margin-bottom: 28px; font-size: 1.05rem;">Join hundreds of clinical dietitians who streamline patient management daily with Murshid.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" style="padding: 16px 36px; font-size: 1.05rem; background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);">
+      <span>Download Murshid Free on Google Play</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER WITH REGULATORY DISCLAIMER
+     ════════════════════════════════════════ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="../assets/logo.webp" alt="FES HealthTech" class="footer-logo" width="284" height="284" />
+        <div class="footer-app-name">Murshid</div>
+        <div class="footer-app-sub">Clinical Dietitian App</div>
+        <p>The intelligent practice management & computational platform for clinical dietitians — Developed by <a href="https://feshealthtech.com/">FES HealthTech</a>.</p>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Platform Pillars</h3>
+        <ul class="m-footer-links">
+          <li><a href="offline-food-bank.html">Offline Food Bank</a></li>
+          <li><a href="pharmacology-reference.html">Pharmacology Atlas</a></li>
+          <li><a href="smart-diet-engine.html">Smart Diet Engine</a></li>
+          <li><a href="patient-crm.html">Patient 360 CRM</a></li>
+          <li><a href="patient-companion.html">Patient Companion</a></li>
+          <li><a href="specialist-site-builder.html">Clinic Site CMS</a></li>
+          <li><a href="clinic-management-erp.html">Practice ERP & Finance</a></li>
+          <li><a href="offline-first-privacy.html">Offline & Sovereignty</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Support</h3>
+        <ul class="m-footer-links">
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="../data-deletion.html">Data Deletion</a></li>
+          <li><a href="https://feshealthtech.com/">About Us</a></li>
+          <li><a href="../contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Legal</h3>
+        <ul class="m-footer-links">
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../terms-of-use.html">Terms of Use</a></li>
+          <li><a href="../refund-policy.html">Refund Policy</a></li>
+          <li><a href="../data-deletion.html">Data Deletion</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Regulatory Disclaimer -->
+    <div class="m-footer-disclaimer" style="margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.78rem; line-height: 1.6; color: var(--m-text-muted, #94a3b8); text-align: center;">
+      <p>⚠️ <strong>Regulatory & Professional Disclaimer:</strong> Murshid is an administrative, computational, and clinical documentation practice management platform designed exclusively for certified clinical dietitians and nutrition clinics. Murshid is NOT a medical device (SaMD) and does not provide automated clinical diagnosis or autonomous medical treatment decisions. All clinical judgments, evaluations, and dietary prescriptions remain solely under the professional discretion of the licensed dietitian.</p>
+    </div>
+
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">FES HealthTech</a>. All rights reserved.</p>
+      <div class="m-footer-bottom-links">
+        <a href="../privacy-policy.html">Privacy</a>
+        <a href="../terms-of-use.html">Terms</a>
+        <a href="../data-deletion.html">Data Deletion</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/murshid-script.js"></script>
+</body>
+</html>

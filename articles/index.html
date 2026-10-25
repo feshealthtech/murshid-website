@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clinical Knowledge Hub & Reference Guides — Murshid Practice Platform</title>
+  <meta name="description" content="Authoritative clinical and practice management guides for licensed dietitians: modern clinic workflows, cross-cultural nutrition food databases, offline data sovereignty, and 70+ clinical protocol frameworks." />
+  <meta name="keywords" content="clinical nutrition articles, dietetics practice management guide, cross-cultural food composition, HIPAA offline clinical privacy, evidence-based nutrition protocols, murshid knowledge hub" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../assets/logo-sq.webp" type="image/webp" />
+
+  <link rel="canonical" href="https://murshid.feshealthtech.com/articles/index.html" />
+  <link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/articles/index.html" />
+  <link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/articles/index.html" />
+  <link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/articles/index.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Clinical Knowledge Hub & Practice Reference Guides — Murshid App" />
+  <meta property="og:description" content="In-depth, peer-aligned clinical nutrition and practice management resources designed for dietitians worldwide." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://murshid.feshealthtech.com/articles/index.html" />
+  <meta property="og:image" content="https://murshid.feshealthtech.com/assets/og-preview.jpg?v=3" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../shared/murshid-style.css" />
+  <link rel="stylesheet" href="../shared/index-style.css" />
+
+  <!-- Schema.org Rich Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://murshid.feshealthtech.com/articles/index.html",
+        "url": "https://murshid.feshealthtech.com/articles/index.html",
+        "name": "Clinical Knowledge Hub & Reference Guides — Murshid App",
+        "description": "Comprehensive reference guides and practice management blueprints for licensed dietitians and nutritionists.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://murshid.feshealthtech.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Knowledge Hub",
+              "item": "https://murshid.feshealthtech.com/articles/index.html"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://murshid.feshealthtech.com/articles/index.html#collection",
+        "name": "Clinical Nutrition Reference Guides",
+        "description": "A curated series of authoritative clinical and practice management blueprints."
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    .hub-hero {
+      padding: 130px 0 60px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(43, 181, 160, 0.18) 0%, transparent 70%), var(--m-bg);
+      text-align: center;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .hub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(43, 181, 160, 0.12);
+      border: 1px solid rgba(43, 181, 160, 0.3);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--m-primary);
+      margin-bottom: 20px;
+    }
+    .hub-title {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.3;
+      color: var(--m-text);
+      margin-bottom: 16px;
+    }
+    .hub-desc {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--m-text-muted);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Article Cards Grid */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 40px;
+    }
+    .article-card {
+      background: #FFFFFF;
+      border: 1px solid var(--m-border);
+      border-radius: var(--m-radius-xl);
+      padding: 32px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--m-transition);
+      box-shadow: var(--m-shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+    .article-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(43, 181, 160, 0.4);
+      box-shadow: var(--m-shadow);
+    }
+    .article-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--m-primary), var(--m-gold));
+    }
+    .art-cat-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(43, 181, 160, 0.1);
+      color: var(--m-primary);
+      margin-bottom: 14px;
+      align-self: flex-start;
+    }
+    .art-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--m-text);
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .art-summary {
+      font-size: 0.92rem;
+      color: var(--m-text-muted);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+    .art-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--m-border);
+      font-size: 0.8rem;
+      color: var(--m-text-muted);
+    }
+    .art-read-more {
+      color: var(--m-primary);
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    @media (max-width: 820px) {
+      .articles-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     HEADER & NAVBAR
+     ════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav" aria-label="Main Navigation">
+  <div class="container m-nav-inner">
+    <a href="../index.html" class="m-nav-brand" aria-label="Murshid Home">
+      <img src="../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-en">Murshid</span>
+        <span class="brand-name-ar">مرشد</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="../index.html#features">Features</a></li>
+      <li><a href="../index.html#pillars">Pillars</a></li>
+      <li><a href="../protocols.html">Protocols Atlas</a></li>
+      <li><a href="../comparisons/murshid-vs-excel.html">Comparisons</a></li>
+      <li><a href="index.html" style="color:var(--m-primary);font-weight:800;">Knowledge Hub</a></li>
+      <li><a href="../faq.html">FAQ</a></li>
+      <li class="m-nav-dropdown">
+        <button class="m-nav-dropdown-btn" aria-haspopup="true">
+          <span>Legal</span>
+          <span style="font-size:0.75rem;">▾</span>
+        </button>
+        <div class="m-nav-dropdown-menu">
+          <a href="../privacy-policy.html" class="m-nav-dropdown-item">🔒 Privacy Policy</a>
+          <a href="../terms-of-use.html" class="m-nav-dropdown-item">📜 Terms of Use</a>
+          <a href="../refund-policy.html" class="m-nav-dropdown-item">💵 Refund Policy</a>
+          <a href="../data-deletion.html" class="m-nav-dropdown-item">🗑️ Data Deletion</a>
+        </div>
+      </li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../ar/articles/index.html" class="m-btn m-btn-secondary" style="margin-right:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" title="Arabic Version">🌐 العربية</a>
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" id="nav-download-btn">📥 Download Free</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">Murshid App</span>
+    <span class="m-mobile-menu-subtitle">Smart Practice Ecosystem for Dietitians</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="../index.html" class="m-mobile-link"><span class="m-mobile-icon">🏠</span><span class="m-mobile-text">Home</span></a>
+    <a href="../ar/articles/index.html" class="m-mobile-link"><span class="m-mobile-icon">🌐</span><span class="m-mobile-text">العربية (Arabic)</span></a>
+    <a href="../protocols.html" class="m-mobile-link"><span class="m-mobile-icon">📚</span><span class="m-mobile-text">Clinical Protocols (70+)</span></a>
+    <a href="../comparisons/murshid-vs-excel.html" class="m-mobile-link"><span class="m-mobile-icon">📊</span><span class="m-mobile-text">Murshid vs. Excel</span></a>
+    <a href="index.html" class="m-mobile-link"><span class="m-mobile-icon">📖</span><span class="m-mobile-text">Knowledge Hub</span></a>
+    <a href="../faq.html" class="m-mobile-link"><span class="m-mobile-icon">❓</span><span class="m-mobile-text">FAQ</span></a>
+    <a href="../privacy-policy.html" class="m-mobile-link"><span class="m-mobile-icon">🔒</span><span class="m-mobile-text">Privacy & Legal</span></a>
+  </div>
+  <div class="m-mobile-menu-actions">
+    <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-mobile-dl-btn" id="mobile-android-btn"><span>🤖 Google Play</span></a>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- ════════════════════════════════════════
+     HERO SECTION
+     ════════════════════════════════════════ -->
+<section class="hub-hero" aria-label="Clinical Knowledge Hub">
+  <div class="container">
+    <div class="hub-badge">📚 Practice Academy & Knowledge Hub</div>
+    <h1 class="hub-title">In-Depth Clinical Reference Guides<br /><span>for Evidence-Based Dietitians & Nutritionists</span></h1>
+    <p class="hub-desc">
+      Rigorous clinical and administrative blueprints exploring modern practice workflows, cross-cultural food composition tables, offline data privacy compliance, and international protocol implementations.
+    </p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     ARTICLES GRID
+     ════════════════════════════════════════ -->
+<section class="section-pad" aria-label="Reference Guides Directory">
+  <div class="container">
+    <div class="articles-grid">
+
+      <!-- Article 1 -->
+      <a href="modern-nutrition-clinic-management-guide.html" class="article-card reveal">
+        <div>
+          <span class="art-cat-badge">Practice Management & EHR</span>
+          <h2 class="art-title">The Modern Dietetic Practice Management Blueprint: From Intake Assessment to Long-Term Adherence</h2>
+          <p class="art-summary">
+            A step-by-step clinical workflow framework detailing how to streamline patient 360 dossiers, eliminate meal planning bottlenecks via dual-points calculation, and drastically reduce client cancellation rates.
+          </p>
+        </div>
+        <div class="art-footer">
+          <span>⏱️ 12 min read • Practice Guide</span>
+          <span class="art-read-more">Read Full Guide →</span>
+        </div>
+      </a>
+
+      <!-- Article 2 -->
+      <a href="cross-cultural-nutrition-food-composition-databases.html" class="article-card reveal">
+        <div>
+          <span class="art-cat-badge">Nutritional Science & Databases</span>
+          <h2 class="art-title">Cross-Cultural Nutrition: Clinical Diversity & Integrating Global Food Composition Tables</h2>
+          <p class="art-summary">
+            An in-depth clinical analysis examining how bridging USDA FoodData Central and European CoFID with regional Middle Eastern and Arab culinary data ensures exact dietary assessment across diverse patient populations.
+          </p>
+        </div>
+        <div class="art-footer">
+          <span>⏱️ 14 min read • Comparative Study</span>
+          <span class="art-read-more">Read Full Guide →</span>
+        </div>
+      </a>
+
+      <!-- Article 3 -->
+      <a href="offline-first-data-privacy-clinical-practice.html" class="article-card reveal">
+        <div>
+          <span class="art-cat-badge">Medical Data Privacy & Tech</span>
+          <h2 class="art-title">Offline-First Architecture & Patient Privacy in Clinical Nutrition Practice</h2>
+          <p class="art-summary">
+            An architectural and regulatory evaluation of why Zero Cloud Data Exposure and local AES-256 database encryption protect private healthcare clinics from enterprise cloud leaks while complying with HIPAA and GDPR.
+          </p>
+        </div>
+        <div class="art-footer">
+          <span>⏱️ 11 min read • Security Brief</span>
+          <span class="art-read-more">Read Full Guide →</span>
+        </div>
+      </a>
+
+      <!-- Article 4 -->
+      <a href="clinical-dietetic-protocols-assessment-framework.html" class="article-card reveal">
+        <div>
+          <span class="art-cat-badge">Clinical Protocols (70+)</span>
+          <h2 class="art-title">Clinical Dietetic Protocols & Practice Framework: Applying Evidence-Based Nutrition Guidelines</h2>
+          <p class="art-summary">
+            A structured clinical reference evaluating evidence-based nutrition protocols for Type 1 & 2 Diabetes, Chronic Kidney Disease, Low-FODMAP IBS, PCOS, and Pediatric growth according to ADA, ESPEN, and WHO guidelines.
+          </p>
+        </div>
+        <div class="art-footer">
+          <span>⏱️ 15 min read • Clinical Reference</span>
+          <span class="art-read-more">Read Full Guide →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer class="m-footer" role="contentinfo">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <a href="../index.html" class="m-nav-brand" style="margin-bottom:16px;display:inline-flex;">
+          <img src="../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+          <div class="brand-app">
+            <span class="brand-name-en">Murshid</span>
+            <span class="brand-name-ar">مرشد</span>
+          </div>
+        </a>
+        <p class="m-footer-desc">
+          The comprehensive practice management ecosystem for clinical dietitians and nutrition clinics. Built for clinical efficiency, patient empowerment, and 100% offline data sovereignty.
+        </p>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Core Pillars</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="../features/offline-food-bank.html">Offline Food Database (13K)</a></li>
+          <li><a href="../features/smart-diet-engine.html">Dual-Points Meal Planning</a></li>
+          <li><a href="../features/pharmacology-reference.html">Digital Pharmacology Library</a></li>
+          <li><a href="../features/patient-crm.html">Patient 360 CRM & Web Forms</a></li>
+          <li><a href="../features/offline-first-privacy.html">Offline-First & Data Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Knowledge & Insights</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="index.html">Knowledge Hub & Guides</a></li>
+          <li><a href="../protocols.html">Clinical Protocols Atlas (70+)</a></li>
+          <li><a href="../comparisons/murshid-vs-excel.html">Murshid vs. Excel</a></li>
+          <li><a href="../comparisons/murshid-vs-cloud-software.html">Murshid vs. Cloud EHRs</a></li>
+          <li><a href="../features/specialist-site-builder.html">Clinic Website Builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Legal & Support</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../terms-of-use.html">Terms of Use</a></li>
+          <li><a href="../refund-policy.html">Refund Policy</a></li>
+          <li><a href="../data-deletion.html">Data Deletion</a></li>
+          <li><a href="../contact.html">Contact Support</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Regulatory Disclaimer Standard Box -->
+    <div style="margin-top: 36px; padding: 20px; background: rgba(15, 23, 42, 0.04); border: 1px solid var(--m-border); border-radius: 12px; font-size: 0.8rem; line-height: 1.7; color: var(--m-text-muted); text-align: center;">
+      <strong>⚠️ Standard Regulatory & Clinical Practice Disclaimer:</strong><br />
+      Murshid App and its platform ecosystem are strictly administrative, computational, and clinical documentation productivity software designed exclusively for licensed dietitians and qualified healthcare practitioners. Murshid is NOT a Software as a Medical Device (SaMD) and does not provide automated clinical diagnoses, medical advice, therapeutic prescriptions, or autonomous patient triage. All clinical interpretations, nutritional calculations, and dietary recommendations remain the sole professional responsibility of the attending licensed clinician.
+    </div>
+
+    <div class="m-footer-bottom">
+      <p>© 2026 Murshid App — Developed by FES HealthTech. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../shared/murshid-script.js"></script>
+</body>
+</html>

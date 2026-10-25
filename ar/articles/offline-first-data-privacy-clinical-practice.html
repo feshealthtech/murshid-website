@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سيادة وأمان البيانات الطبية والعمل أوفلاين — تطبيق مرشد</title>
+  <meta name="description" content="تحليل تقني وقانوني لأهمية معمارية العمل بدون إنترنت (Offline-First) في حماية خصوصية بيانات المرضى والامتثال لمعايير HIPAA و GDPR في عيادات التغذية." />
+  <meta name="keywords" content="أمان البيانات الطبية, خصوصية بيانات المرضى, العمل اوفلاين عيادة تغذية, تشفير البيانات hipaa, سيادة البيانات gdpr, تطبيق مرشد" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" href="../../assets/logo-sq.webp" type="image/webp" />
+
+  <link rel="canonical" href="https://murshid.feshealthtech.com/ar/articles/offline-first-data-privacy-clinical-practice.html" />
+  <link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/articles/offline-first-data-privacy-clinical-practice.html" />
+  <link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/articles/offline-first-data-privacy-clinical-practice.html" />
+  <link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/articles/offline-first-data-privacy-clinical-practice.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="سيادة وأمان البيانات الطبية: معمارية الأوفلاين في عيادات التغذية" />
+  <meta property="og:description" content="كيف تحمي معمارية Zero Cloud Data Exposure عيادتك من الاختراقات والتسريبات السحابية الجماعية." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://murshid.feshealthtech.com/ar/articles/offline-first-data-privacy-clinical-practice.html" />
+  <meta property="og:image" content="https://murshid.feshealthtech.com/assets/og-preview.jpg?v=3" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../shared/murshid-style.css" />
+  <link rel="stylesheet" href="../../shared/index-style.css" />
+
+  <!-- Schema.org Rich Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": "https://murshid.feshealthtech.com/ar/articles/offline-first-data-privacy-clinical-practice.html",
+        "headline": "سيادة وأمان البيانات الطبية: معمارية العمل أوفلاين لحماية خصوصية مراجعي التغذية",
+        "description": "تحليل هندسي وقانوني لأهمية مبدأ عدم مشاركة البيانات مع السحابة، وكيف يحمي التشفير المحلي بمعايير HIPAA و GDPR العيادة من الاختراقات.",
+        "inLanguage": "ar",
+        "mainEntityOfPage": "https://murshid.feshealthtech.com/ar/articles/offline-first-data-privacy-clinical-practice.html",
+        "author": {
+          "@type": "Organization",
+          "name": "فريق أمن المعلومات والامتثال الطبي — FES HealthTech",
+          "url": "https://feshealthtech.com/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "FES HealthTech",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://murshid.feshealthtech.com/assets/logo.webp"
+          }
+        },
+        "datePublished": "2026-10-24",
+        "dateModified": "2026-10-25"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "الرئيسية",
+            "item": "https://murshid.feshealthtech.com/ar/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "مركز المعرفة",
+            "item": "https://murshid.feshealthtech.com/ar/articles/index.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "أمان البيانات والعمل أوفلاين",
+            "item": "https://murshid.feshealthtech.com/ar/articles/offline-first-data-privacy-clinical-practice.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    body { font-family: 'Cairo', 'Noto Kufi Arabic', system-ui, sans-serif; }
+    .art-header {
+      padding: 130px 0 50px;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(43, 181, 160, 0.18) 0%, transparent 70%), var(--m-bg);
+      border-bottom: 1px solid var(--m-border);
+    }
+    .art-header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .art-pill {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 999px;
+      background: rgba(43, 181, 160, 0.12);
+      color: var(--m-primary);
+      margin-bottom: 16px;
+    }
+    .art-h1 {
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      font-weight: 900;
+      line-height: 1.35;
+      color: var(--m-text);
+      margin-bottom: 20px;
+    }
+    .art-meta {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--m-text-muted);
+      border-top: 1px solid var(--m-border);
+      padding-top: 16px;
+    }
+    .art-content-wrap {
+      max-width: 860px;
+      margin: 50px auto 70px;
+      font-size: 1.05rem;
+      line-height: 2;
+      color: #334155;
+    }
+    .art-content-wrap h2 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--m-text);
+      margin: 48px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(43, 181, 160, 0.2);
+    }
+    .art-content-wrap h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--m-text);
+      margin: 32px 0 14px;
+    }
+    .art-content-wrap p { margin-bottom: 22px; }
+    .art-content-wrap ul, .art-content-wrap ol { margin-bottom: 24px; padding-right: 24px; }
+    .art-content-wrap li { margin-bottom: 10px; }
+    .clinical-callout {
+      background: linear-gradient(135deg, rgba(43, 181, 160, 0.08) 0%, rgba(99, 102, 241, 0.06) 100%);
+      border-right: 4px solid var(--m-primary);
+      border-radius: 0 16px 16px 0;
+      padding: 24px 28px;
+      margin: 32px 0;
+    }
+    .clinical-callout h4 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--m-primary);
+      margin-bottom: 8px;
+    }
+    .clinical-callout p { margin: 0; font-size: 0.95rem; color: var(--m-text); }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     HEADER & NAVBAR
+     ════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav" aria-label="شريط التنقل الرئيسي">
+  <div class="container m-nav-inner">
+    <a href="../index.html" class="m-nav-brand" aria-label="الصفحة الرئيسية">
+      <img src="../../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">مرشد</span>
+        <span class="brand-name-en">تطبيق</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="../index.html#features">المميزات</a></li>
+      <li><a href="../index.html#pillars">أركان المنظومة</a></li>
+      <li><a href="../protocols.html">أطلس البروتوكولات</a></li>
+      <li><a href="../comparisons/murshid-vs-excel.html">المقارنات</a></li>
+      <li><a href="index.html" style="color:var(--m-primary);font-weight:800;">مركز المعرفة</a></li>
+      <li><a href="../faq.html">الأسئلة الشائعة</a></li>
+      <li class="m-nav-dropdown">
+        <button class="m-nav-dropdown-btn" aria-haspopup="true">
+          <span>قانوني</span>
+          <span style="font-size:0.75rem;">▾</span>
+        </button>
+        <div class="m-nav-dropdown-menu">
+          <a href="../../privacy-policy.html" class="m-nav-dropdown-item">🔒 سياسة الخصوصية</a>
+          <a href="../../terms-of-use.html" class="m-nav-dropdown-item">📜 شروط الاستخدام</a>
+          <a href="../../refund-policy.html" class="m-nav-dropdown-item">💵 سياسة الاسترداد</a>
+          <a href="../../data-deletion.html" class="m-nav-dropdown-item">🗑️ حذف البيانات</a>
+        </div>
+      </li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../../articles/offline-first-data-privacy-clinical-practice.html" class="m-btn m-btn-secondary" style="margin-left:8px; border:1px solid rgba(43,181,160,0.3); font-size:0.8rem; padding:7px 14px;" title="English Version">🌐 English</a>
+      <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-btn m-btn-primary" id="nav-download-btn">📥 تحميل مجاناً</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">تطبيق مرشد</span>
+    <span class="m-mobile-menu-subtitle">المنصة الذكية لأخصائيي التغذية</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="../index.html" class="m-mobile-link"><span class="m-mobile-icon">🏠</span><span class="m-mobile-text">الرئيسية</span></a>
+    <a href="../../articles/offline-first-data-privacy-clinical-practice.html" class="m-mobile-link"><span class="m-mobile-icon">🌐</span><span class="m-mobile-text">English (الإنجليزية)</span></a>
+    <a href="../protocols.html" class="m-mobile-link"><span class="m-mobile-icon">📚</span><span class="m-mobile-text">أطلس البروتوكولات (70+)</span></a>
+    <a href="../comparisons/murshid-vs-excel.html" class="m-mobile-link"><span class="m-mobile-icon">📊</span><span class="m-mobile-text">مرشد مقابل إكسل</span></a>
+    <a href="index.html" class="m-mobile-link"><span class="m-mobile-icon">📖</span><span class="m-mobile-text">مركز المعرفة والمقالات</span></a>
+    <a href="../faq.html" class="m-mobile-link"><span class="m-mobile-icon">❓</span><span class="m-mobile-text">الأسئلة الشائعة</span></a>
+    <a href="../../privacy-policy.html" class="m-mobile-link"><span class="m-mobile-icon">🔒</span><span class="m-mobile-text">الخصوصية والقانوني</span></a>
+  </div>
+  <div class="m-mobile-menu-actions">
+    <a href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid" target="_blank" rel="noopener noreferrer" class="m-mobile-dl-btn" id="mobile-android-btn"><span>🤖 Google Play</span></a>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- ════════════════════════════════════════
+     ARTICLE HEADER
+     ════════════════════════════════════════ -->
+<header class="art-header">
+  <div class="container">
+    <div class="art-header-inner">
+      <span class="art-pill">🔒 أمان المعلومات والامتثال الطبي</span>
+      <h1 class="art-h1">سيادة وأمان البيانات الطبية:<br />معمارية العمل أوفلاين لحماية خصوصية مراجعي التغذية</h1>
+      <div class="art-meta">
+        <span>✍️ إعداد: فريق أمن المعلومات والامتثال السريري — FES HealthTech</span>
+        <span>⏱️ وقت القراءة: 11 دقيقة</span>
+        <span>📅 تاريخ النشر: أكتوبر 2026</span>
+        <span>🛡️ المعايير: HIPAA, GDPR, AES-256, Zero-Cloud Exposure</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════
+     ARTICLE CONTENT BODY
+     ════════════════════════════════════════ -->
+<article class="container">
+  <div class="art-content-wrap">
+
+    <p>
+      شهدت السنوات الأخيرة تصاعداً غير مسبوق في الهجمات السيبرانية التي تستهدف القطاع الصحي عالمياً. ووفقاً للتقارير السنوية لأمن المعلومات الطبية، تحتل البيانات الصحية المرتبة الأولى بين أكثر البيانات استهدافاً في السوق السوداء الرقمية، متفوقة على أرقام بطاقات الائتمان والمعلومات المالية.
+    </p>
+
+    <p>
+      بالنسبة لعيادة التغذية المستقلة، لا تشمل السجلات مجرد قياس وزن؛ بل تضم تفاصيل التاريخ المرضي المزمن (كالسكري، السرطان، أمراض الكلى، والأمراض المناعية)، الفحوصات المخبرية، القياسات الجسمانية الدقيقة، والعادات النفسية والغذائية للمريض. إن تسريب هذه المعلومات لا يدمر ثقة المراجع فحسب؛ بل يعرض العيادة لغرامات تنظيمية باهظة تحت طائلة قوانين الخصوصية الصارمة (مثل HIPAA في الولايات المتحدة، GDPR في الاتحاد الأوروبي، ونظام حماية البيانات الشخصية في دول الخليج العربي).
+    </p>
+
+    <div class="clinical-callout">
+      <h4>🛡️ حقيقة هندسية حاسمة</h4>
+      <p>
+        أكثر السيرفرات السحابية أماناً هي تلك التي <strong>لا تحتوي على بياناتك إطلاقاً</strong>. إن فلسفة عدم جمع البيانات (Zero Data Collection Architecture) هي الحصن المنيع الوحيد ضد التسريبات الجماعية.
+      </p>
+    </div>
+
+    <h2>1. مأزق المنصات السحابية المركزية (The Cloud Vulnerability)</h2>
+    <p>
+      تعتمد برمجيات التغذية السحابية التقليدية (SaaS) على نموذج قاعدة البيانات المركزية المشتركة (Multi-Tenant Cloud Databases). يعني هذا أن بيانات آلاف العيادات ومئات الآلاف من المرضى مخزنة في مستودع سحابي واحد.
+    </p>
+    <p>
+      يمثل هذا النموذج نقطة عطل واختراق مركزية (Single Point of Failure):
+    </p>
+    <ul>
+      <li><strong>هجمات الفدية والتسريب الجماعي:</strong> اختراق خادم مركزي واحد يكشف بيانات كافة العيادات المسجلة دفعة واحدة.</li>
+      <li><strong>احتكار المزوّد (Vendor Lock-in):</strong> تصبح بياناتك رهينة لدى شركة البرمجيات؛ وفي حال رغبت في تغيير النظام، قد تفرض عليك الشركة رسوماً باهظة لتصدير بياناتك.</li>
+      <li><strong>انقطاع الخدمة:</strong> في حال تعطل خوادم الشركة أو انقطاع خدمة أمازون AWS أو جوجل كلاود، تتوقف عيادتك بالكامل وتفقد القدرة على الوصول لملفات مرضاك في غرفة الكشف.</li>
+    </ul>
+
+    <h2>2. هندسة الأوفلاين أولاً (Offline-First): السرعة المطلقة والسيادة التامة</h2>
+    <p>
+      انطلاقاً من هذا التحدي، اختار فريق مرشد مساراً هندسياً متقدماً يعتمد على <strong>معمارية الأوفلاين أولاً (Offline-First Architecture)</strong> المعتمدة على محرك NoSQL المدمج فائق السرعة (Isar Core المطور بـ Rust و C++).
+    </p>
+    <p>
+      تتميز هذه المعمارية بخصائص أمنية وسريرية فريدة:
+    </p>
+    <ul>
+      <li><strong>تخزين محلي مشفر:</strong> تُحفظ كافة بيانات المراجعين، الخطط، والتقارير المالية محلياً على جهاز الأخصائي فقط، مشفرة بتشفير قياسي متقدم (AES-256).</li>
+      <li><strong>انعدام مخاطر التسريب المركزي:</strong> لا نملك خادماً مركزياً تتجمع فيه ملفات مرضاك؛ وبالتالي يستحيل اختراق عيادتك عبر اختراق أي نظام سحابي خارجي.</li>
+      <li><strong>استجابة بالمللي ثانية:</strong> تتم عمليات قراءة البيانات والبحث الحسابي في ذاكرة الجهاز مباشرة دون انتظار إرسال واستقبال حزم الإنترنت عبر القارات.</li>
+    </ul>
+
+    <h2>3. التشفير الطرفي لاستمارات الويب (TweetNaCl Asymmetric Encryption)</h2>
+    <p>
+      ولكن ماذا عن البيانات التي يرسلها المراجع من منزله قبل الاستشارة؟
+    </p>
+    <p>
+      في مرشد، تُحل هذه المسألة بأعلى تقنيات التشفير غير المتماثل (Public-Key Cryptography):
+    </p>
+    <div class="step-box">
+      <span class="step-badge">بروتوكول التشفير الآمن</span>
+      <p>
+        عندما يملأ المراجع استبيان الدخول الإلكتروني في متصفحه، يقوم المتصفح بتشفير النص محلياً باستخدام مكتبة التشفير العسكرية <strong>TweetNaCl</strong> ومفتاح الأخصائي العام (Public Key). تُرفع البيانات إلى السحابة كـ "شفرة غير مفهومة" (Ciphertext)؛ ولا تستطيع خوادمنا قراءتها إطلاقاً. المفتاح الوحيد القادر على فك الشفرة (Private Key) موجود محلياً داخل جهاز الأخصائي فقط، حيث يتم فك التشفير عند استيراد الملف للعيادة.
+      </p>
+    </div>
+
+    <h2>4. استقلالية العيادة والنسخ الاحتياطي المشفر (Disaster Recovery)</h2>
+    <p>
+      لضمان عدم فقدان البيانات في حال تلف أو سرقة جهاز الأخصائي، يدمج مرشد محرك نسخ احتياطي محلي مشفر بضغطة زر (`DataBackupHelper`).
+    </p>
+    <p>
+      يستطيع الأخصائي توليد ملف احتياطي مضغوط ومحمي بكلمة مرور خاصة، وتخزينه على قرص خارجي مشفر، فلاش ميموري، أو بريده الشخصي. وبذلك يحتفظ بالسيادة الكاملة على بياناته وسجلاته الطبية لسنوات طويلة دون الارتهان لأي شركة أو اشتراك شهري.
+    </p>
+
+    <div class="clinical-callout">
+      <h4>⚖️ الخلاصة التنظيمية للأخصائيين</h4>
+      <p>
+        العيادة التغذوية الحديثة لا تساوم على سرية المرضى. إن اختيار البرمجيات التي تحترم سيادة البيانات والعمل الأوفلاين يمنحك راحة البال القانونية والأخلاقية، ويؤكد لمرضاك أن سجلاتهم الصحية في أيدٍ أمينة لا يشاركها أي طرف ثالث في العالم.
+      </p>
+    </div>
+
+    <!-- Related Clinical Guides & Comparative Resources -->
+    <div style="margin-top: 48px; padding: 28px; background: rgba(43, 181, 160, 0.06); border: 1px solid var(--m-border); border-radius: 16px;">
+      <h3 style="font-size: 1.2rem; font-weight: 800; color: var(--m-text); margin-bottom: 14px;">📚 مراجع ومحركات سريرية ذات صلة</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 16px;">
+        <a href="../features/offline-first-privacy.html" style="background:#fff; padding:16px; border-radius:12px; border:1px solid var(--m-border); text-decoration:none; color:inherit; display:block;">
+          <strong style="color:var(--m-primary); font-size:0.92rem; display:block; margin-bottom:4px;">🔒 ركن الخصوصية والأوفلاين</strong>
+          <span style="font-size:0.83rem; color:var(--m-text-muted);">المعمارية التقنية لقاعدة Isar وتشفير الأجهزة المحلية. ←</span>
+        </a>
+        <a href="../comparisons/murshid-vs-cloud-software.html" style="background:#fff; padding:16px; border-radius:12px; border:1px solid var(--m-border); text-decoration:none; color:inherit; display:block;">
+          <strong style="color:#6366f1; font-size:0.92rem; display:block; margin-bottom:4px;">☁️ مرشد مقابل البرمجيات السحابية</strong>
+          <span style="font-size:0.83rem; color:var(--m-text-muted);">تحليل مخاطر التسريب وتكاليف الاشتراكات السحابية المتكررة. ←</span>
+        </a>
+        <a href="modern-nutrition-clinic-management-guide.html" style="background:#fff; padding:16px; border-radius:12px; border:1px solid var(--m-border); text-decoration:none; color:inherit; display:block;">
+          <strong style="color:var(--m-gold); font-size:0.92rem; display:block; margin-bottom:4px;">📖 دليل إدارة العيادة الحديثة</strong>
+          <span style="font-size:0.83rem; color:var(--m-text-muted);">خطوات تأمين نماذج استقبال المراجعين المشفرة E2EE. ←</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════ -->
+<footer class="m-footer" role="contentinfo">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <a href="../index.html" class="m-nav-brand" style="margin-bottom:16px;display:inline-flex;">
+          <img src="../../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+          <div class="brand-app">
+            <span class="brand-name-ar">مرشد</span>
+            <span class="brand-name-en">تطبيق</span>
+          </div>
+        </a>
+        <p class="m-footer-desc">
+          المنصة الذكية المتكاملة لإدارة عيادات وممارسات التغذية. مصممة لتوفير وقت الأخصائي وتمكين المراجعين بأعلى معايير الخصوصية والعمل بدون إنترنت.
+        </p>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">أركان المنظومة</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="../features/offline-food-bank.html">بنك الأغذية الأوفلاين (13K)</a></li>
+          <li><a href="../features/smart-diet-engine.html">محرك النقاط وتصميم الحميات</a></li>
+          <li><a href="../features/pharmacology-reference.html">المكتبة الصيدلانية الرقمية</a></li>
+          <li><a href="../features/patient-crm.html">إدارة ملفات المراجعين 360</a></li>
+          <li><a href="../features/offline-first-privacy.html">الخصوصية والأمان بدون إنترنت</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">المعرفة والمقارنات</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="index.html">مركز المعرفة والمقالات</a></li>
+          <li><a href="../protocols.html">أطلس البروتوكولات السريرية (70+)</a></li>
+          <li><a href="../comparisons/murshid-vs-excel.html">مرشد مقابل إكسل</a></li>
+          <li><a href="../comparisons/murshid-vs-cloud-software.html">مرشد مقابل البرامج السحابية</a></li>
+          <li><a href="../features/specialist-site-builder.html">منشئ موقع العيادة</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">قانوني والدعم</h3>
+        <ul class="m-footer-links" role="list">
+          <li><a href="../../privacy-policy.html">سياسة الخصوصية</a></li>
+          <li><a href="../../terms-of-use.html">شروط الاستخدام</a></li>
+          <li><a href="../../refund-policy.html">سياسة الاسترداد</a></li>
+          <li><a href="../../data-deletion.html">حذف البيانات</a></li>
+          <li><a href="../contact.html">تواصل مع الدعم الفني</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Regulatory Disclaimer Standard Box -->
+    <div style="margin-top: 36px; padding: 20px; background: rgba(15, 23, 42, 0.04); border: 1px solid var(--m-border); border-radius: 12px; font-size: 0.8rem; line-height: 1.7; color: var(--m-text-muted); text-align: center;">
+      <strong>⚠️ إخلاء مسؤولية تنظيمي وسريري معتمد:</strong><br />
+      منظومة وتطبيق «مرشد» هي أداة برمجية إدارية، حسابية، ومساعدة في التوثيق السريري مخصصة حصراً لأخصائيي التغذية والكوادر الطبية المؤهلة. لا تُعد المنظومة بأي شكل من الأشكال جهازاً طبياً (Software as a Medical Device - SaMD) ولا تقدم تشخيصاً طبياً، أو علاجاً، أو وصفات دوائية، أو استشارات ذاتية للمرضى. تقع المسؤولية السريرية والتشخيصية الكاملة لتقييم الحالات والخطط الغذائية على عاتق الأخصائي المرخص المشرف على الحالة.
+    </div>
+
+    <div class="m-footer-bottom">
+      <p>© 2026 تطبيق مرشد — أحد ابتكارات شركة FES HealthTech. جميع الحقوق محفوظة.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../../shared/murshid-script.js"></script>
+</body>
+</html>
