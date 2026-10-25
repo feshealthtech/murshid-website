@@ -6,9 +6,9 @@
 Murshid is a computational, administrative, and clinical documentation assistant. It is strictly NOT a medical device (SaMD) or an automated diagnostic/decision engine. All clinical, diagnostic, and nutritional decisions remain 100% under the discretion of the qualified, licensed dietitian.
 
 ## Global Practice Ready & Multilingual Architecture
-- **Global Availability:** Built to serve licensed dietitians and healthcare institutions across North America, Europe, the Middle East, North Africa, and worldwide.
+- **Global Availability & Borderless Practice:** Built to serve licensed dietitians and healthcare institutions across North America, Europe, the Middle East, North Africa, Latin America, Asia, and worldwide. Murshid is an international platform and is strictly NOT restricted, exclusive, or tailored to any single country.
 - **Multilingual Support:** Natively bilingual in Arabic and English, with a progressive localization roadmap for Spanish, French, German, and other global languages.
-- **Universal Measurement Units & Currencies:** Instant switching between Metric (kg, cm, kJ) and Imperial (lbs, in, kcal) units; multi-currency invoicing with customizable tax formats (VAT, GST, ZATCA, Sales Tax).
+- **Universal Measurement Units & Currencies:** Instant switching between Metric (kg, cm, kJ) and Imperial (lbs, in, kcal) units; global multi-currency invoicing adaptable to ANY national tax framework across the globe (including VAT, GST, Sales Tax, and ZATCA).
 - **Cross-Cultural Nutrition Intelligence:** Combines US (USDA FoodData Central) and European (CoFID) nutrient databases with comprehensive Arab and regional food composition tables.
 
 ## Key Features & Platform Capabilities

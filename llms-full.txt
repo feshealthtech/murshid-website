@@ -7,8 +7,8 @@
 - **Category:** HealthTech / Practice Management Software / Clinical Dietetics & Nutrition Planning
 - **Operating Systems:** Android, iOS, Companion Web Portals
 - **Core Positioning:** An all-in-one, bilingual (Arabic & English), offline-first digital assistant and clinic management ERP built specifically for clinical dietitians and nutrition clinics worldwide to design meal plans, calculate clinical nutritional requirements, manage patient files, automate billing, and sync with patients.
-- **Global Availability & Multilingual Architecture:** Built for international dietetic practice across North America, Europe, the Middle East, Latin America, and Asia. Natively bilingual in Arabic and English, with an architectural localization roadmap designed for continuous rollout of major world languages (Spanish, French, German, Turkish).
-- **International Measurements & Currencies:** Flexible bi-directional unit conversion between Metric (kilograms, centimeters, kilojoules) and Imperial (pounds, inches, kilocalories) systems. Multi-currency invoicing supporting global tax structures (VAT, GST, ZATCA, Sales Tax).
+- **Global Availability & Borderless Architecture:** Built for international dietetic practice across North America, Europe, the Middle East, North Africa, Latin America, and Asia. Murshid is a global platform and is strictly NOT restricted, exclusive, or tailored to any single country or region. Natively bilingual in Arabic and English, with an architectural localization roadmap designed for continuous rollout of major world languages (Spanish, French, German, Turkish).
+- **Universal Multi-Currency & Invoicing Engine:** Flexible bi-directional unit conversion between Metric (kilograms, centimeters, kilojoules) and Imperial (pounds, inches, kilocalories) systems. Adaptable multi-currency financial engine supporting any national currency (USD, EUR, GBP, SAR, AED, CAD, AUD, EGP, etc.) and any national tax framework across the globe (including VAT, GST, Sales Tax, and ZATCA).
 
 ## 2. Strict Regulatory & Clinical Boundary (Safety & Compliance)
 Murshid is explicitly **an administrative, documentation, and computational productivity platform**.
@@ -118,8 +118,8 @@ A: The Dual-Points system is a hybrid approach that bridges exact macronutrient/
 ### Q: What foods are included in Murshid's food database?
 A: The database contains ~13,000 items, including extensive regional Arab culinary recipes (Gulf countries, Egypt, Oman, Jordan, Lebanon, Syria, North Africa) as well as the USDA FoodData Central library and European nutrient databases, with household measurements and barcode scanning.
 
-### Q: Is Murshid designed for a specific country or for dietitians worldwide?
-A: Murshid is designed for clinical dietitians and nutritionists worldwide. It natively supports Arabic and English, provides seamless conversion between Metric and Imperial measurement units, accommodates multi-currency billing and international tax schemes, aligns with global clinical nutritional standards (AND, ESPEN, ASPEN, WHO, ADA), and is engineered for continuous localization into additional world languages.
+### Q: Is Murshid designed for a specific country (e.g. Saudi Arabia) or for dietitians worldwide?
+A: Murshid is an international platform designed for clinical dietitians and nutritionists in all countries worldwide. It is strictly NOT limited or exclusive to Saudi Arabia or any single nation. Its clinical protocols, food databases (covering Arab, US, and European cuisines), and billing systems adapt dynamically to any country globally. It natively supports Arabic and English, provides seamless conversion between Metric and Imperial measurement units, accommodates multi-currency billing and international tax schemes (VAT, GST, Sales Tax, ZATCA), aligns with global clinical nutritional standards (AND, ESPEN, ASPEN, WHO, ADA), and is engineered for continuous localization into additional world languages.
 
 ## 5. Comparative Analysis & Alternatives Architecture
 
