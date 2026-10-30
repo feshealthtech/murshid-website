@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account &amp; Data Deletion Request — Murshid Companion</title>
+  <meta name="description" content="Request the deletion of your account and personal health data from Murshid Companion app. Full compliance with Apple &amp; Google Play policies." />
+  <link rel="icon" href="../assets/logo-sq.webp" type="image/webp" />
+  <link rel="stylesheet" href="../shared/murshid-style.css" />
+  <style>
+    .del-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 24px 0 36px;
+    }
+    @media (max-width: 820px) {
+      .del-cards-grid { grid-template-columns: 1fr; }
+    }
+    .del-card {
+      padding: 24px;
+      border-radius: var(--m-radius);
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .del-card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .del-card-green {
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      background: rgba(34, 197, 94, 0.06);
+    }
+    .del-card-green .del-card-title { color: #16a34a; }
+    .del-card-amber {
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      background: rgba(245, 158, 11, 0.06);
+    }
+    .del-card-amber .del-card-title { color: #d97706; }
+    .del-card-blue {
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(56, 189, 248, 0.06);
+    }
+    .del-card-blue .del-card-title { color: #0284c7; }
+    .del-card-purple {
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      background: rgba(139, 92, 246, 0.06);
+    }
+    .del-card-purple .del-card-title { color: #7c3aed; }
+    .del-step-box {
+      background: var(--m-surface-3);
+      border: 1px solid var(--m-border);
+      border-radius: var(--m-radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .del-step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--m-primary);
+      color: white;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-right: 10px;
+    }
+    .lang-switcher-btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: var(--m-surface-3);
+      border: 1px solid var(--m-border);
+      color: var(--m-text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .lang-switcher-btn:hover {
+      border-color: var(--m-primary);
+      color: var(--m-primary);
+    }
+    .m-nav-links a.active {
+      color: var(--m-primary) !important;
+      font-weight: 700 !important;
+    }
+    .m-nav-links a.active::after {
+      width: 100% !important;
+    }
+    .m-mobile-link.active {
+      background: rgba(43, 181, 160, 0.08) !important;
+      border-color: var(--m-primary) !important;
+      color: var(--m-primary) !important;
+      font-weight: 700 !important;
+    }
+    /* ── Form Styles ─────────────────────────────────────── */
+    .del-form-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--m-text);
+      margin-bottom: 6px;
+    }
+    .del-form-input {
+      width: 100%;
+      background: var(--m-surface-3);
+      border: 1px solid var(--m-border);
+      border-radius: var(--m-radius-sm);
+      padding: 12px 16px;
+      color: var(--m-text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      display: block;
+      box-sizing: border-box;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .del-form-input:focus {
+      border-color: var(--m-primary);
+      box-shadow: 0 0 0 3px var(--m-primary-glow);
+    }
+    textarea.del-form-input {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .del-form-input.is-invalid {
+      border-color: #EF4444 !important;
+      background-color: rgba(239, 68, 68, 0.08) !important;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+    }
+    .del-form-input.is-valid {
+      border-color: var(--m-primary) !important;
+      box-shadow: 0 0 0 3px var(--m-primary-glow) !important;
+    }
+    .field-error-message {
+      font-size: 0.8rem;
+      color: #EF4444;
+      margin-top: -10px;
+      margin-bottom: 16px;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+    .del-form-input option {
+      background-color: var(--m-surface-2) !important;
+      color: #FFF !important;
+    }
+    .del-checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .del-checkbox-row input[type="checkbox"] {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: var(--m-primary);
+      cursor: pointer;
+    }
+    .del-checkbox-row label {
+      font-size: 0.88rem;
+      color: var(--m-text-muted);
+      line-height: 1.6;
+      cursor: pointer;
+    }
+    .del-success-card {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 30px 10px;
+      animation: delFadeIn 0.4s ease-out;
+    }
+    @keyframes delFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .del-success-badge {
+      width: 80px;
+      height: 80px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 2px solid rgba(34, 197, 94, 0.3);
+      border-radius: 50%;
+      color: #22C55E;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .del-success-check-svg {
+      width: 40px;
+      height: 40px;
+      stroke: #22C55E;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    .del-success-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #FFF;
+      margin-bottom: 12px;
+    }
+    .del-success-desc {
+      color: var(--m-text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 480px;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     NAVBAR
+     ══════════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="index.html" class="m-nav-brand">
+      <img src="../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">Murshid Companion</span>
+        <span class="brand-name-en">PATIENT CARE PORTAL</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="privacy-policy.html">Privacy Policy</a></li>
+      <li><a href="terms-of-use.html">Terms of Use</a></li>
+      <li><a href="data-deletion.html" class="active">Data Deletion</a></li>
+      <li><a href="../index.html" style="opacity:0.85;">Specialist Platform ↗</a></li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../ar/companion/data-deletion.html" class="lang-switcher-btn" title="النسخة العربية">العربية 🇸🇦</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Drawer -->
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">Murshid Companion</span>
+    <span class="m-mobile-menu-subtitle">Clinical Follow-Up Portal for Subscribers</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">Home (Companion Portal)</span>
+    </a>
+    <a href="privacy-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🛡️</span>
+      <span class="m-mobile-text">Subscriber Privacy Policy</span>
+    </a>
+    <a href="terms-of-use.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📜</span>
+      <span class="m-mobile-text">Terms of Use &amp; Medical Disclaimer</span>
+    </a>
+    <a href="data-deletion.html" class="m-mobile-link active">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">Request Data Deletion</span>
+    </a>
+    <a href="../contact.html" class="m-mobile-link">
+      <span class="m-mobile-icon">💬</span>
+      <span class="m-mobile-text">Technical Support &amp; Help</span>
+    </a>
+    <a href="../index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🩺</span>
+      <span class="m-mobile-text">Murshid for Specialists ↗</span>
+    </a>
+    <a href="../ar/companion/data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🌐</span>
+      <span class="m-mobile-text">العربية (Switch to Arabic)</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="privacy-policy.html">Privacy</a>
+    <span>•</span>
+    <a href="terms-of-use.html">Terms</a>
+    <span>•</span>
+    <a href="data-deletion.html">Data Deletion</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════ -->
+<section class="legal-hero">
+  <div class="container">
+    <div class="legal-hero-inner">
+      <div class="m-label">Account &bull; Data Governance</div>
+      <h1 class="m-title">Account &amp; Data Deletion Request</h1>
+      <p class="m-subtitle" style="margin:0;">You have the absolute legal and technological right to permanently delete your account and associated records.</p>
+      <span class="legal-last-updated">In Compliance with Google Play &amp; Apple App Store Guidelines</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     LAYOUT
+     ══════════════════════════════════════════════ -->
+<div class="container" style="padding-top: 48px; padding-bottom: 96px;">
+
+  <!-- Info Banner -->
+  <div class="legal-highlight" style="border-left: 4px solid var(--m-primary); background: var(--m-surface-2);">
+    <h3 style="margin-top:0; color:var(--m-text);">Your Privacy, Your Control</h3>
+    <p>At <strong>FES HealthTech</strong>, we respect your right to control your digital footprint. As part of our commitment to GDPR, CCPA, and Saudi Personal Data Protection Law (PDPL), we offer straightforward, transparent methods to permanently erase your account and all associated cloud coordination records.</p>
+  </div>
+
+  <!-- Primary Method: In-App -->
+  <div style="margin-top: 48px;">
+    <h2 style="font-size: 1.4rem; color:var(--m-text); margin-bottom: 20px;">Method 1: Instant In-App Account Deletion (Recommended)</h2>
+    <p style="color:var(--m-text-muted); line-height: 1.8;">If you currently have the Murshid Companion app installed on your smartphone, you can trigger an instantaneous, automated deletion of your account and cloud footprint without human intervention:</p>
+
+    <div class="del-step-box">
+      <div style="display:flex; align-items:center; margin-bottom:12px;">
+        <span class="del-step-number">1</span>
+        <strong style="color:var(--m-text);">Navigate to Account Deletion inside the App</strong>
+      </div>
+      <p style="color:var(--m-text-muted); margin:0 0 0 38px; line-height:1.7;">
+        &bull; <strong>If you are linked to a clinic:</strong> Navigate to the <strong>Settings (الإعدادات)</strong> tab from the bottom navigation bar &larr; <strong>Legal &amp; Compliance (الشؤون القانونية)</strong> &larr; tap <strong>Delete Account &amp; Data (حذف الحساب والبيانات)</strong>.<br>
+        &bull; <strong>If you are a new unlinked subscriber:</strong> From the top of the Clinic Connect screen, tap the <strong>Options Menu (⋮)</strong> &larr; choose <strong>Delete Account &amp; Data</strong>.
+      </p>
+    </div>
+
+    <div class="del-step-box">
+      <div style="display:flex; align-items:center; margin-bottom:12px;">
+        <span class="del-step-number">2</span>
+        <strong style="color:var(--m-text);">Unlock the Security Confirmation Barrier</strong>
+      </div>
+      <p style="color:var(--m-text-muted); margin:0 0 0 38px; line-height:1.7;">
+        Review the luxury security modal detailing the irreversible consequences. To prevent accidental taps and confirm your conscious intent, <strong>type the required keyword (<span style="color:#dc2626; font-weight:bold;">DELETE</span> or <span style="color:#dc2626; font-weight:bold;">حذف</span>)</strong> into the confirmation text box.
+      </p>
+    </div>
+
+    <div class="del-step-box">
+      <div style="display:flex; align-items:center; margin-bottom:12px;">
+        <span class="del-step-number">3</span>
+        <strong style="color:var(--m-text);">Instant Atomic Execution &amp; Local Wipe</strong>
+      </div>
+      <p style="color:var(--m-text-muted); margin:0 0 0 38px; line-height:1.7;">
+        Upon tapping the confirmation button, the cloud infrastructure immediately unlinks all clinics, deletes your Firebase Authentication profile, purges all local asymmetric encryption keys from the secure hardware keystore, clears your local cache, and redirects you to the login screen.
+      </p>
+    </div>
+  </div>
+
+  <!-- Secondary Method: Web Request Form -->
+  <div style="margin-top: 56px;" id="web-form-section">
+    <h2 style="font-size: 1.4rem; color:var(--m-text); margin-bottom: 12px;">Method 2: Direct Web Deletion Request Form (For Uninstalled Apps or Lost Devices)</h2>
+    <p style="color:var(--m-text-muted); line-height: 1.8; margin-bottom: 24px;">
+      If you have already uninstalled the Murshid Companion app or lost access to your device, you can submit an official deletion request instantly using this verified form for swift review and execution by our Data Protection Officer:
+    </p>
+
+    <div class="m-card" style="padding: 32px 28px; margin-bottom: 32px;">
+      <div id="deletionFormContainer">
+        <form id="deletionForm" novalidate>
+
+          <div class="m-form-group">
+            <label class="del-form-label" for="delEmail">Registered Email Address <span style="color:var(--m-primary)">*</span></label>
+            <input
+              class="del-form-input"
+              type="email"
+              id="delEmail"
+              name="delEmail"
+              required
+              placeholder="name@example.com (The email associated with your Google or Apple Sign-In)"
+              autocomplete="email"
+              style="direction: ltr; text-align: left;"
+            />
+            <div class="field-error-message" id="emailError">Please enter a valid, verified email address</div>
+          </div>
+
+          <div class="m-form-group">
+            <label class="del-form-label" for="delName">Full Name of Subscriber / Patient <span style="color:var(--m-primary)">*</span></label>
+            <input
+              class="del-form-input"
+              type="text"
+              id="delName"
+              name="delName"
+              required
+              placeholder="Full name registered or used in the application"
+              autocomplete="name"
+            />
+            <div class="field-error-message" id="nameError">Please enter your full name (at least 3 characters) for verification</div>
+          </div>
+
+          <div class="m-form-group">
+            <label class="del-form-label" for="delReason">Reason for Request <span style="color:var(--m-primary)">*</span></label>
+            <select class="del-form-input" id="delReason" name="delReason" required>
+              <option value="" disabled selected>Select a reason...</option>
+              <option value="finished">Subscription or diet program with clinic has ended</option>
+              <option value="stopped">Discontinued using the app</option>
+              <option value="privacy">Privacy concerns or digital footprint management</option>
+              <option value="migrated">Switched to another clinic or system</option>
+              <option value="reset-data">Desire to wipe data and start fresh</option>
+              <option value="other">Other reason</option>
+            </select>
+            <div class="field-error-message" id="reasonError">Please select a reason for your data deletion request</div>
+          </div>
+
+          <div class="m-form-group">
+            <label class="del-form-label" for="delNotes">Additional Notes or Details</label>
+            <textarea
+              class="del-form-input"
+              id="delNotes"
+              name="delNotes"
+              placeholder="Name of treating clinic or specialist (if applicable), or any details to help verify and expedite your request..."
+            ></textarea>
+          </div>
+
+          <div class="del-checkbox-row" style="margin-bottom: 12px;">
+            <input type="checkbox" id="delConfirm" name="delConfirm" required />
+            <label for="delConfirm">
+              I declare that I am the true owner of this account on the <strong>Murshid Companion</strong> app, and I fully understand that account deletion is permanent, irreversible, and data cannot be recovered once purged. I also understand that this does not automatically erase clinical health records maintained independently by my treating clinic.
+            </label>
+          </div>
+          <div class="field-error-message" id="confirmError" style="margin-top: 0; margin-bottom: 24px;">Please check this confirmation box to acknowledge and proceed</div>
+
+          <button type="submit" class="m-btn m-btn-primary" style="width:100%; justify-content:center; padding: 14px 24px; font-size:1.05rem; font-weight:700;">
+            🗑️ Submit Account &amp; Data Deletion Request
+          </button>
+
+        </form>
+      </div>
+
+      <!-- In-Card Deletion Success State -->
+      <div class="del-success-card" id="deletionSuccessState">
+        <div class="del-success-badge">
+          <svg class="del-success-check-svg" viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="del-success-title">Deletion Request Submitted Successfully!</h3>
+        <p class="del-success-desc">
+          Thank you for confirming your request. We have received your <strong>Murshid Companion</strong> account and cloud data deletion request. Our team and Data Protection Officer are verifying and executing the complete purge of all cloud coordinates and links associated with your email. You will receive an email confirmation upon completion.
+        </p>
+      </div>
+    </div>
+
+    <!-- Alternative Direct Email Fallback Info -->
+    <div class="legal-highlight" style="background:var(--m-surface-3); border:1px solid var(--m-border);">
+      <h4 style="margin-top:0; color:var(--m-text);">Alternative Direct Channel: Manual Email Request</h4>
+      <p style="margin-bottom:8px;">If you prefer sending a manual request from your email client, you can message our Data Protection Officer from the <strong>same email address</strong> associated with your account to:</p>
+      <p style="font-size:1.1rem; font-weight:700;"><a href="mailto:privacy@feshealthtech.com?subject=Murshid%20Companion%20Data%20Deletion%20Request" style="color:var(--m-primary);">privacy@feshealthtech.com</a></p>
+      <p style="font-size:0.88rem; color:var(--m-text-muted); margin-top:12px;"><strong>Subject Line:</strong> <code>Murshid Companion Data Deletion Request - [Your Registered Email]</code></p>
+      <p style="font-size:0.88rem; color:var(--m-text-muted); margin-bottom:0;"><strong>Please Include:</strong> Your registered email address and approximate date of initial sign-up. Our automated verification flow will send a confirmation link to verify ownership before executing the purge.</p>
+    </div>
+  </div>
+
+  <!-- Deletion Scope Breakdown -->
+  <div style="margin-top: 56px;">
+    <h2 style="font-size: 1.4rem; color:var(--m-text); margin-bottom: 12px;">What Happens When Your Account Is Deleted?</h2>
+    <p style="color:var(--m-text-muted);">Here is a precise breakdown of how each tier of your information is handled upon deletion:</p>
+
+    <div class="del-cards-grid">
+      <!-- Card 1 -->
+      <div class="del-card del-card-green">
+        <span class="del-card-title">✅ Permanently Erased (Within 0-72h)</span>
+        <ul>
+          <li>Firebase Authentication profile (UID, email, display name).</li>
+          <li>All cloud linkage documents (<code>clinic_links</code>).</li>
+          <li>Ephemeral transit keys, coordination state, and cryptographic handshakes.</li>
+        </ul>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="del-card del-card-amber">
+        <span class="del-card-title">📱 Locally on Your Device</span>
+        <ul>
+          <li>All local diet plans, daily water logs, and habits.</li>
+          <li>Private Curve25519 cryptographic keys in secure storage.</li>
+          <li><em>Tip: Uninstalling the application completely erases all local database files instantly.</em></li>
+        </ul>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="del-card del-card-blue">
+        <span class="del-card-title">☁️ Personal Google Drive Backups</span>
+        <ul>
+          <li>Your encrypted <code>.mcb</code> backups reside strictly inside your private Google Drive.</li>
+          <li>FES HealthTech has zero access to your Google Drive.</li>
+          <li>You can delete your backup file anytime directly via your Google Drive interface.</li>
+        </ul>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="del-card del-card-purple">
+        <span class="del-card-title">🏥 Clinical Records at Your Clinic</span>
+        <p style="margin-bottom:8px; line-height:1.7;">
+          Deleting your Murshid Companion account purges your subscriber account, unlinks all clinics, and wipes your data from the companion platform. However, it <strong>does not automatically delete historical medical or clinical records already archived by your treating specialist or clinic</strong>.
+        </p>
+        <p style="margin:0; line-height:1.7;">
+          Clinics operate as independent custodians of their clinical health records. If you wish to request the modification or deletion of your medical file stored at the healthcare center, <strong>please contact your healthcare specialist or clinic administration directly</strong>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline & Verification -->
+  <div class="legal-highlight" style="background:var(--m-surface-2); margin-top:24px;">
+    <p><strong>Timeline:</strong> In-app deletions take effect immediately. Web-based email requests are verified and executed within <strong>48 to 72 business hours</strong> in full compliance with international privacy mandates.</p>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="../assets/logo.webp" alt="FES HealthTech" class="footer-logo" width="284" height="284" />
+        <div class="footer-app-name">Murshid Companion</div>
+        <div class="footer-app-sub">Clinical Follow-Up Portal</div>
+        <p>End-to-end encrypted clinical and diet companion app for subscribers &amp; patients &mdash; developed by FES HealthTech.</p>
+        <div class="m-footer-social">
+          <a href="https://x.com/feshealthtech" target="_blank" rel="noopener noreferrer" class="m-footer-social-btn" aria-label="X (Twitter)">𝕏</a>
+          <a href="https://instagram.com/feshealthtech" target="_blank" rel="noopener noreferrer" class="m-footer-social-btn" aria-label="Instagram">📸</a>
+          <a href="https://youtube.com/@feshealthtech" target="_blank" rel="noopener noreferrer" class="m-footer-social-btn" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">App</h3>
+        <ul class="m-footer-links">
+          <li><a href="../index.html">Murshid for Specialists ↗</a></li>
+          <li><a href="index.html">Companion Portal Home</a></li>
+          <li><a href="privacy-policy.html#sec2">Zero-Knowledge E2EE</a></li>
+          <li><a href="terms-of-use.html#term3">Clinical Custody Guidelines</a></li>
+          <li><a href="data-deletion.html">Data Management &amp; Deletion</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Support</h3>
+        <ul class="m-footer-links">
+          <li><a href="data-deletion.html">Request Account Erasure</a></li>
+          <li><a href="../contact.html">Support Center</a></li>
+          <li><a href="mailto:privacy@feshealthtech.com">Data Protection Office</a></li>
+          <li><a href="https://feshealthtech.com/" target="_blank" rel="noopener noreferrer">About FES HealthTech</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">Legal</h3>
+        <ul class="m-footer-links">
+          <li><a href="privacy-policy.html">Subscriber Privacy Policy</a></li>
+          <li><a href="terms-of-use.html">Terms of Use &amp; Disclaimer</a></li>
+          <li><a href="data-deletion.html">Data Deletion Instructions</a></li>
+          <li><a href="../ar/companion/data-deletion.html">العربية (Arabic Portal) 🇸🇦</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/" target="_blank" rel="noopener noreferrer">FES HealthTech</a>. All rights reserved.</p>
+      <div class="m-footer-bottom-links">
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms-of-use.html">Terms</a>
+        <a href="data-deletion.html">Data Deletion</a>
+        <a href="../ar/companion/data-deletion.html">العربية 🇸🇦</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="../shared/murshid-script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    'use strict';
+
+    // Initialize EmailJS with Public Key
+    emailjs.init({
+      publicKey: "GRhnKzi6GMcVvCjb3",
+    });
+
+    const form = document.getElementById('deletionForm');
+    const formContainer = document.getElementById('deletionFormContainer');
+    const successCardState = document.getElementById('deletionSuccessState');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    const fields = {
+      email: {
+        el: document.getElementById('delEmail'),
+        err: document.getElementById('emailError'),
+        validate: (val) => {
+          const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          return re.test(val.trim());
+        }
+      },
+      name: {
+        el: document.getElementById('delName'),
+        err: document.getElementById('nameError'),
+        validate: (val) => val.trim().length >= 3
+      },
+      reason: {
+        el: document.getElementById('delReason'),
+        err: document.getElementById('reasonError'),
+        validate: (val) => val !== '' && val !== null
+      },
+      confirm: {
+        el: document.getElementById('delConfirm'),
+        err: document.getElementById('confirmError'),
+        validate: () => document.getElementById('delConfirm').checked
+      }
+    };
+
+    // Live validation for input, select, and checkbox fields
+    Object.keys(fields).forEach(key => {
+      const field = fields[key];
+      if (field.el.type === 'checkbox') {
+        field.el.addEventListener('change', () => {
+          if (field.validate()) {
+            field.err.style.display = 'none';
+          }
+        });
+      } else {
+        const eventType = field.el.tagName === 'SELECT' ? 'change' : 'input';
+        field.el.addEventListener(eventType, () => {
+          const val = field.el.value;
+          if (val.trim() === '') {
+            field.err.style.display = 'none';
+            field.el.classList.remove('is-valid', 'is-invalid');
+          } else if (field.validate(val)) {
+            field.err.style.display = 'none';
+            field.el.classList.remove('is-invalid');
+            field.el.classList.add('is-valid');
+          } else {
+            field.err.style.display = 'flex';
+            field.el.classList.remove('is-valid');
+            field.el.classList.add('is-invalid');
+          }
+        });
+      }
+    });
+
+    // Form submit interception
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      let isFormValid = true;
+
+      // Validate Text, Select & Checkbox Fields
+      Object.keys(fields).forEach(key => {
+        const field = fields[key];
+        const val = field.el.type === 'checkbox' ? '' : field.el.value;
+        const isValid = field.el.type === 'checkbox' ? field.validate() : field.validate(val);
+
+        if (!isValid) {
+          field.err.style.display = 'flex';
+          if (field.el.type !== 'checkbox') {
+            field.el.classList.remove('is-valid');
+            field.el.classList.add('is-invalid');
+          }
+          isFormValid = false;
+        } else {
+          field.err.style.display = 'none';
+          if (field.el.type !== 'checkbox') {
+            field.el.classList.remove('is-invalid');
+            field.el.classList.add('is-valid');
+          }
+        }
+      });
+
+      if (isFormValid) {
+        if (typeof emailjs === 'undefined') {
+          alert('Messaging service is temporarily unavailable. Please disable ad-blockers or email us directly at privacy@feshealthtech.com.');
+          return;
+        }
+
+        // UI Loading State
+        submitBtn.disabled = true;
+        const origText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<span>⚡ Submitting Deletion Request...</span>';
+
+        const reasonSelect = fields.reason.el;
+        const selectedReasonText = reasonSelect.options[reasonSelect.selectedIndex].text;
+        const notesVal = document.getElementById('delNotes').value.trim();
+        const confirmationStatement = "I declare that I am the true owner of this account on the Murshid Companion app, and I fully understand that account deletion is permanent, irreversible, and data cannot be recovered once purged. I also understand that this does not automatically erase clinical health records maintained independently by my treating clinic.";
+
+        const messageBody = [
+          '======================================================',
+          '📱 DATA DELETION REQUEST — MURSHID COMPANION (SUBSCRIBERS)',
+          '======================================================',
+          '• Target Application: Murshid Companion (Subscriber / Patient Mobile App)',
+          '• Account Classification: Patient / Subscriber Personal Account',
+          '• Full Name: ' + fields.name.el.value.trim(),
+          '• Subscriber Registered Email: ' + fields.email.el.value.trim(),
+          '• Reason for Request: ' + selectedReasonText,
+          '',
+          '------------------------------------------------------',
+          '📝 Additional Notes from Subscriber:',
+          notesVal || 'None provided',
+          '',
+          '------------------------------------------------------',
+          '⚖️ Legal Declaration & Identity Acknowledgment:',
+          '[✓] ' + confirmationStatement,
+          '[✓] System Note: Deletion purges subscriber telemetry, authentication profile, and unlinks all clinics. It does not delete independent historical clinical records archived by the treating specialist/clinic.',
+          '======================================================'
+        ].join('\n');
+
+        const templateParams = {
+          templateTitle: '🗑️ [Murshid Companion - Patient App] Account & Cloud Data Deletion Request',
+          fullName: fields.name.el.value.trim(),
+          email: fields.email.el.value.trim(),
+          phone: '(Not specified - Companion App Web Request)',
+          subject: '[Murshid Companion - Patient] Deletion Request: ' + selectedReasonText,
+          organization: 'Murshid Companion (Patient / Subscriber Mobile App)',
+          message: messageBody
+        };
+
+        emailjs.send('service_2gtw1uc', 'template_kjhcofd', templateParams)
+          .then(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = origText;
+            
+            // Smoothly hide form and show success state
+            formContainer.style.display = 'none';
+            successCardState.style.display = 'flex';
+          })
+          .catch((error) => {
+            console.error('EmailJS Companion Data Deletion Send Error:', error);
+            alert('Sorry, an error occurred while submitting your deletion request. Please try again later or contact us directly at support@feshealthtech.com.');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = origText;
+          });
+      }
+    });
+
+  });
+</script>
+</body>
+</html>

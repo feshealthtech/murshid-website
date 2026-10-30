@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypewriter();
   initCookieBanner();
   initBetaModal();
+  initCompanionBetaModal();
   initDynamicYear();
   initReferralTracking();
 });
@@ -430,6 +431,43 @@ function initBetaModal() {
     if (e.key === 'Escape' && modal.classList.contains('open')) {
       closeModal();
     }
+  });
+}
+
+/* ── Companion Closed Beta Modal ── */
+function initCompanionBetaModal() {
+  const modal = document.getElementById('companion-download-modal');
+  if (!modal) return;
+
+  const closeX = document.getElementById('companion-modal-close-x');
+  const closeBtn = document.getElementById('companion-modal-close-btn');
+
+  const openModal = (e) => {
+    if (e) e.preventDefault();
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  document.querySelectorAll('.companion-dl-trigger, [data-companion-modal]').forEach(btn => {
+    btn.addEventListener('click', openModal);
+  });
+
+  if (closeX) closeX.addEventListener('click', closeModal);
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
   });
 }
 

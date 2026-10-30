@@ -114,6 +114,82 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+
+  <!-- Murshid Companion Dedicated Portal & Landing Pages (English & Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/companion/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/companion/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/companion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/companion/" />
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/companion/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/companion/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/companion/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/companion/" />
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Murshid Companion Legal & Data Governance (English & Arabic) -->
+  <url>
+    <loc>https://murshid.feshealthtech.com/companion/privacy-policy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/companion/privacy-policy.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/companion/privacy-policy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/companion/privacy-policy.html" />
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/companion/privacy-policy.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/companion/privacy-policy.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/companion/privacy-policy.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/companion/privacy-policy.html" />
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://murshid.feshealthtech.com/companion/terms-of-use.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/companion/terms-of-use.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/companion/terms-of-use.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/companion/terms-of-use.html" />
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/companion/terms-of-use.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/companion/terms-of-use.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/companion/terms-of-use.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/companion/terms-of-use.html" />
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://murshid.feshealthtech.com/companion/data-deletion.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/companion/data-deletion.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/companion/data-deletion.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/companion/data-deletion.html" />
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://murshid.feshealthtech.com/ar/companion/data-deletion.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://murshid.feshealthtech.com/ar/companion/data-deletion.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://murshid.feshealthtech.com/companion/data-deletion.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://murshid.feshealthtech.com/companion/data-deletion.html" />
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
   <!-- Feature: Offline Food Bank (English) -->
   <url>
     <loc>https://murshid.feshealthtech.com/features/offline-food-bank.html</loc>

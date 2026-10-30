@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سياسة الخصوصية — رفيق مرشد (تطبيق المشتركين والمرضى)</title>
+  <meta name="description" content="سياسة الخصوصية لتطبيق رفيق مرشد — حماية بيانات التغذية والماء والمتابعة السريرية بأعلى معايير التشفير التام والمعرفة الصفرية." />
+  <link rel="icon" href="../../assets/logo-sq.webp" type="image/webp" />
+  <link rel="stylesheet" href="../../shared/murshid-style.css" />
+  <style>
+    body {
+      font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+    }
+    .legal-badge-e2ee {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(13, 148, 136, 0.12);
+      border: 1px solid rgba(13, 148, 136, 0.35);
+      color: #0d9488;
+      font-weight: 700;
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+    }
+    .lang-switcher-btn {
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: var(--m-surface-3);
+      border: 1px solid var(--m-border);
+      color: var(--m-text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .lang-switcher-btn:hover {
+      border-color: var(--m-primary);
+      color: var(--m-primary);
+    }
+    .m-nav-links a.active {
+      color: var(--m-primary) !important;
+      font-weight: 700 !important;
+    }
+    .m-nav-links a.active::after {
+      width: 100% !important;
+    }
+    .m-mobile-link.active {
+      background: rgba(43, 181, 160, 0.08) !important;
+      border-color: var(--m-primary) !important;
+      color: var(--m-primary) !important;
+      font-weight: 700 !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     NAVBAR
+     ══════════════════════════════════════════════ -->
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="index.html" class="m-nav-brand">
+      <img src="../../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">رفيق مرشد</span>
+        <span class="brand-name-en">Murshid Companion</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="index.html">الرئيسية</a></li>
+      <li><a href="index.html#features">المميزات</a></li>
+      <li><a href="privacy-policy.html" class="active">سياسة الخصوصية</a></li>
+      <li><a href="terms-of-use.html">شروط الاستخدام</a></li>
+      <li><a href="data-deletion.html">حذف الحساب</a></li>
+      <li><a href="../../ar/index.html" style="opacity:0.85;">منصة الأخصائي ↗</a></li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../../companion/privacy-policy.html" class="lang-switcher-btn" title="English Version">English 🌐</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Drawer -->
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">رفيق مرشد (Murshid Companion)</span>
+    <span class="m-mobile-menu-subtitle">بوابة المتابعة السريرية والغذائية للمشترك</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">الرئيسية (رفيق مرشد)</span>
+    </a>
+    <a href="privacy-policy.html" class="m-mobile-link active">
+      <span class="m-mobile-icon">🛡️</span>
+      <span class="m-mobile-text">سياسة الخصوصية للمشترك</span>
+    </a>
+    <a href="terms-of-use.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📜</span>
+      <span class="m-mobile-text">شروط الاستخدام وإخلاء المسؤولية</span>
+    </a>
+    <a href="data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🗑️</span>
+      <span class="m-mobile-text">طلب حذف الحساب والبيانات</span>
+    </a>
+    <a href="../contact.html" class="m-mobile-link">
+      <span class="m-mobile-icon">💬</span>
+      <span class="m-mobile-text">الدعم الفني والمساعدة</span>
+    </a>
+    <a href="../../ar/index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🩺</span>
+      <span class="m-mobile-text">منصة مرشد لأخصائيي التغذية ↗</span>
+    </a>
+    <a href="../../companion/privacy-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🌐</span>
+      <span class="m-mobile-text">English (الانتقال للإنجليزية)</span>
+    </a>
+  </div>
+  <div class="m-mobile-menu-footer">
+    <a href="privacy-policy.html">الخصوصية</a>
+    <span>•</span>
+    <a href="terms-of-use.html">الشروط</a>
+    <span>•</span>
+    <a href="data-deletion.html">حذف الحساب</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════════ -->
+<section class="legal-hero">
+  <div class="container">
+    <div class="legal-hero-inner">
+      <span class="legal-badge-e2ee">🛡️ تشفير تام طرفاً لطرف &bull; مبدأ المعرفة الصفرية (Zero-Knowledge)</span>
+      <div class="m-label">رفيق مرشد &bull; الشؤون القانونية والخصوصية</div>
+      <h1 class="m-title">سياسة الخصوصية للمشتركين والمرضى</h1>
+      <p class="m-subtitle" style="margin:0;">كيف نحمي خطتك الغذائية، وسجلات التزامك، وقياساتك الحيوية بتشفير مصرفي وعسكري مستقل لكل عيادة ترتبط بها.</p>
+      <span class="legal-last-updated">تاريخ سريان الوثيقة: 29 أكتوبر 2026</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     LAYOUT
+     ══════════════════════════════════════════════ -->
+<div class="container">
+  <div class="legal-layout">
+
+    <!-- Sidebar TOC -->
+    <aside class="legal-toc">
+      <div class="legal-toc-title">أقسام السياسة</div>
+      <ul>
+        <li><a href="#sec1">1 — التعريف بالخدمة ونطاق العمل</a></li>
+        <li><a href="#sec2">2 — التشفير التام وحماية المعرفة الصفرية</a></li>
+        <li><a href="#sec3">3 — البيانات التي نجمعها وأماكن حفظها</a></li>
+        <li><a href="#sec4">4 — كيف نستخدم البيانات</a></li>
+        <li><a href="#sec5">5 — الشركاء والبنية التحتية السحابية</a></li>
+        <li><a href="#sec6">6 — حق الارتباط وفك الارتباط بالعيادات</a></li>
+        <li><a href="#sec7">7 — أمان النسخ الاحتياطية على Google Drive</a></li>
+        <li><a href="#sec8">8 — خصوصية الأطفال والقاصرين</a></li>
+        <li><a href="#sec9">9 — حقوقك النظامية وطرق حذف الحساب</a></li>
+        <li><a href="#sec10">10 — تحديثات السياسة وبيانات التواصل</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="legal-content">
+
+      <!-- Section 1 -->
+      <div class="legal-section" id="sec1">
+        <h2 class="legal-section-title"><span class="section-num">1</span> التعريف بالخدمة ونطاق العمل</h2>
+        <p>مرحباً بك في تطبيق <strong>رفيق مرشد (Murshid Companion)</strong>، المشار إليه فيما يلي بـ <em>"التطبيق"</em> أو <em>"بوابة المشترك"</em>. يتم تطوير وإدارة وتشغيل هذا التطبيق بالكامل بواسطة شركة <strong>FES HealthTech</strong> (المشار إليها بـ &ldquo;الشركة&rdquo; أو &ldquo;نحن&rdquo;).</p>
+        <p>تطبيق رفيق مرشد هو أداة رقمية وتطبيق مصاحب موجه للمشتركين والمرضى لتمكينهم من استلام ومتابعة برامجهم وأنظمتهم الغذائية، وتتبع استهلاك الماء اليومي، وتسجيل الالتزام بالوجبات والعادات والتمارين، وإدارة المواعيد المعتمدة، وتعبئة الاستمارات السريرية، والتواصل الآمن والمشفر مع أخصائي التغذية أو العيادة المرخصة المشرفة عليهم.</p>
+        <div class="legal-highlight">
+          <p>⚠️ <strong>تنبيه هام:</strong> يُعد تثبيت التطبيق أو إنشاء حساب عليه أو استخدامه موافقة صريحة وكاملة منك على شروط وممارسات الخصوصية الموضحة في هذه الوثيقة. إذا كنت لا توافق على هذه الممارسات، فيرجى التوقف فوراً عن استخدام التطبيق.</p>
+        </div>
+        <div class="legal-highlight" style="border-right: 4px solid #ef4444; border-left: none; background: rgba(239, 68, 68, 0.05);">
+          <p style="color: #ef4444; margin-bottom: 4px;"><strong>🚨 إخلاء مسؤولية الطوارئ الطبية:</strong></p>
+          <p>تطبيق رفيق مرشد هو وسيلة رقمية لتنظيم ومتابعة الالتزام الغذائي والتواصل مع العيادة، <strong>وليس خدمة طوارئ طبية أو وسيلة تشخيصية للحالات الحرجة</strong>. في حال شعورك بأي عارض صحي حاد، أو صعوبة في التنفس، أو أعراض تحسسية مفاجئة، يجب عليك الاتصال فوراً برقم الطوارئ والإسعاف في بلدك (مثل 997 أو 911 أو 112) أو التوجه فوراً لأقرب قسم طوارئ في المستشفى.</p>
+        </div>
+      </div>
+
+      <div class="m-divider"></div>
+
+      <!-- Section 2 -->
+      <div class="legal-section" id="sec2">
+        <h2 class="legal-section-title"><span class="section-num">2</span> التشفير التام ومبدأ المعرفة الصفرية (Zero-Knowledge E2EE)</h2>
+        <p>نؤمن في FES HealthTech بأن البيانات الصحية والغذائية هي أخص خصوصيات الإنسان؛ لذلك بنينا تطبيق رفيق مرشد على أساس متين من <strong>التشفير التام (End-to-End Encryption) ومبدأ المعرفة الصفرية</strong>:</p>
+        <div class="legal-highlight" style="border-right: 4px solid #0d9488; border-left: none; background: rgba(13, 148, 136, 0.05);">
+          <p style="color: #0d9488; font-weight:700; margin-bottom: 6px;">🛡️ معيار عزل المفاتيح الثنائية المستقلة (Pairwise Cryptography):</p>
+          <p>لكل عيادة أو أخصائي ترتبط به، يقوم التطبيق بتوليد زوج مفاتيح لامتناظر فريد تماماً بحجم <strong>32 بايت وفق منحنى Curve25519 (X25519)</strong>، ويتم حفظ المفتاح الخاص بأمان فائق داخل خزنة المعالج المشفرة في هاتفك (Keychain على أجهزة آبل، و Android Keystore على أجهزة أندرويد عبر وحدات التخزين المشفرة عتادياً بالمعالج). يتم تشفير كافة الخطط الغذائية وسجلات الماء والوزن والاستمارات بتشفير <strong>AES-256-GCM المصرفي</strong> قبل خروجها من هاتفك.</p>
+        </div>
+        <p><strong>ماذا يعني ذلك بالنسبة لك؟</strong></p>
+        <ul>
+          <li><strong>استحالة اطلاع السيرفر:</strong> لا تملك شركة FES HealthTech ولا خوادمنا السحابية أي وسيلة تقنية لفك تشفير بياناتك أو الاطلاع على وجباتك أو أوزانك أو ملاحظاتك السريرية؛ لأن المفتاح الخاص موجود على هاتفك فقط وهاتف طبيبك.</li>
+          <li><strong>عزل تام بين العيادات:</strong> إذا ارتبطت بأكثر من عيادة، فإن لكل ارتباط مفاتيح تشفير مستقلة تماماً ومجهولة للعيادات الأخرى.</li>
+          <li><strong>غياب البيانات الصريحة:</strong> لا تظهر في السحابة سوى نصوص عشوائية مشفرة (Ciphertext) يستحيل تفسيرها.</li>
+        </ul>
+      </div>
+
+      <div class="m-divider"></div>
+
+      <!-- Section 3 -->
+      <div class="legal-section" id="sec3">
+        <h2 class="legal-section-title"><span class="section-num">3</span> البيانات التي نجمعها وأماكن حفظها</h2>
+        <p>نحن نطبق سياسة الحد الأدنى الصارم من البيانات، ولا نجمع إلا ما هو ضروري جداً لتشغيل الربط:</p>
+
+        <h3>أ) بيانات المصادقة والحساب (سحابياً)</h3>
+        <p>عند تسجيل الدخول عبر <strong>Google Sign-In</strong> أو <strong>Apple Sign-In</strong>، تتم معالجة هويتك عبر Firebase Authentication، ونحتفظ بـ:</p>
+        <ul>
+          <li>المعرف الرقمي الفريد المشفر لحسابك (UID).</li>
+          <li>بريدك الإلكتروني الموثق.</li>
+          <li>الاسم التعريفي المسجل في حساب جوجل أو آبل.</li>
+        </ul>
+        <p><em>ملاحظة: نحن لا نطلب أو نخزن أو نملك أي وصول لكلمات مرورك على الإطلاق.</em></p>
+
+        <h3>ب) البيانات السريرية وسجلات الالتزام (محلياً على هاتفك حصراً)</h3>
+        <p>يتم تخزين الغالبية العظمى من بياناتك الحيوية محلياً في قاعدة بيانات محلية مدمجة ومشفرة على جهاز هاتفك ولا تخرج منه إلا مشفرة لطبيبك:</p>
+        <ul>
+          <li><strong>البرامج الغذائية:</strong> الوجبات، السعرات الحرارية، الماكروز، البدائل الغذائية المعتمدة.</li>
+          <li><strong>تتبع الماء:</strong> المستهدف اليومي، عدد الأكواب، وحجم الماء المسجل بالمليلتر.</li>
+          <li><strong>سجلات الالتزام:</strong> سجلات أخذ الوجبات في موعدها، التمارين الرياضية، المكملات، والعادات الصحية.</li>
+          <li><strong>القياسات الحيوية:</strong> الوزن المسجل دورياً، القياسات، وإجابات استمارات المتابعة.</li>
+          <li><strong>المواعيد:</strong> سجل المواعيد القادمة والسابقة وحالتها.</li>
+        </ul>
+
+        <h3>ج) البيانات العابرة وحزم النقل السحابية (مؤقتة ومشفرة)</h3>
+        <p>عند إرسال تقرير المتابعة لطبيبك أو استلام الخطة، تحتفظ السحابة مؤقتاً وبشكل عابر بـ:</p>
+        <ul>
+          <li><strong>الحزم المشفرة (Ciphertext):</strong> غلاف مشفر يحتوي على تقرير المتابعة أو إجابات الاستمارة، لا يفتحه إلا طبيبك المعتمد.</li>
+          <li><strong>المفاتيح العامة:</strong> المفتاح العام اللازم لإنشاء القناة الآمنة اللامتناظرة بينك وبين الأخصائي.</li>
+          <li><strong>حالة قناة الربط:</strong> مؤشر رقمي يوضح حالة القناة (نشطة / معلقة) دون أي بيانات تعريفية إضافية.</li>
+        </ul>
+      </div>
+
+      <div class="m-divider"></div>
+
+      <!-- Section 4 -->
+      <div class="legal-section" id="sec4">
+        <h2 class="legal-section-title"><span class="section-num">4</span> كيف نستخدم البيانات</h2>
+        <p>نستخدم البيانات فقط للأغراض التشغيلية المباشرة التالية:</p>
+        <ol>
+          <li>التحقق من هويتك وتأمين تسجيل الدخول ومنع الوصول غير المصرح به.</li>
+          <li>جدولة وإطلاق التنبيهات الصحية والتذكيرات اليومية (كمواعيد شرب الماء وتناول الوجبات) <strong>محلياً بنسبة 100% داخل جهاز هاتفك</strong> دون إرسال أي معرفات أو استدعاء خوادم سحابية خارجية.</li>
+          <li>نقل تقارير الالتزام اليومية والاستمارات المعتمدة مشفرة إلى ملفك في عيادة أخصائي التغذية.</li>
+          <li>تشخيص ومعالجة أعطال التطبيق البرمجية عبر مؤشرات تقنية مجهولة الهوية.</li>
+        </ol>
+        <p><strong>ما نلتزم بعدم فعله مطلقاً:</strong> نحن لا نبيع بياناتك لأي جهة، ولا نشاركها مع وسطاء البيانات، ولا نستخدم بياناتك الصحية في الإعلانات أو الترويج التجاري على الإطلاق.</p>
+      </div>
+
+      <div class="m-divider"></div>
+
+      <!-- Section 5 -->
+      <div class="legal-section" id="sec5">
+        <h2 class="legal-section-title"><span class="section-num">5</span> الشركاء والبنية التحتية السحابية</h2>
+        <p>لضمان تشغيل التطبيق بأعلى درجات الموثوقية والأمان، نتعامل مع مزودي بنية تحتية سحابية معتمدين عالمياً:</p>
+        <ul>
+          <li><strong>Google Cloud &amp; Firebase (Google LLC):</strong> خدمات المصادقة الآمنة للتحقق من هوية الحساب، والاستضافة السحابية المشفرة للنقل العابر، مع تشفير كافة البيانات المنقولة بـ TLS 1.3.</li>
+          <li><strong>Apple Inc.:</strong> خدمات تسجيل الدخول الموثق عبر Apple Sign-In على أجهزة iOS.</li>
+        </ul>
+        <p>يلتزم كافة الشركاء باتفاقيات معالجة بيانات صارمة ومتوافقة مع معايير ISO 27001 و SOC 2 والأنظمة الدولية لحماية البيانات.</p>
+      </div>
+
+      <div class="m-divider"></div>
+
+      <!-- Section 6 -->
+      <div class="legal-section" id="sec6">
+        <h2 class="legal-section-title"><span class="section-num">6</span> حق الارتباط وفك الارتباط بالعيادات</h2>
+        <p>الارتباط بأي عيادة هو خيار طوعي 100% يتم عبر مسح رمز الاستجابة السريعة (QR) أو إدخال رمز الربط (PIN) الممنوح لك من طبيبك.</p>
+        <div class="legal-highlight">
+          <p><strong>حقك الكامل في فك الارتباط:</strong> يمكنك في أي وقت تعليق أو فك الارتباط بأي عيادة من خلال شاشة إعدادات التطبيق. عند فك الارتباط:</p>
+          <ul>
+            <li>تتوقف المزامنة وإرسال تقارير المتابعة لتلك العيادة فوراً.</li>
+            <li>تبقى خطتك السابقة وسجلاتك محفوظة محلياً على هاتفك للرجوع إليها متى شئت.</li>
+            <li>يمكنك حذف وحظر السجل المحلي الخاص بالعيادة بنقرة واحدة.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="m-divider"></div>
+
+      <!-- Section 7 -->
+      <div class="legal-section" id="sec7">
+        <h2 class="legal-section-title"><span class="section-num">7</span> أمان النسخ الاحتياطية على Google Drive</h2>
+        <p>يوفر رفيق مرشد ميزة النسخ الاحتياطي السحابي التلقائي. عند تفعيلها:</p>
+        <ul>
+          <li>يتم ضغط وتشفير نسختك الاحتياطية محلياً بحاوية مشفرة بـ <strong>AES-256-GCM</strong> مع بصمة حسابك.</li>
+          <li>يتم رفع الملف <strong>مباشرة وحصرياً إلى مساحة Google Drive الشخصية الخاصة بك</strong>.</li>
+          <li>لا تملك خوادم FES HealthTech أي إمكانية للوصول لنسختك أو تنزيلها؛ فالنسخة ملك لك وحدك وتستعيدها على أي جهاز جديد باستخدام حساب جوجل الخاص بك.</li>
+        </ul>
+      </div>
+
+      <div class="m-divider"></div>
+
+      <!-- Section 8 -->
+      <div class="legal-section" id="sec8">
+        <h2 class="legal-section-title"><span class="section-num">8</span> حظر استخدام الأطفال وقصر إدارة ملفات القاصرين على أولياء الأمور</h2>
+        <p><strong>يُمنع منعاً باتاً</strong> استخدام تطبيق رفيق مرشد أو تشغيله أو إنشاء حساب عليه بشكل مباشر من قِبل الأطفال أو القاصرين (من هم دون سن 18 عاماً)، سواء كان ذلك بعلم أولياء أمورهم أو بدون علمهم. التطبيق غير مخصص للأطفال ولا يدعم استخدامهم المباشر له تحت أي ظرف من الظروف.</p>
+        <div class="legal-highlight" style="border-right: 4px solid #f59e0b; border-left: none; background: rgba(245, 158, 11, 0.06);">
+          <p style="color: #d97706; font-weight:700; margin-bottom: 6px;">👨‍👩‍👧 ضوابط متابعة ملفات الأطفال عبر حساب ولي الأمر الحصري:</p>
+          <p>في حال كان لدى الطفل أو القاصر ملف متابعة سريرية أو برنامج غذائي معتمد لدى عيادة التغذية، فإن إدارة هذا الملف، وتلقي الخطط، ومتابعة المواعيد، وتسجيل وجبات واستمارة الطفل، <strong>يجب أن تتم بالكامل وحصرياً من خلال الحساب الشخصي لولي الأمر القانوني أو المسؤول البالغ المؤهل شرعاً ونظاماً</strong>.</p>
+        </div>
+        <p>نحن لا نجمع عمداً أي بيانات من خلال الاستخدام المباشر للأطفال. وفي حال تبين لنا قيام أي قاصر بإنشاء حساب أو تشغيل التطبيق بشكل مباشر، فإننا نتخذ إجراءات فورية لحظر الحساب وشطب سجلات المصادقة التابعة له لضمان الالتزام الصارم بالأنظمة الصحية وحماية خصوصية القاصرين.</p>
+      </div>
+
+      <div class="m-divider"></div>
+
+      <!-- Section 9 -->
+      <div class="legal-section" id="sec9">
+        <h2 class="legal-section-title"><span class="section-num">9</span> حقوقك النظامية وحذف الحساب والبيانات (نظام حماية البيانات الشخصية)</h2>
+        <p>وفقاً لنظام حماية البيانات الشخصية السعودي (PDPL) والأنظمة الصحية والخليجية والـ GDPR، تتمتع بالحقوق الكاملة التالية:</p>
+        <ul>
+          <li><strong>حق الوصول والاطلاع:</strong> استعراض وتصدير خطتك الغذائية وسجلاتك في أي وقت.</li>
+          <li><strong>حق التصحيح:</strong> تعديل قياساتك ووزنك وملاحظاتك المدخلة.</li>
+          <li><strong>حق المسح النهائي (الحق في النسيان):</strong> طلب حذف حسابك وبياناتك السحابية نهائياً.</li>
+        </ul>
+        <div class="legal-highlight">
+          <p><strong>طريقة حذف البيانات:</strong></p>
+          <p>&bull; <strong>من داخل التطبيق:</strong> عبر <em>الإعدادات &larr; خيارات الحساب والسياسات &larr; حذف الحساب والبيانات</em> (أو من شاشة ربط العيادة للمشترك غير المرتبط عبر زر القائمة العلوية ⋮ &larr; حذف الحساب والبيانات).</p>
+          <p style="margin-top:6px;">&bull; <strong>أو عبر الويب:</strong> تقديم طلب مباشر عبر صفحتنا المخصصة: <a href="data-deletion.html" style="color:var(--m-primary); font-weight:700;">صفحة طلب حذف الحساب والبيانات</a>.</p>
+        </div>
+        <div class="legal-highlight" style="border-right: 4px solid #8b5cf6; border-left: none; background: rgba(139, 92, 246, 0.05); margin-top: 14px;">
+          <p style="color: #7c3aed; font-weight:700; margin-bottom: 6px;">🏥 توضيح بخصوص ملفاتك الطبية لدى عيادة الأخصائي:</p>
+          <p>يؤدي حذف حسابك في تطبيق رفيق مرشد إلى حذف وتطهير بيانات المشترك وحسابه وفك ارتباطه بالكامل من منصة التطبيق، ولكنه <strong>لا يحذف تلقائياً السجلات والملفات الطبية الخاصة بك والمحفوظة مسبقاً لدى عيادة الأخصائي</strong> المشرف عليك، لكون العيادة هي الجهة المستقلة المسؤولة عن إدارة وحفظ سجلاتها السريرية لمرضاها. وإذا كنت ترغب في تعديل أو حذف ملفك الطبي المحفوظ لدى العيادة، <strong>يرجى التواصل مع أخصائي التغذية أو إدارة العيادة مباشرة</strong>.</p>
+          <p style="margin-top:6px; font-size:0.88rem; color:var(--m-text-muted);"><em>ملاحظة: بالنسبة للمشترك الجديد الذي لم يرتبط بأي عيادة، فإن حذف الحساب يكون فورياً وتاماً وشاملاً لكافة السجلات دون أي ارتباطات سريرية سابقة.</em></p>
+        </div>
+      </div>
+
+      <div class="m-divider"></div>
+
+      <!-- Section 10 -->
+      <div class="legal-section" id="sec10">
+        <h2 class="legal-section-title"><span class="section-num">10</span> تحديثات السياسة وبيانات التواصل</h2>
+        <p>قد نقوم بتحديث هذه السياسة دورياً لمواكبة التطورات التقنية أو التنظيمية. سنقوم بإشعارك عبر التطبيق بأي تعديل جوهري قبل سريانه.</p>
+        <p>لأي استفسارات قانونية أو متعلقة بالخصوصية، يمكنك التواصل مع مسؤول حماية البيانات لدينا:</p>
+        <div class="legal-highlight" style="background:var(--m-surface-3);">
+          <p><strong>شركة FES HealthTech — مكتب حماية البيانات والخصوصية</strong></p>
+          <p>البريد الإلكتروني للخصوصية: <a href="mailto:privacy@feshealthtech.com" style="color:var(--m-primary);">privacy@feshealthtech.com</a></p>
+          <p>الدعم الفني: <a href="mailto:support@feshealthtech.com" style="color:var(--m-primary);">support@feshealthtech.com</a></p>
+          <p>الموقع الرسمي: <a href="https://murshid.feshealthtech.com" target="_blank" style="color:var(--m-primary);">murshid.feshealthtech.com</a></p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════════ -->
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-grid">
+      <div class="m-footer-brand">
+        <img src="../../assets/logo.webp" alt="FES HealthTech" class="footer-logo" width="284" height="284" />
+        <div class="footer-app-name">رفيق مرشد</div>
+        <div class="footer-app-sub">Murshid Companion App</div>
+        <p>تطبيق المتابعة السريرية والغذائية المشفر للمشتركين والمرضى — بإشراف عيادتك ومطور بواسطة شركة FES HealthTech.</p>
+        <div class="m-footer-social">
+          <a href="https://x.com/feshealthtech" target="_blank" rel="noopener noreferrer" class="m-footer-social-btn" aria-label="X (Twitter)">𝕏</a>
+          <a href="https://instagram.com/feshealthtech" target="_blank" rel="noopener noreferrer" class="m-footer-social-btn" aria-label="Instagram">📸</a>
+          <a href="https://youtube.com/@feshealthtech" target="_blank" rel="noopener noreferrer" class="m-footer-social-btn" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">عن التطبيق</h3>
+        <ul class="m-footer-links">
+          <li><a href="../../ar/index.html">منصة مرشد للأخصائيين ↗</a></li>
+          <li><a href="index.html">بوابة رفيق مرشد الرئيسية</a></li>
+          <li><a href="privacy-policy.html#sec2">معيار التشفير التام (E2EE)</a></li>
+          <li><a href="terms-of-use.html#term3">إرشادات الاستخدام الطبي</a></li>
+          <li><a href="data-deletion.html">إدارة ومسح البيانات</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">الدعم والمساعدة</h3>
+        <ul class="m-footer-links">
+          <li><a href="data-deletion.html">طلب حذف الحساب والبيانات</a></li>
+          <li><a href="../contact.html">مركز الدعم الفني</a></li>
+          <li><a href="mailto:privacy@feshealthtech.com">مكتب حماية البيانات</a></li>
+          <li><a href="https://feshealthtech.com/" target="_blank" rel="noopener noreferrer">شركة FES HealthTech</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="m-footer-col-title">الشؤون القانونية</h3>
+        <ul class="m-footer-links">
+          <li><a href="privacy-policy.html">سياسة الخصوصية للمشترك</a></li>
+          <li><a href="terms-of-use.html">شروط الاستخدام والخدمة</a></li>
+          <li><a href="data-deletion.html">إرشادات مسح البيانات</a></li>
+          <li><a href="../../companion/privacy-policy.html">English Portal 🌐</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/" target="_blank" rel="noopener noreferrer">شركة FES HealthTech</a>. جميع الحقوق محفوظة.</p>
+      <div class="m-footer-bottom-links">
+        <a href="privacy-policy.html">الخصوصية</a>
+        <a href="terms-of-use.html">الشروط</a>
+        <a href="data-deletion.html">حذف الحساب</a>
+        <a href="../../companion/privacy-policy.html">English 🌐</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../shared/murshid-script.js"></script>
+</body>
+</html>

@@ -3,7 +3,7 @@
    Dark Professional Theme | FES HealthTech Subsidiary
    ═══════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('fonts.css');
 
 /* ── CSS Variables ── */
 :root {
@@ -56,9 +56,10 @@
   --m-transition:      all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --m-transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
-  --m-font-ar:         'Noto Kufi Arabic', sans-serif;
-  --m-font:            'Inter', sans-serif;
-  --m-font-mono:       'IBM Plex Mono', monospace;
+  --m-font-ar:         'Cairo', system-ui, -apple-system, sans-serif;
+  --m-font-en:         'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --m-font:            'Plus Jakarta Sans', 'Cairo', system-ui, -apple-system, sans-serif;
+  --m-font-mono:       'JetBrains Mono', monospace;
   --nav-h:             68px;
 }
 
