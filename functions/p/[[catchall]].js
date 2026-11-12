@@ -1,7 +1,7 @@
 export async function onRequest(context) {
   const url = new URL(context.request.url);
   const pathParts = url.pathname.split('/').filter(Boolean);
-  const slug = (pathParts[1] || url.searchParams.get('slug') || '').trim().toLowerCase();
+  const slug = (pathParts[1] || url.searchParams.get('slug') || url.searchParams.get('u') || url.searchParams.get('id') || '').trim().toLowerCase();
 
   // If no slug or visiting /p/ directly, serve static /p/index.html
   if (!slug) {

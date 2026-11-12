@@ -40,6 +40,9 @@ function initNav() {
 
 /* ── Mobile Menu ── */
 function initMobileMenu() {
+  // If on partners portal, the dedicated luxury drawer controller in partners-script.js handles it
+  if (document.body && document.body.classList.contains('partners-body')) return;
+
   const btn = document.getElementById('m-hamburger') || document.querySelector('.m-hamburger');
   const menu = document.getElementById('m-mobile-menu') || document.querySelector('.m-mobile-menu');
   if (!btn || !menu) return;
