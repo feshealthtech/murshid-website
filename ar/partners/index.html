@@ -63,14 +63,18 @@
   }
   </script>
 
-  <!-- EmailJS Library for Secure Form Transmission -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <!-- EmailJS SDK for Secure Form Transmission -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     (function(){
       try {
-        emailjs.init("service_2gtw1uc");
+        if (typeof emailjs !== 'undefined') {
+          emailjs.init({
+            publicKey: "GRhnKzi6GMcVvCjb3",
+          });
+        }
       } catch(e) {
-        console.warn("EmailJS init warning:", e);
+        console.warn("EmailJS could not be initialized.", e);
       }
     })();
   </script>
@@ -638,24 +642,30 @@
             <span class="terminal-pulse-text">منصة استكشاف حصص المركبات التغذوية والقنوات الأربع المتكاملة لعام 2027</span>
           </div>
           <div class="b2b-terminal-badge">
-            <span>🔬 10 أسواق إقليمية • 14 حصة مركب غذائي</span>
+            <span>🔬 16 سوقاً عربياً • 14 حصة مركب غذائي</span>
           </div>
         </div>
 
         <!-- Hidden Native Selects kept in sync for accessibility & form binding -->
         <div class="visually-hidden" aria-hidden="true">
           <select id="slotCountrySelect" tabindex="-1">
-            <option value="all" selected>🌐 كافة الأسواق الدولية (نطاق عام)</option>
+            <option value="all" selected>🌐 الكل (نطاق عام)</option>
             <option value="sa">🇸🇦 المملكة العربية السعودية (KSA)</option>
             <option value="ae">🇦🇪 الإمارات العربية المتحدة (UAE)</option>
-            <option value="kw">🇰🇼 دولة الكويت (Kuwait)</option>
-            <option value="qa">🇶🇦 دولة قطر (Qatar)</option>
-            <option value="om">🇴🇲 سلطنة عُمان (Oman)</option>
-            <option value="bh">🇧🇭 مملكة البحرين (Bahrain)</option>
-            <option value="eg">🇪🇬 جمهورية مصر العربية (Egypt)</option>
-            <option value="jo">🇯🇴 المملكة الأردنية الهاشمية (Jordan)</option>
-            <option value="iq">🇮🇶 جمهورية العراق (Iraq)</option>
-            <option value="ma">🇲🇦 المملكة المغربية (Morocco)</option>
+            <option value="kw">🇰🇼 دولة الكويت (KWT)</option>
+            <option value="qa">🇶🇦 دولة قطر (QAT)</option>
+            <option value="om">🇴🇲 سلطنة عُمان (OMN)</option>
+            <option value="bh">🇧🇭 مملكة البحرين (BHR)</option>
+            <option value="eg">🇪🇬 جمهورية مصر العربية (EGY)</option>
+            <option value="dz">🇩🇿 الجمهورية الجزائرية الديمقراطية الشعبية (DZA)</option>
+            <option value="ma">🇲🇦 المملكة المغربية (MAR)</option>
+            <option value="iq">🇮🇶 جمهورية العراق (IRQ)</option>
+            <option value="ye">🇾🇪 الجمهورية اليمنية (YEM)</option>
+            <option value="sy">🇸🇾 الجمهورية العربية السورية (SYR)</option>
+            <option value="jo">🇯🇴 المملكة الأردنية الهاشمية (JOR)</option>
+            <option value="ly">🇱🇾 دولة ليبيا (LBY)</option>
+            <option value="tn">🇹🇳 الجمهورية التونسية (TUN)</option>
+            <option value="lb">🇱🇧 الجمهورية اللبنانية (LBN)</option>
           </select>
           <select id="slotCompoundSelect" tabindex="-1">
             <option value="d3" selected>فيتامين د3 (Cholecalciferol) — CAT-D03</option>
@@ -675,7 +685,7 @@
           </select>
         </div>
 
-        <!-- STEP 1: Interactive 10-Country Territory Selector Strip -->
+        <!-- STEP 1: Interactive 16-Country Territory Selector Strip -->
         <div class="b2b-config-step-block">
           <div class="b2b-step-header">
             <div class="b2b-step-title-group">
@@ -689,60 +699,73 @@
           </div>
 
           <div class="b2b-country-pills-grid" id="slotCountryPills" role="radiogroup" aria-label="اختيار الدولة">
-            <button type="button" class="b2b-country-pill active" data-country="all">
-              <span class="c-flag">🌐</span>
-              <span class="c-name">كافة الأسواق</span>
-              <span class="c-iso" dir="ltr">GLOBAL</span>
+            <button type="button" class="b2b-country-pill active" data-country="all" title="الكل (نطاق عام)">
+              <span class="c-flag"><img src="../../assets/flags/global.svg" alt="الكل" class="c-flag-img" width="26" height="18" loading="eager" /></span>
+              <span class="c-name">الكل</span>
             </button>
-            <button type="button" class="b2b-country-pill" data-country="sa">
-              <span class="c-flag">🇸🇦</span>
+            <button type="button" class="b2b-country-pill" data-country="sa" title="المملكة العربية السعودية">
+              <span class="c-flag"><img src="../../assets/flags/sa.svg" alt="علم السعودية" class="c-flag-img" width="26" height="18" loading="eager" /></span>
               <span class="c-name">السعودية</span>
-              <span class="c-iso" dir="ltr">KSA</span>
             </button>
-            <button type="button" class="b2b-country-pill" data-country="ae">
-              <span class="c-flag">🇦🇪</span>
+            <button type="button" class="b2b-country-pill" data-country="ae" title="الإمارات العربية المتحدة">
+              <span class="c-flag"><img src="../../assets/flags/ae.svg" alt="علم الإمارات" class="c-flag-img" width="26" height="18" loading="eager" /></span>
               <span class="c-name">الإمارات</span>
-              <span class="c-iso" dir="ltr">UAE</span>
             </button>
-            <button type="button" class="b2b-country-pill" data-country="kw">
-              <span class="c-flag">🇰🇼</span>
+            <button type="button" class="b2b-country-pill" data-country="kw" title="دولة الكويت">
+              <span class="c-flag"><img src="../../assets/flags/kw.svg" alt="علم الكويت" class="c-flag-img" width="26" height="18" loading="eager" /></span>
               <span class="c-name">الكويت</span>
-              <span class="c-iso" dir="ltr">KWT</span>
             </button>
-            <button type="button" class="b2b-country-pill" data-country="qa">
-              <span class="c-flag">🇶🇦</span>
+            <button type="button" class="b2b-country-pill" data-country="qa" title="دولة قطر">
+              <span class="c-flag"><img src="../../assets/flags/qa.svg" alt="علم قطر" class="c-flag-img" width="26" height="18" loading="eager" /></span>
               <span class="c-name">قطر</span>
-              <span class="c-iso" dir="ltr">QAT</span>
             </button>
-            <button type="button" class="b2b-country-pill" data-country="om">
-              <span class="c-flag">🇴🇲</span>
+            <button type="button" class="b2b-country-pill" data-country="om" title="سلطنة عُمان">
+              <span class="c-flag"><img src="../../assets/flags/om.svg" alt="علم عُمان" class="c-flag-img" width="26" height="18" loading="eager" /></span>
               <span class="c-name">عُمان</span>
-              <span class="c-iso" dir="ltr">OMN</span>
             </button>
-            <button type="button" class="b2b-country-pill" data-country="bh">
-              <span class="c-flag">🇧🇭</span>
+            <button type="button" class="b2b-country-pill" data-country="bh" title="مملكة البحرين">
+              <span class="c-flag"><img src="../../assets/flags/bh.svg" alt="علم البحرين" class="c-flag-img" width="26" height="18" loading="eager" /></span>
               <span class="c-name">البحرين</span>
-              <span class="c-iso" dir="ltr">BHR</span>
             </button>
-            <button type="button" class="b2b-country-pill" data-country="eg">
-              <span class="c-flag">🇪🇬</span>
+            <button type="button" class="b2b-country-pill" data-country="eg" title="جمهورية مصر العربية">
+              <span class="c-flag"><img src="../../assets/flags/eg.svg" alt="علم مصر" class="c-flag-img" width="26" height="18" loading="eager" /></span>
               <span class="c-name">مصر</span>
-              <span class="c-iso" dir="ltr">EGY</span>
             </button>
-            <button type="button" class="b2b-country-pill" data-country="jo">
-              <span class="c-flag">🇯🇴</span>
-              <span class="c-name">الأردن</span>
-              <span class="c-iso" dir="ltr">JOR</span>
+            <button type="button" class="b2b-country-pill" data-country="dz" title="الجمهورية الجزائرية الديمقراطية الشعبية">
+              <span class="c-flag"><img src="../../assets/flags/dz.svg" alt="علم الجزائر" class="c-flag-img" width="26" height="18" loading="eager" /></span>
+              <span class="c-name">الجزائر</span>
             </button>
-            <button type="button" class="b2b-country-pill" data-country="iq">
-              <span class="c-flag">🇮🇶</span>
-              <span class="c-name">العراق</span>
-              <span class="c-iso" dir="ltr">IRQ</span>
-            </button>
-            <button type="button" class="b2b-country-pill" data-country="ma">
-              <span class="c-flag">🇲🇦</span>
+            <button type="button" class="b2b-country-pill" data-country="ma" title="المملكة المغربية">
+              <span class="c-flag"><img src="../../assets/flags/ma.svg" alt="علم المغرب" class="c-flag-img" width="26" height="18" loading="eager" /></span>
               <span class="c-name">المغرب</span>
-              <span class="c-iso" dir="ltr">MAR</span>
+            </button>
+            <button type="button" class="b2b-country-pill" data-country="iq" title="جمهورية العراق">
+              <span class="c-flag"><img src="../../assets/flags/iq.svg" alt="علم العراق" class="c-flag-img" width="26" height="18" loading="eager" /></span>
+              <span class="c-name">العراق</span>
+            </button>
+            <button type="button" class="b2b-country-pill" data-country="ye" title="الجمهورية اليمنية">
+              <span class="c-flag"><img src="../../assets/flags/ye.svg" alt="علم اليمن" class="c-flag-img" width="26" height="18" loading="eager" /></span>
+              <span class="c-name">اليمن</span>
+            </button>
+            <button type="button" class="b2b-country-pill" data-country="sy" title="الجمهورية العربية السورية">
+              <span class="c-flag"><img src="../../assets/flags/sy.svg" alt="علم سوريا" class="c-flag-img" width="26" height="18" loading="eager" /></span>
+              <span class="c-name">سوريا</span>
+            </button>
+            <button type="button" class="b2b-country-pill" data-country="jo" title="المملكة الأردنية الهاشمية">
+              <span class="c-flag"><img src="../../assets/flags/jo.svg" alt="علم الأردن" class="c-flag-img" width="26" height="18" loading="eager" /></span>
+              <span class="c-name">الأردن</span>
+            </button>
+            <button type="button" class="b2b-country-pill" data-country="ly" title="دولة ليبيا">
+              <span class="c-flag"><img src="../../assets/flags/ly.svg" alt="علم ليبيا" class="c-flag-img" width="26" height="18" loading="eager" /></span>
+              <span class="c-name">ليبيا</span>
+            </button>
+            <button type="button" class="b2b-country-pill" data-country="tn" title="الجمهورية التونسية">
+              <span class="c-flag"><img src="../../assets/flags/tn.svg" alt="علم تونس" class="c-flag-img" width="26" height="18" loading="eager" /></span>
+              <span class="c-name">تونس</span>
+            </button>
+            <button type="button" class="b2b-country-pill" data-country="lb" title="الجمهورية اللبنانية">
+              <span class="c-flag"><img src="../../assets/flags/lb.svg" alt="علم لبنان" class="c-flag-img" width="26" height="18" loading="eager" /></span>
+              <span class="c-name">لبنان</span>
             </button>
           </div>
         </div>
@@ -1376,7 +1399,7 @@
                   <div class="b2b-input-box is-select">
                     <span class="input-icon">🌐</span>
                     <select id="formCountry" name="country" class="b2b-select has-icon">
-                      <option value="" selected>🌐 كافة الأسواق الدولية / لم يُحدد بعد (اختياري)</option>
+                      <option value="" selected>🌐 الكل / لم يُحدد بعد (اختياري)</option>
                       <option value="sa">🇸🇦 المملكة العربية السعودية (KSA)</option>
                       <option value="ae">🇦🇪 الإمارات العربية المتحدة (UAE)</option>
                       <option value="kw">🇰🇼 دولة الكويت (Kuwait)</option>
@@ -1384,10 +1407,16 @@
                       <option value="om">🇴🇲 سلطنة عُمان (Oman)</option>
                       <option value="bh">🇧🇭 مملكة البحرين (Bahrain)</option>
                       <option value="eg">🇪🇬 جمهورية مصر العربية (Egypt)</option>
-                      <option value="jo">🇯🇴 المملكة الأردنية الهاشمية (Jordan)</option>
-                      <option value="iq">🇮🇶 جمهورية العراق (Iraq)</option>
+                      <option value="dz">🇩🇿 الجمهورية الجزائرية (Algeria)</option>
                       <option value="ma">🇲🇦 المملكة المغربية (Morocco)</option>
-                      <option value="other">🌍 سوق دولي آخر (تحديد في الملاحظات)</option>
+                      <option value="iq">🇮🇶 جمهورية العراق (Iraq)</option>
+                      <option value="ye">🇾🇪 الجمهورية اليمنية (Yemen)</option>
+                      <option value="sy">🇸🇾 الجمهورية العربية السورية (Syria)</option>
+                      <option value="jo">🇯🇴 المملكة الأردنية الهاشمية (Jordan)</option>
+                      <option value="ly">🇱🇾 دولة ليبيا (Libya)</option>
+                      <option value="tn">🇹🇳 الجمهورية التونسية (Tunisia)</option>
+                      <option value="lb">🇱🇧 الجمهورية اللبنانية (Lebanon)</option>
+                      <option value="other">🌍 سوق آخر (تحديد في الملاحظات)</option>
                     </select>
                   </div>
                   <span class="b2b-field-hint" style="font-size:0.75rem; color:var(--b2b-text-muted); margin-top:4px; display:block;">اختياري — يمكنك تركه عاماً أو تحديد الدولة المراد تمثيل المُرَكَّب فيها</span>
@@ -1524,6 +1553,9 @@
               <a id="directTelegramLink" href="https://t.me/+447716301961" target="_blank" rel="noopener noreferrer" class="b2b-telegram-hotline">
                 <span>✈️ متابعة الطلب عبر تيليجرام</span>
               </a>
+              <button type="button" id="b2bResetFormBtn" class="b2b-btn b2b-btn-outline" style="margin-top: 10px; width: 100%; justify-content: center;">
+                <span>🔄 تقديم طلب إبداء اهتمام لمركب تغذوي آخر</span>
+              </button>
             </div>
           </div>
 

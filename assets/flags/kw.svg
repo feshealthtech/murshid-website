@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24" width="36" height="24">
+  <clipPath id="kw-clip"><rect width="36" height="24" rx="3"/></clipPath>
+  <g clip-path="url(#kw-clip)">
+    <rect width="36" height="8" fill="#007A3D"/>
+    <rect y="8" width="36" height="8" fill="#FFFFFF"/>
+    <rect y="16" width="36" height="8" fill="#CE1126"/>
+    <polygon points="0,0 10,7 10,17 0,24" fill="#000000"/>
+  </g>
+</svg>

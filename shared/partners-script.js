@@ -544,7 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const countryOption = countrySelect.options[countrySelect.selectedIndex];
     const isAllMarkets = !selectedCountry || selectedCountry === 'all';
     const countryText = isAllMarkets
-      ? (isRtl ? 'كافة الأسواق الدولية (نطاق عام)' : 'All Global Markets (Global Scope)')
+      ? (isRtl ? 'الكل (نطاق عام)' : 'All (General Scope)')
       : (countryOption ? countryOption.text.replace(/^[^\w\s\u0600-\u06FF]+/, '').trim() : selectedCountry);
     const selectedCompoundKey = compoundSelect.value;
     const compound = compoundData[selectedCompoundKey] || compoundData['d3'];
@@ -741,6 +741,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // Ensure EmailJS is properly initialized with valid Public Key
+    if (typeof emailjs !== 'undefined') {
+      try {
+        emailjs.init({ publicKey: "GRhnKzi6GMcVvCjb3" });
+      } catch (e) {
+        console.warn("EmailJS inline init:", e);
+      }
+    }
+
     bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
@@ -771,69 +780,145 @@ document.addEventListener('DOMContentLoaded', () => {
         formErrorNotice.style.display = 'none';
       }
 
-      const company = document.getElementById('formCompany')?.value.trim();
+      const company = (document.getElementById('formCompany')?.value || '').trim();
       const countryEl = document.getElementById('formCountry');
       const countryVal = countryEl ? countryEl.value.trim() : '';
-      const country = (countryEl && countryVal) ? countryEl.options[countryEl.selectedIndex].text : (isRtl ? 'كافة الأسواق الدولية (غير محدد)' : 'All Global Markets (Unspecified)');
+      const country = (countryEl && countryVal) ? countryEl.options[countryEl.selectedIndex].text : (isRtl ? 'الكل (غير محدد)' : 'All (Unspecified)');
       const compoundEl = document.getElementById('formCompound');
       const compound = compoundEl ? compoundEl.options[compoundEl.selectedIndex].text : '';
-      const name = document.getElementById('formName')?.value.trim();
-      const title = document.getElementById('formTitle')?.value.trim();
-      const email = document.getElementById('formEmail')?.value.trim();
-      const phone = document.getElementById('formPhone')?.value.trim();
-      const notes = document.getElementById('formNotes')?.value.trim() || '';
+      const name = (document.getElementById('formName')?.value || '').trim();
+      const title = (document.getElementById('formTitle')?.value || '').trim();
+      const email = (document.getElementById('formEmail')?.value || '').trim();
+      const phone = (document.getElementById('formPhone')?.value || '').trim();
+      const notes = (document.getElementById('formNotes')?.value || '').trim();
+
+      const submitBtnOriginalHTML = formSubmitBtn ? formSubmitBtn.innerHTML : '';
 
       if (formSubmitBtn) {
         formSubmitBtn.disabled = true;
-        formSubmitBtn.innerHTML = isRtl ? '<span>⚡ جاري إرسال طلب إبداء الاهتمام المبدئي للمراجعة...</span>' : '<span>⚡ Submitting Initial Expression of Interest...</span>';
+        formSubmitBtn.innerHTML = isRtl
+          ? '<span>⚡ جاري إرسال طلب إبداء الاهتمام للمراجعة...</span>'
+          : '<span>⚡ Submitting Initial Expression of Interest...</span>';
       }
 
-      const msgBody = isRtl ?
-        `طلب إبداء اهتمام وتقديم مبدئي للمراجعة (منظومة مُرشِد — حِصص المركبات 2027):\n\n` +
-        `• الشركة / الوكيل المرخص: ${company}\n` +
-        `• الدولة / السوق المستهدف: ${country}\n` +
-        `• حِصّة المُرَكَّب الغذائي المطلوبة: ${compound}\n` +
-        `• المسؤول التنفيذي: ${name} (${title})\n` +
-        `• البريد الإلكتروني الرسمي: ${email}\n` +
-        `• الهاتف / واتساب: ${phone}\n` +
-        (notes ? `• ملاحظات وتراخيص الأصناف: ${notes}\n` : '') +
-        `\nأرغب في التقدم بطلب مبدئي للمراجعة بخصوص حِصّة المُرَكَّب لعام 2027 (بطاقة الخيار المقترح في التقييم والنظام الغذائي + المسار التعليمي في مركز المعرفة + بطاقة المعرفة اليومية).` :
-        `Murshid Platform — Initial Expression of Interest for 2027 Compound Slot:\n\n` +
+      const structuredMsgBody = isRtl ?
+        `═══════════════════════════════════════════════════════════\n` +
+        `📋 طلب إبداء اهتمام ورعاية حصة مركب تغذوي لعام 2027\n` +
+        `═══════════════════════════════════════════════════════════\n\n` +
+        `🏢 بيانات الشركة ونطاق السوق:\n` +
+        `• اسم الشركة / الوكيل المعتمد: ${company}\n` +
+        `• الدولة أو السوق المستهدف: ${country}\n` +
+        `• حصة المُرَكَّب التغذوي المطلوب: ${compound}\n\n` +
+        `👤 بيانات المسؤول التنفيذي وقنوات التواصل:\n` +
+        `• اسم المفوض التنفيذي: ${name}\n` +
+        `• الصفة المهنية / المسمى الوظيفي: ${title}\n` +
+        `• البريد الإلكتروني المؤسسي: ${email}\n` +
+        `• رقم الهاتف الجوال / واتساب المباشر: ${phone}\n\n` +
+        `📝 ملاحظات إضافية وتفاصيل التسجيل الرقابي والتراكيز:\n` +
+        `${notes ? notes : 'لم يتم إدراج ملاحظات إضافية.'}\n\n` +
+        `⚖️ الإقرار والتصريح التنظيمي:\n` +
+        `تم إرسال هذا الطلب كطلب إبداء اهتمام مبدئي غير ملزم لمراجعة الأهلية والتراخيص لعام 2027 عبر البوابة الرسمية لتطبيق مُرشِد.` :
+        `═══════════════════════════════════════════════════════════\n` +
+        `📋 2027 Compound Slot Initial Expression of Interest\n` +
+        `═══════════════════════════════════════════════════════════\n\n` +
+        `🏢 Company & Market Territory:\n` +
         `• Company / Licensed Distributor: ${company}\n` +
         `• Target Country / Market: ${country}\n` +
-        `• Requested Compound Slot: ${compound}\n` +
-        `• Executive Contact: ${name} (${title})\n` +
-        `• Official Email: ${email}\n` +
-        `• Phone / WhatsApp: ${phone}\n` +
-        (notes ? `• Product Registration Notes: ${notes}\n` : '') +
-        `\nSubmitting a non-binding initial expression of interest for the 2027 Compound Slot (Suggested Option in Dietary Assessment & Meal Plans + Knowledge Center Course + Daily Knowledge Card).`;
+        `• Requested Compound Slot: ${compound}\n\n` +
+        `👤 Executive Contact & Channels:\n` +
+        `• Authorized Executive: ${name}\n` +
+        `• Job Title / Capacity: ${title}\n` +
+        `• Corporate Email: ${email}\n` +
+        `• Direct Phone / WhatsApp: ${phone}\n\n` +
+        `📝 Regulatory Registration & Product Notes:\n` +
+        `${notes ? notes : 'No additional notes provided.'}\n\n` +
+        `⚖️ Regulatory Notice:\n` +
+        `Submitted as a non-binding initial expression of interest for 2027 slot eligibility review via Murshid Ecosystem portal.`;
 
-      if (typeof emailjs !== 'undefined') {
-        emailjs.send('service_2gtw1uc', 'template_kjhcofd', {
-          fullName: name,
-          organization: `${company} [Partner Application - ${country}]`,
-          email: email,
-          phone: phone,
-          subject: `2027 Compound Slot Application: ${compound} (${country})`,
-          message: msgBody
-        }).catch(err => console.warn('EmailJS error:', err));
-      }
+      // Parameters harmonized with the shared EmailJS template (template_kjhcofd)
+      const templateParams = {
+        templateTitle: isRtl ? '🔬 طلب إبداء اهتمام برعاية حصة مركب تغذوي 2027' : '🔬 2027 Compound Slot Application',
+        fullName: `${name} — ${title}`,
+        organization: `${company} (${country})`,
+        email: email,
+        phone: phone,
+        subject: isRtl
+          ? `[طلب شراكة 2027] ${compound} | ${company}`
+          : `[2027 Partnership Application] ${compound} | ${company}`,
+        message: structuredMsgBody
+      };
 
-      setTimeout(() => {
+      const onSubmissionSuccess = () => {
+        if (formSubmitBtn) {
+          formSubmitBtn.disabled = false;
+          formSubmitBtn.innerHTML = submitBtnOriginalHTML;
+        }
         bookingForm.style.display = 'none';
         if (formSuccess) {
           formSuccess.style.display = 'block';
           const waBtn = document.getElementById('directWhatsAppLink');
           if (waBtn) {
-            waBtn.href = `https://wa.me/447716301961?text=${encodeURIComponent(msgBody)}`;
+            waBtn.href = `https://wa.me/447716301961?text=${encodeURIComponent(structuredMsgBody)}`;
           }
           const tgBtn = document.getElementById('directTelegramLink');
           if (tgBtn) {
             tgBtn.href = 'https://t.me/+447716301961';
           }
+          formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-      }, 600);
+      };
+
+      const onSubmissionFailure = (error) => {
+        console.error('EmailJS Send Error:', error);
+        if (formSubmitBtn) {
+          formSubmitBtn.disabled = false;
+          formSubmitBtn.innerHTML = submitBtnOriginalHTML;
+        }
+        if (formErrorNotice) {
+          formErrorNotice.style.display = 'flex';
+        }
+        if (formErrorSubtext) {
+          formErrorSubtext.textContent = isRtl
+            ? 'عذراً، حدث خطأ أثناء إرسال طلبك عبر الخادم. يرجى التحقق من اتصال الإنترنت أو المحاولة مجدداً أو مراسلتنا مباشرة عبر واتساب.'
+            : 'Sorry, an error occurred while transmitting your application. Please check your connection or contact us directly via WhatsApp.';
+        }
+        formErrorNotice?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      };
+
+      if (typeof emailjs !== 'undefined') {
+        emailjs.send('service_2gtw1uc', 'template_kjhcofd', templateParams)
+          .then(() => {
+            onSubmissionSuccess();
+          })
+          .catch((error) => {
+            onSubmissionFailure(error);
+          });
+      } else {
+        onSubmissionFailure('EmailJS SDK not loaded');
+      }
     });
+
+    const resetBtn = document.getElementById('b2bResetFormBtn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        bookingForm.reset();
+        requiredFieldIds.forEach(id => {
+          const el = document.getElementById(id);
+          const group = el?.closest('.b2b-form-group');
+          if (group) {
+            group.classList.remove('is-valid', 'is-invalid');
+          }
+        });
+        if (formErrorNotice) {
+          formErrorNotice.style.display = 'none';
+        }
+        if (formSuccess) {
+          formSuccess.style.display = 'none';
+        }
+        bookingForm.style.display = 'block';
+        bookingForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
   }
 
 

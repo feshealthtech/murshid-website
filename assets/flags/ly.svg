@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 180" width="260" height="180">
+  <rect width="260" height="45" fill="#E70013"/>
+  <rect y="45" width="260" height="90" fill="#000000"/>
+  <rect y="135" width="260" height="45" fill="#239E46"/>
+  <mask id="ly-crescent-mask">
+    <circle cx="125" cy="90" r="28" fill="#FFFFFF"/>
+    <circle cx="132" cy="90" r="23" fill="#000000"/>
+  </mask>
+  <rect x="85" y="55" width="80" height="70" fill="#FFFFFF" mask="url(#ly-crescent-mask)"/>
+  <path d="M 142.00 78.00 L 144.94 85.95 L 153.41 86.29 L 146.76 91.55 L 149.05 99.71 L 142.00 95.00 L 134.95 99.71 L 137.24 91.55 L 130.59 86.29 L 139.06 85.95 Z" fill="#FFFFFF"/>
+</svg>

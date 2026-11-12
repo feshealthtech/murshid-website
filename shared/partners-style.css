@@ -1300,57 +1300,74 @@ body.partners-body {
   border-radius: var(--b2b-radius-full);
 }
 
-/* 10+ Country / Global Flag Selector Grid */
+/* 16+ Arab Markets Country Selector Grid */
 .b2b-country-pills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
+  align-items: stretch;
+  width: 100%;
 }
 
 .b2b-country-pill {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
+  gap: 9px;
+  padding: 9px 12px;
   border-radius: 12px;
   background: #FFFFFF;
   border: 1.5px solid #CBD5E1;
   color: var(--b2b-text-primary);
   cursor: pointer;
-  transition: var(--b2b-transition);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: start;
-  min-height: 48px;
-  min-inline-size: 0;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+  min-height: 44px;
+  flex: 1 1 140px;
+  min-width: 125px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  box-sizing: border-box;
 }
 
 .b2b-country-pill .c-flag {
-  font-size: 1.35rem;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  line-height: 1;
+}
+
+.b2b-country-pill .c-flag-img {
+  width: 25px;
+  height: 17px;
+  border-radius: 3px;
+  object-fit: cover;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: block;
 }
 
 .b2b-country-pill .c-name {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   font-weight: 800;
   color: var(--b2b-text-primary);
-  flex: 1;
-  min-inline-size: 0;
+  flex: 1 1 auto;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  letter-spacing: -0.2px;
+  line-height: 1.2;
 }
 
 .b2b-country-pill .c-iso {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.68rem;
+  font-size: 0.67rem;
   font-weight: 800;
-  color: var(--b2b-text-muted);
+  color: #64748B;
   background: #F1F5F9;
-  padding: 2px 6px;
-  border-radius: 5px;
+  padding: 2.5px 6px;
+  border-radius: 6px;
   flex-shrink: 0;
+  margin-inline-start: auto;
+  letter-spacing: 0.4px;
+  line-height: 1.2;
 }
 
 .b2b-country-pill:hover {
@@ -1373,6 +1390,11 @@ body.partners-body {
 .b2b-country-pill.active .c-iso {
   background: rgba(43, 181, 160, 0.25);
   color: #5EEAD4;
+}
+
+.b2b-country-pill.active .c-flag-img {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
 }
 
 /* Terminal Main Split Grid */
@@ -3346,8 +3368,9 @@ body.partners-body {
    17. التجاوب وتكيف الشاشات الشامل (Responsive Tablet & Mobile Architecture)
    ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 1140px) {
-  .b2b-country-pills-grid {
-    grid-template-columns: repeat(5, 1fr);
+  .b2b-country-pill {
+    flex: 1 1 145px;
+    min-width: 135px;
   }
   .b2b-gateways-grid,
   .b2b-stats-bar {
@@ -3385,7 +3408,14 @@ body.partners-body {
     border-bottom: 1.5px solid #E2E8F0;
   }
   .b2b-country-pills-grid {
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .b2b-country-pill {
+    flex: none;
+    min-width: 0;
+    width: 100%;
   }
   .b2b-molecule-cards-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3746,6 +3776,7 @@ body.partners-body {
     white-space: normal !important;
   }
   .b2b-country-pills-grid {
+    display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 6px !important;
     width: 100% !important;
@@ -3758,9 +3789,14 @@ body.partners-body {
     width: 100% !important;
     min-inline-size: 0 !important;
     overflow: hidden !important;
+    flex: none !important;
   }
   .b2b-country-pill .c-flag {
     font-size: 0.95rem !important;
+  }
+  .b2b-country-pill .c-flag-img {
+    width: 20px !important;
+    height: 14px !important;
   }
   .b2b-country-pill .c-name {
     font-size: 0.75rem !important;

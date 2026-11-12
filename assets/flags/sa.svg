@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24" width="36" height="24">
+  <rect width="36" height="24" rx="3" fill="#006C35"/>
+  <!-- Shahada stylized inscription -->
+  <g fill="#FFFFFF">
+    <path d="M8 8.5h20v1.2H8zM9 11h18v1.2H9z"/>
+    <path d="M10 7c.4-.6 1.2-.6 1.6 0v2.5h-1.6V7zm2.5 0c.4-.6 1.2-.6 1.6 0v2.5h-1.6V7zm2.5 0c.4-.6 1.2-.6 1.6 0v2.5h-1.6V7zm2.5 0c.4-.6 1.2-.6 1.6 0v2.5h-1.6V7zm2.5 0c.4-.6 1.2-.6 1.6 0v2.5h-1.6V7zm2.5 0c.4-.6 1.2-.6 1.6 0v2.5h-1.6V7z"/>
+    <!-- Saudi Sword pointing left -->
+    <path d="M10 15.5l-2-.5 2-.5h15v1H10z"/>
+    <rect x="23" y="14" width="1.2" height="3" rx="0.4"/>
+    <circle cx="25.5" cy="15.5" r="0.7"/>
+  </g>
+</svg>

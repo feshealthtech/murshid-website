@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24" width="36" height="24">
+  <clipPath id="ae-clip"><rect width="36" height="24" rx="3"/></clipPath>
+  <g clip-path="url(#ae-clip)">
+    <rect width="36" height="8" fill="#00732F"/>
+    <rect y="8" width="36" height="8" fill="#FFFFFF"/>
+    <rect y="16" width="36" height="8" fill="#000000"/>
+    <rect width="10" height="24" fill="#FF0000"/>
+  </g>
+</svg>

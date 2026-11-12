@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24" width="36" height="24">
+  <clipPath id="iq-clip"><rect width="36" height="24" rx="3"/></clipPath>
+  <g clip-path="url(#iq-clip)">
+    <rect width="36" height="8" fill="#CE1126"/>
+    <rect y="8" width="36" height="8" fill="#FFFFFF"/>
+    <rect y="16" width="36" height="8" fill="#000000"/>
+    <!-- Kufic Takbir in green -->
+    <g fill="#007A3D" transform="translate(11, 9.5) scale(0.85)">
+      <path d="M1 0h1.5v4H1zM3.5 0h1.5v4h-1.5zM6 1h2v1.5H6zM6 3h2v1H6zM9.5 0h1.5v4H9.5zM12 0h1.5v4H12zM14.5 1h2v3h-2z"/>
+    </g>
+  </g>
+</svg>

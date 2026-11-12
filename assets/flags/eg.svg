@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24" width="36" height="24">
+  <clipPath id="eg-clip"><rect width="36" height="24" rx="3"/></clipPath>
+  <g clip-path="url(#eg-clip)">
+    <rect width="36" height="8" fill="#C8102E"/>
+    <rect y="8" width="36" height="8" fill="#FFFFFF"/>
+    <rect y="16" width="36" height="8" fill="#000000"/>
+    <!-- Eagle of Saladin in gold -->
+    <g fill="#C09300" transform="translate(15.5, 9) scale(0.9)">
+      <path d="M2.5 1c.5-.8 1.5-.8 2 0v2h-2V1z"/>
+      <path d="M1 2.5l2 1 2-1 1 2-2.5 2.5-2.5-2.5 0-2z"/>
+      <rect x="2" y="4" width="3" height="3" fill="#B38100"/>
+    </g>
+  </g>
+</svg>

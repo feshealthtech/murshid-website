@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 180" width="260" height="180">
+  <rect width="260" height="180" fill="#E70013"/>
+  <circle cx="130" cy="90" r="45" fill="#FFFFFF"/>
+  <mask id="tn-crescent-mask">
+    <circle cx="130" cy="90" r="30" fill="#FFFFFF"/>
+    <circle cx="137" cy="90" r="24" fill="#000000"/>
+  </mask>
+  <circle cx="130" cy="90" r="30" fill="#E70013" mask="url(#tn-crescent-mask)"/>
+  <path d="M 139.00 75.00 L 142.64 84.98 L 153.27 85.36 L 144.90 91.92 L 147.82 102.14 L 139.00 96.20 L 130.18 102.14 L 133.10 91.92 L 124.73 85.36 L 135.36 84.98 Z" fill="#E70013"/>
+</svg>
