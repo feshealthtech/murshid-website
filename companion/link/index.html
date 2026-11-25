@@ -598,7 +598,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       text-align: center;
     }
 
@@ -613,21 +613,33 @@
       color: var(--primary);
     }
 
-    .legal-links a {
+    .legal-links a,
+    .footer-company-link {
       text-decoration: none;
-      padding: 3px 2px;
+      color: var(--primary);
+      font-weight: 700;
+      padding: 2px 2px;
       border-bottom: 1px solid transparent;
       transition: border-color 0.15s ease, color 0.15s ease;
     }
 
-    .legal-links a:hover {
+    .legal-links a:hover,
+    .footer-company-link:hover {
       color: var(--primary-deep);
       border-bottom-color: var(--teal);
     }
 
     .footer-brand {
-      font-size: 0.72rem;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-2);
+    }
+
+    .footer-copy {
+      margin: 0;
+      font-size: 0.73rem;
       color: var(--muted);
+      line-height: 1.6;
     }
 
     dialog.ios-dialog {
@@ -915,8 +927,12 @@
           <a id="termsLink" href="/ar/companion/terms-of-use.html">شروط الاستخدام</a>
         </nav>
         <div class="footer-brand" id="footerBrandText">
-          رفيق مرشد لتنظيم النظام الغذائي واللياقة &bull; FES HealthTech
+          رفيق مرشد لتنظيم النظام الغذائي واللياقة
         </div>
+        <p class="footer-copy">
+          <span id="footerCopyPrefix">&copy; </span><span id="currentYearText">2026</span>
+          <a class="footer-company-link" id="companyLink" href="https://feshealthtech.com/" target="_blank" rel="noopener noreferrer">شركة FES HealthTech</a><span id="footerCopySuffix">. جميع الحقوق محفوظة.</span>
+        </p>
       </footer>
     </main>
   </div>
@@ -944,6 +960,7 @@
   <script>
     (function () {
       var isFile = window.location.protocol === "file:";
+      var currentYear = String(new Date().getFullYear());
       var brandLogoImg = document.getElementById("brandLogoImg");
       if (brandLogoImg) {
         brandLogoImg.setAttribute("src", isFile ? "../../assets/logo.webp" : "/assets/logo.webp");
@@ -1043,7 +1060,9 @@
           homeHref: isFile ? "../../ar/companion/index.html" : "/ar/companion/",
           privacyHref: isFile ? "../../ar/companion/privacy-policy.html" : "/ar/companion/privacy-policy.html",
           termsHref: isFile ? "../../ar/companion/terms-of-use.html" : "/ar/companion/terms-of-use.html",
-          footerBrand: "رفيق مرشد لتنظيم النظام الغذائي واللياقة \u2022 FES HealthTech",
+          footerBrand: "رفيق مرشد لتنظيم النظام الغذائي واللياقة",
+          companyLabel: "شركة FES HealthTech",
+          footerRights: ". جميع الحقوق محفوظة.",
           iosDialogBadge: "App Store (iOS) \u2022 قريباً",
           iosDialogCloseAria: "إغلاق",
           iosDialogTitle: "نسخة آيفون غير متوفرة حالياً",
@@ -1092,7 +1111,9 @@
           homeHref: isFile ? "../index.html" : "/companion/",
           privacyHref: isFile ? "../privacy-policy.html" : "/companion/privacy-policy.html",
           termsHref: isFile ? "../terms-of-use.html" : "/companion/terms-of-use.html",
-          footerBrand: "Murshid Diet & Fitness Organizer \u2022 FES HealthTech",
+          footerBrand: "Murshid Diet & Fitness Organizer",
+          companyLabel: "FES HealthTech",
+          footerRights: ". All rights reserved.",
           iosDialogBadge: "App Store (iOS) \u2022 Coming Soon",
           iosDialogCloseAria: "Close notice",
           iosDialogTitle: "iOS App Store Version Not Available Yet",
@@ -1176,6 +1197,9 @@
         termsLink.setAttribute("href", t.termsHref);
 
         document.getElementById("footerBrandText").textContent = t.footerBrand;
+        document.getElementById("currentYearText").textContent = currentYear;
+        document.getElementById("companyLink").textContent = t.companyLabel;
+        document.getElementById("footerCopySuffix").textContent = t.footerRights;
 
         document.getElementById("iosDialogBadge").textContent = t.iosDialogBadge;
         document.getElementById("iosDialogCloseX").setAttribute("aria-label", t.iosDialogCloseAria);
