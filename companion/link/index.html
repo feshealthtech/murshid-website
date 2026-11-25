@@ -37,7 +37,7 @@
         initialLang = "en";
       } else if (!isFile && (path === "/ar/companion/link" || path.indexOf("/ar/companion/link/") === 0)) {
         initialLang = "ar";
-      } else {
+      } else if (isFile) {
         var navLang = (
           (navigator.languages && navigator.languages[0]) ||
           navigator.language ||
@@ -1131,12 +1131,8 @@
         if (isFile || !window.history || !window.history.replaceState) return;
         try {
           var nextParams = new URLSearchParams(window.location.search);
-          var nextPath = lang === "ar" ? "/ar/companion/link" : "/companion/link";
-          if (lang === "ar") {
-            nextParams.delete("lang");
-          } else {
-            nextParams.set("lang", "en");
-          }
+          var nextPath = lang === "ar" ? "/ar/companion/link/" : "/companion/link/";
+          nextParams.delete("lang");
           var nextSearch = nextParams.toString();
           var target = nextPath + (nextSearch ? "?" + nextSearch : "") + (window.location.hash || "");
           window.history.replaceState(null, "", target);

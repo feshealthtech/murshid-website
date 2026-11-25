@@ -24,7 +24,14 @@
         return;
       } else if (
         path === '/ar/companion/link' ||
-        path.indexOf('/ar/companion/link/') === 0 ||
+        (path.indexOf('/ar/companion/link/') === 0 &&
+          path !== '/ar/companion/link/' &&
+          path !== '/ar/companion/link/index.html')
+      ) {
+        window.location.replace('/ar/companion/link/' + search + hash);
+        return;
+      } else if (
+        path === '/companion/link' ||
         (path.indexOf('/companion/link/') === 0 &&
           path !== '/companion/link/' &&
           path !== '/companion/link/index.html')
@@ -476,6 +483,7 @@
           navDropTerms: "📜 Terms of Use",
           navDropRefund: "💵 Refund Policy",
           navDropDataDeletion: "🗑️ Data Deletion",
+          dataDeletionHref: "/data-deletion.html",
           navDownload: "📥 Download Free",
           navDownloadHref: "/#download",
           colApp: "App",
@@ -542,6 +550,7 @@
           navDropTerms: "📜 شروط الاستخدام",
           navDropRefund: "💵 سياسة الاسترداد",
           navDropDataDeletion: "🗑️ حذف البيانات",
+          dataDeletionHref: "/ar/data-deletion.html",
           navDownload: "📥 تحميل مجاناً",
           navDownloadHref: "/ar/#download",
           colApp: "التطبيق",
@@ -662,7 +671,7 @@
         if (navDropRefund) navDropRefund.innerText = t.navDropRefund;
 
         const navDropDataDeletion = document.getElementById('navDropDataDeletion');
-        if (navDropDataDeletion) navDropDataDeletion.innerText = t.navDropDataDeletion;
+        if (navDropDataDeletion) { navDropDataDeletion.innerText = t.navDropDataDeletion; navDropDataDeletion.href = t.dataDeletionHref; }
 
         const navDownload = document.getElementById('navDownload');
         if (navDownload) { navDownload.innerText = t.navDownload; navDownload.href = t.navDownloadHref; }
@@ -721,7 +730,9 @@
         const mobRefundText = document.getElementById('mobRefundText');
         if (mobRefundText) mobRefundText.innerText = t.mobRefund;
 
+        const mobDataDeletion = document.getElementById('mobDataDeletion');
         const mobDataDeletionText = document.getElementById('mobDataDeletionText');
+        if (mobDataDeletion) mobDataDeletion.href = t.dataDeletionHref;
         if (mobDataDeletionText) mobDataDeletionText.innerText = t.mobDataDeletion;
 
         // Footer Column Titles
@@ -751,7 +762,7 @@
         if (footFaq) { footFaq.innerText = t.footFaq; footFaq.href = t.faqHref; }
 
         const footDataDeletion = document.getElementById('footDataDeletion');
-        if (footDataDeletion) footDataDeletion.innerText = t.footDataDeletion;
+        if (footDataDeletion) { footDataDeletion.innerText = t.footDataDeletion; footDataDeletion.href = t.dataDeletionHref; }
 
         const footAboutUs = document.getElementById('footAboutUs');
         if (footAboutUs) footAboutUs.innerText = t.footAboutUs;
@@ -788,7 +799,7 @@
         if (bottomTerms) bottomTerms.innerText = t.bottomTerms;
 
         const bottomDataDeletion = document.getElementById('bottomDataDeletion');
-        if (bottomDataDeletion) bottomDataDeletion.innerText = t.bottomDataDeletion;
+        if (bottomDataDeletion) { bottomDataDeletion.innerText = t.bottomDataDeletion; bottomDataDeletion.href = t.dataDeletionHref; }
       }
 
       window.toggle404Lang = function() {

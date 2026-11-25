@@ -10,7 +10,7 @@
   Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800
 
 # Verification Portal
-/verify/*
+/verify*
   Cache-Control: no-cache, no-store, must-revalidate
   Pragma: no-cache
   Expires: 0
