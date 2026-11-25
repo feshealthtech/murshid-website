@@ -6,202 +6,954 @@
   <meta name="robots" content="noindex, nofollow" />
   <meta name="referrer" content="no-referrer" />
   <title>رفيق مرشد | ربط الحساب بالعيادة</title>
+
+  <link rel="icon" id="faviconWebp" href="/assets/logo-sq.webp" type="image/webp" />
+  <link rel="alternate icon" id="faviconPng" href="/assets/logo-sq.png" type="image/png" />
+  <link rel="apple-touch-icon" id="appleIcon" href="/assets/logo-sq.png" />
+  <link rel="stylesheet" id="fontsCssLink" href="/shared/fonts.css" />
+
+  <script>
+    (function () {
+      var isFile = window.location.protocol === "file:";
+      if (isFile) {
+        var fw = document.getElementById("faviconWebp");
+        var fp = document.getElementById("faviconPng");
+        var ai = document.getElementById("appleIcon");
+        var fc = document.getElementById("fontsCssLink");
+        if (fw) fw.setAttribute("href", "../../assets/logo-sq.webp");
+        if (fp) fp.setAttribute("href", "../../assets/logo-sq.png");
+        if (ai) ai.setAttribute("href", "../../assets/logo-sq.png");
+        if (fc) fc.setAttribute("href", "../../shared/fonts.css");
+      }
+
+      var params = new URLSearchParams(window.location.search);
+      var langParam = (params.get("lang") || "").trim().toLowerCase();
+      var path = (window.location.pathname || "").toLowerCase();
+      var initialLang = "en";
+
+      if (langParam === "ar" || langParam.indexOf("ar-") === 0 || langParam.indexOf("ar_") === 0) {
+        initialLang = "ar";
+      } else if (langParam === "en" || langParam.indexOf("en-") === 0 || langParam.indexOf("en_") === 0) {
+        initialLang = "en";
+      } else if (!isFile && (path === "/ar/companion/link" || path.indexOf("/ar/companion/link/") === 0)) {
+        initialLang = "ar";
+      } else {
+        var navLang = (
+          (navigator.languages && navigator.languages[0]) ||
+          navigator.language ||
+          ""
+        ).toLowerCase();
+        initialLang = navLang.indexOf("ar") === 0 ? "ar" : "en";
+      }
+
+      window.__murshidInitialLang = initialLang;
+      document.documentElement.lang = initialLang;
+      document.documentElement.dir = initialLang === "ar" ? "rtl" : "ltr";
+    })();
+  </script>
+
   <style>
     :root {
       --primary: #0f766e;
-      --primary-dark: #115e59;
-      --accent: #10b981;
-      --bg: #f0fdfa;
-      --card: #ffffff;
+      --primary-hover: #0d6962;
+      --primary-deep: #115e59;
+      --teal-brand: #2bb5a0;
+      --teal-soft: rgba(43, 181, 160, 0.12);
+      --bg: #f4faf9;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
       --text: #0f172a;
-      --muted: #475569;
-      --border: #ccfbf1;
+      --text-secondary: #334155;
+      --muted: #64748b;
+      --border: #d8ece8;
+      --border-subtle: rgba(15, 23, 42, 0.08);
+      --amber-bg: #fffbeb;
+      --amber-border: #fde68a;
+      --amber-text: #92400e;
+      --shadow-card: 0 24px 60px rgba(15, 23, 42, 0.08), 0 4px 16px rgba(15, 118, 110, 0.06);
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --radius-xl: 28px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-pill: 9999px;
+      --font-ar: "Cairo", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
+      --font-en: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
-    * { box-sizing: border-box; }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial, sans-serif;
-      background: linear-gradient(160deg, #f0fdfa 0%, #f8fafc 100%);
+      font-family: var(--font-ar);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(43, 181, 160, 0.18) 0%, transparent 42%),
+        radial-gradient(circle at 88% 85%, rgba(2, 132, 199, 0.10) 0%, transparent 44%),
+        linear-gradient(165deg, #eefbf8 0%, #f8fafc 55%, #f1f8f7 100%);
       color: var(--text);
+      line-height: 1.65;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 24px 16px;
+      -webkit-font-smoothing: antialiased;
     }
-    .card {
+
+    html[lang="en"] body {
+      font-family: var(--font-en);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font-family: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid rgba(43, 181, 160, 0.55);
+      outline-offset: 2px;
+    }
+
+    .shell {
       width: 100%;
-      max-width: 440px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px 24px;
-      box-shadow: 0 18px 40px rgba(15, 118, 110, 0.08);
+      max-width: 560px;
     }
-    .top-bar {
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+
+    .card-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 18px;
+      gap: 12px;
+      padding: 20px 24px;
+      background: linear-gradient(180deg, rgba(43, 181, 160, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+      border-bottom: 1px solid var(--border-subtle);
     }
-    .badge {
-      display: inline-flex;
+
+    .brand {
+      display: flex;
       align-items: center;
-      gap: 6px;
-      background: #ccfbf1;
-      color: #0f766e;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 6px 12px;
-      border-radius: 999px;
+      gap: 12px;
+      min-width: 0;
     }
-    .lang-btn {
-      background: #f1f5f9;
-      border: 1px solid #cbd5e1;
-      color: var(--text);
-      border-radius: 10px;
-      padding: 6px 12px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    h1 {
-      margin: 0 0 8px;
-      font-size: 22px;
-      line-height: 1.35;
-    }
-    p.subtitle {
-      margin: 0 0 20px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .btn {
+
+    .brand-logo-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 1px solid rgba(43, 181, 160, 0.25);
+      box-shadow: var(--shadow-sm);
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 5px;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
       width: 100%;
-      text-decoration: none;
-      border: none;
-      border-radius: 14px;
-      padding: 14px 16px;
-      font-size: 15px;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 9px;
+      display: block;
+    }
+
+    .brand-meta {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .brand-name {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .brand-sub {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary);
+      line-height: 1.3;
+    }
+
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-pill);
+      padding: 8px 14px;
+      min-height: 38px;
+      font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
-      transition: transform 0.12s ease, opacity 0.12s ease;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.16s ease, border-color 0.16s ease, color 0.16s ease, background 0.16s ease;
+      flex-shrink: 0;
     }
-    .btn:active { transform: scale(0.985); }
-    .btn-primary {
-      background: var(--primary);
-      color: #ffffff;
-      margin-bottom: 10px;
+
+    .lang-btn:hover {
+      border-color: var(--teal-brand);
+      color: var(--primary);
+      background: #f0fdfa;
+      transform: translateY(-1px);
     }
-    .btn-primary:hover { background: var(--primary-dark); }
-    .btn-secondary {
-      background: #ecfdf5;
-      color: #047857;
-      border: 1px solid #a7f3d0;
-      margin-bottom: 18px;
+
+    .card-body {
+      padding: 24px 24px 22px;
     }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--teal-soft);
+      color: var(--primary-deep);
+      border: 1px solid rgba(43, 181, 160, 0.28);
+      border-radius: var(--radius-pill);
+      padding: 6px 13px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 1.55rem;
+      line-height: 1.35;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle {
+      margin: 0 0 20px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
     .credentials {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 14px;
-      margin-bottom: 16px;
       display: none;
+      margin-bottom: 22px;
+      background: linear-gradient(180deg, #f3fcf9 0%, #f8fafc 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 16px;
     }
+
+    .credentials-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--primary-deep);
+    }
+
+    .cred-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     .cred-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
-      padding: 8px 0;
+      gap: 12px;
+      background: var(--surface);
+      border: 1px solid rgba(15, 118, 110, 0.14);
+      border-radius: 13px;
+      padding: 11px 14px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
     }
-    .cred-row + .cred-row {
-      border-top: 1px dashed #cbd5e1;
+
+    .cred-info {
+      min-width: 0;
     }
+
     .cred-label {
-      font-size: 12px;
-      color: var(--muted);
       display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 2px;
     }
+
     .cred-value {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: var(--primary-dark);
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 1.12rem;
+      letter-spacing: 0.08em;
+      color: var(--primary-deep);
       direction: ltr;
       unicode-bidi: isolate;
+      word-break: break-all;
     }
+
     .copy-btn {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      background: #eefbf7;
+      border: 1px solid #bce8df;
+      color: var(--primary-deep);
       border-radius: 10px;
-      padding: 7px 12px;
-      font-size: 12px;
+      padding: 8px 13px;
+      min-height: 36px;
+      min-width: 78px;
+      font-size: 0.8rem;
       font-weight: 700;
-      color: var(--text);
       cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+      flex-shrink: 0;
+    }
+
+    .copy-btn:hover {
+      background: #dff7f1;
+      border-color: var(--teal-brand);
+    }
+
+    .copy-btn.copied {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .missing-banner {
+      display: none;
+      margin-bottom: 22px;
+      padding: 14px 16px;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: var(--radius-md);
+      color: #0c4a6e;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .steps-heading {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-card {
+      background: var(--surface-soft);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .step-card-primary {
+      background: linear-gradient(180deg, #f3fcf9 0%, #ffffff 100%);
+      border: 1.5px solid rgba(43, 181, 160, 0.35);
+    }
+
+    .step-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--teal-brand), var(--primary));
+      color: #ffffff;
+      font-size: 0.84rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      margin: 0;
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .step-tag {
+      margin-inline-start: auto;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      background: rgba(15, 118, 110, 0.1);
+      color: var(--primary-deep);
       white-space: nowrap;
     }
-    .note {
-      font-size: 12px;
+
+    .step-desc {
+      margin: 0 0 14px;
+      font-size: 0.87rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .store-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 14px;
+      min-height: 58px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      text-align: start;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .store-btn-android {
+      background: #0f172a;
+      color: #ffffff;
+      border: 1px solid #0f172a;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.14);
+    }
+
+    .store-btn-android:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.2);
+    }
+
+    .store-btn-ios {
+      background: #ffffff;
+      color: var(--text);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .store-btn-ios:hover {
+      border-color: rgba(217, 119, 6, 0.45);
+      background: #fffdf5;
+      transform: translateY(-1px);
+    }
+
+    .store-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .store-text {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .store-sub {
+      font-size: 0.68rem;
+      font-weight: 600;
+      line-height: 1.25;
+      opacity: 0.82;
+    }
+
+    .store-btn-ios .store-sub {
+      color: #b45309;
+      opacity: 1;
+    }
+
+    .store-name {
+      font-family: var(--font-en);
+      font-size: 0.94rem;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .ios-inline-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      background: var(--amber-bg);
+      border: 1px solid var(--amber-border);
+      color: var(--amber-text);
+      border-radius: 12px;
+      padding: 11px 13px;
+      font-size: 0.81rem;
+      line-height: 1.65;
+    }
+
+    .ios-inline-icon {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .btn-launch {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 100%;
+      padding: 15px 20px;
+      min-height: 52px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, var(--teal-brand) 0%, var(--primary) 100%);
+      color: #ffffff;
+      border: none;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(15, 118, 110, 0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn-launch:hover {
+      filter: brightness(1.03);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(15, 118, 110, 0.3);
+    }
+
+    .browser-tip {
+      margin: 11px 0 0;
+      font-size: 0.79rem;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.65;
+    }
+
+    .security-note {
+      margin: 6px 0 0;
+      padding: 13px 15px;
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: 13px;
+      font-size: 0.81rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+    }
+
+    .card-footer {
+      padding: 16px 24px 20px;
+      background: #f8fafc;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
       text-align: center;
-      margin: 0;
+    }
+
+    .legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px 16px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .legal-links a {
+      text-decoration: none;
+      padding: 4px 2px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .legal-links a:hover {
+      color: var(--primary-deep);
+      border-bottom-color: var(--teal-brand);
+    }
+
+    .footer-brand {
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    dialog.ios-dialog {
+      margin: auto;
+      width: min(100% - 32px, 440px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      background: var(--surface);
+      color: var(--text);
+      box-shadow: 0 28px 65px rgba(15, 23, 42, 0.22);
+    }
+
+    dialog.ios-dialog::backdrop {
+      background: rgba(15, 23, 42, 0.52);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .dialog-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .dialog-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--amber-bg);
+      border: 1px solid var(--amber-border);
+      color: var(--amber-text);
+      border-radius: var(--radius-pill);
+      padding: 5px 12px;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .dialog-x {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-soft);
+      color: var(--muted);
+      font-size: 1.2rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .dialog-x:hover {
+      background: #e2e8f0;
+      color: var(--text);
+    }
+
+    .dialog-title {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .dialog-text {
+      margin: 0 0 14px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .dialog-android-box {
+      background: #f0fdfa;
+      border: 1px dashed var(--teal-brand);
+      border-radius: 14px;
+      padding: 13px 14px;
+      font-size: 0.85rem;
+      color: var(--primary-deep);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .dialog-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .dialog-play-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: #0f172a;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    .dialog-close-btn {
+      padding: 11px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-soft);
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 14px 10px;
+      }
+
+      .card-header {
+        padding: 16px 18px;
+      }
+
+      .card-body {
+        padding: 20px 18px 18px;
+      }
+
+      .card-footer {
+        padding: 16px 18px;
+      }
+
+      h1 {
+        font-size: 1.35rem;
+      }
+
+      .store-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="card">
-    <div class="top-bar">
-      <span class="badge" id="badgeText">رفيق مرشد للمشترك</span>
-      <button type="button" class="lang-btn" id="langToggle">English</button>
+  <div class="shell">
+    <main class="card">
+      <header class="card-header">
+        <div class="brand">
+          <div class="brand-logo-wrap">
+            <img class="brand-logo" id="brandLogoImg" src="/assets/logo-sq.webp" alt="شعار رفيق مرشد" width="36" height="36" />
+          </div>
+          <div class="brand-meta">
+            <span class="brand-name" id="brandNameText">رفيق مرشد</span>
+            <span class="brand-sub" id="brandSubText">بوابة المشترك السريرية</span>
+          </div>
+        </div>
+
+        <button type="button" class="lang-btn" id="langToggle" aria-label="Switch language">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M2 12h20"></path>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span id="langToggleLabel">English</span>
+        </button>
+      </header>
+
+      <div class="card-body">
+        <div class="trust-pill" id="trustPill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span id="trustPillText">تشفير طرف لطرف (E2EE) &bull; صالح لمدة 48 ساعة</span>
+        </div>
+
+        <h1 id="headingText">الربط الآمن مع عيادتك</h1>
+        <p class="subtitle" id="subtitleText">
+          مرحباً بك في رفيق مرشد! لمتابعة خطتك الغذائية والصحية مع عيادتك بأمان، اتبع الخطوتين التاليتين حسب ما إذا كان التطبيق مثبّتاً لديك أم هذه أول مرة.
+        </p>
+
+        <section class="credentials" id="credentialsBox" aria-labelledby="credentialsHeading">
+          <div class="credentials-head">
+            <span id="credentialsHeading">بيانات الربط المجهّزة لدعوتك</span>
+          </div>
+          <div class="cred-list">
+            <div class="cred-row" id="clinicRow" style="display:none;">
+              <div class="cred-info">
+                <span class="cred-label" id="clinicLabel">كود العيادة</span>
+                <span class="cred-value" id="clinicValue"></span>
+              </div>
+              <button type="button" class="copy-btn" id="copyClinicBtn">نسخ</button>
+            </div>
+            <div class="cred-row" id="pinRow" style="display:none;">
+              <div class="cred-info">
+                <span class="cred-label" id="pinLabel">رمز التأكيد (PIN)</span>
+                <span class="cred-value" id="pinValue"></span>
+              </div>
+              <button type="button" class="copy-btn" id="copyPinBtn">نسخ</button>
+            </div>
+          </div>
+        </section>
+
+        <div class="missing-banner" id="missingBanner">
+          <span id="missingBannerText"></span>
+        </div>
+
+        <h2 class="steps-heading" id="stepsHeading">خطوات الانضمام والربط</h2>
+
+        <section class="step-card" aria-labelledby="step1Title">
+          <div class="step-title-row">
+            <span class="step-num">1</span>
+            <h3 class="step-title" id="step1Title">ثبّت التطبيق أولاً</h3>
+            <span class="step-tag" id="step1Tag">للمستخدم الجديد</span>
+          </div>
+          <p class="step-desc" id="step1Desc">
+            إذا لم يكن تطبيق رفيق مرشد مثبّتاً على هاتفك بعد، حمّله الآن مجاناً من متجر Google Play ثم سجّل الدخول بحسابك في Google.
+          </p>
+
+          <div class="store-grid">
+            <a class="store-btn store-btn-android" id="playStoreBtn" href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid.companion" target="_blank" rel="noopener noreferrer">
+              <span class="store-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3.61 1.814L13.793 12 3.61 22.186a1.48 1.48 0 0 1-.46-1.084V2.898c0-.424.178-.81.46-1.084zm1.073-.762l11.272 6.462-2.695 2.695L4.683 1.052zm12.404 7.11l2.892 1.658c.95.545.95 1.815 0 2.36l-2.892 1.658-2.99-2.838 2.99-2.838zm-3.828 4.629l2.695 2.695-11.272 6.462 8.577-9.157z"></path>
+                </svg>
+              </span>
+              <span class="store-text">
+                <span class="store-sub" id="playStoreSub">متاح الآن لأندرويد</span>
+                <span class="store-name">Google Play</span>
+              </span>
+            </a>
+
+            <button type="button" class="store-btn store-btn-ios" id="appStoreBtn" aria-haspopup="dialog" aria-controls="iosNoticeDialog">
+              <span class="store-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"></path>
+                </svg>
+              </span>
+              <span class="store-text">
+                <span class="store-sub" id="appStoreSub">غير متوفرة حالياً &bull; قريباً</span>
+                <span class="store-name">App Store</span>
+              </span>
+            </button>
+          </div>
+
+          <div class="ios-inline-note" role="note" id="iosInlineNote">
+            <svg class="ios-inline-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span id="iosInlineNoteText">
+              نسخة آيفون (App Store) غير متوفرة حالياً حتى الآن وتخضع للمراجعة النهائية، ويمكنك الآن تحميل التطبيق وتجربته مباشرة على أجهزة أندرويد عبر Google Play.
+            </span>
+          </div>
+        </section>
+
+        <section class="step-card step-card-primary" aria-labelledby="step2Title">
+          <div class="step-title-row">
+            <span class="step-num">2</span>
+            <h3 class="step-title" id="step2Title">افتح التطبيق وأكمل الربط</h3>
+            <span class="step-tag" id="step2Tag">بعد التثبيت أو للمثبّت مسبقاً</span>
+          </div>
+          <p class="step-desc" id="step2Desc">
+            إذا كنت قد ثبّت التطبيق مسبقاً أو أتممت تثبيته الآن، اضغط الزر أدناه لفتح رفيق مرشد مع تعبئة بيانات الربط تلقائياً، ثم أكّد الانضمام داخل التطبيق.
+          </p>
+
+          <a class="btn-launch" id="openAppBtn" href="mrshed://link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+            <span id="openAppBtnLabel">فتح في تطبيق رفيق مرشد</span>
+          </a>
+
+          <p class="browser-tip" id="browserTipText">
+            تلميح: إذا فتحت الرابط من داخل واتساب ولم يستجب الزر تلقائياً، اختر «فتح في المتصفح (Chrome)» من قائمة الخيارات، أو انسخ كود العيادة ورمز التأكيد أعلاه وأدخلهما يدوياً داخل التطبيق.
+          </p>
+        </section>
+
+        <div class="security-note" role="note">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span id="noteText">
+            بياناتك الصحية محمية بتشفير طرف لطرف (E2EE)، ولا يتم تفعيل الربط مع العيادة إلا بعد موافقتك وتأكيدك الصريح داخل التطبيق.
+          </span>
+        </div>
+      </div>
+
+      <footer class="card-footer">
+        <nav class="legal-links" aria-label="Murshid Companion Links">
+          <a id="companionHomeLink" href="/ar/companion/">تعرّف على رفيق مرشد</a>
+          <a id="privacyLink" href="/ar/companion/privacy-policy.html">سياسة الخصوصية لرفيق مرشد</a>
+          <a id="termsLink" href="/ar/companion/terms-of-use.html">شروط الاستخدام</a>
+        </nav>
+        <div class="footer-brand" id="footerBrandText">
+          منظومة مرشد للرعاية الغذائية السريرية &bull; FES HealthTech
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <dialog class="ios-dialog" id="iosNoticeDialog" aria-labelledby="iosDialogTitle">
+    <div class="dialog-top">
+      <span class="dialog-badge" id="iosDialogBadge">App Store (iOS) &bull; قريباً</span>
+      <button type="button" class="dialog-x" id="iosDialogCloseX" aria-label="إغلاق">&times;</button>
     </div>
-
-    <h1 id="headingText">الربط الآمن مع عيادتك</h1>
-    <p class="subtitle" id="subtitleText">
-      اضغط على الزر أدناه لفتح تطبيق رفيق مرشد وتعبئة بيانات الربط تلقائياً، أو قم بتحميل التطبيق أولاً من متجر Google Play.
+    <h3 class="dialog-title" id="iosDialogTitle">نسخة آيفون (iOS) غير متوفرة حالياً</h3>
+    <p class="dialog-text" id="iosDialogBody">
+      تطبيق رفيق مرشد لأجهزة آيفون (App Store) في مرحلة الإطلاق النهائي ولم يتوفر بعد على المتجر. نعمل على إتاحته في أقرب وقت ممكن.
     </p>
-
-    <a class="btn btn-primary" id="openAppBtn" href="mrshed://link">فتح في تطبيق رفيق مرشد</a>
-    <a class="btn btn-secondary" id="playStoreBtn" href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid.companion" target="_blank" rel="noopener noreferrer">
-      تحميل التطبيق من Google Play
-    </a>
-
-    <section class="credentials" id="credentialsBox" aria-label="Linking Credentials">
-      <div class="cred-row" id="clinicRow" style="display:none;">
-        <div>
-          <span class="cred-label" id="clinicLabel">كود العيادة</span>
-          <span class="cred-value" id="clinicValue"></span>
-        </div>
-        <button type="button" class="copy-btn" id="copyClinicBtn">نسخ</button>
-      </div>
-      <div class="cred-row" id="pinRow" style="display:none;">
-        <div>
-          <span class="cred-label" id="pinLabel">رمز التأكيد (PIN)</span>
-          <span class="cred-value" id="pinValue"></span>
-        </div>
-        <button type="button" class="copy-btn" id="copyPinBtn">نسخ</button>
-      </div>
-    </section>
-
-    <p class="note" id="noteText">
-      🔒 بياناتك الطبية محمية بتشفير طرف لطرف (E2EE) ولا يتم تفعيل الربط إلا بعد تأكيدك الصريح داخل التطبيق. كود الربط صالح لمدة 48 ساعة.
-    </p>
-  </main>
+    <div class="dialog-android-box" id="iosDialogAndroidBox">
+      النسخة الكاملة من رفيق مرشد متوفرة رسمياً الآن على متجر Google Play، ويمكنك تحميلها وتجربتها والربط مع عيادتك فوراً على أي هاتف أندرويد.
+    </div>
+    <div class="dialog-actions">
+      <a class="dialog-play-btn" id="iosDialogPlayBtn" href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid.companion" target="_blank" rel="noopener noreferrer">
+        <span id="iosDialogPlayLabel">التحميل والتجربة على Google Play (أندرويد)</span>
+      </a>
+      <button type="button" class="dialog-close-btn" id="iosDialogCloseBtn">حسناً، فهمت</button>
+    </div>
+  </dialog>
 
   <script>
     (function () {
+      var isFile = window.location.protocol === "file:";
       var params = new URLSearchParams(window.location.search);
       var rawClinic = (params.get("c") || params.get("clinic") || params.get("slug") || params.get("clinicId") || "").trim();
       var rawCode = (params.get("code") || params.get("pin") || params.get("linkCode") || "").trim();
 
       var safeClinic = /^[A-Za-z0-9_-]{2,64}$/.test(rawClinic) ? rawClinic : "";
       var safeCode = /^[A-Za-z0-9-]{4,32}$/.test(rawCode) ? rawCode : "";
+      var hasCredentials = Boolean(safeClinic || safeCode);
 
       var deepLinkParams = new URLSearchParams();
       if (safeClinic) deepLinkParams.set("c", safeClinic);
@@ -218,6 +970,7 @@
       var pinRow = document.getElementById("pinRow");
       var clinicValue = document.getElementById("clinicValue");
       var pinValue = document.getElementById("pinValue");
+      var missingBanner = document.getElementById("missingBanner");
 
       if (safeClinic) {
         clinicValue.textContent = safeClinic.toUpperCase();
@@ -229,81 +982,295 @@
         pinRow.style.display = "flex";
         credentialsBox.style.display = "block";
       }
+      if (!hasCredentials) {
+        missingBanner.style.display = "block";
+      }
 
       var strings = {
         ar: {
           dir: "rtl",
           title: "رفيق مرشد | ربط الحساب بالعيادة",
-          badge: "رفيق مرشد للمشترك",
+          logoAlt: "شعار رفيق مرشد",
+          brandName: "رفيق مرشد",
+          brandSub: "بوابة المشترك السريرية",
           toggle: "English",
-          heading: "الربط الآمن مع عيادتك",
-          subtitle: "اضغط على الزر أدناه لفتح تطبيق رفيق مرشد وتعبئة بيانات الربط تلقائياً، أو قم بتحميل التطبيق أولاً من متجر Google Play.",
-          openBtn: "فتح في تطبيق رفيق مرشد",
-          playBtn: "تحميل التطبيق من Google Play",
+          toggleAria: "التبديل إلى اللغة الإنجليزية",
+          trustPill: hasCredentials
+            ? "تشفير طرف لطرف (E2EE) \u2022 كود الدعوة صالح 48 ساعة"
+            : "تشفير طرف لطرف (E2EE) \u2022 تطبيق المشترك المعتمد",
+          heading: hasCredentials
+            ? "الربط الآمن مع عيادتك"
+            : "تحميل والانضمام إلى رفيق مرشد",
+          subtitle: hasCredentials
+            ? "مرحباً بك! لربط حسابك مع عيادتك ومتابعة خطتك الغذائية بأمان، اختر خطوتك حسب ما إذا كان تطبيق رفيق مرشد مثبّتاً لديك أم ستثبّته الآن."
+            : "تطبيق رفيق مرشد يربطك مباشرة بأخصائي التغذية لمتابعة خطتك اليومية بأمان تام. حمّل التطبيق ثم اطلب رابط الدعوة أو رمز QR من عيادتك.",
+          credentialsHeading: "بيانات الدعوة الجاهزة لربط عيادتك",
           clinicLabel: "كود العيادة",
           pinLabel: "رمز التأكيد (PIN)",
           copy: "نسخ",
           copied: "تم النسخ ✓",
-          note: "🔒 بياناتك الطبية محمية بتشفير طرف لطرف (E2EE) ولا يتم تفعيل الربط إلا بعد تأكيدك الصريح داخل التطبيق. كود الربط صالح لمدة 48 ساعة."
+          missingBanner: "لم يظهر كود عيادة أو رمز PIN في هذا الرابط. يمكنك تثبيت التطبيق الآن، ثم مسح رمز QR من عيادتك أو النقر على رابط الدعوة الكامل المرسَل لك عبر واتساب.",
+          stepsHeading: "خطوات الربط البسيطة",
+          step1Title: "ثبّت التطبيق أولاً",
+          step1Tag: "للمستخدم الجديد",
+          step1Desc: "إذا كانت هذه أول مرة تستخدم فيها رفيق مرشد، حمّل التطبيق مجاناً على هاتفك ثم سجّل الدخول بحسابك في Google.",
+          playSub: "متاح الآن لأندرويد",
+          appStoreSub: "غير متوفرة حالياً \u2022 قريباً",
+          iosInlineNote: "ملاحظة لمستخدمي آيفون (iOS): التطبيق غير متوفر حالياً على App Store حتى الآن، ويمكنكم تحميل التطبيق وتجربته مباشرة على أجهزة أندرويد عبر متجر Google Play.",
+          step2Title: "افتح التطبيق وأكمل الربط",
+          step2Tag: "للمثبّت مسبقاً أو بعد التثبيت",
+          step2Desc: hasCredentials
+            ? "بعد تثبيت التطبيق (أو إذا كان مثبّتاً لديك من قبل)، اضغط الزر أدناه لفتح التطبيق وتعبئة كود العيادة والرمز تلقائياً، ثم أكّد الربط من داخله."
+            : "إذا كان التطبيق مثبّتاً لديك بالفعل، يمكنك فتحه مباشرة من الزر أدناه ومسح رمز الـ QR أو إدخال بيانات عيادتك يدوياً.",
+          openBtn: "فتح في تطبيق رفيق مرشد",
+          browserTip: hasCredentials
+            ? "تلميح: إذا فتحت الرابط داخل متصفح واتساب ولم ينقلك تلقائياً، اختر «فتح في المتصفح» (Chrome) أو انسخ كود العيادة ورمز PIN أعلاه وأدخلهما داخل التطبيق."
+            : "تلميح: يمكنك استخدام كاميرا تطبيق رفيق مرشد لمسح رمز الاستجابة السريعة (QR) المعروض لدى الأخصائي.",
+          note: "بياناتك الصحية محمية بتشفير طرف لطرف (E2EE)، ولا يتم تفعيل الربط مع العيادة إلا بعد تأكيدك الصريح داخل التطبيق.",
+          homeLabel: "نظرة عامة على رفيق مرشد",
+          privacyLabel: "سياسة الخصوصية لرفيق مرشد",
+          termsLabel: "شروط الاستخدام",
+          homeHref: isFile ? "../../ar/companion/index.html" : "/ar/companion/",
+          privacyHref: isFile ? "../../ar/companion/privacy-policy.html" : "/ar/companion/privacy-policy.html",
+          termsHref: isFile ? "../../ar/companion/terms-of-use.html" : "/ar/companion/terms-of-use.html",
+          footerBrand: "منظومة مرشد للتغذية العلاجية \u2022 FES HealthTech",
+          iosDialogBadge: "App Store (iOS) \u2022 قريباً",
+          iosDialogCloseAria: "إغلاق النافذة",
+          iosDialogTitle: "نسخة آيفون (iOS) غير متوفرة حالياً",
+          iosDialogBody: "تطبيق رفيق مرشد لأجهزة آيفون غير متوفر على App Store حتى الآن ويخضع حالياً لمراحل الإطلاق النهائية.",
+          iosDialogAndroidBox: "التطبيق متوفر رسمياً وجاهز للتجربة والربط الفوري على أجهزة أندرويد عبر متجر Google Play.",
+          iosDialogPlayLabel: "تحميل التطبيق على Google Play (أندرويد)",
+          iosDialogCloseBtn: "حسناً، فهمت"
         },
         en: {
           dir: "ltr",
           title: "Murshid Companion | Link Your Clinic",
-          badge: "Murshid Companion",
+          logoAlt: "Murshid Companion Logo",
+          brandName: "Murshid Companion",
+          brandSub: "Clinical Patient Portal",
           toggle: "العربية",
-          heading: "Secure Clinic Linking",
-          subtitle: "Tap below to open Murshid Companion with your clinic code pre-filled, or install the app from Google Play first.",
-          openBtn: "Open in Murshid Companion",
-          playBtn: "Download on Google Play",
+          toggleAria: "Switch to Arabic",
+          trustPill: hasCredentials
+            ? "End-to-End Encrypted (E2EE) \u2022 Invite valid 48h"
+            : "End-to-End Encrypted (E2EE) \u2022 Certified Patient App",
+          heading: hasCredentials
+            ? "Secure Clinic Linking"
+            : "Get Murshid Companion",
+          subtitle: hasCredentials
+            ? "Welcome! Follow the simple steps below to connect safely with your nutrition clinic — whether you are installing the app for the first time or already have it."
+            : "Connect securely with your dietitian to view your encrypted meal plans and follow daily progress. Install the app and ask your clinic for an invite link or QR code.",
+          credentialsHeading: "Prepared Invite Credentials",
           clinicLabel: "Clinic Code",
           pinLabel: "Confirmation PIN",
           copy: "Copy",
           copied: "Copied ✓",
-          note: "🔒 Your health data is protected with end-to-end encryption (E2EE) and linking only activates after your explicit confirmation inside the app. Valid for 48 hours."
+          missingBanner: "No clinic code or PIN was detected in this URL. Install the app below, then scan the QR code from your specialist or open the full invite link shared via WhatsApp.",
+          stepsHeading: "Simple Steps to Connect",
+          step1Title: "Install the App First",
+          step1Tag: "New Users",
+          step1Desc: "New to Murshid Companion? Download the free app on your phone first and sign in with your Google account.",
+          playSub: "Available now for Android",
+          appStoreSub: "Not available yet \u2022 Coming soon",
+          iosInlineNote: "iPhone (iOS) Notice: The App Store version is not available yet and is in final release preparation. Murshid Companion is live today to download and try immediately on Android via Google Play.",
+          step2Title: "Open App & Confirm Link",
+          step2Tag: "Already Installed or After Setup",
+          step2Desc: hasCredentials
+            ? "Once installed (or if you already have the app), tap below to open Murshid Companion with your clinic code pre-filled, then confirm inside the app."
+            : "If you already have Murshid Companion installed, open it below to scan your clinic QR code or enter your pairing code manually.",
+          openBtn: "Open in Murshid Companion",
+          browserTip: hasCredentials
+            ? "Tip: If WhatsApp's built-in browser blocks opening the app, choose \"Open in Browser\" (Chrome) or copy the Clinic Code and PIN above and enter them inside the app."
+            : "Tip: Use the QR scanner inside Murshid Companion to scan your specialist's pairing QR code.",
+          note: "Your health data is protected with end-to-end encryption (E2EE). Clinic linking activates only after your explicit confirmation inside the app.",
+          homeLabel: "About Murshid Companion",
+          privacyLabel: "Companion Privacy Policy",
+          termsLabel: "Terms of Use",
+          homeHref: isFile ? "../index.html" : "/companion/",
+          privacyHref: isFile ? "../privacy-policy.html" : "/companion/privacy-policy.html",
+          termsHref: isFile ? "../terms-of-use.html" : "/companion/terms-of-use.html",
+          footerBrand: "Murshid Clinical Nutrition Ecosystem \u2022 FES HealthTech",
+          iosDialogBadge: "App Store (iOS) \u2022 Coming Soon",
+          iosDialogCloseAria: "Close notice",
+          iosDialogTitle: "iOS App Store Version Not Available Yet",
+          iosDialogBody: "Murshid Companion for iPhone (App Store) is not available yet and is undergoing final launch preparations.",
+          iosDialogAndroidBox: "The full Murshid Companion app is officially live today — you can download and try it immediately on Android via Google Play.",
+          iosDialogPlayLabel: "Download & Try on Google Play (Android)",
+          iosDialogCloseBtn: "Got it"
         }
       };
 
-      var currentLang = window.location.pathname.indexOf("/en/") !== -1 ? "en" : "ar";
+      var currentLang = window.__murshidInitialLang === "en" ? "en" : "ar";
 
-      function applyLang(lang) {
-        currentLang = lang;
-        var t = strings[lang];
-        document.documentElement.lang = lang;
+      function syncUrlForLang(lang) {
+        if (isFile || !window.history || !window.history.replaceState) return;
+        try {
+          var nextParams = new URLSearchParams(window.location.search);
+          var nextPath = lang === "ar" ? "/ar/companion/link" : "/companion/link";
+          if (lang === "ar") {
+            nextParams.delete("lang");
+          } else {
+            nextParams.set("lang", "en");
+          }
+          var nextSearch = nextParams.toString();
+          var target = nextPath + (nextSearch ? "?" + nextSearch : "") + (window.location.hash || "");
+          window.history.replaceState(null, "", target);
+        } catch (err) {
+          // Ignore restricted history state updates in sandboxed webviews
+        }
+      }
+
+      function applyLang(lang, shouldSyncUrl) {
+        currentLang = lang === "en" ? "en" : "ar";
+        var t = strings[currentLang];
+
+        document.documentElement.lang = currentLang;
         document.documentElement.dir = t.dir;
         document.title = t.title;
-        document.getElementById("badgeText").textContent = t.badge;
-        document.getElementById("langToggle").textContent = t.toggle;
+
+        document.getElementById("brandLogoImg").setAttribute("alt", t.logoAlt);
+        document.getElementById("brandNameText").textContent = t.brandName;
+        document.getElementById("brandSubText").textContent = t.brandSub;
+
+        var langBtn = document.getElementById("langToggle");
+        langBtn.setAttribute("aria-label", t.toggleAria);
+        document.getElementById("langToggleLabel").textContent = t.toggle;
+
+        document.getElementById("trustPillText").textContent = t.trustPill;
         document.getElementById("headingText").textContent = t.heading;
         document.getElementById("subtitleText").textContent = t.subtitle;
-        openAppBtn.textContent = t.openBtn;
-        document.getElementById("playStoreBtn").textContent = t.playBtn;
+        document.getElementById("credentialsHeading").textContent = t.credentialsHeading;
         document.getElementById("clinicLabel").textContent = t.clinicLabel;
         document.getElementById("pinLabel").textContent = t.pinLabel;
         document.getElementById("copyClinicBtn").textContent = t.copy;
         document.getElementById("copyPinBtn").textContent = t.copy;
+        document.getElementById("missingBannerText").textContent = t.missingBanner;
+
+        document.getElementById("stepsHeading").textContent = t.stepsHeading;
+        document.getElementById("step1Title").textContent = t.step1Title;
+        document.getElementById("step1Tag").textContent = t.step1Tag;
+        document.getElementById("step1Desc").textContent = t.step1Desc;
+        document.getElementById("playStoreSub").textContent = t.playSub;
+        document.getElementById("appStoreSub").textContent = t.appStoreSub;
+        document.getElementById("iosInlineNoteText").textContent = t.iosInlineNote;
+
+        document.getElementById("step2Title").textContent = t.step2Title;
+        document.getElementById("step2Tag").textContent = t.step2Tag;
+        document.getElementById("step2Desc").textContent = t.step2Desc;
+        document.getElementById("openAppBtnLabel").textContent = t.openBtn;
+        document.getElementById("browserTipText").textContent = t.browserTip;
         document.getElementById("noteText").textContent = t.note;
+
+        var homeLink = document.getElementById("companionHomeLink");
+        homeLink.textContent = t.homeLabel;
+        homeLink.setAttribute("href", t.homeHref);
+
+        var privacyLink = document.getElementById("privacyLink");
+        privacyLink.textContent = t.privacyLabel;
+        privacyLink.setAttribute("href", t.privacyHref);
+
+        var termsLink = document.getElementById("termsLink");
+        termsLink.textContent = t.termsLabel;
+        termsLink.setAttribute("href", t.termsHref);
+
+        document.getElementById("footerBrandText").textContent = t.footerBrand;
+
+        document.getElementById("iosDialogBadge").textContent = t.iosDialogBadge;
+        document.getElementById("iosDialogCloseX").setAttribute("aria-label", t.iosDialogCloseAria);
+        document.getElementById("iosDialogTitle").textContent = t.iosDialogTitle;
+        document.getElementById("iosDialogBody").textContent = t.iosDialogBody;
+        document.getElementById("iosDialogAndroidBox").textContent = t.iosDialogAndroidBox;
+        document.getElementById("iosDialogPlayLabel").textContent = t.iosDialogPlayLabel;
+        document.getElementById("iosDialogCloseBtn").textContent = t.iosDialogCloseBtn;
+
+        if (shouldSyncUrl) {
+          syncUrlForLang(currentLang);
+        }
       }
 
       document.getElementById("langToggle").addEventListener("click", function () {
-        applyLang(currentLang === "ar" ? "en" : "ar");
+        applyLang(currentLang === "ar" ? "en" : "ar", true);
       });
+
+      function copyWithFallback(text, onDone) {
+        if (!text) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(onDone).catch(function () {
+            legacyCopy(text, onDone);
+          });
+          return;
+        }
+        legacyCopy(text, onDone);
+      }
+
+      function legacyCopy(text, onDone) {
+        try {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          document.body.removeChild(ta);
+          onDone();
+        } catch (err) {
+          // Ignore restricted clipboard environments
+        }
+      }
 
       function wireCopy(btnId, text) {
         var btn = document.getElementById(btnId);
+        var timerId = null;
         btn.addEventListener("click", function () {
-          if (!text || !navigator.clipboard) return;
-          navigator.clipboard.writeText(text).then(function () {
+          copyWithFallback(text, function () {
             btn.textContent = strings[currentLang].copied;
-            setTimeout(function () {
+            btn.classList.add("copied");
+            if (timerId) clearTimeout(timerId);
+            timerId = setTimeout(function () {
+              btn.classList.remove("copied");
               btn.textContent = strings[currentLang].copy;
-            }, 1600);
+            }, 1700);
           });
         });
       }
 
       wireCopy("copyClinicBtn", safeClinic ? safeClinic.toUpperCase() : "");
       wireCopy("copyPinBtn", safeCode);
-      applyLang(currentLang);
+
+      var iosDialog = document.getElementById("iosNoticeDialog");
+      var appStoreBtn = document.getElementById("appStoreBtn");
+      var iosCloseX = document.getElementById("iosDialogCloseX");
+      var iosCloseBtn = document.getElementById("iosDialogCloseBtn");
+
+      function openIosNotice() {
+        if (!iosDialog) return;
+        if (typeof iosDialog.showModal === "function") {
+          if (!iosDialog.open) iosDialog.showModal();
+        } else {
+          iosDialog.setAttribute("open", "");
+        }
+      }
+
+      function closeIosNotice() {
+        if (!iosDialog) return;
+        if (typeof iosDialog.close === "function" && iosDialog.open) {
+          iosDialog.close();
+        } else {
+          iosDialog.removeAttribute("open");
+        }
+      }
+
+      appStoreBtn.addEventListener("click", openIosNotice);
+      iosCloseX.addEventListener("click", closeIosNotice);
+      iosCloseBtn.addEventListener("click", closeIosNotice);
+      iosDialog.addEventListener("click", function (event) {
+        if (event.target === iosDialog) {
+          closeIosNotice();
+        }
+      });
+
+      applyLang(currentLang, false);
     })();
   </script>
 </body>
