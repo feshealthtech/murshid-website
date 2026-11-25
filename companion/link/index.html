@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="referrer" content="no-referrer" />
-  <title>رفيق مرشد | مساعدك للصحة واللياقة</title>
+  <title>رفيق مرشد | التنظيم الغذائي واللياقة</title>
 
   <link rel="icon" id="faviconWebp" href="../../assets/logo-sq.webp" type="image/webp" />
   <link rel="alternate icon" id="faviconPng" href="../../assets/logo-sq.png" type="image/png" />
@@ -189,8 +189,6 @@
       color: var(--primary);
       line-height: 1.3;
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .lang-btn {
@@ -256,7 +254,6 @@
       line-height: 1.7;
     }
 
-    /* Invite Ticket (only shown when invite query params exist) */
     .invite-ticket {
       display: none;
       margin-bottom: 18px;
@@ -350,7 +347,6 @@
       color: #ffffff;
     }
 
-    /* Flow Blocks */
     .action-stack {
       display: flex;
       flex-direction: column;
@@ -533,17 +529,6 @@
       font-size: 0.92rem;
       font-weight: 800;
       line-height: 1.25;
-    }
-
-    .ios-whisper {
-      margin: 0;
-      font-size: 0.77rem;
-      color: var(--amber-text);
-      background: var(--amber-bg);
-      border: 1px solid var(--amber-border);
-      border-radius: 12px;
-      padding: 9px 12px;
-      line-height: 1.55;
     }
 
     .mini-journey {
@@ -799,7 +784,7 @@
           <img class="brand-logo" id="brandLogoImg" src="../../assets/logo.webp" alt="مرشد" width="42" height="42" />
           <div class="brand-text">
             <span class="brand-name" id="brandNameText">رفيق مرشد</span>
-            <span class="brand-sub" id="brandSubText">رفيق الصحة واللياقة</span>
+            <span class="brand-sub" id="brandSubText">رفيق التغذية واللياقة</span>
           </div>
         </div>
 
@@ -815,12 +800,12 @@
 
       <div class="card-body">
         <div class="pill-wrap">
-          <span class="hero-pill" id="heroPillText">مشفّر بالكامل &bull; جاهز خلال دقيقة</span>
+          <span class="hero-pill" id="heroPillText">النظام الغذائي واللياقة &bull; مساعدك اليومي</span>
         </div>
 
         <h1 id="headingText">انضم لخطتك مع أخصائيك</h1>
         <p class="subtitle" id="subtitleText">
-          تابع وجباتك وأهدافك اليومية في الصحة واللياقة بسهولة وخصوصية تامة.
+          تابع وجباتك ونظامك الغذائي واللياقة البدنية بكل سهولة وخصوصية تامة.
         </p>
 
         <section class="invite-ticket" id="credentialsBox" aria-labelledby="ticketHeaderLabel">
@@ -847,7 +832,6 @@
         </section>
 
         <div class="action-stack" id="actionStack">
-          <!-- Primary Launch Section (Promoted to Top ONLY when invite params are present) -->
           <div class="primary-launch-wrap" id="launchSection">
             <a class="btn-launch" id="openAppBtn" href="mrshed://link">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -864,7 +848,6 @@
             <span id="dividerText">جديد على رفيق مرشد؟ ابدأ بالتثبيت</span>
           </div>
 
-          <!-- Store Downloads Section -->
           <section class="store-section" id="storeSection" aria-labelledby="storeSectionLabel">
             <p class="store-section-label" id="storeSectionLabel">حمّل تطبيق رفيق مرشد الآن</p>
             <div class="store-grid">
@@ -892,13 +875,8 @@
                 </span>
               </button>
             </div>
-
-            <p class="ios-whisper" id="iosInlineNoteText">
-              نسخة آيفون (iOS) غير متوفرة حالياً بعد، والتطبيق متاح الآن للتجربة الفورية على أندرويد عبر Google Play.
-            </p>
           </section>
 
-          <!-- Clean 3-pill step summary -->
           <div class="mini-journey" id="miniJourney">
             <div class="journey-step">
               <span class="journey-num">1</span>
@@ -937,7 +915,7 @@
           <a id="termsLink" href="/ar/companion/terms-of-use.html">شروط الاستخدام</a>
         </nav>
         <div class="footer-brand" id="footerBrandText">
-          رفيق مرشد للصحة واللياقة والتنظيم الغذائي &bull; FES HealthTech
+          رفيق مرشد لتنظيم النظام الغذائي واللياقة &bull; FES HealthTech
         </div>
       </footer>
     </main>
@@ -1012,7 +990,6 @@
         credentialsBox.style.display = "block";
       }
 
-      // Without invite parameters, promote App Stores cleanly to top instead of showing empty/complex launch flow
       var actionStack = document.getElementById("actionStack");
       var launchSection = document.getElementById("launchSection");
       var sectionDivider = document.getElementById("sectionDivider");
@@ -1028,17 +1005,17 @@
       var strings = {
         ar: {
           dir: "rtl",
-          title: hasCredentials ? "رفيق مرشد | تفعيل ربط خطتك" : "رفيق مرشد | مساعدك للصحة واللياقة",
+          title: hasCredentials ? "رفيق مرشد | تفعيل ربط خطتك" : "رفيق مرشد | التنظيم الغذائي واللياقة",
           logoAlt: "شعار مرشد",
           brandName: "رفيق مرشد",
-          brandSub: "رفيق الصحة واللياقة",
+          brandSub: "رفيق التغذية واللياقة",
           toggle: "English",
           toggleAria: "Switch to English",
-          heroPill: hasCredentials ? "رابط دعوة جاهز \u2022 مشفّر بالكامل" : "الصحة واللياقة \u2022 مساعدك اليومي",
+          heroPill: hasCredentials ? "رابط دعوة جاهز \u2022 مشفّر بالكامل" : "النظام الغذائي واللياقة \u2022 مساعدك اليومي",
           heading: hasCredentials ? "انضم لخطتك في رفيق مرشد" : "أهلاً بك في رفيق مرشد",
           subtitle: hasCredentials
-            ? "دعوتك جاهزة! تابع خطتك الغذائية وأهدافك اليومية في الصحة واللياقة بسهولة وأمان."
-            : "رفيقك الذكي لتنظيم وجباتك ومتابعة خطتك اليومية في الصحة واللياقة بالتعاون مع أخصائيك.",
+            ? "دعوتك جاهزة! تابع خطتك الغذائية وجدول وجباتك وأهداف اللياقة بسهولة وأمان."
+            : "مساعدك الذكي لتنظيم وجباتك ومتابعة نظامك الغذائي واللياقة بالتعاون مع أخصائيك.",
           ticketHeader: "بيانات الدعوة الجاهزة",
           ticketValidity: "صالح 48 ساعة",
           clinicLabel: "كود العيادة",
@@ -1053,7 +1030,6 @@
           storeTitle: hasCredentials ? "الخطوة الأولى للمستخدم الجديد:" : "حمّل التطبيق الآن مجاناً:",
           playSub: "متاح الآن للأندرويد",
           appStoreSub: "قريباً على آيفون",
-          iosInlineNote: "ملاحظة: نسخة آيفون (iOS) غير متوفرة حالياً على App Store، ويمكنك تحميل التطبيق وتجربته الآن على أندرويد من Google Play.",
           j1: "حمّل التطبيق",
           j2: "سجّل بـ Google",
           j3: hasCredentials ? "اضغط فتح التطبيق" : "امسح QR أخصائيك",
@@ -1067,7 +1043,7 @@
           homeHref: isFile ? "../../ar/companion/index.html" : "/ar/companion/",
           privacyHref: isFile ? "../../ar/companion/privacy-policy.html" : "/ar/companion/privacy-policy.html",
           termsHref: isFile ? "../../ar/companion/terms-of-use.html" : "/ar/companion/terms-of-use.html",
-          footerBrand: "رفيق مرشد للصحة واللياقة والتنظيم الغذائي \u2022 FES HealthTech",
+          footerBrand: "رفيق مرشد لتنظيم النظام الغذائي واللياقة \u2022 FES HealthTech",
           iosDialogBadge: "App Store (iOS) \u2022 قريباً",
           iosDialogCloseAria: "إغلاق",
           iosDialogTitle: "نسخة آيفون غير متوفرة حالياً",
@@ -1078,17 +1054,17 @@
         },
         en: {
           dir: "ltr",
-          title: hasCredentials ? "Murshid Companion | Connect Your Plan" : "Murshid Companion | Health & Fitness Partner",
+          title: hasCredentials ? "Murshid Companion | Connect Your Plan" : "Murshid Companion | Diet & Fitness",
           logoAlt: "Murshid Logo",
           brandName: "Murshid Companion",
-          brandSub: "Health & Fitness App",
+          brandSub: "Diet & Fitness App",
           toggle: "العربية",
           toggleAria: "التبديل إلى العربية",
-          heroPill: hasCredentials ? "Invite Ready \u2022 Private & Encrypted" : "Health & Fitness \u2022 Daily Partner",
+          heroPill: hasCredentials ? "Invite Ready \u2022 Private & Encrypted" : "Diet & Fitness \u2022 Daily Organizer",
           heading: hasCredentials ? "Connect to Your Daily Plan" : "Welcome to Murshid Companion",
           subtitle: hasCredentials
-            ? "Your invite is ready! Follow your daily nutrition and fitness goals with ease and privacy."
-            : "Organize your daily meals, hydration, and fitness goals smoothly alongside your nutrition specialist.",
+            ? "Your invite is ready! Follow your daily nutrition plan, meal schedule, and fitness goals with ease."
+            : "Organize your daily meals, diet schedules, and fitness goals smoothly alongside your nutritionist.",
           ticketHeader: "Your Invite Credentials",
           ticketValidity: "Valid 48h",
           clinicLabel: "Clinic Code",
@@ -1103,7 +1079,6 @@
           storeTitle: hasCredentials ? "Step 1 for new users:" : "Download free today:",
           playSub: "Live now on Android",
           appStoreSub: "Coming soon on iOS",
-          iosInlineNote: "Note: The iPhone (App Store) version is not available yet — you can download and try the app today on Android via Google Play.",
           j1: "Install app",
           j2: "Sign in with Google",
           j3: hasCredentials ? "Tap Open App" : "Scan specialist QR",
@@ -1117,7 +1092,7 @@
           homeHref: isFile ? "../index.html" : "/companion/",
           privacyHref: isFile ? "../privacy-policy.html" : "/companion/privacy-policy.html",
           termsHref: isFile ? "../terms-of-use.html" : "/companion/terms-of-use.html",
-          footerBrand: "Murshid Health & Fitness Assistant \u2022 FES HealthTech",
+          footerBrand: "Murshid Diet & Fitness Organizer \u2022 FES HealthTech",
           iosDialogBadge: "App Store (iOS) \u2022 Coming Soon",
           iosDialogCloseAria: "Close notice",
           iosDialogTitle: "iOS App Store Version Not Available Yet",
@@ -1181,7 +1156,6 @@
         document.getElementById("storeSectionLabel").textContent = t.storeTitle;
         document.getElementById("playStoreSub").textContent = t.playSub;
         document.getElementById("appStoreSub").textContent = t.appStoreSub;
-        document.getElementById("iosInlineNoteText").textContent = t.iosInlineNote;
 
         document.getElementById("journeyStep1").textContent = t.j1;
         document.getElementById("journeyStep2").textContent = t.j2;
