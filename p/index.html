@@ -2689,17 +2689,18 @@
                 bannerEl.className = `announcement-banner ${annType}`;
                 document.getElementById('announcementText').textContent = site.announcementText;
                 
+                const isEnAnn = (site.siteLanguage || currentLang) === 'en';
                 const iconEl = document.getElementById('announcementIcon');
                 const badgeLabelEl = document.getElementById('announcementBadgeLabel');
                 if (annType === 'offer') {
                     iconEl.className = 'fa-solid fa-tag';
-                    if (badgeLabelEl) badgeLabelEl.textContent = 'عرض خاص';
+                    if (badgeLabelEl) badgeLabelEl.textContent = isEnAnn ? 'Offer' : 'عرض خاص';
                 } else if (annType === 'alert') {
                     iconEl.className = 'fa-solid fa-triangle-exclamation';
-                    if (badgeLabelEl) badgeLabelEl.textContent = 'تنبيه';
+                    if (badgeLabelEl) badgeLabelEl.textContent = isEnAnn ? 'Alert' : 'تنبيه';
                 } else {
                     iconEl.className = 'fa-solid fa-bullhorn';
-                    if (badgeLabelEl) badgeLabelEl.textContent = 'إعلان';
+                    if (badgeLabelEl) badgeLabelEl.textContent = isEnAnn ? 'Notice' : 'إعلان';
                 }
 
                 // Handle click action (WhatsApp, URL, or None)
@@ -2710,7 +2711,7 @@
                 if (action === 'whatsapp') {
                     const phone = (site.announcementPhone || site.whatsappNumber || '').replace(/[^\d+]/g, '');
                     const cleanPhone = phone.startsWith('+') ? phone.slice(1) : phone;
-                    const defaultMsg = site.announcementWhatsappMsg || 'مرحباً، أود الاستفسار بخصوص الإعلان في موقعك.';
+                    const defaultMsg = site.announcementWhatsappMsg || (isEnAnn ? 'Hello, I would like to inquire about the announcement on your page.' : 'مرحباً، أود الاستفسار بخصوص الإعلان في موقعك.');
                     if (cleanPhone) {
                         bannerEl.href = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(defaultMsg)}`;
                         bannerEl.style.cursor = 'pointer';
@@ -2739,15 +2740,23 @@
                 bannerEl.style.display = 'none';
             }
 
+            const isEnSite = (site.siteLanguage || currentLang) === 'en';
+            const fallbackName = isEnSite ? 'Nutrition Specialist' : 'أخصائي التغذية';
+            const fallbackClinic = isEnSite ? 'Digital Clinic' : 'العيادة الرقمية';
+            const fallbackTitle = isEnSite ? 'Certified Nutritionist' : 'أخصائي تغذية واستشارات معتمدة';
+            const defaultBioMeta = isEnSite
+                ? 'Explore nutrition consultation packages and schedule your consultation directly.'
+                : 'احجز استشارتك التغذوية وتعرف على باقات وخدمات الاستشارة المتاحة.';
+
             // Document Title
-            document.title = `${site.displayName || 'الأخصائي'} — ${site.clinicName || 'العيادة الرقمية'}`;
+            document.title = `${site.displayName || fallbackName} — ${site.clinicName || fallbackClinic}`;
 
             // Proposal #8: Dynamic OpenGraph & Twitter Meta Tags (Always ON)
-            const metaTitle = `${site.displayName || 'العيادة الرقمية'} | ${site.professionalTitle || 'أخصائي معتمد'}`;
-            const metaDesc = `${site.clinicName ? site.clinicName + ' — ' : ''}${site.bio || 'احجز استشارتك التغذوية وتعرف على باقات وخدمات الاستشارة المتاحة.'}`;
-            const metaImg = (site.avatarUrl && site.avatarUrl.startsWith('http')) 
+            const metaTitle = `${site.displayName || fallbackClinic} | ${site.professionalTitle || fallbackTitle}`;
+            const metaDesc = `${site.clinicName ? site.clinicName + ' — ' : ''}${site.bio || defaultBioMeta}`;
+            const metaImg = (site.avatarUrl && site.avatarUrl.startsWith('https://')) 
                 ? site.avatarUrl 
-                : ((site.coverUrl && site.coverUrl.startsWith('http')) ? site.coverUrl : '../assets/og-preview.jpg');
+                : ((site.coverUrl && site.coverUrl.startsWith('https://')) ? site.coverUrl : 'https://murshid.feshealthtech.com/assets/og-preview.jpg');
 
             const ogTitleEl = document.getElementById('ogTitle');
             const twTitleEl = document.getElementById('twTitle');
@@ -2778,8 +2787,8 @@
             }
 
             // Basic Info
-            document.getElementById('doctorName').textContent = site.displayName || 'أخصائي التغذية';
-            document.getElementById('doctorTitle').textContent = site.professionalTitle || 'أخصائي تغذية واستشارات معتمدة';
+            document.getElementById('doctorName').textContent = site.displayName || fallbackName;
+            document.getElementById('doctorTitle').textContent = site.professionalTitle || fallbackTitle;
             
             const clinicEl = document.getElementById('doctorClinic');
             if (site.clinicName) {
@@ -2808,7 +2817,7 @@
             // WhatsApp link helper
             const waRawPhone = (site.whatsappNumber || '').replace(/[^0-9]/g, '');
             const rawPhone = waRawPhone || (site.phoneNumber || '').replace(/[^0-9]/g, '');
-            const defaultMsg = site.whatsappMessage || 'مرحباً، أود الاستفسار وحجز استشارة تغذوية متخصصة معك.';
+            const defaultMsg = site.whatsappMessage || (isEnSite ? 'Hello, I would like to inquire and book a nutrition consultation with you.' : 'مرحباً، أود الاستفسار وحجز استشارة تغذوية متخصصة معك.');
             const waUrl = rawPhone ? `https://wa.me/${rawPhone}?text=${encodeURIComponent(defaultMsg)}` : '#';
             
             const mainBookingBtn = document.getElementById('mainBookingBtn');
