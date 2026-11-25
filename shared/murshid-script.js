@@ -536,9 +536,16 @@ function initReferralTracking() {
 
     if (!refCode) return;
 
-    // 1. Update all Google Play Store links with robust referrer query parameter
-    const googlePlaySelector = 'a[href*="play.google.com/store/apps/details?id=com.feshealthtech.murshid"]';
-    const storeLinks = document.querySelectorAll(googlePlaySelector);
+    // 1. Update Specialist App Google Play Store links only (exclude com.feshealthtech.murshid.companion)
+    const candidatePlaySelector = 'a[href*="play.google.com/store/apps/details"]';
+    const storeLinks = Array.from(document.querySelectorAll(candidatePlaySelector)).filter((link) => {
+      try {
+        const parsed = new URL(link.getAttribute('href') || '', window.location.origin);
+        return parsed.searchParams.get('id') === 'com.feshealthtech.murshid';
+      } catch (_) {
+        return false;
+      }
+    });
     
     // Merge existing UTM tags if present on the page URL
     const source = urlParams.get('utm_source') || 'google-play';

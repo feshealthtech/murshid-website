@@ -19,5 +19,6 @@ Allow: /
 
 # Sitemaps & LLM Context
 Sitemap: https://murshid.feshealthtech.com/sitemap.xml
+Sitemap: https://murshid.feshealthtech.com/sitemap-specialists.xml
 # LLMs Text Reference: https://murshid.feshealthtech.com/llms.txt
 # LLMs Full Knowledge Base: https://murshid.feshealthtech.com/llms-full.txt
