@@ -70,9 +70,9 @@
       --amber-border: #fde68a;
       --amber-text: #92400e;
       --shadow-luxury:
-        0 24px 64px -12px rgba(15, 118, 110, 0.11),
-        0 4px 18px -2px rgba(15, 23, 42, 0.05);
-      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+        0 20px 54px -12px rgba(15, 118, 110, 0.11),
+        0 4px 16px -2px rgba(15, 23, 42, 0.05);
+      --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.04);
       --font-ar: "Cairo", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif;
       --font-en: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -90,9 +90,10 @@
     body {
       margin: 0;
       min-height: 100vh;
+      min-height: 100dvh;
       font-family: var(--font-ar);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.55;
       background:
         radial-gradient(ellipse 80% 50% at 15% 0%, rgba(43, 181, 160, 0.16) 0%, transparent 65%),
         radial-gradient(ellipse 70% 50% at 90% 100%, rgba(14, 165, 233, 0.09) 0%, transparent 65%),
@@ -100,7 +101,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px 14px;
+      padding: 16px 12px;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -124,14 +125,14 @@
 
     .shell {
       width: 100%;
-      max-width: 480px;
+      max-width: 472px;
     }
 
     .card {
       position: relative;
       background: var(--surface);
       border: 1px solid rgba(43, 181, 160, 0.18);
-      border-radius: 28px;
+      border-radius: 26px;
       box-shadow: var(--shadow-luxury);
       overflow: hidden;
     }
@@ -148,7 +149,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      padding: 18px 22px 14px;
+      padding: 14px 18px 12px;
       border-bottom: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(43, 181, 160, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
     }
@@ -156,52 +157,59 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       min-width: 0;
+      flex: 1;
+      overflow: hidden;
     }
 
     .brand-logo {
-      height: 42px;
-      width: 42px;
+      height: 38px;
+      width: 38px;
       object-fit: contain;
       flex-shrink: 0;
       display: block;
-      border-radius: 10px;
+      border-radius: 9px;
     }
 
     .brand-text {
       display: flex;
       flex-direction: column;
       min-width: 0;
+      overflow: hidden;
     }
 
     .brand-name {
-      font-size: 1rem;
+      font-size: 0.96rem;
       font-weight: 800;
       color: var(--text);
       line-height: 1.25;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .brand-sub {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--primary);
       line-height: 1.3;
       white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .lang-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 7px 13px;
-      min-height: 36px;
+      gap: 5px;
+      padding: 6px 12px;
+      min-height: 34px;
       border-radius: 9999px;
       border: 1px solid var(--line);
       background: var(--surface-muted);
       color: var(--text);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 700;
       cursor: pointer;
       white-space: nowrap;
@@ -217,30 +225,30 @@
     }
 
     .card-body {
-      padding: 22px 22px 20px;
+      padding: 16px 18px 14px;
     }
 
     .pill-wrap {
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .hero-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 12px;
+      padding: 4px 11px;
       border-radius: 9999px;
       background: var(--teal-soft);
       border: 1px solid var(--teal-border);
       color: var(--primary-deep);
-      font-size: 0.76rem;
+      font-size: 0.72rem;
       font-weight: 700;
       white-space: nowrap;
     }
 
     h1 {
-      margin: 0 0 8px;
-      font-size: 1.5rem;
+      margin: 0 0 5px;
+      font-size: 1.34rem;
       font-weight: 800;
       line-height: 1.3;
       color: var(--text);
@@ -248,218 +256,87 @@
     }
 
     .subtitle {
-      margin: 0 0 20px;
-      font-size: 0.92rem;
+      margin: 0 0 14px;
+      font-size: 0.87rem;
       color: var(--text-2);
-      line-height: 1.7;
-    }
-
-    .invite-ticket {
-      display: none;
-      margin-bottom: 18px;
-      padding: 14px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #f0fdfa 0%, #f8fafc 100%);
-      border: 1px solid var(--teal-border);
-    }
-
-    .ticket-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 10px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--primary-deep);
-    }
-
-    .ticket-validity {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    .cred-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .cred-tile {
-      background: #ffffff;
-      border: 1px solid rgba(15, 118, 110, 0.14);
-      border-radius: 14px;
-      padding: 10px 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .cred-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 6px;
-    }
-
-    .cred-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    .cred-value {
-      font-family: var(--font-mono);
-      font-size: 1.05rem;
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      color: var(--primary-deep);
-      direction: ltr;
-      unicode-bidi: isolate;
-      word-break: break-all;
-    }
-
-    .copy-mini {
-      border: 1px solid rgba(43, 181, 160, 0.35);
-      background: #f0fdfa;
-      color: var(--primary-deep);
-      border-radius: 8px;
-      padding: 3px 9px;
-      min-height: 26px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-    }
-
-    .copy-mini:hover {
-      background: #ccfbf1;
-    }
-
-    .copy-mini.copied {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #ffffff;
+      line-height: 1.58;
     }
 
     .action-stack {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
     }
 
-    .primary-launch-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .btn-launch {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      width: 100%;
-      min-height: 52px;
-      padding: 14px 18px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, #2bb5a0 0%, #0f766e 100%);
-      color: #ffffff;
-      border: none;
-      text-decoration: none;
-      font-size: 0.98rem;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 12px 26px -6px rgba(15, 118, 110, 0.38);
-      transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
-    }
-
-    .btn-launch:hover {
-      filter: brightness(1.04);
-      transform: translateY(-1px);
-      box-shadow: 0 16px 30px -6px rgba(15, 118, 110, 0.44);
-    }
-
-    .btn-launch-soft {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      min-height: 46px;
-      padding: 11px 16px;
+    /* 1. Compact 3-Step Visual Journey */
+    .mini-journey {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      padding: 10px 8px;
       border-radius: 14px;
       background: var(--surface-muted);
-      color: var(--primary-deep);
-      border: 1px solid rgba(43, 181, 160, 0.35);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 800;
-      cursor: pointer;
-      transition: background 0.15s ease, border-color 0.15s ease, transform 0.14s ease;
+      border: 1px solid var(--line);
     }
 
-    .btn-launch-soft:hover {
-      background: #ecfdf5;
-      border-color: var(--teal);
-      transform: translateY(-1px);
-    }
-
-    .launch-sub {
-      margin: 0;
-      font-size: 0.78rem;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .section-divider {
+    .journey-step {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 0.76rem;
+      text-align: center;
+      gap: 4px;
+    }
+
+    .journey-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 9999px;
+      background: var(--teal-soft);
+      color: var(--primary-deep);
+      font-size: 0.72rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .journey-label {
+      font-size: 0.72rem;
       font-weight: 700;
+      color: var(--text-2);
+      line-height: 1.3;
     }
 
-    .section-divider::before,
-    .section-divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--line);
-    }
-
+    /* 2. Store Downloads */
     .store-section {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .store-section-label {
+    .step-caption {
       margin: 0;
-      font-size: 0.84rem;
+      font-size: 0.8rem;
       font-weight: 800;
       color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .store-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 9px;
     }
 
     .store-btn {
       display: flex;
       align-items: center;
-      gap: 10px;
-      min-height: 58px;
-      padding: 10px 13px;
-      border-radius: 15px;
+      gap: 9px;
+      min-height: 52px;
+      padding: 9px 11px;
+      border-radius: 14px;
       text-decoration: none;
       text-align: start;
       cursor: pointer;
@@ -470,13 +347,13 @@
       background: #0f172a;
       color: #ffffff;
       border: 1px solid #0f172a;
-      box-shadow: 0 8px 20px -6px rgba(15, 23, 42, 0.3);
+      box-shadow: 0 8px 18px -6px rgba(15, 23, 42, 0.28);
     }
 
     .store-btn-android:hover {
       background: #1e293b;
       transform: translateY(-1px);
-      box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.36);
+      box-shadow: 0 12px 22px -6px rgba(15, 23, 42, 0.34);
     }
 
     .store-btn-ios {
@@ -493,8 +370,8 @@
     }
 
     .store-icon {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -508,9 +385,9 @@
     }
 
     .store-sub {
-      font-size: 0.67rem;
+      font-size: 0.64rem;
       font-weight: 700;
-      line-height: 1.25;
+      line-height: 1.2;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -526,79 +403,196 @@
 
     .store-name {
       font-family: var(--font-en);
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 800;
-      line-height: 1.25;
+      line-height: 1.2;
     }
 
-    .mini-journey {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      padding: 12px;
+    /* 3. Compact Invite Ticket (Below Downloads) */
+    .invite-ticket {
+      display: none;
+      padding: 11px 12px;
       border-radius: 15px;
-      background: var(--surface-muted);
-      border: 1px solid var(--line);
+      background: linear-gradient(135deg, #f0fdfa 0%, #f8fafc 100%);
+      border: 1px solid var(--teal-border);
     }
 
-    .journey-step {
+    .ticket-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--primary-deep);
+    }
+
+    .ticket-validity {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .cred-list {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 5px;
+      gap: 7px;
     }
 
-    .journey-num {
-      width: 24px;
-      height: 24px;
-      border-radius: 9999px;
-      background: var(--teal-soft);
-      color: var(--primary-deep);
-      font-size: 0.74rem;
+    .cred-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: #ffffff;
+      border: 1px solid rgba(15, 118, 110, 0.14);
+      border-radius: 11px;
+      padding: 7px 10px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cred-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      flex-wrap: wrap;
+    }
+
+    .cred-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .cred-value {
+      font-family: var(--font-mono);
+      font-size: 0.94rem;
       font-weight: 800;
-      display: inline-flex;
+      letter-spacing: 0.05em;
+      color: var(--primary-deep);
+      direction: ltr;
+      unicode-bidi: isolate;
+      word-break: break-all;
+    }
+
+    .copy-mini {
+      border: 1px solid rgba(43, 181, 160, 0.35);
+      background: #f0fdfa;
+      color: var(--primary-deep);
+      border-radius: 8px;
+      padding: 4px 10px;
+      min-height: 28px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .copy-mini:hover {
+      background: #ccfbf1;
+    }
+
+    .copy-mini.copied {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    /* 4. Open App CTA (After Steps + Downloads + Codes) */
+    .primary-launch-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .btn-launch {
+      display: flex;
       align-items: center;
       justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #2bb5a0 0%, #0f766e 100%);
+      color: #ffffff;
+      border: none;
+      text-decoration: none;
+      font-size: 0.94rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 22px -6px rgba(15, 118, 110, 0.36);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
     }
 
-    .journey-label {
-      font-size: 0.74rem;
-      font-weight: 700;
-      color: var(--text-2);
-      line-height: 1.35;
+    .btn-launch:hover {
+      filter: brightness(1.04);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px -6px rgba(15, 118, 110, 0.42);
     }
 
-    .general-tip {
+    .btn-launch-soft {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 14px;
+      border-radius: 13px;
+      background: var(--surface-muted);
+      color: var(--primary-deep);
+      border: 1px solid rgba(43, 181, 160, 0.35);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease, transform 0.14s ease;
+    }
+
+    .btn-launch-soft:hover {
+      background: #ecfdf5;
+      border-color: var(--teal);
+      transform: translateY(-1px);
+    }
+
+    .launch-sub {
       margin: 0;
-      font-size: 0.79rem;
+      font-size: 0.74rem;
       color: var(--muted);
       text-align: center;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .trust-strip {
-      margin-top: 16px;
-      padding-top: 14px;
+      margin-top: 12px;
+      padding-top: 11px;
       border-top: 1px solid var(--line);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      font-size: 0.76rem;
+      gap: 6px;
+      font-size: 0.73rem;
       color: var(--muted);
       text-align: center;
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
     .card-footer {
-      padding: 14px 22px 18px;
+      padding: 12px 16px 14px;
       background: #f8fafc;
       border-top: 1px solid var(--line);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 7px;
+      gap: 5px;
       text-align: center;
     }
 
@@ -607,8 +601,8 @@
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 6px 14px;
-      font-size: 0.79rem;
+      gap: 4px 12px;
+      font-size: 0.76rem;
       font-weight: 700;
       color: var(--primary);
     }
@@ -630,16 +624,16 @@
     }
 
     .footer-brand {
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--text-2);
     }
 
     .footer-copy {
       margin: 0;
-      font-size: 0.73rem;
+      font-size: 0.71rem;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
     dialog.ios-dialog {
@@ -647,7 +641,7 @@
       width: min(100% - 32px, 420px);
       border: 1px solid var(--teal-border);
       border-radius: 24px;
-      padding: 22px;
+      padding: 20px;
       background: var(--surface);
       color: var(--text);
       box-shadow: 0 28px 65px rgba(15, 23, 42, 0.22);
@@ -664,7 +658,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .dialog-badge {
@@ -676,7 +670,7 @@
       color: var(--amber-text);
       border-radius: 9999px;
       padding: 4px 11px;
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 800;
     }
 
@@ -697,26 +691,26 @@
 
     .dialog-title {
       margin: 0 0 8px;
-      font-size: 1.1rem;
+      font-size: 1.06rem;
       font-weight: 800;
       color: var(--text);
     }
 
     .dialog-text {
       margin: 0 0 12px;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-2);
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
     .dialog-android-box {
       background: #f0fdfa;
       border: 1px dashed var(--teal);
       border-radius: 14px;
-      padding: 12px;
-      font-size: 0.83rem;
+      padding: 11px;
+      font-size: 0.82rem;
       color: var(--primary-deep);
-      line-height: 1.65;
+      line-height: 1.6;
       margin-bottom: 14px;
     }
 
@@ -731,51 +725,70 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 16px;
+      padding: 11px 15px;
       border-radius: 12px;
       background: #0f172a;
       color: #ffffff;
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 800;
     }
 
     .dialog-close-btn {
-      padding: 10px 16px;
+      padding: 10px 15px;
       border-radius: 12px;
       border: 1px solid var(--line);
       background: var(--surface-muted);
       color: var(--text);
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 700;
       cursor: pointer;
     }
 
-    @media (max-width: 440px) {
+    @media (max-width: 520px) {
       body {
-        padding: 12px 10px;
+        padding: 8px;
+        align-items: flex-start;
+      }
+
+      .shell {
+        max-width: 100%;
+      }
+
+      .card {
+        border-radius: 22px;
       }
 
       .card-header {
-        padding: 15px 16px 12px;
+        padding: 12px 14px 10px;
+      }
+
+      .brand-logo {
+        width: 34px;
+        height: 34px;
+      }
+
+      .lang-btn {
+        padding: 5px 10px;
+        font-size: 0.72rem;
+        min-height: 32px;
       }
 
       .card-body {
-        padding: 18px 16px 16px;
-      }
-
-      .card-footer {
-        padding: 14px 16px 16px;
+        padding: 14px 14px 12px;
       }
 
       h1 {
-        font-size: 1.32rem;
+        font-size: 1.24rem;
       }
 
-      .cred-grid {
-        grid-template-columns: 1fr;
+      .subtitle {
+        font-size: 0.83rem;
+        margin-bottom: 12px;
       }
+    }
 
+    @media (max-width: 340px) {
       .store-grid {
         grid-template-columns: 1fr;
       }
@@ -793,15 +806,15 @@
     <main class="card">
       <header class="card-header">
         <div class="brand">
-          <img class="brand-logo" id="brandLogoImg" src="../../assets/logo.webp" alt="مرشد" width="42" height="42" />
+          <img class="brand-logo" id="brandLogoImg" src="../../assets/logo.webp" alt="مرشد" width="38" height="38" />
           <div class="brand-text">
             <span class="brand-name" id="brandNameText">رفيق مرشد</span>
-            <span class="brand-sub" id="brandSubText">رفيق التغذية واللياقة</span>
+            <span class="brand-sub" id="brandSubText">التغذية واللياقة</span>
           </div>
         </div>
 
         <button type="button" class="lang-btn" id="langToggle" aria-label="Switch language">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="10"></circle>
             <path d="M2 12h20"></path>
             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
@@ -815,80 +828,13 @@
           <span class="hero-pill" id="heroPillText">النظام الغذائي واللياقة &bull; مساعدك اليومي</span>
         </div>
 
-        <h1 id="headingText">انضم لخطتك مع أخصائيك</h1>
+        <h1 id="headingText">انضم لخطتك في رفيق مرشد</h1>
         <p class="subtitle" id="subtitleText">
-          تابع وجباتك ونظامك الغذائي واللياقة البدنية بكل سهولة وخصوصية تامة.
+          اتبع الخطوات بالترتيب لتثبيت التطبيق ثم ربط حسابك ومتابعة خطتك الغذائية والرياضية بسهولة.
         </p>
 
-        <section class="invite-ticket" id="credentialsBox" aria-labelledby="ticketHeaderLabel">
-          <div class="ticket-header">
-            <span id="ticketHeaderLabel">بيانات الدعوة الجاهزة</span>
-            <span class="ticket-validity" id="ticketValidityLabel">صالح 48 ساعة</span>
-          </div>
-          <div class="cred-grid">
-            <div class="cred-tile" id="clinicRow" style="display:none;">
-              <div class="cred-top">
-                <span class="cred-label" id="clinicLabel">كود العيادة</span>
-                <button type="button" class="copy-mini" id="copyClinicBtn">نسخ</button>
-              </div>
-              <span class="cred-value" id="clinicValue"></span>
-            </div>
-            <div class="cred-tile" id="pinRow" style="display:none;">
-              <div class="cred-top">
-                <span class="cred-label" id="pinLabel">رمز PIN</span>
-                <button type="button" class="copy-mini" id="copyPinBtn">نسخ</button>
-              </div>
-              <span class="cred-value" id="pinValue"></span>
-            </div>
-          </div>
-        </section>
-
         <div class="action-stack" id="actionStack">
-          <div class="primary-launch-wrap" id="launchSection">
-            <a class="btn-launch" id="openAppBtn" href="mrshed://link">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-              </svg>
-              <span id="openAppBtnLabel">فتح في تطبيق رفيق مرشد</span>
-            </a>
-            <p class="launch-sub" id="launchSubText">للمثبّت لديهم التطبيق بالفعل — يعبّئ بيانات الربط تلقائياً</p>
-          </div>
-
-          <div class="section-divider" id="sectionDivider">
-            <span id="dividerText">جديد على رفيق مرشد؟ ابدأ بالتثبيت</span>
-          </div>
-
-          <section class="store-section" id="storeSection" aria-labelledby="storeSectionLabel">
-            <p class="store-section-label" id="storeSectionLabel">حمّل تطبيق رفيق مرشد الآن</p>
-            <div class="store-grid">
-              <a class="store-btn store-btn-android" id="playStoreBtn" href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid.companion" target="_blank" rel="noopener noreferrer">
-                <span class="store-icon" aria-hidden="true">
-                  <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3.61 1.814L13.793 12 3.61 22.186a1.48 1.48 0 0 1-.46-1.084V2.898c0-.424.178-.81.46-1.084zm1.073-.762l11.272 6.462-2.695 2.695L4.683 1.052zm12.404 7.11l2.892 1.658c.95.545.95 1.815 0 2.36l-2.892 1.658-2.99-2.838 2.99-2.838zm-3.828 4.629l2.695 2.695-11.272 6.462 8.577-9.157z"></path>
-                  </svg>
-                </span>
-                <span class="store-text">
-                  <span class="store-sub" id="playStoreSub">متاح الآن للأندرويد</span>
-                  <span class="store-name">Google Play</span>
-                </span>
-              </a>
-
-              <button type="button" class="store-btn store-btn-ios" id="appStoreBtn" aria-haspopup="dialog" aria-controls="iosNoticeDialog">
-                <span class="store-icon" aria-hidden="true">
-                  <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"></path>
-                  </svg>
-                </span>
-                <span class="store-text">
-                  <span class="store-sub" id="appStoreSub">قريباً على آيفون</span>
-                  <span class="store-name">App Store</span>
-                </span>
-              </button>
-            </div>
-          </section>
-
+          <!-- 1. Steps Overview -->
           <div class="mini-journey" id="miniJourney">
             <div class="journey-step">
               <span class="journey-num">1</span>
@@ -900,13 +846,79 @@
             </div>
             <div class="journey-step">
               <span class="journey-num">3</span>
-              <span class="journey-label" id="journeyStep3">افتح الرابط للربط</span>
+              <span class="journey-label" id="journeyStep3">افتحه للربط</span>
             </div>
           </div>
 
-          <p class="general-tip" id="generalTipText">
-            إذا لم يفتح التطبيق من متصفح واتساب، افتح الصفحة في Chrome أو انسخ الكود والرمز أعلاه.
-          </p>
+          <!-- 2. Store Downloads (First-Time Users) -->
+          <section class="store-section" id="storeSection" aria-labelledby="storeSectionLabel">
+            <p class="step-caption" id="storeSectionLabel">الخطوة ١: ثبّت التطبيق أولاً</p>
+            <div class="store-grid">
+              <a class="store-btn store-btn-android" id="playStoreBtn" href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid.companion" target="_blank" rel="noopener noreferrer">
+                <span class="store-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3.61 1.814L13.793 12 3.61 22.186a1.48 1.48 0 0 1-.46-1.084V2.898c0-.424.178-.81.46-1.084zm1.073-.762l11.272 6.462-2.695 2.695L4.683 1.052zm12.404 7.11l2.892 1.658c.95.545.95 1.815 0 2.36l-2.892 1.658-2.99-2.838 2.99-2.838zm-3.828 4.629l2.695 2.695-11.272 6.462 8.577-9.157z"></path>
+                  </svg>
+                </span>
+                <span class="store-text">
+                  <span class="store-sub" id="playStoreSub">متاح للأندرويد</span>
+                  <span class="store-name">Google Play</span>
+                </span>
+              </a>
+
+              <button type="button" class="store-btn store-btn-ios" id="appStoreBtn" aria-haspopup="dialog" aria-controls="iosNoticeDialog">
+                <span class="store-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"></path>
+                  </svg>
+                </span>
+                <span class="store-text">
+                  <span class="store-sub" id="appStoreSub">قريباً على آيفون</span>
+                  <span class="store-name">App Store</span>
+                </span>
+              </button>
+            </div>
+          </section>
+
+          <!-- 3. Linking Credentials (Below Downloads) -->
+          <section class="invite-ticket" id="credentialsBox" aria-labelledby="ticketHeaderLabel">
+            <div class="ticket-header">
+              <span id="ticketHeaderLabel">الخطوة ٢: رموز الربط الخاصّة بك</span>
+              <span class="ticket-validity" id="ticketValidityLabel">صالح 48 ساعة</span>
+            </div>
+            <div class="cred-list">
+              <div class="cred-row" id="clinicRow" style="display:none;">
+                <div class="cred-meta">
+                  <span class="cred-label" id="clinicLabel">كود العيادة:</span>
+                  <span class="cred-value" id="clinicValue"></span>
+                </div>
+                <button type="button" class="copy-mini" id="copyClinicBtn">نسخ</button>
+              </div>
+              <div class="cred-row" id="pinRow" style="display:none;">
+                <div class="cred-meta">
+                  <span class="cred-label" id="pinLabel">رمز PIN:</span>
+                  <span class="cred-value" id="pinValue"></span>
+                </div>
+                <button type="button" class="copy-mini" id="copyPinBtn">نسخ</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. Launch App CTA (After Steps + Downloads + Codes) -->
+          <div class="primary-launch-wrap" id="launchSection">
+            <p class="step-caption" id="launchSectionCaption">الخطوة ٣: بعد التثبيت أو للمثبّت لديهم التطبيق</p>
+            <a class="btn-launch" id="openAppBtn" href="mrshed://link">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+              <span id="openAppBtnLabel">فتح في تطبيق رفيق مرشد</span>
+            </a>
+            <p class="launch-sub" id="launchSubText">
+              يفتح التطبيق ويعبّئ الكود تلقائياً. إذا لم يفتح من واتساب، افتحه في Chrome أو انسخ الرموز أعلاه.
+            </p>
+          </div>
         </div>
 
         <div class="trust-strip" role="note">
@@ -989,6 +1001,9 @@
 
       var openAppBtn = document.getElementById("openAppBtn");
       openAppBtn.setAttribute("href", customSchemeUrl);
+      if (!hasCredentials) {
+        openAppBtn.className = "btn-launch-soft";
+      }
 
       var credentialsBox = document.getElementById("credentialsBox");
       var clinicRow = document.getElementById("clinicRow");
@@ -1007,52 +1022,39 @@
         credentialsBox.style.display = "block";
       }
 
-      var actionStack = document.getElementById("actionStack");
-      var launchSection = document.getElementById("launchSection");
-      var sectionDivider = document.getElementById("sectionDivider");
-      var storeSection = document.getElementById("storeSection");
-      var miniJourney = document.getElementById("miniJourney");
-      if (!hasCredentials) {
-        openAppBtn.className = "btn-launch-soft";
-        actionStack.insertBefore(storeSection, launchSection);
-        actionStack.insertBefore(miniJourney, launchSection);
-        actionStack.insertBefore(sectionDivider, launchSection);
-      }
-
       var strings = {
         ar: {
           dir: "rtl",
           title: hasCredentials ? "رفيق مرشد | تفعيل ربط خطتك" : "رفيق مرشد | التنظيم الغذائي واللياقة",
           logoAlt: "شعار مرشد",
           brandName: "رفيق مرشد",
-          brandSub: "رفيق التغذية واللياقة",
+          brandSub: "التغذية واللياقة",
           toggle: "English",
           toggleAria: "Switch to English",
           heroPill: hasCredentials ? "رابط دعوة جاهز \u2022 مشفّر بالكامل" : "النظام الغذائي واللياقة \u2022 مساعدك اليومي",
           heading: hasCredentials ? "انضم لخطتك في رفيق مرشد" : "أهلاً بك في رفيق مرشد",
           subtitle: hasCredentials
-            ? "دعوتك جاهزة! تابع خطتك الغذائية وجدول وجباتك وأهداف اللياقة بسهولة وأمان."
-            : "مساعدك الذكي لتنظيم وجباتك ومتابعة نظامك الغذائي واللياقة بالتعاون مع أخصائيك.",
-          ticketHeader: "بيانات الدعوة الجاهزة",
-          ticketValidity: "صالح 48 ساعة",
-          clinicLabel: "كود العيادة",
-          pinLabel: "رمز PIN",
-          copy: "نسخ",
-          copied: "تم ✓",
-          openBtn: "فتح في تطبيق رفيق مرشد",
-          launchSub: hasCredentials
-            ? "إذا كان التطبيق مثبّتاً لديك — يفتح بالبيانات معبأة تلقائياً"
-            : "إذا كان التطبيق مثبّتاً لديك بالفعل على جهازك",
-          divider: hasCredentials ? "مستخدم جديد؟ حمّل التطبيق في ثوانٍ" : "أو إن كان التطبيق مثبّتاً لديك",
-          storeTitle: hasCredentials ? "الخطوة الأولى للمستخدم الجديد:" : "حمّل التطبيق الآن مجاناً:",
-          playSub: "متاح الآن للأندرويد",
-          appStoreSub: "قريباً على آيفون",
+            ? "اتبع الخطوات بالترتيب: ثبّت التطبيق ثم استخدم رموز الربط أو افتحه مباشرة."
+            : "مساعدك الذكي لتنظيم وجباتك ومتابعة نظامك الغذائي واللياقة مع أخصائيك.",
           j1: "حمّل التطبيق",
           j2: "سجّل بـ Google",
-          j3: hasCredentials ? "اضغط فتح التطبيق" : "امسح QR أخصائيك",
-          generalTip: hasCredentials
-            ? "تلميح: إذا لم يفتح من داخل واتساب، اختر الفتح في Chrome أو انسخ الكود والرمز أعلاه."
-            : "عند استلام رابط دعوة أو رمز QR من أخصائيك، افتحه مباشرة للربط خلال ثوانٍ.",
+          j3: hasCredentials ? "افتحه للربط" : "امسح QR أخصائيك",
+          storeTitle: hasCredentials ? "الخطوة ١: ثبّت التطبيق أولاً" : "حمّل التطبيق مجاناً",
+          playSub: "متاح للأندرويد",
+          appStoreSub: "قريباً على آيفون",
+          ticketHeader: "الخطوة ٢: رموز الربط الخاصّة بك",
+          ticketValidity: "صالح 48 ساعة",
+          clinicLabel: "كود العيادة:",
+          pinLabel: "رمز PIN:",
+          copy: "نسخ",
+          copied: "تم ✓",
+          launchCaption: hasCredentials
+            ? "الخطوة ٣: بعد التثبيت أو للمثبّت لديهم التطبيق"
+            : "لديك التطبيق بالفعل؟",
+          openBtn: "فتح في تطبيق رفيق مرشد",
+          launchSub: hasCredentials
+            ? "يفتح التطبيق ويعبّئ الكود تلقائياً. إذا حُجب من واتساب افتحه في Chrome أو انسخ الرموز أعلاه."
+            : "عند استلام رابط دعوة أو رمز QR من أخصائيك، افتحه للربط خلال ثوانٍ.",
           note: "بياناتك وجداولك الشخصية مشفّرة بالكامل ولا يُفعّل الربط إلا بموافقتك داخل التطبيق.",
           homeLabel: "عن رفيق مرشد",
           privacyLabel: "سياسة الخصوصية لرفيق مرشد",
@@ -1076,33 +1078,32 @@
           title: hasCredentials ? "Murshid Companion | Connect Your Plan" : "Murshid Companion | Diet & Fitness",
           logoAlt: "Murshid Logo",
           brandName: "Murshid Companion",
-          brandSub: "Diet & Fitness App",
+          brandSub: "Diet & Fitness",
           toggle: "العربية",
           toggleAria: "التبديل إلى العربية",
           heroPill: hasCredentials ? "Invite Ready \u2022 Private & Encrypted" : "Diet & Fitness \u2022 Daily Organizer",
           heading: hasCredentials ? "Connect to Your Daily Plan" : "Welcome to Murshid Companion",
           subtitle: hasCredentials
-            ? "Your invite is ready! Follow your daily nutrition plan, meal schedule, and fitness goals with ease."
-            : "Organize your daily meals, diet schedules, and fitness goals smoothly alongside your nutritionist.",
-          ticketHeader: "Your Invite Credentials",
+            ? "Follow these steps in order: install the app, check your codes below, then tap Open."
+            : "Organize your daily meals, diet schedules, and fitness goals smoothly with your nutritionist.",
+          j1: "Install app",
+          j2: "Sign in (Google)",
+          j3: hasCredentials ? "Open & link" : "Scan QR code",
+          storeTitle: hasCredentials ? "Step 1: Download the app first" : "Download free today",
+          playSub: "Live on Android",
+          appStoreSub: "Coming soon iOS",
+          ticketHeader: "Step 2: Your linking codes",
           ticketValidity: "Valid 48h",
-          clinicLabel: "Clinic Code",
-          pinLabel: "PIN Code",
+          clinicLabel: "Clinic Code:",
+          pinLabel: "PIN Code:",
           copy: "Copy",
           copied: "Copied ✓",
+          launchCaption: hasCredentials
+            ? "Step 3: After installing (or if already installed)"
+            : "Already have the app installed?",
           openBtn: "Open in Murshid Companion",
           launchSub: hasCredentials
-            ? "Already installed? Opens with your code pre-filled"
-            : "Already have the app installed on your phone?",
-          divider: hasCredentials ? "First time here? Install in seconds" : "Or already installed?",
-          storeTitle: hasCredentials ? "Step 1 for new users:" : "Download free today:",
-          playSub: "Live now on Android",
-          appStoreSub: "Coming soon on iOS",
-          j1: "Install app",
-          j2: "Sign in with Google",
-          j3: hasCredentials ? "Tap Open App" : "Scan specialist QR",
-          generalTip: hasCredentials
-            ? "Tip: If WhatsApp blocks opening the app, choose Open in Chrome or copy the codes above."
+            ? "Opens with your code pre-filled. If WhatsApp blocks it, open in Chrome or copy the codes above."
             : "Whenever you receive an invite link or QR from your specialist, open it to connect in seconds.",
           note: "Your personal plans and activity stay private and encrypted — linking activates only after you confirm inside the app.",
           homeLabel: "About Murshid Companion",
@@ -1164,6 +1165,13 @@
         document.getElementById("headingText").textContent = t.heading;
         document.getElementById("subtitleText").textContent = t.subtitle;
 
+        document.getElementById("journeyStep1").textContent = t.j1;
+        document.getElementById("journeyStep2").textContent = t.j2;
+        document.getElementById("journeyStep3").textContent = t.j3;
+        document.getElementById("storeSectionLabel").textContent = t.storeTitle;
+        document.getElementById("playStoreSub").textContent = t.playSub;
+        document.getElementById("appStoreSub").textContent = t.appStoreSub;
+
         document.getElementById("ticketHeaderLabel").textContent = t.ticketHeader;
         document.getElementById("ticketValidityLabel").textContent = t.ticketValidity;
         document.getElementById("clinicLabel").textContent = t.clinicLabel;
@@ -1171,17 +1179,9 @@
         document.getElementById("copyClinicBtn").textContent = t.copy;
         document.getElementById("copyPinBtn").textContent = t.copy;
 
+        document.getElementById("launchSectionCaption").textContent = t.launchCaption;
         document.getElementById("openAppBtnLabel").textContent = t.openBtn;
         document.getElementById("launchSubText").textContent = t.launchSub;
-        document.getElementById("dividerText").textContent = t.divider;
-        document.getElementById("storeSectionLabel").textContent = t.storeTitle;
-        document.getElementById("playStoreSub").textContent = t.playSub;
-        document.getElementById("appStoreSub").textContent = t.appStoreSub;
-
-        document.getElementById("journeyStep1").textContent = t.j1;
-        document.getElementById("journeyStep2").textContent = t.j2;
-        document.getElementById("journeyStep3").textContent = t.j3;
-        document.getElementById("generalTipText").textContent = t.generalTip;
         document.getElementById("noteText").textContent = t.note;
 
         var homeLink = document.getElementById("companionHomeLink");
