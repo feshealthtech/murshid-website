@@ -22,6 +22,15 @@
       } else if (path.indexOf('/verify/') === 0 && path !== '/verify/') {
         window.location.replace('/verify/' + search + hash);
         return;
+      } else if (
+        path === '/ar/companion/link' ||
+        path.indexOf('/ar/companion/link/') === 0 ||
+        (path.indexOf('/companion/link/') === 0 &&
+          path !== '/companion/link/' &&
+          path !== '/companion/link/index.html')
+      ) {
+        window.location.replace('/companion/link/' + search + hash);
+        return;
       }
     })();
   </script>

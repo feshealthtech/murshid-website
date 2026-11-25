@@ -152,7 +152,7 @@
     }
     .del-form-input option {
       background-color: var(--m-surface-2) !important;
-      color: #FFF !important;
+      color: var(--m-text) !important;
     }
     .del-checkbox-row {
       display: flex;
@@ -210,7 +210,7 @@
     .del-success-title {
       font-size: 1.5rem;
       font-weight: 800;
-      color: #FFF;
+      color: var(--m-text);
       margin-bottom: 12px;
     }
     .del-success-desc {
@@ -355,7 +355,7 @@
         <strong style="color:var(--m-text);">التنفيذ الذري الفوري والتطهير الشامل</strong>
       </div>
       <p style="color:var(--m-text-muted); margin:0 38px 0 0; line-height:1.7;">
-        بمجرد النقر على زر التأكيد، يقوم النظام السحابي فورياً بإلغاء وفك ارتباط كافة العيادات، وحذف حسابك من خوادم المصادقة (Firebase Authentication)، ومسح وتطهير كافة مفاتيح التشفير اللامتناظرة والبيانات المحلية وإعادتك لشاشة تسجيل الدخول.
+        بمجرد النقر على زر التأكيد، يقوم النظام السحابي فورياً بإلغاء وفك ارتباط كافة العيادات وتجريد روابطها من كافة بياناتك الشخصية وحزمك المشفرة، وحذف ملف المشترك وحساب المصادقة في Firebase Authentication (مع الحفاظ التام على حساب المصادقة فقط إذا كنت تملك حساباً مهنياً نشطاً كأخصائي في تطبيق مرشد بنفس البريد)، ثم مسح وتطهير كافة مفاتيح التشفير اللامتناظرة والبيانات المحلية وإعادتك لشاشة تسجيل الدخول.
       </p>
     </div>
   </div>
@@ -471,11 +471,11 @@
     <div class="del-cards-grid">
       <!-- Card 1 -->
       <div class="del-card del-card-green">
-        <span class="del-card-title">✅ يُحذف سحابياً ونهائياً (فوراً إلى 72 ساعة)</span>
+        <span class="del-card-title">✅ يُحذف ويُطهّر سحابياً نهائياً (فوراً إلى 72 ساعة)</span>
         <ul>
-          <li>حساب المصادقة والـ UID في Firebase Authentication.</li>
-          <li>كافة مستندات الروابط المشفرة في السحابة (<code>clinic_links</code>).</li>
-          <li>المفاتيح العامة وسجلات القنوات المؤقتة وحزم النقل العابرة.</li>
+          <li>ملفك الشخصي السحابي (<code>patients</code>) ومفاتيحك العامة وحساب المصادقة في Firebase Authentication للحسابات المستقلة (أما الحسابات مزدوجة الصفة التي تستخدم نفس البريد كأخصائي نشط في تطبيق مرشد، فيتم حذف ملف وصفة المشترك بالكامل مع الحفاظ التام على حساب الأخصائي ومصادقة الدخول).</li>
+          <li>تجريد كافة مستندات روابط العيادات (<code>clinic_links</code>) من بياناتك الشخصية (البريد، الاسم، المفتاح العام) وكافة الحزم المشفرة (الخطط، القياسات اليومية، المواعيد، والاستمارات)، مع إبقاء علامة حالة إلغاء نهائي مجهولة (<code>REVOKED</code>) خالية تماماً من البيانات الشخصية لإخطار العيادة بتوقف المزامنة.</li>
+          <li>جميع سجلات العيادات المرتبطة وخزنة مفاتيح المشترك السحابية وقنوات النقل المؤقتة.</li>
         </ul>
       </div>
 
@@ -583,10 +583,12 @@
   document.addEventListener('DOMContentLoaded', function() {
     'use strict';
 
-    // Initialize EmailJS with Public Key
-    emailjs.init({
-      publicKey: "GRhnKzi6GMcVvCjb3",
-    });
+    // Initialize EmailJS with Public Key when CDN script is available
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init({
+        publicKey: "GRhnKzi6GMcVvCjb3",
+      });
+    }
 
     const form = document.getElementById('deletionForm');
     const formContainer = document.getElementById('deletionFormContainer');
@@ -677,16 +679,6 @@
       });
 
       if (isFormValid) {
-        if (typeof emailjs === 'undefined') {
-          alert('تعذر تحميل خدمة المراسلة حالياً. يرجى التحقق من اتصال الإنترنت أو مراسلتنا مباشرة عبر privacy@feshealthtech.com.');
-          return;
-        }
-
-        // UI Loading State
-        submitBtn.disabled = true;
-        const origText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<span>⚡ جارٍ إرسال طلب الحذف...</span>';
-
         const reasonSelect = fields.reason.el;
         const selectedReasonText = reasonSelect.options[reasonSelect.selectedIndex].text;
         const notesVal = document.getElementById('delNotes').value.trim();
@@ -713,12 +705,40 @@
           '======================================================'
         ].join('\n');
 
+        const emailSubject = '[رفيق مرشد - المشترك] طلب حذف بيانات: ' + selectedReasonText;
+
+        function showMailtoFallback(notice) {
+          let box = document.getElementById('deletionFallback');
+          if (!box) {
+            box = document.createElement('div');
+            box.id = 'deletionFallback';
+            box.style.cssText = 'margin-top:16px;padding:16px;border-radius:12px;border:1px solid rgba(239,68,68,0.35);background:rgba(239,68,68,0.06);color:var(--m-text);text-align:right;line-height:1.7;';
+            box.innerHTML = '<p id="deletionFallbackMsg" style="margin:0 0 12px;font-weight:700;color:#B91C1C;"></p><a id="deletionMailtoLink" class="m-btn m-btn-outline" style="width:100%;justify-content:center;display:inline-flex;"></a>';
+            form.insertAdjacentElement('afterend', box);
+          }
+          document.getElementById('deletionFallbackMsg').textContent = notice;
+          const mailtoLink = document.getElementById('deletionMailtoLink');
+          mailtoLink.href = 'mailto:privacy@feshealthtech.com?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(messageBody);
+          mailtoLink.textContent = '✉️ إرسال الطلب مباشرة عبر تطبيق البريد (privacy@feshealthtech.com)';
+          box.style.display = 'block';
+        }
+
+        if (typeof emailjs === 'undefined') {
+          showMailtoFallback('تعذر تحميل خدمة الإرسال التلقائي في متصفحك. يمكنك إرسال الطلب فوراً عبر الزر التالي إلى privacy@feshealthtech.com:');
+          return;
+        }
+
+        // UI Loading State
+        submitBtn.disabled = true;
+        const origText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<span>⚡ جارٍ إرسال طلب الحذف...</span>';
+
         const templateParams = {
           templateTitle: '🗑️ [رفيق مرشد - تطبيق المشترك] طلب مسح الحساب والبيانات السحابية',
           fullName: fields.name.el.value.trim(),
           email: fields.email.el.value.trim(),
           phone: '(غير محدد - طلب حذف تطبيق المشترك عبر الويب)',
-          subject: '[رفيق مرشد - المشترك] طلب حذف بيانات: ' + selectedReasonText,
+          subject: emailSubject,
           organization: 'رفيق مرشد (Murshid Companion) - تطبيق المشترك / المراجع',
           message: messageBody
         };
@@ -734,9 +754,9 @@
           })
           .catch((error) => {
             console.error('EmailJS Companion Data Deletion Send Error:', error);
-            alert('عذراً، حدث خطأ أثناء إرسال طلب حذف البيانات. يرجى المحاولة مرة أخرى لاحقاً أو مراسلتنا مباشرة عبر البريد الإلكتروني: support@feshealthtech.com.');
             submitBtn.disabled = false;
             submitBtn.innerHTML = origText;
+            showMailtoFallback('تعذر إتمام الإرسال التلقائي. يمكنك إرسال تفاصيل طلبك مباشرة إلى privacy@feshealthtech.com عبر الزر التالي:');
           });
       }
     });

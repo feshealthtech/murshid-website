@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  <title>رفيق مرشد | ربط الحساب بالعيادة</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --accent: #10b981;
+      --bg: #f0fdfa;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #ccfbf1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial, sans-serif;
+      background: linear-gradient(160deg, #f0fdfa 0%, #f8fafc 100%);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 18px 40px rgba(15, 118, 110, 0.08);
+    }
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ccfbf1;
+      color: #0f766e;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 999px;
+    }
+    .lang-btn {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: var(--text);
+      border-radius: 10px;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      line-height: 1.35;
+    }
+    p.subtitle {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-decoration: none;
+      border: none;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.12s ease, opacity 0.12s ease;
+    }
+    .btn:active { transform: scale(0.985); }
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-secondary {
+      background: #ecfdf5;
+      color: #047857;
+      border: 1px solid #a7f3d0;
+      margin-bottom: 18px;
+    }
+    .credentials {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .cred-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 0;
+    }
+    .cred-row + .cred-row {
+      border-top: 1px dashed #cbd5e1;
+    }
+    .cred-label {
+      font-size: 12px;
+      color: var(--muted);
+      display: block;
+    }
+    .cred-value {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--primary-dark);
+      direction: ltr;
+      unicode-bidi: isolate;
+    }
+    .copy-btn {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .note {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      text-align: center;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="top-bar">
+      <span class="badge" id="badgeText">رفيق مرشد للمشترك</span>
+      <button type="button" class="lang-btn" id="langToggle">English</button>
+    </div>
+
+    <h1 id="headingText">الربط الآمن مع عيادتك</h1>
+    <p class="subtitle" id="subtitleText">
+      اضغط على الزر أدناه لفتح تطبيق رفيق مرشد وتعبئة بيانات الربط تلقائياً، أو قم بتحميل التطبيق أولاً من متجر Google Play.
+    </p>
+
+    <a class="btn btn-primary" id="openAppBtn" href="mrshed://link">فتح في تطبيق رفيق مرشد</a>
+    <a class="btn btn-secondary" id="playStoreBtn" href="https://play.google.com/store/apps/details?id=com.feshealthtech.murshid.companion" target="_blank" rel="noopener noreferrer">
+      تحميل التطبيق من Google Play
+    </a>
+
+    <section class="credentials" id="credentialsBox" aria-label="Linking Credentials">
+      <div class="cred-row" id="clinicRow" style="display:none;">
+        <div>
+          <span class="cred-label" id="clinicLabel">كود العيادة</span>
+          <span class="cred-value" id="clinicValue"></span>
+        </div>
+        <button type="button" class="copy-btn" id="copyClinicBtn">نسخ</button>
+      </div>
+      <div class="cred-row" id="pinRow" style="display:none;">
+        <div>
+          <span class="cred-label" id="pinLabel">رمز التأكيد (PIN)</span>
+          <span class="cred-value" id="pinValue"></span>
+        </div>
+        <button type="button" class="copy-btn" id="copyPinBtn">نسخ</button>
+      </div>
+    </section>
+
+    <p class="note" id="noteText">
+      🔒 بياناتك الطبية محمية بتشفير طرف لطرف (E2EE) ولا يتم تفعيل الربط إلا بعد تأكيدك الصريح داخل التطبيق. كود الربط صالح لمدة 48 ساعة.
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var rawClinic = (params.get("c") || params.get("clinic") || params.get("slug") || params.get("clinicId") || "").trim();
+      var rawCode = (params.get("code") || params.get("pin") || params.get("linkCode") || "").trim();
+
+      var safeClinic = /^[A-Za-z0-9_-]{2,64}$/.test(rawClinic) ? rawClinic : "";
+      var safeCode = /^[A-Za-z0-9-]{4,32}$/.test(rawCode) ? rawCode : "";
+
+      var deepLinkParams = new URLSearchParams();
+      if (safeClinic) deepLinkParams.set("c", safeClinic);
+      if (safeCode) deepLinkParams.set("code", safeCode);
+      var customSchemeUrl = deepLinkParams.toString()
+        ? "mrshed://link?" + deepLinkParams.toString()
+        : "mrshed://link";
+
+      var openAppBtn = document.getElementById("openAppBtn");
+      openAppBtn.setAttribute("href", customSchemeUrl);
+
+      var credentialsBox = document.getElementById("credentialsBox");
+      var clinicRow = document.getElementById("clinicRow");
+      var pinRow = document.getElementById("pinRow");
+      var clinicValue = document.getElementById("clinicValue");
+      var pinValue = document.getElementById("pinValue");
+
+      if (safeClinic) {
+        clinicValue.textContent = safeClinic.toUpperCase();
+        clinicRow.style.display = "flex";
+        credentialsBox.style.display = "block";
+      }
+      if (safeCode) {
+        pinValue.textContent = safeCode;
+        pinRow.style.display = "flex";
+        credentialsBox.style.display = "block";
+      }
+
+      var strings = {
+        ar: {
+          dir: "rtl",
+          title: "رفيق مرشد | ربط الحساب بالعيادة",
+          badge: "رفيق مرشد للمشترك",
+          toggle: "English",
+          heading: "الربط الآمن مع عيادتك",
+          subtitle: "اضغط على الزر أدناه لفتح تطبيق رفيق مرشد وتعبئة بيانات الربط تلقائياً، أو قم بتحميل التطبيق أولاً من متجر Google Play.",
+          openBtn: "فتح في تطبيق رفيق مرشد",
+          playBtn: "تحميل التطبيق من Google Play",
+          clinicLabel: "كود العيادة",
+          pinLabel: "رمز التأكيد (PIN)",
+          copy: "نسخ",
+          copied: "تم النسخ ✓",
+          note: "🔒 بياناتك الطبية محمية بتشفير طرف لطرف (E2EE) ولا يتم تفعيل الربط إلا بعد تأكيدك الصريح داخل التطبيق. كود الربط صالح لمدة 48 ساعة."
+        },
+        en: {
+          dir: "ltr",
+          title: "Murshid Companion | Link Your Clinic",
+          badge: "Murshid Companion",
+          toggle: "العربية",
+          heading: "Secure Clinic Linking",
+          subtitle: "Tap below to open Murshid Companion with your clinic code pre-filled, or install the app from Google Play first.",
+          openBtn: "Open in Murshid Companion",
+          playBtn: "Download on Google Play",
+          clinicLabel: "Clinic Code",
+          pinLabel: "Confirmation PIN",
+          copy: "Copy",
+          copied: "Copied ✓",
+          note: "🔒 Your health data is protected with end-to-end encryption (E2EE) and linking only activates after your explicit confirmation inside the app. Valid for 48 hours."
+        }
+      };
+
+      var currentLang = window.location.pathname.indexOf("/en/") !== -1 ? "en" : "ar";
+
+      function applyLang(lang) {
+        currentLang = lang;
+        var t = strings[lang];
+        document.documentElement.lang = lang;
+        document.documentElement.dir = t.dir;
+        document.title = t.title;
+        document.getElementById("badgeText").textContent = t.badge;
+        document.getElementById("langToggle").textContent = t.toggle;
+        document.getElementById("headingText").textContent = t.heading;
+        document.getElementById("subtitleText").textContent = t.subtitle;
+        openAppBtn.textContent = t.openBtn;
+        document.getElementById("playStoreBtn").textContent = t.playBtn;
+        document.getElementById("clinicLabel").textContent = t.clinicLabel;
+        document.getElementById("pinLabel").textContent = t.pinLabel;
+        document.getElementById("copyClinicBtn").textContent = t.copy;
+        document.getElementById("copyPinBtn").textContent = t.copy;
+        document.getElementById("noteText").textContent = t.note;
+      }
+
+      document.getElementById("langToggle").addEventListener("click", function () {
+        applyLang(currentLang === "ar" ? "en" : "ar");
+      });
+
+      function wireCopy(btnId, text) {
+        var btn = document.getElementById(btnId);
+        btn.addEventListener("click", function () {
+          if (!text || !navigator.clipboard) return;
+          navigator.clipboard.writeText(text).then(function () {
+            btn.textContent = strings[currentLang].copied;
+            setTimeout(function () {
+              btn.textContent = strings[currentLang].copy;
+            }, 1600);
+          });
+        });
+      }
+
+      wireCopy("copyClinicBtn", safeClinic ? safeClinic.toUpperCase() : "");
+      wireCopy("copyPinBtn", safeCode);
+      applyLang(currentLang);
+    })();
+  </script>
+</body>
+</html>

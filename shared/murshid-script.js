@@ -263,9 +263,43 @@ document.querySelectorAll('.newsletter-form').forEach(form => {
   });
 });
 
+function resolveCookiePrivacyHref(pathname, docLang, protocol, scriptSrc) {
+  const path = pathname || '/';
+  const normalizedLang = (docLang || '').toLowerCase();
+  const isArabic = normalizedLang.startsWith('ar') || path === '/ar' || path.indexOf('/ar/') === 0;
+  const isCompanion = path.indexOf('/companion') !== -1;
+  const isHttp = protocol === 'http:' || protocol === 'https:';
+  // Arabic specialist pages under /ar/* share the root /privacy-policy.html document;
+  // only /ar/companion/* has a dedicated Arabic privacy-policy.html file.
+  const targetRelative = isCompanion
+    ? (isArabic ? 'ar/companion/privacy-policy.html' : 'companion/privacy-policy.html')
+    : 'privacy-policy.html';
+
+  if (isHttp) {
+    return '/' + targetRelative;
+  }
+
+  if (typeof scriptSrc === 'string' && scriptSrc) {
+    const cleanSrc = scriptSrc.split('#')[0].split('?')[0];
+    const sharedIdx = cleanSrc.indexOf('shared/murshid-script.js');
+    if (sharedIdx !== -1) {
+      return cleanSrc.slice(0, sharedIdx) + targetRelative;
+    }
+  }
+  return targetRelative;
+}
+
 /* ── Cookie Consent Banner ── */
 function initCookieBanner() {
   if (localStorage.getItem('murshid_cookies_accepted') === 'true') return;
+
+  const path = window.location.pathname || '/';
+  const docLang = (document.documentElement.lang || '').toLowerCase();
+  const isArabic = docLang.startsWith('ar') || path === '/ar' || path.indexOf('/ar/') === 0;
+  const dir = isArabic ? 'rtl' : 'ltr';
+  const scriptEl = document.currentScript || document.querySelector('script[src*="murshid-script.js"]');
+  const scriptSrc = scriptEl ? (scriptEl.getAttribute('src') || '') : '';
+  const privacyHref = resolveCookiePrivacyHref(path, docLang, window.location.protocol, scriptSrc);
 
   const style = document.createElement('style');
   style.textContent = `
@@ -281,7 +315,7 @@ function initCookieBanner() {
       border-radius: 16px;
       padding: 20px 24px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-      max-width: 400px;
+      max-width: 420px;
       z-index: 9999;
       display: flex;
       flex-direction: column;
@@ -289,9 +323,17 @@ function initCookieBanner() {
       animation: mCookieFadeUp 0.5s ease forwards;
       direction: ltr;
       text-align: left;
+      font-family: inherit;
+    }
+    .m-cookie-banner[dir="rtl"] {
+      direction: rtl;
+      text-align: right;
+      left: 24px;
+      right: auto;
     }
     @media (max-width: 576px) {
-      .m-cookie-banner {
+      .m-cookie-banner,
+      .m-cookie-banner[dir="rtl"] {
         left: 16px;
         right: 16px;
         bottom: 16px;
@@ -305,8 +347,8 @@ function initCookieBanner() {
     }
     .m-cookie-text {
       font-size: 0.88rem;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.65;
       margin: 0;
     }
     .m-cookie-text a {
@@ -326,6 +368,7 @@ function initCookieBanner() {
       border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s ease;
+      font-family: inherit;
     }
     .m-cookie-accept {
       background: #047857; /* Darker green for WCAG contrast */
@@ -338,7 +381,7 @@ function initCookieBanner() {
     .m-cookie-reject {
       background: transparent;
       color: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
     .m-cookie-reject:hover {
       background: rgba(255, 255, 255, 0.05);
@@ -346,16 +389,20 @@ function initCookieBanner() {
   `;
   document.head.appendChild(style);
 
+  const messageHtml = isArabic
+    ? `🔒 يستخدم هذا الموقع تخزين المتصفح المحلي الضروري فقط (LocalStorage) لحفظ تفضيلات اللغة والتصفح وضمان عمل الواجهة بكفاءة، ولا نستخدم أي ملفات تعريف ارتباط إعلانية أو لتتبع السلوك عبر الجهات الخارجية. لمزيد من التفاصيل، راجع <a href="${privacyHref}">سياسة الخصوصية</a>.`
+    : `🔒 This website uses strictly necessary browser storage (LocalStorage) to remember your language and navigation preferences and keep the interface reliable, with no third-party advertising or tracking cookies. For details, read our <a href="${privacyHref}">Privacy Policy</a>.`;
+  const acceptLabel = isArabic ? 'موافق' : 'Accept';
+  const rejectLabel = isArabic ? 'إغلاق' : 'Close';
+
   const banner = document.createElement('div');
   banner.className = 'm-cookie-banner';
+  banner.setAttribute('dir', dir);
   banner.innerHTML = `
-    <p class="m-cookie-text">
-      🔒 Our website uses cookies to improve system performance and analyze traffic. By continuing to browse, you agree to this. For more information, read our
-      <a href="privacy-policy.html">Privacy Policy</a>.
-    </p>
+    <p class="m-cookie-text">${messageHtml}</p>
     <div class="m-cookie-btn-group">
-      <button class="m-cookie-btn m-cookie-reject" id="mCookieReject">Close</button>
-      <button class="m-cookie-btn m-cookie-accept" id="mCookieAccept">Accept</button>
+      <button class="m-cookie-btn m-cookie-reject" id="mCookieReject">${rejectLabel}</button>
+      <button class="m-cookie-btn m-cookie-accept" id="mCookieAccept">${acceptLabel}</button>
     </div>
   `;
   document.body.appendChild(banner);

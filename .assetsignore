@@ -1,0 +1,15 @@
+.git/
+.gitignore
+.wrangler/
+.assetsignore
+node_modules/
+package.json
+package-lock.json
+wrangler.jsonc
+worker.mjs
+functions/
+_redirects
+temp.js
+test-contact.js
+!.well-known/
+!.well-known/**

@@ -199,7 +199,7 @@
     }
     .del-form-input option {
       background-color: var(--m-surface-2) !important;
-      color: #FFF !important;
+      color: var(--m-text) !important;
     }
     
     /* Deletion Success Card inside form */
@@ -239,7 +239,7 @@
     .del-success-title {
       font-size: 1.6rem;
       font-weight: 800;
-      color: #FFF;
+      color: var(--m-text);
       margin-bottom: 12px;
     }
     .del-success-desc {
@@ -443,6 +443,7 @@
       </li>
     </ul>
     <div class="m-nav-actions">
+      <a href="ar/data-deletion.html" class="m-btn m-btn-outline" style="padding:8px 14px; font-size:0.85rem;">العربية 🌐</a>
       <a href="index.html#download" class="m-btn m-btn-primary">📥 Download Free</a>
     </div>
     <button class="m-hamburger" id="m-hamburger" aria-label="Menu" aria-expanded="false">
@@ -537,63 +538,70 @@
 
   <!-- 1. Info Banner -->
   <div class="m-glass del-info-banner">
-    <p>This page is dedicated to requesting the deletion of your account data in the Murshid app. You can submit your request via the form below, and we will process it within 30 days.</p>
-    <p><strong>💡 Faster Alternative:</strong> You can delete your data directly from within the app without needing to fill out any form:</p>
+    <p>This page is dedicated to <strong>Murshid for Specialists</strong> clinic closure and account deletion requests. (If you are a subscriber using <strong>Murshid Companion</strong>, please use our <a href="companion/data-deletion.html" style="color:var(--m-primary); font-weight:700;">dedicated Murshid Companion Data Deletion Portal</a>).</p>
+    <p><strong>💡 Instant In-App Execution (Recommended):</strong> You can close your clinic and purge your data immediately from inside the app without waiting for manual review:</p>
     <div class="del-inline-steps">
-      <span>Settings</span> ⚙️
-      <span style="color:var(--m-text-muted)">←</span>
-      <span>Account</span> 👤
-      <span style="color:var(--m-text-muted)">←</span>
-      <strong>"Delete Account & Data"</strong> 🗑️
+      <span>Settings ⚙️</span>
+      <span style="color:var(--m-text-muted)">→</span>
+      <strong>"Close Clinic &amp; Delete Account" 🗑️</strong>
+      <span style="color:var(--m-text-muted)">→</span>
+      <span>Export Mandatory Encrypted Backup (<code>.mbk</code>)</span>
+      <span style="color:var(--m-text-muted)">→</span>
+      <span>Confirm Phrase</span>
     </div>
   </div>
 
   <!-- 2. What gets deleted -->
   <div class="del-section">
-    <h2 class="del-section-title">What gets deleted?</h2>
+    <h2 class="del-section-title">What Happens When You Close Your Clinic &amp; Delete Your Account?</h2>
     <div class="del-cards-grid">
 
       <!-- Card 1: Cloud -->
       <div class="del-card del-card-green">
-        <span class="del-card-title">✅ Cloud Account Data</span>
+        <span class="del-card-title">✅ Immediately Purged on Cloud</span>
         <ul>
-          <li>Your name and email (Firebase)</li>
-          <li>Gold Points balance (Firestore)</li>
-          <li>Financial transaction history</li>
-          <li>Synced app settings</li>
+          <li>Public bio website (<code>specialist_sites</code>), reserved clinic URL slug (<code>slug_registry</code>), and uploaded public site media in Firebase Storage</li>
+          <li>All Murshid Companion patient links are revoked with encrypted channels stripped, and all pending link codes are invalidated</li>
+          <li>Wallet Gold &amp; Blue point balances are zeroed and non-store platform grants are revoked with an audit entry</li>
+          <li>Cloud Google Drive OAuth refresh tokens are deleted and all active login sessions are revoked immediately</li>
         </ul>
-        <div class="del-card-note">⏱ Deleted within 30 days of approving your request</div>
+        <div class="del-card-note">⏱ Executed immediately in-app, or within 48–72 business hours (max 30 days) for web form requests</div>
       </div>
 
       <!-- Card 2: Local -->
       <div class="del-card del-card-amber">
-        <span class="del-card-title">⚠️ Local Data on Your Phone</span>
+        <span class="del-card-title">📱 Local Device Wipe &amp; Encrypted Archive</span>
         <ul>
-          <li>Your patients' data (Isar DB)</li>
-          <li>Uploaded logos and images</li>
-          <li>Local settings</li>
+          <li>All local clinic Isar database records, patient files, images, and local cryptographic keys are wiped from your device upon confirmation</li>
+          <li><strong>Mandatory 10-Year Archive (<code>.mbk</code>):</strong> Before deletion, the app requires exporting your encrypted backup in compliance with healthcare retention laws</li>
+          <li>Any personal Google Drive backups reside in your own Drive account and can be deleted directly by you at any time</li>
         </ul>
-        <div class="del-card-note">We do not own this data and cannot delete it remotely.<br/>Delete the app or clear its data from phone settings: Settings ← Apps ← Murshid ← Clear Data.</div>
+        <div class="del-card-note">Murshid operates on a Zero-Knowledge local-first architecture and never stores unencrypted patient medical records on its servers.</div>
       </div>
 
-      <!-- Card 3: Drive -->
+      <!-- Card 3: Retained for Legal & Archive Recovery -->
       <div class="del-card del-card-blue">
-        <span class="del-card-title">ℹ️ Google Drive Backup</span>
+        <span class="del-card-title">🛡️ Retained Strictly for Compliance &amp; Recovery</span>
         <ul>
-          <li>If you previously enabled backup</li>
-          <li>You will find your files in your Google Drive account</li>
-          <li>Folder: Apps ← Murshid</li>
+          <li><strong>Encrypted Backup Vault Key (<code>secure/vault</code>):</strong> Preserved securely so you can restore your 10-year <code>.mbk</code> clinical archive if you return later</li>
+          <li><strong>Phone Number Quarantine (90 days):</strong> Verified clinic phone numbers enter a 90-day anti-abuse cooldown</li>
+          <li><strong>Financial &amp; Legal Audit Logs:</strong> Billing and closure audit trails are retained strictly as required by tax and accounting regulations</li>
+          <li><strong>Dual-Persona Isolation:</strong> If the same email also uses Murshid Companion as a patient, that subscriber profile remains untouched</li>
         </ul>
-        <div class="del-card-note">You can manually delete it from drive.google.com ← Storage ← Backups</div>
       </div>
 
     </div>
   </div>
 
-  <!-- 3. Legal hold note -->
+  <!-- 3. Legal & Store Subscriptions Notes -->
   <div class="legal-highlight gold">
-    <strong>⚖️ Legal Note</strong>
-    Financial transaction records (invoices and purchases) may be retained for up to 90 days from the date of the deletion request for accounting and financial compliance purposes stipulated in relevant regulations, after which they are permanently and completely deleted and cannot be recovered.
+    <strong>💳 Important Notice Regarding Google Play &amp; App Store Subscriptions</strong>
+    Closing your clinic and deleting your account inside Murshid <strong>does not automatically cancel</strong> active recurring subscriptions billed through Google Play or the Apple App Store. Please cancel any auto-renewing store subscription directly in your Google Play or App Store account settings to prevent future renewals.
+  </div>
+
+  <div class="legal-highlight gold" style="background: rgba(56,189,248,0.07); border-color: rgba(56,189,248,0.3);">
+    <strong style="color:#38bdf8;">⚖️ Regulatory Record Retention &amp; Reactivation</strong>
+    Under Article (31) of the Healthcare Professions Law and PDPL, healthcare practitioners must retain patient clinical records for at least 10 years. If you sign back into Murshid in the future with the same account, your account will reactivate cleanly so you can import your preserved <code>.mbk</code> archive (welcome bonuses are never re-granted).
   </div>
 
   <!-- 4. Form -->
@@ -731,8 +739,8 @@
 
   <!-- 6. In-app alternative CTA -->
   <div class="m-glass" style="padding: 32px;">
-    <div class="del-alt-title">⚡ Faster Way — Deletion from Within the App</div>
-    <div class="del-alt-subtitle">If you still have the app installed, follow these four steps:</div>
+    <div class="del-alt-title">⚡ Faster Way — Instant Execution from Within the App</div>
+    <div class="del-alt-subtitle">If you still have Murshid installed, follow these four steps:</div>
     <div class="del-alt-steps">
       <div class="del-alt-step">
         <div class="del-alt-step-num">1</div>
@@ -748,20 +756,19 @@
       <div class="del-alt-arrow">→</div>
       <div class="del-alt-step">
         <div class="del-alt-step-num">3</div>
-        <span class="del-alt-step-emoji">👤</span>
-        <div class="del-alt-step-label">Account</div>
+        <span class="del-alt-step-emoji">💾</span>
+        <div class="del-alt-step-label">Export .mbk Backup</div>
       </div>
       <div class="del-alt-arrow">→</div>
       <div class="del-alt-step">
         <div class="del-alt-step-num">4</div>
         <span class="del-alt-step-emoji">🗑️</span>
-        <div class="del-alt-step-label">Delete Account</div>
+        <div class="del-alt-step-label">Close Clinic &amp; Delete</div>
       </div>
     </div>
     <p class="del-alt-note">
-      <strong>Local data is deleted immediately</strong> upon confirming deletion inside the app.
-      Cloud data is deleted within 30 days following the same timeline above.
-      This method does not require manual review and processing starts automatically.
+      <strong>Both cloud purge and local wipe execute immediately</strong> upon confirming inside the app — public site removal, link revocations, wallet zeroing, and session termination require no manual wait.
+      Web requests submitted via the form above are verified and processed within 48–72 business hours (max 30 days).
     </p>
   </div>
 
@@ -818,10 +825,12 @@
   document.addEventListener('DOMContentLoaded', function() {
     'use strict';
 
-    // Initialize EmailJS with Public Key
-    emailjs.init({
-      publicKey: "GRhnKzi6GMcVvCjb3",
-    });
+    // Initialize EmailJS with Public Key when CDN script is available
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init({
+        publicKey: "GRhnKzi6GMcVvCjb3",
+      });
+    }
 
     const form = document.getElementById('deletionForm');
     const formContainer = document.getElementById('deletionFormContainer');
@@ -921,14 +930,41 @@
         const notesVal = document.getElementById('delNotes').value.trim();
         const confirmationStatement = "I declare that I am the true owner of the account and understand that data deletion is irreversible and cannot be recovered.";
 
+        const reasonText = reasonSelect.options[reasonSelect.selectedIndex].text;
+        const emailSubject = 'Murshid App - Account Data Deletion Request: ' + reasonText;
+        const emailBody = `Full Name: ${fields.name.el.value.trim()}\nRegistered Email: ${fields.email.el.value.trim()}\nReason: ${reasonText}\n\nAdditional Notes:\n${notesVal || 'None'}\n\nFinancial and Legal Declaration:\n[✓] ${confirmationStatement}`;
+
+        function showMailtoFallback(notice) {
+          let box = document.getElementById('deletionFallback');
+          if (!box) {
+            box = document.createElement('div');
+            box.id = 'deletionFallback';
+            box.style.cssText = 'margin-top:16px;padding:16px;border-radius:12px;border:1px solid rgba(239,68,68,0.35);background:rgba(239,68,68,0.06);color:var(--m-text);text-align:left;line-height:1.65;';
+            box.innerHTML = '<p id="deletionFallbackMsg" style="margin:0 0 12px;font-weight:700;color:#B91C1C;"></p><a id="deletionMailtoLink" class="m-btn m-btn-outline" style="width:100%;justify-content:center;display:inline-flex;"></a>';
+            form.insertAdjacentElement('afterend', box);
+          }
+          document.getElementById('deletionFallbackMsg').textContent = notice;
+          const mailtoLink = document.getElementById('deletionMailtoLink');
+          mailtoLink.href = 'mailto:privacy@feshealthtech.com?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
+          mailtoLink.textContent = '✉️ Send Request via Email App (privacy@feshealthtech.com)';
+          box.style.display = 'block';
+        }
+
+        if (typeof emailjs === 'undefined') {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = origText;
+          showMailtoFallback('Automated submission could not load in your browser. Click below to send your pre-filled deletion request directly to privacy@feshealthtech.com:');
+          return;
+        }
+
         const templateParams = {
           templateTitle: '🗑️ Account Data Deletion Request',
           fullName: fields.name.el.value.trim(),
           email: fields.email.el.value.trim(),
           phone: '(None - Deletion Request)',
-          subject: reasonSelect.options[reasonSelect.selectedIndex].text,
+          subject: reasonText,
           organization: 'Murshid App - Data Deletion Request',
-          message: `Reason for deletion request: ${reasonSelect.options[reasonSelect.selectedIndex].text}\n\nAdditional Notes:\n${notesVal || 'None'}\n\nFinancial and Legal Declaration:\n[✓] ${confirmationStatement}`
+          message: `Reason for deletion request: ${reasonText}\n\nAdditional Notes:\n${notesVal || 'None'}\n\nFinancial and Legal Declaration:\n[✓] ${confirmationStatement}`
         };
 
         emailjs.send('service_2gtw1uc', 'template_kjhcofd', templateParams)
@@ -942,9 +978,9 @@
           })
           .catch((error) => {
             console.error('EmailJS Data Deletion Send Error:', error);
-            alert('Sorry, an error occurred while sending the data deletion request. Please try again later or contact us directly via email at support@feshealthtech.com.');
             submitBtn.disabled = false;
             submitBtn.innerHTML = origText;
+            showMailtoFallback('We could not complete automated submission right now. Click below to send your pre-filled deletion request directly to privacy@feshealthtech.com:');
           });
       }
     });

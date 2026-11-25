@@ -149,7 +149,7 @@
     }
     .del-form-input option {
       background-color: var(--m-surface-2) !important;
-      color: #FFF !important;
+      color: var(--m-text) !important;
     }
     .del-checkbox-row {
       display: flex;
@@ -207,7 +207,7 @@
     .del-success-title {
       font-size: 1.5rem;
       font-weight: 800;
-      color: #FFF;
+      color: var(--m-text);
       margin-bottom: 12px;
     }
     .del-success-desc {
@@ -352,7 +352,7 @@
         <strong style="color:var(--m-text);">Instant Atomic Execution &amp; Local Wipe</strong>
       </div>
       <p style="color:var(--m-text-muted); margin:0 0 0 38px; line-height:1.7;">
-        Upon tapping the confirmation button, the cloud infrastructure immediately unlinks all clinics, deletes your Firebase Authentication profile, purges all local asymmetric encryption keys from the secure hardware keystore, clears your local cache, and redirects you to the login screen.
+        Upon tapping the confirmation button, the cloud infrastructure immediately unlinks all clinics, strips all personal identifiers and encrypted envelopes from clinic links, deletes your subscriber profile and Firebase Authentication account (automatically preserving Firebase Auth only if the same email also holds an active Specialist account on Murshid), purges all local asymmetric encryption keys and cached data, and returns you to the login screen.
       </p>
     </div>
   </div>
@@ -468,11 +468,11 @@
     <div class="del-cards-grid">
       <!-- Card 1 -->
       <div class="del-card del-card-green">
-        <span class="del-card-title">✅ Permanently Erased (Within 0-72h)</span>
+        <span class="del-card-title">✅ Permanently Erased &amp; Stripped (Immediate to 72h)</span>
         <ul>
-          <li>Firebase Authentication profile (UID, email, display name).</li>
-          <li>All cloud linkage documents (<code>clinic_links</code>).</li>
-          <li>Ephemeral transit keys, coordination state, and cryptographic handshakes.</li>
+          <li>Your subscriber cloud profile (<code>patients</code>), public keys, and Firebase Authentication account for standalone accounts (for Dual-Persona users who also hold an active Specialist account on Murshid under the same email, only the Murshid Companion persona and data are purged while the Specialist sign-in remains preserved).</li>
+          <li>All personal identifiers (email, public key, legacy name/phone) and all encrypted payloads (plans, daily telemetry, appointments, and form requests) are permanently stripped from cloud linkage records (<code>clinic_links</code>), leaving only a PII-free anonymized <code>REVOKED</code> status flag so the clinic is notified that sync has permanently ended.</li>
+          <li>All connected clinic sub-records, subscriber cloud vault keys, and ephemeral coordination channels.</li>
         </ul>
       </div>
 
@@ -580,10 +580,12 @@
   document.addEventListener('DOMContentLoaded', function() {
     'use strict';
 
-    // Initialize EmailJS with Public Key
-    emailjs.init({
-      publicKey: "GRhnKzi6GMcVvCjb3",
-    });
+    // Initialize EmailJS with Public Key when CDN script is available
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init({
+        publicKey: "GRhnKzi6GMcVvCjb3",
+      });
+    }
 
     const form = document.getElementById('deletionForm');
     const formContainer = document.getElementById('deletionFormContainer');
@@ -674,16 +676,6 @@
       });
 
       if (isFormValid) {
-        if (typeof emailjs === 'undefined') {
-          alert('Messaging service is temporarily unavailable. Please disable ad-blockers or email us directly at privacy@feshealthtech.com.');
-          return;
-        }
-
-        // UI Loading State
-        submitBtn.disabled = true;
-        const origText = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<span>⚡ Submitting Deletion Request...</span>';
-
         const reasonSelect = fields.reason.el;
         const selectedReasonText = reasonSelect.options[reasonSelect.selectedIndex].text;
         const notesVal = document.getElementById('delNotes').value.trim();
@@ -710,12 +702,40 @@
           '======================================================'
         ].join('\n');
 
+        const emailSubject = '[Murshid Companion - Patient] Deletion Request: ' + selectedReasonText;
+
+        function showMailtoFallback(notice) {
+          let box = document.getElementById('deletionFallback');
+          if (!box) {
+            box = document.createElement('div');
+            box.id = 'deletionFallback';
+            box.style.cssText = 'margin-top:16px;padding:16px;border-radius:12px;border:1px solid rgba(239,68,68,0.35);background:rgba(239,68,68,0.06);color:var(--m-text);text-align:left;line-height:1.65;';
+            box.innerHTML = '<p id="deletionFallbackMsg" style="margin:0 0 12px;font-weight:700;color:#B91C1C;"></p><a id="deletionMailtoLink" class="m-btn m-btn-outline" style="width:100%;justify-content:center;display:inline-flex;"></a>';
+            form.insertAdjacentElement('afterend', box);
+          }
+          document.getElementById('deletionFallbackMsg').textContent = notice;
+          const mailtoLink = document.getElementById('deletionMailtoLink');
+          mailtoLink.href = 'mailto:privacy@feshealthtech.com?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(messageBody);
+          mailtoLink.textContent = '✉️ Send Request via Email App (privacy@feshealthtech.com)';
+          box.style.display = 'block';
+        }
+
+        if (typeof emailjs === 'undefined') {
+          showMailtoFallback('Automated messaging is unavailable in your browser. Click below to send your pre-filled deletion request directly to privacy@feshealthtech.com:');
+          return;
+        }
+
+        // UI Loading State
+        submitBtn.disabled = true;
+        const origText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<span>⚡ Submitting Deletion Request...</span>';
+
         const templateParams = {
           templateTitle: '🗑️ [Murshid Companion - Patient App] Account & Cloud Data Deletion Request',
           fullName: fields.name.el.value.trim(),
           email: fields.email.el.value.trim(),
           phone: '(Not specified - Companion App Web Request)',
-          subject: '[Murshid Companion - Patient] Deletion Request: ' + selectedReasonText,
+          subject: emailSubject,
           organization: 'Murshid Companion (Patient / Subscriber Mobile App)',
           message: messageBody
         };
@@ -731,9 +751,9 @@
           })
           .catch((error) => {
             console.error('EmailJS Companion Data Deletion Send Error:', error);
-            alert('Sorry, an error occurred while submitting your deletion request. Please try again later or contact us directly at support@feshealthtech.com.');
             submitBtn.disabled = false;
             submitBtn.innerHTML = origText;
+            showMailtoFallback('An error occurred during automated submission. Click below to send your pre-filled deletion request directly to privacy@feshealthtech.com:');
           });
       }
     });

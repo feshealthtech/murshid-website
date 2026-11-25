@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.feshealthtech.murshid.companion",
+      "sha256_cert_fingerprints": [
+        "2B:C2:01:AD:55:C5:A7:0A:06:EA:43:E6:B4:61:83:CE:00:A6:2D:30:83:77:47:6D:9F:DE:E6:72:81:76:3B:48",
+        "83:26:06:18:15:C3:D9:10:D2:06:EE:D2:77:CD:B4:20:B9:CF:26:E1:16:5D:57:28:C9:D0:36:F6:79:2E:A2:21"
+      ]
+    }
+  }
+]

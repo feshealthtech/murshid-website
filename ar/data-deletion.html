@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>إغلاق العيادة وطلب حذف الحساب والبيانات — تطبيق مرشد للأخصائيين</title>
+  <meta name="description" content="إرشادات ونموذج طلب إغلاق العيادة وحذف الحساب والبيانات في تطبيق مرشد للأخصائيين وفق نظام حماية البيانات الشخصية السعودي (PDPL) وسياسات Google Play و App Store." />
+  <link rel="icon" type="image/webp" href="../assets/logo-sq.webp" />
+  <link rel="stylesheet" href="../shared/murshid-style.css" />
+  <style>
+    .del-hero {
+      padding: 120px 0 64px;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(var(--m-primary-rgb), 0.12) 0%, transparent 70%);
+      text-align: center;
+      border-bottom: 1px solid var(--m-border);
+    }
+    .del-hero-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .del-main {
+      padding-top: calc(68px + 48px);
+      padding-bottom: 96px;
+    }
+    .del-info-banner {
+      padding: 28px 32px;
+      border-right: 4px solid var(--m-primary);
+      margin-bottom: 48px;
+    }
+    .del-info-banner p {
+      margin: 0 0 12px;
+      color: var(--m-text-muted);
+      line-height: 1.85;
+      font-size: 0.95rem;
+    }
+    .del-info-banner p:last-child { margin-bottom: 0; }
+    .del-info-banner strong { color: var(--m-text); }
+    .del-inline-steps {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      background: var(--m-surface-3);
+      padding: 10px 16px;
+      border-radius: var(--m-radius-sm);
+      font-size: 0.9rem;
+      color: var(--m-text);
+    }
+    .del-section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--m-text);
+      margin: 0 0 24px;
+    }
+    .del-section { margin-bottom: 56px; }
+    .del-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 820px) {
+      .del-cards-grid { grid-template-columns: 1fr; }
+    }
+    .del-card {
+      padding: 24px;
+      border-radius: var(--m-radius);
+      font-size: 0.88rem;
+      line-height: 1.85;
+    }
+    .del-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .del-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 14px;
+      color: var(--m-text-muted);
+    }
+    .del-card ul li {
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .del-card ul li::before {
+      content: '• ';
+      color: var(--m-primary);
+      font-weight: 700;
+    }
+    .del-card-note {
+      font-size: 0.82rem;
+      color: var(--m-text-muted);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 10px;
+      margin-top: 6px;
+    }
+    .del-card-green { border: 1px solid rgba(34,197,94,0.3); background: rgba(34,197,94,0.06); }
+    .del-card-green .del-card-title { color: #22c55e; }
+    .del-card-amber { border: 1px solid rgba(245,158,11,0.3); background: rgba(245,158,11,0.06); }
+    .del-card-amber .del-card-title { color: #f59e0b; }
+    .del-card-blue { border: 1px solid rgba(56,189,248,0.3); background: rgba(56,189,248,0.06); }
+    .del-card-blue .del-card-title { color: #38bdf8; }
+    .legal-highlight {
+      padding: 20px 24px;
+      border-radius: var(--m-radius);
+      margin-bottom: 24px;
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: var(--m-text-muted);
+    }
+    .legal-highlight.gold {
+      background: rgba(245,158,11,0.07);
+      border: 1px solid rgba(245,158,11,0.3);
+    }
+    .legal-highlight.gold strong { color: #f59e0b; display: block; margin-bottom: 6px; }
+    .legal-highlight.info {
+      background: rgba(56,189,248,0.07);
+      border: 1px solid rgba(56,189,248,0.3);
+      margin-bottom: 48px;
+    }
+    .legal-highlight.info strong { color: #38bdf8; display: block; margin-bottom: 6px; }
+    .del-form-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--m-text);
+      margin-bottom: 6px;
+    }
+    .del-form-input {
+      width: 100%;
+      background: var(--m-surface-3);
+      border: 1px solid var(--m-border);
+      border-radius: var(--m-radius-sm);
+      padding: 12px 16px;
+      color: var(--m-text);
+      font-family: var(--m-font);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      display: block;
+      box-sizing: border-box;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    .del-form-input:focus { border-color: var(--m-primary); box-shadow: 0 0 0 3px var(--m-primary-glow); }
+    textarea.del-form-input { min-height: 100px; resize: vertical; }
+    .del-form-input.is-invalid { border-color: #EF4444 !important; background-color: rgba(239, 68, 68, 0.08) !important; }
+    .del-form-input.is-valid { border-color: var(--m-primary) !important; }
+    .field-error-message {
+      font-size: 0.8rem;
+      color: #EF4444;
+      margin-top: -10px;
+      margin-bottom: 16px;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+    }
+    .del-form-input option { background-color: var(--m-surface-2) !important; color: var(--m-text) !important; }
+    .del-checkbox-row { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 24px; }
+    .del-checkbox-row input[type="checkbox"] { margin-top: 3px; width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--m-primary); cursor: pointer; }
+    .del-checkbox-row label { font-size: 0.88rem; color: var(--m-text-muted); line-height: 1.7; cursor: pointer; }
+    .del-success-card { display: none; flex-direction: column; align-items: center; text-align: center; padding: 30px 10px; }
+    .del-success-badge { width: 80px; height: 80px; background: rgba(34, 197, 94, 0.12); border: 2px solid rgba(34, 197, 94, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .del-success-check-svg { width: 40px; height: 40px; stroke: #22C55E; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .del-success-title { font-size: 1.5rem; font-weight: 800; color: var(--m-text); margin-bottom: 12px; }
+    .del-success-desc { color: var(--m-text-muted); font-size: 0.95rem; line-height: 1.8; max-width: 500px; margin-bottom: 0; }
+    .del-alt-steps { display: flex; gap: 16px; flex-wrap: wrap; margin: 20px 0 16px; align-items: center; }
+    .del-alt-step { flex: 1; min-width: 120px; background: var(--m-surface-3); border: 1px solid var(--m-border); border-radius: var(--m-radius); padding: 18px 16px; text-align: center; }
+    .del-alt-step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--m-primary); color: #fff; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; }
+    .del-alt-step-emoji { font-size: 1.4rem; display: block; margin-bottom: 8px; }
+    .del-alt-step-label { font-size: 0.85rem; font-weight: 600; color: var(--m-text); }
+    .del-alt-arrow { color: var(--m-text-muted); font-size: 1.2rem; flex-shrink: 0; }
+    @media (max-width: 600px) { .del-alt-arrow { display: none; } }
+  </style>
+</head>
+<body>
+
+<nav class="m-nav" id="m-nav">
+  <div class="container m-nav-inner">
+    <a href="index.html" class="m-nav-brand">
+      <img src="../assets/logo.webp" alt="FES HealthTech" class="brand-logo" width="284" height="284" />
+      <div class="brand-app">
+        <span class="brand-name-ar">مرشد</span>
+        <span class="brand-name-en">MURSHID APP</span>
+      </div>
+    </a>
+    <ul class="m-nav-links" role="list">
+      <li><a href="index.html#features">المزايا</a></li>
+      <li><a href="index.html#pricing">الباقات</a></li>
+      <li><a href="faq.html">الأسئلة الشائعة</a></li>
+      <li><a href="contact.html">تواصل معنا</a></li>
+      <li><a href="companion/data-deletion.html">حذف حساب المشترك (رفيق مرشد)</a></li>
+    </ul>
+    <div class="m-nav-actions">
+      <a href="../data-deletion.html" class="m-btn m-btn-outline" style="padding:8px 14px; font-size:0.85rem;">English 🌐</a>
+      <a href="index.html#download" class="m-btn m-btn-primary">📥 تحميل التطبيق</a>
+    </div>
+    <button class="m-hamburger" id="m-hamburger" aria-label="القائمة" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="m-mobile-menu" id="m-mobile-menu" role="navigation">
+  <div class="m-mobile-menu-header">
+    <span class="m-mobile-menu-title">تطبيق مرشد</span>
+    <span class="m-mobile-menu-subtitle">حوكمة البيانات وحذف الحساب</span>
+  </div>
+  <div class="m-mobile-menu-links">
+    <a href="index.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🏠</span>
+      <span class="m-mobile-text">الرئيسية</span>
+    </a>
+    <a href="../data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🌐</span>
+      <span class="m-mobile-text">English (الإنجليزية)</span>
+    </a>
+    <a href="index.html#features" class="m-mobile-link">
+      <span class="m-mobile-icon">🚀</span>
+      <span class="m-mobile-text">المزايا</span>
+    </a>
+    <a href="index.html#pricing" class="m-mobile-link">
+      <span class="m-mobile-icon">💳</span>
+      <span class="m-mobile-text">الباقات</span>
+    </a>
+    <a href="faq.html" class="m-mobile-link">
+      <span class="m-mobile-icon">❓</span>
+      <span class="m-mobile-text">الأسئلة الشائعة</span>
+    </a>
+    <a href="contact.html" class="m-mobile-link">
+      <span class="m-mobile-icon">✉️</span>
+      <span class="m-mobile-text">تواصل معنا</span>
+    </a>
+    <a href="companion/data-deletion.html" class="m-mobile-link">
+      <span class="m-mobile-icon">📱</span>
+      <span class="m-mobile-text">حذف حساب المشترك (رفيق مرشد)</span>
+    </a>
+    <a href="../privacy-policy.html" class="m-mobile-link">
+      <span class="m-mobile-icon">🔒</span>
+      <span class="m-mobile-text">سياسة الخصوصية</span>
+    </a>
+    <a href="index.html#download" class="m-mobile-link">
+      <span class="m-mobile-icon">📥</span>
+      <span class="m-mobile-text">تحميل التطبيق</span>
+    </a>
+  </div>
+</div>
+
+<section class="del-hero">
+  <div class="container">
+    <div class="del-hero-inner">
+      <span class="m-label">حوكمة البيانات والخصوصية • تطبيق مرشد للأخصائيين</span>
+      <h1 class="m-title">إغلاق العيادة وطلب حذف الحساب</h1>
+      <p class="m-subtitle">نحترم حقك الكامل في التحكم ببياناتك مع الالتزام بالضوابط النظامية لحفظ السجلات الصحية</p>
+    </div>
+  </div>
+</section>
+
+<main class="container del-main">
+
+  <div class="m-glass del-info-banner">
+    <p>هذه الصفحة مخصصة لأخصائيي التغذية والممارسين الصحيين في <strong>تطبيق مرشد الرئيسي</strong>. (إذا كنت مشتركاً أو مراجعاً في <strong>تطبيق رفيق مرشد</strong>، يرجى استخدام <a href="companion/data-deletion.html" style="color:var(--m-primary); font-weight:700;">صفحة حذف حساب رفيق مرشد المخصصة هنا</a>).</p>
+    <p><strong>⚡ التنفيذ الفوري من داخل التطبيق (الموصى به):</strong> يمكنك إغلاق عيادتك وحذف حسابك فورياً وبشكل مؤتمت بالكامل من داخل التطبيق:</p>
+    <div class="del-inline-steps">
+      <span>الإعدادات ⚙️</span>
+      <span>&larr;</span>
+      <strong>«إغلاق العيادة وحذف الحساب» 🗑️</strong>
+      <span>&larr;</span>
+      <span>تصدير النسخة الاحتياطية المشفرة (<code>.mbk</code>)</span>
+      <span>&larr;</span>
+      <span>كتابة عبارة التأكيد</span>
+    </div>
+  </div>
+
+  <div class="del-section">
+    <h2 class="del-section-title">ماذا يحدث بالضبط لبياناتك عند إغلاق العيادة وحذف الحساب؟</h2>
+    <div class="del-cards-grid">
+
+      <div class="del-card del-card-green">
+        <span class="del-card-title">✅ يُحذف ويُطهّر سحابياً فورياً</span>
+        <ul>
+          <li>حذف موقعك التعريفي العام (<code>specialist_sites</code>)، تحرير رابطك المحجوز (<code>slug_registry</code>)، وحذف صور الموقع العامة من Storage.</li>
+          <li>فك ارتباط كافة المشتركين في تطبيق رفيق مرشد، تجريد الروابط السحابية من كافة الحزم المشفرة، وإبطال أكواد الربط المعلقة.</li>
+          <li>تصفير رصيد النقاط الذهبية والزرقاء وإلغاء امتيازات المنصة غير المتجرية مع قيد تدقيق مالي.</li>
+          <li>حذف رموز ربط Google Drive السحابية وإبطال كافة جلسات تسجيل الدخول النشطة على جميع أجهزتك.</li>
+        </ul>
+        <div class="del-card-note">⏱ يُنفذ فورياً عند التأكيد من داخل التطبيق، وخلال 48–72 ساعة عمل (وبحد أقصى 30 يوماً) لطلبات نموذج الويب.</div>
+      </div>
+
+      <div class="del-card del-card-amber">
+        <span class="del-card-title">📱 البيانات المحلية والنسخة المشفرة</span>
+        <ul>
+          <li>تطهير ومسح كامل لقاعدة بيانات العيادة المحلية (Isar) والصور والملفات الطبية ومفاتيح التشفير المحلية من جهازك فور الإغلاق.</li>
+          <li><strong>النسخة الاحتياطية الإلزامية (<code>.mbk</code>):</strong> قبل الحذف يُطلب منك تصدير نسختك المشفرة امتثالاً لواجب حفظ سجلات المرضى (10 سنوات).</li>
+          <li>يمكنك حذف نسخك الاحتياطية في Google Drive في أي وقت مباشرة من حسابك الشخصي.</li>
+        </ul>
+        <div class="del-card-note">تعمل منصة مرشد بمعمارية Zero-Knowledge ولا تخزن ملفات مرضاك على خوادمها.</div>
+      </div>
+
+      <div class="del-card del-card-blue">
+        <span class="del-card-title">🛡️ ما يُحتفظ به لأغراض قانونية واستعادة الأرشيف</span>
+        <ul>
+          <li><strong>خزنة مفتاح استعادة النسخة (<code>secure/vault</code>):</strong> يُحتفظ بمفتاح فك التشفير المرتبط بحسابك لتمكينك من استعادة أرشيف الـ 10 سنوات (<code>.mbk</code>) إذا عدت لتسجيل الدخول مستقبلاً.</li>
+          <li><strong>حجر رقم الهاتف (90 يوماً):</strong> يدخل الرقم الموثق في فترة حجر نظامية لمنع انتحال الهوية وإساءة الاستخدام.</li>
+          <li><strong>سجلات التدقيق المالي والقانوني:</strong> تُحفظ سجلات الفواتير والعمليات المالية وفق الأنظمة المحاسبية والضريبية.</li>
+          <li><strong>الحساب مزدوج الصفة:</strong> إذا كنت تستخدم نفس البريد كمشترك في تطبيق رفيق مرشد، يبقى ملف المشترك معزولاً ومحفوظاً بالكامل.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="legal-highlight gold">
+    <strong>💳 تنبيه مهم بخصوص اشتراكات Google Play و App Store المتجددة</strong>
+    إغلاق العيادة وحذف حسابك في تطبيق مرشد <strong>لا يلغي تلقائياً</strong> الاشتراك الدوري المدفوع عبر Google Play أو Apple App Store، لأن الفوترة المتكررة تُدار حصراً عبر متجر التطبيقات. يرجى إلغاء أي اشتراك نشط مباشرة من إعدادات اشتراكات حسابك في Google Play أو App Store لتفادي أي تجديد تلقائي مستقبلي.
+  </div>
+
+  <div class="legal-highlight info">
+    <strong>⚖️ المسؤولية النظامية لحفظ السجلات السريرية (المادة 31 ونظام PDPL)</strong>
+    بموجب أنظمة مزاولة المهن الصحية، يلتزم الممارس الصحي بحفظ سجلات مراجعيه لمدة لا تقل عن 10 سنوات. تصديرك للنسخة المشفرة (<code>.mbk</code>) وحفظها في مكان آمن يقع تحت مسؤوليتك المهنية المباشرة؛ وعند رغبتك بالعودة مستقبلاً بنفس البريد الإلكتروني يتم إعادة تنشيط الحساب تلقائياً لتمكينك من استيراد نسختك الاحتياطية دون إعادة منح مكافآت الترحيب.
+  </div>
+
+  <div class="del-section">
+    <h2 class="del-section-title">نموذج طلب حذف الحساب عبر الويب (في حال حذف التطبيق أو فقدان الجهاز)</h2>
+    <div class="m-card" style="padding: 32px 28px;">
+      <div id="deletionFormContainer">
+        <form id="deletionForm" novalidate>
+          <div class="m-form-group">
+            <label class="del-form-label" for="delEmail">البريد الإلكتروني المسجل في التطبيق <span style="color:var(--m-primary)">*</span></label>
+            <input class="del-form-input" type="email" id="delEmail" name="delEmail" required placeholder="name@example.com" autocomplete="email" style="direction: ltr; text-align: left;" />
+            <div class="field-error-message" id="emailError">يرجى إدخال عنوان بريد إلكتروني صحيح</div>
+          </div>
+
+          <div class="m-form-group">
+            <label class="del-form-label" for="delName">الاسم الكامل أو اسم العيادة <span style="color:var(--m-primary)">*</span></label>
+            <input class="del-form-input" type="text" id="delName" name="delName" required placeholder="للتحقق من ملكية الحساب" autocomplete="name" />
+            <div class="field-error-message" id="nameError">يرجى إدخال الاسم الكامل (3 أحرف على الأقل)</div>
+          </div>
+
+          <div class="m-form-group">
+            <label class="del-form-label" for="delReason">سبب الطلب <span style="color:var(--m-primary)">*</span></label>
+            <select class="del-form-input" id="delReason" name="delReason" required>
+              <option value="" disabled selected>اختر سبب طلب الإغلاق والحذف...</option>
+              <option value="stop">التوقف عن استخدام التطبيق</option>
+              <option value="privacy">مخاوف تتعلق بالخصوصية</option>
+              <option value="migrate">الانتقال إلى نظام عيادة آخر</option>
+              <option value="clinic-closed">إغلاق العيادة أو انتهاء الممارسة</option>
+              <option value="other">سبب آخر</option>
+            </select>
+            <div class="field-error-message" id="reasonError">يرجى اختيار سبب الطلب</div>
+          </div>
+
+          <div class="m-form-group">
+            <label class="del-form-label" for="delNotes">ملاحظات إضافية</label>
+            <textarea class="del-form-input" id="delNotes" name="delNotes" placeholder="رابط موقعك التعريفي (إن وجد) أو أي تفاصيل تساعدنا في التحقق السريع..."></textarea>
+          </div>
+
+          <div class="del-checkbox-row" style="margin-bottom: 12px;">
+            <input type="checkbox" id="delConfirm" name="delConfirm" required />
+            <label for="delConfirm">
+              أقر بأنني المالك الحقيقي لهذا الحساب في <strong>تطبيق مرشد للأخصائيين</strong>، وأدرك أن إغلاق العيادة يحذف موقعي العام ويفك ارتباط جميع المشتركين ويصفّر رصيد المحفظة ولا يلغي تلقائياً اشتراكات Google Play / App Store المتجددة.
+            </label>
+          </div>
+          <div class="field-error-message" id="confirmError" style="margin-top: 0; margin-bottom: 24px;">يرجى تفعيل خيار الإقرار للمتابعة</div>
+
+          <button type="submit" class="m-btn m-btn-primary" style="width:100%; justify-content:center; padding: 14px 24px; font-size:1rem;">
+            🗑️ إرسال طلب إغلاق العيادة وحذف الحساب
+          </button>
+        </form>
+      </div>
+
+      <div class="del-success-card" id="deletionSuccessState">
+        <div class="del-success-badge">
+          <svg class="del-success-check-svg" viewBox="0 0 24 24">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="del-success-title">تم استلام طلبك بنجاح!</h3>
+        <p class="del-success-desc">
+          شكراً لتأكيد طلبك. سيقوم فريق حماية البيانات بالتحقق من هويتك وتنفيذ إغلاق العيادة وتطهير كافة البيانات السحابية والموقع العام وفك ارتباط المشتركين خلال <strong>48 إلى 72 ساعة عمل</strong> (وبحد أقصى 30 يوماً)، وسنرسل لك تأكيداً بريدياً فور اكتمال التنفيذ.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-glass" style="padding: 32px;">
+    <h3 style="margin-top:0; color:var(--m-text);">⚡ الطريقة الأسرع — الإغلاق الفوري من داخل تطبيق مرشد</h3>
+    <div class="del-alt-steps">
+      <div class="del-alt-step"><div class="del-alt-step-num">1</div><span class="del-alt-step-emoji">📱</span><div class="del-alt-step-label">افتح تطبيق مرشد</div></div>
+      <div class="del-alt-arrow">&larr;</div>
+      <div class="del-alt-step"><div class="del-alt-step-num">2</div><span class="del-alt-step-emoji">⚙️</span><div class="del-alt-step-label">الإعدادات</div></div>
+      <div class="del-alt-arrow">&larr;</div>
+      <div class="del-alt-step"><div class="del-alt-step-num">3</div><span class="del-alt-step-emoji">💾</span><div class="del-alt-step-label">صدّر النسخة المشفرة</div></div>
+      <div class="del-alt-arrow">&larr;</div>
+      <div class="del-alt-step"><div class="del-alt-step-num">4</div><span class="del-alt-step-emoji">🗑️</span><div class="del-alt-step-label">أكّد إغلاق العيادة</div></div>
+    </div>
+    <p style="color:var(--m-text-muted); font-size:0.88rem; margin:12px 0 0; line-height:1.75;">
+      يتم التنفيذ السحابي والمحلي <strong>فوراً</strong> بمجرد التأكيد داخل التطبيق دون الحاجة لأي تدخل يدوي. للتواصل المباشر مع مسؤول حماية البيانات: <a href="mailto:privacy@feshealthtech.com" style="color:var(--m-primary); font-weight:700;">privacy@feshealthtech.com</a>.
+    </p>
+  </div>
+
+</main>
+
+<footer class="m-footer">
+  <div class="container">
+    <div class="m-footer-bottom">
+      <p class="m-footer-copy">© <span class="current-year">2026</span> <a href="https://feshealthtech.com/">شركة FES HealthTech</a>. جميع الحقوق محفوظة.</p>
+      <div class="m-footer-bottom-links">
+        <a href="../privacy-policy.html">سياسة الخصوصية</a>
+        <a href="../terms-of-use.html">الشروط</a>
+        <a href="companion/data-deletion.html">حذف حساب المشترك</a>
+        <a href="../data-deletion.html">English 🌐</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="../shared/murshid-script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    'use strict';
+    if (typeof emailjs !== 'undefined') {
+      emailjs.init({ publicKey: "GRhnKzi6GMcVvCjb3" });
+    }
+
+    const form = document.getElementById('deletionForm');
+    const formContainer = document.getElementById('deletionFormContainer');
+    const successCardState = document.getElementById('deletionSuccessState');
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    function showMailtoFallback(subject, body, notice) {
+      let box = document.getElementById('deletionFallback');
+      if (!box) {
+        box = document.createElement('div');
+        box.id = 'deletionFallback';
+        box.style.cssText = 'margin-top:16px;padding:16px;border-radius:12px;border:1px solid rgba(239,68,68,0.35);background:rgba(239,68,68,0.06);color:var(--m-text);text-align:right;line-height:1.7;';
+        box.innerHTML = '<p id="deletionFallbackMsg" style="margin:0 0 12px;font-weight:700;color:#B91C1C;"></p><a id="deletionMailtoLink" class="m-btn m-btn-outline" style="width:100%;justify-content:center;display:inline-flex;"></a>';
+        form.insertAdjacentElement('afterend', box);
+      }
+      const mailtoHref = 'mailto:privacy@feshealthtech.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      document.getElementById('deletionFallbackMsg').textContent = notice;
+      const mailtoLink = document.getElementById('deletionMailtoLink');
+      mailtoLink.href = mailtoHref;
+      mailtoLink.textContent = '✉️ إرسال الطلب مباشرة عبر تطبيق البريد (privacy@feshealthtech.com)';
+      box.style.display = 'block';
+    }
+
+    const fields = {
+      email: {
+        el: document.getElementById('delEmail'),
+        err: document.getElementById('emailError'),
+        validate: (val) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(val.trim())
+      },
+      name: {
+        el: document.getElementById('delName'),
+        err: document.getElementById('nameError'),
+        validate: (val) => val.trim().length >= 3
+      },
+      reason: {
+        el: document.getElementById('delReason'),
+        err: document.getElementById('reasonError'),
+        validate: (val) => val !== '' && val !== null
+      },
+      confirm: {
+        el: document.getElementById('delConfirm'),
+        err: document.getElementById('confirmError'),
+        validate: () => document.getElementById('delConfirm').checked
+      }
+    };
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      let isFormValid = true;
+      Object.keys(fields).forEach(key => {
+        const field = fields[key];
+        const val = field.el.type === 'checkbox' ? '' : field.el.value;
+        const ok = field.el.type === 'checkbox' ? field.validate() : field.validate(val);
+        field.err.style.display = ok ? 'none' : 'flex';
+        if (!ok) isFormValid = false;
+      });
+      if (!isFormValid) return;
+
+      const reasonText = fields.reason.el.options[fields.reason.el.selectedIndex].text;
+      const notesVal = document.getElementById('delNotes').value.trim();
+      const emailSubject = '[مرشد للأخصائيين] طلب إغلاق العيادة وحذف الحساب: ' + reasonText;
+      const emailBody = 'الاسم: ' + fields.name.el.value.trim() +
+        '\nالبريد المسجل: ' + fields.email.el.value.trim() +
+        '\nالسبب: ' + reasonText +
+        '\n\nالملاحظات:\n' + (notesVal || 'لا توجد');
+
+      if (typeof emailjs === 'undefined') {
+        showMailtoFallback(
+          emailSubject,
+          emailBody,
+          'تعذر تحميل خدمة الإرسال التلقائي في متصفحك. يمكنك إرسال الطلب فوراً عبر الزر التالي إلى privacy@feshealthtech.com:'
+        );
+        return;
+      }
+
+      submitBtn.disabled = true;
+      const origText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<span>⚡ جارٍ إرسال الطلب...</span>';
+
+      emailjs.send('service_2gtw1uc', 'template_kjhcofd', {
+        templateTitle: '🗑️ [تطبيق مرشد - الأخصائيين] طلب إغلاق العيادة وحذف الحساب',
+        fullName: fields.name.el.value.trim(),
+        email: fields.email.el.value.trim(),
+        phone: '(غير محدد - طلب حذف أخصائي عبر الويب)',
+        subject: emailSubject,
+        organization: 'Murshid Specialist App - Clinic Closure & Account Deletion',
+        message: emailBody
+      }).then(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origText;
+        formContainer.style.display = 'none';
+        successCardState.style.display = 'flex';
+      }).catch(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = origText;
+        showMailtoFallback(
+          emailSubject,
+          emailBody,
+          'تعذر إتمام الإرسال التلقائي. يمكنك إرسال تفاصيل طلبك مباشرة إلى privacy@feshealthtech.com عبر الزر التالي:'
+        );
+      });
+    });
+  });
+</script>
+</body>
+</html>
