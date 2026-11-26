@@ -2115,7 +2115,7 @@
             
             <div id="maintenanceContactBox" class="maintenance-contact-box" style="display: none;">
                 <span class="maintenance-contact-title" id="maintenanceContactTitle">قنوات التواصل المباشرة المتاحة:</span>
-                <a href="#" id="maintenanceWaBtn" class="cta-booking-btn" target="_blank" style="display: none; width: 100%; max-width: 320px; text-decoration: none;">
+                <a href="#" id="maintenanceWaBtn" class="cta-booking-btn" target="_blank" rel="noopener noreferrer" style="display: none; width: 100%; max-width: 320px; text-decoration: none;">
                     <i class="fa-brands fa-whatsapp"></i>
                     <span id="maintenanceWaBtnLabel">تواصل مباشرة عبر واتساب</span>
                 </a>
@@ -2168,7 +2168,7 @@
 
                 <!-- Action Buttons: WhatsApp & vCard & Direct Call -->
                 <div class="actions-stack">
-                    <a href="#" id="mainBookingBtn" class="cta-booking-btn" target="_blank">
+                    <a href="#" id="mainBookingBtn" class="cta-booking-btn" target="_blank" rel="noopener noreferrer">
                         <i class="fa-brands fa-whatsapp"></i>
                         <span id="mainBookingLabel">احجز استشارتك عبر واتساب</span>
                     </a>
@@ -2239,7 +2239,7 @@
                         <i class="fa-solid fa-map-pin"></i>
                         <span id="addressText"></span>
                     </div>
-                    <a href="#" id="mapBtn" class="map-btn" target="_blank" style="display: none;">
+                    <a href="#" id="mapBtn" class="map-btn" target="_blank" rel="noopener noreferrer" style="display: none;">
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         <span id="mapBtnLabel">فتح الموقع في خرائط Google</span>
                     </a>
@@ -2343,7 +2343,7 @@
     </div>
 
     <!-- Floating WhatsApp Button (Fixed Corner FAB) -->
-    <a href="#" id="floatingWaBtn" class="floating-wa-fab" target="_blank" style="display: none;">
+    <a href="#" id="floatingWaBtn" class="floating-wa-fab" target="_blank" rel="noopener noreferrer" style="display: none;">
         <i class="fa-brands fa-whatsapp"></i>
         <span id="floatingWaBtnLabel">احجز عبر واتساب</span>
     </a>
@@ -2605,18 +2605,149 @@
             }
         }
 
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function cleanVCardField(str) {
+            if (str === null || str === undefined) return '';
+            return String(str).replace(/[\x00-\x1F\x7F]+/g, ' ').trim();
+        }
+
+        function toSafeHttpsUrl(rawUrl, allowMissingScheme = false) {
+            if (typeof rawUrl !== 'string') return '';
+            if (/[\x00-\x1F\x7F]/.test(rawUrl)) return '';
+            const trimmed = rawUrl.trim();
+            if (!trimmed || trimmed.length > 2048) return '';
+            if (/[\s"'<>`\\]/.test(trimmed)) return '';
+            if (trimmed.startsWith('//')) return '';
+
+            const compact = trimmed.replace(/\s+/g, '').toLowerCase();
+            if (/^[a-z][a-z0-9+.-]*:/.test(compact)) {
+                if (!compact.startsWith('https://')) return '';
+            } else {
+                if (!allowMissingScheme) return '';
+                const firstDelim = trimmed.search(/[/?#]/);
+                const colonIdx = trimmed.indexOf(':');
+                if (colonIdx !== -1 && (firstDelim === -1 || colonIdx < firstDelim)) {
+                    return '';
+                }
+            }
+
+            const candidate = /^https:\/\//i.test(trimmed)
+                ? 'https://' + trimmed.slice('https://'.length)
+                : `https://${trimmed}`;
+
+            try {
+                const parsed = new URL(candidate);
+                if (parsed.protocol !== 'https:' || parsed.username || parsed.password) return '';
+                const host = (parsed.hostname || '').toLowerCase();
+                if (!host || !host.includes('.') || host === 'localhost' || host.endsWith('.local') || host.endsWith('.internal')) {
+                    return '';
+                }
+                const out = parsed.toString();
+                if (/[\x00-\x1F\x7F\s"'<>`\\]/.test(out)) return '';
+                return out;
+            } catch (_) {
+                return '';
+            }
+        }
+
+        function toSafeCssImageUrl(rawUrl) {
+            const safeUrl = toSafeHttpsUrl(rawUrl, false);
+            if (!safeUrl || /[()"'\\]/.test(safeUrl)) return '';
+            return safeUrl;
+        }
+
+        function resolveSafeSocialUrl(key, rawVal) {
+            if (typeof rawVal !== 'string') return '';
+            if (/[\x00-\x1F\x7F]/.test(rawVal)) return '';
+            const trimmed = rawVal.trim();
+            if (!trimmed || trimmed.length > 500 || /[\s"'<>`\\]/.test(trimmed)) return '';
+            const lowerKey = String(key || '').toLowerCase();
+            const compact = trimmed.toLowerCase();
+            const looksLikeUrl =
+                /^[a-z][a-z0-9+.-]*:/.test(compact) ||
+                trimmed.startsWith('//') ||
+                trimmed.includes('/') ||
+                trimmed.includes('?') ||
+                trimmed.includes('#') ||
+                lowerKey === 'website' ||
+                (!trimmed.startsWith('@') && /^(?:www\.)?(?:instagram\.com|x\.com|twitter\.com|tiktok\.com|linkedin\.com|facebook\.com|fb\.com)(?:[\/?#]|$)/i.test(trimmed));
+
+            if (looksLikeUrl) {
+                return toSafeHttpsUrl(trimmed, true);
+            }
+            if (!/^@?[A-Za-z0-9._-]{1,100}$/.test(trimmed)) {
+                return '';
+            }
+            const cleanHandle = encodeURIComponent(trimmed.replace(/^@+/, ''));
+            if (lowerKey === 'instagram') return `https://instagram.com/${cleanHandle}`;
+            if (lowerKey === 'twitter' || lowerKey === 'x') return `https://x.com/${cleanHandle}`;
+            if (lowerKey === 'tiktok') return `https://tiktok.com/@${cleanHandle}`;
+            if (lowerKey === 'linkedin') return `https://linkedin.com/in/${cleanHandle}`;
+            if (lowerKey === 'facebook') return `https://facebook.com/${cleanHandle}`;
+            return '';
+        }
+
+        function renderSafeSocialLinks(socialsObj, containerEl) {
+            if (!containerEl) return false;
+            containerEl.innerHTML = '';
+            const socials = (socialsObj && typeof socialsObj === 'object') ? socialsObj : {};
+            const iconMap = {
+                instagram: 'fa-brands fa-instagram',
+                twitter: 'fa-brands fa-x-twitter',
+                x: 'fa-brands fa-x-twitter',
+                linkedin: 'fa-brands fa-linkedin-in',
+                tiktok: 'fa-brands fa-tiktok',
+                facebook: 'fa-brands fa-facebook-f',
+                website: 'fa-solid fa-globe'
+            };
+            let hasSocial = false;
+            for (const [key, val] of Object.entries(socials)) {
+                if (val && typeof val === 'string' && val.trim()) {
+                    const linkUrl = resolveSafeSocialUrl(key, val);
+                    if (!linkUrl) continue;
+                    hasSocial = true;
+                    const a = document.createElement('a');
+                    a.href = linkUrl;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.className = 'social-link';
+                    const iconKey = key.toLowerCase();
+                    if (iconKey === 'twitter' || iconKey === 'x') {
+                        a.setAttribute('aria-label', 'X (Twitter)');
+                        a.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="display:inline-block; vertical-align:middle;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
+                    } else {
+                        a.setAttribute('aria-label', key);
+                        const iconEl = document.createElement('i');
+                        iconEl.className = iconMap[iconKey] || 'fa-solid fa-link';
+                        a.appendChild(iconEl);
+                    }
+                    containerEl.appendChild(a);
+                }
+            }
+            return hasSocial;
+        }
+
         function downloadVCard() {
             if (!siteData) return;
-            const name = siteData.displayName || 'أخصائي التغذية';
-            const title = siteData.professionalTitle || 'أخصائي تغذية واستشارات معتمدة';
-            const org = siteData.clinicName || 'العيادة الخاصة';
-            const waPhone = siteData.whatsappNumber || '';
-            const directPhone = siteData.phoneNumber || '';
+            const name = cleanVCardField(siteData.displayName) || 'أخصائي التغذية';
+            const title = cleanVCardField(siteData.professionalTitle) || 'أخصائي تغذية واستشارات معتمدة';
+            const org = cleanVCardField(siteData.clinicName) || 'العيادة الخاصة';
+            const waPhone = cleanVCardField(siteData.whatsappNumber);
+            const directPhone = cleanVCardField(siteData.phoneNumber);
             const url = window.location.href;
-            const note = siteData.bio || '';
-            const address = siteData.address || '';
-            const city = siteData.city || '';
-            const country = siteData.country || '';
+            const note = cleanVCardField(siteData.bio);
+            const address = cleanVCardField(siteData.address);
+            const city = cleanVCardField(siteData.city);
+            const country = cleanVCardField(siteData.country);
             
             let vcard = 'BEGIN:VCARD\r\nVERSION:3.0\r\n';
             vcard += `FN:${name}\r\n`;
@@ -2723,14 +2854,18 @@
                         if (cueEl) cueEl.style.display = 'none';
                     }
                 } else if (action === 'url' && site.announcementUrl && site.announcementUrl.trim() !== '') {
-                    let targetUrl = site.announcementUrl.trim();
-                    if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
-                        targetUrl = 'https://' + targetUrl;
+                    const targetUrl = toSafeHttpsUrl(site.announcementUrl, true);
+                    if (targetUrl) {
+                        bannerEl.href = targetUrl;
+                        bannerEl.rel = 'noopener noreferrer';
+                        bannerEl.style.cursor = 'pointer';
+                        if (cueEl) cueEl.style.display = 'inline-flex';
+                        if (cueIcon) cueIcon.className = 'fa-solid fa-arrow-up-right-from-square';
+                    } else {
+                        bannerEl.removeAttribute('href');
+                        bannerEl.style.cursor = 'default';
+                        if (cueEl) cueEl.style.display = 'none';
                     }
-                    bannerEl.href = targetUrl;
-                    bannerEl.style.cursor = 'pointer';
-                    if (cueEl) cueEl.style.display = 'inline-flex';
-                    if (cueIcon) cueIcon.className = 'fa-solid fa-arrow-up-right-from-square';
                 } else {
                     bannerEl.removeAttribute('href');
                     bannerEl.style.cursor = 'default';
@@ -2754,9 +2889,9 @@
             // Proposal #8: Dynamic OpenGraph & Twitter Meta Tags (Always ON)
             const metaTitle = `${site.displayName || fallbackClinic} | ${site.professionalTitle || fallbackTitle}`;
             const metaDesc = `${site.clinicName ? site.clinicName + ' — ' : ''}${site.bio || defaultBioMeta}`;
-            const metaImg = (site.avatarUrl && site.avatarUrl.startsWith('https://')) 
-                ? site.avatarUrl 
-                : ((site.coverUrl && site.coverUrl.startsWith('https://')) ? site.coverUrl : 'https://murshid.feshealthtech.com/assets/og-preview.jpg');
+            const safeMetaAvatar = toSafeHttpsUrl(site.avatarUrl, false);
+            const safeMetaCover = toSafeHttpsUrl(site.coverUrl, false);
+            const metaImg = safeMetaAvatar || safeMetaCover || 'https://murshid.feshealthtech.com/assets/og-preview.jpg';
 
             const ogTitleEl = document.getElementById('ogTitle');
             const twTitleEl = document.getElementById('twTitle');
@@ -2774,14 +2909,16 @@
             if (twImgEl) twImgEl.setAttribute('content', metaImg);
             if (ogUrlEl) ogUrlEl.setAttribute('content', window.location.href);
 
-            // Cover Banner Render
+            // Cover Banner Render (strict CSS https:// URL validation — no quote/paren breakout)
             const coverEl = document.getElementById('coverBanner');
             const heroCardEl = document.getElementById('heroCard');
-            if (site.coverUrl && site.coverUrl.trim() !== '' && template !== 'compact_stack') {
-                coverEl.style.backgroundImage = `url("${escapeHtml(site.coverUrl)}")`;
+            const safeCoverUrl = toSafeCssImageUrl(site.coverUrl);
+            if (safeCoverUrl && template !== 'compact_stack') {
+                coverEl.style.backgroundImage = `url("${safeCoverUrl}")`;
                 coverEl.style.display = 'block';
                 if (heroCardEl) heroCardEl.classList.add('has-cover');
             } else {
+                coverEl.style.backgroundImage = '';
                 coverEl.style.display = 'none';
                 if (heroCardEl) heroCardEl.classList.remove('has-cover');
             }
@@ -2798,10 +2935,10 @@
                 clinicEl.style.display = 'none';
             }
 
-            // Avatar
+            // Avatar (strict https:// validation)
             const avatarEl = document.getElementById('doctorAvatar');
-            if (site.avatarUrl) {
-                avatarEl.src = site.avatarUrl;
+            if (safeMetaAvatar) {
+                avatarEl.src = safeMetaAvatar;
             }
 
             // Bio Box (governed by vis.showBio)
@@ -2900,16 +3037,16 @@
                             <div>
                                 ${s.originalPrice && s.originalPrice > s.price ? `
                                     <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 2px;">
-                                        <span class="service-price">${s.price} ${escapeHtml(s.currency || 'SAR')}</span>
-                                        <span class="service-orig-price">${s.originalPrice}</span>
+                                        <span class="service-price">${escapeHtml(String(s.price ?? ''))} ${escapeHtml(s.currency || 'SAR')}</span>
+                                        <span class="service-orig-price">${escapeHtml(String(s.originalPrice))}</span>
                                         <span class="service-discount-pill">وفر ${Math.round(((s.originalPrice - s.price) / s.originalPrice) * 100)}%</span>
                                     </div>
                                 ` : `
-                                    <span class="service-price">${s.price} ${escapeHtml(s.currency || 'SAR')}</span>
+                                    <span class="service-price">${escapeHtml(String(s.price ?? ''))} ${escapeHtml(s.currency || 'SAR')}</span>
                                 `}
                                 ${s.duration ? `<span class="service-duration"> / ${escapeHtml(s.duration)}</span>` : ''}
                             </div>
-                            <a href="${sWaUrl}" target="_blank" class="service-book-btn">
+                            <a href="${escapeHtml(sWaUrl)}" target="_blank" rel="noopener noreferrer" class="service-book-btn">
                                 <i class="fa-brands fa-whatsapp"></i>
                                 <span>${i18n[currentLang].bookThisService}</span>
                             </a>
@@ -2969,7 +3106,7 @@
                     }
 
                     faqItem.innerHTML = `
-                        <div class="faq-question" onclick="toggleFaq(this)">
+                        <div class="faq-question">
                             <div class="faq-header-content">
                                 ${metaBadges ? `<div class="faq-meta-row">${metaBadges}</div>` : ''}
                                 <span class="faq-title-text">${escapeHtml(f.question)}</span>
@@ -2978,6 +3115,10 @@
                         </div>
                         <div class="faq-answer">${escapeHtml(f.answer)}</div>
                     `;
+                    const qBtn = faqItem.querySelector('.faq-question');
+                    if (qBtn) {
+                        qBtn.addEventListener('click', function() { toggleFaq(this); });
+                    }
                     faqsList.appendChild(faqItem);
                 });
             } else {
@@ -2987,7 +3128,8 @@
             // Render Location (governed by vis.showLocation)
             const locationSection = document.getElementById('locationSection');
             const cityText = [site.city, site.country].filter(Boolean).join('، ');
-            const hasLocation = cityText || site.address || site.mapUrl;
+            const safeMapUrl = toSafeHttpsUrl(site.mapUrl, true);
+            const hasLocation = cityText || site.address || safeMapUrl;
             const showLocation = vis.showLocation !== false && hasLocation;
 
             if (showLocation) {
@@ -3007,10 +3149,12 @@
                 }
 
                 const mapBtn = document.getElementById('mapBtn');
-                if (site.mapUrl) {
-                    mapBtn.href = site.mapUrl;
+                if (safeMapUrl) {
+                    mapBtn.href = safeMapUrl;
+                    mapBtn.rel = 'noopener noreferrer';
                     mapBtn.style.display = 'inline-flex';
                 } else {
+                    mapBtn.removeAttribute('href');
                     mapBtn.style.display = 'none';
                 }
             } else {
@@ -3020,46 +3164,7 @@
             // Socials (governed by vis.showSocials)
             const socialsSection = document.getElementById('socialsSection');
             const socialsRow = document.getElementById('socialsRow');
-            socialsRow.innerHTML = '';
-            const socials = site.socials || {};
-            let hasSocials = false;
-
-            const iconMap = {
-                instagram: 'fa-brands fa-instagram',
-                twitter: 'fa-brands fa-x-twitter',
-                x: 'fa-brands fa-x-twitter',
-                linkedin: 'fa-brands fa-linkedin-in',
-                tiktok: 'fa-brands fa-tiktok',
-                facebook: 'fa-brands fa-facebook-f',
-                website: 'fa-solid fa-globe'
-            };
-
-            for (const [key, val] of Object.entries(socials)) {
-                if (val && val.trim()) {
-                    hasSocials = true;
-                    let linkUrl = val.trim();
-                    if (!linkUrl.startsWith('http')) {
-                        if (key === 'instagram') linkUrl = `https://instagram.com/${linkUrl.replace('@', '')}`;
-                        else if (key === 'twitter' || key === 'x') linkUrl = `https://x.com/${linkUrl.replace('@', '')}`;
-                        else linkUrl = `https://${linkUrl}`;
-                    }
-
-                    const a = document.createElement('a');
-                    a.href = linkUrl;
-                    a.target = '_blank';
-                    a.rel = 'noopener noreferrer';
-                    a.className = 'social-link';
-                    const iconKey = key.toLowerCase();
-                    if (iconKey === 'twitter' || iconKey === 'x') {
-                        a.setAttribute('aria-label', 'X (Twitter)');
-                        a.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="display:inline-block; vertical-align:middle;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
-                    } else {
-                        a.setAttribute('aria-label', key);
-                        a.innerHTML = `<i class="${iconMap[iconKey] || 'fa-solid fa-link'}"></i>`;
-                    }
-                    socialsRow.appendChild(a);
-                }
-            }
+            const hasSocials = renderSafeSocialLinks(site.socials, socialsRow);
 
             const showSocials = vis.showSocials !== false && hasSocials;
             if (showSocials) {
@@ -3421,43 +3526,7 @@
 
             const socialsRow = document.getElementById('maintenanceSocialsRow');
             if (socialsRow) {
-                socialsRow.innerHTML = '';
-                const socials = (data && data.socials) ? data.socials : {};
-                const iconMap = {
-                    instagram: 'fa-brands fa-instagram',
-                    twitter: 'fa-brands fa-x-twitter',
-                    x: 'fa-brands fa-x-twitter',
-                    linkedin: 'fa-brands fa-linkedin-in',
-                    tiktok: 'fa-brands fa-tiktok',
-                    facebook: 'fa-brands fa-facebook-f',
-                    website: 'fa-solid fa-globe'
-                };
-                let hasSocial = false;
-                for (const [key, val] of Object.entries(socials)) {
-                    if (val && typeof val === 'string' && val.trim()) {
-                        hasSocial = true;
-                        let linkUrl = val.trim();
-                        if (!linkUrl.startsWith('http')) {
-                            if (key === 'instagram') linkUrl = `https://instagram.com/${linkUrl.replace('@', '')}`;
-                            else if (key === 'twitter' || key === 'x') linkUrl = `https://x.com/${linkUrl.replace('@', '')}`;
-                            else linkUrl = `https://${linkUrl}`;
-                        }
-                        const a = document.createElement('a');
-                        a.href = linkUrl;
-                        a.target = '_blank';
-                        a.rel = 'noopener noreferrer';
-                        a.className = 'social-link';
-                        const iconKey = key.toLowerCase();
-                        if (iconKey === 'twitter' || iconKey === 'x') {
-                            a.setAttribute('aria-label', 'X (Twitter)');
-                            a.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="display:inline-block; vertical-align:middle;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>';
-                        } else {
-                            a.setAttribute('aria-label', key);
-                            a.innerHTML = `<i class="${iconMap[iconKey] || 'fa-solid fa-link'}"></i>`;
-                        }
-                        socialsRow.appendChild(a);
-                    }
-                }
+                const hasSocial = renderSafeSocialLinks(data && data.socials, socialsRow);
                 if (hasSocial) {
                     socialsRow.style.display = 'flex';
                     hasContact = true;
@@ -3490,13 +3559,6 @@
             hideAllStates();
             const errEl = document.getElementById('errorState');
             if (errEl) errEl.style.display = 'block';
-        }
-
-        function escapeHtml(str) {
-            if (!str) return '';
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
         }
 
         // Unregister any previous service workers

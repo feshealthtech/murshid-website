@@ -42,6 +42,21 @@ function buildVerifyNoCacheHeaders(baseHeaders) {
   return headers;
 }
 
+const BIO_CONTENT_SECURITY_POLICY =
+  "object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests;";
+
+function applyBioSecurityHeaders(baseHeaders) {
+  const headers = new Headers(baseHeaders);
+  headers.set('X-Content-Type-Options', 'nosniff');
+  if (!headers.has('X-Frame-Options')) {
+    headers.set('X-Frame-Options', 'SAMEORIGIN');
+  }
+  headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  headers.set('Content-Security-Policy', BIO_CONTENT_SECURITY_POLICY);
+  return headers;
+}
+
 function methodNotAllowedResponse() {
   return new Response('Method Not Allowed', {
     status: 405,
@@ -215,7 +230,11 @@ export async function handleWorkerRequest(request, env, fetchImpl = fetch) {
     const slug = normalizedPathSlug || querySlug;
 
     if (!slug) {
-      return fetchStaticHtmlAsset(env, url.origin, '/p/', request);
+      const assetRes = await fetchStaticHtmlAsset(env, url.origin, '/p/', request);
+      return new Response(assetRes.body, {
+        status: assetRes.status,
+        headers: applyBioSecurityHeaders(assetRes.headers),
+      });
     }
 
     if (!VALID_SLUG_REGEX.test(slug)) {
@@ -238,7 +257,7 @@ export async function handleWorkerRequest(request, env, fetchImpl = fetch) {
         headers: forwardHeaders,
       });
 
-      const headers = new Headers(ssrResponse.headers);
+      const headers = applyBioSecurityHeaders(ssrResponse.headers);
       const rawCacheControl = (headers.get('cache-control') || '').toLowerCase();
       const isUncacheable =
         rawCacheControl.includes('no-cache') || rawCacheControl.includes('no-store');
@@ -255,7 +274,11 @@ export async function handleWorkerRequest(request, env, fetchImpl = fetch) {
         headers,
       });
     } catch (_) {
-      return fetchStaticHtmlAsset(env, url.origin, '/p/', request);
+      const fallbackRes = await fetchStaticHtmlAsset(env, url.origin, '/p/', request);
+      return new Response(fallbackRes.body, {
+        status: fallbackRes.status,
+        headers: applyBioSecurityHeaders(fallbackRes.headers),
+      });
     }
   }
 

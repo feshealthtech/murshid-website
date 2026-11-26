@@ -434,7 +434,8 @@ function initBetaModal() {
 
   const openModal = (e) => {
     e.preventDefault();
-    const savedRef = localStorage.getItem('mrshed_ref_code');
+    const savedRefRaw = localStorage.getItem('mrshed_ref_code');
+    const savedRef = savedRefRaw && /^[A-Za-z0-9_-]{3,20}$/.test(savedRefRaw.trim()) ? savedRefRaw.trim().toUpperCase() : '';
     const badgeEl = document.getElementById('ios-ref-badge');
     if (savedRef && !badgeEl) {
       const modalBody = modal.querySelector('.m-modal-body') || modal;
@@ -442,9 +443,11 @@ function initBetaModal() {
       badge.id = 'ios-ref-badge';
       badge.style.cssText = 'background:rgba(13,148,136,0.15);border:1px dashed #0d9488;border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:0.85rem;color:#0d9488;text-align:center;font-weight:600;';
       const isRtl = document.documentElement.getAttribute('dir') === 'rtl' || document.documentElement.lang === 'ar';
-      badge.innerHTML = isRtl
-        ? `🎁 تم حفظ كود الدعوة <strong>${savedRef}</strong> لحسابك! سيكون متاحاً لك فور إطلاق نسخة iOS.`
-        : `🎁 Invite code <strong>${savedRef}</strong> is saved for your account for the upcoming iOS release!`;
+      const strongEl = document.createElement('strong');
+      strongEl.textContent = savedRef;
+      badge.appendChild(document.createTextNode(isRtl ? '🎁 تم حفظ كود الدعوة ' : '🎁 Invite code '));
+      badge.appendChild(strongEl);
+      badge.appendChild(document.createTextNode(isRtl ? ' لحسابك! سيكون متاحاً لك فور إطلاق نسخة iOS.' : ' is saved for your account for the upcoming iOS release!'));
       modalBody.prepend(badge);
     }
     modal.classList.add('open');
