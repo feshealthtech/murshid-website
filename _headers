@@ -14,6 +14,11 @@
   Cache-Control: no-cache, no-store, must-revalidate
   Pragma: no-cache
   Expires: 0
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.gstatic.com https://www.google.com https://recaptcha.net https://www.recaptcha.net; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://www.gstatic.com; font-src 'self'; img-src 'self' data: https://www.gstatic.com; frame-src https://www.google.com https://recaptcha.net https://www.recaptcha.net; connect-src 'self' https://us-central1-ai-apps-central.cloudfunctions.net https://firebaseappcheck.googleapis.com https://content-firebaseappcheck.googleapis.com https://firebaseinstallations.googleapis.com https://www.google.com https://www.gstatic.com https://recaptcha.net https://www.recaptcha.net; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
 
 # Android App Links Verification
 /.well-known/assetlinks.json

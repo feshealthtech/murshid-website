@@ -14,11 +14,31 @@ function buildCompanionNoCacheHeaders(baseHeaders) {
   return headers;
 }
 
+const VERIFY_CONTENT_SECURITY_POLICY = [
+  "default-src 'self'",
+  "script-src 'self' https://www.gstatic.com https://www.google.com https://recaptcha.net https://www.recaptcha.net",
+  "worker-src 'self' blob:",
+  "style-src 'self' 'unsafe-inline' https://www.gstatic.com",
+  "font-src 'self'",
+  "img-src 'self' data: https://www.gstatic.com",
+  "frame-src https://www.google.com https://recaptcha.net https://www.recaptcha.net",
+  "connect-src 'self' https://us-central1-ai-apps-central.cloudfunctions.net https://firebaseappcheck.googleapis.com https://content-firebaseappcheck.googleapis.com https://firebaseinstallations.googleapis.com https://www.google.com https://www.gstatic.com https://recaptcha.net https://www.recaptcha.net",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+].join('; ');
+
 function buildVerifyNoCacheHeaders(baseHeaders) {
   const headers = new Headers(baseHeaders);
   headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
   headers.set('Pragma', 'no-cache');
   headers.set('Expires', '0');
+  headers.set('X-Content-Type-Options', 'nosniff');
+  headers.set('X-Frame-Options', 'DENY');
+  headers.set('Referrer-Policy', 'no-referrer');
+  headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  headers.set('Content-Security-Policy', VERIFY_CONTENT_SECURITY_POLICY);
   return headers;
 }
 
