@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const slotReserveBtn = document.getElementById('slotReserveBtn');
   const slotDirectWaBtn = document.getElementById('slotDirectWaBtn');
 
-  // بيانات تفصيلية موسعة لـ 14 محوراً للمركّبات الغذائية (مرتبطة حصراً بمحطتي التقييم الغذائي السابق وإنشاء النظام الغذائي الحالي ومركز المعرفة، وخالية تماماً من أي ادعاءات مرضية أو تحاليل مخبرية أو أرقام ظهور تقديرية)
+  // بيانات تفصيلية موسعة لـ 14 محوراً للمركّبات الغذائية (تعرض كبطاقات مرجعية اختيارية داخل الدليل اليدوي للمكملات ومركز المعرفة، دون أي اقتراح أو تفعيل تلقائي أو ادعاءات مرضية)
   const compoundData = {
     'd3': {
       code: 'CAT-D03',
@@ -245,16 +245,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Fat-Soluble Vitamins & Dietary Calcium Balance Slot',
       nameAr: 'فيتامين د3 (Cholecalciferol)',
       nameEn: 'Vitamin D3 (Cholecalciferol)',
-      detailsAr: 'تفعيل كافة التراكيز والأشكال المرخصة (قطرات، كبسولات، أقراص، وتراكيز متنوعة) كخيار تغذوي مقترح وموثق بنقرة واحدة عند رصد فجوة المدخول اليومي لفيتامين (د) في التقييم الغذائي السابق أو أثناء إنشاء جدول الوجبات الحالي، مع ظهور صورة العبوة الرسمية في تقرير المراجع وتطبيق «رفيق مرشد»، ورعاية المسار التعليمي وبطاقة المعرفة اليومية للمركب.',
-      detailsEn: 'Activates all licensed strengths and dosage forms (drops, softgels, capsules) as the one-click Suggested & Verified Nutritional Option whenever a daily Vitamin D intake gap (RDA) is detected in the Prior Dietary Assessment or Active Meal Plan Construction, displaying the official package image in the client report and Companion App alongside the Knowledge Center course and Daily Knowledge Card.',
+      detailsAr: 'إدراج كافة التراكيز والأشكال المرخصة (قطرات، كبسولات، أقراص، وتراكيز متنوعة) ضمن بطاقة المرجع الموثقة في الدليل اليدوي الاختياري عند تصفح الأخصائي لتصنيف فيتامين (د) أثناء التقييم الغذائي أو تصميم جدول الوجبات، مع ظهور صورة العبوة الرسمية في تقرير المراجع وتطبيق «رفيق مرشد» عند اختيار الأخصائي لها يدوياً، ورعاية المسار التعليمي وبطاقة المعرفة اليومية للمركب.',
+      detailsEn: 'Indexes all licensed strengths and dosage forms (drops, softgels, capsules) inside the Verified Partner Reference Card within the optional manual supplement directory when the practitioner browses Vitamin D during Dietary Assessment review or Meal Plan design, displaying the official package image in the client report and Companion App upon manual selection, alongside the Knowledge Center course and Daily Knowledge Card.',
       triggersAr: [
-        'فجوة المدخول اليومي لفيتامين (د) في التقييم الغذائي السابق مقارنة بـ RDA',
-        'عدم كفاية الحصص الغذائية لفيتامين (د) في جدول الوجبات الحالي المصمم',
+        'الظهور ضمن تصنيف فيتامين (د) في الدليل اليدوي الاختياري للأخصائي',
+        'صورة العبوة والتركيز في تقرير المراجع وتطبيق رفيق مرشد عند الاختيار اليدوي',
         'مثال تطبيقي عملي داخل مسار فيتامين (د) في مركز المعرفة + بطاقة المعرفة اليومية'
       ],
       triggersEn: [
-        'Daily Vitamin D Intake Gap vs. RDA in Prior Dietary Assessment',
-        'Unmet Vitamin D Reference Intake in Active Meal Plan Design',
+        'Verified Reference Card Listing Under Vitamin D in the Manual Directory',
+        'Official Package Image in Client Reports Upon Manual Practitioner Selection',
         'Practical Example in Knowledge Center Track + Daily Knowledge Card'
       ],
       slaAr: '100% من عيادات الدولة',
@@ -266,16 +266,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Essential Macrominerals & Organic Chelates Slot',
       nameAr: 'ماغنيسيوم بيسجلايسينات وثريونات (Magnesium Bisglycinate & Threonate)',
       nameEn: 'Magnesium Bisglycinate & L-Threonate Chelate',
-      detailsAr: 'إبراز منتجات الماغنيسيوم المخلبي بكافة أشكالها وتراكيزها (كبسولات، مسحوق، فوار) كخيار مقترح أول للأخصائي فور تسجيل نقص في تغطية الحصة اليومية المرجعية للماغنيسيوم (RDA) في التقييم الغذائي المعتاد أو في خطة الوجبات اليومية، مع توثيق جدول الحقائق الغذائية ونوع الملح الجزيئي وشرحه كمثال تطبيقي في مركز المعرفة.',
-      detailsEn: 'Highlights your chelated magnesium formulations (capsules, powder, effervescent) as the primary suggested option whenever a daily magnesium intake gap (RDA) is identified during Prior Dietary Assessment or Meal Plan Construction, complete with Supplement Facts verification and practical integration in the Knowledge Center track.',
+      detailsAr: 'إبراز منتجات الماغنيسيوم المخلبي بكافة أشكالها وتراكيزها (كبسولات، مسحوق، فوار) كبطاقة مرجعية موثقة داخل تصنيف الماغنيسيوم في الدليل اليدوي الاختياري عند تصفحه من قِبل الأخصائي، مع توثيق جدول الحقائق الغذائية ونوع الملح الجزيئي وشرحه كمثال تطبيقي في مركز المعرفة.',
+      detailsEn: 'Showcases your chelated magnesium formulations (capsules, powder, effervescent) inside the Verified Partner Reference Card under the Magnesium category of the optional manual supplement directory, complete with Supplement Facts verification and practical integration in the Knowledge Center track.',
       triggersAr: [
-        'انخفاض المدخول الغذائي اليومي من مصادر الماغنيسيوم في تقييم الـ 24 ساعة',
-        'فجوة احتياج الماغنيسيوم اليومي في الحميات منخفضة السعرات الحرارية',
-        'توثيق الصيغة المخلبية في بطاقة الحقائق الغذائية والمسار التعليمي'
+        'الإدراج المرجعي الموثق في تصنيف الماغنيسيوم بالدليل اليدوي الاختياري',
+        'توثيق الصيغة المخلبية وجدول الحقائق الغذائية للمراجعة التطوعية',
+        'شرح الصيغة الجزيئية في المسار التعليمي وبطاقة المعرفة اليومية'
       ],
       triggersEn: [
-        'Low Daily Magnesium Intake in 24-Hour Dietary Recall Assessment',
-        'Daily Magnesium RDA Gap in Calorie-Controlled Meal Plans',
+        'Verified Reference Listing Under Magnesium in Manual Directory',
+        'Chelated Supplement Facts Reference for Voluntary Practitioner Review',
         'Chelated Molecular Form Spotlight in Knowledge Center & Daily Card'
       ],
       slaAr: '100% من عيادات الدولة',
@@ -287,17 +287,17 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Trace Minerals & Gentle Chelated Salts Slot',
       nameAr: 'حديد مخلبي لطيف (Ferrous Bisglycinate Chelate)',
       nameEn: 'Gentle Chelated Iron (Ferrous Bisglycinate)',
-      detailsAr: 'تفعيل أصناف الحديد المخلبي المرخصة (كبسولات، قطرات، شراب، أكياس) كخيار تغذوي مقترح لتكميل الحصة الغذائية اليومية من عنصر الحديد عندما يظهر عجز في تغطية الاحتياج اليومي المرجعي (RDA) في التقييم الغذائي السابق أو النظام الغذائي المصمم، مع عرض صورة العبوة الرسمية للمراجع لتفادي التشتت عند الشراء.',
-      detailsEn: 'Positions your licensed chelated iron line (capsules, drops, liquid, sachets) as the suggested dietary option to bridge daily iron intake gaps (RDA) detected in Prior Dietary Assessments or Active Meal Plans, displaying the official package image in client reports for clear pharmacy identification.',
+      detailsAr: 'إدراج أصناف الحديد المخلبي المرخصة (كبسولات، قطرات، شراب، أكياس) ضمن بطاقة المرجع الموثقة في تصنيف الحديد بالدليل اليدوي الاختياري للمكملات، مع عرض صورة العبوة الرسمية للمراجع عند اختيار الأخصائي لها يدوياً لتفادي التشتت عند الشراء.',
+      detailsEn: 'Lists your licensed chelated iron line (capsules, drops, liquid, sachets) inside the Verified Partner Reference Card under the Iron category of the manual directory, displaying the official package image in client reports upon manual specialist selection for clear pharmacy identification.',
       triggersAr: [
-        'فجوة المدخول اليومي من عنصر الحديد في التقييم الغذائي والأنظمة النباتية',
-        'عجز جدول الوجبات اليومي عن تغطية الحصة المرجعية اليومية للحديد (RDA)',
-        'توضيح تفاعل امتصاص الحديد مع الأغذية في المسار التعليمي التطبيقي'
+        'الحضور المرجعي الموثق في تصنيف الحديد بالدليل اليدوي الاختياري',
+        'عرض صورة العبوة والتركيز في التقرير عند الاختيار اليدوي للأخصائي',
+        'توضيح الخصائص التغذوية للأملاح المخلبية في المسار التعليمي التطبيقي'
       ],
       triggersEn: [
-        'Daily Iron Intake Gap in Prior Dietary & Plant-Based Assessments',
-        'Unmet Daily Iron Reference Intake (RDA) in Constructed Meal Plans',
-        'Dietary Iron Absorption & Food-Pairing Examples in Knowledge Track'
+        'Verified Reference Card Listing Under Iron in Manual Directory',
+        'Package Image Clarity in Client Reports Upon Manual Selection',
+        'Chelated Iron Nutrition & Food Science Examples in Knowledge Track'
       ],
       slaAr: '100% من عيادات الدولة',
       slaEn: '100% Country Clinics'
@@ -308,16 +308,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Essential Fatty Acids & Purified Dietary Lipids Slot',
       nameAr: 'أوميغا 3 فائق النقاوة (Omega-3 Triglyceride EPA/DHA)',
       nameEn: 'Ultra-Purified Omega-3 (rTG EPA/DHA)',
-      detailsAr: 'بروز مكملات الأوميغا 3 المرخصة بكافة تراكيز EPA/DHA كخيار تغذوي مقترح وموثق عندما يرصد النظام غياب أو انخفاض الحصص الأسبوعية واليومية من الأحماض الدهنية الأساسية في التقييم الغذائي السابق للمراجع أو في جدول وجباته الحالي، مع توثيق شهادات النقاوة (COA) في بطاقة المواصفات الغذائية للأخصائي.',
-      detailsEn: 'Presents your licensed Omega-3 formulations across all EPA/DHA ratios as the suggested nutritional option whenever weekly or daily essential fatty acid intake falls below reference targets in the Prior Dietary Assessment or Active Meal Plan, backed by verified COA purity data.',
+      detailsAr: 'إدراج مكملات الأوميغا 3 المرخصة بكافة تراكيز EPA/DHA ضمن بطاقة المرجع الموثقة في الدليل اليدوي الاختياري للأخصائي عند تصفحه لتصنيف الأحماض الدهنية الأساسية، مع توثيق شهادات النقاوة (COA) في بطاقة المواصفات الغذائية المرجعية.',
+      detailsEn: 'Presents your licensed Omega-3 formulations across all EPA/DHA ratios inside the Verified Partner Reference Card when practitioners browse the Essential Fatty Acids directory category manually, backed by verified COA purity data.',
       triggersAr: [
-        'انخفاض الحصص الغذائية من الأحماض الدهنية EPA/DHA في التقييم الغذائي السابق',
-        'فجوة الأحماض الدهنية الأساسية في جدول الوجبات الأسبوعي المصمم',
+        'البطاقة المرجعية الموثقة في تصنيف أوميغا 3 بالدليل اليدوي الاختياري',
+        'توثيق شهادات النقاوة ونسب EPA/DHA لمراجعة الأخصائي اليدوية',
         'شرح نسب EPA/DHA ونقاوة الزيوت كمثال تطبيقي في مركز المعرفة'
       ],
       triggersEn: [
-        'Low EPA/DHA Fatty Acid Intake in Prior Dietary Assessment',
-        'Essential Fatty Acid Gap in Weekly & Daily Meal Plan Construction',
+        'Verified Reference Card Listing Under Omega-3 in Manual Directory',
+        'Verified COA Purity & EPA/DHA Specs for Practitioner Review',
         'EPA/DHA Ratio & Purity Practical Example in Knowledge Center'
       ],
       slaAr: '100% من عيادات الدولة',
@@ -329,16 +329,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Live Friendly Cultures & Dietary Balance Slot',
       nameAr: 'بروبيوتيك وسينبيوتيك متعدد السلالات (Multi-Strain Probiotics & Synbiotics)',
       nameEn: 'Advanced Multi-Strain Probiotics & Synbiotics',
-      detailsAr: 'إتاحة مستحضرات البروبيوتيك والسينبيوتيك المرخصة كخيار مقترح للأخصائي عند تقييم تنوع الأغذية المخمرة والألياف الحيوية في التقييم الغذائي السابق أو أثناء تصميم الأنظمة الغذائية المتوازنة، مع توثيق السلالات وعدد الوحدات الحية (CFU) وتقنية الكبسولة في بطاقة الحقائق الغذائية ومسار مركز المعرفة.',
-      detailsEn: 'Showcases your licensed probiotic and synbiotic formulations during dietary diversity evaluations in Prior Dietary Assessments and balanced Meal Plan construction, detailing strain taxonomy, CFU counts, and capsule stability in the Supplement Facts card and Knowledge Center course.',
+      detailsAr: 'إتاحة مستحضرات البروبيوتيك والسينبيوتيك المرخصة ضمن بطاقة المرجع الموثقة في الدليل اليدوي الاختياري عند تصفح الأخصائي لها، مع توثيق السلالات وعدد الوحدات الحية (CFU) وتقنية الكبسولة في بطاقة الحقائق الغذائية ومسار مركز المعرفة.',
+      detailsEn: 'Showcases your licensed probiotic and synbiotic formulations inside the Verified Partner Reference Card when practitioners manually browse the manual supplement directory, detailing strain taxonomy, CFU counts, and capsule stability in the Supplement Facts card and Knowledge Center course.',
       triggersAr: [
-        'تقييم تنوع المصادر الحيوية والألياف في التقييم الغذائي السابق للمراجع',
-        'تكميل الجداول الغذائية المصممة بمنتجات السلالات الحية الموثقة',
+        'الإدراج المرجعي الموثق في تصنيف البروبيوتيك بالدليل اليدوي الاختياري',
+        'توثيق رموز السلالات وعدد الوحدات الحية في بطاقة المواصفات',
         'توثيق رموز السلالات وعدد CFU في المسار التعليمي وبطاقة المعرفة اليومية'
       ],
       triggersEn: [
-        'Dietary Fermented & Prebiotic Diversity Gap in Prior Assessment',
-        'Supplementing Constructed Meal Plans with Documented Live Cultures',
+        'Verified Reference Listing Under Probiotics in Manual Directory',
+        'Documented Live Culture Strains & CFU Specs for Voluntary Selection',
         'Strain Taxonomy & CFU Stability Module in Knowledge Center Track'
       ],
       slaAr: '100% من عيادات الدولة',
@@ -350,17 +350,17 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Nutritional Co-Factors & Active Ubiquinol Slot',
       nameAr: 'مساعد الإنزيم كيو 10 ويوبيكوينول (CoQ10 / Active Ubiquinol)',
       nameEn: 'Coenzyme Q10 & Bioactive Ubiquinol',
-      detailsAr: 'تفعيل مكملات CoQ10 واليوبيكوينول المرخصة بمختلف تراكيزها كخيار تغذوي مقترح للأخصائي عند رصد انخفاض المدخول الغذائي من مصادر الإنزيمات المساعدة ومضادات الأكسدة الغذائية في التقييم الغذائي السابق أو خطة الوجبات الحالية، مع مقارنة الصيغ الجزيئية في مركز المعرفة.',
-      detailsEn: 'Activates your licensed CoQ10 and Ubiquinol strengths as the suggested dietary option when low dietary intake of nutritional co-factors is identified in Prior Dietary Assessments or Active Meal Plans, supported by molecular bioavailability comparisons in the Knowledge Center.',
+      detailsAr: 'عرض مكملات CoQ10 واليوبيكوينول المرخصة بمختلف تراكيزها ضمن بطاقة المرجع الموثقة في الدليل اليدوي الاختياري للأخصائي، مع توثيق مقارنة الصيغ الجزيئية في مركز المعرفة.',
+      detailsEn: 'Displays your licensed CoQ10 and Ubiquinol strengths inside the Verified Partner Reference Card within the optional manual supplement directory, supported by molecular bioavailability comparisons in the Knowledge Center.',
       triggersAr: [
-        'انخفاض مصادر الإنزيم المساعد كيو 10 في التقييم الغذائي المعتاد',
-        'دعم الجداول الغذائية المخصصة للنشاط البدني بالمركبات المساعدة',
-        'مقارنة امتصاص اليوبيكوينول واليوبيكوينون في مركز المعرفة'
+        'الظهور المرجعي الموثق في تصنيف CoQ10 بالدليل اليدوي الاختياري',
+        'إدراج التراكيز المرخصة ومواصفات العبوة للاختيار اليدوي',
+        'مقارنة الصيغ الجزيئية للإنزيم المساعد في مركز المعرفة'
       ],
       triggersEn: [
-        'Low Nutritional CoQ10 Sources in Prior Dietary Intake Assessment',
-        'Co-Factor Supplementation in Active Lifestyle Meal Plans',
-        'Ubiquinol vs. Ubiquinone Absorption Module in Knowledge Center'
+        'Verified Reference Card Under CoQ10 in Manual Supplement Directory',
+        'Licensed Strengths & Packaging Reference for Manual Selection',
+        'Ubiquinol vs. Ubiquinone Science Module in Knowledge Center'
       ],
       slaAr: '100% من عيادات الدولة',
       slaEn: '100% Country Clinics'
@@ -371,16 +371,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Water-Soluble Vitamins & Active Methylated B Slot',
       nameAr: 'مجموعة فيتامينات ب النشطة الميثيلية (Active Methylated B-Complex)',
       nameEn: 'Methylated Active Coenzyme B-Complex',
-      detailsAr: 'بروز مجموعة فيتامينات (ب) النشطة (Methylcobalamin, 5-MTHF, P-5-P) كخيار مقترح أول بنقرة واحدة فور رصد فجوة في تغطية الاحتياج اليومي المرجعي (RDA) لأحد فيتامينات (ب) الثمانية في التقييم الغذائي السابق أو أثناء هندسة جدول الوجبات اليومي، مع شرح الصيغ النشطة في مركز المعرفة.',
-      detailsEn: 'Presents your active methylated B-Complex line as the one-click suggested option whenever a daily RDA gap across any of the B-vitamins is calculated in the Prior Dietary Assessment or Active Meal Plan, paired with active coenzyme education in the Knowledge Center.',
+      detailsAr: 'عرض مجموعة فيتامينات (ب) النشطة (Methylcobalamin, 5-MTHF, P-5-P) ضمن بطاقة المرجع الموثقة في تصنيف فيتامينات (ب) بالدليل اليدوي الاختياري لتسهيل اطلاع الأخصائي على التراكيز الصيدلانية المرخصة، مع شرح الصيغ النشطة في مركز المعرفة.',
+      detailsEn: 'Presents your active methylated B-Complex line (Methylcobalamin, 5-MTHF, P-5-P) inside the Verified Partner Reference Card under B-Vitamins in the manual directory for voluntary specialist review, paired with active coenzyme education in the Knowledge Center.',
       triggersAr: [
-        'فجوة المدخول اليومي لفيتامينات (ب1، ب6، ب9، ب12) في التقييم الغذائي السابق',
-        'عجز تغطية الفيتامينات الذائبة في الماء في الحميات النباتية أو منخفضة السعرات',
+        'الإدراج المرجعي الموثق في تصنيف فيتامينات (ب) بالدليل اليدوي الاختياري',
+        'استعراض الصيغ الميثيلية والتراكيز في بطاقة الحقائق الغذائية',
         'توثيق الفروق الغذائية للصيغ الميثيلية النشطة في مركز المعرفة'
       ],
       triggersEn: [
-        'Daily RDA Gap in B-Vitamins (B1, B6, B9, B12) in Prior Assessment',
-        'Water-Soluble Vitamin Deficit in Plant-Based or Restricted Meal Plans',
+        'Verified Reference Card Under B-Vitamins in Manual Directory',
+        'Methylated Supplement Facts Panel for Voluntary Specialist Review',
         'Active Methylated Coenzyme Examples in Knowledge Center Track'
       ],
       slaAr: '100% من عيادات الدولة',
@@ -392,16 +392,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Structural Protein Peptides & Specialized Amino Acids Slot',
       nameAr: 'ببتيدات الكولاجين البحري المتحلل (Hydrolyzed Marine Collagen Peptides)',
       nameEn: 'Pure Hydrolyzed Marine Collagen Peptides (Type I & III)',
-      detailsAr: 'إتاحة منتجات ببتيدات الكولاجين المتحلل والعوامل الغذائية المساعدة (مثل فيتامين ج) كخيار مقترح لتكميل المدخول اليومي من الأحماض الأمينية البنائية (Glycine, Proline, Hydroxyproline) في التقييم الغذائي السابق وتصميم الجداول الغذائية، مع توثيق الوزن الجزيئي (Dalton) في بطاقة المواصفات.',
-      detailsEn: 'Displays your hydrolyzed collagen peptides and nutritional co-factors as the suggested option to complement daily structural amino acid intake (Glycine, Proline, Hydroxyproline) in Prior Dietary Assessments and Meal Plans, documenting Dalton molecular weight in the Supplement Facts card.',
+      detailsAr: 'إتاحة منتجات ببتيدات الكولاجين المتحلل والعوامل الغذائية المساعدة (مثل فيتامين ج) كبطاقة مرجعية موثقة داخل الدليل اليدوي الاختياري للمكملات، مع توثيق الوزن الجزيئي (Dalton) في بطاقة المواصفات.',
+      detailsEn: 'Displays your hydrolyzed collagen peptides and nutritional co-factors as a Verified Partner Reference Card inside the optional manual directory, documenting Dalton molecular weight in the Supplement Facts card.',
       triggersAr: [
-        'انخفاض مدخول الأحماض الأمينية البنائية (الجلايسين والبرولين) في التقييم الغذائي',
-        'تكميل حصص البروتين النوعي في جداول الوجبات اليومية المصممة',
+        'الظهور المرجعي الموثق في تصنيف الكولاجين بالدليل اليدوي الاختياري',
+        'عرض مواصفات الببتيدات المتحللة عند تصفح الأخصائي للدليل',
         'شرح الوزن الجزيئي للببتيدات المتحللة وحقائقها الغذائية في مركز المعرفة'
       ],
       triggersEn: [
-        'Low Structural Amino Acid Intake (Glycine/Proline) in Prior Assessment',
-        'Targeted Peptide Supplementation in Constructed Daily Meal Plans',
+        'Verified Reference Listing Under Collagen in Manual Directory',
+        'Hydrolyzed Peptide Specs Available for Manual Plan Documentation',
         'Peptide Molecular Weight & Supplement Facts Module in Knowledge Center'
       ],
       slaAr: '100% من عيادات الدولة',
@@ -413,16 +413,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Macronutrient Protein & Essential Amino Acids (EAA) Slot',
       nameAr: 'بروتين مصل اللبن المعزول والبروتين النباتي النقي (Whey Isolate & Plant Matrix)',
       nameEn: 'Ultra-Filtered Whey Isolate & Pure Plant Protein Matrix',
-      detailsAr: 'تفعيل مساحيق ومشروبات البروتين المعزول والنباتي المرخصة كخيار مقترح أول للأخصائي عندما يسجل حساب الماكرو اليومي في التقييم الغذائي السابق أو في جدول الوجبات المصمم فجوة في تغطية الاحتياج اليومي من البروتين (جرام/كجم)، مع توثيق جدول الأحماض الأمينية (EAA/BCAA) وخلو السكر واللاكتوز.',
-      detailsEn: 'Activates your licensed Whey Isolate and Plant Protein powders/drinks as the primary suggested option whenever daily macronutrient calculations in the Prior Assessment or Active Meal Plan reveal a protein intake gap (g/kg), complete with EAA/BCAA profiles and lactose/sugar-free specs.',
+      detailsAr: 'عرض مساحيق ومشروبات البروتين المعزول والنباتي المرخصة ضمن بطاقة المرجع الموثقة في الدليل اليدوي الاختياري للأخصائي، مع توثيق جدول الأحماض الأمينية (EAA/BCAA) وملصق خلو السكر واللاكتوز المعتمد من المصنّع.',
+      detailsEn: 'Displays your licensed Whey Isolate and Plant Protein powders/drinks inside the Verified Partner Reference Card in the optional manual directory, complete with EAA/BCAA profiles and manufacturer-declared lactose/sugar-free label specs.',
       triggersAr: [
-        'فجوة تغطية الاحتياج اليومي من الماكرو البروتيني في التقييم الغذائي السابق',
-        'عجز جدول الوجبات اليومي عن الوصول لحصة البروتين المستهدفة بالطعام وحده',
+        'الإدراج المرجعي الموثق في تصنيف البروتينات بالدليل اليدوي الاختياري',
+        'بطاقة مواصفات الأحماض الأمينية للاختيار اليدوي في الجداول الغذائية',
         'شرح حسابات البروتين الصافي وجدول الأحماض الأمينية في مركز المعرفة'
       ],
       triggersEn: [
-        'Daily Protein Macronutrient Gap in Prior Dietary Intake Assessment',
-        'Unmet Target Protein Quota in Constructed Daily Meal Plans',
+        'Verified Reference Card Under Proteins in the Manual Directory',
+        'EAA/BCAA Label Specs Available for Manual Specialist Documentation',
         'Net Protein & Amino Acid Profile Examples in Knowledge Center Track'
       ],
       slaAr: '100% من عيادات الدولة',
@@ -434,16 +434,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Soluble Dietary Fibers & Daily Fiber Quota Slot',
       nameAr: 'ألياف البريبايوتك الذائبة وصمغ الأكاسيا (Soluble Prebiotic Fiber & Acacia Gum)',
       nameEn: 'Soluble Prebiotic Fiber, Inulin & Acacia Fiber Matrix',
-      detailsAr: 'بروز مكملات الألياف الذائبة المرخصة كخيار تغذوي مقترح بنقرة واحدة فور رصد نقص في إجمالي جرامات الألياف الغذائية اليومية (مقارنة بالحصة المرجعية 25–38 جرام/يومياً) في التقييم الغذائي السابق للمراجع أو في جدول وجباته الحالي، مع عرض صورة العبوة وطريقة الاستخدام في تقرير المراجع.',
-      detailsEn: 'Presents your licensed soluble fiber supplements as the one-click suggested option whenever total daily dietary fiber grams fall short of reference targets (25–38g/day) in the Prior Dietary Assessment or Active Meal Plan, displaying package visuals and mixing instructions in the client report.',
+      detailsAr: 'إدراج مكملات الألياف الذائبة المرخصة كبطاقة مرجعية موثقة داخل الدليل اليدوي الاختياري عند تصفح الأخصائي لتصنيف الألياف الغذائية، مع عرض صورة العبوة وطريقة الاستخدام في تقرير المراجع عند اختيار الأخصائي لها يدوياً.',
+      detailsEn: 'Lists your licensed soluble fiber supplements as a Verified Partner Reference Card within the optional manual supplement directory, displaying package visuals and label usage notes in the client report when selected manually by the practitioner.',
       triggersAr: [
-        'انخفاض إجمالي جرامات الألياف اليومية في التقييم الغذائي السابق عن الحصة المرجعية',
-        'فجوة الألياف الغذائية الذائبة في جداول الوجبات منخفضة الكربوهيدرات',
+        'البطاقة المرجعية الموثقة في تصنيف الألياف بالدليل اليدوي الاختياري',
+        'عرض صورة العبوة وطريقة التحضير عند الاختيار اليدوي للأخصائي',
         'شرح خصائص الألياف الذائبة وغير الذائبة كمثال تطبيقي في مركز المعرفة'
       ],
       triggersEn: [
-        'Daily Dietary Fiber Gram Deficit vs. Reference Intake in Prior Assessment',
-        'Soluble Fiber Quota Gap in Low-Carbohydrate or Restricted Meal Plans',
+        'Verified Reference Card Under Fibers in the Manual Directory',
+        'Package Visuals & Label Notes in Reports Upon Manual Selection',
         'Soluble vs. Insoluble Fiber Practical Module in Knowledge Center'
       ],
       slaAr: '100% من عيادات الدولة',
@@ -455,16 +455,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Chelated Zinc & Trace Mineral Balance Slot',
       nameAr: 'زنك مخلبي وبيكولينات متوازن (Chelated Zinc & Picolinate Balance)',
       nameEn: 'Chelated Zinc Complex & Picolinate Balance',
-      detailsAr: 'تفعيل مكملات الزنك المرخصة بكافة تراكيزها كخيار تغذوي مقترح لتكميل الحصة اليومية المرجعية (RDA) من عنصر الزنك والنحاس المتوازن عند رصد نقص مدخولهما في التقييم الغذائي السابق أو أثناء بناء جدول الوجبات الحالي، مع توثيق النسب المعدنية المتوازنة في بطاقة الحقائق الغذائية.',
-      detailsEn: 'Activates your licensed Zinc formulations across all strengths as the suggested dietary option to fulfill daily Zinc and balanced Copper reference intakes (RDA) when dietary shortfalls are detected in Prior Assessments or Active Meal Plans.',
+      detailsAr: 'عرض مكملات الزنك المرخصة بكافة تراكيزها ضمن بطاقة المرجع الموثقة في الدليل اليدوي الاختياري للمكملات لتسهيل مراجعة الأخصائي للنسب المعدنية المتوازنة في بطاقة الحقائق الغذائية عند اختيارها يدوياً.',
+      detailsEn: 'Displays your licensed Zinc formulations across all strengths inside the Verified Partner Reference Card in the optional manual directory for voluntary specialist review alongside Supplement Facts mineral ratios.',
       triggersAr: [
-        'نقص المدخول الغذائي اليومي من مصادر الزنك في التقييم الغذائي السابق',
-        'فجوة تغطية الاحتياج اليومي المرجعي للزنك (RDA) في جدول الوجبات المصمم',
+        'الإدراج المرجعي الموثق في تصنيف الزنك بالدليل اليدوي الاختياري',
+        'توثيق النسب المعدنية المتوازنة في بطاقة الحقائق الغذائية',
         'شرح التوازن الغذائي بين الزنك والنحاس في المسار التعليمي وبطاقة المعرفة'
       ],
       triggersEn: [
-        'Low Daily Dietary Zinc Intake in Prior Nutritional Assessment',
-        'Unmet Daily Zinc Reference Intake (RDA) in Constructed Meal Plans',
+        'Verified Reference Listing Under Zinc in Manual Directory',
+        'Mineral Ratio Documentation in Supplement Facts Reference Card',
         'Zinc-to-Copper Dietary Balance Module in Knowledge Center Track'
       ],
       slaAr: '100% من عيادات الدولة',
@@ -476,15 +476,15 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Standardized Nutritional Botanicals & Phytosome Slot',
       nameAr: 'مستخلصات نباتية معيارية بتقنية الفايتوسوم (Standardized Phytosome Botanicals)',
       nameEn: 'Bio-Enhanced Phytosome & Standardized Nutritional Botanicals',
-      detailsAr: 'إتاحة المستخلصات النباتية الغذائية المرخصة والمطورة بتقنية الفايتوسوم عالية الامتصاص ضمن دليل المكملات المقترحة للأخصائي عند تصميم البرامج الغذائية المتوازنة، مع توثيق نسب المعايرة النباتية وحجم الحصة اليومية وحدود الأمان (UL) في بطاقة المواصفات الغذائية ومسار مركز المعرفة.',
-      detailsEn: 'Showcases your licensed, standardized phytosome botanical supplements within the dietitian selection workflow during balanced meal plan design, documenting botanical standardization ratios, serving sizes, and upper safety limits in the Supplement Facts card and Knowledge Center.',
+      detailsAr: 'إتاحة المستخلصات النباتية الغذائية المرخصة والمطورة بتقنية الفايتوسوم ضمن فهرس المكملات الاسترشادي الاختياري عند تصفح الأخصائي يدوياً أثناء تصميم البرامج الغذائية، مع توثيق نسب المعايرة النباتية وحجم الحصة اليومية وحدود الأمان (UL) في بطاقة المواصفات الغذائية ومسار مركز المعرفة.',
+      detailsEn: 'Showcases your licensed, standardized phytosome botanical supplements within the manual dietitian directory during voluntary browsing and meal plan documentation, detailing botanical standardization ratios, serving sizes, and upper safety limits in the Supplement Facts card and Knowledge Center.',
       triggersAr: [
-        'تكميل البرامج الغذائية بالمستخلصات النباتية المعيارية المرخصة غذائياً',
-        'توثيق تقنية الفايتوسوم ومعدلات الامتصاص في بطاقة الحقائق الغذائية',
+        'الإدراج المرجعي للمستخلصات النباتية المعيارية المرخصة في الدليل اليدوي',
+        'توثيق تقنية الفايتوسوم وبيانات المعايرة في بطاقة الحقائق الغذائية',
         'شرح معايير نقاء المستخلصات النباتية وحدود الحصة اليومية في مركز المعرفة'
       ],
       triggersEn: [
-        'Integrating Licensed Standardized Botanicals in Nutritional Plans',
+        'Verified Reference Card Listing for Licensed Botanicals in Manual Directory',
         'Phytosome Delivery & Supplement Facts Documentation for Dietitians',
         'Botanical Standardization & Daily Serving Limits in Knowledge Center'
       ],
@@ -497,16 +497,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Structural Nutrients & Active Sports Nutrition Slot',
       nameAr: 'مصفوفة المغذيات البنائية (Glucosamine, Chondroitin & MSM Nutritional Matrix)',
       nameEn: 'Structural Nutrient Matrix (Glucosamine, Chondroitin & MSM)',
-      detailsAr: 'تفعيل مكملات المغذيات البنائية المرخصة (جلوكوزامين، كوندرويتين، MSM، وفيتامين ج المساند) كخيار تغذوي مقترح عند تصميم جداول التغذية الرياضية وبرامج النشاط البدني وسد فجوات المغذيات الدقيقة المساندة في النظام الغذائي، مع توضيح مصادر المواد الخام وتنبيهات الحساسية الغذائية (مثل خلو مشتقات القشريات).',
-      detailsEn: 'Presents your licensed structural nutrient supplements (Glucosamine, Chondroitin, MSM, and co-factor Vitamin C) during sports and active-lifestyle meal plan construction, complete with raw material origin and allergen-free disclosures (e.g., shellfish-free) in the Supplement Facts card.',
+      detailsAr: 'عرض مكملات المغذيات البنائية المرخصة (جلوكوزامين، كوندرويتين، MSM، وفيتامين ج المساند) كبطاقة مرجعية موثقة داخل الدليل اليدوي الاختياري للأخصائي عند التوثيق التغذوي، مع عرض مصادر المواد الخام وإفصاحات خلو مسببات الحساسية الواردة على عبوة الشركة المصنعة (مثل خلو مشتقات القشريات) كمعلومات بطاقة مرجعية دون أي فحص آلي للحساسية.',
+      detailsEn: 'Presents your licensed structural nutrient supplements (Glucosamine, Chondroitin, MSM, and co-factor Vitamin C) inside the optional manual directory reference card during voluntary practitioner review, displaying manufacturer-stated raw material origin and allergen-free label disclosures (e.g., shellfish-free) for reference only with zero automated allergy checking.',
       triggersAr: [
-        'تكميل جداول التغذية الرياضية والنشاط البدني بالمغذيات البنائية المرخصة',
-        'توثيق مصادر المواد الخام وخلو مسببات الحساسية الغذائية في بطاقة الصنف',
-        'شرح تكامل فيتامين (ج) مع المركبات البنائية في مسار مركز المعرفة'
+        'الإدراج المرجعي في تصنيف المغذيات البنائية بالدليل اليدوي الاختياري',
+        'نقل إفصاحات مصادر المواد الخام وخلو مسببات الحساسية من بطاقة المصنّع',
+        'شرح خصائص المركبات البنائية في مسار مركز المعرفة'
       ],
       triggersEn: [
-        'Structural Micronutrient Supplementation in Sports & Active Meal Plans',
-        'Raw Material Origin & Food Allergen Disclosures in Supplement Card',
+        'Verified Reference Listing Under Structural Nutrients in Manual Directory',
+        'Manufacturer Raw Material Origin & Allergen Label Disclosures (Reference Only)',
         'Vitamin C Co-Factor & Structural Nutrition Module in Knowledge Center'
       ],
       slaAr: '100% من عيادات الدولة',
@@ -518,16 +518,16 @@ document.addEventListener('DOMContentLoaded', () => {
       categoryEn: 'Comprehensive Multi-Micronutrients for Elevated RDA Stages Slot',
       nameAr: 'مكمل الفيتامينات والمعادن المتكامل (Comprehensive Multi-Micronutrient Formula)',
       nameEn: 'Comprehensive Multi-Vitamin & Chelated Mineral Formula',
-      detailsAr: 'بروز مكمل الفيتامينات والمعادن المتكامل المرخص كخيار مقترح أول بنقرة واحدة عندما يرصد النظام فجوات متعددة في تغطية الحصص المرجعية اليومية (RDA/DRI) للفيتامينات والمعادن (الفولات النشط، الحديد، الكولين، اليود، الزنك، وفيتامين د) في التقييم الغذائي السابق أو في جدول الوجبات اليومي المصمم.',
-      detailsEn: 'Highlights your licensed comprehensive multi-micronutrient formula as the one-click suggested option whenever multi-nutrient daily RDA/DRI gaps (Active Folate, Iron, Choline, Iodine, Zinc, Vitamin D) are calculated in the Prior Dietary Assessment or Active Meal Plan.',
+      detailsAr: 'عرض مكمل الفيتامينات والمعادن المتكامل المرخص كبطاقة مرجعية موثقة داخل الدليل اليدوي الاختياري عند تصفح الأخصائي لتصنيف الفيتامينات المتعددة (الفولات النشط، الحديد، الكولين، اليود، الزنك، وفيتامين د) مع إظهار جدول التراكيز الكامل لاختيار الأخصائي التطوعي.',
+      detailsEn: 'Displays your licensed comprehensive multi-micronutrient formula inside the Verified Partner Reference Card under the Multivitamin manual directory category (Active Folate, Iron, Choline, Iodine, Zinc, Vitamin D) with full label specs for manual practitioner review.',
       triggersAr: [
-        'رصد فجوات متعددة في الحصص اليومية للفيتامينات والمعادن في التقييم الغذائي السابق',
-        'عجز جدول الوجبات اليومي عن تغطية الاحتياجات المرجعية المرتفعة (RDA/DRI)',
+        'الحضور المرجعي الموثق في تصنيف الفيتامينات المتعددة بالدليل اليدوي الاختياري',
+        'استعراض جدول المغذيات الدقيقة الكامل والحدود الآمنة في البطاقة المرجعية',
         'شرح جداول توازن الفيتامينات والمعادن والحدود الآمنة (UL) في مركز المعرفة'
       ],
       triggersEn: [
-        'Multi-Micronutrient RDA Shortfalls Detected in Prior Dietary Assessment',
-        'Unmet Elevated Daily Reference Intakes (DRI) in Constructed Meal Plans',
+        'Verified Reference Listing Under Multivitamins in Manual Directory',
+        'Complete Micronutrient Label Panel for Voluntary Plan Documentation',
         'Micronutrient Synergy & Safe Upper Limits (UL) in Knowledge Center'
       ],
       slaAr: '100% من عيادات الدولة',
