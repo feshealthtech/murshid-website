@@ -39,6 +39,7 @@
             docAuthenticTitle: '100% Authentic & Verified Document',
             docAuthenticSub: 'Cryptographic signature validated against Murshid Cloud Registry',
             verifiedIssuerAccount: 'Verified Issuer Identity (Murshid Registry)',
+            verifiedHistoricalKeyBadge: 'Verified using a previously registered issuer key',
             verifiedPhoneLabel: 'Verified Official Phone:',
             verifiedPhoneTelegramBadge: 'Verified via Telegram',
             phoneNotVerifiedLabel: 'Phone Number:',
@@ -123,6 +124,7 @@
             docAuthenticTitle: 'وثيقة أصلية ومعتمدة 100%',
             docAuthenticSub: 'تم تأكيد صحة التوقيع الرقمي التشفيري ومطابقته بالسجل السحابي لمرشد',
             verifiedIssuerAccount: 'ترويسة التحقق الإلكتروني للمُصدر (سجل مرشد)',
+            verifiedHistoricalKeyBadge: 'موقّعة بمفتاح معتمد سابق مسجّل للمُصدر',
             verifiedPhoneLabel: 'رقم الهاتف الموثق:',
             verifiedPhoneTelegramBadge: 'موثق عبر تليجرام',
             phoneNotVerifiedLabel: 'رقم الهاتف:',
@@ -620,21 +622,51 @@
                 return;
             }
 
-            if (!cloudKeyData || !cloudKeyData.found || !cloudKeyData.publicKey) {
+            const candidateKeys = [];
+            const seenCandidateKeys = new Set();
+            if (cloudKeyData && Array.isArray(cloudKeyData.publicKeys)) {
+                for (const keyItem of cloudKeyData.publicKeys) {
+                    if (typeof keyItem === 'string' && keyItem.trim() && !seenCandidateKeys.has(keyItem.trim())) {
+                        seenCandidateKeys.add(keyItem.trim());
+                        candidateKeys.push(keyItem.trim());
+                    }
+                }
+            }
+            if (cloudKeyData && typeof cloudKeyData.publicKey === 'string' && cloudKeyData.publicKey.trim()) {
+                const primaryTrimmed = cloudKeyData.publicKey.trim();
+                if (!seenCandidateKeys.has(primaryTrimmed)) {
+                    candidateKeys.unshift(primaryTrimmed);
+                    seenCandidateKeys.add(primaryTrimmed);
+                }
+            }
+
+            if (!cloudKeyData || !cloudKeyData.found || candidateKeys.length === 0) {
                 renderTamperedReport(file.name, 'UNREGISTERED_EMAIL');
                 return;
             }
 
-            const publicKeyBase64 = cloudKeyData.publicKey;
-
-            // 4. Verify Ed25519 Cryptographic Signature over canonical JSON (Fail-Closed)
+            // 4. Verify Ed25519 Cryptographic Signature over canonical JSON strictly newest-to-oldest (Fail-Closed)
             const canonicalJson = JSON.stringify(manifest);
-            const isSignatureValid = verifyEd25519(canonicalJson, signatureBase64, publicKeyBase64);
+            let publicKeyBase64 = '';
+            let matchedKeyIndex = -1;
+            for (let keyIdx = 0; keyIdx < candidateKeys.length; keyIdx++) {
+                if (verifyEd25519(canonicalJson, signatureBase64, candidateKeys[keyIdx])) {
+                    publicKeyBase64 = candidateKeys[keyIdx];
+                    matchedKeyIndex = keyIdx;
+                    break;
+                }
+            }
 
-            if (!isSignatureValid) {
+            if (!publicKeyBase64) {
                 renderTamperedReport(file.name, 'INVALID_SIG');
                 return;
             }
+
+            const enrichedCloudKeyData = {
+                ...cloudKeyData,
+                usedHistoricalKey: matchedKeyIndex > 0,
+                matchedKeyIndex: matchedKeyIndex,
+            };
 
             // 5. Verify Content Bit-Integrity (SHA-256 against manifest.docHash)
             if (extraction.hasTrailerSeal) {
@@ -705,7 +737,7 @@
             }
 
             // 8. Render Authentic Verified Document with Clear Phone Verification Distinction
-            renderAuthenticReport(file.name, manifest, publicKeyBase64, cloudKeyData);
+            renderAuthenticReport(file.name, manifest, publicKeyBase64, enrichedCloudKeyData);
 
         } catch (err) {
             console.error('Processing error:', err);
@@ -739,6 +771,11 @@
         const isSignedPhoneClaimed = manifest.phoneVerified === true && manifestPhone.length > 0;
         const isCloudPhoneMatch = cloudKeyData && cloudKeyData.phoneVerifiedMatch === true;
         const hasVerifiedTelegramPhone = isSignedPhoneClaimed && isCloudPhoneMatch;
+        const usedHistoricalKey = Boolean(cloudKeyData && cloudKeyData.usedHistoricalKey === true);
+
+        const historicalKeyBadgeHtml = usedHistoricalKey
+            ? `<div style="margin-top: 6px;"><span class="verified-telegram-pill" style="background: #EFF6FF; border-color: #BFDBFE; color: #1D4ED8;">🔑 ${dict.verifiedHistoricalKeyBadge}</span></div>`
+            : '';
 
         let phoneHeaderHtml = '';
         let transparencyText = dict.transparencyNoticeEmailOnly;
@@ -783,6 +820,7 @@
                         <div style="flex: 1; min-width: 0;">
                             <div class="verified-box-title">${dict.verifiedIssuerAccount}</div>
                             <div class="verified-box-email">${escapeHtml(manifest.email)}</div>
+                            ${historicalKeyBadgeHtml}
                             ${phoneHeaderHtml}
                         </div>
                     </div>
