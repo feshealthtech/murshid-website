@@ -366,7 +366,7 @@
         <ul>
           <li><strong>Completely Optional:</strong> The backup feature is disabled by default and you must enable it manually with your explicit consent.</li>
           <li><strong>Encryption Before Upload:</strong> The database file is fully encrypted with a key derived from your account data before being uploaded to Google Drive. Even if a third party gains access to this file, they will not be able to read its contents.</li>
-          <li><strong>Limited Access Scope (drive.appdata scope):</strong> The app requests access only to the app's specific data folder (<code>appDataFolder</code>), which is a hidden folder that does not appear in your Google Drive and cannot be seen by any other app.</li>
+          <li><strong>Limited Access Scope (drive.appdata scope):</strong> The app requests access strictly to its own hidden application folder (<code>appDataFolder</code>), which does not appear in your visible Google Drive and cannot be accessed by any other app (with temporary read-only compatibility via <code>drive.file</code> solely to recover legacy pre-update backups).</li>
           <li><strong>We Do Not See Your Personal Files:</strong> The limited scope means the Murshid app cannot under any circumstances see your personal files, photos, or any other content in Google Drive.</li>
           <li><strong>Managing Backups:</strong> You can delete the backup at any time from within the app settings or via the app permissions management in your Google account.</li>
         </ul>
